@@ -1,4 +1,4 @@
-#include <asm_setup.S>
+.set sp, 1
 
 .extern continueFromFlagObjCheck
 .extern returnFromFlagObjCheck
@@ -27,8 +27,3 @@ fix38WithJumpCoin:
 
 isExemptedActor:
 	b continueFromFlagObjCheck
-
-.global PreventW5Vine
-PreventW5Vine:
-	li r3, 1
-	blr

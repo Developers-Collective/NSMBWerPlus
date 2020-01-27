@@ -1,5 +1,4 @@
 .text
-#include <asm_setup.S>
 .global _Z3absf
 _Z3absf:
 	fabs f1, f1
@@ -17,7 +16,6 @@ JrFloorFireHax:
 	lis r4, 0x100
 	stw r4, 0x774(r30)
 	stw r4, 0x77C(r30)
-	blr
 
 .global TryAndFixScoreGlitch
 TryAndFixScoreGlitch:
@@ -57,63 +55,6 @@ dontDestroyMe:
 .align 4
 ThwompDestroyAt: .float -7533.0
 .text
-.global TitleScreenFucker
-.extern RESTART_CRSIN_LevelStartStruct
-.extern SaveFileBuffer
-.extern enableHardMode
-TitleScreenFucker:
-	lis 	r4, enableHardMode@h
-	ori 	r4, r4, enableHardMode@l
-
-	li 		r3, 0
-	stw		r3, 0(r4)
-
-	lis r3, RESTART_CRSIN_LevelStartStruct@h
-	ori r3, r3, RESTART_CRSIN_LevelStartStruct@l
-	li r4, 0
-	stb r4, 7(r3)
-	
-	# now get the FUCKING WORLD and FUCKING LEVEL
-	lis r4, SaveFileBuffer@h
-	ori r4, r4, SaveFileBuffer@l
-	#lwz r4, 0(r4)
-	lbz r5, 6(r4)
-	extsb r5, r5
-	mulli r5, r5, 0x980
-	addi r4, r4, 0x6A0
-	add r4, r4, r5
-
-	# do we need to use Quick Save? get the QS block
-	addi r4, r4, 0x1C80
-	lbz r6, 2(r4)
-	clrlwi. r6, r6, 31
-	beq quickSaveExists
-	subi r4, r4, 0x1C80
-quickSaveExists:
-
-	# now we have the save block in r4
-	lbz r6, 2(r4)
-	clrlwi. r6, r6, 31
-	beq saveIsNotNew
-	li r5, 0
-	li r6, 9
-	b chosenTitle
-saveIsNotNew:
-	lbz r5, 0x73A(r4)
-	lbz r6, 0x73B(r4)
-chosenTitle:
-	cmpwi r5, 0
-	bne isntWorld1_1
-	cmpwi r6, 0
-	bne isntWorld1_1
-	li r5, 0
-	li r6, 9
-isntWorld1_1:
-	stb r5, 0xC(r3)
-	stb r6, 0xD(r3)
-	blr
-
-
 .global mpPauseFix1
 .global mpPauseFix2
 .global mpPauseFix3
@@ -457,14 +398,6 @@ RedRingEventControl:
 	li r5, 0
 dontResetRREDelay:
 	b set__10dFlagMgr_cFUcibbbUi
-
-.global EFB_Crap
-.extern _Z9EFBMagic2v
-.extern ContinueFromEFBMagic2
-EFB_Crap:
-	bl _Z9EFBMagic2v
-	lwz r3, 4(r30)
-	b ContinueFromEFBMagic2
 
 .data
 .global BGScaleFront, BGScaleBack, BGScaleEnabled

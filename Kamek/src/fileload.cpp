@@ -1,5 +1,7 @@
 #include "fileload.h"
 
+extern "C" void UncompressBackward(void *bottom);
+
 
 void *LoadFile(FileHandle *handle, const char *name) {
 

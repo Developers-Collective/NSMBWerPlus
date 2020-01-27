@@ -1,6 +1,6 @@
 .text
 .align 4
-#include <asm_setup.S>
+.set sp, 1
 
 .extern __ctor_loc
 .extern __ctor_end

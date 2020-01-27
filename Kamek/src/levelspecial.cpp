@@ -46,10 +46,6 @@ extern char BGScaleEnabled;
 
 extern u32 GameTimer;
 
-extern char CameraLockEnabled;
-extern VEC2 CameraLockPosition;
-extern char isLockPlayerRotation;
-
 #define time *(u32*)((GameTimer) + 0x4)
 
 
@@ -94,8 +90,6 @@ bool ResetAfterLevel(bool didItWork) {
 	GlobalStarsCollected = 0;
 	NoMichaelBuble = false;
 	BGScaleEnabled = 0;
-	CameraLockEnabled = 0;
-	isLockPlayerRotation = false;
 	return didItWork;
 }
 

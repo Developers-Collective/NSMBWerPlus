@@ -1,7 +1,6 @@
 ---
-# This has kind of turned into the "random stuff that we don't want to make a yaml for"
-# yaml, hasn't it...
-source_files: [../src/randomcrap.S, ../src/music.cpp, ../src/fix38.S, ../src/nullsub.S, ../src/newer.cpp]#, ../src/anmconstruct.S]
+# The stuff that has been commented out can be reenabled at will
+source_files: [../src/randomcrap.S, ../src/music.cpp, ../src/fix38.S, ../src/nullsub.S]
 hooks:
   - name: TryAndFixScoreGlitch
     type: branch_insn
@@ -31,52 +30,44 @@ hooks:
     type: patch
     addr_pal: 0x809CB118
     data: '2C1C0003'
-  - name: DisableTerrainShading
-    type: patch
-    addr_pal: 0x8008E6F8
-    data: '38600000'
 
-  - name: TitleScreenFucker
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x8010191C
-    target_func: 'TitleScreenFucker'
-  - name: AnotherTSThing
-    type: patch
-    addr_pal: 0x8015D850
-    data: '38600000'
+  # - name: DisableTerrainShading
+    # type: patch
+    # addr_pal: 0x8008E6F8
+    # data: '38600000'
 
-  - name: TitleReplayLevels
-    type: patch
-    addr_pal: 0x802F4CD0
-    data: '0402 0002 0101 0104 0202 0002 0301 0306 0400 0402 0501 0503 0104 0900 0900'
+  # - name: TitleReplayLevels
+    # type: patch
+    # addr_pal: 0x802F4CD0
+    # data: '0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002'
 
-  - name: NoTitleScreenMovie
-    type: nop_insn
-    area_pal: 0x80781FB8
+  # - name: NoTitleScreenMovie
+    # type: nop_insn
+    # area_pal: 0x80781FB8
 
-#  - name: MPPauseFix1
-#    type: branch_insn
-#    branch_type: bl
-#    target_func: 'mpPauseFix1'
-#    src_addr_pal: 0x801410C4
-#This one disables the player freezing and doing the grow animation
-#skawo didn't like it
-#  - name: MPPauseFix2
-#    type: branch_insn
-#    branch_type: bl
-#    target_func: 'mpPauseFix2'
-#    src_addr_pal: 0x801410DC
-#  - name: MPPauseFix3
-#    type: branch_insn
-#    branch_type: b
-#    target_func: 'mpPauseFix3'
-#    src_addr_pal: 0x801412A0
-#  - name: MPPauseFix4
-#    type: branch_insn
-#    branch_type: bl
-#    target_func: 'mpPauseFix4'
-#    src_addr_pal: 0x8014169C
+ # - name: MPPauseFix1
+   # type: branch_insn
+   # branch_type: bl
+   # target_func: 'mpPauseFix1'
+   # src_addr_pal: 0x801410C4
+
+ # - name: MPPauseFix2
+   # type: branch_insn
+   # branch_type: bl
+   # target_func: 'mpPauseFix2'
+   # src_addr_pal: 0x801410DC
+
+ # - name: MPPauseFix3
+   # type: branch_insn
+   # branch_type: b
+   # target_func: 'mpPauseFix3'
+   # src_addr_pal: 0x801412A0
+
+ # - name: MPPauseFix4
+   # type: branch_insn
+   # branch_type: bl
+   # target_func: 'mpPauseFix4'
+   # src_addr_pal: 0x8014169C
 
   - name: MPDeathPauseFix
     type: nop_insn
@@ -98,11 +89,13 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80133120
     target_func: 'newClimbSoundsJumpS'
+
   - name: ClimbSoundsJumpSS
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x80133134
     target_func: 'newClimbSoundsJumpSS'
+
   - name: ClimbSoundsJump
     type: branch_insn
     branch_type: bl
@@ -128,31 +121,31 @@ hooks:
     target_func: 'after_course_getMusicForZone'
 
   # IDs to nuke: 1, 2, 4, 10
-  - name: MusicNukeBahpsNormal1
-    type: patch
-    addr_pal: 0x802F6BC8
-    data: '00000000 00000000 00000000 00000000'
-  - name: MusicNukeBahpsNormal2
-    type: patch
-    addr_pal: 0x802F6BE0
-    data: '00000000 00000000'
-  - name: MusicNukeBahpsNormal3
-    type: patch
-    addr_pal: 0x802F6C10
-    data: '00000000 00000000'
+  # - name: MusicNukeBahpsNormal1
+    # type: patch
+    # addr_pal: 0x802F6BC8
+    # data: '00000000 00000000 00000000 00000000'
+  # - name: MusicNukeBahpsNormal2
+    # type: patch
+    # addr_pal: 0x802F6BE0
+    # data: '00000000 00000000'
+  # - name: MusicNukeBahpsNormal3
+    # type: patch
+    # addr_pal: 0x802F6C10
+    # data: '00000000 00000000'
 
-  - name: MusicNukeBahpsFast1
-    type: patch
-    addr_pal: 0x802F6CB0
-    data: '00000000 00000000 00000000 00000000'
-  - name: MusicNukeBahpsFast2
-    type: patch
-    addr_pal: 0x802F6CC8
-    data: '00000000 00000000'
-  - name: MusicNukeBahpsFast3
-    type: patch
-    addr_pal: 0x802F6CF8
-    data: '00000000 00000000'
+  # - name: MusicNukeBahpsFast1
+    # type: patch
+    # addr_pal: 0x802F6CB0
+    # data: '00000000 00000000 00000000 00000000'
+  # - name: MusicNukeBahpsFast2
+    # type: patch
+    # addr_pal: 0x802F6CC8
+    # data: '00000000 00000000'
+  # - name: MusicNukeBahpsFast3
+    # type: patch
+    # addr_pal: 0x802F6CF8
+    # data: '00000000 00000000'
 
   - name: Fix38WithJumpCoin
     src_addr_pal: 0x807EBC5C
@@ -160,11 +153,11 @@ hooks:
     branch_type: b
     target_func: 'fix38WithJumpCoin'
 
-  - name: 1-1 BG Fix
-    type: patch
-    addr_ntsc: 0x80117F6C
-    addr_pal: 0x801180AC
-    data: '38000003'
+  # - name: 1-1 BG Fix
+    # type: patch
+    # addr_ntsc: 0x80117F6C
+    # addr_pal: 0x801180AC
+    # data: '38000003'
     
   - name: PipeFix_NodeCalc
     type: patch
@@ -208,15 +201,8 @@ hooks:
     addr_pal: 0x80050A88
     data: '389F065C'
     
-  - name: ChestnutGoombaForTargets # sprite 10
-    type: patch
-    addr_ntsc: 0x8030A1D0
-    addr_pal: 0x8030A4D0
-    data: '00C8 0000 00000008 FFFFFFF0 00000000 00000000 0000000A 0000000A 0000 0000 0000 0000 0002 0000'
-    
   - name: TileGodLayerFix
     type: patch
-    addr_ntsc: 0xdeadbeef
     addr_pal: 0x807E16D0
     data: '88D2038F'
     
@@ -229,13 +215,6 @@ hooks:
     type: patch
     addr_pal: 0x808A9448
     data: '60000000'
-
-#  - name: HeapChangeAttempt
-#    type: branch_insn
-#    branch_type: bl
-#    src_addr_ntsc: 0xdeadbeef
-#    src_addr_pal: 0x80081E34
-#    target_func: 'HeapChangeAttempt'
     
   - name: StarsDontKillSpikesUD
     type: add_func_pointer
@@ -266,14 +245,6 @@ hooks:
     type: add_func_pointer
     src_addr_pal: 0x80B00234
     target_func: 'ReturnNone'
-
-  - name: DisableBowserPow
-    type: add_func_pointer
-    src_addr_pal: 0x80B7E854
-    target_func: 'ReturnNone'
-
-  - {name: PowEvent1, type: branch_insn, branch_type: b, src_addr_pal: 0x80892DFC, target_func: 'PowEvent'}
-  - {name: PowEvent2, type: branch_insn, branch_type: b, src_addr_pal: 0x80893044, target_func: 'PowEvent'}
 
   - {name: AlwaysDrawPictureFontWhite, type: branch_insn, branch_type: b, src_addr_pal: 0x800E596C, target_func: 'TextWriterCrap'}
   - {name: DebugSCM, type: branch_insn, branch_type: b, src_addr_pal: 0x8006A6C4, target_func: 'EndSCM'}
@@ -318,6 +289,7 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x808399D4
     target_func: 'FuckLineLiftWithARake'
+
   - name: AlsoFuckTheLineLiftActivation
     type: branch_insn
     branch_type: b
@@ -339,30 +311,6 @@ hooks:
     src_addr_pal: 0x802F2A4C
     target_func: 'Rrun'
 
-  # - name: FuckUpYoshi
-  #   type: branch_insn
-  #   branch_type: b
-  #   src_addr_pal: 0x809FEFBC
-  #   target_func: 'FuckUpYoshi'
-  # - name: FuckUpYoshi2
-  #   type: branch_insn
-  #   branch_type: b
-  #   src_addr_pal: 0x800A7638
-  #   target_func: 'FuckUpYoshi2'
-  # - name: YoshiStartAnimWrapper
-  #   type: add_func_pointer
-  #   src_addr_pal: 0x8031C5F4
-  #   target_func: 'YoshiStartAnimWrapper'
-  # - name: YoshiStateWrapper
-  #   type: add_func_pointer
-  #   src_addr_pal: 0x80326D70
-  #   target_func: 'YoshiStateWrapper'
-  # - name: AnmChrConstructWrapper
-  #   type: branch_insn
-  #   branch_type: b
-  #   src_addr_pal: 0x80248AD0
-  #   target_func: 'AnmChrConstructWrapper'
-
   - name: BroozerCrashAvoidance2
     type: patch
     addr_pal: 0x809EB284
@@ -378,3 +326,73 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80816370
     target_func: 'JrFloorFireHax'
+ 
+  - name: CastleHardcode1
+    type: patch
+    addr_pal: 0x8000D064
+    data: '280000FF'
+
+  - name: CastleHardcode2
+    type: patch
+    addr_pal: 0x80079BD0
+    data: '280000FF' 
+
+  - name: CastleHardcode3
+    type: patch
+    addr_pal: 0x80079F60
+    data: '280000FF' 
+
+  - name: CastleHardcode4
+    type: patch
+    addr_pal: 0x8007A898
+    data: '280000FF'
+
+  - name: CastleHardcode5
+    type: patch
+    addr_pal: 0x80083A80
+    data: '38600000' 
+
+  - name: CastleHardcode6
+    type: patch
+    addr_pal: 0x800EBDE4
+    data: '280000FF'
+
+  - name: CastleHardcode7
+    type: patch
+    addr_pal: 0x80101C60
+    data: '280000FF' 
+
+  - name: CastleHardcode8
+    type: patch
+    addr_pal: 0x8015530C
+    data: '280000FF' 
+
+  - name: CastleHardcode9
+    type: patch
+    addr_pal: 0x807B4EA8
+    data: '280000FF' 
+
+  - name: CastleHardcode10
+    type: patch
+    addr_pal: 0x807B5328
+    data: '280000FF' 
+
+  - name: CastleHardcode11
+    type: patch
+    addr_pal: 0x80888958
+    data: '280000FF' 
+
+  - name: CastleHardcode12
+    type: patch
+    addr_pal: 0x80888B78
+    data: '280000FF'
+
+  - name: StockItemFix
+    type: patch
+    addr_ntsc: 0x80101110
+    addr_pal: 0x80101220
+    data: '4E800020'
+
+  # - name: DisableQuickSave
+    # type: nop_insn
+    # area_pal: 0x8077AA7C

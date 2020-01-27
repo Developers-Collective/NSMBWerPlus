@@ -1,19 +1,14 @@
 ---
 source_files: [../src/growup.S]
 hooks:
-
-
 # After Actor onCreate
-
   - name: Global_Size
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x800951EC
     target_func: 'ModifyGlobalSizes'
 
-
 # Active Physics Init from Struct
-
   - name: Global_Collisions
     type: branch_insn
     branch_type: b
@@ -22,13 +17,6 @@ hooks:
 
 
 # Update Object Positions Based on Speed Values
-
-#  - name: Global_Speed_Updates
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x8006CD00
-#    target_func: 'ModifySpeedUpdates'
-
   - name: Global_Speed_UpdatesA
     type: branch_insn
     branch_type: b
@@ -43,7 +31,6 @@ hooks:
 
 
 # Prevent large enemies from being fireballed, unless they subclass the fireball state
-
   - name: TooBigToBurn
     type: branch_insn
     branch_type: bl
@@ -56,79 +43,7 @@ hooks:
     src_addr_pal: 0x800A0A50
     target_func: 'TooBigToFreeze'
 
-
-
-# Loading Patches
-
-#  - name: Global_SizeLoader_X
-#    type: branch_insn
-#    branch_type: bl
-#    src_addr_pal: 0x800684B8
-#    target_func: 'ModifyLoadSizeX'
-#
-#  - name: Global_SizeLoader_Y
-#    type: branch_insn
-#    branch_type: bl
-#    src_addr_pal: 0x800684C0
-#    target_func: 'ModifyLoadSizeY'
-
-
-#  - name: Global_SizeLoader
-#    type: branch_insn
-#    branch_type: bl
-#    src_addr_pal: 0x80068930
-#    target_func: 'ModifyLoadSize'
-#
-#  - name: Global_SizeLoaderNull
-#    type: patch
-#    data: "600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000060000000"
-#    addr_pal: 0x80068934
-
-#  - name: GlobalSizeA
-#    type: patch
-#    data: '38600001'
-#    addr_pal: 0x80064540
-#
-#  - name: GlobalSizeB
-#    type: patch
-#    data: '4E800020'
-#    addr_pal: 0x80064544
-
-
-
-
-
-# Stand On Top Special Collisions Inits
-#
-#  - name: Global_StandonTopA
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x800DB27C
-#    target_func: 'ModifyStandOnTopInitA'
-#
-#  - name: Global_StandonTopB
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x800DB294
-#    target_func: 'ModifyStandOnTopInitB'
-#
-#  - name: Global_StandonTopC
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x800DB30C
-#    target_func: 'ModifyStandOnTopInitC'
-#
-#  - name: Global_StandonTopD
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x800DB32C
-#    target_func: 'ModifyStandOnTopInitD'
-
-
-
 # Rideable Actor Inits
-
-
   - name: Global_RiderA
     type: branch_insn
     branch_type: b
@@ -153,17 +68,7 @@ hooks:
     src_addr_pal: 0x800DB6FC
     target_func: 'ModifyRiderInitD'
 
-
-
-
-
-
-
-
 ## Below are enemy specific hacks to fix issues that arise when resizing
-
-
-
   - name: FixingPipeSpawnerGoombaB
     type: branch_insn
     branch_type: bl
@@ -203,7 +108,6 @@ hooks:
     src_addr_pal: 0x80A5AAC4
     target_func: 'InheritSettings'
 
-
   - name: FixingMegaGoombaBA
     type: branch_insn
     branch_type: bl
@@ -228,7 +132,6 @@ hooks:
     src_addr_pal: 0x80A5ABB8
     target_func: 'InheritSettings'
 
-
   - name: FixingLargeGoombaAA
     type: branch_insn
     branch_type: bl
@@ -240,7 +143,6 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80A6A22C
     target_func: 'InheritSettings'
-
 
   - name: FixingLargeGoombaBA
     type: branch_insn
@@ -254,15 +156,10 @@ hooks:
     src_addr_pal: 0x80A6A2CC
     target_func: 'InheritSettings'
 
-
-
   - name: Piranha_Collisions
     type: patch
     data: "41C00000"
     addr_pal: 0x802EE81C
-
-
-
 
   - name: GlobalZOrderDeath
     type: branch_insn
@@ -288,7 +185,6 @@ hooks:
     src_addr_pal: 0x800A18E8
     target_func: 'PokeyZOrderDamage'
 
-
   - name: GabonRockZOrderDeath
     type: branch_insn
     branch_type: b
@@ -300,7 +196,6 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x807FA9C0 
     target_func: 'GabonRockZOrderDeathDrop'
-
 
   - name: BigBooZOrderHack
     type: patch
@@ -370,9 +265,3 @@ hooks:
 #    branch_type: bl
 #    src_addr_pal: 0x80ABB76C
 #    target_func: 'PipeGeneratorSpawn'
-
-
-# 809EA268 - Broozer physics struct
-# 80ABB6E0 - Pipe Generator
-
-#80AB7910

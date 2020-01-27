@@ -21,12 +21,6 @@ hooks:
     src_addr_pal: 0x80132670
     target_func: 'PlayerGetHeight'
     
-#  - name: EnItem_BindAnimation_Fix
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x80A291E0
-#    target_func: 'EnItem_BindAnimation_Fix'
-    
   - name: DealWithBlahTable
     type: branch_insn
     branch_type: b
@@ -95,10 +89,12 @@ hooks:
     type: patch
     addr_pal: 0x802ee628
     data: '00000006'
+
   - name: PatchEmptyBlockItemID1
     type: patch
     addr_pal: 0x802EE664
     data: '000000AA'
+
   - name: PatchEmptyBlockItemID2
     type: patch
     addr_pal: 0x802EE6AC
@@ -133,6 +129,7 @@ hooks:
     type: patch
     addr_pal: 0x800611C4
     data: '60000000'
+
   - name: DisablePowerupValidityCheck2
     type: patch
     addr_pal: 0x8006122C
@@ -230,12 +227,6 @@ hooks:
     branch_type: b
     src_addr_pal: 0x800CA6F8
     target_func: 'PlumberSetPowerupTextureFix'
-    
-#  - name: PlumberSetPowerupTextureDebug
-#    type: branch_insn
-#    branch_type: b
-#    src_addr_pal: 0x800CA6B0
-#    target_func: 'PlumberSetPowerupTextureDebug'
 
   - name: FixToadPowerup
     type: branch_insn
@@ -291,11 +282,7 @@ hooks:
     src_addr_pal: 0x80143884
     target_func: 'GetPowerupScaleFloatAddr_r8_trash_r0_valshl2_r7_dest'
 
-
-
-
 # Below Here are added all the Hammer Collision hacks
-
   - name: HammerPodooboo
     type: patch
     addr_pal: 0x80ACE8E4
@@ -314,7 +301,7 @@ hooks:
   - name: HammerBigThwompBounce
     type: add_func_pointer
     src_addr_pal: 0x80AE8360
-    target_func: 'ThwompHammer(dEn_c*, ActivePhysics*, ActivePhysics*)'
+    target_func: 'ThwompHammer(dEn_c *, ActivePhysics *, ActivePhysics *)'
 
   - name: HammerBigBoo
     type: patch
@@ -329,7 +316,7 @@ hooks:
   - name: HammerBigBooBounce
     type: add_func_pointer
     src_addr_pal: 0x80B0AE20
-    target_func: 'BooHammer(dEn_c*, ActivePhysics*, ActivePhysics*)'
+    target_func: 'BooHammer(dEn_c *, ActivePhysics *, ActivePhysics *)'
 
   - name: HammerAmp
     type: patch
@@ -354,7 +341,7 @@ hooks:
   - name: HammerBigUrchinBounce
     type: add_func_pointer
     src_addr_pal: 0x80B0CCC0
-    target_func: 'UrchinHammer(dEn_c*, ActivePhysics*, ActivePhysics*)'
+    target_func: 'UrchinHammer(dEn_c *, ActivePhysics *, ActivePhysics *)'
 
   - name: HammerChainChomp
     type: patch
@@ -471,8 +458,6 @@ hooks:
     src_addr_pal: 0x80AF72A8
     target_func: 'ReturnNone'
 
-
-
   - name: HammerBulletBill
     type: patch
     addr_pal: 0x80AD22B8
@@ -493,7 +478,6 @@ hooks:
     addr_pal: 0x80AD3B00
     data: '00000047'
 
-
   - name: HammerGabonRock
     type: branch_insn
     src_addr_pal: 0x807F9694
@@ -504,13 +488,6 @@ hooks:
     type: patch
     addr_pal: 0x8095C668
     data: '00000010'
-  # - name: HammerCallbackGabonRockOverride
-  #   type: branch_insn
-  #   src_addr_pal: 0x8001DEC4
-  #   branch_type: b
-  #   target_func: 'HammerCallbackGabonRockOverride'
-
-
 
   - name: Icicle
     type: patch
@@ -552,9 +529,6 @@ hooks:
     target_func: 'ReturnNone'
     src_addr_pal: 0x80AE9EE8
 
-
-
-
   - name: FuckinCastleLarryNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
@@ -564,7 +538,6 @@ hooks:
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B81F8C
-
 
   - name: FuckinCastleLemmyNull
     type: add_func_pointer
@@ -576,7 +549,6 @@ hooks:
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B82E38
 
-
   - name: FuckinCastleWendyNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
@@ -586,7 +558,6 @@ hooks:
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B8768C
-
 
   - name: FuckinCastleLudwigNull
     type: add_func_pointer
@@ -598,7 +569,6 @@ hooks:
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B84120
 
-
   - name: FuckinCastleIggyNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
@@ -608,7 +578,6 @@ hooks:
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B7BC70
-
 
   - name: FuckinCastleMortonNull
     type: add_func_pointer
@@ -620,7 +589,6 @@ hooks:
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B853F0
 
-
   - name: FuckinCastleRoyNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
@@ -631,18 +599,15 @@ hooks:
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B86458
 
-
   - name: FuckinKamekNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B7CC24
 
-
   - name: FuckinBowserNull
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B7E848
-
 
   - name: FuckinJrANull
     type: add_func_pointer
@@ -658,8 +623,6 @@ hooks:
     type: add_func_pointer
     target_func: 'ReturnTrue'
     src_addr_pal: 0x80B814B0
-
-
 
   - name: BiggerAcPy
     type: patch
@@ -689,7 +652,6 @@ hooks:
     src_addr_pal: 0x80145BE0
     branch_type: b
 
-
   - name: BiggerWm2dPlayer
     type: patch
     addr_pal: 0x808C5108
@@ -718,73 +680,46 @@ hooks:
     src_addr_pal: 0x808C5910
     branch_type: b
 
-
-
   - name: AddHSToBattleItem_AddArcName
     type: add_func_pointer
     target_func: 'I_hammerArcFilename'
     src_addr_pal: 0x80951A48
+
   - name: AddHSToBattleItem_FixKinokoBrres1
     type: add_func_pointer
     target_func: 'g3d_I_kinoko_brres'
     src_addr_pal: 0x80951ACC
+
   - name: AddHSToBattleItem_FixKinokoBrres2
     type: add_func_pointer
     target_func: 'g3d_I_kinoko_brres'
     src_addr_pal: 0x80951ADC
+
   - name: AddHSToBattleItem_AddBrres
     type: add_func_pointer
     target_func: 'I_hammerResFile'
     src_addr_pal: 0x80951AE8
+
   - name: AddHSToBattleItem_FixPropellerModel
     type: add_func_pointer
     target_func: 'I_propeller_model'
     src_addr_pal: 0x80951B04
+
   - name: AddHSToBattleItem_AddModel
     type: add_func_pointer
     target_func: 'I_hammerModelName'
     src_addr_pal: 0x80951B18
+
   - name: AddHSToBattleItem_FixWait2Anim
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x807BA4A8
     target_func: 'AddHSToBattleItem_FixWait2Anim'
 
-  - name: StrongboxInit
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x808AA450
-    target_func: 'StrongboxInit'
-
-  - name: StrongboxGiveBattleItem
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x808AAF90
-    target_func: 'StrongboxGiveBattleItem'
-
-  - name: StrongboxNoMushroom
-    type: nop_insn
-    area_pal: 0x808AB3E0
-
-  - name: NoSoundBattleKinopio
-    type: nop_insn
-    area_pal: 0x808AB5FC
-
-  - name: NoDrawBattleKinopio
-    type: nop_insn
-    area_pal: [0x807B9F74,0x807B9F88]
-
-  - name: NoBattleFanfare
-    type: patch
-    addr_pal: 0x8019C290
-    data: '4E800020'
-
   - name: RedRingRespectsHammerSuit
     type: patch
     addr_pal: 0x80A942EC
     data: '28000005'
-
-
 
 # STOCK ITEM BULLSHIT
 # Current size: 0x8E0
@@ -845,7 +780,7 @@ hooks:
     type: branch_insn
     branch_type: b
     src_addr_pal: 0x807AFBC0
-    target_func: 'dStockItem_c::setScalesOfSomeThings()'
+    target_func: 'dStockItem_c::setScalesOfSomeThings(void)'
 
   - name: AddHammerPowerupFinalValue
     type: branch_insn
@@ -864,11 +799,13 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x807B04BC
     target_func: 'FixStockItemEffectPlayer'
+
   - name: FixStockItemEffectPlayer2
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x807B0580
     target_func: 'FixStockItemEffectPlayer2'
+
   - name: FixMoreSIEffectRelatedCrap
     type: branch_insn
     branch_type: bl
@@ -909,6 +846,7 @@ hooks:
   - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CA8, data: '801E 090C'}
   - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CC0, data: '801E 0910'}
   - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CD8, data: '801E 0914'}
+
   - name: PickHammerAsPossibleStartChoice
     type: branch_insn
     branch_type: b
@@ -991,20 +929,22 @@ hooks:
     target_func: 'UpdateSIS'
 
 # And now, the item itself
-
   - name: AddIHammer1
     type: add_func_pointer
     src_addr_pal: 0x80983334
     target_func: 'I_hammerArcFilename'
+
   - name: ReplaceLostPropellerModel
     type: add_func_pointer
     src_addr_pal: 0x80983350
     target_func: 'I_propeller_model'
+
   - name: InsertLostG3D
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x808D4C80
     target_func: 'InsertLostG3D'
+
   - name: AddPtrToSIHammer
     type: add_func_pointer
     src_addr_pal: 0x809833D4
@@ -1015,16 +955,14 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x808D4CCC
     target_func: 'SkawoHatesMe'
+
   - name: SkawoStillHatesMe
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x808D4CEC
     target_func: 'SkawoStillHatesMe'
 
-
   - name: PatchMultiplayerHits
     type: patch
     addr_pal: 0x8001E668
     data: '38A00008'
-
-

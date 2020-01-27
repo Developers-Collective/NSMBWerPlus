@@ -1,28 +1,15 @@
-# NEWER Super Mario Bros. Wii
+# NSMBWer
 ## Source Code Public Release
 
-### Preamble
+### Introduction
 
-Well, here it is, the thing you've been awaiting for... years. Yep.
-My original plans were to majorly clean up and reorganise the codebase and
-tools, because I really wasn't satisfied with the current state of them.
-
-Unfortunately, this didn't quite pan out - as much as I'd like to have done
-this, getting everything into the state I wanted would require months upon
-months of work - something that's a bit difficult to do nowadays, since Newer
-is done and I don't wish to devote yet more of my life to projects related to
-NSMBW.
-
-So... I've decided to dump the source code here so other people can do
-something with this. Much of it isn't really in a usable state - but I'm
-releasing it in case someone else wants to take up development and work on
-getting everything polished and ready.
-
-*-Treeki, 22nd November 2013*
+This fork of the NewerSMBW repo is a slightly modified version which runs most of the sprite mods whilst
+keeping the original game's map system intact and working. Among the notable changes, this version of
+Kamek is based on CodeWarrior and supports Python 3. More details below.
 
 ### Licensing
 
-The Newer SMBW source code and tools are released under the MIT license.
+Like in the original repo, the source code and tools are released under the MIT license.
 See the `LICENSE` file in this repository for full details.
 
 Copyright (c) 2010-2013 Treeki, Tempus, megazig
@@ -31,47 +18,16 @@ Copyright (c) 2010-2013 Treeki, Tempus, megazig
 
 #### For compiling the Newer game hacks:
 
-- OS and setup where you can compile LLVM and Clang
+- Windows (required for CodeWarrior to run)
 - devkitPPC
-- Python 2.x
+- Python 3.x
 - Python libraries: PyYAML, pyelftools
-
-#### For using the Newer tools:
-
-- Windows, Linux or Mac OS
-- Python 2.x
-- PyQt
-- Possibly something else I forgot?
 
 ### What's Here
 
-#### Clang Patchset
-
-Newer requires a modified version of the [Clang](http://www.llvm.org)
-compiler. Clang is a modern C/C++ compiler created as part of the LLVM project,
-and Newer uses it to generate compiled code that can be injected into the game.
-
-Most Wii homebrew development is done using GCC (usually as part of devkitPPC),
-but regular compilers cannot be used because the generated code uses a
-different C++ ABI from CodeWarrior (which is what Nintendo uses) and therefore
-is not compatible with the NSMBW binary.
-
-My (admittedly, very kludgey) patches to Clang modify various aspects of the
-generated code to work round this. It's not perfect: in particular, multiple
-inheritance and RTTI are not compatible and possibly entirely broken.
-Thankfully NSMBW doesn't really make use of these features, so it works just
-fine for Newer.
-
-Another caveat is that I stopped working on this a few months back, so you'll
-need to pull an old-ish version of LLVM and Clang from their SVN repos - the
-patch I included is based off SVN revision 184655. LLVM is unmodified, but you
-should probably also stick to this version of it to avoid possible
-incompatibilities.
-
 #### Kamek
 
-All the Newer hacks are inside the Kamek folder in this repository because
-that's how our files have always been organised, but technically, Kamek is
+All the Newer hacks are inside the Kamek folder in this repository but, technically, Kamek is
 really just a simple build system for calling the tools to compile/assemble
 each source file and putting together an output file you can inject into your
 game.
@@ -91,87 +47,50 @@ specific to game hacks like Newer:
 - The compiled output is converted to a specific format expected by the
   Newer loader.
 
-There's also a few things I'm not quite happy with...
-
-- The projects/modules system turned out to be rather messy in Newer
-- I think there's some features which just aren't used any more because the
-  Newer loader changed over time.
-- I wanted to add some NSMBW-specific features, like an easy way to inject
-  new actors and sprites without having to modify the data structures using
-  very-easy-to-mess-up Kamek hooks, but I never got round to this
-
 #### Newer Hacks
 
-The stuff that makes this game tick. Thousands of lines of C++ code, a
-smattering of assembly, tons of patches, and a lot of blood, sweat and
-tears. (No Treekis or Tempuses were harmed in the creation of these. Well.
-Not harmed THAT much, anyway.)
+Changes:
+* General folder and YAML cleanup
+* Removed some changes that have an impact on the original game (such as the Chest mod)
+* RYOM moved over Mega Thwomp (11 -> 322) and Thundercloud moved over Super Topman (168 -> 251) to avoid overriding map actors
+* Added 2-Castle hardcode fixes from AnotherSMBW
+* Added more effects to effect spawner
+* Support for Yoshi Drums in music slots 200+
+* Load custom music from the default BRSTM folder
 
-You'll need to set up the stuff in the above two sections to be able to build
-your own copy of the hacks.
-
-This is the source code for the unfinished release with translation support,
-so there's likely to be some bugs here. In particular:
-
-- Expect to see some broken stuff with translations: wrong messages, etc.
-- The final boss battle doesn't work. I never managed to figure out why.
-- Possibly other things are broken?
-
-#### Koopatlas
-
-Where do I even begin with this...
-
-This is the editor half of Koopatlas - a totally new 2D map engine we wrote
-for Newer. Without going into too much detail, here's a quick roundup:
-
-- Ridiculously buggy and unpolished editor
-- 2D maps with an unlimited* amount of layers
-- Tileset layers, supporting an unlimited* amount of tilesets
-- Doodad layers, allowing you to place arbitrary textures on the map at any
-  position and scale/rotate them
-- Doodad animations
-- Unlockable paths and level nodes
-- More hardcoded things than you can shake a stick at (possibly rivalling
-  Nintendo's 3D maps)
-- Multiple maps with entrances/exits a la Reggie
-- Maps are stored in a ".kpmap" format for easy editability - a JSON file in a
-  specific format - and exported to an optimised ".kpbin" format for usage
-  in-game
-
-*\*Unlimited: Not really. This is the Wii, a game console which was
-underpowered when it was released in 2006. There's not a lot of room in RAM
-for lots of tilesets and doodads. A couple of the Newer maps use up almost all
-the available space, so...*
-
-If you want to make maps, feel free to try it. Then bash your head against a
-wall when you accidentally close the editor and lose your unsaved work because
-there's no warning against that. Or when it crashes on you, which might happen.
+Supported mods:
+* Actor Spawner
+* Angry Sun
+* Animated Tiles
+* Chestnut
+* Electric Line
+* Event Block
+* Event Looper
+* Fire Laser
+* Flipblock
+* Giga Goomba
+* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows)
+* LH Compression
+* Line God
+* Magic Platform
+* Message Box
+* Meteor
+* Music Slots
+* Mushroom Platform Slant Mod
+* RYOM
+* S/E Spawner
+* Shy Guys (not the giant ones)
+* Size Hacks
+* Special Event
+* Sprite Retextures
+* Tile Randomization (BUGGED: Currently looks for LevelInfo.bin but doesn't need it to be valid or anything)
+* Thundercloud
+* Tile God
+* Topman
+* Universal Tileset Slot Mod
 
 #### Misc Tools
 
 There's a bunch of scripts in here which do... things. Most of them might not
 be useful in their current state. Just look through and see what you can
 gather, I guess.
-
-Don't ask me why the random tiles script is in Ruby. Well, if you really want
-to know, I was learning Ruby at the time and wanted to write stuff in it to
-improve my skills...
-
-
-### So how DO I use this junk?
-
-Good question.
-
-I could probably write an entire book (or two) documenting how to set up the
-tools, the internals of the NSMBW game engine, and everything I added in Newer.
-But... do you have any idea how long that would take?
-
-The setup procedures aren't really documented at all, but I'm hoping that
-anyone with the skills to actually work on this stuff will be able to figure
-out what they're doing and get it running by looking at the error messages.
-
-As for the game engine APIs - I'd love to document these, but it would simply
-take way, way too long. Let me know if you have any technical questions
-involving these: post in the thread on RVLution, or query me on Freenode IRC
-(my nick is always Treeki).
-

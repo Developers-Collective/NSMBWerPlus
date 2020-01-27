@@ -1,9 +1,14 @@
 #ifndef __KAMEK_GAME_H
 #define __KAMEK_GAME_H
 
+//#define offsetof(type, member)	((__std(size_t)) &(((type *) 0)->member))
+
 #include <common.h>
-#include <sdk/gx.h>
-#include <sdk/tpl.h>
+#include <rvl/mtx.h>
+#include <rvl/GXEnum.h>
+#include <rvl/vifuncs.h>
+#include <rvl/arc.h>
+#include <rvl/tpl.h>
 #define offsetof(type, member)	((u32) &(((type *) 0)->member))
 
 #include <g3dhax.h>
@@ -45,8 +50,8 @@ enum Direction {
 bool DVD_Start();
 bool DVD_End();
 bool DVD_StillLoading(void *dvdclass2);
-void DVD_LoadFile(void *dvdclass, const char *folder, const char *file, void *callbackData);
-void DVD_FreeFile(void *dvdclass2, const char *file);
+void DVD_LoadFile(void *dvdclass, char *folder, char *file, void *callbackData);
+void DVD_FreeFile(void *dvdclass2, char *file);
 
 extern void *DVDClass;
 
@@ -565,7 +570,7 @@ class mMtx {
 
 	float* operator[](int row) { return data[row]; }
 
-	operator Mtx *() { return &data; }
+	operator MtxPtr() const { return (MtxPtr)this; }
 
 	/* Create New Ones */
 	void zero();
@@ -595,6 +600,16 @@ class mMtx {
 	void getUnknown(S16Vec *target);
 };
 
+
+
+float FastS16toFloat(s16 value) {
+	register s16 *pValue = &value;
+	register float output;
+	#ifndef __CLANG
+	asm { psq_l output, 0(pValue), 1, 3 }
+	#endif
+	return output;
+}
 
 
 namespace nw4r {
@@ -724,12 +739,19 @@ namespace lyt {
 			u16 width, height;
 			f32 minLOD, magLOD;
 			u16 lodBias, palEntryNum;
-			u32 settingsBitfield;
-
-			int getFormat() { return (settingsBitfield >> 28); }
-			void setFormat(int fmt) {
-				settingsBitfield = (fmt << 28) | (settingsBitfield & 0xFFFFFFF);
-			}
+			struct
+			{
+				u32                 textureFormat:      4;
+				u32                 mipmap:             1;
+				u32                 wrapS:              2;
+				u32                 wrapT:              2;
+				u32                 minFilter:          3;
+				u32                 magFilter:          1;
+				u32                 biasClampEnable:    1;
+				u32                 edgeLODEnable:      1;
+				u32                 anisotropy:         2;
+				u32                 paletteFormat:      2;
+			}   mBits;
 
 			void ReplaceImage(TPLPalette *tpl, unsigned long id);
 	};
@@ -792,8 +814,6 @@ namespace lyt {
 		ut::LinkListNode *AddAnimationLink(AnimationLink *link);
 
 		Vec2 GetVtxPos() const;
-
-		u16 GetExtUserDataNum() const; // 802AC5A0
 
 
 		ut::LinkListNode parentLink;
@@ -896,62 +916,156 @@ namespace lyt {
 
 
 namespace g3d {
-struct CameraData {
-	Mtx cameraMtx;
-	Mtx44 projectionMtx;
+struct CameraData
+{
+enum Flag
+    {
+FLAG_CAMERA_LOOKAT          = 0x00000001,
+FLAG_CAMERA_ROTATE = 0x00000002,
+FLAG_CAMERA_AIM    = 0x00000004,
+MASK_CAMERA        = 0x00000007,
 
-	u32 flags;
+FLAG_CMTX_VALID    = 0x00000008,
 
-	VEC3 camPos;
-	VEC3 camUp;
-	VEC3 camTarget;
-	VEC3 camRotate;
-	float camValue;
+FLAG_PROJ_FLUSTUM  = 0x00000010,
+FLAG_PROJ_PERSP    = 0x00000020,
+FLAG_PROJ_ORTHO    = 0x00000040,
+MASK_PROJ          = 0x00000070,
 
-	int projectionType;
-	float fovy;
-	float aspect;
-	float near, far;
-	float top, bottom, left, right;
+FLAG_PMTX_VALID             = 0x00000080,
 
-	float _CC, _D0, _D4, _D8;
+FLAG_VIEWPORT_JITTER_ABOVE  = 0x00000100
+    };
 
-	float viewportX, viewportY;
-	float viewportWidth, viewportHeight;
-	float viewportNearZ, viewportFarZ;
+Mtx  cameraMtx;
+Mtx44  projMtx;
 
-	int scissorX, scissorY, scissorWidth, scissorHeight;
-	int scissorOffsetX, scissorOffsetY;
+u32 flags;
+
+VEC3   cameraPos;
+VEC3   cameraUp;
+VEC3   cameraTarget;
+VEC3   cameraRotate;
+f32    cameraTwist;
+
+GXProjectionType    projType;
+f32                 projFovy;
+f32                 projAspect;
+f32                 projNear;
+f32                 projFar;
+f32                 projTop;
+f32                 projBottom;
+f32                 projLeft;
+f32                 projRight;
+
+f32                 lightScaleS;
+f32                 lightScaleT;
+f32                 lightTransS;
+f32                 lightTransT;
+
+VEC2   viewportOrigin;
+VEC2   viewportSize;
+f32    viewportNear;
+f32    viewportFar;
+
+u32    scissorX;
+u32    scissorY;
+u32    scissorWidth;
+u32    scissorHeight;
+
+s32    scissorOffsetX;
+s32    scissorOffsetY;
 };
+
+/* Correct camera
+cameraMtx:
+1.0 0.0 0.0 -0.0
+0.0 1.0 0.0 -0.0
+0.0 0.0 1.0 -6000.0
+
+projMtx:
+0.002345 0.000000  0.000000 -1.000000
+0.000000 0.004386  0.000000 -1.000000
+0.000000 0.000000 -0.000005 -0.500000
+0.000000 0.000000  0.000000  1.000000
+
+flags: 000000C9 : FLAG_CAMERA_LOOKAT | FLAG_CMTX_VALID | FLAG_PROJ_ORTHO | FLAG_PMTX_VALID
+
+cameraPos: {0, 0, 15}
+cameraUp: {0, 1, 0}
+cameraTarget: {0, 0, 0}
+cameraRotate: {0, 0, 0}
+cameraTwist: 0
+
+projType: 1
+projFovy: 60
+projAspect: 1.333333
+projNear: -100000
+projFar: 100000
+projTop: 456
+projBottom: 0
+projLeft: 0
+projRight: 853
+
+lightScaleS: 0.5
+lightScaleT: 0.5
+lightTransS: 0.5
+lightTransT: 0.5
+
+viewportOrigin: {0,0}
+viewportSize: {640,456}
+viewportNear: 0
+viewportFar: 1
+
+scissorX: 0
+scissorY: 0
+scissorWidth: 0x280
+scissorHeight: 0x1C8
+
+scissorOffsetX: 0
+scissorOffsetY: 0
+*/
 
 class Camera {
 public:
-	struct PostureInfo {
-		int mode;
-		VEC3 up;
-		VEC3 target;
-		VEC3 cameraRotate;
-		float cameraTwist;
+	enum PostureType { POSTURE_LOOKAT, POSTURE_ROTATE, POSTURE_AIM };
+	struct PostureInfo
+	{
+	PostureType tp;
+	VEC3   cameraUp;
+	VEC3   cameraTarget;
+	VEC3   cameraRotate;
+	f32         cameraTwist;
 	};
+private:
 	CameraData *data;
+public:
 	Camera(CameraData *pCamera);
 	void Init();
 	void Init(u16 efbWidth, u16 efbHeight, u16 xfbWidth, u16 xfbHeight, u16 viWidth, u16 viHeight);
+	//void SetPosition(f32 x, f32 y, f32 z);
 	void SetPosition(const VEC3 &pos);
-	void GetPosition(VEC3 *pos) const;
+	//void GetPosition(f32 *px, f32 *py, f32 *pz) const;
+	void GetPosition(VEC3 *pPos) const;
 	void SetPosture(const PostureInfo &info);
+	//void GetPosture(PostureInfo *info) const;
 	void SetCameraMtxDirectly(const Mtx &mtx);
-	void SetPerspective(f32 fovy, f32 aspect, f32 near, f32 far);
+	void GetCameraMtx(Mtx *pMtx) const;
 	void SetOrtho(f32 top, f32 bottom, f32 left, f32 right, f32 near, f32 far);
+	//void SetFrustum(f32 top, f32 bottom, f32 left, f32 right, f32 near, f32 far);
+	void SetPerspective(f32 fovy, f32 aspect, f32 near, f32 far);
 	void SetProjectionMtxDirectly(const Mtx44 *pMtx);
+	void GetProjectionMtx(Mtx44 *pMtx) const;
+	//GXProjectionType GetProjectionType() const;
 	void SetScissor(u32 xOrigin, u32 yOrigin, u32 width, u32 height);
 	void SetScissorBoxOffset(s32 xOffset, s32 yOffset);
+	//void GetScissor(u32 *xOrigin, u32 *yOrigin, u32 *width, u32 *height);
 	void SetViewport(f32 xOrigin, f32 yOrigin, f32 width, f32 height);
+	//void SetViewport(f32 xOrigin, f32 yOrigin, f32 width, f32 height, f32 near, f32 far);
 	void SetViewportZRange(f32 near, f32 far);
 	void SetViewportJitter(u32 field);
+	//void SetViewportJitter(f32 xOrigin, f32 yOrigin, f32 width, f32 height, f32 near, f32 far, u32 field);
 	void GetViewport(f32 *xOrigin, f32 *yOrigin, f32 *width, f32 *height, f32 *near, f32 *far) const;
-	void GetCameraMtx(Mtx *pMtx) const;
-	void GetProjectionMtx(Mtx44 *pMtx) const;
 	void GXSetViewport() const;
 	void GXSetProjection() const;
 	void GXSetScissor() const;
@@ -959,13 +1073,13 @@ public:
 };
 
 namespace G3DState {
-	GXRModeObj *GetRenderModeObj();
+	GXRenderModeObj *GetRenderModeObj();
 }
 }
 }
 
 
-u64 GetSomeSizeRelatedBULLSHIT();
+VEC2 GetSomeSizeRelatedBULLSHIT();
 Vec CalculateSomethingAboutRatio(float, float, float, float);
 float CalculateSomethingElseAboutRatio();
 
@@ -1008,12 +1122,10 @@ void Reset3DState(); // 80165000
 
 extern "C" void GXDrawDone(); // 801C4FE0
 
-extern "C" u32 VIGetNextField();
-
 
 
 namespace m2d {
-	class __attribute__((move_vtable(8))) Base_c /*: public nw4r::ut::Link what's this? */ {
+	class Base_c /*: public nw4r::ut::Link what's this? */ {
 	public:
 		u32 _00;
 		u32 _04;
@@ -1050,7 +1162,7 @@ namespace m2d {
 
 
 namespace EGG {
-	class __attribute__((move_vtable(0x38))) Frustum {
+	class Frustum {
 	public:
 		int projType; // 0 = ortho, 1 = perspective.. who needs GXEnum.h anyway
 		int isCentered;
@@ -1066,11 +1178,10 @@ namespace EGG {
 		float verticalMultiplier;
 		float unk3;
 		short some_flag_bit;
-		short _padding;
 
 
 		// isCentered might actually be isNotCentered, dunno
-		Frustum(u32 projType, Vec2 size, bool isCentered, float near, float far); // 802C6D20
+		Frustum(GXProjectionType projType, Vec2 size, bool isCentered, float near, float far); // 802C6D20
 		Frustum(Frustum &f); // 802C6D90
 		virtual ~Frustum(); // 802C75F0
 
@@ -1123,7 +1234,7 @@ namespace EGG {
 			Screen(Screen *pParent, bool isCentered, float m40, float m44, float width, float height); // 802D1080
 			Screen(Screen &s); // 802D1140
 
-			~Screen(); // not called by the retail game..
+			~Screen(); // not called by the retail game.. dunno how to make CodeWarrior do this, who gives a fuck
 
 			void loadDirectly();
 			void loadIntoCamera(nw4r::g3d::Camera cam);
@@ -1178,7 +1289,7 @@ namespace EGG {
 
 	class ProjectOrtho /* : public something? */ {
 		public:
-			virtual u32 getProjectionType();
+			virtual GXProjectionType getProjectionType();
 			virtual void setGXProjection();
 			virtual void _vf10(); // null
 			virtual VEC2 _vf14(VEC2 *something);
@@ -1412,10 +1523,10 @@ template <class TOwner>
 class dStateWrapperBase_c {
 public:
 	dStateWrapperBase_c(TOwner *pOwner) :
-		executor(pOwner), manager(&pointless, &executor, &dStateBase_c::mNoState) { }
+		manager(&pointless, &executor, &dStateBase_c::mNoState), executor(pOwner) { }
 
 	dStateWrapperBase_c(TOwner *pOwner, dState_c<TOwner> *pInitState) :
-		executor(pOwner), manager(&pointless, &executor, pInitState) { }
+		manager(&pointless, &executor, pInitState), executor(pOwner) { }
 
 	virtual ~dStateWrapperBase_c() { }
 
@@ -1925,7 +2036,7 @@ public:
 };
 
 
-class __attribute__((move_vtable(0x60))) fBase_c {
+class fBase_c {
 public:
 	u32 id;
 	u32 settings;
@@ -2405,7 +2516,7 @@ public:
 	void eatIn();
 	void disableEatIn();
 	bool _vf8C(void *other); // AcPy/PlBase?
-	void _vfAC(void *other);
+	void _vfAC();
 	void _vfCC(Vec2 *p, float f);
 	void _vfD0(Vec2 *p, float f);
 
@@ -2836,7 +2947,7 @@ public:
 	virtual void disableStarColours();			// 800D6D60
 	virtual void enableStarEffects();			// 800BD740
 	virtual void disableStarEffects();			// 800BD730
-	virtual void getModelMatrix(u32 unk, Mtx *dest);	// 800D5820
+	virtual void getModelMatrix(u32 unk, MtxPtr dest);	// 800D5820
 	virtual int _vf54();						// 80318D0C
 	virtual bool _vf58(int type, char *buf, bool unk); // 800D6930
 	virtual void startAnimation(int id, float updateRate, float unk, float frame);	// 800D5EC0
@@ -2899,7 +3010,7 @@ public:
 
 	int loadModel(u8 player_id, int powerup_id, int unk);	// 800D6EE0
 	void update();											// 800D6F80
-	void setMatrix(Mtx *matrix);							// 800D6FA0
+	void setMatrix(Mtx matrix);								// 800D6FA0
 	void setSRT(Vec position, S16Vec rotation, Vec scale);	// 800D7030
 	void callVF20();										// 800D70F0
 	void draw();											// 800D7110
@@ -2914,14 +3025,14 @@ private:
 class mTexture_c {
 public:
 	mTexture_c();	// 802C0D20
-	mTexture_c(u16 width, u16 height, u32 format);	// 802C0D70
+	mTexture_c(u16 width, u16 height, GXTexFmt format);	// 802C0D70
 
 	// vtable is at 80350450
 	virtual ~mTexture_c();	// 802C0DB0
 	virtual void setFlagTo1();	// 802C0E20
 
 	void setImageBuffer(void *buffer);	// 802C0E30
-	void load(u32 id);			// 802C0E50
+	void load(GXTexMapID id);			// 802C0E50
 	void makeTexObj(GXTexObj *obj);		// 802C0E90
 	void flushDC();						// 802C0F10
 
@@ -3011,8 +3122,8 @@ namespace nw4r {
 				float posX;
 				float posY;
 				float posZ;
-				u32 minFilt;
-				u32 magFilt;
+				GXTexFilter minFilt;
+				GXTexFilter magFilt;
 				u16 completelyUnknown;
 				u8 alpha;
 				u8 isFixedWidth;
@@ -3073,7 +3184,7 @@ namespace lyt {
 		void *GetResource(u32 dirKey, const char *filename, u32 *sizePtr);
 		void *GetFont(const char *name);
 
-		char arcHandle[0x1C]; // should be a struct, but I'm too lazy to reverse it >_>
+		ARCHandle arc;
 		u32 unk_20;
 		ut::LinkList list; // 0x24
 		char rootDirName[0x80]; // 0x30
@@ -3601,7 +3712,7 @@ void WriteNumberToTextBox(int *number, const int *fieldLength, nw4r::lyt::TextBo
 void WriteNumberToTextBox(int *number, nw4r::lyt::TextBox *textBox, bool unk); // 800B3BE0
 
 namespace EGG {
-	class __attribute__((move_vtable(0x1C))) MsgRes {
+	class MsgRes {
 		private:
 			const u8 *bmg, *INF1, *DAT1, *STR1, *MID1, *FLW1, *FLI1;
 		public:
@@ -3649,15 +3760,6 @@ class MessageClass {
 
 dScript::Res_c *GetBMG(); // 800CDD50
 void WriteBMGToTextBox(nw4r::lyt::TextBox *textBox, dScript::Res_c *res, int category, int message, int argCount, ...); // 0x800C9B50
-
-// My version ignores the Font and Font Scale fields in BMG
-void Newer_WriteBMGToTextBox_VAList(nw4r::lyt::TextBox *textBox, dScript::Res_c *res, int category, int message, int argCount, va_list *args);
-void Newer_WriteBMGToTextBox(nw4r::lyt::TextBox *textBox, dScript::Res_c *res, int category, int message, int argCount, ...);
-
-// support functions needed for it
-void CheckForUSD1ShadowEntry(nw4r::lyt::TextBox *textBox); // 800C9BF0
-void WriteParsedStringToTextBox(nw4r::lyt::TextBox *textBox, const wchar_t *str, int vaCount, va_list *args, dScript::Res_c *res);
-
 
 extern "C" dAc_Py_c* GetSpecificPlayerActor(int number);
 extern "C" dStageActor_c *CreateActor(u16 classID, int settings, Vec pos, char rot, char layer);

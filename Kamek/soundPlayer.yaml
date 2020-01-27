@@ -1,3 +1,2 @@
----
-
-source_files: [../src/soundPlayer.S]
+source_files:
+- ../src/soundPlayer.S

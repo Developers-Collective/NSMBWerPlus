@@ -24,15 +24,15 @@ void UrchinHammer(dEn_c *urchin, ActivePhysics *apThis, ActivePhysics *apOther) 
 
 #include "poweruphax.h"
 
-void SetCullModeForMaterial(m3d::mdl_c *model, int materialID, u32 cullMode);
+void SetCullModeForMaterial(m3d::mdl_c *model, int materialID, GXCullMode mode);
 
 
 dHammerSuitRenderer_c *dHammerSuitRenderer_c::build() {
 	return new dHammerSuitRenderer_c;
 }
 
-dHammerSuitRenderer_c::dHammerSuitRenderer_c() { } dHammerSuitRenderer_c::~dHammerSuitRenderer_c() {
-}
+dHammerSuitRenderer_c::dHammerSuitRenderer_c() { }
+dHammerSuitRenderer_c::~dHammerSuitRenderer_c() { }
 
 void dHammerSuitRenderer_c::setup(dPlayerModelHandler_c *handler) {
 	setup(handler, 0);
@@ -46,8 +46,7 @@ void dHammerSuitRenderer_c::setup(dPlayerModelHandler_c *handler, int sceneID) {
 	nw4r::g3d::ResFile rf(getResource("hammerM", "g3d/suit.brres"));
 
 	if (victim->player_id_2 <= 1) {
-		nw4r::g3d::ResMdl rm = rf.GetResMdl((victim->player_id_2 == 0) ? "marioHelmet" : "luigiHelmet");
-		helmet.setup(rm, &allocator, 0, 1, 0);
+		helmet.setup(rf.GetResMdl((victim->player_id_2 == 0) ? "marioHelmet" : "luigiHelmet"), &allocator, 0, 1, 0);
 		SetupTextures_MapObj(&helmet, sceneID);
 	}
 
@@ -65,13 +64,9 @@ void dHammerSuitRenderer_c::setup(dPlayerModelHandler_c *handler, int sceneID) {
 		(nw4r::g3d::ResMdl*)(((u32)victimModel->scnObj) + 0xE8);
 
 	//headNodeID = playerResMdl->GetResNode("player_head").GetID();
-	if (victim->player_id_2 <= 1) {
-		nw4r::g3d::ResNode face_1 = playerResMdl->GetResNode("face_1");
-		headNodeID = face_1.GetID();
-	}
-
-	nw4r::g3d::ResNode skl_root = playerResMdl->GetResNode("skl_root");
-	rootNodeID = skl_root.GetID();
+	if (victim->player_id_2 <= 1)
+		headNodeID = playerResMdl->GetResNode("face_1").GetID();
+	rootNodeID = playerResMdl->GetResNode("skl_root").GetID();
 }
 
 void dHammerSuitRenderer_c::draw() {
@@ -83,9 +78,9 @@ void dHammerSuitRenderer_c::draw() {
 		SetCullModeForMaterial(&victim->getCurrentModel()->head, 3, GX_CULL_ALL);
 
 		Mtx headMtx;
-		victimModel->getMatrixForNode(headNodeID, &headMtx);
+		victimModel->getMatrixForNode(headNodeID, headMtx);
 
-		helmet.setDrawMatrix(&headMtx);
+		helmet.setDrawMatrix(headMtx);
 		helmet.setScale(1.0f, 1.0f, 1.0f);
 		helmet.calcWorld(false);
 
@@ -93,9 +88,9 @@ void dHammerSuitRenderer_c::draw() {
 	}
 
 	Mtx rootMtx;
-	victimModel->getMatrixForNode(rootNodeID, &rootMtx);
+	victimModel->getMatrixForNode(rootNodeID, rootMtx);
 
-	shell.setDrawMatrix(&rootMtx);
+	shell.setDrawMatrix(rootMtx);
 	shell.setScale(1.0f, 1.0f, 1.0f);
 	shell.calcWorld(false);
 

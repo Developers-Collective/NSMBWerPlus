@@ -35,7 +35,7 @@ namespace nw4r {
 
 				void * /*ResMat*/ GetResMat(const char *str) const;
 
-				void * GetResNode(const char *str) const;
+				ResNode GetResNode(const char *str) const;
 		};
 
 		class ResAnmChr { public: void* data; ResAnmChr(void *p = NULL) { data = p; } };
@@ -55,83 +55,88 @@ namespace nw4r {
 				void Init();
 				bool CheckRevision() const;
 
-				void *GetResMdl(const char *str) const;
-				void *GetResAnmChr(const char *str) const;
-				void *GetResAnmVis(const char *str) const;
-				void *GetResAnmClr(const char *str) const;
-				void *GetResAnmTexPat(const char *str) const;
-				void *GetResAnmTexSrt(const char *str) const;
+				ResMdl GetResMdl(const char *str) const;
+				void * /*ResPltt*/ GetResPltt(const ResName n) const;
+				void * /*ResTex*/ GetResTex(const char *str) const;
+				void * /*ResTex*/ GetResTex(const ResName n) const;
+				void * /*ResTex*/ GetResTex(u32 idx) const;
+				ResAnmChr GetResAnmChr(const char *str) const;
+				ResAnmVis GetResAnmVis(const char *str) const;
+				ResAnmClr GetResAnmClr(const char *str) const;
+				ResAnmTexPat GetResAnmTexPat(const char *str) const;
+				ResAnmTexSrt GetResAnmTexSrt(const char *str) const;
+				void * /*ResAnmScn*/ GetResAnmScn(const char *str) const;
 
-				bool Bind(ResFile file);
+				bool Bind(ResFile rhs);
 		};
 
 		void *__ScnMdlSimple__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
-				void * /*ResMdl*/ resMdl,
-				int bufs = 1);
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
+				void * /*ResMdl*/ mdl,
+				int nView = 1);
 
 
 		void *__ScnMdl__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
-				void * /*ResMdl*/ resMdl,
-				u32 flags,
-				int bufs = 1);
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
+				void * /*ResMdl*/ mdl,
+				u32 bufferOption,
+				int nView = 1);
 
 
 		void *__AnmObjChrRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmChr*/ resAnm,
 				void * /*ResMdl*/ resMdl,
-				bool flag);
+				bool bHasCache);
 
 
 		void *__AnmObjVisRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmVis*/ resAnm,
 				void * /*ResMdl*/ resMdl);
 
 
 		void *__AnmObjClrRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmVis*/ resAnm,
 				void * /*ResMdl*/ resMdl);
 
 
 		void *__AnmObjTexPatRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmTexPat*/ resAnm,
 				void * /*ResMdl*/ resMdl,
-				bool flag);
+				bool bHasCache);
 
 
 		void *__AnmObjTexSrtRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmTexSrt*/ resAnm,
 				void * /*ResMdl*/ resMdl,
-				bool flag);
+				bool bHasCache);
 
 
 		void *__AnmObjMatClrRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmMatClr*/ resAnm,
 				void * /*ResMdl*/ resMdl,
-				bool flag);
+				bool bHasCache);
 
 
 		void *__AnmObjShpRes__Construct(
-				void * /*MEMAllocator*/ heap,
-				u32 *sizeOutPtr,
+				void * /*MEMAllocator*/ pHeap,
+				u32 *pSize,
 				void * /*ResAnmShp*/ resAnm,
 				void * /*ResMdl*/ resMdl,
-				bool flag);
+				bool bHasCache);
 
 
 
@@ -139,12 +144,12 @@ namespace nw4r {
 
 		extern void *g3dMemAllocator; // 8042A6A8
 
-		inline void *ConstructScnMdlSimple(void *mdl, int bufs = 1) {
-			return __ScnMdlSimple__Construct(g3dMemAllocator, 0, mdl, bufs);
+		inline void *ConstructScnMdlSimple(void *mdl, int nView = 1) {
+			return __ScnMdlSimple__Construct(g3dMemAllocator, 0, mdl, nView);
 		}
 
-		inline void *ConstructScnMdl(void *mdl, u32 flags, int bufs = 1) {
-			return __ScnMdl__Construct(g3dMemAllocator, 0, mdl, flags, bufs);
+		inline void *ConstructScnMdl(void *mdl, u32 bufferOption, int nView = 1) {
+			return __ScnMdl__Construct(g3dMemAllocator, 0, mdl, bufferOption, nView);
 		}
 
 
@@ -195,7 +200,7 @@ namespace m3d {
 
 	// random, just dumped it here because I dunno where else
 	void DisableIndirectTexturing();
-	void InitTexObjWithResTex(GXTexObj *obj, /* ResTex */ void *resTex, u32 wrapS, u32 wrapT, u32 minFilt, u32 magFilt); 
+	void InitTexObjWithResTex(GXTexObj *obj, /* ResTex */ void *resTex, GXTexWrapMode wrapS, GXTexWrapMode wrapT, GXTexFilter minFilt, GXTexFilter magFilt); 
 
 
 	class scnLeaf_c {
@@ -250,16 +255,16 @@ namespace m3d {
 			virtual void bindAnim(banm_c *anim);
 			virtual void _vf1C();
 
-			bool setup(nw4r::g3d::ResMdl model, void *allocator, u32 flags, int bufs, u32 *size);
+			bool setup(nw4r::g3d::ResMdl model, void *allocator, u32 bufferOption, int nView, u32 *size);
 			void oneSetupType();
 			void sub_80064BF0();
 
-			void setDrawMatrix(const Mtx *matrix);
+			void setDrawMatrix(const Mtx matrix);
 			void setScale(float x, float y, float z);
 			void setScale(Vec *scale);
 			void calcWorld(bool unk);
 
-			bool getMatrixForNode(u32 nodeID, Mtx *matrix); // bmdl_c 801682C0
+			bool getMatrixForNode(u32 nodeID, MtxPtr matrix); // bmdl_c 801682C0
 
 			void bindAnim(banm_c *animation, float unk);
 
@@ -447,6 +452,8 @@ void SetupTextures_Boss(m3d::mdl_c *model, int sceneID); // 800B4050
 void SetupTextures_Enemy(m3d::mdl_c *model, int sceneID); // 800B4170
 void SetupTextures_MapObj(m3d::mdl_c *model, int sceneID); // 800B42B0
 void SetupTextures_Item(m3d::mdl_c *model, int sceneID); // 800B43D0
+
+#include <bufferoption.h>
 
 #endif
 
