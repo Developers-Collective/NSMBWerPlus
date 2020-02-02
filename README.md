@@ -69,7 +69,7 @@ Supported mods:
 * Fire Laser
 * Flipblock
 * Giga Goomba
-* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows)
+* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled)
 * LH Compression
 * Line God
 * Magic Platform
@@ -83,14 +83,15 @@ Supported mods:
 * Size Hacks
 * Special Event
 * Sprite Retextures
-* Tile Randomization (BUGGED: Currently looks for LevelInfo.bin but doesn't need it to be valid or anything)
+* Tile Randomization (BUGGED: Currently also looks for LevelInfo.bin, couldn't get rid of it. Doesn't need to be valid though)
 * Thundercloud
 * Tile God
 * Topman
 * Universal Tileset Slot Mod
 
-#### Misc Tools
-
-There's a bunch of scripts in here which do... things. Most of them might not
-be useful in their current state. Just look through and see what you can
-gather, I guess.
+#### Other Stuff
+Other Stuff includes, well, other stuff:
+* Riivolution XML (files load from the NSMBwer folder)
+* ISO Builder XML (for patching main.dol)
+* ObjectPatch (modified Object files for use as a template, some retail levels will still crash due to Nintendo leaving unused nybbles set)
+* ReggiePatch (a Reggie patch based on the NewerSMBW one)
