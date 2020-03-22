@@ -25,6 +25,15 @@ Copyright (c) 2010-2013 Treeki, Tempus, megazig
 
 ### What's Here
 
+#### NSMBWer Super Mario Bros. Wii
+A build is inside this folder, including the SpriteTex files, an XML and the related folders. If you
+want to create a mod, starting with this is suggested. Keep in mind this build doesn't include the
+custom music or tilesets from Newer.
+
+It also includes an edited 01-01 and 01-06 that removes old unused sprite settings from Nintendo set
+on the Rolling Hills that, now would crash NSMBWer. They are different flags for the Rolling Hill recolors
+that don't exist in base Newer.
+
 #### Kamek
 
 All the Newer hacks are inside the Kamek folder in this repository but, technically, Kamek is
