@@ -296,3 +296,5 @@ void LevelSpecial_Update(LevelSpecial *self) {
 	
 	self->lastEvState = newEvState;
 }
+
+#undef time
