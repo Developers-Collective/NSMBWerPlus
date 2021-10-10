@@ -308,11 +308,11 @@ def do_project(f, already_done):
 
 
 def main():
-    do_mapfile('kamek_pal.x', 'kamek_pal2.x', fix_offs_pal_v2)
-    do_mapfile('kamek_pal.x', 'kamek_ntsc.x', fix_offs_ntsc_v1)
-    do_mapfile('kamek_pal.x', 'kamek_ntsc2.x', fix_offs_ntsc_v2)
-    do_mapfile('kamek_pal.x', 'kamek_jpn.x', fix_offs_jpn_v1)
-    do_mapfile('kamek_pal.x', 'kamek_jpn2.x', fix_offs_jpn_v2)
+    do_mapfile('kamek_base.x', 'kamek_pal2.x', fix_offs_pal_v2)
+    do_mapfile('kamek_base.x', 'kamek_ntsc.x', fix_offs_ntsc_v1)
+    do_mapfile('kamek_base.x', 'kamek_ntsc2.x', fix_offs_ntsc_v2)
+    do_mapfile('kamek_base.x', 'kamek_jpn.x', fix_offs_jpn_v1)
+    do_mapfile('kamek_base.x', 'kamek_jpn2.x', fix_offs_jpn_v2)
 
     already_done = set()
     do_project('NewerProjectKP.yaml', already_done)

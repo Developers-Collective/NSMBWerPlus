@@ -3,7 +3,7 @@
   short_name: 'n'
   include_dirs: ['include', 'src']
   multi_build: {
-    pal: 'kamek_pal.x',
+    pal: 'kamek_base.x',
     pal2: 'kamek_pal2.x',
     ntsc: 'kamek_ntsc.x',
     ntsc2: 'kamek_ntsc2.x',
