@@ -576,7 +576,9 @@ class KamekBuilder(object):
 
         # next up, run it through c++filt
         print_debug('Running c++filt')
-        p = subprocess.Popen('%s/powerpc-eabi-c++filt.exe' % (gcc_path), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        opsys = sys.platform
+        if opsys == 'darwin': opsys = 'osx'
+        p = subprocess.Popen('%s/c++filt/%s/%s-c++filt' % (mw_path, opsys, gcc_type), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         symbolNameList = [sym[1] for sym in self._symbols]
         filtResult = p.communicate('\n'.join(symbolNameList).encode('utf-8'))
