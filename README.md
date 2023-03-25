@@ -1,11 +1,11 @@
-# NSMBWer
+# NSMBWer+
 ## Source Code Public Release
 
 ### Introduction
 
-This fork of the NewerSMBW repo is a slightly modified version which runs most of the sprite mods whilst
-keeping the original game's map system intact and working. Among the notable changes, this version of
-Kamek is based on CodeWarrior and supports Python 3. More details below.
+This fork of the NSMBWer repo is a heavily modified version that aims to keep it up to date with current NSMBW modding while keeping everything from Vanilla intact.
+Most notably, this version uses Abood's more sprites mod to implement every custom sprite and actor from Newer while keeping the ones they replaced.
+I'm releasing this in a heavily unfinished state, I will keep updating the project until I see it as complete.
 
 ### Licensing
 
@@ -25,14 +25,14 @@ Copyright (c) 2010-2013 Treeki, Tempus, megazig
 
 ### What's Here
 
-#### NSMBWer Super Mario Bros. Wii
+#### NSMBWer+
 A build is inside this folder, including the SpriteTex files, an XML and the related folders. If you
 want to create a mod, starting with this is suggested. Keep in mind this build doesn't include the
 custom music or tilesets from Newer.
 
 It also includes an edited 01-01 and 01-06 that removes old unused sprite settings from Nintendo set
 on the Rolling Hills that, now would crash NSMBWer. They are different flags for the Rolling Hill recolors
-that don't exist in base Newer.
+that don't exist in base Newer. (I plan to fix this as to not keep slightly modified vanilla files included with the mod)
 
 #### Kamek
 
@@ -66,6 +66,7 @@ Changes:
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
 * Load custom music from the default BRSTM folder
+* Porting of some Newer Wii sprites to new slots. (currently broken, certain sprites despawn unless placed near the level enterance)
 
 Supported mods:
 * Actor Spawner
@@ -78,7 +79,7 @@ Supported mods:
 * Fire Laser
 * Flipblock
 * Giga Goomba
-* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled)
+* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled.)
 * LH Compression
 * Line God
 * Magic Platform
@@ -88,7 +89,7 @@ Supported mods:
 * Mushroom Platform Slant Mod
 * RYOM
 * S/E Spawner
-* Shy Guys (not the giant ones)
+* Shy Guys, and the giant ones (BUGGED: will not spawn unless placed near level enterance)
 * Size Hacks
 * Special Event
 * Sprite Retextures
@@ -97,10 +98,19 @@ Supported mods:
 * Tile God
 * Topman
 * Universal Tileset Slot Mod
+* Spine Coaster Platforms
+* Fake Star Coin (BUGGED: will not spawn unless placed near level enterance.)
 
 #### Other Stuff
 Other Stuff includes, well, other stuff:
 * Riivolution XML (files load from the NSMBwer folder)
-* ISO Builder XML (for patching main.dol)
-* ObjectPatch (modified Object files for use as a template, some retail levels will still crash due to Nintendo leaving unused nybbles set)
-* ReggiePatch (a Reggie patch based on the NewerSMBW one)
+* ReggiePatch (a Reggie patch based on the NewerSMBW one, updated to work with Reggie! Next 4.8 and 4.9)
+
+#### TODO
+* Fix more sprites issues (custom sprites will despawn unless near level enterance)
+* Move all Newer sprites to new slots
+* Koopatlas and Pirahnatlas support(?)
+* Fix NSMBW bugs
+* Fix mispositoned Reggie! Next sprite images
+* Fix hammer suit bugs
+* Fix worldmap crash
