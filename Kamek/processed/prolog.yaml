@@ -5,8 +5,8 @@ hooks:
   src_addr_jpn2: 2148907328
   src_addr_ntsc: 2148907824
   src_addr_ntsc2: 2148907824
-  src_addr_pal: &id001 2148908144
-  src_addr_pal2: *id001
+  src_addr_pal: 2148908144
+  src_addr_pal2: 2148908144
   target_func: Prolog
   type: branch_insn
 source_files:

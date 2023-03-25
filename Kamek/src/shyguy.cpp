@@ -1,38 +1,40 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
+#include <profileid.h>
 #include <sfx.h>
+#include <profile.h>
 
 
 const char* SGarcNameList [] = {
 	"shyguy",
 	"iron_ball",
-	NULL	
+	NULL
 };
 
 // Shy Guy Settings
-// 
+//
 // Nybble 5: Shy Guy Types
-//		0 - Walker 	
+//		0 - Walker
 //		1 - Pacing Walker
 //		2 - Sleeper
 //		3 - Jumper
-// 		4 - Judo Master 
+// 		4 - Judo Master
 // 		5 - Spike Thrower
 // 		6 - Ballooneer Horizontal
 // 		7 - Ballooneer Vertical
-// 		8 - Ballooneer Circular 
+// 		8 - Ballooneer Circular
 //		9 - Walking Giant
 // 		10 - Pacing Giant
 //
 // Nybble 9: Distance Moved
-//		# - Distance for Pacing Walker, Pacing Giants, and Ballooneers 
+//		# - Distance for Pacing Walker, Pacing Giants, and Ballooneers
 //
 // If I add items in the balloons....
 // I_kinoko, I_fireflower, I_propeller_model, I_iceflower, I_star, I_penguin - model names
 // anmChr - wait2
 
-void shyCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);	
+void shyCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 void ChucklesAndKnuckles(ActivePhysics *apThis, ActivePhysics *apOther);
 void balloonSmack(ActivePhysics *apThis, ActivePhysics *apOther);
 
@@ -84,7 +86,7 @@ class daShyGuy : public dEn_c {
 	ActivePhysics Knuckles;
 	ActivePhysics balloonPhysics;
 
-	static daShyGuy *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 	void updateModelMatrices();
@@ -139,7 +141,11 @@ class daShyGuy : public dEn_c {
 	int type;
 };
 
-daShyGuy *daShyGuy::build() {
+const SpriteData ShyGuySpriteData = {ProfileId::ShyGuy, 0x5, -0x31, 0, 0x10, 0x10, 0x40, 0x40, 0x40, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ShyGuyProfile(&daShyGuy::build, SpriteId::ShyGuy, ShyGuySpriteData, ProfileId::DUMMY_DOOR_CHILD, ProfileId::ShyGuy, "ShyGuy", SGarcNameList);
+
+dActor_c *daShyGuy::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daShyGuy));
 	return new(buffer) daShyGuy;
 }
@@ -184,10 +190,10 @@ daShyGuy *daShyGuy::build() {
 ////////////////////////
 
 	bool actorCanPopBalloon(dStageActor_c *ac) {
-		int n = ac->name;
-		return n == PLAYER || n == YOSHI ||
-			n == PL_FIREBALL || n == ICEBALL ||
-			n == YOSHI_FIRE || n == HAMMER;
+		int n = ac->profileId;
+		return n == ProfileId::PLAYER || n == ProfileId::YOSHI ||
+			n == ProfileId::PL_FIREBALL || n == ProfileId::ICEBALL ||
+			n == ProfileId::YOSHI_FIRE || n == ProfileId::HAMMER;
 	}
 	// Collision callback to help shy guy not die at inappropriate times and ruin the dinner
 
@@ -199,13 +205,13 @@ daShyGuy *daShyGuy::build() {
 				((daShyGuy*)apThis->owner)->popBalloon();
 		}
 
-		if ((apOther->owner->name == 89) && (t == 5)) { return; }
-			
-		dEn_c::collisionCallback(apThis, apOther); 
+		if ((apOther->owner->profileId == ProfileId::EN_TOGETEKKYU) && (t == 5)) { return; }
+
+		dEn_c::collisionCallback(apThis, apOther);
 	}
 
 	void ChucklesAndKnuckles(ActivePhysics *apThis, ActivePhysics *apOther) {
-		if (apOther->owner->name != PLAYER) { return; }
+		if (apOther->owner->profileId != ProfileId::PLAYER) { return; }
 		((dEn_c*)apThis->owner)->_vf220(apOther->owner);
 	}
 
@@ -217,12 +223,12 @@ daShyGuy *daShyGuy::build() {
 	}
 
 	void daShyGuy::spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
-		u16 name = ((dEn_c*)apOther->owner)->name;
+		u16 profileId = ((dEn_c*)apOther->owner)->profileId;
 
-		if (name == EN_COIN || name == EN_EATCOIN || name == AC_BLOCK_COIN || name == EN_COIN_JUGEM || name == EN_COIN_ANGLE
-			|| name == EN_COIN_JUMP || name == EN_COIN_FLOOR || name == EN_COIN_VOLT || name == EN_COIN_WIND 
-			|| name == EN_BLUE_COIN || name == EN_COIN_WATER || name == EN_REDCOIN || name == EN_GREENCOIN
-			|| name == EN_JUMPDAI || name == EN_ITEM) 
+		if (profileId == ProfileId::EN_COIN || profileId == ProfileId::EN_EATCOIN || profileId == ProfileId::AC_BLOCK_COIN || profileId == ProfileId::EN_COIN_JUGEM || profileId == ProfileId::EN_COIN_ANGLE
+			|| profileId == ProfileId::EN_COIN_JUMP || profileId == ProfileId::EN_COIN_FLOOR || profileId == ProfileId::EN_COIN_VOLT || profileId == ProfileId::EN_COIN_WIND
+			|| profileId == ProfileId::EN_BLUE_COIN || profileId == ProfileId::EN_COIN_WATER || profileId == ProfileId::EN_REDCOIN || profileId == ProfileId::EN_GREENCOIN
+			|| profileId == ProfileId::EN_JUMPDAI || profileId == ProfileId::EN_ITEM)
 			{ return; }
 
 		if (acState.getCurrentState() == &StateID_RealWalk) {
@@ -236,7 +242,7 @@ daShyGuy *daShyGuy::build() {
 			pos.x = pos.x + (distance / 4.0);
 		}
 
-		dEn_c::spriteCollision(apThis, apOther); 
+		dEn_c::spriteCollision(apThis, apOther);
 	}
 
 	void daShyGuy::popBalloon() {
@@ -246,7 +252,7 @@ daShyGuy *daShyGuy::build() {
 	void daShyGuy::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
 		dStateBase_c *stateVar;
 		dStateBase_c *deathState;
-		
+
 		char hitType;
 		if (this->type < 6) {  // Regular Shy Guys
 			stateVar = &StateID_GoDizzy;
@@ -258,7 +264,7 @@ daShyGuy *daShyGuy::build() {
 		}
 
 
-		if (this->isDown == 0) { 
+		if (this->isDown == 0) {
 			hitType = usedForDeterminingStatePress_or_playerCollision(this, apThis, apOther, 2);
 		}
 		else { // Shy Guy is in downed mode
@@ -267,7 +273,7 @@ daShyGuy *daShyGuy::build() {
 
 		if(hitType == 1) {	// regular jump
 			apOther->someFlagByte |= 2;
-			if (this->isDown == 0) { 
+			if (this->isDown == 0) {
 				this->playEnemyDownSound1();
 				if (damage >= 1) {
 					doStateChange(deathState); }
@@ -278,11 +284,11 @@ daShyGuy *daShyGuy::build() {
 			else { // Shy Guy is in downed mode - kill it with fire
 				this->playEnemyDownSound1();
 				doStateChange(deathState);
-			}				
-		} 
+			}
+		}
 		else if(hitType == 3) {	// spinning jump or whatever?
 			apOther->someFlagByte |= 2;
-			if (this->isDown == 0) { 
+			if (this->isDown == 0) {
 				this->playEnemyDownSound1();
 				if (damage >= 1) {
 					doStateChange(deathState); }
@@ -293,25 +299,25 @@ daShyGuy *daShyGuy::build() {
 			else { // Shy Guy is in downed mode - kill it with fire
 				this->playEnemyDownSound1();
 				doStateChange(deathState);
-			}				
-		} 
+			}
+		}
 		else if(hitType == 0) {
 			this->dEn_c::playerCollision(apThis, apOther);
 			this->_vf220(apOther->owner);
-		} 
-		// else if(hitType == 2) { \\ Minimario? } 
+		}
+		// else if(hitType == 2) { \\ Minimario? }
 	}
 
 	void daShyGuy::yoshiCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
 		this->playerCollision(apThis, apOther);
 	}
-	bool daShyGuy::collisionCatD_Drill(ActivePhysics *apThis, ActivePhysics *apOther) { 
-		PlaySound(this, SE_EMY_DOWN); 
+	bool daShyGuy::collisionCatD_Drill(ActivePhysics *apThis, ActivePhysics *apOther) {
+		PlaySound(this, SE_EMY_DOWN);
 		SpawnEffect("Wm_mr_hardhit", 0, &pos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 		//addScoreWhenHit accepts a player parameter.
 		//DON'T DO THIS:
 		// this->addScoreWhenHit(this);
-		doStateChange(&StateID_Die); 
+		doStateChange(&StateID_Die);
 		return true;
 	}
 	bool daShyGuy::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *apOther) {
@@ -352,11 +358,11 @@ daShyGuy *daShyGuy::build() {
 
 		dStateBase_c *stateVar;
 		stateVar = &StateID_DieSmoke;
-		
+
 		if (this->type < 6) {  // Regular Shy Guys Except Jumper
 
 			backFire = apOther->owner->direction ^ 1;
-			
+
 			// if (this->isDown == 0) {
 			// 	stateVar = &StateID_FireKnockBack;
 			// }
@@ -384,7 +390,7 @@ daShyGuy *daShyGuy::build() {
 	}
 
 	// void daShyGuy::collisionCat2_IceBall_15_YoshiIce(ActivePhysics *apThis, ActivePhysics *apOther) {
-		
+
 	// 	dEn_C::collisionCat2_IceBall_15_YoshiIce(apThis, apOther);
 	// }
 
@@ -531,32 +537,32 @@ int daShyGuy::onCreate() {
 		// 	char *itemBrres;
 		// 	char *itemMdl;
 
-		// 	if (baln == 1) { 
+		// 	if (baln == 1) {
 		// 		itemArc		= "I_kinoko";
 		// 		itemBrres	= "g3d/I_kinoko.brres";
 		// 		itemMdl		= "I_kinoko";
 		// 	}
-		// 	else if (baln == 2) { 
+		// 	else if (baln == 2) {
 		// 		itemArc		= "I_fireflower";
 		// 		itemBrres	= "g3d/I_fireflower.brres";
 		// 		itemMdl		= "I_fireflower";
 		// 	}
-		// 	else if (baln == 3) { 
+		// 	else if (baln == 3) {
 		// 		itemArc		= "I_propeller";
 		// 		itemBrres	= "g3d/I_propeller.brres";
 		// 		itemMdl		= "I_propeller_model";
 		// 	}
-		// 	else if (baln == 4) { 
+		// 	else if (baln == 4) {
 		// 		itemArc		= "I_iceflower";
 		// 		itemBrres	= "g3d/I_iceflower.brres";
 		// 		itemMdl		= "I_iceflower";
 		// 	}
-		// 	else if (baln == 5) { 
+		// 	else if (baln == 5) {
 		// 		itemArc		= "I_star";
 		// 		itemBrres	= "g3d/I_star.brres";
 		// 		itemMdl		= "I_star";
 		// 	}
-		// 	else if (baln == 6) { 
+		// 	else if (baln == 6) {
 		// 		itemArc		= "I_penguin";
 		// 		itemBrres	= "g3d/I_penguin.brres";
 		// 		itemMdl		= "I_penguin";
@@ -614,7 +620,7 @@ int daShyGuy::onCreate() {
 	this->rot.y = 0xD800; // Y is horizontal axis
 	this->rot.z = 0; // Z is ... an axis >.>
 	this->direction = 1; // Heading left.
-	
+
 	this->speed.x = 0.0;
 	this->speed.y = 0.0;
 	this->max_speed.x = 0.6;
@@ -673,21 +679,21 @@ int daShyGuy::onCreate() {
 
 
 	// State Changers
-	
+
 	if (type == 0) {
-		bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5); 
+		bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5);
 		doStateChange(&StateID_RealWalk);
-	}		
+	}
 	else if (type == 1) {
-		bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5); 
+		bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5);
 		doStateChange(&StateID_RealWalk);
-	}		
+	}
 	else if (type == 2) {
 		doStateChange(&StateID_Sleep);
-	}		
+	}
 	else if (type == 3) {
 		doStateChange(&StateID_Jump);
-	}		
+	}
 	else if (type == 4) {
 		// Chuckles is left, Knuckles is Right
 		ActivePhysics::Info iChuckles;
@@ -714,19 +720,19 @@ int daShyGuy::onCreate() {
 		Knuckles.initWithStruct(this, &iKnuckles);
 
 		doStateChange(&StateID_Judo);
-	}		
+	}
 	else if (type == 5) {
 		doStateChange(&StateID_Spike);
-	}		
+	}
 	else if (type == 6) {
 		doStateChange(&StateID_Balloon_H);
-	}		
+	}
 	else if (type == 7) {
 		doStateChange(&StateID_Balloon_V);
-	}		
+	}
 	else if (type == 8) {
 		doStateChange(&StateID_Balloon_C);
-	}		
+	}
 
 	this->onExecute();
 	return true;
@@ -802,7 +808,7 @@ void daShyGuy::updateModelMatrices() {
 ///////////////
 // Walk State
 ///////////////
-	void daShyGuy::beginState_Walk() { 
+	void daShyGuy::beginState_Walk() {
 		this->timer = 0;
 		this->rot.y = (direction) ? 0xD800 : 0x2800;
 
@@ -810,7 +816,7 @@ void daShyGuy::updateModelMatrices() {
 		this->speed.x = 0.0;
 		this->x_speed_inc = 0.0;
 	}
-	void daShyGuy::executeState_Walk() { 
+	void daShyGuy::executeState_Walk() {
 		chrAnimation.setUpdateRate(1.5f);
 
 		this->pos.x += (direction) ? -0.4 : 0.4;
@@ -824,18 +830,18 @@ void daShyGuy::updateModelMatrices() {
 
 		this->timer = this->timer + 1;
 	}
-	void daShyGuy::endState_Walk() { 
+	void daShyGuy::endState_Walk() {
 	}
 
 ///////////////
 // Turn State
 ///////////////
-	void daShyGuy::beginState_Turn() { 
+	void daShyGuy::beginState_Turn() {
 		// bindAnimChr_and_setUpdateRate("c18_IDLE_R", 1, 0.0, 1.0);
 		this->direction ^= 1;
 		this->speed.x = 0.0;
 	}
-	void daShyGuy::executeState_Turn() { 
+	void daShyGuy::executeState_Turn() {
 
 		if(this->chrAnimation.isAnimationDone())
 			this->chrAnimation.setCurrentFrame(0.0);
@@ -847,13 +853,13 @@ void daShyGuy::updateModelMatrices() {
 			this->doStateChange(&StateID_Walk);
 		}
 	}
-	void daShyGuy::endState_Turn() { 
+	void daShyGuy::endState_Turn() {
 	}
 
 ///////////////
 // Jump State
 ///////////////
-	void daShyGuy::beginState_Jump() { 
+	void daShyGuy::beginState_Jump() {
 		this->max_speed.x = 0.0;
 		this->speed.x = 0.0;
 		this->x_speed_inc = 0.0;
@@ -861,7 +867,7 @@ void daShyGuy::updateModelMatrices() {
 		this->timer = 0;
 		this->jumpCounter = 0;
 	}
-	void daShyGuy::executeState_Jump() { 
+	void daShyGuy::executeState_Jump() {
 
 		// Always face Mario
 		u8 facing = dSprite_c__getXDirectionOfFurthestPlayerRelativeToVEC3(this, this->pos);
@@ -875,7 +881,7 @@ void daShyGuy::updateModelMatrices() {
 		if (this->pos.y < this->Baseline) {
 
 			bindAnimChr_and_setUpdateRate("c18_IDLE_R", 1, 0.0, 1.0);
-			
+
 			this->timer = this->timer + 1;
 
 			// Make him wait for 0.5 seconds
@@ -885,11 +891,11 @@ void daShyGuy::updateModelMatrices() {
 					this->chrAnimation.setCurrentFrame(0.0);
 
 				this->speed.x = 0;
-				this->speed.y = 0;	
+				this->speed.y = 0;
 			}
 
 			// Then Jump!
-			else { 
+			else {
 				if (this->jumpCounter == 3) { this->jumpCounter = 0; }
 
 				this->pos.y = this->Baseline + 1;
@@ -912,9 +918,9 @@ void daShyGuy::updateModelMatrices() {
 		}
 
 		// While he's jumping, it's time for gravity.
-		else { 
+		else {
 
-			this->speed.y = this->speed.y - 0.15; 
+			this->speed.y = this->speed.y - 0.15;
 
 			if (this->jumpCounter == 3) {
 				if(this->chrAnimation.isAnimationDone())
@@ -930,34 +936,34 @@ void daShyGuy::updateModelMatrices() {
 		this->HandleYSpeed();
 		this->UpdateObjectPosBasedOnSpeedValuesReal();
 	}
-	void daShyGuy::endState_Jump() { 
+	void daShyGuy::endState_Jump() {
 	}
 
 ///////////////
 // Sleep State
 ///////////////
-	void daShyGuy::beginState_Sleep() { 
+	void daShyGuy::beginState_Sleep() {
 		bindAnimChr_and_setUpdateRate("c18_EV_LOSE_2_R", 1, 0.0, 1.0);
 		this->rot.y = 0x0000;
 	}
-	void daShyGuy::executeState_Sleep() { 
+	void daShyGuy::executeState_Sleep() {
 		if(this->chrAnimation.isAnimationDone())
 			this->chrAnimation.setCurrentFrame(0.0);
 	}
-	void daShyGuy::endState_Sleep() { 
+	void daShyGuy::endState_Sleep() {
 	}
 
 ///////////////
 // Balloon H State
 ///////////////
-	void daShyGuy::beginState_Balloon_H() { 
+	void daShyGuy::beginState_Balloon_H() {
 		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_3_R", 1, 0.0, 1.0);
 		this->timer = 0;
 		this->initialPos = this->pos;
 		this->rot.x = 0xFE00;
 		this->rot.y = 0;
 	}
-	void daShyGuy::executeState_Balloon_H() { 
+	void daShyGuy::executeState_Balloon_H() {
 
 		// Makes him bob up and down
 		this->pos.y = this->initialPos.y + ( sin(this->timer * 3.14 / 60.0) * 6.0 );
@@ -971,20 +977,20 @@ void daShyGuy::updateModelMatrices() {
 			this->chrAnimation.setCurrentFrame(0.0);
 
 	}
-	void daShyGuy::endState_Balloon_H() { 
+	void daShyGuy::endState_Balloon_H() {
 	}
 
 ///////////////
 // Balloon V State
 ///////////////
-	void daShyGuy::beginState_Balloon_V() { 
+	void daShyGuy::beginState_Balloon_V() {
 		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_3_R", 1, 0.0, 1.0);
 		this->timer = 0;
 		this->initialPos = this->pos;
 		this->rot.x = 0xFE00;
 		this->rot.y = 0;
 	}
-	void daShyGuy::executeState_Balloon_V() { 
+	void daShyGuy::executeState_Balloon_V() {
 		// Makes him bob up and down
 		this->pos.x = this->initialPos.x + ( sin(this->timer * 3.14 / 60.0) * 6.0 );
 
@@ -996,20 +1002,20 @@ void daShyGuy::updateModelMatrices() {
 		if(this->chrAnimation.isAnimationDone())
 			this->chrAnimation.setCurrentFrame(0.0);
 	}
-	void daShyGuy::endState_Balloon_V() { 
+	void daShyGuy::endState_Balloon_V() {
 	}
 
 ///////////////
 // Balloon C State
 ///////////////
-	void daShyGuy::beginState_Balloon_C() { 
+	void daShyGuy::beginState_Balloon_C() {
 		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_3_R", 1, 0.0, 1.0);
 		this->timer = 0;
 		this->initialPos = this->pos;
 		this->rot.x = 0xFE00;
 		this->rot.y = 0;
 	}
-	void daShyGuy::executeState_Balloon_C() { 
+	void daShyGuy::executeState_Balloon_C() {
 		// Makes him bob up and down
 		this->pos.x = this->initialPos.x + ( sin(this->timer * 3.14 / 600.0) * (float)this->distance * 8.0 );
 
@@ -1021,13 +1027,13 @@ void daShyGuy::updateModelMatrices() {
 		if(this->chrAnimation.isAnimationDone())
 			this->chrAnimation.setCurrentFrame(0.0);
 	}
-	void daShyGuy::endState_Balloon_C() { 
+	void daShyGuy::endState_Balloon_C() {
 	}
 
 ///////////////
 // Judo State
 ///////////////
-	void daShyGuy::beginState_Judo() { 
+	void daShyGuy::beginState_Judo() {
 		this->max_speed.x = 0.0;
 		this->speed.x = 0.0;
 		this->x_speed_inc = 0.0;
@@ -1035,20 +1041,20 @@ void daShyGuy::updateModelMatrices() {
 
 		this->timer = 0;
 	}
-	void daShyGuy::executeState_Judo() { 
+	void daShyGuy::executeState_Judo() {
 
 	// chargin 476? 673? 760? 768? 808? 966?
 		if (this->timer == 0) { bindAnimChr_and_setUpdateRate("c18_OB_IDLE_R", 1, 0.0, 1.0); }
 
 		this->timer = this->timer + 1;
 
-		if (this->timer == 80) { 
-			if (this->direction == 1) { 
+		if (this->timer == 80) {
+			if (this->direction == 1) {
 				SpawnEffect("Wm_ob_keyget02_lighit", 0, &(Vec){this->pos.x + 7.0, this->pos.y + 14.0, this->pos.z - 5500.0}, &(S16Vec){0,0,0}, &(Vec){0.8, 0.8, 0.8});
 			}
 			else {
 				SpawnEffect("Wm_ob_keyget02_lighit", 0, &(Vec){this->pos.x - 7.0, this->pos.y + 14.0, this->pos.z + 5500.0}, &(S16Vec){0,0,0}, &(Vec){0.8, 0.8, 0.8});
-			}	
+			}
 		}
 
 		if (this->timer < 120) {
@@ -1072,32 +1078,32 @@ void daShyGuy::updateModelMatrices() {
 
 		else if (this->timer == 120) {
 			bindAnimChr_and_setUpdateRate("c18_H_CUT_R", 1, 0.0, 1.0);
-			
+
 		}
 
 		else if (this->timer == 132) {
 			PlaySoundAsync(this, SE_EMY_CRASHER_PUNCH);
 
-			if (this->direction == 1) { 
+			if (this->direction == 1) {
 				SpawnEffect("Wm_mr_wallkick_b_l", 0, &(Vec){this->pos.x - 18.0, this->pos.y + 16.0, this->pos.z}, &(S16Vec){0,0,0}, &(Vec){1.5, 1.5, 1.5});
 				Chuckles.addToList();
 			}
 			else {
 				SpawnEffect("Wm_mr_wallkick_s_r", 0, &(Vec){this->pos.x + 18.0, this->pos.y + 16.0, this->pos.z}, &(S16Vec){0,0,0}, &(Vec){1.5, 1.5, 1.5});
 				Knuckles.addToList();
-			}	
+			}
 		}
 
 		else {
 
 			if(this->chrAnimation.isAnimationDone()) {
-				if (this->direction == 1) { 
+				if (this->direction == 1) {
 					SpawnEffect("Wm_mr_wirehit_hit", 0, &(Vec){this->pos.x - 38.0, this->pos.y + 16.0, this->pos.z}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 					Chuckles.removeFromList();
 				}
 				else {
 					SpawnEffect("Wm_mr_wirehit_hit", 0, &(Vec){this->pos.x + 38.0, this->pos.y + 16.0, this->pos.z}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
-					Knuckles.removeFromList();	
+					Knuckles.removeFromList();
 				}
 
 				this->timer = 0;
@@ -1105,13 +1111,13 @@ void daShyGuy::updateModelMatrices() {
 			}
 		}
 	}
-	void daShyGuy::endState_Judo() { 
+	void daShyGuy::endState_Judo() {
 	}
 
 ///////////////
 // Spike State
 ///////////////
-	void daShyGuy::beginState_Spike() { 
+	void daShyGuy::beginState_Spike() {
 		this->timer = 80;
 		spikeTurn = 0;
 
@@ -1143,7 +1149,7 @@ void daShyGuy::updateModelMatrices() {
 		}
 
 		else if (this->timer == 120) {
-			bindAnimChr_and_setUpdateRate("c18_H_SHOT_R", 1, 0.0, 1.0);			
+			bindAnimChr_and_setUpdateRate("c18_H_SHOT_R", 1, 0.0, 1.0);
 		}
 
 		else if (this->timer == 160) {
@@ -1155,8 +1161,8 @@ void daShyGuy::updateModelMatrices() {
 			pos.z = this->pos.z;
 			dStageActor_c *spawned;
 
-			if (this->direction == 1) { 
-				spawned = CreateActor(89, 0x2, pos, 0, 0);
+			if (this->direction == 1) {
+				spawned = CreateActor(ProfileId::EN_TOGETEKKYU, 0x2, pos, 0, 0);
 				spawned->scale.x = 0.9;
 				spawned->scale.y = 0.9;
 				spawned->scale.z = 0.9;
@@ -1165,7 +1171,7 @@ void daShyGuy::updateModelMatrices() {
 				spawned->speed.y = 2.0;
 			}
 			else {
-				spawned = CreateActor(89, 0x12, pos, 0, 0);
+				spawned = CreateActor(ProfileId::EN_TOGETEKKYU, 0x12, pos, 0, 0);
 				spawned->scale.x = 0.9;
 				spawned->scale.y = 0.9;
 				spawned->scale.z = 0.9;
@@ -1186,7 +1192,7 @@ void daShyGuy::updateModelMatrices() {
 		this->timer = this->timer + 1;
 
 	}
-	void daShyGuy::endState_Spike() { 
+	void daShyGuy::endState_Spike() {
 	}
 
 ///////////////
@@ -1224,7 +1230,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		this->speed.y = -4.0;
 		this->y_speed_inc = -0.1875;
 	}
-	void daShyGuy::executeState_RealWalk() { 
+	void daShyGuy::executeState_RealWalk() {
 		chrAnimation.setUpdateRate(1.5f);
 
 		// if (distance) {
@@ -1237,7 +1243,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		// 			pos.x = direction ? pos.x + 1.5 : pos.x - 1.5;
 		// 			doStateChange(&StateID_RealTurn);
 		// 		}
-		// 	} else 
+		// 	} else
 		// }
 
 
@@ -1278,7 +1284,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		this->direction ^= 1;
 		this->speed.x = 0.0;
 	}
-	void daShyGuy::executeState_RealTurn() { 
+	void daShyGuy::executeState_RealTurn() {
 
 		if(this->chrAnimation.isAnimationDone()) {
 			this->chrAnimation.setCurrentFrame(0.0);
@@ -1298,7 +1304,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 // GoDizzy State
 ///////////////
 	void daShyGuy::beginState_GoDizzy() {
-		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_1_R", 1, 0.0, 1.0); 
+		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_1_R", 1, 0.0, 1.0);
 
 		// SpawnEffect("Wm_en_spindamage", 0, &(Vec){this->pos.x, this->pos.y + 24.0, 0}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 
@@ -1314,15 +1320,15 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		this->jumpCounter = 0;
 		this->isDown = 1;
 	}
-	void daShyGuy::executeState_GoDizzy() { 
+	void daShyGuy::executeState_GoDizzy() {
 		calculateTileCollisions();
-	
+
 		effect.spawn("Wm_en_spindamage", 0, &(Vec){this->pos.x, this->pos.y + 24.0, 0}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 
 		if (this->jumpCounter == 0) {
 			if(this->chrAnimation.isAnimationDone()) {
 				this->jumpCounter = 1;
-				bindAnimChr_and_setUpdateRate("c18_L_DMG_F_3_R", 1, 0.0, 1.0); 
+				bindAnimChr_and_setUpdateRate("c18_L_DMG_F_3_R", 1, 0.0, 1.0);
 			}
 		}
 
@@ -1345,7 +1351,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 // BalloonDrop State
 ///////////////
 	void daShyGuy::beginState_BalloonDrop() {
-		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 2.0); 
+		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 2.0);
 
 		this->max_speed.x = 0.0;
 		this->speed.x = 0.0;
@@ -1360,22 +1366,22 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 
 		// char powerup;
 
-		// if (baln == 1) { 
+		// if (baln == 1) {
 		// 	powerup		= 0x0B000007;
 		// }
-		// else if (baln == 2) { 
+		// else if (baln == 2) {
 		// 	powerup		= 0x0B000009;
 		// }
-		// else if (baln == 3) { 
+		// else if (baln == 3) {
 		// 	powerup		= 0x0B000001;
 		// }
-		// else if (baln == 4) { 
+		// else if (baln == 4) {
 		// 	powerup		= 0x0C00000E;
 		// }
-		// else if (baln == 5) { 
+		// else if (baln == 5) {
 		// 	powerup		= 0x0C000015;
 		// }
-		// else if (baln == 6) { 
+		// else if (baln == 6) {
 		// 	powerup		= 0x0C000011;
 		// }
 		// CreateActor(60, powerup, (Vec){pos.x, pos.y - 28.0, pos.z}, 0, 0);
@@ -1383,14 +1389,14 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 
 		balloonPhysics.removeFromList();
 		SpawnEffect("Wm_en_explosion_ln", 0, &(Vec){this->pos.x, this->pos.y - 32.0, 0}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
-		PlaySound(this, SE_PLY_BALLOON_BRAKE); 
+		PlaySound(this, SE_PLY_BALLOON_BRAKE);
 
 		if (this->type != 8)
 			this-distance == 0;
 
 		type = 0;
 	}
-	void daShyGuy::executeState_BalloonDrop() { 
+	void daShyGuy::executeState_BalloonDrop() {
 
 		if(this->chrAnimation.isAnimationDone()) {
 			this->chrAnimation.setCurrentFrame(0.0);
@@ -1398,7 +1404,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 
 		bool ret = calculateTileCollisions();
 
-		if (speed.y == 0.0) { 
+		if (speed.y == 0.0) {
 			SpawnEffect("Wm_en_sndlandsmk_s", 0, &(Vec){this->pos.x, this->pos.y, 0}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 			doStateChange(&StateID_GoDizzy);
 
@@ -1413,7 +1419,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 // FireKnockBack State
 ///////////////
 	void daShyGuy::beginState_FireKnockBack() {
-		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 1.0); 
+		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 1.0);
 
 		// Backfire 0 == Fireball to the right
 		// Backfire 1 == Fireball to the left
@@ -1424,7 +1430,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		max_speed.x = speed.x;
 		x_speed_inc = 0.0f;
 	}
-	void daShyGuy::executeState_FireKnockBack() { 
+	void daShyGuy::executeState_FireKnockBack() {
 
 		calculateTileCollisions();
 		// move backwards here
@@ -1432,33 +1438,33 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 
 		if(this->chrAnimation.isAnimationDone()) {
 			if (aPhysics.result1 == 0 && aPhysics.result2 == 0 && aPhysics.result3 == 0) {
-				bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5); 
+				bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5);
 				doStateChange(&StateID_RealWalk);
 			}
 		}
 	}
 	void daShyGuy::endState_FireKnockBack() {
-		this->direction = directionStore;		
+		this->direction = directionStore;
 	}
 
 ///////////////
 // FlameHit State
 ///////////////
 	void daShyGuy::beginState_FlameHit() {
-		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 1.0); 
+		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 1.0);
 	}
-	void daShyGuy::executeState_FlameHit() { 
+	void daShyGuy::executeState_FlameHit() {
 
 		if(this->chrAnimation.isAnimationDone()) {
 			if (type == 6) {
 				doStateChange(&StateID_Balloon_H);
-			}		
+			}
 			else if (type == 7) {
 				doStateChange(&StateID_Balloon_V);
-			}		
+			}
 			else if (type == 8) {
 				doStateChange(&StateID_Balloon_C);
-			}		
+			}
 		}
 	}
 	void daShyGuy::endState_FlameHit() {}
@@ -1467,24 +1473,24 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 // Recover State
 ///////////////
 	void daShyGuy::beginState_Recover() {
-		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_4_R", 1, 0.0, 1.0); 
+		bindAnimChr_and_setUpdateRate("c18_L_DMG_F_4_R", 1, 0.0, 1.0);
 	}
-	void daShyGuy::executeState_Recover() { 
+	void daShyGuy::executeState_Recover() {
 
 		calculateTileCollisions();
 
 		if(this->chrAnimation.isAnimationDone()) {
 			if (type == 3) {
 				doStateChange(&StateID_Jump);
-			}		
+			}
 			else {
-				bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5); 
+				bindAnimChr_and_setUpdateRate("c18_EV_WIN_2_R", 1, 0.0, 1.5);
 				doStateChange(&StateID_RealWalk);
 			}
 		}
 	}
 	void daShyGuy::endState_Recover() {
-		this->isDown = 0;		
+		this->isDown = 0;
 		this->rot.y = (direction) ? 0xD800 : 0x2800;
 	}
 
@@ -1495,7 +1501,7 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 		// dEn_c::dieFall_Begin();
 		this->removeMyActivePhysics();
 
-		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 2.0); 
+		bindAnimChr_and_setUpdateRate("c18_C_BLOCK_BREAK_R", 1, 0.0, 2.0);
 		this->timer = 0;
 		this->dying = -10.0;
 		this->Baseline = this->pos.y;
@@ -1507,19 +1513,19 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 			SpawnEffect("Wm_en_explosion_ln", 0, &(Vec){this->pos.x, this->pos.y - 32.0, 0}, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 		}
 	}
-	void daShyGuy::executeState_Die() { 
+	void daShyGuy::executeState_Die() {
 
 		if(this->chrAnimation.isAnimationDone()) {
 			this->chrAnimation.setCurrentFrame(0.0);
 		}
 
 		this->timer += 1;
-		 		
-		// this->pos.x += 0.5; 
+
+		// this->pos.x += 0.5;
 		this->pos.y = Baseline + (-0.2 * dying * dying) + 20.0;
-		
+
 		this->dying += 0.5;
-			
+
 		if (this->timer > 450) {
 			OSReport("Killing");
 			this->kill();

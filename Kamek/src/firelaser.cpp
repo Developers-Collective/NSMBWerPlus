@@ -1,6 +1,7 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
+#include <profileid.h>
 
 class daFireLaser_c : public dEn_c {
 	int onCreate();
@@ -35,11 +36,11 @@ int daFireLaser_c::onCreate() {
 	this->timer = 0;
 	this->direction = this->settings & 0xF;
 	this->spitspeed = 8.0;
-	
+
 	char eventNum	= (this->settings >> 16) & 0xFF;
 	this->eventFlag = (u64)1 << (eventNum - 1);
 
-	
+
 	doStateChange(&StateID_pewpewpew);
 	this->onExecute();
 	return true;
@@ -62,21 +63,21 @@ int daFireLaser_c::onDraw() {
 
 // Pew Pew State
 
-void daFireLaser_c::beginState_pewpewpew() { 
+void daFireLaser_c::beginState_pewpewpew() {
 	this->timer = 0;
 }
-void daFireLaser_c::executeState_pewpewpew() { 
-	
-	
+void daFireLaser_c::executeState_pewpewpew() {
+
+
 	if (dFlagMgr_c::instance->flags & this->eventFlag) {
-		
+
 		this->timer = this->timer + 1;
-	
+
 		if (this->timer < 20) {
 			float xlaunch;
 			float ylaunch;
-			
-			if (this->direction == 0) { 
+
+			if (this->direction == 0) {
 				xlaunch = this->spitspeed;
 				ylaunch = 0.0; }
 			else if (this->direction == 1) { // SE
@@ -100,23 +101,23 @@ void daFireLaser_c::executeState_pewpewpew() {
 			else if (this->direction == 7) {	// NE
 				xlaunch = this->spitspeed;
 				ylaunch = -this->spitspeed; }
-			
-			
-			dStageActor_c *spawner = CreateActor(106, 0, this->pos, 0, 0);
+
+
+			dStageActor_c *spawner = CreateActor(ProfileId::PAKKUN_FIREBALL, 0, this->pos, 0, 0);
 			spawner->speed.x = xlaunch;
 			spawner->speed.y = ylaunch;
 		}
-		
+
 		if (this->timer > 60) {
 			this->timer = 0;
 		}
 
 	}
-	
+
 	else { this->timer = 0; }
-	
+
 }
-void daFireLaser_c::endState_pewpewpew() { 
+void daFireLaser_c::endState_pewpewpew() {
 
 }
 

@@ -1,5 +1,6 @@
 #include <common.h>
 #include <game.h>
+#include <profile.h>
 
 const char *FlipBlockFileList[] = {"block_rotate", 0};
 
@@ -29,8 +30,12 @@ public:
 	DECLARE_STATE(Wait);
 	DECLARE_STATE(Flipping);
 
-	static daEnFlipBlock_c *build();
+	static dActor_c *build();
 };
+
+const SpriteData flipBlockSpriteData = { ProfileId::FlipBlock, 8, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0x008 };
+ // Using WM_GRID as the execute order profile ID fixes bugs; original FlipBlock uses it as well
+Profile flipBlockProfile(&daEnFlipBlock_c::build, SpriteId::FlipBlock, flipBlockSpriteData, ProfileId::WM_GRID, ProfileId::FlipBlock, "FlipBlock", FlipBlockFileList);
 
 
 CREATE_STATE(daEnFlipBlock_c, Wait);
@@ -106,7 +111,7 @@ int daEnFlipBlock_c::onDraw() {
 }
 
 
-daEnFlipBlock_c *daEnFlipBlock_c::build() {
+dActor_c *daEnFlipBlock_c::build() {
 
 	void *buffer = AllocFromGameHeap1(sizeof(daEnFlipBlock_c));
 	daEnFlipBlock_c *c = new(buffer) daEnFlipBlock_c;
@@ -191,7 +196,7 @@ bool daEnFlipBlock_c::playerOverlaps() {
 	Vec myBL = {pos.x - 8.0f, pos.y - 8.0f, 0.0f};
 	Vec myTR = {pos.x + 8.0f, pos.y + 8.0f, 0.0f};
 
-	while ((player = (dStageActor_c*)fBase_c::search(PLAYER, player)) != 0) {
+	while ((player = (dStageActor_c*)fBase_c::searchByProfileId(ProfileId::PLAYER, player)) != 0) {
 		float centerX = player->pos.x + player->aPhysics.info.xDistToCenter;
 		float centerY = player->pos.y + player->aPhysics.info.yDistToCenter;
 

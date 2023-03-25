@@ -69,7 +69,7 @@ int dMsgBoxManager_c::onDraw() {
 	if (visible) {
 		layout.scheduleForDrawing();
 	}
-	
+
 	return true;
 }
 
@@ -316,7 +316,7 @@ void daEnMsgBlock_c::blockWasHit(bool isDown) {
 
 	physics.setup(this, &physicsInfo, 3, currentLayerID);
 	physics.addToList();
-	
+
 	doStateChange(&StateID_Wait);
 }
 

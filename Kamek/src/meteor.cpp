@@ -1,6 +1,7 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
+#include <profileid.h>
 #include <sfx.h>
 #include "boss.h"
 
@@ -39,19 +40,19 @@ dMeteor *dMeteor::build() {
 
 const char* MEarcNameList [] = {
 	"kazan_rock",
-	NULL	
+	NULL
 };
 
 // extern "C" dStageActor_c *GetSpecificPlayerActor(int num);
 // extern "C" void *modifyPlayerPropertiesWithRollingObject(dStageActor_c *Player, float _52C);
 
 
-void dMeteor::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) { 
+void dMeteor::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
 	DamagePlayer(this, apThis, apOther);
 }
 
 void MeteorPhysicsCallback(dMeteor *self, dEn_c *other) {
-	if (other->name == 657) {
+	if (other->profileId == ProfileId::WM_PAKKUN) {
 		OSReport("CANNON COLLISION");
 
 		SpawnEffect("Wm_en_explosion", 0, &other->pos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
@@ -61,11 +62,11 @@ void MeteorPhysicsCallback(dMeteor *self, dEn_c *other) {
 
 		switch ((self->settings >> 24) & 3) {
 			case 1:
-				dStageActor_c::create(EN_HATENA_BALLOON, 0x100, &self->pos, 0, self->currentLayerID);
+				dStageActor_c::create(ProfileId::EN_HATENA_BALLOON, 0x100, &self->pos, 0, self->currentLayerID);
 				break;
 			case 2:
 				VEC3 coinPos = {self->pos.x - 16.0f, self->pos.y, self->pos.z};
-				dStageActor_c::create(EN_COIN, 9, &coinPos, 0, self->currentLayerID);
+				dStageActor_c::create(ProfileId::EN_COIN, 9, &coinPos, 0, self->currentLayerID);
 				break;
 		}
 
@@ -73,7 +74,7 @@ void MeteorPhysicsCallback(dMeteor *self, dEn_c *other) {
 	}
 }
 
-bool dMeteor::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *apOther) { 
+bool dMeteor::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *apOther) {
 	DamagePlayer(this, apThis, apOther);
 	return true;
 }
@@ -121,7 +122,7 @@ int dMeteor::onCreate() {
 		elec.callback = &dEn_c::collisionCallback;
 
 		this->aPhysics.initWithStruct(this, &elec);
-		this->aPhysics.addToList();	
+		this->aPhysics.addToList();
 	}
 
 	MakeItRound.baseSetup(this, &MeteorPhysicsCallback, &MeteorPhysicsCallback, &MeteorPhysicsCallback, 1, 0);
@@ -137,7 +138,7 @@ int dMeteor::onCreate() {
 	MakeItRound.addToList();
 
 	this->pos.z = (settings & 0x1000000) ? -2000.0f : 3458.0f;
-		
+
 	this->onExecute();
 	return true;
 }

@@ -315,7 +315,7 @@ def main():
     do_mapfile('kamek_base.x', 'kamek_jpn2.x', fix_offs_jpn_v2)
 
     already_done = set()
-    do_project('NewerProjectKP.yaml', already_done)
+    do_project('NSMBWerProject.yaml', already_done)
 
 if __name__ == '__main__':
     main()

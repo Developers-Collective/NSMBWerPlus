@@ -1,17 +1,18 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
+#include <profileid.h>
 
 
 void ThwompHammer(dEn_c *thwomp, ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (thwomp->name == 0x51) {
+	if (thwomp->profileId == ProfileId::EN_DOSUN) {
 		thwomp->dEn_c::collisionCat13_Hammer(apThis, apOther);
 	}
 	return;
 }
 
 void BooHammer(dEn_c *boo, ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (boo->name == 0xB0) {
+	if (boo->profileId == ProfileId::EN_TERESA) {
 		boo->dEn_c::collisionCat13_Hammer(apThis, apOther);
 	}
 	return;

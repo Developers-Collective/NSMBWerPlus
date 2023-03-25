@@ -1006,7 +1006,6 @@ InsertLostG3D:
 	lis r4, g3d@h
 	ori r4, r4, g3d@l
 	blr
-
 .data
 wait2: .string "wait2"
 
@@ -1038,7 +1037,7 @@ StrongboxInit:
 
 .extern continueFromStrongBox2
 .extern AddStockPowerup
-.extern create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc
+.extern create__13dStageActor_cFUsUiP7Point3dP6S16VecUc
 .global StrongboxGiveBattleItem
 StrongboxGiveBattleItem:
 	# save a reg we can use
@@ -1075,7 +1074,7 @@ StrongboxGiveBattleItem:
 	addi r5, r1, 0x10
 	li r6, 0
 	li r7, 0
-	bl create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc
+	bl create__13dStageActor_cFUsUiP7Point3dP6S16VecUc
 
 	# restore our reg
 	lwz r29, 0x24(r1)
@@ -1485,18 +1484,18 @@ SkawoHatesMe:
 	lwzx r4, r27, r0
 	cmpwi r0, 28
 	bnelr
-	lis r5, FireflowerFileName@h
-	ori r5, r5, FireflowerFileName@l
+	lis r5, SkawoFucksDucks@h
+	ori r5, r5, SkawoFucksDucks@l
 	blr
 SkawoStillHatesMe:
 	lwzx r4, r4, r0
 	cmpwi r0, 28
 	bnelr
-	lis r4, FireflowerModelName@h
-	ori r4, r4, FireflowerModelName@l
+	lis r4, DuckFuckersUnited@h
+	ori r4, r4, DuckFuckersUnited@l
 	blr
 .data
-FireflowerFileName: .string "g3d/I_fireflower.brres"
-FireflowerModelName: .string "I_fireflower"
+SkawoFucksDucks: .string "g3d/I_fireflower.brres"
+DuckFuckersUnited: .string "I_fireflower"
 .align 4
 

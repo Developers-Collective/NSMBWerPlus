@@ -1,4 +1,5 @@
 #include "boss.h"
+#include <profileid.h>
 
 
 
@@ -39,8 +40,8 @@ void SetupKameck(daBoss *actor, daKameckDemo *Kameck) {
 	S16Vec rot = (S16Vec){0, 0, 0};
 
 	// Create And use Kameck
-	actor->Kameck = (daKameckDemo*)actor->createChild(KAMECK_FOR_CASTLE_DEMO, (dStageActor_c*)actor, 0, &pos, &rot, 0);
-	actor->Kameck->doStateChange(&daKameckDemo::StateID_DemoWait);	
+	actor->Kameck = (daKameckDemo*)actor->createChild(ProfileId::KAMECK_FOR_CASTLE_DEMO, (dStageActor_c*)actor, 0, &pos, &rot, 0);
+	actor->Kameck->doStateChange(&daKameckDemo::StateID_DemoWait);
 
 }
 
@@ -64,19 +65,19 @@ bool GrowBoss(daBoss *actor, daKameckDemo *Kameck, float initialScale, float end
 	float scaleSpeed, yPosScaling;
 
 	if (timer == 150) { PlaySound(actor, SE_BOSS_IGGY_WANWAN_TO_L);  }
-	
+
 	if ((timer > 150) && (timer < 230)) {
 		scaleSpeed = (endScale -initialScale) / 80.0;
-	
+
 		float modifier;
 
 		modifier = initialScale + ((timer - 150) * scaleSpeed);
-		
+
 		actor->scale = (Vec){modifier, modifier, modifier};
 		actor->pos.y = actor->pos.y + (yPosModifier/80.0);
 	}
 
-	if (timer == 360) { 
+	if (timer == 360) {
 		Vec tempPos = (Vec){actor->pos.x - 40.0, actor->pos.y + 120.0, 3564.0};
 		SpawnEffect("Wm_ob_greencoinkira", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
 		SpawnEffect("Wm_mr_yoshiicehit_a", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
@@ -113,8 +114,8 @@ bool ShrinkBoss(daBoss *actor, Vec *pos, float scale, int timer) {
 	actor->scale.z -= scale / 80.0;
 
 	// actor->pos.y += 2.0;
-	
-	if (timer == 30) {  
+
+	if (timer == 30) {
 		SpawnEffect("Wm_ob_starcoinget_gl", 0, pos, &(S16Vec){0,0,0}, &(Vec){2.0, 2.0, 2.0});
 		SpawnEffect("Wm_mr_vshipattack_hosi", 0, pos, &(S16Vec){0,0,0}, &(Vec){2.0, 2.0, 2.0});
 		SpawnEffect("Wm_ob_keyget01_b", 0, pos, &(S16Vec){0,0,0}, &(Vec){2.0, 2.0, 2.0});
@@ -129,7 +130,7 @@ void BossExplode(daBoss *actor, Vec *pos) {
 	actor->scale.x = 0.0;
 	actor->scale.y = 0.0;
 	actor->scale.z = 0.0;
-	
+
 	SpawnEffect("Wm_ob_keyget02", 0, pos, &(S16Vec){0,0,0}, &(Vec){2.0, 2.0, 2.0});
 	actor->dying = 1;
 	actor->timer = 0;

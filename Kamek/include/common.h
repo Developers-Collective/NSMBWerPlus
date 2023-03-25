@@ -45,6 +45,7 @@ typedef struct { f32 x, y; } VEC2, Vec2, *Vec2Ptr, Point2d, *Point2dPtr;
 typedef struct { f32 x, y, z; } VEC3, Vec, Vec3, *VecPtr, Point3d, *Point3dPtr;
 typedef struct { s16 x; s16 y; s16 z; }S16Vec, *S16VecPtr;
 typedef struct { f32 x, y, z, w; } Quaternion, *QuaternionPtr, Qtrn, *QtrnPtr;
+typedef struct { u32 x, y, z, w; } Recti;
 
 typedef struct { f32 frame, value, slope; } HermiteKey;
 

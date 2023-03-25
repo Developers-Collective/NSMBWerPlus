@@ -1,4 +1,5 @@
 #include <game.h>
+#include <profileid.h>
 #include <sfx.h>
 const char *ChestnutFileList[] = {"chestnut", 0};
 
@@ -281,7 +282,7 @@ void daEnChestnut_c::executeState_Explode() {
 
 bool daEnChestnut_c::CreateIceActors() {
 	animation.setUpdateRate(0.0f);
-	
+
 	IceActorSpawnInfo info;
 	info.flags = 0;
 	info.pos = pos;
@@ -324,11 +325,11 @@ void daEnChestnut_c::spawnObject() {
 	VEC3 acPos = pos;
 
 	static const u32 things[] = {
-		EN_KURIBO, 0,
-		EN_TOGEZO, 0,
-		EN_COIN_JUMP, 0,
-		EN_ITEM, 0x05000009,
-		EN_STAR_COIN, 0x10000000,
+		ProfileId::EN_KURIBO, 0,
+		ProfileId::EN_TOGEZO, 0,
+		ProfileId::EN_COIN_JUMP, 0,
+		ProfileId::EN_ITEM, 0x05000009,
+		ProfileId::EN_STAR_COIN, 0x10000000,
 	};
 
 	u32 acSettings = things[objNumber*2+1];
@@ -343,7 +344,7 @@ void daEnChestnut_c::spawnObject() {
 
 	OSReport("Crap %d, %d, %08x\n", objNumber, things[objNumber*2], acSettings);
 	dStageActor_c *ac =
-		dStageActor_c::create((Actors)things[objNumber*2], acSettings, &acPos, 0, currentLayerID);
+		dStageActor_c::create(things[objNumber*2], acSettings, &acPos, 0, currentLayerID);
 
 	S16Vec efRot = {0,0,0};
 	SpawnEffect("Wm_ob_itemsndlandsmk", 0, &pos, &efRot, &scale);

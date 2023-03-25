@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<game name="NSMBWer" version="1.0" description="NewerSMBW mod with[br]original worldmap support.">
+    <folder name="sprites" path="sprites" game="Newer Super Mario Bros. Wii" />
+    <folder name="external" path="external" game="Newer Super Mario Bros. Wii" />
+    <file name="music" path="music.txt" game="Newer Super Mario Bros. Wii" />
+    <file name="spritedata" path="spritedata.xml"/>
+    <file name="sprites" path="sprites.py"/>
+</game>
