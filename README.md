@@ -77,7 +77,7 @@ Supported mods:
 * Event Block
 * Event Looper
 * Fire Laser
-* Flipblock
+* Flipblock (BUGGED: will not spawn unless placed near level enterance.)
 * Giga Goomba
 * Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled.)
 * LH Compression
