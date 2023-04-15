@@ -74,13 +74,12 @@ Supported mods:
 * Animated Tiles
 * Chestnut
 * Electric Line
-* Event Block
+* Event Block (BUGGED: will not spawn unless placed near level enterance.)
 * Event Looper
 * Fire Laser
 * Flipblock (BUGGED: will not spawn unless placed near level enterance.)
 * Giga Goomba
 * Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled.)
-* LH Compression
 * Line God
 * Magic Platform
 * Message Box
@@ -111,6 +110,4 @@ Other Stuff includes, well, other stuff:
 * Move all Newer sprites to new slots
 * Koopatlas and Pirahnatlas support(?)
 * Fix NSMBW bugs
-* Fix mispositoned Reggie! Next sprite images
 * Fix hammer suit bugs
-* Fix worldmap crash

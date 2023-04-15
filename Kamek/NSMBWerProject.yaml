@@ -66,8 +66,8 @@ modules:
   - processed/electricLine.yaml
   - processed/thundercloud.yaml
   - processed/makeYourOwn.yaml
-  # - processed/challengeStar.yaml for later
+  - processed/challengeStar.yaml
   # - processed/singAlong.yaml
-  # - processed/pumpkinGoomba.yaml for later
+  # - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
   # - processed/actorlog.yaml

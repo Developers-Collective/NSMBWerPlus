@@ -8,7 +8,6 @@ extern "C" bool SpawnEffect(const char*, int, Vec*, S16Vec*, Vec*);
 
 extern int GlobalStarsCollected;
 
-
 class dChallengeStar : public dEn_c {
 	int onCreate();
 	int onExecute();
@@ -24,7 +23,7 @@ class dChallengeStar : public dEn_c {
 	s32 timer;
 	bool collected;
 
-	static dChallengeStar *build();
+	public: static dActor_c *build();
 
 	void updateModelMatrices();
 	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
@@ -82,11 +81,14 @@ bool dChallengeStar::collisionCatA_PenguinMario(ActivePhysics *apThis, ActivePhy
 }
 
 
-dChallengeStar *dChallengeStar::build() {
+dActor_c *dChallengeStar::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dChallengeStar));
 	return new(buffer) dChallengeStar;
 }
 
+const char *ChallengeStarFileList[] = {"I_star"};
+const SpriteData challengeStarSpriteData = { ProfileId::ChallengeStar, 0, 0 , 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0 };
+Profile challengeStarProfile(&dChallengeStar::build, SpriteId::ChallengeStar, &challengeStarSpriteData, ProfileId::MIST_INTERMITTENT, ProfileId::ChallengeStar, "ChallengeStar", ChallengeStarFileList);
 
 int dChallengeStar::onCreate() {
 	
