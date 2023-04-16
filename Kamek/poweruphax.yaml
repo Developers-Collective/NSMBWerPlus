@@ -721,6 +721,7 @@ hooks:
     addr_pal: 0x80A942EC
     data: '28000005'
 
+# Commenting so I can keep the vanilla stockItem menu until I can fix the newer one
 # STOCK ITEM BULLSHIT
 # Current size: 0x8E0
 # New size: ?
@@ -740,163 +741,163 @@ hooks:
 # stock item shadow
 # wm_item
 
-  - name: ExpandStockItemStruct
-    type: patch
-    addr_pal: 0x807AF378
-    data: '38600980'
+#  - name: ExpandStockItemStruct
+#    type: patch
+#    addr_pal: 0x807AF378
+#    data: '38600980'
 
-  - name: SILayoutGroupParams
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807AF94C
-    target_func: 'SILayoutGroupParams'
+#  - name: SILayoutGroupParams
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807AF94C
+#    target_func: 'SILayoutGroupParams'
 
-  - name: SILayoutExtraStuffs
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807AF9A4
-    target_func: 'SILayoutExtraStuffs'
+#  - name: SILayoutExtraStuffs
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807AF9A4
+#    target_func: 'SILayoutExtraStuffs'
 
-  - name: DisableUselessPowerupIDRedirection
-    type: nop_insn
-    area_pal: [0x807af790, 0x807af794]
+#  - name: DisableUselessPowerupIDRedirection
+#    type: nop_insn
+#    area_pal: [0x807af790, 0x807af794]
 
-  - name: GetCountsFor8Powerups
-    type: patch
-    addr_pal: 0x807AF7A8
-    data: '2C1C0008 901E 0900'
+#  - name: GetCountsFor8Powerups
+#    type: patch
+#    addr_pal: 0x807AF7A8
+#    data: '2C1C0008 901E 0900'
 
-  - name: HideItemsByDefault
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807AF7B8
-    target_func: 'HideItemsByDefault'
+#  - name: HideItemsByDefault
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807AF7B8
+#    target_func: 'HideItemsByDefault'
 
-  - {name: FixAnimID30, type: patch, addr_pal: 0x807AFB08, data: '2C04 0020'}
-  - {name: FixAnimID30, type: patch, addr_pal: 0x807AFB20, data: '3800 0020'}
-  - {name: FixAnimID30, type: patch, addr_pal: 0x807B0994, data: '3800 0020'}
+#  - {name: FixAnimID30, type: patch, addr_pal: 0x807AFB08, data: '2C04 0020'}
+#  - {name: FixAnimID30, type: patch, addr_pal: 0x807AFB20, data: '3800 0020'}
+#  - {name: FixAnimID30, type: patch, addr_pal: 0x807B0994, data: '3800 0020'}
 
-  - name: NewSetScalesThingy
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807AFBC0
-    target_func: 'dStockItem_c::setScalesOfSomeThings(void)'
+#  - name: NewSetScalesThingy
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807AFBC0
+#    target_func: 'dStockItem_c::setScalesOfSomeThings(void)'
 
-  - name: AddHammerPowerupFinalValue
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B01F0
-    target_func: 'AddHammerPowerupFinalValue'
+#  - name: AddHammerPowerupFinalValue
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B01F0
+#    target_func: 'AddHammerPowerupFinalValue'
 
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B02D8, data: '8085 0900'}
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B02E0, data: '9005 0900'}
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B02F0, data: '8084 0900'}
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0304, data: '8003 0900'}
-  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0310, data: '8063 08E0'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B02D8, data: '8085 0900'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B02E0, data: '9005 0900'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B02F0, data: '8084 0900'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0304, data: '8003 0900'}
+#  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0310, data: '8063 08E0'}
 
-  - name: FixStockItemEffectPlayer
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B04BC
-    target_func: 'FixStockItemEffectPlayer'
+#  - name: FixStockItemEffectPlayer
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B04BC
+#    target_func: 'FixStockItemEffectPlayer'
 
-  - name: FixStockItemEffectPlayer2
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B0580
-    target_func: 'FixStockItemEffectPlayer2'
+#  - name: FixStockItemEffectPlayer2
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B0580
+#    target_func: 'FixStockItemEffectPlayer2'
 
-  - name: FixMoreSIEffectRelatedCrap
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B05E8
-    target_func: 'FixMoreSIEffectRelatedCrap'
+#  - name: FixMoreSIEffectRelatedCrap
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B05E8
+#    target_func: 'FixMoreSIEffectRelatedCrap'
 
-  - name: AddHammerSuitAddSound
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B0840
-    target_func: 'AddHammerSuitAddSound'
+#  - name: AddHammerSuitAddSound
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B0840
+#    target_func: 'AddHammerSuitAddSound'
 
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0908, data: '8005 0900'}
-  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0934, data: '2C000008'}
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0944, data: '8005 0900'}
-  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0954, data: '2C000008'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0908, data: '8005 0900'}
+#  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0934, data: '2C000008'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0944, data: '8005 0900'}
+#  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0954, data: '2C000008'}
 
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0A74, data: '809D 0900'}
-  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0A8C, data: '2C1B0008'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0A74, data: '809D 0900'}
+#  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0A8C, data: '2C1B0008'}
 
-  - name: ResetHammerAnimOnOpen
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B0B38
-    target_func: 'ResetHammerAnimOnOpen'
+#  - name: ResetHammerAnimOnOpen
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B0B38
+#    target_func: 'ResetHammerAnimOnOpen'
 
-  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B68, data: '807C 08E0'}
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0B74, data: '801C 0900'}
-  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B80, data: '807C 08E0'}
-  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B8C, data: '807C 08E0'}
-  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0B9C, data: '2C1D0008'}
+#  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B68, data: '807C 08E0'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0B74, data: '801C 0900'}
+#  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B80, data: '807C 08E0'}
+#  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B0B8C, data: '807C 08E0'}
+#  - {name: UpMaxItems, type: patch, addr_pal: 0x807B0B9C, data: '2C1D0008'}
 
-  - {name: UpdCounts, type: patch, addr_pal: 0x807B0C28, data: '8003 0900'}
+#  - {name: UpdCounts, type: patch, addr_pal: 0x807B0C28, data: '8003 0900'}
 
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C64, data: '801E 0900'}
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C78, data: '801E 0904'}
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C90, data: '801E 0908'}
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CA8, data: '801E 090C'}
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CC0, data: '801E 0910'}
-  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CD8, data: '801E 0914'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C64, data: '801E 0900'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C78, data: '801E 0904'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0C90, data: '801E 0908'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CA8, data: '801E 090C'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CC0, data: '801E 0910'}
+#  - {name: UpdCountsOffs, type: patch, addr_pal: 0x807B0CD8, data: '801E 0914'}
 
-  - name: PickHammerAsPossibleStartChoice
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B0CF0
-    target_func: 'PickHammerAsPossibleStartChoice'
+#  - name: PickHammerAsPossibleStartChoice
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B0CF0
+#    target_func: 'PickHammerAsPossibleStartChoice'
 
-  - name: ChooseOldButtonOffAnim
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B0DB0
-    target_func: 'ChooseOldButtonOffAnim'
+#  - name: ChooseOldButtonOffAnim
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B0DB0
+#    target_func: 'ChooseOldButtonOffAnim'
 
-  - name: ChooseOldButtonOffAnim2
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B0DF0
-    target_func: 'ChooseOldButtonOffAnim2'
+#  - name: ChooseOldButtonOffAnim2
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B0DF0
+#    target_func: 'ChooseOldButtonOffAnim2'
 
-  - name: ChooseOldButtonOffAnim1b
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B0E00
-    target_func: 'ChooseOldButtonOffAnim'
+#  - name: ChooseOldButtonOffAnim1b
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B0E00
+#    target_func: 'ChooseOldButtonOffAnim'
 
-  - name: ChooseButtonOnAnim
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B0E14
-    target_func: 'ChooseButtonOnAnim'
+#  - name: ChooseButtonOnAnim
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B0E14
+#    target_func: 'ChooseButtonOnAnim'
 
-  - name: DoSISelectCursor
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B0EC4
-    target_func: 'DoSISelectCursor'
+#  - name: DoSISelectCursor
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B0EC4
+#    target_func: 'DoSISelectCursor'
 
-  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B1478, data: '807E 08E0'}
-  - {name: UpMaxItems, type: patch, addr_pal: 0x807B148C, data: '2C1D0008'}
+#  - {name: UpdItemPtr, type: patch, addr_pal: 0x807B1478, data: '807E 08E0'}
+#  - {name: UpMaxItems, type: patch, addr_pal: 0x807B148C, data: '2C1D0008'}
 
-  - name: ChooseHitButtonAnim
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x807B14FC
-    target_func: 'ChooseHitButtonAnim'
+#  - name: ChooseHitButtonAnim
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x807B14FC
+#    target_func: 'ChooseHitButtonAnim'
 
-  - name: UpdateCalcPowerupResult
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x800FC9B4
-    target_func: 'UpdateCalcPowerupResult'
+#  - name: UpdateCalcPowerupResult
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x800FC9B4
+#    target_func: 'UpdateCalcPowerupResult'
 
   - name: FixCalcPowerupResultForMushroom
     type: branch_insn
@@ -911,22 +912,22 @@ hooks:
 # - 0x284: Hammer value textbox
 # - 0x288: Hammer X textbox
 # - 0x28C: Hammer shadow
-  - name: ExpandStockItemShadowStruct
-    type: patch
-    addr_pal: 0x807B2038
-    data: '38600290'
+#  - name: ExpandStockItemShadowStruct
+#    type: patch
+#    addr_pal: 0x807B2038
+#    data: '38600290'
 
-  - name: SISLayoutExtraStuffs
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B225C
-    target_func: 'SISLayoutExtraStuffs'
+#  - name: SISLayoutExtraStuffs
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B225C
+#    target_func: 'SISLayoutExtraStuffs'
 
-  - name: UpdateSIS
-    type: branch_insn
-    branch_type: b
-    src_addr_pal: 0x807B2524
-    target_func: 'UpdateSIS'
+#  - name: UpdateSIS
+#    type: branch_insn
+#    branch_type: b
+#    src_addr_pal: 0x807B2524
+#    target_func: 'UpdateSIS'
 
 # And now, the item itself
   - name: AddIHammer1

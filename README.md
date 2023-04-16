@@ -79,7 +79,7 @@ Supported mods:
 * Fire Laser
 * Flipblock (BUGGED: will not spawn unless placed near level enterance.)
 * Giga Goomba
-* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled.)
+* Hammer Suit (BUGGED: Suit does not render on the worldmap. Currently there is no option for it on the StockItem menu.)
 * Line God
 * Magic Platform
 * Message Box
