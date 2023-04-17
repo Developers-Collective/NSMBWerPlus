@@ -171,9 +171,9 @@ hooks:
     src_addr_pal: 0x80AF1000
     target_func: 'I_hammerModelName'
 
-  - name: DisableHat99Thing
-    type: nop_insn
-    area_pal: 0x80060F0C
+#  - name: DisableHat99Thing
+#    type: nop_insn
+#    area_pal: 0x80060F0C
 
   - name: DisableHatForHammer
     type: branch_insn
