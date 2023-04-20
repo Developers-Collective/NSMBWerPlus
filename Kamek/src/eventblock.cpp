@@ -1,5 +1,6 @@
 #include <common.h>
 #include <game.h>
+#include <profile.h>
 
 // Patches MIST_INTERMITTENT (sprite 239)
 
@@ -31,12 +32,15 @@ public:
 	USING_STATES(daEnEventBlock_c);
 	DECLARE_STATE(Wait);
 
-	static daEnEventBlock_c *build();
+	public: static dActor_c *build();
 };
 
 
 CREATE_STATE(daEnEventBlock_c, Wait);
 
+const char *EventBlockFileList[] = {0};
+const SpriteData eventBlockSpriteData = { ProfileId::EventBlock, 0, 0 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+Profile eventBlockProfile(&daEnEventBlock_c::build, SpriteId::EventBlock, &eventBlockSpriteData, ProfileId::MIST_INTERMITTENT, ProfileId::EventBlock, "EventBlock", EventBlockFileList);
 
 int daEnEventBlock_c::onCreate() {
 	blockInit(pos.y);
@@ -109,7 +113,7 @@ int daEnEventBlock_c::onExecute() {
 }
 
 
-daEnEventBlock_c *daEnEventBlock_c::build() {
+dActor_c *daEnEventBlock_c::build() {
 
 	void *buffer = AllocFromGameHeap1(sizeof(daEnEventBlock_c));
 	daEnEventBlock_c *c = new(buffer) daEnEventBlock_c;
@@ -197,4 +201,5 @@ void daEnEventBlock_c::executeState_Wait() {
 		isGroundPound = true;
 	}
 }
+
 

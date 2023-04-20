@@ -1305,7 +1305,8 @@
     </list>
     <dualbox nybble="8.2" title1="Short Stem" title2="Long Stem" comment="This determines the length of the stem when the platform is contracted." requirednybble="7.3"/>
   </sprite> <!-- 231: Wiggling Mushroom Platform -->
- 
+  
+  <!-- Need to move to new sprite slot, also doesn't this draw from Pa0 tiles that don't exist in NSMBWer? -->
   <sprite id="239" name="Event Block" notes="A red or green block that, when struck, will affect the state of the Target Event(s). Events that are deactivated will become activated, and those that are activated will become deactivated." advancednotes="Kamek code references the events by the opposite number.">
     <dualbox nybble="8.4" title1="Affect Event 1" title2="Swap Event 2 and Event 1" comment="This determines which associated Event IDs will be affected when the block is struck." comment2="If set to Affect Event 1, Event 1 will be activated or deactivated and the color of the block will display the state of Event 1, green for on and red for off. &lt;br&gt; &lt;br&gt;If set to Swap Events, Event 2 will be activated initially and Event 1 will be deactivated initially during the Zone loading. The color of the block will rely on Event 2's current state."/>
     <value nybble="11-12" title="Target Event ID 1" idtype="Target Event"/> <!-- May already support 256 Event IDs -->
@@ -2289,10 +2290,54 @@
     <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." idtype="Triggering Event"/>
   </sprite> <!-- #479: Bowser Switch (Large) -->
   
-  <sprite id="319" name="Flip Block" notes="A yellow block with two eyes that cannot be destroyed. When struck, it will spin, allowing passage through it for a limited time.">
-  </sprite> <!-- #319: Flip Block -->
+  <!-- Start of new entries -->
   
-  <sprite id="351" name="Shy Guy" notes="">
+  <sprite id="483" name="Flip Block" notes="A yellow block with two eyes that cannot be destroyed. When struck, it will spin, allowing passage through it for a limited time.">
+  </sprite> <!-- #483: Flip Block -->
+ 
+  <sprite id="484" name="Spine Coaster Platform" notes="This creates immobile 'Spine Coaster' Platforms (1x2). The Sprite's placement represents the right side of the Platform.">
+    <dependency notes="The normal Spine Coaster [297] must be placed somewhere in your level. It does not have to be part of a zone.">
+      <required sprite="297"/> <!-- Spine Coaster -->
+    </dependency>
+    <dualbox nybble="5.4" title1="Horizontal Platform" title2="Angled Platform" comment="This determines if the platform is flat (horizontal), or if it is tilted at an angle."/>
+    <dualbox nybble="6.1" title1="Angles Left" title2="Angles Right" comment="This determines which direction the platform will be angled." requirednybble="5.4"/> <!-- Appears only if Angled is enabled -->
+    <list nybble="6.2-6.4" title="Angle" comment="This determines the amount of tilt the platform will have." comment2="Angles greater than 45° have glitchy collision and are not recommended." requirednybble="5.4-6.1" requiredval="2">
+      <entry value="7">11.25°</entry>
+      <entry value="6">22.50°</entry>
+      <entry value="5">33.75°</entry>
+      <entry value="4">45.00°</entry>
+      <entry value="3">56.25°</entry>
+      <entry value="2">67.50°</entry>
+      <entry value="1">78.75°</entry>
+      <entry value="0">90.00°</entry>
+    </list> <!-- Appears only if Angled + Left is enabled -->
+    <list nybble="6.2-6.4" title="Angle" comment="This determines the amount of tilt the platform will have." comment2="Angles greater than 45° have glitchy collision and are not recommended." requirednybble="5.4-6.1" requiredval="3">
+      <entry value="0">11.25°</entry>
+      <entry value="1">22.50°</entry>
+      <entry value="2">33.75°</entry>
+      <entry value="3">45.00°</entry>
+      <entry value="4">56.25°</entry>
+      <entry value="5">67.50°</entry>
+      <entry value="6">78.75°</entry>
+      <entry value="7">90.00°</entry>
+    </list> <!-- Appears only if Angled + Right is enabled -->
+    <list nybble="12" title="Segment" comment="This determines which segment of the Spine Coaster is used.">
+      <entry value="0">Head</entry>
+      <entry value="1">Body</entry>
+      <entry value="2">Tail</entry>
+    </list>
+    <dualbox nybble="7.4" title1="Faces Left" title2="Faces Right" comment="This determines which direction the platform will face." requirednybble="12.4" requiredval="0"/> <!-- Only shows when Segment is set to Head or Tail; assumes no effect on Body -->
+  </sprite> <!-- #484: Spine Coaster Platform -->
+  
+  <sprite id="485" name="Fake Star Coin" sizehacks="True" notes="This coin an appearance similar to a normal Star Coin, but when the player tries to collect it, it will vanish and disperse into 4 harmless Boos like a Fake Door.">
+    <dependency notes="A real Star Coin must be placed within the same Zone.">
+      <required sprite="32"/> <!-- Requires at least one Star Coin in the Zone -->
+      <suggested sprite="155"/>
+      <suggested sprite="389"/>
+    </dependency>
+  </sprite> <!-- #485: Fake Star Coin -->
+  
+  <sprite id="486" name="Shy Guy" notes="">
     <list nybble="5" title="Type" notes="Type 9 and 10 spawn T-posed Shy Guys that won't move until hit. Otherwise, they function the same.">
       <entry value="0">Walker (Walks Off Ledges)</entry>
       <entry value="1">Pacer (Turns Around At Ledges)</entry>
@@ -2309,6 +2354,21 @@
 	<checkbox nybble="9" title="Starts Walking Right" requirednybble="5" requiredval="0-1"/>
 	<checkbox nybble="9" title="Starts Walking Right" requirednybble="5" requiredval="9-15"/> <!-- Any non-zero value -->
     <value nybble="9" title="Distance" comment="It takes ballooners 20 seconds (1200 frames) before they return to their starting position." requirednybble="5" requiredval="6-8"/>
-  </sprite> <!-- #351: Shy Guy -->
+  </sprite> <!-- #486: Shy Guy -->
+  
+  <sprite id="487" name="Big Shy Guy" notes="">
+    <list nybble="5" title="Size" comment="Sizes share no functional difference. This is separate from SizeHacks.">
+      <entry value="0">Big</entry>
+      <entry value="1">Mega</entry>
+      <entry value="2">Colossal</entry>
+    </list>
+    <list nybble="6" title="Color">
+      <entry value="0">Red</entry>
+      <entry value="1">Blue</entry>
+      <entry value="2">Green</entry>
+      <entry value="3">Yellow</entry>
+      <entry value="4">Magenta</entry>
+    </list>
+  </sprite> <!-- #487: Big Shy Guy -->
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

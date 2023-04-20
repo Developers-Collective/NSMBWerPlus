@@ -1,0 +1,52 @@
+<memory offset="0x80328478" value="803482C0" original="8015BC60" />
+<memory offset="0x80328130" value="803482C0" original="8015BB20" />
+<memory offset="0x80327E98" value="803482C0" original="8015B930" />
+<memory offset="0x800E4A84" value="3C600140" original="3C600120" />
+<memory offset="0x800E4994" value="3C600140" original="3C600120" />
+<memory offset="0x800E4914" value="3C600140" original="3C600120" />
+<memory offset="0x800B64EC" value="3C800032" original="3C800030" />
+<memory offset="0x800B649C" value="3C800032" original="3C800030" />
+<memory offset="0x800B641C" value="3C800032" original="3C800030" />
+<memory offset="0x800E4E84" value="38600000" original="3863330C" />
+<memory offset="0x800E4D70" value="38600000" original="3863300C" />
+<memory offset="0x800E4CF0" value="38600000" original="38632E2C" />
+<memory offset="0x800E4E8C" value="38600021" original="3860003F" />
+<memory offset="0x800E4D78" value="38600021" original="3860003F" />
+<memory offset="0x800E4CF8" value="38600021" original="3860003F" />
+<memory offset="0x803482C0" valuefile="Loader.bin" />
+<memory offset="0x801AF710" value="4E800020" original="9421FFD0" />
+<memory offset="0x801D2E53" value="71" original="DA" />
+<memory offset="0x801D2E6B" value="71" original="DA" />
+<memory offset="0x801AF5D0" value="4E800020" original="9421FFD0" />
+<memory offset="0x801D2D13" value="71" original="DA" />
+<memory offset="0x801D2D2B" value="71" original="DA" />
+<memory offset="0x801AF3E0" value="4E800020" original="9421FFD0" />
+<memory offset="0x801D2B23" value="71" original="DA" />
+<memory offset="0x801D2B3B" value="71" original="DA" />
+<memory offset="0x80348427" value="3463FF82C4" />
+<memory offset="0x80348433" value="3463FF82F4" />
+<memory offset="0x8034843F" value="3463FF8324" />
+<memory offset="0x80348447" value="3460638354" />
+<memory offset="0x80348457" value="346063836D" />
+<memory offset="0x80348463" value="3460638386" />
+<memory offset="0x80348473" value="34606387E0" />
+<memory offset="0x8034847B" value="3460848354" />
+<memory offset="0x8034848F" value="3460638354" />
+<memory offset="0x803484CB" value="34606387FC" />
+<memory offset="0x8034853B" value="346063882F" />
+<memory offset="0x80348557" value="346063884B" />
+<memory offset="0x80348593" value="346063885D" />
+<memory offset="0x803485A7" value="346063836D" />
+<memory offset="0x8034862B" value="3460638875" />
+<memory offset="0x80348643" value="3460638386" />
+<memory offset="0x8034868F" value="346063885D" />
+<memory offset="0x803486CB" value="3460638895" />
+<memory offset="0x80348713" value="34606388A1" />
+<memory offset="0x8034872F" value="3460638A29" />
+<memory offset="0x80348737" value="346084890E" />
+<memory offset="0x8034873F" value="3460A58354" />
+<memory offset="0x8034875F" value="3460638A29" />
+<memory offset="0x8034876B" value="34606388B3" />
+<memory offset="0x80348777" value="34606388E1" />
+<memory offset="0x80348783" value="34606387D8" />
+<memory offset="0x8034878B" value="34608487DC" />
