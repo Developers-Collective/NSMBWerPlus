@@ -1302,106 +1302,6 @@ class SpriteImage_NewerBowserSwitchLg(SLib.SpriteImage_StaticMultiple):  # 479
         super().dataChanged()
 
 
-class SpriteImage_ShyGuyGiant(SLib.SpriteImage_Static): # 167
-    def __init__(self, parent):
-        super().__init__(parent, 1.5)
-
-    @staticmethod
-    def loadImages():
-        if "ShyGuy%s%s" in ImageCache: return
-        for size in ("big", "mega", "colossal"):
-            for colour in ("red", "blue", "green", "yellow", "magenta"):
-                ImageCache['ShyGuy%s%s' % (size, colour)] = SLib.GetImg('shyguy_%s_%s.png' % (size, colour))
-
-    def dataChanged(self):
-        size = (self.parent.spritedata[2] >> 4) & 3
-        colour = (self.parent.spritedata[2] & 0xF) % 5
-        scale = ("big", "mega", "colossal")[size]
-        color = ("red", "blue", "green", "yellow", "magenta")[colour]
-
-        self.image = ImageCache['ShyGuy%s%s' % (scale, color)]
-
-        if size == 0:
-            self.offset = (-12.7, -124)
-        elif size == 1:
-            self.offset = (-32, -165.3)
-        else:
-            self.offset = (-52.7, -229.3)
-
-        super().dataChanged()
-
-
-class SpriteImage_DragonCoasterPiece(SLib.SpriteImage_StaticMultiple): # 18
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            1.5
-        )
-
-        self.yOffset = -4
-
-    @staticmethod
-    def loadImages():
-        if 'DragonHead' in ImageCache: return
-        ImageCache['DragonHead'] = SLib.GetImg('dragon_coaster_head.png')
-        ImageCache['DragonBody'] = SLib.GetImg('dragon_coaster_body.png')
-        ImageCache['DragonTail'] = SLib.GetImg('dragon_coaster_tail.png')
-
-    def dataChanged(self):
-        piece = self.parent.spritedata[5] & 3
-        direction = (self.parent.spritedata[3] >> 4) & 1
-        rotates = self.parent.spritedata[2] & 0x10
-
-        sPiece = ("Head", "Body", "Tail")[piece]
-
-        self.image = ImageCache["Dragon%s" % sPiece]
-
-        transform = None
-
-        if direction == 1:
-            transform = QtGui.QTransform()
-            transform.translate(12, 0)
-            transform.scale(-1, 1)
-            transform.translate(-12, 0)
-        else:
-            self.xOffset = -16
-
-        if rotates:
-            if transform is None:
-                transform = QtGui.QTransform()
-
-            angle = self.parent.spritedata[2] & 0xF
-
-            if angle < 8:
-                angle -= 8
-            else:
-                angle -= 7
-
-            angle *= (180.0 / 16)
-
-            transform.translate(24, 15)
-            transform.rotate(angle)
-            transform.translate(-24, -15)
-
-        if transform is not None:
-            self.parent.setTransform(transform)
-
-        super().dataChanged()
-
-
-class SpriteImage_FakeStarCoin(SLib.SpriteImage_Static):  # 49
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            1.5,
-            ImageCache['FakeStarCoin'],
-            (-8, -16),
-        )
-
-    @staticmethod
-    def loadImages():
-        SLib.loadIfNotInImageCache('FakeStarCoin', 'starcoin_fake.png')
-
 ImageClasses = {
     20: SpriteImage_NewerGoomba,
     21: SpriteImage_NewerParaGoomba,
@@ -1445,16 +1345,13 @@ ImageClasses = {
     269: SpriteImage_NewerParabomb,
     282: SpriteImage_AngrySun,
     296: SpriteImage_NewerMegaBuzzy,
-    483: SpriteImage_Flipblock,
+    319: SpriteImage_Flipblock,
     341: SpriteImage_NewerBigShell,
-    486: SpriteImage_ShyGuy,
+    351: SpriteImage_ShyGuy,
     391: SpriteImage_NewerGlowBlock,
     402: SpriteImage_LineQBlock,
     403: SpriteImage_LineBrickBlock,
     410: SpriteImage_GigaGoomba,
     478: SpriteImage_NewerBowserSwitchSm,
     479: SpriteImage_NewerBowserSwitchLg,
-    487: SpriteImage_ShyGuyGiant,
-    484: SpriteImage_DragonCoasterPiece,
-    485: SpriteImage_FakeStarCoin,
 }

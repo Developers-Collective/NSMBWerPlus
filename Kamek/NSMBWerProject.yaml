@@ -14,7 +14,7 @@ modules:
   # - processed/fileselect.yaml
   - processed/magicplatform.yaml
   # - processed/cutScene.yaml
-  - processed/bonepiece.yaml
+  # - processed/bonepiece.yaml
   - processed/bugfixes.yaml
   # - processed/koopatlas.yaml
   # - processed/pregame.yaml
@@ -59,14 +59,14 @@ modules:
   # - processed/bossCaptainBowser.yaml
   # - processed/bossBridgeBowser.yaml
   - processed/effectVideo.yaml
-  - processed/fakeStarCoin.yaml
+  # - processed/fakeStarCoin.yaml
   - processed/shyguy.yaml
-  - processed/shyguyGiants.yaml
+  # - processed/shyguyGiants.yaml
   - processed/meteor.yaml
   - processed/electricLine.yaml
   - processed/thundercloud.yaml
   - processed/makeYourOwn.yaml
-  - processed/challengeStar.yaml
+  # - processed/challengeStar.yaml
   # - processed/singAlong.yaml
   # - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
