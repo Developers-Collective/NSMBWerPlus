@@ -9,8 +9,7 @@ struct SpriteData
 
     s32 xoffs;
     s32 yoffs;
-    s32 spawnRangeOffset[2];
-    s32 spawnRangeSize[2];
+    Quaternion spawnRange;
     u16 _1C;
     u16 _1E;
     u16 _20;
