@@ -3,6 +3,7 @@
 #include <g3dhax.h>
 #include <profileid.h>
 #include <sfx.h>
+#include <profile.h>
 
 
 const char* SGarcNameList [] = {
@@ -85,7 +86,7 @@ class daShyGuy : public dEn_c {
 	ActivePhysics Knuckles;
 	ActivePhysics balloonPhysics;
 
-	static daShyGuy *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 	void updateModelMatrices();
@@ -140,7 +141,11 @@ class daShyGuy : public dEn_c {
 	int type;
 };
 
-daShyGuy *daShyGuy::build() {
+const SpriteData ShyGuySpriteData = {ProfileId::ShyGuy, 16, -65, 0, 0x10, 0x10, 0x40, 0x40, 0x40, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ShyGuyProfile(&daShyGuy::build, SpriteId::ShyGuy, &ShyGuySpriteData, ProfileId::DUMMY_DOOR_CHILD, ProfileId::ShyGuy, "ShyGuy", SGarcNameList);
+
+dActor_c *daShyGuy::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daShyGuy));
 	return new(buffer) daShyGuy;
 }
@@ -1532,3 +1537,4 @@ bool daShyGuy::willWalkOntoSuitableGround() {
 	}
 	void daShyGuy::endState_Die() {
 	}
+

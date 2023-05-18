@@ -2,6 +2,7 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <sfx.h>
+#include <profile.h>
 
 extern void shyCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 const char* SGGarcNameList [] = {
@@ -52,7 +53,7 @@ class daShyGuyGiant : public dEn_c {
 	bool isBouncing;
 	int directionStore;
 
-	static daShyGuyGiant *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 	void updateModelMatrices();
@@ -100,7 +101,11 @@ class daShyGuyGiant : public dEn_c {
 	DECLARE_STATE(Die);
 };
 
-daShyGuyGiant *daShyGuyGiant::build() {
+const SpriteData ShyGuyGiantSpriteData = {ProfileId::ShyGuyGiant, 6, 0x31, 0, 0x10, 0x10, 0x40, 0x40, 0x40, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ShyGuyGiantsProfile(&daShyGuyGiant::build, SpriteId::ShyGuyGiant, &ShyGuyGiantSpriteData, ProfileId::WM_TREASURESHIP, ProfileId::ShyGuyGiant, "ShyGuyGiant", SGGarcNameList);
+
+dActor_c *daShyGuyGiant::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daShyGuyGiant));
 	OSReport("Building Shy Guy");
 	return new(buffer) daShyGuyGiant;
@@ -586,3 +591,4 @@ void daShyGuyGiant::updateModelMatrices() {
 	}
 	void daShyGuyGiant::endState_Die() {
 	}
+

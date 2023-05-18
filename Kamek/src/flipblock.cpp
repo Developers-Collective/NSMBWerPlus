@@ -30,8 +30,12 @@ public:
 	DECLARE_STATE(Wait);
 	DECLARE_STATE(Flipping);
 
-	static daEnFlipBlock_c *build();
+	static dActor_c *build();
 };
+
+const SpriteData flipBlockSpriteData = { ProfileId::FlipBlock, 8, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+ // Using WM_GRID as the execute order profile ID fixes bugs; original FlipBlock uses it as well
+Profile flipBlockProfile(&daEnFlipBlock_c::build, SpriteId::FlipBlock, &flipBlockSpriteData, ProfileId::WM_GRID, ProfileId::FlipBlock, "FlipBlock", FlipBlockFileList);
 
 
 CREATE_STATE(daEnFlipBlock_c, Wait);
@@ -107,7 +111,7 @@ int daEnFlipBlock_c::onDraw() {
 }
 
 
-daEnFlipBlock_c *daEnFlipBlock_c::build() {
+dActor_c *daEnFlipBlock_c::build() {
 
 	void *buffer = AllocFromGameHeap1(sizeof(daEnFlipBlock_c));
 	daEnFlipBlock_c *c = new(buffer) daEnFlipBlock_c;
