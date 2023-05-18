@@ -32,7 +32,7 @@ custom music or tilesets from Newer.
 
 It also includes an edited 01-01 and 01-06 that removes old unused sprite settings from Nintendo set
 on the Rolling Hills that, now would crash NSMBWer. They are different flags for the Rolling Hill recolors
-that don't exist in base Newer. (I plan to fix this as to not keep slightly modified vanilla files included with the mod)
+that don't exist in base Newer (I plan to fix this as to not keep slightly modified vanilla files included with the mod)
 
 #### Kamek
 
@@ -66,7 +66,7 @@ Changes:
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
 * Load custom music from the default BRSTM folder
-* Porting of some Newer Wii sprites to new slots. (currently broken, certain sprites despawn unless placed near the level enterance)
+* Porting of some Newer Wii sprites to new slots
 
 Supported mods:
 * Actor Spawner
@@ -74,10 +74,10 @@ Supported mods:
 * Animated Tiles
 * Chestnut
 * Electric Line
-* Event Block (BUGGED: will not spawn unless placed near level enterance.)
+* Event Block
 * Event Looper
 * Fire Laser
-* Flipblock (BUGGED: will not spawn unless placed near level enterance.)
+* Flipblock
 * Giga Goomba
 * Hammer Suit (BUGGED: Currently there is no option for it on the StockItem menu)
 * Line God
@@ -88,7 +88,7 @@ Supported mods:
 * Mushroom Platform Slant Mod
 * RYOM
 * S/E Spawner
-* Shy Guys, and the giant ones (BUGGED: will not spawn unless placed near level enterance)
+* Shy Guys, and the giant ones
 * Size Hacks
 * Special Event
 * Sprite Retextures
@@ -98,7 +98,7 @@ Supported mods:
 * Topman
 * Universal Tileset Slot Mod
 * Spine Coaster Platforms
-* Fake Star Coin (BUGGED: will not spawn unless placed near level enterance.)
+* Fake Star Coin
 
 #### Other Stuff
 Other Stuff includes, well, other stuff:
@@ -106,7 +106,7 @@ Other Stuff includes, well, other stuff:
 * ReggiePatch (a Reggie patch based on the NewerSMBW one, updated to work with Reggie! Next 4.8 and 4.9)
 
 #### TODO
-* Fix more sprites issues (custom sprites will despawn unless near level enterance)
+* Fix more sprites issues (custom sprites always spawn, even when offscreen)
 * Move all Newer sprites to new slots
 * Koopatlas and Pirahnatlas support(?)
 * Fix NSMBW bugs
