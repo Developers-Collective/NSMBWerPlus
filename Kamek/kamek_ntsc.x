@@ -1,4 +1,8 @@
 SECTIONS {
+	FUN_8085f5c0 = 0x8085F5C0;
+	fixJumbo1return = 0x80860074;
+	fixJumbo2return	= 0x808600d8;
+
 	ContinueFromSixteenthHook = 0x80143560;
 
 	layerZPositionForByugoHack = 0x8042B954;
@@ -1193,6 +1197,7 @@ SECTIONS {
 	create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc = 0x80064610;
 	create__13dStageActor_cF6ActorsUiP4VEC3P6S16VecUc = 0x80064610;
 	Delete__13dStageActor_cFUc = 0x80064D10;
+	create__13dStageActor_cFUsUiP7Point3dP6S16VecUc = 0x80064610;
 
 	__ct__8dScene_cFv = 0x800E19B0;
 	__dt__8dScene_cFv = 0x800E1A20;
