@@ -716,10 +716,41 @@ hooks:
     src_addr_pal: 0x807BA4A8
     target_func: 'AddHSToBattleItem_FixWait2Anim'
 
+  - name: StrongboxInit
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808AA450
+    target_func: 'StrongboxInit'
+
+  - name: StrongboxGiveBattleItem
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808AAF90
+    target_func: 'StrongboxGiveBattleItem'
+
+  - name: StrongboxNoMushroom
+    type: nop_insn
+    area_pal: 0x808AB3E0
+
+  - name: NoSoundBattleKinopio
+    type: nop_insn
+    area_pal: 0x808AB5FC
+
+  - name: NoDrawBattleKinopio
+    type: nop_insn
+    area_pal: [0x807B9F74,0x807B9F88]
+
+  - name: NoBattleFanfare
+    type: patch
+    addr_pal: 0x8019C290
+    data: '4E800020'
+
   - name: RedRingRespectsHammerSuit
     type: patch
     addr_pal: 0x80A942EC
     data: '28000005'
+
+
 
 # Commenting so I can keep the vanilla stockItem menu until I can fix the newer one
 # STOCK ITEM BULLSHIT

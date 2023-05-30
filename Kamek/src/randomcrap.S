@@ -545,7 +545,7 @@ ReplaceExceptionOccurred:
 
 .data
 NewExceptionOccurred:
-.string "Whoops! Newer 1.0.2 has crashed.\nPlease take a screenshot of the info below\nand send it to newer@newerteam.com.\nYou can scroll through this report using the D-Pad.\n"
+.string "Whoops! NSMBWer+ has crashed.\nPlease take a screenshot of the info below\nand send it to Ryguy on discord.\nYou can scroll through this report using the D-Pad.\n"
 UniLogStr: .string "[ULog] returning %8x to: %x > %x > %x > %x > %x > %x\n"
 #WillAlloc: .string "[AH] Will allocate %x bytes aligned by %x\n"
 #Alloced: .string "[AH] Allocated %p\n"
