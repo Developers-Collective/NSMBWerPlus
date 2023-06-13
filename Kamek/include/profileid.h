@@ -498,17 +498,17 @@ enum
     AC_BOSS_KOOPA_BG_EFFECT = 482,
 
     // Start of custom entries
-    FlipBlock = 483, //only spawns near player enterance, despawns if player leaves
-    BonePiece = 484, //suprisingly the only fully functional one so far
-    FakeStarCoin = 485, //only spawns near player enterance
-    ShyGuy = 486, //only spawns near player enterance
-    ShyGuyGiant = 487, //only spawns near player enterance
+    FlipBlock = 483, 
+    BonePiece = 484, 
+    FakeStarCoin = 485, 
+    ShyGuy = 486, 
+    ShyGuyGiant = 487, 
     ChallengeStar = 488, //crashes
     PumpkinGoomba = 489, //unfinished, code is a mess
-    EventBlock = 490, //only spawns near player enterance, despawns if player leaves
+    EventBlock = 490, 
     SpriteSpawner = 491, //crashes, staying at 88 for now
     SpriteMultiSpawner = 492, //seeing as how the normal ActorSpawner crashes I'm leaving the multi one at 95
-    ClownCarPlayer = 493, //finish this soon dumbass
+    CustomClownCar = 493,
 
     Num
 };
@@ -1282,7 +1282,8 @@ enum
     EventBlock = 757,
     SpriteSpawner = 758,
     SpriteMultiSpawner = 759,
-    ClownShot = 760,
+    CustomClownCar = 760,
+    CustomClownShot = 761,
 
     Num
 };

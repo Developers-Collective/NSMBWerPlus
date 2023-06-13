@@ -1,4 +1,7 @@
 SECTIONS {
+	dPlayerMdl_c__createPlayerModel = 0x800D3304;
+	callFooDeath = 0x80A6AD10;
+
 	FUN_8085f5c0 = 0x8085F350;
 	fixJumbo1return = 0x8085FE04;
 	fixJumbo2return	= 0x808600d8;

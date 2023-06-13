@@ -1,9 +1,9 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
-#include <profileid.h>
 #include <sfx.h>
 #include "boss.h"
+#include <profile.h>
 
 // #define cField(TYPE, OFFSET) (*(TYPE*)(((u32)clown) + (OFFSET)))
 // #define cPlayerOccupying cField(dStageActor_c*, 0x738)
@@ -45,7 +45,11 @@ int CConDraw(dEn_c *clown) {
 	clown->matrix.applyRotationYXZ(&clown->rot.x, &newroty, &newrotz);
 
 	cModel->setDrawMatrix(clown->matrix);
-	cModel->setScale(&(Vec){0.25, 0.5, 0.25});
+	if(clown->settings >> 4 & 1) {
+		cModel->setScale(&(Vec){0.25, 0.5, 0.25});
+	} else {
+		cModel->setScale(&(Vec){0.0, 0.0, 0.0});
+	}
 	cModel->calcWorld(false);
 
 	cModel->scheduleForDrawing();
@@ -76,9 +80,15 @@ int CConExecute(dEn_c *clown) {
 
 void CCafterCreate(dEn_c *clown, u32 param) {
 
-	clown->scale.x *= 1.25;
-	clown->scale.y *= 1.25;
-	clown->scale.z *= 1.25;
+	if(clown->settings >> 4 & 1) {
+		clown->scale.x *= 1.25;
+		clown->scale.y *= 1.25;
+		clown->scale.z *= 1.25;
+	} else {
+		clown->scale.x *= 1;
+		clown->scale.y *= 1;
+		clown->scale.z *= 1;
+	}
 
 	// setup the model
 	nw4r::g3d::ResFile resFile;
@@ -108,45 +118,47 @@ void CCafterCreate(dEn_c *clown, u32 param) {
 }
 
 void CConExecuteMove(dEn_c *clown) {
+	if(clown->settings >> 4 & 1) {
 
-	u8 player = cPlayerOccupying->which_player;
-	// OSReport("Angle = %x, %x, %x", (GetSpecificPlayerActor(player))->rot.y, (GetSpecificPlayerActor(player))->rot.x, (GetSpecificPlayerActor(player))->rot.z);
-	// OSReport("Clown = %x, %x, %x", (clown)->rot.y, (clown)->rot.x, (clown)->rot.z);
+		u8 player = cPlayerOccupying->which_player;
+		// OSReport("Angle = %x, %x, %x", (GetSpecificPlayerActor(player))->rot.y, (GetSpecificPlayerActor(player))->rot.x, (GetSpecificPlayerActor(player))->rot.z);
+		// OSReport("Clown = %x, %x, %x", (clown)->rot.y, (clown)->rot.x, (clown)->rot.z);
 
-	Vec tempPos;
+		Vec tempPos;
+		
+		u32 buttonPushed = Remocon_GetPressed(GetRemoconMng()->controllers[cPlayerOccupying->which_player]);
+		if (buttonPushed & 0x0100) {
+			
+			if (cTimer > 90) {
+				if (clown->direction == 0) { // Going right
+					tempPos = (Vec){clown->pos.x + 32.0, clown->pos.y + 32.0, 3564.0};
+					dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+					spawned->speed.x = 5.0;
+				}
+				else {
+					tempPos = (Vec){clown->pos.x - 32.0, clown->pos.y + 32.0, 3564.0};
+					dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+					spawned->speed.x = -5.0;
+				}
 
-	u32 buttonPushed = Remocon_GetPressed(GetRemoconMng()->controllers[cPlayerOccupying->which_player]);
-	if (buttonPushed & 0x0100) {
+				SpawnEffect("Wm_en_killervanish", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){0.1, 0.1, 0.1});
+				nw4r::snd::SoundHandle handle;
+				PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_HOUDAI_S_SHOT, 1);
 
-		if (cTimer > 90) {
-			if (clown->direction == 0) { // Going right
-				tempPos = (Vec){clown->pos.x + 32.0, clown->pos.y + 32.0, 3564.0};
-				dStageActor_c *spawned = CreateActor(ProfileId::WM_PAKKUN, 0, tempPos, 0, 0);
-				spawned->speed.x = 5.0;
+			cTimer = 0;
 			}
-			else {
-				tempPos = (Vec){clown->pos.x - 32.0, clown->pos.y + 32.0, 3564.0};
-				dStageActor_c *spawned = CreateActor(ProfileId::WM_PAKKUN, 0, tempPos, 0, 0);
-				spawned->speed.x = -5.0;
-			}
-
-			SpawnEffect("Wm_en_killervanish", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){0.1, 0.1, 0.1});
-			nw4r::snd::SoundHandle handle;
-			PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_HOUDAI_S_SHOT, 1);
-
-		cTimer = 0;
 		}
+
+		cTimer++;
+
+		ClassWithCameraInfo *cwci = ClassWithCameraInfo::instance;
+		float leftBound = cwci->screenLeft + 12.0f;
+		float rightBound = (cwci->screenLeft + cwci->screenWidth) - 12.0f;
+		if (clown->pos.x < leftBound)
+			clown->pos.x = leftBound;
+		if (clown->pos.x > rightBound)
+			clown->pos.x = rightBound;
 	}
-
-	cTimer++;
-
-	ClassWithCameraInfo *cwci = ClassWithCameraInfo::instance;
-	float leftBound = cwci->screenLeft + 12.0f;
-	float rightBound = (cwci->screenLeft + cwci->screenWidth) - 12.0f;
-	if (clown->pos.x < leftBound)
-		clown->pos.x = leftBound;
-	if (clown->pos.x > rightBound)
-		clown->pos.x = rightBound;
 
 	// run normal move
 	PClownCarMove(clown);
@@ -190,13 +202,8 @@ extern "C" void JrClownForPlayer_playAccelSound() {
 
 
 
-
-
-
-
-// Below is the projectile used byt eh clown car - Replaces WM_PAKKUN
-
 class daClownShot : public dEn_c {
+public:
 	int onCreate();
 	int onExecute();
 	int onDraw();
@@ -206,17 +213,20 @@ class daClownShot : public dEn_c {
 	m3d::mdl_c bodyModel;
 
 	mEf::es2 effect;
-	static daClownShot *build();
+	static dActor_c *build();
 
 	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
 };
 
 void daClownShot::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) { }
 
-daClownShot *daClownShot::build() {
+dActor_c *daClownShot::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daClownShot));
 	return new(buffer) daClownShot;
 }
+
+const char* EmptyClownShotFileList[] = {NULL};
+Profile CustomClownShotProfile(&daClownShot::build, ProfileId::CustomClownShot, NULL, ProfileId::CustomClownShot, ProfileId::CustomClownShot, "Custom Clown Shot", EmptyClownShotFileList);
 
 
 int daClownShot::onCreate() {
@@ -227,12 +237,12 @@ int daClownShot::onCreate() {
 	allocator.unlink();
 
 	ActivePhysics::Info GreatBalls;
-
+	
 	GreatBalls.xDistToCenter = 0.0;
 	GreatBalls.yDistToCenter = 0.0;
 	GreatBalls.xDistToEdge = 8.0;
 	GreatBalls.yDistToEdge = 7.0;
-
+	
 	GreatBalls.category1 = 0x3;
 	GreatBalls.category2 = 0x0;
 	GreatBalls.bitfield1 = 0x6F;
@@ -261,7 +271,7 @@ int daClownShot::onCreate() {
 
 	this->speed.y = 4.0;
 	this->y_speed_inc = -0.1875;
-
+	
 	this->onExecute();
 	return true;
 }
@@ -319,7 +329,7 @@ extern "C" bool Amp_NewPreSpriteCollision(ActivePhysics *apThis, ActivePhysics *
 	if (apOther->info.category2 == 9) {
 		if (amp->collisionCat9_RollingObject(apThis, apOther))
 			return true;
-	} else if (apOther->owner->profileId == ProfileId::WM_PAKKUN) {
+	} else if (apOther->owner->profileId == ProfileId::CustomClownShot) {
 		amp->killByDieFall(apOther->owner);
 		return true;
 	}
@@ -330,11 +340,10 @@ extern "C" bool Amp_NewPreSpriteCollision(ActivePhysics *apThis, ActivePhysics *
 extern "C" void KazanRock_Explode(void *kazanRock);
 extern "C" void KazanRock_OriginalCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 extern "C" void KazanRock_CollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (apOther->owner->profileId == ProfileId::WM_PAKKUN) {
+	if (apOther->owner->profileId == ProfileId::CustomClownShot) {
 		apThis->someFlagByte |= 2;
 		KazanRock_Explode(apThis->owner);
 	} else {
 		KazanRock_OriginalCollisionCallback(apThis, apOther);
 	}
 }
-

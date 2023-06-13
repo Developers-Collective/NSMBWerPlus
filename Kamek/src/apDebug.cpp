@@ -32,7 +32,7 @@ class APDebugDrawer : public m3d::proc_c {
 
 
 static APDebugDrawer defaultInstance;
-static bool enableDebugMode = false;
+static bool enableDebugMode = true;
 
 int APDebugDraw() {
 	if (enableDebugMode)
@@ -57,6 +57,71 @@ void APDebugDrawer::drawMe() {
 	}
 
 	scheduleForDrawing();
+}
+
+void DrawCircle(float centreX, float centreY, float radiusX, float radiusY, float z, u8 r, u8 g, u8 b, u8 a) {
+
+	OSReport("Start DrawCircle!\n");
+
+    // Define a few variables
+    const unsigned short numVert = 64;
+    const float step = 256.0f/numVert;
+    float sin, cos, xDist, yDist;
+
+    // Initialize the prev variables
+    float prevSin = 0.0f;
+    float prevCos = 1.0f;
+    float prevXDist = radiusX;
+    float prevYDist = 0.0f;
+
+    // Begin drawing
+    GXBegin(GX_LINES, GX_VTXFMT0, numVert * 2);
+
+    // Draw each line
+    for (int i = 1; i <= numVert / 4; i++) {
+
+		OSReport("Line: %d\n", i);
+
+        // Calculate sin and cos for the current angle
+        nw4r::math::SinCosFIdx(&sin, &cos, step * i);
+
+        // Calculate the distances from the center
+        xDist = radiusX * cos;
+        yDist = radiusY * sin;
+
+        // Draw on the first quadrant
+        GXPosition3f32(centreX + prevXDist, centreY + prevYDist, z);
+        GXColor4u8(r,g,b,a);
+        GXPosition3f32(centreX + xDist, centreY + yDist, z);
+        GXColor4u8(r,g,b,a);
+
+        // Draw on the second quadrant
+        GXPosition3f32(centreX - prevYDist, centreY + prevXDist, z);
+        GXColor4u8(r,g,b,a);
+        GXPosition3f32(centreX - yDist, centreY + xDist, z);
+        GXColor4u8(r,g,b,a);
+
+        // Draw on the third quadrant
+        GXPosition3f32(centreX - prevXDist, centreY - prevYDist, z);
+        GXColor4u8(r,g,b,a);
+        GXPosition3f32(centreX - xDist, centreY - yDist, z);
+        GXColor4u8(r,g,b,a);
+
+        // Draw on the fourth quadrant
+        GXPosition3f32(centreX + prevYDist, centreY - prevXDist, z);
+        GXColor4u8(r,g,b,a);
+        GXPosition3f32(centreX + yDist, centreY - xDist, z);
+        GXColor4u8(r,g,b,a);
+
+        // Override the "previous" values
+        prevSin = sin;
+        prevCos = cos;
+        prevXDist = xDist;
+        prevYDist = yDist;
+    }
+
+    // End drawing
+    GXEnd();
 }
 
 void APDebugDrawer::drawOpa() {
@@ -118,7 +183,7 @@ void APDebugDrawer::drawXlu() {
 	ActivePhysics *ap = ActivePhysics::globalListHead;
 
 	while (ap) {
-//		if (ap->owner->profileId == ProfileId::PLAYER)
+//		if (ap->owner->name == PLAYER)
 //			OSReport("Player has : DistToC=%f,%f DistToEdge=%f,%f Pos=%f,%f Scale=%f,%f\n",
 //					ap->info.xDistToCenter, ap->info.yDistToCenter,
 //					ap->info.xDistToEdge, ap->info.yDistToEdge,
