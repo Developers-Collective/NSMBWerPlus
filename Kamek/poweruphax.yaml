@@ -201,6 +201,17 @@ hooks:
     type: patch
     addr_pal: 0x8095CDD4
     data: '68616D6D65724D00' # "hammerM\0"
+
+  - name: LoadThisShit
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x8091EC74
+    target_func: 'LoadThisShit'
+
+  - name: LoadThisShittyCount
+    type: patch
+    addr_pal: 0x8091EC6C
+    data: '38c00026' #original: 38c00023
     
   - name: AlwaysLoadBrosArc
     type: add_func_pointer
