@@ -810,4 +810,8 @@ char *GetActorName(Actors type);
 Actor *FindActorByID(int id);
 Actor *FindActorByType(Actors type, Actor *startFrom);
 
+// Custom functions
+Actors translateActorID(Actors id);
+Actors adjustID(Actors id);
+
 #endif

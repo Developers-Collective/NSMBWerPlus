@@ -2280,6 +2280,8 @@ SECTIONS {
 	spawnCoinJump__7StageE4FRC7Point3diii = 0x80066630;
 	sub_800757B0__14collisionMgr_cFP7Point3dPfUcic = 0x800757B0;
 
+	sException__Q24nw4r2dbFv = 0x803DA860;
+
 	originalSprites = 0x8030a340;
 	originalProfiles = 0x8076a748;
 	ObjectProfileList = 0x8042a698;

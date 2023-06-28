@@ -164,6 +164,7 @@ static inline BOOL CXIsFinishedUncompLH( const CXUncompContextLH *context )
 
 namespace nw4r { namespace db {
     void Exception_Printf_(const char *msg, ...);
+    void* sException();
 }}
 
 

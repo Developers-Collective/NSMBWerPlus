@@ -1,6 +1,57 @@
 ---
-source_files: [../src/poweruphax.S, ../src/poweruphax.cpp]
+source_files: [../src/poweruphax.S, ../src/poweruphax.cpp, ../src/stockItemFix.S, ../src/loading.S]
 hooks:
+
+  - name: FixVanillaMap1
+    type: patch
+    addr_pal: 0x80926d58
+    data: '281f0007' #Orig: 281f0006
+
+  - name: FixVanillaMap2
+    type: patch
+    addr_pal: 0x80927a88
+    data: '28170007' #Orig: 28170006
+
+  - name: FixVanillaMap3
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80926d34
+    target_func: 'StockItemHack'
+
+  - name: FixVanillaMap4
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80927a6c
+    target_func: 'StockItemHack'
+
+  - name: FixVanillaMap5
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x808d4d5c #0x808d4d68
+    target_func: 'StockItemHackR3'
+
+  - name: FixVanillaMap6
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80926C28
+    target_func: 'ItemNamesHack'
+
+  - name: FixVanillaMap7
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80927918
+    target_func: 'ItemNamesHackR26'
+
+  - name: FixVanillaMap8
+    type: patch
+    addr_pal: 0x80926C4C
+    data: '281c0008' #Orig: 281c0007
+
+  - name: anotherSIpatch
+    type: patch
+    addr_pal: 0x809272d0
+    data: 2c190008 #orig: 2c190007
+
   - {name: HammerDontTouchMario, type: nop_insn, area_pal: 0x8001DFDC}
   - {name: HammerDontTouchYoshi, type: nop_insn, area_pal: 0x8001E02C}
   - name: GetInfoFromDumbTable
