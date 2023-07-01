@@ -1,4 +1,8 @@
 SECTIONS {
+	stockItemPowerupModelScale = 0x8093C36C;
+	stockItemPlayerModelScale = 0x8093BE24;
+	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809A1E00;
+
 	dPlayerMdl_c__createPlayerModel = 0x800D3304;
 	callFooDeath = 0x80A6AD10;
 

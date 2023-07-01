@@ -144,7 +144,7 @@ void PrintContext(u16 OSError, void *_osContext, u32 _dsisr, u32 _dar)
 {
     OSContext *osContext = (OSContext *)_osContext;
 	
-    nw4r::db::Exception_Printf_("Whoops! " GAME_NAME " [%s] has crashed - %s\n\nPlease send the information below to\nryguy0777 on Discord\nYou can scroll through this report using the D-Pad.\n\n", GetRegionAndVersion(), GetErrorDescription(OSError));
+    nw4r::db::Exception_Printf_("Whoops! " GAME_NAME " has crashed - %s\n\nPlease send the information below to\nryguy0777 on Discord\nYou can scroll through this report using the D-Pad.\n[%s]\n", GetErrorDescription(OSError), GetRegionAndVersion());
     nw4r::db::Exception_Printf_("SRR0: %08X | DSISR: %08X | DAR: %08X\n", osContext->srr[0]);
 
     if (gprFun)

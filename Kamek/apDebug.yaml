@@ -1,8 +1,13 @@
 ---
-source_files: [../src/apDebug.cpp]
+source_files: [../src/apDebug.cpp, ../src/gameDisplayHax.cpp]
 hooks:
   - name: DrawAPhysics
     type: branch_insn
     branch_type: b
     src_addr_pal: 0x80830BD8
     target_func: 'APDebugDraw(void)'
+
+  - name: GDisplay_doWait
+    type: add_func_pointer
+    src_addr_pal: 0x80327A58
+    target_func: 'dGameDisplay_c::doWaitCheck(void)'

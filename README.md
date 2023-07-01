@@ -79,7 +79,7 @@ Supported mods:
 * Fire Laser
 * Flipblock
 * Giga Goomba
-* Hammer Suit (BUGGED: Currently there is no option for it on the StockItem menu)
+* Hammer Suit
 * Line God
 * Magic Platform
 * Message Box
@@ -99,15 +99,17 @@ Supported mods:
 * Universal Tileset Slot Mod
 * Spine Coaster Platforms
 * Fake Star Coin
+* Classic Controller Support
 
 #### Other Stuff
 Other Stuff includes, well, other stuff:
 * Riivolution XML (files load from the NSMBwer folder)
 * ReggiePatch (a Reggie patch based on the NewerSMBW one, updated to work with Reggie! Next 4.8 and 4.9)
 
-#### TODO
-* Fix more sprites issues (custom sprites always spawn, even when offscreen)
+#### Upcoming Changes/Fixes
 * Move all Newer sprites to new slots
-* Koopatlas and Pirahnatlas support(?)
+* Pirahnatlas support(?)
 * Fix NSMBW bugs
-* Fix hammer suit bugs
+* Add Hammer Suit rendering on the worldmap
+* Fix Boo Circles
+* Fix Bowser fight
