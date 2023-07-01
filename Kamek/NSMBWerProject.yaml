@@ -75,3 +75,9 @@ modules:
   - processed/nsmbwUpdated.yaml
   - processed/bossPlayerClown.yaml
   # - processed/stockItemFix.yaml
+  - processed/exceptionHandler.yaml
+  - processed/actors.yaml
+  - processed/actorlog.yaml
+  # - processed/anmlog.yaml
+  # - processed/layoutDebug.yaml
+  - processed/classic_controller.yaml

@@ -1,4 +1,8 @@
 SECTIONS {
+	stockItemPowerupModelScale = 0x8093C63C;
+	stockItemPlayerModelScale = 0x8093C0F4;
+	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809A2520;
+
 	dPlayerMdl_c__createPlayerModel = 0x800D3474;
 	callFooDeath = 0x80A6B430;
 
@@ -2279,6 +2283,8 @@ SECTIONS {
 
 	spawnCoinJump__7StageE4FRC7Point3diii = 0x80066630;
 	sub_800757B0__14collisionMgr_cFP7Point3dPfUcic = 0x800757B0;
+
+	sException__Q24nw4r2dbFv = 0x803DA860;
 
 	originalSprites = 0x8030A340;
 	originalProfiles = 0x8076A788;

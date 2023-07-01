@@ -2368,7 +2368,6 @@ class dPlayerInput_c {
 		void setTransientForcedButtons(u32 buttons); // 8005E960
 		void forceShakingOn(); // 8005E980
 
-	private:
 		int playerID;
 		u16 heldButtons, nowPressed;
 		u16 lastHeldButtons, lastNowPressed;
