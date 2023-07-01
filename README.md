@@ -60,13 +60,14 @@ specific to game hacks like Newer:
 
 Changes:
 * General folder and YAML cleanup
-* Removed some changes that have an impact on the original game (such as the Chest mod)
+* Changes that break vanilla levels (such as the newer chest mod) have been re-implemented. I plan to add a branch that has complete compatibilty with all vanilla levels.
 * RYOM moved over Mega Thwomp (11 -> 322) and Thundercloud moved over Super Topman (168 -> 251) to avoid overriding map actors
 * Added 2-Castle hardcode fixes from AnotherSMBW
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
 * Load custom music from the default BRSTM folder
 * Porting of some Newer Wii sprites to new slots
+* Ported fixes from RoadrunnerWMC's NSMBW-Updated project.
 
 Supported mods:
 * Actor Spawner
