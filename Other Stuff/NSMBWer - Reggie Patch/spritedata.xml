@@ -28,11 +28,6 @@
 <!-- Sizehacks Check - 63, 98, 113, 156, 357 -->
 <!-- Stopped after Line 7046 / 10755 (#230) -->
 <sprites>
-  <sprite id="13" name="Rideable Clowncar with Cannon" asmhacks="True" noyoshi="True" notes="Used in the NewerSMBW Final Boss Fight. The player can fly around freely and shoot a cannon at a fixed angle. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Not recommended for use outside of the Final Boss Fight.&lt;/font&gt;" advancedcomment="If you do choose to use this vehicle outside of the boss fight, please keep in mind there is no documentation for what issues you might encounter. Be sure to test your level for crashes and glitches. Cannon shots behave similarly but not identically to Bob-omb explosions. Water causes it to react similarly to Yoshi, with the player jumping off and the Clowncar sinking.">
-    <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
-    <checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
-  </sprite> <!-- #13: Rideable Clowncar with Cannon -->
-  
   <sprite id="20" name="Goomba" sizehacks="True" notes="Your standard Goomba. Place it in the level and it will walk towards Mario when it loads.">
     <list nybble="6" title="Color" comment="This determines the color and style of the Goomba.">
       <entry value="0">Normal</entry>
@@ -642,27 +637,6 @@
     <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." advanced="True" advancedcomment="Using a Triggering ID with Multi-Use functionality is somewhat glitchy and not recommended." requirednybble="10.4" idtype="Triggering Event"/> <!-- Appears if Multi-Use is set, but only if Advanced fields are enabled -->
   </sprite> <!-- #153: (Unused) ?-Switch -->
 
-  <sprite id="156" name="Red Coin Ring" notes="A glowing red ring that is intended to be used to spawn sets of 8 red coins, and to control the item that the player will receive after collection them.">
-    <dependency notes="The suggested use is to have 8 [144] Red Coins placed with the same Red Coin ID and Event ID as a matching Red Coin Ring. It is not recommended to use more than 1 Red Coin Ring within a single Zone, nor is it recommended to use either object for a purpose outside of the default, within a normal style level.">
-      <suggested sprite="144"/> <!-- Obviously it's suggested to utilize Red Coins -->
-    </dependency>
-    <value nybble="3.2-4.4" title="Target Event ID" comment="When the Red Coin Ring is touched, the Target Event will be activated." idtype="Target Event"/>
-    <dualbox nybble="5.4" title1="Timed Event" title2="Permanent Event" comment="This determines if the Target Event is activated temporarily or permanently." comment2="Timed events will pause the music and replace it with ticking. It is recommended for normal Red Coin Ring use that the event be timed."/>
-    <value nybble="12" title="Red Coin ID" comment="When set, the corresponding Red Coin set will have an Item Reward. Value 0 is also a valid ID." idtype="Red Coin"/>
-    <list nybble="11" title="Item Reward" comment="This determines which power-up will appear after collecting 8 coins from the Red Coin ID set above. If a player already has a power-up, it will drop a 1-Up.">
-      <entry value="0">Fire Flower</entry>
-      <entry value="1">Propeller Shroom</entry>
-      <entry value="2">Penguin Suit</entry>
-      <entry value="3">Ice Flower</entry>
-	  <entry value="4">Mini Mushroom</entry>
-      <entry value="5">Power Star</entry>
-      <entry value="6">1UP Mushroom</entry>
-      <entry value="7">Hammer Suit</entry>
-    </list>
-    <checkbox nybble="12.4" title="Shift Horizontally" comment="When this checkbox is ticked, the ring is moved half a block to the right. Note that this setting overlaps with the Red Coin ID." />
-    <checkbox nybble="10.4" title="Unknown Flag 10 (1)" advanced="True" advancedcomment="ASM shows Nybble 10 might affect something. No visible or functional change. Likely Z-Order related, or at least intended to be."/>
-  </sprite> <!-- #156: Red Coin Ring -->
-
   <!-- Move to new sprite slot! -->
   <!-- Double check Moving Direction, value 0 with ASM. - Grop says Value 0 should be Right and the list should repeat. Why is 0 'Does Not Move'? -->
   <sprite id="169" name="Magic Platform" notes="Magic Platforms are created by assigning tileset data on Layer 1 to an invisible block as a new texture, and moving that texture around. While it functions best as a moving platform, the Magic Platform does not have to move in order to perform its function. It can also simply create terrain chunks with a different type of collision than normal.">
@@ -735,55 +709,6 @@
     </list>
     <checkbox nybble="5.4" title="Unknown Flag 5 (1)" comment="Used in Retail: 06-05 A2. Possibly distance related."/>
   </sprite> <!-- #175: Flying ? Block -->
-
-  <sprite id="179" name="Special Exit Controller" notes="A special controller that will activate Entrance transitions when a player enters a specific area.">
-    <list nybble="10" title="Width" comment="This determines the width of the area that the Special Exit Controller will check for the player inside of.">
-      <entry value="0">1 Block</entry>
-      <entry value="1">2 Blocks</entry>
-      <entry value="2">3 Blocks</entry>
-      <entry value="3">4 Blocks</entry>
-      <entry value="4">5 Blocks</entry>
-      <entry value="5">6 Blocks</entry>
-      <entry value="6">7 Blocks</entry>
-      <entry value="7">8 Blocks</entry>
-      <entry value="8">9 Blocks</entry>
-      <entry value="9">10 Blocks</entry>
-      <entry value="10">11 Blocks</entry>
-      <entry value="11">12 Blocks</entry>
-      <entry value="12">13 Blocks</entry>
-      <entry value="13">14 Blocks</entry>
-      <entry value="14">15 Blocks</entry>
-      <entry value="15">16 Blocks</entry>
-    </list>
-    <list nybble="11" title="Height" comment="This determines the height of the area that the Special Exit Controller will check for the player inside of.">
-      <entry value="0">1 Block</entry>
-      <entry value="1">2 Blocks</entry>
-      <entry value="2">3 Blocks</entry>
-      <entry value="3">4 Blocks</entry>
-      <entry value="4">5 Blocks</entry>
-      <entry value="5">6 Blocks</entry>
-      <entry value="6">7 Blocks</entry>
-      <entry value="7">8 Blocks</entry>
-      <entry value="8">9 Blocks</entry>
-      <entry value="9">10 Blocks</entry>
-      <entry value="10">11 Blocks</entry>
-      <entry value="11">12 Blocks</entry>
-      <entry value="12">13 Blocks</entry>
-      <entry value="13">14 Blocks</entry>
-      <entry value="14">15 Blocks</entry>
-      <entry value="15">16 Blocks</entry>
-    </list>
-    <checkbox nybble="8.4" title="Vine / Climbing Exit" comment="When enabled, the Special Exit Controller will only activate if the player is also climbing while within the specified area."/>
-    <checkbox nybble="6.2" title="Exit, Stage Left" comment="When enabled, the Special Exit Controller will eject the players from the current level." comment2="This will not complete the level. The player will be forced to walk left during the transition, and the Exit Transition will be overridden with an iris focused on the left side of the screen. There is no pipe sound for this transition."/>
-    <list nybble="5.3-5.4" title="Exit Transition" comment="This determines the transition animation used when the screen fades out." comment2="Wavy Transition - Bottom to Top: The screen will go black with a wavy line going from bottom to top.&lt;br&gt;&lt;br&gt;Wavy Transition - Top to Bottom: The screen will go black with a wavy line going from top to bottom.&lt;br&gt;&lt;br&gt;Wavy Transition - Top to Bottom (Delayed): Same as above, but the animation is not triggered immediately upon contact with the warp area, instead taking place after a small delay.&lt;br&gt;&lt;br&gt;Black Iris and Pipe Sound: This option works just like a normal pipe exit, with a black circle enclosing the triggering player's position. At the same time, the sound effect that plays when entering a normal pipe is also played." requirednybble="6.2" requiredval="0">
-      <entry value="0">Wavy Transition - Bottom to Top</entry>
-      <entry value="2">Wavy Transition - Top to Bottom</entry>
-      <entry value="1">Wavy Transition - Top to Bottom (Delayed)</entry>
-      <entry value="3">Black Iris and Pipe Sound</entry>
-    </list>
-    <value nybble="7,12" title="Entrance ID" comment="This determines the Entrance ID that the Special Exit Controller links to. When triggered, the player will go to the Destination of the linked Entrance." requirednybble="6.2" requiredval="0" idtype="Entrance"/>
-    <value nybble="1.2-2.4" title="Triggering Event ID" comment="When the Triggering Event is 0, or is currently activated, the Special Exit Controller will also be active. If the Triggering Event is set and the Event is not activated, the Special Exit Controller will not function even when the player is inside it." idtype="Triggering Event"/>
-  </sprite> <!-- #179: Special Exit Controller -->
   
   <sprite id="181" name="Cheep Cheep Spawn Area - Jumping" notes="">
     <dualbox nybble="12.4" title1="Spawns Cheep Cheeps" title2="Spawns Fishbones" comment="Share no functional difference."/>
@@ -806,7 +731,7 @@
   
   <sprite id="188" name="Midway Flag" notes="A flag that when touched by the player will mark their progress in the level and respawn them at this location when re-entering the level.">
     <list nybble="5-6" title="Logo">
-      <entry value="0">Character Icon</entry>
+      <entry value="0">Newer Logo</entry>
       <entry value="1">Yoshi's Island</entry>
       <entry value="2">Goldwood</entry>
       <entry value="3">Desert</entry>
@@ -824,7 +749,7 @@
       <entry value="15">Sky City</entry>
       <entry value="16">Koopa Planet</entry>
       <entry value="17">Koopa Core</entry>
-      <entry value="18">Character Icon at a 30° angle</entry>
+      <entry value="18">Newer Logo at a 30° angle</entry>
     </list>
     <value nybble="7-8" title="Entrance ID" comment="This determines which Entrance the level will load the player into when they respawn." idtype="Entrance"/>
     <dualbox nybble="11.4" title1="Load Facing Right" title2="Load Facing Left" comment="This determines which direction the players will face when they respawn."/>
@@ -924,7 +849,8 @@
   <sprite id="200" name="Micro Goomba" notes="A very small Goomba that clings to the player until they spin jump to shake them off.">
   </sprite> <!-- #200: Micro Goomba -->
   
-  <sprite id="203" name="Chest" notes="A chest that will award some type of inventory item to the player. Note that opening a chest will complete the level with the standard exit.">
+  <!-- This one confuses me, the NSMBWer repo says they removed the chest mods that Newer did but the spritedata is the same as Newers?  I'll need to test this a bit -->
+  <sprite id="203" name="Chest" noyoshi="True" notes="A chest that will award some type of inventory item to the player. Note that opening a chest will complete the level with the standard exit.">
     <dependency notes="NewerSMBW rewrote this sprite's settings data in a way that breaks Ambush levels. As such the following information is outdated. [432] is still required, however.&lt;br&gt;&lt;br&gt;Requires ONE of these two sprites in order to not cause the game to crash. Which one depends on how the Chest is being used. If you're using it as part of an Ambush level, [454] is required. If you're using it without the Ambush arrangement, [432] is required to be placed somewhere in the level, even if it's outside of the active Zones. Additionally, if you allow the player to leave the vicinity of the Chest before it exits the player from the level, they will be able to open it again for another item, so do not allow the player to do this.">
       <suggested sprite="432"/>
       <!--<suggested sprite="454" />-->
@@ -1877,7 +1803,7 @@
   <!-- Further describe Use 'Forming' Animation (and maybe suggest another name for it) -->
   <!-- Extensive testing needed for Nybble 9 and 10 -->
   <!-- More testing is needed for Tilt after Falling, too. In retail it tilts Right during the one instance it is used, but was listed as Left in previous documentation. -->
-  <sprite id="311" name="Mega Icicle" notes="A large hanging icicle that can fall if the player comes too close to it. It can also be triggered by a Snake Block.">
+  <sprite id="311" name="Mega Icicle" noyoshi="True" notes="A large hanging icicle that can fall if the player comes too close to it. It can also be triggered by a Snake Block.">
     <dependency notes="The Mega Icicle has several options that function specifically with the Snake Block.">
       <suggested sprite="166"/>
     </dependency>
@@ -2444,6 +2370,5 @@
       <entry value="4">Magenta</entry>
     </list>
   </sprite> <!-- #487: Big Shy Guy -->
-
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

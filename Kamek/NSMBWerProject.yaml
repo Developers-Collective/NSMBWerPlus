@@ -46,6 +46,7 @@ modules:
   - processed/compression.yaml
   # - processed/crowdclapper.yaml
   # - processed/blocksnake.yaml
+  # - processed/classic_controller.yaml
   - processed/topman.yaml
   - processed/bossMegaGoomba.yaml
   # - processed/bossFuzzyBear.yaml
@@ -70,12 +71,13 @@ modules:
   # - processed/singAlong.yaml
   # - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
+  # - processed/actorlog.yaml
   - processed/nsmbwUpdated.yaml
   - processed/bossPlayerClown.yaml
+  # - processed/stockItemFix.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  # - processed/actorlog.yaml
+  - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
   - processed/classic_controller.yaml
-  - processed/redRingRewards.yaml

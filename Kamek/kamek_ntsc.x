@@ -1,10 +1,4 @@
 SECTIONS {
-	aWm_ob_eggbreak = 0x80989D60;
-	aWm_ob_eggbre_0 = 0x80989D74;
-	aWm_ob_eggbre_1 = 0x80989D88;
-	aWm_ob_eggbre_2 = 0x80989D9C;
-
-	returnFromChangeRedRingArray = 0x80A9429C;
 	stockItemPowerupModelScale = 0x8093C62C;
 	stockItemPlayerModelScale = 0x8093C0E4;
 	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809A2520;
