@@ -1402,7 +1402,21 @@ class SpriteImage_FakeStarCoin(SLib.SpriteImage_Static):  # 49
     def loadImages():
         SLib.loadIfNotInImageCache('FakeStarCoin', 'starcoin_fake.png')
 
+class SpriteImage_ClownCar(SLib.SpriteImage_Static):  # 13
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['ClownCar'],
+            (16, -28),
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('ClownCar', 'clown_car.png')
+
 ImageClasses = {
+    13: SpriteImage_ClownCar,
     20: SpriteImage_NewerGoomba,
     21: SpriteImage_NewerParaGoomba,
     24: SpriteImage_NewerBuzzyBeetle,
