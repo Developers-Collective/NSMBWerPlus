@@ -77,29 +77,6 @@ return_0:
 	blr
 
 
-.extern returnFromFrogPenguinMove1
-.extern returnFromFrogPenguinMove2
-.global frogPenguinMove1
-frogPenguinMove1:
-	cmpwi r0, 0xe
-	bne tryFrogInstead1
-	b returnFromFrogPenguinMove1
-tryFrogInstead1:
-	cmpwi r0, 0x9
-	b returnFromFrogPenguinMove1
-
-
-
-.global frogPenguinMove2
-frogPenguinMove2:
-	cmpwi r0, 0xe
-	bne tryFrogInstead2
-	b returnFromFrogPenguinMove2
-tryFrogInstead2:
-	cmpwi r0, 0x9
-	b returnFromFrogPenguinMove2
-
-
 .global FukidashiFix
 FukidashiFix:
 	lis r7, ZeroFloat@h
@@ -767,40 +744,6 @@ WeirdAnimLoadHack:
 	crclr 4*cr0+eq
 	blr
 
-
-.extern increaseIceCount__11placeholderFv
-.extern ret0ice
-.extern retice
-.global IncreaseIceball
-IncreaseIceball:
-	cmpwi r3, 0
-	beq _ret0ice
-	b _retice
-_ret0ice:
-	b ret0ice
-_retice:
-	bl increaseIceCount__11placeholderFv
-	li r3, 1
-	b retice
-
-.extern retice2
-.global IncreaseIceballSpin
-IncreaseIceballSpin:
-	bl PlayerProjectileShooting
-	bl increaseIceCount__11placeholderFv
-	b retice2
-
-
-.extern increasePropellerCount__11placeholderFv
-.extern ContinueFromPropellerBegin
-.global IncreasePropeller
-IncreasePropeller:
-	bl increasePropellerCount__11placeholderFv
-	lha r0, 0x17CC(r31)
-	b ContinueFromPropellerBegin
-
-
-.extern doCleanClouds__11placeholderFv
 .global TryToGiveMarioHammerSuit
 TryToGiveMarioHammerSuit:
 	stwu sp, -0x10(sp)
@@ -813,18 +756,6 @@ TryToGiveMarioHammerSuit:
 checkPow:
 	cmplwi r3, 5				#If it's 5
 	beq doCheckForHammer		#Then do the check for the hammer suit
-	cmplwi r3, 0xF				#If it's 0xF
-	beq doCheckForBoomerang		#Then do the check for the boomerang suit
-	cmplwi r3, 7				#If it's 7
-	beq doCheckForSpike			#Then do the check for the spike suit
-	cmplwi r3, 8				#If it's 8
-	beq doCheckForWand			#Then do the check for rosalina's wand
-	cmplwi r3, 9				#If it's 9
-	beq doCheckForFrog			#Then do the check for the frog suit
-	cmplwi r3, 0xA				#If it's 0xA
-	beq doCheckForGold			#Then do the check for the gold flower
-	cmplwi r3, 0xC				#If it's 0xC
-	beq doCheckForCloud			#Then do the check for the cloud suit
 	b IsntGettingAnySuit		#Otherwise, No suit getting so go to IsntGettingAnySuit
 
 doCheckForHammer:
@@ -836,62 +767,6 @@ doCheckForHammer:
 	li r29, 2
 	b ReturnFromTTGMHS
 
-doCheckForGold:
-	# check the current player powerup
-	cmplwi r4, 8				#If the current powerup isn't 8
-	bne DontHaveGold			#then we don't have the thunder yet, so go to DontHaveGold
-	
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-
-doCheckForSpike:
-	# check the current player powerup
-	cmplwi r4, 9				#If the current powerup isn't 9
-	bne DontHaveSpikeSuit		#then we don't have the spike yet, so go to DontHaveSpikeSuit
-	
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-
-doCheckForBoomerang:
-	# check the current player powerup
-	cmplwi r4, 10				#If the current powerup isn't 10
-	bne DontHaveBoomerangSuit	#then we don't have the boomerang yet, so go to DontHaveBoomerangSuit
-	
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-
-doCheckForFrog:
-	# check the current player powerup
-	cmplwi r4, 11				#If the current powerup isn't 11
-	bne DontHaveFrogSuit		#then we don't have the frog yet, so go to DontHaveFrogSuit
-	
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-
-doCheckForCloud:
-	# check the current player powerup
-	cmplwi r4, 12				#If the current powerup isn't 12
-	bne DontHaveCloudSuit		#then we don't have the cloud yet, so go to DontHaveCloudSuit
-	
-	bl doCleanClouds__11placeholderFv
-
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-
-doCheckForWand:
-	# check the current player powerup
-	cmplwi r4, 13				#If the current powerup isn't 13
-	bne DontHaveWand			#then we don't have the bobomb yet, so go to DontHaveWand
-	
-	li r28, 0					#Otherwise, set some shit and ReturnFromTTGMHS
-	li r29, 2
-	b ReturnFromTTGMHS
-	
 DontHaveHammerSuit:
 	mr r3, r30								#move this into r3
 	li r4, 7								#set the first param to 7 (well the first one is 'this' actually but shhhht)
@@ -903,72 +778,7 @@ DontHaveHammerSuit:
 	li r29, 1
 	b ReturnFromTTGMHS
 	
-DontHaveGold:
-	mr r3, r30								#move this into r3
-	li r4, 8								#set the first param to 8 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 8 (with a cute animation owo)
-	
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	b ReturnFromTTGMHS
-	
-DontHaveSpikeSuit:
-	mr r3, r30								#move this into r3
-	li r4, 9								#set the first param to 9 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 9 (with a cute animation owo)
-	
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	b ReturnFromTTGMHS
-	
-DontHaveBoomerangSuit:
-	mr r3, r30								#move this into r3
-	li r4, 10								#set the first param to 10 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 10 (with a cute animation owo)
-	
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	b ReturnFromTTGMHS
-	
-DontHaveFrogSuit:
-	mr r3, r30								#move this into r3
-	li r4, 11								#set the first param to 11 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 11 (with a cute animation owo)
-	
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	b ReturnFromTTGMHS
-	
-DontHaveCloudSuit:
-	bl doCleanClouds__11placeholderFv
-	mr r3, r30								#move this into r3
-	li r4, 12								#set the first param to 12 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 12 (with a cute animation owo)
 
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	b ReturnFromTTGMHS
-	
-DontHaveWand:
-	mr r3, r30								#move this into r3
-	li r4, 13								#set the first param to 13 (well the first one is 'this' actually but shhhht)
-	bl dAcPy_c__ChangePowerupWithAnimation	#change the current powerup to 13 (with a cute animation owo)
-	
-	cmpwi r3, 0
-	beq ReturnFromTTGMHS
-	
-	li r29, 1
-	
 IsntGettingAnySuit:
 ReturnFromTTGMHS:
 	# end of function
