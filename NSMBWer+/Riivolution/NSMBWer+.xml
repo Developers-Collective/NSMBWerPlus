@@ -3,6 +3,8 @@
 		<region type="P"/>
 		<region type="E"/>
 		<region type="J"/>
+		<region type="K"/>
+		<region type="W"/>
 	</id>
 	<options>
 		<section name="NSMBWer+">
