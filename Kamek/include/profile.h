@@ -1,5 +1,11 @@
 #pragma once
 
+#if defined(REGION_K) || defined(REGION_W) || defined(REGION_C)
+	#define ORIGINAL_PROFILES 752
+#else
+	#define ORIGINAL_PROFILES 750
+#endif
+
 #include <game.h>
 #include "profileid.h"
 
@@ -48,5 +54,5 @@ public:
 extern SpriteData originalSprites[483];
 extern SpriteData sprites[];
 
-extern Profile* originalProfiles[750];
+extern Profile* originalProfiles[ORIGINAL_PROFILES];
 extern Profile* profiles[];

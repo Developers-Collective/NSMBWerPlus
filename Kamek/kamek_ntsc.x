@@ -14,7 +14,7 @@ SECTIONS {
 
 	FUN_8085f5c0 = 0x8085F5C0;
 	fixJumbo1return = 0x80860074;
-	fixJumbo2return	= 0x808600d8;
+	fixJumbo2return	= 0x808600D8;
 
 	ContinueFromSixteenthHook = 0x80143560;
 
@@ -596,6 +596,7 @@ SECTIONS {
 
 	RealAcPyDtor = 0x801446E0;
 	RealWm2dPlayerDtor = 0x808C5500;
+	WmPlayerDtor = 80902890;
 	RealYoshiDtor = 0x8014B580;
 
 	InsertIntIntoTextBox1 = 0x800B3BE0;

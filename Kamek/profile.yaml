@@ -95,4 +95,4 @@ hooks:
     type: branch_insn
     branch_type: b
     src_addr_pal: 0x801018c0
-    target_func: 'getProfileName(unsigned int)'
+    target_func: 'GetProfileName(unsigned int)'

@@ -3,7 +3,7 @@
 .set sp, 1
 
 .extern ContinueFromLoadingCRSIN
-.global aI_kinoko_3, aI_fireflower_2, aI_iceflower_0, aI_star_0, aI_propeller_0, aI_penguin, aI_hammer_0, aI_gold_0, aI_spike_0, aI_boomerang_0, aI_frog_0, aI_cloud_0, aI_wand_0
+.global aI_kinoko_3, aI_fireflower_2, aI_iceflower_0, aI_star_0, aI_propeller_0, aI_penguin, aI_hammer_0
 
 #include <asm_setup.S>
 
@@ -52,17 +52,6 @@ LoadListArray:
 	.long aI_hammer_0							# "I_hammer"
 	.long aHammerM_0							# "hammerM"
 	.long aBros_0								# "bros"
-	.long aGabon_rock_0							# "gabon_rock"
-	.long aI_gold_0								# "I_gold"
-	.long aI_spike_0							# "I_spike"
-	.long aSpikeM_0								# "spikeM"
-	.long aI_boomerang_0						# "I_boomerang"
-	.long aBoomerangM_0							# "boomerangM"
-	.long aI_frog_0								# "I_frog"
-	.long aFrogM_0								# "frogM"
-	.long aI_cloud_0							# "I_cloud"
-	.long aCloudM_0								# "cloudM"
-	.long aI_wand_0								# "I_wand"
 	
 
 aMario_0:
@@ -179,38 +168,3 @@ aHammerM_0:
 aBros_0:
 	.string "bros"
 
-aGabon_rock_0:
-	.string "gabon_rock"
-
-aPower_cloud_0:
-	.string "power_cloud"
-
-aI_gold_0:
-	.string "I_gold"
-
-aI_spike_0:
-	.string "I_spike"
-
-aSpikeM_0:
-	.string "spikeM"
-
-aI_boomerang_0:
-	.string "I_boomerang"
-
-aBoomerangM_0:
-	.string "boomerangM"
-
-aI_frog_0:
-	.string "I_frog"
-
-aFrogM_0:
-	.string "frogM"
-
-aI_cloud_0:
-	.string "I_cloud"
-
-aCloudM_0:
-	.string "cloudM"
-
-aI_wand_0:
-	.string "I_wand"

@@ -2,20 +2,15 @@
 source_files: [../src/poweruphax.S, ../src/poweruphax.cpp, ../src/stockItemFix.S, ../src/loading.S]
 hooks:
 
-#  - name: FixVanillaMap1
-#    type: patch
-#    addr_pal: 0x809272D0
-#    data: '2c19000E' #Orig: 2c190007
-
   - name: FixVanillaMap2
     type: patch
     addr_pal: 0x80926d58
-    data: '281f000D' #Orig: 281f0006
+    data: '281f0007' #Orig: 281f0006
 
   - name: FixVanillaMap3
     type: patch
     addr_pal: 0x80927a88
-    data: '2817000D' #Orig: 28170006
+    data: '28170007' #Orig: 28170006
 
   - name: FixVanillaMap4
     type: branch_insn
@@ -50,14 +45,14 @@ hooks:
   - name: FixVanillaMap9 #New (RSM)
     type: patch
     addr_pal: 0x80926C4C
-    data: '281c000E' #Orig: 281c0007
+    data: '281c0008'
 
   - name: FixVanillaMap10 #New (RSM)
     type: patch
     addr_pal: 0x809272CC
     data: '907a08e0' #Orig: 907a02f4
 
-#==================new_powerups_available==================#
+#==================new powerupAvailable==================#
 
   - name: FixVanillaMap11
     type: patch
@@ -78,6 +73,13 @@ hooks:
     type: patch
     addr_pal: 0x800bb3f8
     data: '880306fd' #Orig: 88030009
+
+  - name: FixToadHouseItems
+    type: patch
+    addr_pal: 0x8086b278
+    data: '88bf06fd' #Orig: 88030009
+
+#=======================================================#
 
   - name: anotherSIpatch
     type: patch
@@ -243,7 +245,7 @@ hooks:
   - name: LoadThisShittyCount
     type: patch
     addr_pal: 0x8091EC6C
-    data: '38c00026' #original: 38c00023
+    data: '38c00026' #original: 38c00023, should probably be 39 but this works
     
   - name: AlwaysLoadBrosArc
     type: add_func_pointer
@@ -773,6 +775,34 @@ hooks:
     target_func: 'Wm2dPlayerDrawHS'
     src_addr_pal: 0x808C5910
     branch_type: b
+
+  - name: BiggerWmPlayer
+    type: patch
+    addr_pal: 0x80902798
+    data: '3860 0310'
+
+#  - name: WmPlayerCtorHS
+#    type: branch_insn
+#    target_func: 'WmPlayerCtorHS'
+#    src_addr_pal: 0x80902888
+#    branch_type: b
+
+#  - name: WmPlayerDtorReplace
+#    type: add_func_pointer
+#    target_func: 'WmPlayerDtorHS'
+#    src_addr_pal: 0x80989440
+
+#  - name: WmPlayerSetMeUpHS
+#    type: branch_insn
+#    target_func: 'WmPlayerSetMeUpHS' 
+#    src_addr_pal: 0x808C5A30 # wrong address
+#    branch_type: b
+
+#  - name: WmPlayerDrawHS
+#    type: branch_insn
+#    target_func: 'WmPlayerDrawHS'
+#    src_addr_pal: 0x80902AC0
+#    branch_type: b
 
   - name: AddHSToBattleItem_AddArcName
     type: add_func_pointer
