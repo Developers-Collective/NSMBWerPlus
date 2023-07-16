@@ -108,5 +108,16 @@ Supported mods:
 * Add Hammer Suit rendering on the worldmap
 * Fix Boo Circles
 
+### Credits
+* Nin0 - Programming Assistance, General Assistance, Numerous bits of code
+* Bupcraft, Lurker, Kirblue - Bug Reporting
+* Abood - More Sprites code
+* CLF78 - Original NSMBWer, Korean/Taiwanese support, additional More Sprites code
+* EternityShack - Crash Reporter
+* Luminyx - Programming assistance
+* Danster - original NSMBWer
+* Ninji, Tempus - original NewerSMBW
+* RoadrunnerWMC - Reggie! Next spritedata, NSMBW Updated code, Korean/Taiwanese support
+
 [horizoncodesetup]:
 https://horizon.miraheze.org/wiki/Setting_Up_and_Compiling_the_Newer_Sources#Windows_(Newer_Super_Mario_All-Stars_Revived_and_NSMBWer_only)
