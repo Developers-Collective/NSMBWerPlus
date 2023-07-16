@@ -2,6 +2,7 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <profileid.h>
+#include <profile.h>
 
 #include "boss.h"
 
@@ -47,7 +48,7 @@ class daMrSun_c : public dEn_c {
 
 
 	void dieFall_Execute();
-	static daMrSun_c *build();
+	public: static dActor_c *build();
 
 	void updateModelMatrices();
 
@@ -72,7 +73,11 @@ class daMrSun_c : public dEn_c {
 	DECLARE_STATE(Wait);
 };
 
-daMrSun_c *daMrSun_c::build() {
+const SpriteData MrSunSpriteData = {ProfileId::MrSun, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile MrSunProfile(&daMrSun_c::build, SpriteId::MrSun, &MrSunSpriteData, ProfileId::EN_WALLINSECT, ProfileId::MrSun, "AngrySun", MSarcNameList);
+
+dActor_c *daMrSun_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daMrSun_c));
 	return new(buffer) daMrSun_c;
 }

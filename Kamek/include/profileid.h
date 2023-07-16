@@ -512,9 +512,22 @@ enum
     ChallengeStar = 488, //crashes
     PumpkinGoomba = 489, //unfinished, code is a mess
     EventBlock = 490, 
-    SpriteSpawner = 491, //crashes, staying at 88 for now
-    SpriteMultiSpawner = 492, //seeing as how the normal ActorSpawner crashes I'm leaving the multi one at 95
+    SpriteSpawner = 491,
+    SpriteSwapper = 492,
     CustomClownCar = 493,
+	ThunderCloud = 494,
+	MSGBoxManager = 495,
+	MSGBox = 496,
+	MagicPlatform = 497,
+	Meteor = 498,
+	Topman = 499,
+	ElectricLine = 500,
+	MrSun = 501,
+	Chestnut = 502,
+	RYOM = 503,
+	EffectSpawner = 504,
+	FireLaser = 505,
+	BossMegaGoomba = 506,
 
     Num
 };
@@ -1295,9 +1308,22 @@ enum
     PumpkinGoomba, //756
     EventBlock, //757
     SpriteSpawner, //758
-    SpriteMultiSpawner, //759
+    SpriteSwapper, //759
     CustomClownCar, //760
     CustomClownShot, //761
+	ThunderCloud, //762
+	MSGBoxManager, //763
+	MSGBox, //764
+	MagicPlatform, //765
+	Meteor, //766
+	Topman, //767
+	ElectricLine, //768
+	MrSun, //769
+	Chestnut, //770
+	RYOM, //771
+	EffectSpawner, //772
+	FireLaser, //773
+	BossMegaGoomba, //774
 
     Num
 };

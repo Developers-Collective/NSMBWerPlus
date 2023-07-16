@@ -30,9 +30,9 @@ A build is inside this folder, including the SpriteTex files, an XML and the rel
 want to create a mod, starting with this is suggested. Keep in mind this build doesn't include the
 custom music or tilesets from Newer.
 
-It also includes an edited 01-01 and 01-06 that removes old unused sprite settings from Nintendo set
-on the Rolling Hills that, now would crash NSMBWer. They are different flags for the Rolling Hill recolors
-that don't exist in base Newer (I plan to fix this as to not keep slightly modified vanilla files included with the mod)
+It also includes an edited 01-01, 01-06, and 06-01 that removes old unused sprite settings from Nintendo set
+on several sprites that, now would crash NSMBWer. They are different flags for sprite recolors
+that don't exist in base Newer.
 
 #### Kamek
 
@@ -56,12 +56,12 @@ specific to game hacks like Newer:
 - The compiled output is converted to a specific format expected by the
   Newer loader.
 
-#### Newer Hacks
+You may learn how to compiler the NSMBWer+ source code on [This Website][horizoncodesetup]
 
 Changes:
 * General folder and YAML cleanup
-* Changes that break vanilla levels (such as the newer chest mod) have been re-implemented. I plan to add a branch that has complete compatibilty with all vanilla levels.
-* RYOM moved over Mega Thwomp (11 -> 322) and Thundercloud moved over Super Topman (168 -> 251) to avoid overriding map actors
+* Changes that break vanilla levels (such as the newer chest mod) have been re-implemented. A branch that removes all these major changes will be added in the future.
+* Every sprite mentioned in the section below has been moved to new sprite slots to avoid overriding any original game sprites to have compatibility with the original game.
 * Added 2-Castle hardcode fixes from AnotherSMBW
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
@@ -76,7 +76,6 @@ Supported mods:
 * Chestnut
 * Electric Line
 * Event Block
-* Event Looper
 * Fire Laser
 * Flipblock
 * Giga Goomba
@@ -102,15 +101,12 @@ Supported mods:
 * Fake Star Coin
 * Classic Controller Support
 
-#### Other Stuff
-Other Stuff includes, well, other stuff:
-* Riivolution XML (files load from the NSMBwer folder)
-* ReggiePatch (a Reggie patch based on the NewerSMBW one, updated to work with Reggie! Next 4.8 and 4.9)
-
 #### Upcoming Changes/Fixes
 * Move all Newer sprites to new slots
 * Pirahnatlas support(?)
 * Fix NSMBW bugs
 * Add Hammer Suit rendering on the worldmap
 * Fix Boo Circles
-* Fix Bowser fight
+
+[horizoncodesetup]:
+https://horizon.miraheze.org/wiki/Setting_Up_and_Compiling_the_Newer_Sources#Windows_(Newer_Super_Mario_All-Stars_Revived_and_NSMBWer_only)

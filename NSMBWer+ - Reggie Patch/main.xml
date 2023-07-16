@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<game name="NSMBWer+" version="1.0" description="NewerSMBW mod with[br]original worldmap support.">
+    <folder name="sprites" path="sprites"/>
+    <folder name="external" path="external" />
+    <file name="spritedata" path="spritedata.xml"/>
+    <file name="sprites" path="sprites.py"/>
+</game>

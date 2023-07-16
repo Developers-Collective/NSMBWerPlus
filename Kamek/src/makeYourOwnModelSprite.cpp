@@ -1,7 +1,7 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
-
+#include <profile.h>
 
 //////////////////////////////////////////////////////////
 //
@@ -16,14 +16,14 @@
 
 
 // This is the class allocator, you don't need to touch this
-class dMakeYourOwn : public dStageActor_c {
+class dMakeYourOwn : public dEn_c {
 	// Let's give ourselves a few functions
 	int onCreate();
 	int onDelete();
 	int onExecute();
 	int onDraw();
 
-	static dMakeYourOwn *build();
+	public: static dActor_c *build();
 
 	// And a model and an anmChr
 	mHeapAllocator_c allocator;
@@ -43,9 +43,23 @@ class dMakeYourOwn : public dStageActor_c {
 	void setupAnim(const char* name, float rate);
 	void setupModel(const char* arcName, const char* brresName, const char* mdlName);
 };
+const char *RYOMArcNameList[] = {
+	"arrow",
+	"block_arrow",
+	"cage_boss_koopa",
+	"kameck_princess",
+	"CreditsBG",
+	"chestnut",
+	"OpeningScene",
+	"chestnut",
+	NULL
+};
+const SpriteData RYOMSpriteData = {ProfileId::RYOM, 0, 0, 0xFFFFFC00 ,0xFFFFFC00 ,0x400 ,0x400, 0, 0, 0, 0, 8};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile RYOMProfile(&dMakeYourOwn::build, SpriteId::RYOM, &RYOMSpriteData, ProfileId::WM_KOOPA_CASTLE, ProfileId::RYOM, "RYOMLoader", RYOMArcNameList);
 
 // This sets up how much space we have in memory
-dMakeYourOwn *dMakeYourOwn::build() {
+dActor_c *dMakeYourOwn::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dMakeYourOwn));
 	return new(buffer) dMakeYourOwn;
 }

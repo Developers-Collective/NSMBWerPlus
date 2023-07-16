@@ -1,11 +1,12 @@
 #include <game.h>
 #include <profileid.h>
 #include <sfx.h>
+#include <profile.h>
 const char *ChestnutFileList[] = {"chestnut", 0};
 
 class daEnChestnut_c : public dEn_c {
 	public:
-		static daEnChestnut_c *build();
+		static dActor_c *build();
 
 		mHeapAllocator_c allocator;
 		nw4r::g3d::ResFile resFile;
@@ -56,7 +57,11 @@ CREATE_STATE(daEnChestnut_c, Shake);
 CREATE_STATE(daEnChestnut_c, Fall);
 CREATE_STATE(daEnChestnut_c, Explode);
 
-daEnChestnut_c *daEnChestnut_c::build() {
+const SpriteData ChestnutSpriteData = {ProfileId::Chestnut, 8, 0xFFFFFFF0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ChestnutProfile(&daEnChestnut_c::build, SpriteId::Chestnut, &ChestnutSpriteData, ProfileId::REMO_SLIDE_DOOR, ProfileId::Chestnut, "Chestnut", ChestnutFileList);
+
+dActor_c *daEnChestnut_c::build() {
 	void *buf = AllocFromGameHeap1(sizeof(daEnChestnut_c));
 	return new(buf) daEnChestnut_c;
 }

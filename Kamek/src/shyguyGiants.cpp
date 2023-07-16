@@ -107,7 +107,7 @@ Profile ShyGuyGiantsProfile(&daShyGuyGiant::build, SpriteId::ShyGuyGiant, &ShyGu
 
 dActor_c *daShyGuyGiant::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daShyGuyGiant));
-	OSReport("Building Shy Guy");
+	//OSReport("Building Shy Guy");
 	return new(buffer) daShyGuyGiant;
 }
 
@@ -345,7 +345,7 @@ void daShyGuyGiant::bindAnimChr_and_setUpdateRate(const char* name, int unk, flo
 }
 
 int daShyGuyGiant::onCreate() {
-	OSReport("Spawning Shy Guy");
+	//OSReport("Spawning Shy Guy");
 	this->type = (this->settings >> 28) & 0xF;
 
 	allocator.link(-1, GameHeaps[0], 0, 0x20);

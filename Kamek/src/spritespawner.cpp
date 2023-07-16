@@ -1,8 +1,9 @@
 #include <game.h>
+#include <profile.h>
 
 class dSpriteSpawner_c : public dStageActor_c {
 	public:
-		static dSpriteSpawner_c *build();
+		static dActor_c *build();
 
 		u64 classicEventOverride;
 		u32 profileID;
@@ -16,7 +17,13 @@ class dSpriteSpawner_c : public dStageActor_c {
 
 /*****************************************************************************/
 // Glue Code
-dSpriteSpawner_c *dSpriteSpawner_c::build() {
+
+const char *SpriteSpawnerFileList[] = {0};
+const SpriteData SpriteSpawnerSpriteData = { ProfileId::SpriteSpawner, 16, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile SpriteSpawnerProfile(&dSpriteSpawner_c::build, SpriteId::SpriteSpawner, &SpriteSpawnerSpriteData, ProfileId::EN_BOYON, ProfileId::SpriteSpawner, "SpriteSpawner", SpriteSpawnerFileList);
+
+dActor_c *dSpriteSpawner_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dSpriteSpawner_c));
 	dSpriteSpawner_c *c = new(buffer) dSpriteSpawner_c;
 	return c;

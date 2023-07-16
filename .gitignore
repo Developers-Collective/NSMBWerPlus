@@ -5,6 +5,9 @@ Kamek/tmp
 Kamek/tools/__pycache__
 Kamek/tools/devkitPPC
 Kamek/- Build - Test.bat
+Kamek/- Build - Release.bat
 .vscode
-
 *.onetoc2
+Kamek/tools/kamek_test.py
+Kamek/kamek_configs_test.yaml
+Kamek/tools/renameNewer_test.py

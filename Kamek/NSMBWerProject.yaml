@@ -29,7 +29,6 @@ modules:
   - processed/spritetex.yaml
   # - processed/gakenoko.yaml
   - processed/poweruphax.yaml
-  # - processed/heapbar.yaml
   - processed/randtiles.yaml
   - processed/objkinoko.yaml
   - processed/tilegod.yaml
@@ -40,7 +39,7 @@ modules:
   - processed/msgbox.yaml
   # - processed/replay.yaml
   - processed/growup.yaml
-  - processed/eventlooper.yaml
+  # - processed/eventlooper.yaml
   - processed/spritespawner.yaml
   - processed/spriteswapper.yaml
   - processed/compression.yaml
@@ -74,7 +73,7 @@ modules:
   - processed/bossPlayerClown.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  # - processed/actorlog.yaml
+  - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
   - processed/classic_controller.yaml

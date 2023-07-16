@@ -2,12 +2,17 @@
 #include <game.h>
 #include <sfx.h>
 #include "msgbox.h"
+#include <profile.h>
 
 // Replaces: EN_LIFT_ROTATION_HALF (Sprite 107; Profile ID 481 @ 80AF96F8)
 
+const char *MSGBoxManagerFileList[] = {0};
+const SpriteData MsgBoxManagerSpriteData = {ProfileId::MSGBoxManager, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile MsgBoxManagerProfile(&dMsgBoxManager_c::build, SpriteId::MSGBoxManager, &MsgBoxManagerSpriteData, ProfileId::EN_LIFT_ROTATION_HALF, ProfileId::MSGBoxManager, "MessageBoxManager", MSGBoxManagerFileList);
 
 dMsgBoxManager_c *dMsgBoxManager_c::instance = 0;
-dMsgBoxManager_c *dMsgBoxManager_c::build() {
+dActor_c *dMsgBoxManager_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dMsgBoxManager_c));
 	dMsgBoxManager_c *c = new(buffer) dMsgBoxManager_c;
 
@@ -234,7 +239,7 @@ public:
 	USING_STATES(daEnMsgBlock_c);
 	DECLARE_STATE(Wait);
 
-	static daEnMsgBlock_c *build();
+	static dActor_c *build();
 };
 
 
@@ -299,8 +304,12 @@ int daEnMsgBlock_c::onExecute() {
 	return true;
 }
 
+const char *MSGBoxFileList[] = {0};
+const SpriteData MsgBoxSpriteData = {ProfileId::MSGBox, 16, -16 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile MsgBoxProfile(&daEnMsgBlock_c::build, SpriteId::MSGBox, &MsgBoxSpriteData, ProfileId::EN_BLUR, ProfileId::MSGBox, "MessageBox", MSGBoxFileList);
 
-daEnMsgBlock_c *daEnMsgBlock_c::build() {
+dActor_c *daEnMsgBlock_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daEnMsgBlock_c));
 	return new(buffer) daEnMsgBlock_c;
 }

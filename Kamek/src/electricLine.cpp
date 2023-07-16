@@ -3,6 +3,7 @@
 #include <g3dhax.h>
 #include <profileid.h>
 #include <sfx.h>
+#include <profile.h>
 
 class daElectricLine : public dEn_c {
 	int onCreate();
@@ -18,7 +19,7 @@ class daElectricLine : public dEn_c {
 	u32 timer;
 	char loops;
 
-	static daElectricLine *build();
+	public: static dActor_c *build();
 
 	USING_STATES(daElectricLine);
 	DECLARE_STATE(Activate);
@@ -26,7 +27,12 @@ class daElectricLine : public dEn_c {
 	DECLARE_STATE(Die);
 };
 
-daElectricLine *daElectricLine::build() {
+const char *ElectricLineArcList[] = {0};
+const SpriteData ElectricLineSpriteData = {ProfileId::ElectricLine, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ElectricLineProfile(&daElectricLine::build, SpriteId::ElectricLine, &ElectricLineSpriteData, ProfileId::KAWANAGARE, ProfileId::ElectricLine, "ElectricLine", ElectricLineArcList);
+
+dActor_c *daElectricLine::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daElectricLine));
 	return new(buffer) daElectricLine;
 }

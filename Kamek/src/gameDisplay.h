@@ -133,7 +133,6 @@ class dGameDisplay_c : dBase_c {
         u32 _51C;
         u8 blob2[0x5A0 - 0x508];
         u32 _5A0;
-        u32 purplecoins; //New
        
         static dGameDisplay_c* instance;
         int onCreate_orig();
@@ -141,7 +140,6 @@ class dGameDisplay_c : dBase_c {
         int doWaitCheck();
         int cleanDisplay();
         void doGlobalCoin();
-        void refreshPurpleCoins(); //New
 		
 		USING_STATES(dGameDisplay_c);
 		REF_NINTENDO_STATE(ProcGoalEnd);

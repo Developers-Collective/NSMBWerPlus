@@ -18,12 +18,11 @@ hooks:
       addr_pal: 0x80019EE0
       data: '38000000'
 
-    - name: DisableWarningMgrOne
+    - name: DisableControllerCheck1
       type: patch
-      addr_pal: 0x800B3B30
-      data: '38000000'
+      addr_pal: 0x800b19c0
+      data: '4E800020'
 
-    - name: DisableWarningMgrTwo
-      type: patch
-      addr_pal: 0x8076DBa8
-      data: '38000000'
+    - name: DisableControllerCheck2
+      type: nop_insn
+      area_pal: 0x8010e030

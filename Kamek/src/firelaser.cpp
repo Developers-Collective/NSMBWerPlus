@@ -2,6 +2,7 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <profileid.h>
+#include <profile.h>
 
 class daFireLaser_c : public dEn_c {
 	int onCreate();
@@ -9,7 +10,7 @@ class daFireLaser_c : public dEn_c {
 	int onExecute();
 	int onDraw();
 
-	static daFireLaser_c *build();
+	public: static dActor_c *build();
 
 	int timer;
 	float spitspeed;
@@ -20,7 +21,13 @@ class daFireLaser_c : public dEn_c {
 	DECLARE_STATE(pewpewpew);
 };
 
-daFireLaser_c *daFireLaser_c::build() {
+const char *FireLaserArcNameList[] = {0};
+const SpriteData FireLaserSpriteData = {ProfileId::FireLaser, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile FireLaserProfile(&daFireLaser_c::build, SpriteId::FireLaser, &FireLaserSpriteData, ProfileId::DUMMY_DOOR_PARENT, ProfileId::FireLaser, "FireLaser", FireLaserArcNameList);
+
+
+dActor_c *daFireLaser_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daFireLaser_c));
 	return new(buffer) daFireLaser_c;
 }

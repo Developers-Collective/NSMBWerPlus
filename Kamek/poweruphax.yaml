@@ -77,7 +77,7 @@ hooks:
   - name: FixToadHouseItems
     type: patch
     addr_pal: 0x8086b278
-    data: '88bf06fd' #Orig: 88030009
+    data: '88bf06fd' #Orig: 88bf0009
 
 #=======================================================#
 

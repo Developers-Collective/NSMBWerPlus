@@ -2,6 +2,7 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <profileid.h>
+#include <profile.h>
 
 #include "boss.h"
 
@@ -39,7 +40,7 @@ class dThunderCloud : public dEn_c {
 
 	void dieFall_Begin();
 	void dieFall_Execute();
-	static dThunderCloud *build();
+	public: static dActor_c *build();
 
 	void updateModelMatrices();
 
@@ -73,7 +74,12 @@ class dThunderCloud : public dEn_c {
 	DECLARE_STATE(Wait);
 };
 
-dThunderCloud *dThunderCloud::build() {
+const SpriteData ThunderCloudSpriteData = {ProfileId::ThunderCloud, 0, 0, 0, 0, 0x200, 0x200, 0x30, 0x30, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ThunderCloudProfile(&dThunderCloud::build, SpriteId::ThunderCloud, &ThunderCloudSpriteData, ProfileId::WM_BUBBLE, ProfileId::ThunderCloud, "ThunderCloud", TLCarcNameList);
+
+
+dActor_c *dThunderCloud::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dThunderCloud));
 	return new(buffer) dThunderCloud;
 }
@@ -411,7 +417,7 @@ void dThunderCloud::endState_Wait() { }
 
 // Lightning State
 static void lightningCallback(ActivePhysics *one, ActivePhysics *two) {
-	if (one->owner->profileId == ProfileId::WM_BUBBLE && two->owner->profileId == ProfileId::WM_BUBBLE)
+	if (one->owner->profileId == ProfileId::ThunderCloud && two->owner->profileId == ProfileId::ThunderCloud)
 		return;
 	dEn_c::collisionCallback(one, two);
 }
