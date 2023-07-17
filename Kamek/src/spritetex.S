@@ -381,6 +381,8 @@ TEX_BuzzyShell:
 TEX_SpinyShell:
 .global TEX_Coaster
 TEX_Coaster:
+.global TEX_RollingBarrel
+TEX_RollingBarrel:
 	lwz r5, 4(r3)
 	srwi r5, r5, 24
 	andi. r5, r5, 0xF
@@ -481,8 +483,6 @@ TEX_HuckitBalls:
 TEX_LightBlock:
 .global HammerColour
 HammerColour:
-.global RollingBarrel
-RollingBarrel:
 	lwz r5, 4(r30)
 	srwi r5, r5, 24
 	andi. r5, r5, 0xF

@@ -621,7 +621,33 @@
     <checkbox nybble="12.4" title="Shift Horizontally" comment="When this checkbox is ticked, the ring is moved half a block to the right. Note that this setting overlaps with the Red Coin ID." />
     <checkbox nybble="10.4" title="Unknown Flag 10 (1)" advanced="True" advancedcomment="ASM shows Nybble 10 might affect something. No visible or functional change. Likely Z-Order related, or at least intended to be."/>
   </sprite> <!-- #156: Red Coin Ring -->
-    
+
+  <sprite id="157" name="Big Brick Block/Giant Pumpkin" notes="No matter what is inside, this light-colored 3x3 brick block or pumpkin always breaks open. It can even be broken by small Mario.">
+	<list nybble="6" title="Style" comment="This determines the color and style of the Block.">
+	  <entry value="0">Brick Block</entry>
+	  <entry value="1">Pumpkin</entry>
+	</list>
+    <list nybble="12" title="Block Contains" comment="This determines if anything appears from inside the block when it is destroyed.">
+      <entry value="0">Empty</entry>
+      <entry value="8">Empty</entry>
+      <entry value="12">Empty</entry>
+      <entry value="13">Empty</entry>
+      <entry value="1">1 Coin</entry>
+      <entry value="10">5 Coins</entry>
+      <entry value="2">Mushroom</entry>
+      <entry value="3">Fire Flower</entry>
+      <entry value="15">Ice Flower</entry>
+      <entry value="4">Propeller Shroom</entry>
+      <entry value="5">Penguin Suit</entry>
+      <entry value="6">Mini Mushroom</entry>
+      <entry value="9">Yoshi Egg + Fire Flower</entry>
+      <entry value="7">Star</entry>
+      <entry value="11">1-Up</entry>
+      <entry value="14">Key</entry>
+    </list>
+    <value nybble="11" title="Withstands (Needs Multiple Hits)" comment="This determines the number of hits or ground-pounds needed for the block to break. For this function, a texture will be used that has some odd-looking white numbers on it." advanced="True" advancedcomment="This setting may only apply to the original Giant Breakable Brick Block"/>
+  </sprite> <!-- #157: Big Brick Block -->
+
   <sprite id="175" name="Flying ? Block" notes="" noyoshi="True">
     <list nybble="9.3-9.4" title="Color">
       <entry value="0">Overworld (Yellow)</entry>
@@ -1506,8 +1532,12 @@
     <value nybble="10" title="Speed" comment="This determines the speed of the wheel's rotation. A speed of 0 still moves, just very slowly."/>
   </sprite> <!-- #286: Rotating Wooden Airship Wheel -->
   
-<sprite id="289" name="Wooden/Metal Box" notes="Wooden boxes can be opened if Ground-Pounded, struck from below, etc. and can award the player with an item. Metal boxes can instantly kill the player, cannot be destroyed, and make a POW sound when falling. They also have odd issues when it comes to respawning if they have moved from their original location.">
-    <dualbox nybble="10.4" title1="Wooden Box" title2="Metal Box"/>
+<sprite id="289" name="Wooden/Metal Box/Giant Pumpkin" notes="Wooden boxes can be opened if Ground-Pounded, struck from below, etc. and can award the player with an item. Metal boxes can instantly kill the player, cannot be destroyed, and make a POW sound when falling. They also have odd issues when it comes to respawning if they have moved from their original location.">
+    <list nybble="6" title="Style" comment="This determines the color and style of the Wooden Box. This will not work if the box is set to be metal.">
+	  <entry value="0">Wooden Box</entry>
+	  <entry value="1">Pumpkin</entry>
+	</list>
+	<dualbox nybble="10.4" title1="Wooden Box" title2="Metal Box"/>
     <list nybble="11.3-11.4" title="Size">
       <entry value="0">Small Square (2x2)</entry>
       <entry value="1">Long and Short (2x4)</entry>

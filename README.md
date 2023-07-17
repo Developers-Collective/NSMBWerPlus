@@ -109,7 +109,7 @@ Supported mods:
 * Fix Boo Circles
 
 ### Credits
-* Nin0 - Programming Assistance, General Assistance, Numerous bits of code
+* Nin0 - Programming Assistance, General Assistance, Numerous bits of code, original NSMBWer
 * Bupcraft, Lurker, Kirblue - Bug Reporting
 * Abood - More Sprites code
 * CLF78 - Original NSMBWer, Korean/Taiwanese support, additional More Sprites code
@@ -118,6 +118,7 @@ Supported mods:
 * Danster - original NSMBWer
 * Ninji, Tempus - original NewerSMBW
 * RoadrunnerWMC - Reggie! Next spritedata, NSMBW Updated code, Korean/Taiwanese support
+* G4L - Fixed NewerSMBW models
 
 [horizoncodesetup]:
 https://horizon.miraheze.org/wiki/Setting_Up_and_Compiling_the_Newer_Sources#Windows_(Newer_Super_Mario_All-Stars_Revived_and_NSMBWer_only)
