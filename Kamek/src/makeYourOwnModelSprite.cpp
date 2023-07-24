@@ -3,6 +3,10 @@
 #include <g3dhax.h>
 #include <profile.h>
 
+const char *RYOMArcNameList[] = {
+	NULL
+};
+
 //////////////////////////////////////////////////////////
 //
 //	How it works:
@@ -42,17 +46,6 @@ class dMakeYourOwn : public dEn_c {
 
 	void setupAnim(const char* name, float rate);
 	void setupModel(const char* arcName, const char* brresName, const char* mdlName);
-};
-const char *RYOMArcNameList[] = {
-	"arrow",
-	"block_arrow",
-	"cage_boss_koopa",
-	"kameck_princess",
-	"CreditsBG",
-	"chestnut",
-	"OpeningScene",
-	"chestnut",
-	NULL
 };
 const SpriteData RYOMSpriteData = {ProfileId::RYOM, 0, 0, 0xFFFFFC00 ,0xFFFFFC00 ,0x400 ,0x400, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
@@ -119,7 +112,7 @@ int dMakeYourOwn::onCreate() {
 
 		case 0:		//Red ballon, bobs
 
-			setupModel("arrow", "g3d/bre0.brres", "ballon_red"); 
+			setupModel("RYOMRes1", "g3d/bre0.brres", "ballon_red"); 
 			SetupTextures_Item(&bodyModel, 0);
 			this->pos.z = -3300.0;
 
@@ -129,7 +122,7 @@ int dMakeYourOwn::onCreate() {
 
 		case 1:		//Green ballon, bobs
 
-			setupModel("arrow", "g3d/bre1.brres", "ballon_green"); 
+			setupModel("RYOMRes1", "g3d/bre1.brres", "ballon_green"); 
 			SetupTextures_Item(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -138,7 +131,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 2:		// Mario, using "wait" with mouth open
 
-			setupModel("arrow", "g3d/bre2.brres", "mario_ts"); 
+			setupModel("RYOMRes1", "g3d/bre2.brres", "mario_ts"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = -3000.0;
 
@@ -147,7 +140,7 @@ int dMakeYourOwn::onCreate() {
 						
 		case 3:		// Peach, custom anim, bobs
 
-			setupModel("arrow", "g3d/bre3.brres", "peach_ts"); 
+			setupModel("RYOMRes1", "g3d/bre3.brres", "peach_ts"); 
 			SetupTextures_Enemy(&bodyModel, 0);
 			this->pos.z = -3000.0;
 
@@ -156,7 +149,7 @@ int dMakeYourOwn::onCreate() {
 
 		case 4:		// Luigi with mouth open using "wait", bobs
 
-			setupModel("arrow", "g3d/bre4.brres", "luigi_ts"); 
+			setupModel("RYOMRes1", "g3d/bre4.brres", "luigi_ts"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -165,7 +158,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 5:	 // Yellow Toad with mouth open, does wait, bobs
 
-			setupModel("arrow", "g3d/bre5.brres", "toady_ts"); 
+			setupModel("RYOMRes1", "g3d/bre5.brres", "toady_ts"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -174,7 +167,7 @@ int dMakeYourOwn::onCreate() {
 
 		case 6:		// Blue Toad with mouth open, bobs head and himself
 
-			setupModel("arrow", "g3d/bre6.brres", "toadb_ts"); 
+			setupModel("RYOMRes1", "g3d/bre6.brres", "toadb_ts"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -185,7 +178,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 7:		// Mario's clowncar, bobs, animates propeller
 
-			setupModel("block_arrow", "g3d/bre7.brres", "clowncar_mario"); 
+			setupModel("RYOMRes2", "g3d/bre7.brres", "clowncar_mario"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -194,7 +187,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 8:		// Weegee clowncar, bobs, animates propeller, spins
 
-			setupModel("block_arrow", "g3d/bre8.brres", "clowncar_luigi"); 
+			setupModel("RYOMRes2", "g3d/bre8.brres", "clowncar_luigi"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -203,7 +196,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 9:		// Toad Yellow clowncar, bobs, animates propeller
 
-			setupModel("block_arrow", "g3d/bre9.brres", "clowncar_toady"); 
+			setupModel("RYOMRes2", "g3d/bre9.brres", "clowncar_toady"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -212,7 +205,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 10:	// Toad Blue, bobs, animates propeller
 
-			setupModel("block_arrow", "g3d/bre10.brres", "clowncar_toadb"); 
+			setupModel("RYOMRes2", "g3d/bre10.brres", "clowncar_toadb"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -221,7 +214,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 11:	// Peach clowncar, bobs, animates propeller
 
-			setupModel("block_arrow", "g3d/bre11.brres", "clowncar_peach"); 
+			setupModel("RYOMRes2", "g3d/bre11.brres", "clowncar_peach"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -230,7 +223,7 @@ int dMakeYourOwn::onCreate() {
 	
 		case 12:	// Mario in a clowncar, bobbing, with fist outstretched.
 		
-			setupModel("block_arrow", "g3d/bre12.brres", "mario_end"); 
+			setupModel("RYOMRes2", "g3d/bre12.brres", "mario_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -239,7 +232,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 13:	// Weegee failing
 
-			setupModel("block_arrow", "g3d/bre13.brres", "luigi_end"); 
+			setupModel("RYOMRes2", "g3d/bre13.brres", "luigi_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -248,7 +241,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 14:		// Toad Yellow, bobs head, bobs
 
-			setupModel("block_arrow", "g3d/bre14.brres", "toady_end"); 
+			setupModel("RYOMRes2", "g3d/bre14.brres", "toady_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -257,7 +250,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 15:		// Blue Toad, bobs head, bobs
 
-			setupModel("block_arrow", "g3d/bre15.brres", "toadb_end"); 
+			setupModel("RYOMRes2", "g3d/bre15.brres", "toadb_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -266,7 +259,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 16:		// Peach laughing, bobbing
 
-			setupModel("block_arrow", "g3d/bre16.brres", "peach_end"); 
+			setupModel("RYOMRes2", "g3d/bre16.brres", "peach_end"); 
 			SetupTextures_Enemy(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -277,7 +270,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 17:		// This is the peach castle backdrop
 
-			setupModel("arrow", "g3d/bre17.brres", "ground_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre17.brres", "ground_perfect"); 
 			SetupTextures_Map(&bodyModel, 0);
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3300.0;
@@ -287,7 +280,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 18:		// Mario very small, looking up.
 
-			setupModel("arrow", "g3d/bre18.brres", "mario_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre18.brres", "mario_perfect"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3300.0;
 
@@ -296,7 +289,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 19:		// Weegee very small, looking up.
 
-			setupModel("arrow", "g3d/bre19.brres", "luigi_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre19.brres", "luigi_perfect"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -305,7 +298,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 20:		// Yellow Toad, very small, looking up.
 
-			setupModel("arrow", "g3d/bre16.brres", "toady_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre16.brres", "toady_perfect"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -314,7 +307,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 21:		// Blue Toad, very small, looking up.
 
-			setupModel("arrow", "g3d/bre16.brres", "toadb_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre16.brres", "toadb_perfect"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -323,7 +316,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 22:		// I don't think this is used, actually :|
 
-			setupModel("arrow", "g3d/bre22.brres", "peach_perfect"); 
+			setupModel("RYOMRes1", "g3d/bre22.brres", "peach_perfect"); 
 			SetupTextures_Enemy(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -332,7 +325,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 23:		// I don't think this is used, actually :|
 
-			setupModel("arrow", "g3d/bre23.brres", "backdrop"); 
+			setupModel("RYOMRes1", "g3d/bre23.brres", "backdrop"); 
 			SetupTextures_Map(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -343,7 +336,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 24:		// Small cloud, bobs up and down
 
-			setupModel("arrow", "g3d/bre24.brres", "cloud"); 
+			setupModel("RYOMRes1", "g3d/bre24.brres", "cloud"); 
 			SetupTextures_Item(&bodyModel, 0);
 			this->pos.z = -3300.0;
 
@@ -355,7 +348,7 @@ int dMakeYourOwn::onCreate() {
 	
 		case 25:		// Ship fallen, with broken propellers and cannons.
 
-			setupModel("cage_boss_koopa", "g3d/ShipFallen.brres", "KoopaShip"); 
+			setupModel("RYOMRes3", "g3d/ShipFallen.brres", "KoopaShip"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -365,7 +358,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 26:		// A tree. From the ghost bg.
 
-			setupModel("cage_boss_koopa", "g3d/tree_end.brres", "tree"); 
+			setupModel("RYOMRes3", "g3d/tree_end.brres", "tree"); 
 			SetupTextures_Map(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -375,7 +368,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 27:		// Bowser, laying down, eyes closed. Medic? Medic!
 
-			setupModel("cage_boss_koopa", "g3d/bowser_dead.brres", "koopa"); 
+			setupModel("RYOMRes3", "g3d/bowser_dead.brres", "koopa"); 
 			SetupTextures_Boss(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -385,7 +378,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 28:		// A car. The animation has it tilted slightly. It's a bit darker than usual.
 
-			setupModel("cage_boss_koopa", "g3d/clown_car_end.brres", "car"); 
+			setupModel("RYOMRes3", "g3d/clown_car_end.brres", "car"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -395,7 +388,7 @@ int dMakeYourOwn::onCreate() {
 	//CREDITS SHIT
 		case 29:		// Mario's clowncar, bobs, animates propeller
 
-			setupModel("kameck_princess", "g3d/bre29.brres", "clowncar_mario"); 
+			setupModel("RYOMRes3", "g3d/bre29.brres", "clowncar_mario"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -404,7 +397,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 30:		// Weegee clowncar, bobs, animates propeller
 
-			setupModel("kameck_princess", "g3d/bre30.brres", "clowncar_luigi"); 
+			setupModel("RYOMRes3", "g3d/bre30.brres", "clowncar_luigi"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -413,7 +406,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 31:		// Toad Yellow clowncar, bobs, animates propeller
 
-			setupModel("kameck_princess", "g3d/bre31.brres", "clowncar_toady"); 
+			setupModel("RYOMRes3", "g3d/bre31.brres", "clowncar_toady"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -422,7 +415,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 32:	// Toad Blue, bobs, animates propeller
 
-			setupModel("kameck_princess", "g3d/bre32.brres", "clowncar_toadb"); 
+			setupModel("RYOMRes3", "g3d/bre32.brres", "clowncar_toadb"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -431,7 +424,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 33:	// Peach clowncar, bobs, animates propeller
 
-			setupModel("kameck_princess", "g3d/bre33.brres", "clowncar_peach"); 
+			setupModel("RYOMRes3", "g3d/bre33.brres", "clowncar_peach"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -440,7 +433,7 @@ int dMakeYourOwn::onCreate() {
 	
 		case 34:	// Mario in a clowncar, bobbing, with fist outstretched.
 		
-			setupModel("kameck_princess", "g3d/bre34.brres", "mario_end"); 
+			setupModel("RYOMRes3", "g3d/bre34.brres", "mario_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0;
 
@@ -449,7 +442,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 35:	// Weegee 
 
-			setupModel("kameck_princess", "g3d/bre35.brres", "luigi_end"); 
+			setupModel("RYOMRes3", "g3d/bre35.brres", "luigi_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -458,7 +451,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 36:		// Toad Yellow, bobs head, bobs
 
-			setupModel("kameck_princess", "g3d/bre36.brres", "toady_end"); 
+			setupModel("RYOMRes3", "g3d/bre36.brres", "toady_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -467,7 +460,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 37:		// Blue Toad, bobs head, bobs
 
-			setupModel("kameck_princess", "g3d/bre37.brres", "toadb_end"); 
+			setupModel("RYOMRes3", "g3d/bre37.brres", "toadb_end"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -476,7 +469,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 38:		// Peach laughing, bobbing
 
-			setupModel("kameck_princess", "g3d/bre38.brres", "peach_end"); 
+			setupModel("RYOMRes3", "g3d/bre38.brres", "peach_end"); 
 			SetupTextures_Enemy(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -492,27 +485,27 @@ int dMakeYourOwn::onCreate() {
 			setupAnim("anim38", 1.0); 
 			break;	
 
-		case 40:		// Chestnut Canopy
+		case 40:		// RYOMRes4 Canopy
 
-			setupModel("chestnut", "g3d/canopy.brres", "canopy"); 
+			setupModel("RYOMRes4", "g3d/canopy.brres", "canopy"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
 			// setupAnim("anim38", 1.0); 
 			break;	
 
-		case 41:		// Chestnut Canopy
+		case 41:		// RYOMRes4 Canopy
 
-			setupModel("chestnut", "g3d/canopy_1.brres", "canopy_1"); 
+			setupModel("RYOMRes4", "g3d/canopy_1.brres", "canopy_1"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
 			// setupAnim("anim38", 1.0); 
 			break;	
 
-		case 42:		// Chestnut Canopy
+		case 42:		// RYOMRes4 Canopy
 
-			setupModel("chestnut", "g3d/canopy_2.brres", "canopy_2"); 
+			setupModel("RYOMRes4", "g3d/canopy_2.brres", "canopy_2"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -521,7 +514,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 43:		// BallonR
 
-			setupModel("OpeningScene", "g3d/ballon.brres", "ballon_red"); 
+			setupModel("RYOMRes5", "g3d/ballon.brres", "ballon_red"); 
 			SetupTextures_Item(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -530,7 +523,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 44:		// BallonG
 
-			setupModel("OpeningScene", "g3d/ballon2.brres", "ballon_green"); 
+			setupModel("RYOMRes5", "g3d/ballon2.brres", "ballon_green"); 
 			SetupTextures_Item(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -539,7 +532,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 45:		// Luigi Opening
 
-			setupModel("OpeningScene", "g3d/weeg.brres", "weeg"); 
+			setupModel("RYOMRes5", "g3d/weeg.brres", "weeg"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -548,7 +541,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 46:		// Mario Opening
 
-			setupModel("OpeningScene", "g3d/maleo.brres", "maleo"); 
+			setupModel("RYOMRes5", "g3d/maleo.brres", "maleo"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -557,7 +550,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 47:		// ToaB
 
-			setupModel("OpeningScene", "g3d/todb.brres", "todb"); 
+			setupModel("RYOMRes5", "g3d/todb.brres", "todb"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
@@ -566,16 +559,16 @@ int dMakeYourOwn::onCreate() {
 
 		case 48:		// ToaY
 
-			setupModel("OpeningScene", "g3d/tody.brres", "tody"); 
+			setupModel("RYOMRes5", "g3d/tody.brres", "tody"); 
 			SetupTextures_Player(&bodyModel, 0);
 			this->pos.z = 0.0;
 
 				setupAnim("anim", 1.0); 
 			break;	
 
-		case 49:		// Chestnut Canopy
+		case 49:		// RYOMRes4 Canopy
 
-			setupModel("chestnut", "g3d/canopy_3.brres", "canopy_3"); 
+			setupModel("RYOMRes4", "g3d/canopy_3.brres", "canopy_3"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 0.0;
 

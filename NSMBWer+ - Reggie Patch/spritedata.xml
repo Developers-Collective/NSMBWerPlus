@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Version 2019-08-18 -->
+<!-- Version 2020-02-16 -->
 <!-- &lt; = < -->
 <!-- &gt; = > -->
 <!-- $amp; = & -->
@@ -8,11 +8,11 @@
 <!-- &lt;bgt;TEXT TEXT TEXT.&lt;/b&gt; = Bold Text -->
 <!-- &lt;br&gt; = New Line -->
 <!-- Opinion on each dualbox to determine if it should be dualbox or if it should revert to being a list or checkbox. -->
-<!-- idtypes: Star Set, Path Movement, Rotation, Two Way Line, Water Ball, Mushroom, Line, Bolt, Target Event, Triggering Event, Collection, Location, Physics, Message, Path, Path Movement, Red Coin, Hill, Stretch, Ray, Dragon, Bubble Cannon, Burner, Wiggling, Panel, Colony -->
+<!-- idtypes: Star Set, Path Movement, Rotation, Two Way Line, Water Ball, Mushroom, Group, Bolt, Target Event, Triggering Event, Collection, Location, Physics, Message, Path, Path Movement, Red Coin, Hill, Stretch, Ray, Coaster, Bubble Cannon, Burner, Wiggling, Panel, Colony -->
 <!-- idtypes - Sprites with multiple Target Events or Triggering Events may need a secondary idtype, so that the primary Target/Triggering can be displayed in the sprite's display box. -->
 <!-- idtypes - Sprites with idtypes should have their idtype displayed within their blue box, usually in the lower right corner. (primary) Target Event should usually be in the lower right, and Triggering Event should usually be in the lower left. Secondary values like AND controller's second+ Triggering Event, and IF controller's secondary Location ID should be displayed in the top right corner or otherwise not displayed at all. -->
 <!-- Sample sprite with full settings -->
-<!-- <sprite id="#" name="Sprite Name" asmhacks="True" sizehacks="True" phonebook="Actors/Effects" noyoshi="True" yoshinotes="Talk about how it interacts with Yoshi. Advanced Only." notes="Talk about how to use this sprite in a basic sense." advancednotes="Talk about how to use this sprite in an advanced sense. Advanced Only."> -->
+<!-- <sprite id="#" name="Sprite Name" sizehacks="True" phonebook="Actors/Effects" noyoshi="True" yoshinotes="Talk about how it interacts with Yoshi. Advanced Only." notes="Talk about how to use this sprite in a basic sense." advancednotes="Talk about how to use this sprite in an advanced sense. Advanced Only."> -->
 <!--   <dependency notes="Talk about the dependencies."> -->
 <!--     <required sprite="#" /> -->
 <!--     <suggested sprite="#" /> -->
@@ -621,32 +621,6 @@
     <checkbox nybble="12.4" title="Shift Horizontally" comment="When this checkbox is ticked, the ring is moved half a block to the right. Note that this setting overlaps with the Red Coin ID." />
     <checkbox nybble="10.4" title="Unknown Flag 10 (1)" advanced="True" advancedcomment="ASM shows Nybble 10 might affect something. No visible or functional change. Likely Z-Order related, or at least intended to be."/>
   </sprite> <!-- #156: Red Coin Ring -->
-
-  <sprite id="157" name="Big Brick Block/Giant Pumpkin" notes="No matter what is inside, this light-colored 3x3 brick block or pumpkin always breaks open. It can even be broken by small Mario.">
-	<list nybble="6" title="Style" comment="This determines the color and style of the Block.">
-	  <entry value="0">Brick Block</entry>
-	  <entry value="1">Pumpkin</entry>
-	</list>
-    <list nybble="12" title="Block Contains" comment="This determines if anything appears from inside the block when it is destroyed.">
-      <entry value="0">Empty</entry>
-      <entry value="8">Empty</entry>
-      <entry value="12">Empty</entry>
-      <entry value="13">Empty</entry>
-      <entry value="1">1 Coin</entry>
-      <entry value="10">5 Coins</entry>
-      <entry value="2">Mushroom</entry>
-      <entry value="3">Fire Flower</entry>
-      <entry value="15">Ice Flower</entry>
-      <entry value="4">Propeller Shroom</entry>
-      <entry value="5">Penguin Suit</entry>
-      <entry value="6">Mini Mushroom</entry>
-      <entry value="9">Yoshi Egg + Fire Flower</entry>
-      <entry value="7">Star</entry>
-      <entry value="11">1-Up</entry>
-      <entry value="14">Key</entry>
-    </list>
-    <value nybble="11" title="Withstands (Needs Multiple Hits)" comment="This determines the number of hits or ground-pounds needed for the block to break. For this function, a texture will be used that has some odd-looking white numbers on it." advanced="True" advancedcomment="This setting may only apply to the original Giant Breakable Brick Block"/>
-  </sprite> <!-- #157: Big Brick Block -->
 
   <sprite id="175" name="Flying ? Block" notes="" noyoshi="True">
     <list nybble="9.3-9.4" title="Color">
@@ -1532,11 +1506,7 @@
     <value nybble="10" title="Speed" comment="This determines the speed of the wheel's rotation. A speed of 0 still moves, just very slowly."/>
   </sprite> <!-- #286: Rotating Wooden Airship Wheel -->
   
-<sprite id="289" name="Wooden/Metal Box/Giant Pumpkin" notes="Wooden boxes can be opened if Ground-Pounded, struck from below, etc. and can award the player with an item. Metal boxes can instantly kill the player, cannot be destroyed, and make a POW sound when falling. They also have odd issues when it comes to respawning if they have moved from their original location.">
-    <list nybble="6" title="Style" comment="This determines the color and style of the Wooden Box. This will not work if the box is set to be metal.">
-	  <entry value="0">Wooden Box</entry>
-	  <entry value="1">Pumpkin</entry>
-	</list>
+<sprite id="289" name="Wooden/Metal Box" notes="Wooden boxes can be opened if Ground-Pounded, struck from below, etc. and can award the player with an item. Metal boxes can instantly kill the player, cannot be destroyed, and make a POW sound when falling. They also have odd issues when it comes to respawning if they have moved from their original location.">
 	<dualbox nybble="10.4" title1="Wooden Box" title2="Metal Box"/>
     <list nybble="11.3-11.4" title="Size">
       <entry value="0">Small Square (2x2)</entry>
@@ -1701,8 +1671,7 @@
       <entry value="5">Lemmy Ball</entry>
     </list>
   </sprite> <!-- #308: Platform Hammer Brother -->
-  
-  <!-- In what way does Yoshi not interact with this sprite? -->
+
   <!-- Testing needed with Second Falling Animation - Tile God, platforms, etc. May only function with Snake Block, but even that needs additional testing. -->
   <!-- Further describe Use 'Forming' Animation (and maybe suggest another name for it) -->
   <!-- Extensive testing needed for Nybble 9 and 10 -->
@@ -1728,14 +1697,8 @@
       <entry value="1">Dies, with Upright Drop</entry>
       <entry value="2">Lives, Falls Straight Down</entry>
     </list> <!-- Disappears if Don't Fall is set -->
-    <value nybble="9" title="Unknown Value 9" advanced="True" advancedcomment="ASM shows Nybble 9 might affect something. Will need to re-incorporate Newer 1.30's yoshi fix."/>
+    <value nybble="9" title="Unknown Value 9" advanced="True" advancedcomment="ASM shows Nybble 9 might affect something."/>
   </sprite> <!-- #311: Mega Icicle -->
-  
-  <sprite id="321" name="Custom Model Loader Resources (block_arrow.arc)" notes="This stores some of the models used by NewerSMBW for their cinematics. &lt;font color=&quot;red&quot;&gt;This sprite freezes the game if it shows up on-screen.">
-    <dependency notes="If using option 7-16 of the Custom Model Loader (11), you'll need one of these placed somewhere in the level. It does not have to be within a Zone or in the same Area.">
-       <suggested sprite="11"/>
-    </dependency>
-  </sprite> <!-- #321: Custom Model Loader Resources (block_arrow.arc) -->
   
   <sprite id="325" name="Ghost House Stand" notes="A decorative stand that cannot be interacted with, typically used inside Ghost House levels.">
     <dependency notes="Including a few [262] Poltergeist Item versions of this will keep the player alert and on guard.">
@@ -1903,7 +1866,7 @@
     </dependency>
   </sprite> <!-- #405: Boss Controller - Bowser Jr. (2nd Battle) -->
   
-  <sprite id="406" name="(Crashes) Boss Controller - Bowser Jr. (3rd Battle)" noyoshi="True" notes="This controls the mechanics for the third Bowser Jr. Boss Fight in World 8. It spawns the backgrounds BgA_5502 and BgB_4C02, and will overlap any other backgrounds set in the zone. The white square indicates the placement for the Airship Boss Cutscene controller. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;This fight crashes randomly in Newer.&lt;/font&gt;">
+  <sprite id="406" name="Boss Controller - Bowser Jr. (3rd Battle)" noyoshi="True" notes="This controls the mechanics for the third Bowser Jr. Boss Fight in World 8. It spawns the backgrounds BgA_5502 and BgB_4C02, and will overlap any other backgrounds set in the zone. The white square indicates the placement for the Airship Boss Cutscene controller.">
     <dependency notes="Specific room settings are likely required. Please reference the original Retail level, 08-38 A1.">
       <required sprite="409"/>
       <suggested sprite="436"/>
@@ -2155,7 +2118,7 @@
     </list>
   </sprite> <!-- #487: Big Shy Guy -->
  
-<!-- crashes  <sprite id="488" name="Toad House Minigame - Silver Star" notes="A collection challenge added in NewerSMBW. The player must collect all of the stars within the time limit in order to succeed and trigger an event.">
+  <sprite id="488" name="Toad House Minigame - Silver Star" notes="A collection challenge added in NewerSMBW. The player must collect all of the stars within the time limit in order to succeed and trigger an event.">
     <value nybble="5-6" title="Target Event ID" comment="This determines which Event will be activated when all Collectible Stars in the Zone are collected." idtype="Target Event"/>
     <list nybble="12.3-12.4" title="Minimum Number of Players" comment="This determines the minimum number of players required to be present for this star to spawn.">
       <entry value="0">1 Player</entry>
@@ -2163,11 +2126,11 @@
       <entry value="2">3 Players</entry>
       <entry value="3">4 Players</entry>
     </list>
-  </sprite> #488: Toad House Minigame - Silver Star -->
+  </sprite> <!-- #488: Toad House Minigame - Silver Star -->
  
-<!-- crashes  <sprite id="489" name="Pumpkin Goomba" notes="A Goomba inside a pumpkin. The pumpkin adds an extra hit point to the Goomba.">
+  <sprite id="489" name="Pumpkin Goomba" notes="A Goomba inside a pumpkin. The pumpkin adds an extra hit point to the Goomba.">
     <dualbox nybble="12.4" title1="Goomba" title2="Paragoomba" comment="This determines if the Pumpkin Goomba behaves like a normal Goomba or like a Paragoomba."/>
-  </sprite> #489: Pumpkin Goomba -->
+  </sprite> <!-- #489: Pumpkin Goomba -->
   
   <sprite id="490" name="Event Block" notes="A red or green block that, when struck, will affect the state of the Target Event(s). Events that are deactivated will become activated, and those that are activated will become deactivated." advancednotes="Kamek code references the events by the opposite number.">
     <dualbox nybble="8.4" title1="Affect Event 1" title2="Swap Event 2 and Event 1" comment="This determines which associated Event IDs will be affected when the block is struck." comment2="If set to Affect Event 1, Event 1 will be activated or deactivated and the color of the block will display the state of Event 1, green for on and red for off. &lt;br&gt; &lt;br&gt;If set to Swap Events, Event 2 will be activated initially and Event 1 will be deactivated initially during the Zone loading. The color of the block will rely on Event 2's current state."/>
@@ -2328,7 +2291,7 @@
       <entry value="14">15 Blocks</entry>
       <entry value="15">16 Blocks</entry>
     </list>
-    <list nybble="8.2-8.4" title="Contains" comment="There needs to be at least one Goomba, Spiny, or Star Coin somewhere in the level if selected as the contained object. Otherwise, the game will crash once the chestnut breaks open.">
+    <list nybble="8.2-8.4" title="Contains">
       <entry value="0">Goomba</entry>
       <entry value="1">Spiny</entry>
       <entry value="2">1 Coin</entry>
@@ -2345,15 +2308,13 @@
     </list> <!-- Appears only if [Chestnut Contains] == Star Coin -->
   </sprite> <!-- #502: Falling Chestnut -->
 
-  <!-- Establish full list of Dependencies -->
   <sprite id="503" name="Custom Model Loader" notes="The Custom Model Loader allows the use of pre-scripted Models and Animations for use in user-created cutscenes. It can also provide new models as decoration for your level. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;&lt;b&gt;Warning:&lt;/b&gt; Will CRASH if [Animate Model] is set and no animation is available.&lt;/font&gt;">
-    <dependency notes="As this sprite will pull Models and Animations from specific .arc files, those sprites are required to be placed within the level to prevent a game crash. The list of required sprites is as follows: &lt;br&gt; &lt;br&gt;0-6: arrow.arc (143) &lt;br&gt;7-16: block_arrow.arc (321) &lt;br&gt;17-24: arrow.arc (143) &lt;br&gt;25-28: cage_boss_koopa.arc (439) &lt;br&gt;29-38: kameck_princess.arc (439) &lt;br&gt;39: CreditsBG.arc (???) &lt;br&gt;40-42: chestnut.arc (320) &lt;br&gt;43-48: OpeningScene.arc (273) &lt;br&gt;49: chestnut.arc (320)">
-      <suggested sprite="143"/> <!-- Custom Model Loader Resources (arrow.arc) -->
-      <suggested sprite="321"/> <!-- block_arrow.arc -->
-      <suggested sprite="439"/> <!-- cage_boss_koopa, kameck_princess -->
-      <suggested sprite="0"/> <!-- CreditsBG -->
-      <suggested sprite="320"/> <!-- chestnut -->
-      <suggested sprite="273"/> <!-- OpeningScene -->
+    <dependency notes="As this sprite will pull Models and Animations from specific .arc files, those sprites are required to be placed within the level to prevent a game crash. The list of required sprites is as follows: &lt;br&gt; &lt;br&gt;0-6: RYOMRes1.arc (507) &lt;br&gt;7-16: RYOMRes2.arc (508) &lt;br&gt;17-24: RYOMRes1.arc (507) &lt;br&gt;25-39: RYOMRes3.arc (509) &lt;br&gt;40-42: RYOMRes4.arc (510) &lt;br&gt;43-48: RYOMRes5.arc (511) &lt;br&gt;49: RYOMRes4.arc (509)">
+      <suggested sprite="507"/>
+      <suggested sprite="508"/>
+	  <suggested sprite="509"/>
+	  <suggested sprite="510"/>
+	  <suggested sprite="511"/>
     </dependency>
     <external type="models" nybble="11-12" title="Model ID" comment="Use this external window to select your Model.&lt;br&gt;&lt;br&gt;This determines which Model will be used. If [Animate Model] is checked, then the Models will run their coded animation instead of standing still. Values with '---' were not used in Newer levels." />
     <value nybble="5-6" title="Scale: Value/4.0" comment="This determines the scale of the Model." comment2="Value 0 creates an original-sized Model (100%). Values above 0 are divided by 4 to determine the Model Size. 1=25%, 2=50%, 8=200%, etc." advancedcomment="Value limit unknown. Maximum value suspected to be 24, or 600%"/>
@@ -2422,5 +2383,19 @@
     <checkbox nybble="12.4" title="Longer Stuns" comment="When enabled, the stun duration will be longer."/>
   </sprite> <!-- #506: Giga Goomba -->
 
+  <sprite id="507" name="Custom Model Loader Resources 1" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--507: Custom Model Loader Resources 1 -->
+  
+  <sprite id="508" name="Custom Model Loader Resources 2" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--507: Custom Model Loader Resources 2 -->
+
+  <sprite id="509" name="Custom Model Loader Resources 3" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--507: Custom Model Loader Resources 3 -->
+
+  <sprite id="510" name="Custom Model Loader Resources 4" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--507: Custom Model Loader Resources 4 -->
+  
+  <sprite id="511" name="Custom Model Loader Resources 5" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--507: Custom Model Loader Resources 5 -->
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

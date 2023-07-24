@@ -67,7 +67,7 @@ modules:
   - processed/makeYourOwn.yaml
   - processed/challengeStar.yaml
   # - processed/singAlong.yaml
-  # - processed/pumpkinGoomba.yaml
+  - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
   - processed/nsmbwUpdated.yaml
   - processed/bossPlayerClown.yaml
@@ -78,3 +78,4 @@ modules:
   # - processed/layoutDebug.yaml
   - processed/classic_controller.yaml
   - processed/redRingRewards.yaml
+  # - processed/pumpkinBlock.yaml

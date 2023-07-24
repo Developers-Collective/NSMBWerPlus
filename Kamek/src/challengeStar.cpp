@@ -8,6 +8,7 @@ extern "C" bool SpawnEffect(const char*, int, Vec*, S16Vec*, Vec*);
 
 extern int GlobalStarsCollected;
 
+
 class dChallengeStar : public dEn_c {
 	int onCreate();
 	int onExecute();
@@ -80,15 +81,17 @@ bool dChallengeStar::collisionCatA_PenguinMario(ActivePhysics *apThis, ActivePhy
 	return true;
 }
 
+const char *ChallengeStarFileList[] = {0};
+const SpriteData ChallengeStarSpriteData = { ProfileId::ChallengeStar, 0, 0, 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ChallengeStarProfile(&dChallengeStar::build, SpriteId::ChallengeStar, &ChallengeStarSpriteData, ProfileId::WM_KURIBO, ProfileId::ChallengeStar, "ChallengeStar", ChallengeStarFileList);
+
 
 dActor_c *dChallengeStar::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dChallengeStar));
 	return new(buffer) dChallengeStar;
 }
 
-const char *ChallengeStarFileList[] = {"I_star"};
-const SpriteData challengeStarSpriteData = { ProfileId::ChallengeStar, 0, 0 , 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0 };
-Profile challengeStarProfile(&dChallengeStar::build, SpriteId::ChallengeStar, &challengeStarSpriteData, ProfileId::MIST_INTERMITTENT, ProfileId::ChallengeStar, "ChallengeStar", ChallengeStarFileList);
 
 int dChallengeStar::onCreate() {
 	
@@ -163,4 +166,3 @@ int dChallengeStar::onExecute() {
 	this->rot.y += 0x200;
 	return true;
 }
-

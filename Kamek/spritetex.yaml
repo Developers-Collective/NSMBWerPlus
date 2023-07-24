@@ -24,11 +24,11 @@ hooks:
   #   data: '000000000000000000000000'
   #   addr_pal: 0x8042B3A8
 
-  - name: TEX_WoodBox
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80ACBFB0
-    target_func: 'TEX_WoodBox'
+#  - name: TEX_WoodBox
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x80ACBFB0
+#    target_func: 'TEX_WoodBox'
 
   - name: TEX_Bush
     type: branch_insn
@@ -68,11 +68,11 @@ hooks:
 #    src_addr_pal: 0x80A0451C
 #    target_func: 'TEX_Blooper'
 
-  - name: TEX_BigBlock
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x809B8DB8
-    target_func: 'TEX_BigBlock'
+#  - name: TEX_BigBlock
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x809B8DB8
+#    target_func: 'TEX_BigBlock'
 
   - name: TEX_Thwomp
     type: branch_insn

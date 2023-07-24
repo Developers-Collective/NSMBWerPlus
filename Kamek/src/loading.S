@@ -167,4 +167,3 @@ aHammerM_0:
 
 aBros_0:
 	.string "bros"
-

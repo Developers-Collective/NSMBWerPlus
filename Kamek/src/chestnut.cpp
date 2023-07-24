@@ -2,7 +2,7 @@
 #include <profileid.h>
 #include <sfx.h>
 #include <profile.h>
-const char *ChestnutFileList[] = {"chestnut", 0};
+const char *ChestnutFileList[] = {"chestnut", "kuribo", "togezo", "star_coin", 0};
 
 class daEnChestnut_c : public dEn_c {
 	public:

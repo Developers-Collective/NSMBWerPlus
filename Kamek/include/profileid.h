@@ -509,8 +509,8 @@ enum
     FakeStarCoin = 485, 
     ShyGuy = 486, 
     ShyGuyGiant = 487, 
-    ChallengeStar = 488, //crashes
-    PumpkinGoomba = 489, //unfinished, code is a mess
+    ChallengeStar = 488,
+    PumpkinGoomba = 489,
     EventBlock = 490, 
     SpriteSpawner = 491,
     SpriteSwapper = 492,
@@ -528,6 +528,11 @@ enum
 	EffectSpawner = 504,
 	FireLaser = 505,
 	BossMegaGoomba = 506,
+	RYOMRes1 = 507,
+	RYOMRes2 = 508,
+	RYOMRes3 = 509,
+	RYOMRes4 = 510,
+	RYOMRes5 = 511,
 
     Num
 };
@@ -1324,6 +1329,12 @@ enum
 	EffectSpawner, //772
 	FireLaser, //773
 	BossMegaGoomba, //774
+	RYOMRes1, //775
+	RYOMRes2, //776
+	RYOMRes3, //777
+	RYOMRes4, //778
+	RYOMRes5, //779
+
 
     Num
 };

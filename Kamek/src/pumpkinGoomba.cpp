@@ -2,9 +2,10 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <sfx.h>
+#include <profileid.h>
 #include <profile.h>
 
-const char* PumpkinGoombaFileList [] = {
+const char* GParcNameList [] = {
 	"kuribo",
 	"pumpkin",
 	"wing",
@@ -12,7 +13,6 @@ const char* PumpkinGoombaFileList [] = {
 };
 
 class dGoombaPie : public dEn_c {
-public:
 	int onCreate();
 	int onDelete();
 	int onExecute();
@@ -26,10 +26,8 @@ public:
 	dStageActor_c *Goomber;
 	u32 timer;
 	bool isBursting;
-	bool invisible;
 
-
-	static dActor_c *build();
+	public: static dActor_c *build();
 
 	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
 	void yoshiCollision(ActivePhysics *apThis, ActivePhysics *apOther);
@@ -55,8 +53,9 @@ public:
 	DECLARE_STATE(Burst);
 };
 
-const SpriteData PumpkinGoombaSpriteData = { ProfileId::PumpkinGoomba, 8, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
-Profile PumpkinGoombaProfile(&dGoombaPie::build, SpriteId::PumpkinGoomba, &PumpkinGoombaSpriteData, ProfileId::PumpkinGoomba, ProfileId::PumpkinGoomba, "PumpkinGoomba", PumpkinGoombaFileList);
+const SpriteData PumpkinGoombaSpriteData = { ProfileId::PumpkinGoomba, 8, 10, 0 , 0xFFFFFFF8, 0x8, 0x8, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile PumpkinGoombaProfile(&dGoombaPie::build, SpriteId::PumpkinGoomba, &PumpkinGoombaSpriteData, ProfileId::WM_KINOKO_STAR, ProfileId::PumpkinGoomba, "PumpkinGoomba", GParcNameList);
 
 dActor_c *dGoombaPie::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dGoombaPie));
@@ -80,7 +79,8 @@ dActor_c *dGoombaPie::build() {
 ////////////////////////
 
 	void pieCollisionCallback(ActivePhysics *one, ActivePhysics *two) {
-		if (two->owner->name == (Actors)(one->owner->settings & 0xFFFF)) { return; }
+		if (two->owner->profileId == ProfileId::EN_KURIBO) { return; }
+		if (two->owner->profileId == ProfileId::EN_PATA_KURIBO) { return; }
 		dEn_c::collisionCallback(one, two);
 	}
 
@@ -153,7 +153,7 @@ dActor_c *dGoombaPie::build() {
 
 
 int dGoombaPie::onCreate() {
-	this->deleteForever = false;
+
 	// Model creation	
 	allocator.link(-1, GameHeaps[0], 0, 0x20);
 
@@ -172,7 +172,6 @@ int dGoombaPie::onCreate() {
 	// Other shit
 	isBursting = false;
 	this->scale = (Vec){0.39, 0.39, 0.39};
-	this->invisible = true;
 
 	ActivePhysics::Info HitMeBaby;
 
@@ -194,9 +193,10 @@ int dGoombaPie::onCreate() {
 
 
 	// Remember to follow a goomba
-	u16 type = this->settings & 0xFFFF;
-	Goomber = (dStageActor_c*)create((Actors)type, 0, &pos, &rot, 0);
-
+	if ((settings & 0xF) == 0) {
+		Goomber = (dStageActor_c*)create(ProfileId::EN_KURIBO, 0, &pos, &rot, 0); }
+	else {
+		Goomber = (dStageActor_c*)create(ProfileId::EN_PATA_KURIBO, 0, &pos, &rot, 0); }
 	// State Changers
 	doStateChange(&StateID_Follow);
 
@@ -212,12 +212,6 @@ int dGoombaPie::onExecute() {
 	acState.execute();
 	this->pos = Goomber->pos;
 	this->rot = Goomber->rot;
-	OSReport("Goomber: %x\n", Goomber->currentProcessID);
-	OSReport("Goomber: %x\n", Goomber->currentProcessID);
-	if(Goomber->currentProcessID & 4)
-		this->invisible = false;
-	else
-		this->invisible = true;
 	return true;
 }
 
@@ -231,12 +225,10 @@ int dGoombaPie::onDraw() {
 		burstModel.calcWorld(false);
 		burstModel.scheduleForDrawing();
 	} else {
-		if(true) {
-			bodyModel.setDrawMatrix(matrix);
-			bodyModel.setScale(&scale);
-			bodyModel.calcWorld(false);
-			bodyModel.scheduleForDrawing();
-		}
+		bodyModel.setDrawMatrix(matrix);
+		bodyModel.setScale(&scale);
+		bodyModel.calcWorld(false);
+		bodyModel.scheduleForDrawing();
 	}
 
 	return true;
@@ -261,6 +253,6 @@ int dGoombaPie::onDraw() {
 		SpawnEffect("Wm_ob_eggbreak_yw", 0, &pos, &(S16Vec){0,0,0}, &(Vec){2.0, 2.0, 2.0});
 	}
 	void dGoombaPie::executeState_Burst() { 
-		//this->Delete(1);
+		this->Delete(1);
 	}
 	void dGoombaPie::endState_Burst() { }
