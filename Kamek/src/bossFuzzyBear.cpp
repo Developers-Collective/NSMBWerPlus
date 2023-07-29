@@ -5,6 +5,7 @@
 #include <sfx.h>
 #include <stage.h>
 #include "boss.h"
+#include <profile.h>
 
 
 class daFuzzyBear_c : public daBoss {
@@ -35,7 +36,7 @@ class daFuzzyBear_c : public daBoss {
 	char roly;
 	char isInvulnerable;
 
-	static daFuzzyBear_c *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 	void setupBodyModel();
@@ -63,7 +64,12 @@ class daFuzzyBear_c : public daBoss {
 	DECLARE_STATE(Outro);
 };
 
-daFuzzyBear_c *daFuzzyBear_c::build() {
+const char* FuzzyBearNameList[] = {"chorobon", NULL};
+const SpriteData FuzzyBearSpriteData = {ProfileId::BossFuzzyBear, 8, 0xFFFFFFF8, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile FuzzyBearProfile(&daFuzzyBear_c::build, SpriteId::BossFuzzyBear, &FuzzyBearSpriteData, ProfileId::WALLINSECT_MGR, ProfileId::BossFuzzyBear, "BossFuzzyBear", FuzzyBearNameList);
+
+dActor_c *daFuzzyBear_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daFuzzyBear_c));
 	return new(buffer) daFuzzyBear_c;
 }

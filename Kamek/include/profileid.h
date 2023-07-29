@@ -533,6 +533,20 @@ enum
 	RYOMRes3 = 509,
 	RYOMRes4 = 510,
 	RYOMRes5 = 511,
+	RYOMRes6 = 512,
+	RYOMRes7 = 513,
+	SpecialExit = 514,
+	BossFuzzyBear = 515,
+  	BossThwompaDomp = 516,
+	BossRamboo = 517,
+	BossBalboaWrench = 518,
+	BossWrenchThrow = 519,
+	BossSamurshai = 520,
+	BossPodouble = 521,
+	BossTopman = 522,
+	BossCaptainBowser = 523,
+	KoopaThrow = 524,
+	KFlameThrower = 525,
 
     Num
 };
@@ -1334,7 +1348,20 @@ enum
 	RYOMRes3, //777
 	RYOMRes4, //778
 	RYOMRes5, //779
-
+	RYOMRes6, //780
+	RYOMRes7, //781
+	SpecialExit, //782
+	BossFuzzyBear, //783
+  	BossThwompaDomp, //784
+	BossRamboo, //785
+	BossBalboaWrench, //786
+	BossWrenchThrow, //787
+	BossSamurshai, //788
+	BossPodouble, //789
+	BossTopman, //790
+	BossCaptainBowser, //791
+	KoopaThrow, //792
+	KFlameThrower, //793
 
     Num
 };

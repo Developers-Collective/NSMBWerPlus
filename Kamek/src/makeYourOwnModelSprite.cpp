@@ -3,6 +3,64 @@
 #include <g3dhax.h>
 #include <profile.h>
 
+// RYOMRes shit
+
+const char* RYOMRes1ArcNameList [] = { "RYOMRes1", NULL };
+const char* RYOMRes2ArcNameList [] = { "RYOMRes2", NULL };
+const char* RYOMRes3ArcNameList [] = { "RYOMRes3", NULL };
+const char* RYOMRes4ArcNameList [] = { "RYOMRes4", NULL };
+const char* RYOMRes5ArcNameList [] = { "RYOMRes5", NULL };
+const char* RYOMRes6ArcNameList [] = { "RYOMRes6", NULL };
+const char* RYOMRes7ArcNameList [] = { "RYOMRes7", NULL };
+
+class dRYOMRes_c : public dEn_c {
+public:
+	static dActor_c* build();
+	mHeapAllocator_c allocator;
+};
+
+dActor_c* dRYOMRes_c::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(dRYOMRes_c));
+	return new(buffer) dRYOMRes_c;
+}
+
+const SpriteData RYOMRes1SpriteData = 
+{ ProfileId::RYOMRes1, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes1Profile(&dRYOMRes_c::build, SpriteId::RYOMRes1, &RYOMRes1SpriteData, ProfileId::RYOMRes1, ProfileId::RYOMRes1, "RYOMRes1", RYOMRes1ArcNameList);
+
+const SpriteData RYOMRes2SpriteData = 
+{ ProfileId::RYOMRes2, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes2Profile(&dRYOMRes_c::build, SpriteId::RYOMRes2, &RYOMRes2SpriteData, ProfileId::RYOMRes2, ProfileId::RYOMRes2, "RYOMRes2", RYOMRes2ArcNameList);
+
+const SpriteData RYOMRes3SpriteData = 
+{ ProfileId::RYOMRes3, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes3Profile(&dRYOMRes_c::build, SpriteId::RYOMRes3, &RYOMRes3SpriteData, ProfileId::RYOMRes3, ProfileId::RYOMRes3, "RYOMRes3", RYOMRes3ArcNameList);
+
+const SpriteData RYOMRes4SpriteData = 
+{ ProfileId::RYOMRes4, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes4Profile(&dRYOMRes_c::build, SpriteId::RYOMRes4, &RYOMRes4SpriteData, ProfileId::RYOMRes4, ProfileId::RYOMRes4, "RYOMRes4", RYOMRes4ArcNameList);
+
+const SpriteData RYOMRes5SpriteData = 
+{ ProfileId::RYOMRes5, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes5Profile(&dRYOMRes_c::build, SpriteId::RYOMRes5, &RYOMRes5SpriteData, ProfileId::RYOMRes5, ProfileId::RYOMRes5, "RYOMRes5", RYOMRes5ArcNameList);
+
+const SpriteData RYOMRes6SpriteData = 
+{ ProfileId::RYOMRes6, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes6Profile(&dRYOMRes_c::build, SpriteId::RYOMRes6, &RYOMRes6SpriteData, ProfileId::RYOMRes6, ProfileId::RYOMRes6, "RYOMRes6", RYOMRes6ArcNameList);
+
+const SpriteData RYOMRes7SpriteData = 
+{ ProfileId::RYOMRes7, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+
+Profile RYOMRes7Profile(&dRYOMRes_c::build, SpriteId::RYOMRes7, &RYOMRes7SpriteData, ProfileId::RYOMRes7, ProfileId::RYOMRes7, "RYOMRes7", RYOMRes7ArcNameList);
+
+// actual RYOM sprite
+
 const char *RYOMArcNameList[] = {
 	NULL
 };
@@ -348,7 +406,7 @@ int dMakeYourOwn::onCreate() {
 	
 		case 25:		// Ship fallen, with broken propellers and cannons.
 
-			setupModel("RYOMRes3", "g3d/ShipFallen.brres", "KoopaShip"); 
+			setupModel("RYOMRes7", "g3d/ShipFallen.brres", "KoopaShip"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -358,7 +416,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 26:		// A tree. From the ghost bg.
 
-			setupModel("RYOMRes3", "g3d/tree_end.brres", "tree"); 
+			setupModel("RYOMRes6", "g3d/tree_end.brres", "tree"); 
 			SetupTextures_Map(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -368,7 +426,7 @@ int dMakeYourOwn::onCreate() {
 			
 		case 27:		// Bowser, laying down, eyes closed. Medic? Medic!
 
-			setupModel("RYOMRes3", "g3d/bowser_dead.brres", "koopa"); 
+			setupModel("RYOMRes7", "g3d/bowser_dead.brres", "koopa"); 
 			SetupTextures_Boss(&bodyModel, 0);
 			this->pos.z = 3000.0;
 
@@ -378,7 +436,7 @@ int dMakeYourOwn::onCreate() {
 		
 		case 28:		// A car. The animation has it tilted slightly. It's a bit darker than usual.
 
-			setupModel("RYOMRes3", "g3d/clown_car_end.brres", "car"); 
+			setupModel("RYOMRes6", "g3d/clown_car_end.brres", "car"); 
 			SetupTextures_MapObj(&bodyModel, 0);
 			this->pos.z = 3000.0;
 

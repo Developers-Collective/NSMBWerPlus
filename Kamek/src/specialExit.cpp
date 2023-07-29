@@ -3,12 +3,13 @@
 #include <stage.h>
 #include "boss.h"
 #include "msgbox.h"
+#include <profile.h>
 
-const char *PalaceDudeFileList[] = {"OpeningScene", 0};
+const char *SpecialExitFileList[] = {"RYOMRes5", 0};
 
-class dPalaceDude_c : public dStageActor_c {
+class dSpecialExit_c : public dStageActor_c {
 	public:
-		static dPalaceDude_c *build();
+		static dActor_c *build();
 
 		bool hasBeenActivated;
 		bool hasExitedStage;
@@ -17,14 +18,18 @@ class dPalaceDude_c : public dStageActor_c {
 
 /*****************************************************************************/
 // Glue Code
-dPalaceDude_c *dPalaceDude_c::build() {
-	void *buffer = AllocFromGameHeap1(sizeof(dPalaceDude_c));
-	dPalaceDude_c *c = new(buffer) dPalaceDude_c;
+const SpriteData SpecialExitSpriteData = {ProfileId::SpecialExit, 10, 10, 0, 0, 0x200, 0x200, 0, 0, 200, 200, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile SpecialExitProfile(&dSpecialExit_c::build, SpriteId::SpecialExit, &SpecialExitSpriteData, ProfileId::WM_KINOBALLOON, ProfileId::SpecialExit, "SpecialExit", SpecialExitFileList);
+
+dActor_c *dSpecialExit_c::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(dSpecialExit_c));
+	dSpecialExit_c *c = new(buffer) dSpecialExit_c;
 	return c;
 }
 
 
-int dPalaceDude_c::onExecute() {
+int dSpecialExit_c::onExecute() {
 	if (dFlagMgr_c::instance->flags & spriteFlagMask) {
 		if (!hasBeenActivated) {
 //			OSReport("Activating Palace Dude\n");

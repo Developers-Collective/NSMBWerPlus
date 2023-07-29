@@ -4,15 +4,11 @@
 #include <profileid.h>
 #include <sfx.h>
 #include "boss.h"
+#include <profile.h>
 
 extern "C" void *SoundRelatedClass;
 extern "C" void *MapSoundPlayer(void *SoundRelatedClass, int soundID, int unk);
 extern "C" void dAcPy_vf3F8(void* player, dEn_c* monster, int t);
-
-const char* SSarcNameList [] = {
-	"Shynja",
-	NULL
-};
 
 void ChucksAndKnucks(ActivePhysics *apThis, ActivePhysics *apOther);
 
@@ -45,7 +41,7 @@ class daSamurshai : public daBoss {
 	ActivePhysics Chuckles;
 	ActivePhysics Knuckles;
 
-	static daSamurshai *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 	void updateModelMatrices();
@@ -85,7 +81,12 @@ class daSamurshai : public daBoss {
 	DECLARE_STATE(Outro);
 };
 
-daSamurshai *daSamurshai::build() {
+const char* SSarcNameList [] = {"Shynja", NULL};
+const SpriteData SamurshaiSpriteData = {ProfileId::BossSamurshai, 0x10, 0x10, 0, 0, 0x40, 0x40, 0, 0, 0x40, 0x40, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile SamurshaiProfile(&daSamurshai::build, SpriteId::BossSamurshai, &SamurshaiSpriteData, ProfileId::WM_PUKU, ProfileId::BossSamurshai, "Samurshai", SSarcNameList);
+
+dActor_c *daSamurshai::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daSamurshai));
 	return new(buffer) daSamurshai;
 }

@@ -5,6 +5,7 @@
 #include <sfx.h>
 #include <stage.h>
 #include "boss.h"
+#include <profile.h>
 
 void poodleCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 
@@ -48,7 +49,7 @@ class daPodouble : public daBoss {
 	char isInvulnerable;
 	int countdown;
 
-	static daPodouble *build();
+	public: static dActor_c *build();
 
 	// void spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther);
 	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
@@ -77,7 +78,12 @@ class daPodouble : public daBoss {
 
 };
 
-daPodouble *daPodouble::build() {
+const char* PodoubleNameList [] = {"bubble", NULL};
+const SpriteData PodoubleSpriteData = {ProfileId::BossPodouble, 8, 0xFFFFFFF8, 0, 0, 0x20, 0x20, 0, 0, 0, 0, 8};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile PodoubleProfile(&daPodouble::build, SpriteId::BossPodouble, &PodoubleSpriteData, ProfileId::SHIP_WINDOW, ProfileId::BossPodouble, "Podouble", PodoubleNameList);
+
+dActor_c *daPodouble::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daPodouble));
 	return new(buffer) daPodouble;
 }
@@ -609,9 +615,9 @@ int daPodouble::onDraw() {
 ///////////////
 	void daPodouble::beginState_Outro() {
 
-		daPodouble *other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::SHIP_WINDOW, 0);
+		daPodouble *other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::BossPodouble, 0);
 			if (other->id == this->id) {
-				other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::SHIP_WINDOW, this);
+				other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::BossPodouble, this);
 			}
 		other->doStateChange(&StateID_SyncDie);
 

@@ -1,4 +1,13 @@
 SECTIONS {
+
+	onCreate_orig__14dCourseClear_cFv = 0x80779A20;
+
+	StateID_Flagdown__12daEnGlpole_c = 0x80B1AA50;
+	StateID_ProcGoalEnd__14dGameDisplay_c = 0x80382238;
+
+	sub_8004DD00__10daPlBase_cFv = 0x8004DD70;
+	daEnGlpole_c__CheckThis = 0x80A10630;
+
 	aWm_ob_eggbreak = 0x8098EDA0;
 	aWm_ob_eggbre_0 = 0x8098EDB4;
 	aWm_ob_eggbre_1 = 0x8098EDC8;
@@ -513,7 +522,7 @@ SECTIONS {
 	isReadyForDemoControlAction__10daPlBase_cFv = 0x80052100;
 
 	instance__15dWaterManager_c = 0x804351A0;
-	queryPosition__15dWaterManager_cFP4VEC2P4VEC2PfPsi = 0x800EBA40;
+	queryPosition__15dWaterManager_cFP7Point2dP7Point2dPfPsi = 0x800EBA40;
 
 	OriginalPowBlockActivated = 0x800A0DF0;
 
@@ -1153,7 +1162,7 @@ SECTIONS {
 	doSpriteMovement__5dEn_cFv = 0x80095730;
 	CheckIfPlayerBelow__5dEn_cFff = 0x80097A40;
 	stuffRelatingToCollisions__5dEn_cFfff = 0x800958F0;
-	checkLiquidImmersion__5dEn_cFP4VEC2f = 0x800973D0;
+	checkLiquidImmersion__5dEn_cFP7Point2df = 0x800973D0;
 	bouncePlayer__5dEn_cFPvf = 0x80096920;
 
 	__ct__13dActorState_cFv = 0x80067100;

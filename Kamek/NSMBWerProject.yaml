@@ -7,7 +7,6 @@ modules:
   # - processed/corseClear.yaml
   - processed/apDebug.yaml
   # - processed/hardMode.yaml
-  # - processed/layoutDebug.yaml
   # - processed/creditsMgr.yaml
   # - processed/endingMgr.yaml
   - processed/chestnut.yaml
@@ -34,7 +33,7 @@ modules:
   - processed/tilegod.yaml
   - processed/linegod.yaml
   - processed/tilesetfixer.yaml
-  # - processed/switchblock.yaml
+  - processed/switchblock.yaml
   - processed/eventblock.yaml
   - processed/msgbox.yaml
   # - processed/replay.yaml
@@ -47,16 +46,15 @@ modules:
   # - processed/blocksnake.yaml
   - processed/topman.yaml
   - processed/bossMegaGoomba.yaml
-  # - processed/bossFuzzyBear.yaml
-  # - processed/bossThwompaDomp.yaml
-  # - processed/bossRamboo.yaml
-  # - processed/bossBalboaWrench.yaml
-  # - processed/bossWrenchThrow.yaml
-  # - processed/bossSamurshai.yaml
-  # - processed/bossPodouble.yaml
-  # - processed/bossTopman.yaml
-  # - processed/bossCaptainBowser.yaml
-  # - processed/bossBridgeBowser.yaml
+  - processed/bossFuzzyBear.yaml
+  - processed/bossThwompaDomp.yaml
+  - processed/bossRamboo.yaml
+  - processed/bossBalboaWrench.yaml
+  - processed/bossSamurshai.yaml
+  - processed/bossPodouble.yaml
+  - processed/bossTopman.yaml
+  - processed/bossCaptainBowser.yaml
+  #- processed/bossBridgeBowser.yaml
   - processed/effectVideo.yaml
   - processed/fakeStarCoin.yaml
   - processed/shyguy.yaml
@@ -73,9 +71,9 @@ modules:
   - processed/bossPlayerClown.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  - processed/actorlog.yaml
+  # - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
   - processed/classic_controller.yaml
   - processed/redRingRewards.yaml
-  # - processed/pumpkinBlock.yaml
+  - processed/GameDisplay.yaml

@@ -21,20 +21,20 @@ hooks:
     addr_pal: 0x8080F918
     data: '386017D0' # Replace 0x0FD0 which how much space I want to allocate
 
+# This is what sets sprite 13 to spawn the clowncar actor
+#  - name: UpdateClownCarSpriteInfo
+#    type: patch
+#    addr_pal: 0x8030A548
+#    data: '012B 0000'
+#    # 0x8030A340 + sprite num * 0x28 == offset
 
-  - name: UpdateClownCarSpriteInfo
-    type: patch
-    addr_pal: 0x8030A548
-    data: '012B 0000'
-    # 0x8030A340 + sprite num * 0x28 == offset
 
-
-
-  - name: ClownCarSpriteFileInfo
-    type: add_func_pointer
-    src_addr_pal: 0x8031AB80
-    target_func: 'PCCarcNameList'
-    # 0x8031AB4C + sprite num * 0x4 == offset
+# Sprite 13 filelist
+#  - name: ClownCarSpriteFileInfo
+#    type: add_func_pointer
+#    src_addr_pal: 0x8031AB80
+#    target_func: 'PCCarcNameList'
+#    # 0x8031AB4C + sprite num * 0x4 == offset
 
 
   # Official Funcs

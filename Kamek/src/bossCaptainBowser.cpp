@@ -6,6 +6,7 @@
 #include <stage.h>
 #include <playerAnim.h>
 #include "boss.h"
+#include <profile.h>
 
 extern "C" void *StageScreen;
 
@@ -41,6 +42,7 @@ const char* CBarcNameList [] = {
 	"choropoo",
 	"koopa_clown_bomb",
 	"dossun",
+	"fire_cannon",
 	NULL
 };
 
@@ -121,7 +123,7 @@ public:
 	int saveTimer;
 	bool exitedFlag;
 
-	static daCaptainBowser *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRate(const char* name, int unk, float unk2, float rate);
 
@@ -146,7 +148,11 @@ public:
 
 };
 
-daCaptainBowser *daCaptainBowser::build() {
+const SpriteData BossCaptainBowserSpriteData = {ProfileId::BossCaptainBowser, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile BossCaptainBowserProfile(&daCaptainBowser::build, SpriteId::BossCaptainBowser, &BossCaptainBowserSpriteData, ProfileId::BRANCH, ProfileId::BossCaptainBowser, "BossCaptainBowser", CBarcNameList);
+
+dActor_c *daCaptainBowser::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daCaptainBowser));
 	return new(buffer) daCaptainBowser;
 }
@@ -183,7 +189,7 @@ bool daCaptainBowser::collisionCat13_Hammer(ActivePhysics *apThis, ActivePhysics
 }
 
 void daCaptainBowser::spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (apOther->owner->profileId == ProfileId::WM_PAKKUN) { //time to get hurt
+	if (apOther->owner->profileId == ProfileId::CustomClownShot) { //time to get hurt
 		if (this->isInvulnerable) {
 			return;
 		}
@@ -536,12 +542,12 @@ int daCaptainBowser::onDraw() {
 
 		if (this->chrAnimation.getCurrentFrame() == 60.0) { // throw back
 			int num = GenerateRandomNumber(4);
-			CreateActor(ProfileId::WM_ANCHOR, 0x101 + ((num + 1) * 0x10), (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
+			CreateActor(ProfileId::KoopaThrow, 0x101 + ((num + 1) * 0x10), (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.getCurrentFrame() == 126.0) { // throw front
 			int num = GenerateRandomNumber(4);
-			CreateActor(ProfileId::WM_ANCHOR, ((num + 1) * 0x10) + 1, (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
+			CreateActor(ProfileId::KoopaThrow, ((num + 1) * 0x10) + 1, (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.isAnimationDone()) {
@@ -573,7 +579,7 @@ int daCaptainBowser::onDraw() {
 
 		if (this->chrAnimation.getCurrentFrame() == 70.5) { // spit fire
 			PlaySound(this, SE_BOSS_KOOPA_L_FIRE_SHOT);
-			CreateActor(ProfileId::WM_ANTLION, 0, (Vec){pos.x-172.0, pos.y+152.0, pos.z}, 0, 0);
+			CreateActor(ProfileId::KFlameThrower, 0, (Vec){pos.x-172.0, pos.y+152.0, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.isAnimationDone()) {
@@ -1006,12 +1012,12 @@ void daCaptainBowser::endState_PanToExit() {
 
 void daCaptainBowser::executeState_PanToExit() {
 	float targetClownY = ClassWithCameraInfo::instance->screenCentreY - 160.0f;
-
 	for (int i = 0; i < clownCount; i++) {
 		dEn_c *clown = clownPointers[i];
 		clown->pos.y -= 1.5f;
 		if (clown->pos.y < targetClownY && !exitedFlag) {
-			RESTART_CRSIN_LevelStartStruct.purpose = 0;
+			/* UNCOMMENT TO RE-ENABLE THE NEWER CUTSCENE
+			RESTART_CRSIN_LevelStartStruct.purpose = 0; 
 			RESTART_CRSIN_LevelStartStruct.world1 = 7;
 			RESTART_CRSIN_LevelStartStruct.world2 = 7;
 			RESTART_CRSIN_LevelStartStruct.level1 = 40;
@@ -1021,7 +1027,9 @@ void daCaptainBowser::executeState_PanToExit() {
 			RESTART_CRSIN_LevelStartStruct.unk4 = 0; // load replay
 			DontShowPreGame = true;
 			ExitStage(ProfileId::RESTART_CRSIN, 0, BEAT_LEVEL, MARIO_WIPE);
-			exitedFlag = true;
+			exitedFlag = true; */
+
+			ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
 
 			for (int i = 0; i < 4; i++)
 				if (Player_Lives[i] == 0)

@@ -6,6 +6,7 @@
 #include <stage.h>
 #include "boss.h"
 #include "player.h"
+#include <profile.h>
 
 class daRamboo_c : public daBoss {
 	int onCreate();
@@ -35,7 +36,7 @@ class daRamboo_c : public daBoss {
 
 	u64 eventFlag;
 
-	static daRamboo_c *build();
+	public: static dActor_c *build();
 
 	void bindAnimChr_and_setUpdateRates(const char* name, m3d::anmChr_c &animationChr, m3d::mdl_c &model, float rate);
 	void setupModels();
@@ -58,7 +59,12 @@ class daRamboo_c : public daBoss {
 	DECLARE_STATE(Outro);
 };
 
-daRamboo_c *daRamboo_c::build() {
+const char* RambooNameList[] = {"teresa", NULL};
+const SpriteData RambooSpriteData = {ProfileId::BossRamboo, 8, 0xFFFFFFF0, 0, 0x10, 0x10, 0x10, 0x10, 0, 0x10, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile RambooProfile(&daRamboo_c::build, SpriteId::BossRamboo, &RambooSpriteData, ProfileId::EN_IWAO, ProfileId::BossRamboo, "BossRamboo", RambooNameList);
+
+dActor_c *daRamboo_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daRamboo_c));
 	return new(buffer) daRamboo_c;
 }

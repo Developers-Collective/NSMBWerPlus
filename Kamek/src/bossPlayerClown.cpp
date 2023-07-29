@@ -27,7 +27,27 @@ const char* PCCarcNameList [] = {
 	NULL
 };
 
+class dClownCarSpawner : public dStageActor_c {
+public:
+	static dActor_c *build();
+	int onCreate();
+};
 
+
+const SpriteData ClownCarSpawnerSpriteData = { ProfileId::CustomClownCar, 0, 0 , 0 , 0, 0, 0, 0, 0, 0, 0, 0 };
+Profile ClownCarSpawnerProfile(&dClownCarSpawner::build, SpriteId::CustomClownCar, &ClownCarSpawnerSpriteData, ProfileId::CustomClownCar, ProfileId::CustomClownCar, "CustomClown", PCCarcNameList);
+
+
+dActor_c* dClownCarSpawner::build() {
+	void* buffer = AllocFromGameHeap1(sizeof(dClownCarSpawner));
+	return new(buffer) dClownCarSpawner;
+}
+
+
+s32 dClownCarSpawner::onCreate() {
+	dStageActor_c* actor = (dStageActor_c*) dStageActor_c::create(ProfileId::JR_CLOWN_FOR_PLAYER, settings, &(this->pos), 0, 0);
+	return true;
+}
 
 int CConDraw(dEn_c *clown) {
 	// setup cannon model
@@ -80,7 +100,7 @@ int CConExecute(dEn_c *clown) {
 
 void CCafterCreate(dEn_c *clown, u32 param) {
 
-	if(clown->settings >> 4 & 1) {
+	if(clown->settings >> 8 & 1) {
 		clown->scale.x *= 1.25;
 		clown->scale.y *= 1.25;
 		clown->scale.z *= 1.25;

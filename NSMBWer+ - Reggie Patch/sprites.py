@@ -1531,6 +1531,177 @@ class SpriteImage_FallingChestnut(SLib.SpriteImage_StaticMultiple):  # 320
 
         super().dataChanged()
 
+class SpriteImage_FuzzyBear(SLib.SpriteImage_StaticMultiple):  # 515
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('FuzzyBear', 'fuzzy_bear.png')
+        SLib.loadIfNotInImageCache('FuzzyBearBig', 'fuzzy_bear_big.png')
+
+    def dataChanged(self):
+        big = (self.parent.spritedata[2] >> 4) & 1
+        self.image = ImageCache['FuzzyBear' if not big else 'FuzzyBearBig']
+
+        super().dataChanged()
+
+class SpriteImage_MegaThwomp(SLib.SpriteImage):  # 322
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.aux.append(SLib.AuxiliaryImage(parent, 121, 140))
+        self.aux[0].image = ImageCache['MegaThwomp']
+        self.aux[0].setPos(-60, -101)
+
+        self.aux.append(SLib.AuxiliaryTrackObject(parent, 16, 16, SLib.AuxiliaryTrackObject.Horizontal))
+        self.aux.append(SLib.AuxiliaryTrackObject(parent, 16, 16, SLib.AuxiliaryTrackObject.Horizontal))
+        self.aux.append(SLib.AuxiliaryTrackObject(parent, 16, 16, SLib.AuxiliaryTrackObject.Vertical))
+
+    def dataChanged(self):
+        super().dataChanged()
+
+        left_buffer = self.parent.spritedata[2] + 2
+        right_buffer = self.parent.spritedata[3] + 2
+        top_buffer = self.parent.spritedata[4] + 2
+
+        self.aux[1].setSize(left_buffer * 8, 16)
+        self.aux[1].setPos((-left_buffer * 12) + 24, 0)
+
+        self.aux[2].setSize(right_buffer * 8, 16)
+        self.aux[2].setPos(0, 0)
+
+        self.aux[3].setSize(16, top_buffer * 8)
+        self.aux[3].setPos(0, (-top_buffer * 12) + 24)
+
+        if left_buffer == 2:
+            self.aux[1].setSize(0, 0)
+
+        if right_buffer == 2:
+            self.aux[2].setSize(0, 0)
+
+        if top_buffer == 2:
+            self.aux[3].setSize(0, 0)
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('MegaThwomp', 'giant_thwomp.png')
+
+class SpriteImage_Boolossus(SLib.SpriteImage_Static):  # 290
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['Boolossus'],
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('Boolossus', 'boolossus.png')
+
+class SpriteImage_RockyBoss(SLib.SpriteImage_Static):  # 279
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['RockyBoss'],
+            (-25, -33),
+        )
+
+        self.aux.append(SLib.AuxiliaryRectOutline(parent, 71, 77, -166, -50))
+        self.aux.append(SLib.AuxiliaryRectOutline(parent, 71, 77, -334, -2))
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('RockyBoss', 'rocky_boss.png')
+
+class SpriteImage_RockyBossWrench(SLib.SpriteImage_StaticMultiple):  # 302
+    @staticmethod
+    def loadImages():
+        if 'RockyBossWrench0' in ImageCache: return
+        for big in (0, 1):
+            for direction in range(3):
+                ImageCache['RockyBossWrench%d%d' % (big, direction)] = SLib.GetImg('rocky_boss_wrench_%d%d.png' % (big, direction))
+
+    def dataChanged(self):
+        big = (self.parent.spritedata[5] >> 4) & 1
+        direction = self.parent.spritedata[5] & 3
+        if direction == 3:
+            direction = 2
+
+        self.image = ImageCache['RockyBossWrench%d%d' % (big, direction)]
+        if big:
+            self.offset = (
+                    (2, -33),
+                    (-5, -33),
+                    (-11, 5)
+                )[direction]
+        else:
+            self.offset = (
+                    (6, -26),
+                    (-1, -26),
+                    (-5, 11)
+                )[direction]
+
+        super().dataChanged()
+
+class SpriteImage_SamuraiGuy(SLib.SpriteImage_Static):  # 19
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['SamuraiGuy'],
+            (-8, -13),
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('SamuraiGuy', 'samurai_guy.png')
+
+class SpriteImage_Podouble(SLib.SpriteImage):  # 324
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.aux.append(SLib.AuxiliaryImage(parent, 110, 110))
+        self.aux.append(SLib.AuxiliaryTrackObject(parent, 16, 16, SLib.AuxiliaryTrackObject.Vertical))
+        self.aux[0].setPos(-45, -67)
+        self.aux[1].setPos(0, -288)
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('PodoubleFire', 'podouble_fire.png')
+        SLib.loadIfNotInImageCache('PodoubleIce', 'podouble_ice.png')
+
+    def dataChanged(self):
+        fire = (self.parent.spritedata[2] >> 4) & 1
+        distance = self.parent.spritedata[5] & 0xFF
+
+        self.aux[0].image = ImageCache['PodoubleFire' if fire else 'PodoubleIce']
+        self.aux[1].setSize(16, 208 + (distance * 8))
+
+        super().dataChanged()
+
+class SpriteImage_TopmanBoss(SLib.SpriteImage_Static):  # 251
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['TopmanBoss'],
+            (-47.3, -66.6)
+            #(-71, -100),
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('TopmanBoss', 'topman_boss.png')
+
+class SpriteImage_CaptainBowser(SLib.SpriteImage_Static):  # 213
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            1.5,
+            ImageCache['CaptainBowser'],
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('CaptainBowser', 'captain_bowser.png')
+
 ImageClasses = {
     13: SpriteImage_ClownCar,
     20: SpriteImage_NewerGoomba,
@@ -1592,4 +1763,13 @@ ImageClasses = {
     501: SpriteImage_AngrySun,
     502: SpriteImage_FallingChestnut,
     506: SpriteImage_GigaGoomba,
+    515: SpriteImage_FuzzyBear,
+    516: SpriteImage_MegaThwomp,
+    517: SpriteImage_Boolossus,
+    518: SpriteImage_RockyBoss,
+    519: SpriteImage_RockyBossWrench,
+    520: SpriteImage_SamuraiGuy,
+    521: SpriteImage_Podouble,
+    522: SpriteImage_TopmanBoss,
+    523: SpriteImage_CaptainBowser,
 }

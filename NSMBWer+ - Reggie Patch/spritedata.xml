@@ -28,11 +28,6 @@
 <!-- Sizehacks Check - 63, 98, 113, 156, 357 -->
 <!-- Stopped after Line 7046 / 10755 (#230) -->
 <sprites>
-  <sprite id="13" name="Rideable Clowncar with Cannon" asmhacks="True" noyoshi="True" notes="Used in the NewerSMBW Final Boss Fight. The player can fly around freely and shoot a cannon at a fixed angle. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Not recommended for use outside of the Final Boss Fight.&lt;/font&gt;" advancedcomment="If you do choose to use this vehicle outside of the boss fight, please keep in mind there is no documentation for what issues you might encounter. Be sure to test your level for crashes and glitches. Cannon shots behave similarly but not identically to Bob-omb explosions. Water causes it to react similarly to Yoshi, with the player jumping off and the Clowncar sinking.">
-    <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
-    <checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
-  </sprite> <!-- #13: Rideable Clowncar with Cannon -->
-  
   <sprite id="20" name="Goomba" sizehacks="True" notes="Your standard Goomba. Place it in the level and it will walk towards Mario when it loads.">
     <list nybble="6" title="Color" comment="This determines the color and style of the Goomba.">
       <entry value="0">Normal</entry>
@@ -1249,136 +1244,6 @@
     <dualbox nybble="8.2" title1="Short Stem" title2="Long Stem" comment="This determines the length of the stem when the platform is contracted." requirednybble="7.3"/>
   </sprite> <!-- 231: Wiggling Mushroom Platform -->
   
-  <!-- Need to move to new sprite slot! -->
-  <sprite id="244" name="Line God Event" notes="The Line God can hide and show Line Guides within a specified area by using Events.">
-    <dependency notes="The Line God cannot create new Line objects, only determine if the object within its affected area are displayed and functional."/>
-    <value nybble="5-6" title="Triggering Event ID" comment="When this Event ID is activated, the Line Guides affected by the Line God's area will be hidden or unhidden, depending on the Mode." idtype="Triggering Event"/>
-    <value nybble="11" title="Width" comment="Width of the area affected by the Line God."/>
-    <value nybble="10" title="Height" comment="Height of the area affected by the Line God."/>
-    <dualbox nybble="12.4" title1="Hides when Active" title2="Shows when Active" comment="This determines how the Line God will act when the Triggering Event is activated." comment2="When the event is not active, the Line Guides will exist in the opposite state from what's listed."/>
-  </sprite> <!-- #244: Line God Event -->
-  
-  <!-- Move to new sprite slot! -->
-  <sprite id="246" name="Special Event" notes="This sprite can do all sorts of special functions, such as freezing actors, changing the size of sprites, editing the game Timer, and changing the gravity. This function is restricted to the active Zone. The settings available to each type will appear when selecting that option. Be sure to reset the Sprite Settings when switching between different types in order to prevent any bugs.">
-    <value nybble="5-6" title="Triggering Event ID" comment="The Special Event is on as long as this Event is activated." idtype="Triggering Event"/>
-    <list nybble="12" title="Type" comment="This determines the effect of the Special Event." comment2="Time Stop: Freezes some Actors/Elements. &lt;br&gt;Pause Timer: Pauses the Level's Clock, different from Time Stop. &lt;br&gt;Set Timer: Changes the time on the Level's Clock. &lt;br&gt;Change Gravity: Changes player physics to simulate a different type of gravity. &lt;br&gt;Resizer: Changes the size of all sprites affected by this function. &lt;br&gt;Selective Resizer: Changes the size of sprites affected by this function to their specified sizes. &lt;br&gt;Background Resizer: Changes the Background settings. &lt;br&gt;Disable Z-Order Fixes: Deactivates all Z-Order modifications while the Special Event is activated. &lt;br&gt;Disable MP Bubbling: Deactivates the ability to 'bubble' yourself during Multiplayer.">
-      <entry value="0">None</entry>                  <!-- 0000 -->
-      <entry value="1">Time Stop</entry>             <!-- 0001 -->
-      <entry value="2">Pause Timer</entry>           <!-- 0010 -->
-      <entry value="4">Set Timer</entry>             <!-- 0100 -->
-      <entry value="3">Change Gravity</entry>        <!-- 0011 -->
-      <entry value="5">Resizer</entry>               <!-- 0101 -->
-      <entry value="6">Selective Resizer</entry>     <!-- 0110 -->
-      <entry value="9">Background Resizer</entry>    <!-- 1001 -->
-      <entry value="7">Disable Z-Order Fixes</entry> <!-- 0111 -->
-      <entry value="8">Disable MP Bubbling</entry>   <!-- 1000 --> <!-- 45-48 -->
-    </list>
-    <checkbox nybble="11.4" title="Time Stop: Platforms &lt;font color=&quot;red&quot;&gt;(Disabled)&lt;/font&gt;" comment="When enabled, the Special Event will freeze all Platforms that support this function." requirednybble="12" requiredval="1"/> <!-- Appears if [Type] = 1 -->
-    <checkbox nybble="11.3" title="Time Stop: Players &lt;font color=&quot;red&quot;&gt;(Disabled)&lt;/font&gt;" comment="When enabled, the Special Event will freeze all Players." comment2="Remember to deactivate the Special Event or else Mario and the other Players will remain frozen. Forever~" requirednybble="12" requiredval="1"/> <!-- Appears if [Type] = 1 -->
-    <checkbox nybble="11.2" title="Time Stop: Terrain &lt;font color=&quot;red&quot;&gt;(Disabled)&lt;/font&gt;" comment="When enabled, the Special Event will freeze all Terrain Animations." requirednybble="12" requiredval="1"/> <!-- Appears if [Type] = 1 -->
-    <checkbox nybble="11.1" title="Time Stop: Enemies &lt;font color=&quot;red&quot;&gt;(Disabled)&lt;/font&gt;" comment="When enabled, the Special Event will freeze all Enemies that support this function." requirednybble="12" requiredval="1"/> <!-- Appears if [Type] = 1 -->
-    <list nybble="11" title="Gravity Type" comment="This determines what the altered state of gravity will be while the Special Event is activated." comment2="Anti Gravity is a little strange, not fully documented, and definitely not recommended for normal use." requirednybble="12" requiredval="3"> <!-- Appears if [Type] = 3 -->
-      <entry value="0">Low Gravity</entry>
-      <entry value="1">Anti Gravity</entry>
-    </list>
-    <value nybble="7-10" title="Set Time to..." comment="This determines what the Level's Clock will be set to when the Special Event is activated." comment2="Do not use a value higher than 999." requirednybble="12" requiredval="4"/> <!-- Appears if [Type] = 4 -->
-    <list nybble="11" title="Scale / Size (Global)" comment="The Special Event will resize all affected sprites in the Zone that support this function." requirednybble="12" requiredval="5"> <!-- Appears if [Type] = 5 -->
-      <entry value="0">x1.0 (normal)</entry>
-      <entry value="1">x0.25</entry>
-      <entry value="2">x0.5</entry>
-      <entry value="3">x0.75</entry>
-      <entry value="4">x1.25</entry>
-      <entry value="5">x1.5</entry>
-      <entry value="6">x1.75</entry>
-      <entry value="7">x2.0</entry>
-      <entry value="8">x2.5</entry>
-      <entry value="9">x3.0</entry>
-      <entry value="10">x4.0</entry>
-      <entry value="11">x5.0</entry>
-      <entry value="12">x6.0</entry>
-      <entry value="13">x7.0</entry>
-      <entry value="14">x8.0</entry>
-      <entry value="15">x10.0</entry>
-    </list>
-    <list nybble="11" title="Scale / Size (Selective)" comment="The Special Event will resize all affected sprites in the Zone following the list below using nybble 5 or 7. Keep in mind that these nybbles may control other functions in the sprites themselves.&lt;br&gt;4 = x0.25&lt;br&gt;5 = x0.5&lt;br&gt;6 = x0.75&lt;br&gt;0-3 = x1.0&lt;br&gt;7 = x1.25&lt;br&gt;8 = x1.5&lt;br&gt;9 = x2.0&lt;br&gt;10 = x2.5&lt;br&gt;11 = x3.0&lt;br&gt;12 = x4.0&lt;br&gt;13 = x5.0&lt;br&gt;14 = x6.0&lt;br&gt;15 = x10.0" requirednybble="12" requiredval="6"> <!-- Appears if [Type] = 6 -->
-      <entry value="0">Use Nybble 5</entry>
-      <entry value="1">Use Nybble 7</entry>
-    </list>
-    <!-- 1001 -->
-    <list nybble="7" title="bgA (Scenery) X Size" comment="The Special Event will resize the 'Scenery' background picture horizontally. Higher Values = Bigger Size" requirednybble="12" requiredval="9"> <!-- Appears if [Type] = 9 -->
-      <entry value="0">x0.1</entry>
-      <entry value="1">x0.15</entry>
-      <entry value="2">x0.25</entry>
-      <entry value="3">x0.375</entry>
-      <entry value="4">x0.5</entry>
-      <entry value="5">x0.625</entry>
-      <entry value="6">x0.75</entry>
-      <entry value="7">x0.9</entry>
-      <entry value="8">x1.0 (Normal)</entry>
-      <entry value="9">x1.125</entry>
-      <entry value="10">x1.25</entry>
-      <entry value="11">x1.5</entry>
-      <entry value="12">x1.75</entry>
-      <entry value="13">x2</entry>
-      <entry value="14">x2.25</entry>
-      <entry value="15">x2.5</entry>
-    </list>
-    <list nybble="8" title="bgA (Scenery) Y Size" comment="The Special Event will resize the 'Scenery' background picture vertically. Higher Values = Bigger Size" requirednybble="12" requiredval="9"> <!-- Appears if [Type] = 9 -->
-      <entry value="0">x0.1</entry>
-      <entry value="1">x0.15</entry>
-      <entry value="2">x0.25</entry>
-      <entry value="3">x0.375</entry>
-      <entry value="4">x0.5</entry>
-      <entry value="5">x0.625</entry>
-      <entry value="6">x0.75</entry>
-      <entry value="7">x0.9</entry>
-      <entry value="8">x1.0 (Normal)</entry>
-      <entry value="9">x1.125</entry>
-      <entry value="10">x1.25</entry>
-      <entry value="11">x1.5</entry>
-      <entry value="12">x1.75</entry>
-      <entry value="13">x2</entry>
-      <entry value="14">x2.25</entry>
-      <entry value="15">x2.5</entry>
-    </list>
-    <list nybble="9" title="bgB (Backdrop) X Size" comment="The Special Event will resize the 'Backdrop' background picture horizontally. Higher Values = Bigger Size" requirednybble="12" requiredval="9"> <!-- Appears if [Type] = 9 -->
-      <entry value="0">x0.1</entry>
-      <entry value="1">x0.15</entry>
-      <entry value="2">x0.25</entry>
-      <entry value="3">x0.375</entry>
-      <entry value="4">x0.5</entry>
-      <entry value="5">x0.625</entry>
-      <entry value="6">x0.75</entry>
-      <entry value="7">x0.9</entry>
-      <entry value="8">x1.0 (Normal)</entry>
-      <entry value="9">x1.125</entry>
-      <entry value="10">x1.25</entry>
-      <entry value="11">x1.5</entry>
-      <entry value="12">x1.75</entry>
-      <entry value="13">x2</entry>
-      <entry value="14">x2.25</entry>
-      <entry value="15">x2.5</entry>
-    </list>
-    <list nybble="10" title="bgB (Backdrop) Y Size" comment="The Special Event will resize the 'Backdrop' background picture vertically. Higher Values = Bigger Size" requirednybble="12" requiredval="9"> <!-- Appears if [Type] = 9 -->
-      <entry value="0">x0.1</entry>
-      <entry value="1">x0.15</entry>
-      <entry value="2">x0.25</entry>
-      <entry value="3">x0.375</entry>
-      <entry value="4">x0.5</entry>
-      <entry value="5">x0.625</entry>
-      <entry value="6">x0.75</entry>
-      <entry value="7">x0.9</entry>
-      <entry value="8">x1.0 (Normal)</entry>
-      <entry value="9">x1.125</entry>
-      <entry value="10">x1.25</entry>
-      <entry value="11">x1.5</entry>
-      <entry value="12">x1.75</entry>
-      <entry value="13">x2</entry>
-      <entry value="14">x2.25</entry>
-      <entry value="15">x2.5</entry>
-    </list>
-  </sprite> <!-- #246: Special Event -->
-  
   <sprite id="255" name="Rotation Controlled ? Block" notes="A ?-Block that can either be moved by rotation controllers or manually angled.">
     <dependency notes="A rotation controller is not required for this sprite to function. You can, instead, set a manual angle for the block.">
       <suggested sprite="96"/>
@@ -2043,9 +1908,6 @@
   </sprite> <!-- #483: Flip Block -->
  
   <sprite id="484" name="Spine Coaster Platform" notes="This creates immobile 'Spine Coaster' Platforms (1x2). The Sprite's placement represents the right side of the Platform.">
-    <dependency notes="The normal Spine Coaster [297] must be placed somewhere in your level. It does not have to be part of a zone.">
-      <required sprite="297"/> <!-- Spine Coaster -->
-    </dependency>
     <dualbox nybble="5.4" title1="Horizontal Platform" title2="Angled Platform" comment="This determines if the platform is flat (horizontal), or if it is tilted at an angle."/>
     <dualbox nybble="6.1" title1="Angles Left" title2="Angles Right" comment="This determines which direction the platform will be angled." requirednybble="5.4"/> <!-- Appears only if Angled is enabled -->
     <list nybble="6.2-6.4" title="Angle" comment="This determines the amount of tilt the platform will have." comment2="Angles greater than 45° have glitchy collision and are not recommended." requirednybble="5.4-6.1" requiredval="2">
@@ -2167,9 +2029,11 @@
     <value nybble="12.3-12.4" title="Nybble 12" />
   </sprite> <!-- #492: Actor Multi-Spawner -->
   
-<!-- <sprite id="493" name="Rideable Clowncar with Cannon" noyoshi="True" notes="Used in the NewerSMBW Final Boss Fight. The player can fly around freely and shoot a cannon at a fixed angle. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Not recommended for use outside of the Final Boss Fight.&lt;/font&gt;" advancedcomment="If you do choose to use this vehicle outside of the boss fight, please keep in mind there is no documentation for what issues you might encounter. Be sure to test your level for crashes and glitches. Cannon shots behave similarly but not identically to Bob-omb explosions. Water causes it to react similarly to Yoshi, with the player jumping off and the Clowncar sinking.">
+  <sprite id="493" name="Player Clowncar" noyoshi="True" notes="A rideable Clowncar" advancedcomment="This sprite is very buggy, please keep in mind this sprite was designed for use in the NewerSMBW final boss fight and there is no documentation for what issues you might encounter. Be sure to test your level for crashes and glitches. Cannon shots behave similarly but not identically to Bob-omb explosions. Water causes it to react similarly to Yoshi, with the player jumping off and the Clowncar sinking.">
     <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
-  </sprite> #493: Rideable Clowncar with Cannon -->
+	<checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
+	<dualbox nybble="10" title1="Original Size" title2="1.25X as Large" comment="This changes the size of the clowncar from the one used in the World 6 airship to the size used by NewerSMBW's final boss."/>
+  </sprite> <!-- #493: Rideable Clowncar with Cannon -->
   
   <sprite id="494" name="Thundercloud" notes="This creates an unhappy Thundercloud that is similar to a Lakitu's cloud. It will slingshot around the top of the stage and occasionally shoot down Thunder. This Thunder will turn non-tiny Marios into Mini-Mario, and kill Mini-Marios outright. The Thunder will not reach beneath solid terrain.">
   <dependency notes="The controller for Bowser Jr's 2nd Fight must be included somewhere in the level for the electricity to draw properly."/>
@@ -2181,8 +2045,8 @@
   </sprite> <!-- #494: Thundercloud -->
 
   <sprite id="495" name="Message Box Controller" notes="This controller is required for all Message Boxes to function correctly. It must be placed in every Zone that uses a Message Box.">
-    <dependency notes="This is used alongside [152] Message Box to produce blocks capable of spawning a pop-up Message Box.">
-      <suggested sprite="152"/>
+    <dependency notes="This is used alongside [496] Message Box to produce blocks capable of spawning a pop-up Message Box.">
+      <suggested sprite="496"/>
     </dependency>
   </sprite> <!-- #495: Message Box Controller -->
   
@@ -2309,12 +2173,14 @@
   </sprite> <!-- #502: Falling Chestnut -->
 
   <sprite id="503" name="Custom Model Loader" notes="The Custom Model Loader allows the use of pre-scripted Models and Animations for use in user-created cutscenes. It can also provide new models as decoration for your level. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;&lt;b&gt;Warning:&lt;/b&gt; Will CRASH if [Animate Model] is set and no animation is available.&lt;/font&gt;">
-    <dependency notes="As this sprite will pull Models and Animations from specific .arc files, those sprites are required to be placed within the level to prevent a game crash. The list of required sprites is as follows: &lt;br&gt; &lt;br&gt;0-6: RYOMRes1.arc (507) &lt;br&gt;7-16: RYOMRes2.arc (508) &lt;br&gt;17-24: RYOMRes1.arc (507) &lt;br&gt;25-39: RYOMRes3.arc (509) &lt;br&gt;40-42: RYOMRes4.arc (510) &lt;br&gt;43-48: RYOMRes5.arc (511) &lt;br&gt;49: RYOMRes4.arc (509)">
+   <dependency notes="As this sprite will pull Models and Animations from specific .arc files, those sprites are required to be placed within the level to prevent a game crash. The list of required sprites is as follows: &lt;br&gt; &lt;br&gt;0-6: RYOMRes1.arc (507) &lt;br&gt;7-16: RYOMRes2.arc (508) &lt;br&gt;17-24: RYOMRes1.arc (507) &lt;br&gt;25 and 27: RYOMRes7.arc (513) &lt;br&gt;26 and 28: RYOMRes6.arc (512)&lt;br&gt;29-39: RYOMRes3.arc (509) &lt;br&gt;40-42: RYOMRes4.arc (510) &lt;br&gt;43-48: RYOMRes5.arc (511) &lt;br&gt;49: RYOMRes4.arc (510)">
       <suggested sprite="507"/>
       <suggested sprite="508"/>
 	  <suggested sprite="509"/>
 	  <suggested sprite="510"/>
 	  <suggested sprite="511"/>
+	  <suggested sprite="512"/>
+	  <suggested sprite="513"/>
     </dependency>
     <external type="models" nybble="11-12" title="Model ID" comment="Use this external window to select your Model.&lt;br&gt;&lt;br&gt;This determines which Model will be used. If [Animate Model] is checked, then the Models will run their coded animation instead of standing still. Values with '---' were not used in Newer levels." />
     <value nybble="5-6" title="Scale: Value/4.0" comment="This determines the scale of the Model." comment2="Value 0 creates an original-sized Model (100%). Values above 0 are divided by 4 to determine the Model Size. 1=25%, 2=50%, 8=200%, etc." advancedcomment="Value limit unknown. Maximum value suspected to be 24, or 600%"/>
@@ -2387,15 +2253,129 @@
   </sprite> <!--507: Custom Model Loader Resources 1 -->
   
   <sprite id="508" name="Custom Model Loader Resources 2" notes="A sprite that loads models used for the Custom Model Loader">
-  </sprite> <!--507: Custom Model Loader Resources 2 -->
+  </sprite> <!--508: Custom Model Loader Resources 2 -->
 
   <sprite id="509" name="Custom Model Loader Resources 3" notes="A sprite that loads models used for the Custom Model Loader">
-  </sprite> <!--507: Custom Model Loader Resources 3 -->
+  </sprite> <!--509: Custom Model Loader Resources 3 -->
 
   <sprite id="510" name="Custom Model Loader Resources 4" notes="A sprite that loads models used for the Custom Model Loader">
-  </sprite> <!--507: Custom Model Loader Resources 4 -->
+  </sprite> <!--510: Custom Model Loader Resources 4 -->
   
   <sprite id="511" name="Custom Model Loader Resources 5" notes="A sprite that loads models used for the Custom Model Loader">
-  </sprite> <!--507: Custom Model Loader Resources 5 -->
+  </sprite> <!--511: Custom Model Loader Resources 5 -->
+
+  <sprite id="512" name="Custom Model Loader Resources 6" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--512: Custom Model Loader Resources 6 -->
+
+  <sprite id="513" name="Custom Model Loader Resources 7" notes="A sprite that loads models used for the Custom Model Loader">
+  </sprite> <!--513: Custom Model Loader Resources 7 -->
+
+  <!-- Conflicting information on sprite settings with newer spritedata, needs further research. -->
+  <sprite id="514" name="Level Exit Controller" notes="Upon activation by a Triggering Event, the Level Exit Controller will display a message box for a fixed amount of time and then complete the current level. It can also set world flags for the Switch Palaces.">
+    <dependency notes="While there are no dependencies for the Level Exit Controller, not even the Message Box Controller, this sprite does function as loading Opening_Scene.arc in regards to [11]."/>
+    <value nybble="3-4" title="Triggering Event ID" comment="The Level Exit Controller will begin to eject the player from the level when the Triggering Event is activated." idtype="Triggering Event"/>
+    <checkbox nybble="6.4" title="Level Intro" comment="When enabled, the Level Exit Controller will show a message box for 1020 time units. It will then eject you from the level and set a hardcoded flag in the world settings that Newer uses when starting the game for the first time. The game will also be saved." comment2="It's not recommended to use this unless directly editing the NewerSMBW pack."/>
+    <list nybble="5" title="Palace Activation" comment="This determines which colored blocks will be enabled after the player exits. If not using the Level Exit Controller as a Switch Palace, set it to value 8. Additionally, the message will be displayed for 270 time units and cannot be skipped, and the level will be completed." requirednybble="6.4" requiredval="0">
+      <entry value="8">Nothing</entry>
+      <entry value="0">Red Blocks</entry>
+      <entry value="1">Green Blocks</entry>
+      <entry value="2">Yellow Blocks</entry>
+      <entry value="3">Blue Blocks</entry>
+    </list>
+    <value nybble="9-12" title="Message ID" comment="Messages defined in Messages.bin" idtype="Message"/>
+  </sprite> <!-- #514: Level Exit Controller -->
+
+  <sprite id="515" name="World-1 Boss: Fuzzy Bear" noyoshi="True" notes="The giant Fuzzy boss that jumps around and occasionally rolls after the player. It can only be defeated by having grabbable items thrown at it.">
+    <dependency notes="Kamek and his controller should be included in the level.">
+      <suggested sprite="391"/> <!-- Glow Block -->
+      <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+    <dualbox nybble="5.4" title1="Tower Boss" title2="Castle Boss" comment="Affects certain cinematics."/>
+  </sprite> <!-- #515: World-1 Boss: Fuzzy Bear -->
+
+  <sprite id="516" name="World-2 Boss: Thwompa Domp" notes="A large Thwomp boss used by NewerSMBW. It can be defeated by having it fall through crushable terrain at least 4 blocks wide.">
+    <dependency notes="Kamek and his controller must be included in the level.">
+      <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+    <value nybble="5-6" title="Left Buffer" comment="This defines the empty space the Mega Thwomp will be allowed to move through from the left side of the sprite's placement, calculated in half-blocks."/>
+    <value nybble="7-8" title="Right Buffer" comment="This defines the empty space the Mega Thwomp will be allowed to move through from the right side of the sprite's placement, calculated in half-blocks."/>
+    <value nybble="9-10" title="Top Buffer" comment="This defines the empty space the Mega Thwomp will be allowed to move upwards from the sprite's placement, calculated in half-blocks."/>
+  </sprite> <!-- #516: World-2 Boss: Mega Thwomp -->
+
+  <sprite id="517" name="World-6 Boss: Ramboo" noyoshi="True" notes="The extra large Boo boss that is not the least bit shy about continuing to advance towards the player. He can be knocked back with grabbable items and can only be defeated when the specified Event is activated.">
+    <dependency notes="Kamek and his controller must be included in the level.">
+      <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+    <value nybble="7.2-8.4" title="Die on Triggering Event ID" comment="When activated, the Ramboo will be killed, completing the level." idtype="Triggering Event"/>
+    <dualbox nybble="5.4" title1="Tower Boss" title2="Castle Boss" comment="Affects certain cinematics."/>
+  </sprite> <!-- #517: World-6 Boss: Ramboo -->
+
+  <sprite id="518" name="World-3 Boss: Balboa Wrench" noyoshi="True" notes="The giant Rocky Wrench boss used by NewerSMBW. He must be Ground-Pounded 3 times to be defeated. ">
+    <dependency notes="Kamek and his controller should be included in the level.">
+	  <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+    <dualbox nybble="5.4" title1="Tower Boss" title2="Castle Boss" comment="Affects certain cinematics."/>
+  </sprite> <!-- #518: World-3 Boss: Balboa Wrench -->
+
+  <sprite id="519" name="Loose Balboa Throwing Wrench" notes="The wrenches thrown by Balboa Wrench in his boss fight.">
+    <checkbox nybble="10" title="Place In Front Of Other Sprites"/>
+    <checkbox nybble="11" title="Big"/>
+    <list nybble="12" title="Direction" comment="The flying arc varies up to about 3 blocks in distance.">
+      <entry value="0">Up Right</entry>
+      <entry value="1">Up Left</entry>
+      <entry value="2">Up Left (Shorter arc)</entry>
+      <!--<entry value="3">Up Left (Shorter arc)</entry>-->
+    </list>
+  </sprite> <!-- #519: Loose Balboa Throwing Wrench -->
+
+  <sprite id="520" name="World-4 Boss: Samurshai" noyoshi="True" notes="">
+    <dualbox nybble="5.4" title1="Tower Boss" title2="Castle Boss" comment="Affects certain cinematics and boss difficulty."/>
+  </sprite> <!-- #520: World-4 Boss: Samurshai -->
+
+  <sprite id="521" name="World-5 Boss: Podouble" notes="A pair of large Podoboo bosses used in NewerSMBW. It can only be defeated by using fire or ice attacks against the correct half, and spawns a Yoshi for each player to assist them.">
+    <dependency notes="Kamek and his controller must be included in the level. Yoshis are spawned by the boss at 16 blocks in from the left side of the zone.">
+	  <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+    <dualbox nybble="5.4" title1="Ice Podouble" title2="Fire Podouble" comment="This determines which half of the Podouble duo the sprite is." comment2="Fire will always face right, and Ice will always face left."/>
+    <value nybble="11-12" title="Falling Offset" comment="This determines the bottom of the Podouble's jump relative to the sprite's placement, calculated in half-blocks."/>
+  </sprite> <!-- #521: World-5 Boss: Podouble -->
+
+  <sprite id="522" name="World-7 Boss: Super Topman" notes="Large Topman boss used by NewerSMBW. It can be beaten by luring it into [250] Electric Lines.">
+    <dependency notes="Kamek and his controller should be included in the level.">
+      <suggested sprite="250"/> <!-- Electric Line -->
+      <required sprite="427"/> <!-- Kamek -->
+      <required sprite="383"/> <!-- Kamek Controller -->
+    </dependency>
+  <checkbox nybble="12.4" title="Low Gravity" comment="When enabled, the Topman will fall much more slowly."/>
+  </sprite> <!-- #522: World-7 Boss: Super Topman -->
+
+  <!-- Research all dependencies -->
+  <sprite id="523" name="Captain Bowser" noyoshi="True" notes="NewerSMBW's Final Boss fight features Bowser riding a small airship while lobbing junk at the players.">
+    <dependency notes="Captain Bowser requires a lot of stuff hidden off in a corner of the level in order to function properly and without crashes. Beyond those, you will need a Clowncar with Cannon to damage him.">
+      <required sprite="493"/> <!-- Clowncar to damage him --> <!-- Plus ?????? to avoid crashes -->
+	  <required sprite="449"/>
+    </dependency>
+  </sprite> <!-- #523: Captain Bowser -->
+
+  <sprite id="524" name="(Unused) Large Object Thrower" notes="Used in the Newer Final Boss Fight. This is spawned through Captain Bowser's code. It will throw a larger version of the Projectile at a 45° arc. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Use of this sprite is not recommended.&lt;/font&gt;" advancednotes="This sprite is best made use of by spawning it through the Actor Spawner. Projectiles have a very high velocity. It will spawn the object around 5 blocks above the placement of the sprite.">
+    <dualbox nybble="10.4" title1="Place in Front" title2="Place Behind" comment="This determines the Z-Order of the thrown object." advanced="True" advancedcomment="Place in Front: +3300 to the Z-Order.&lt;br&gt;Place Behind: -1804 to the Z-Order."/>
+    <list nybble="11" title="Object" comment="This determines what object is thrown. These objects are larger than the normal versions." advanced="True">
+      <entry value="0">Wrench</entry>
+      <entry value="1">Exploding Wrench</entry>
+      <entry value="2">Bowser Bomb</entry>
+      <entry value="3">Hammer</entry>
+      <entry value="4">Thwomp</entry>
+      <entry value="5">Mushroom Present Box</entry>
+    </list>
+    <dualbox nybble="12.4" title1="Throws Left" title2="Throws Right" comment="This determines which direction the object will be thrown." advanced="True"/>
+  </sprite> <!-- #524: (Unused) Large Object Thrower -->
+
+  <sprite id="525" name="(Unused) Captain Bowser Flame Breath" notes="Captain Bowser uses this in the NewerSMBW Final Boss Fight. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Cannot be placed as an individual sprite.&lt;/font&gt;">
+  </sprite> <!-- #525: (Unused) Captain Bowser Flame Breath -->
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

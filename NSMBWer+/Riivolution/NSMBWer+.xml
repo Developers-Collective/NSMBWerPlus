@@ -32,6 +32,8 @@
 		<folder external="Font" disc="/US/FraUS/Font" />
 		<folder external="Font" disc="/US/SpaUS/Font" />
 		<folder external="Font" disc="/JP/Font" />
+		<folder external="Font" disc="/KR/Font" />
+		<folder external="Font" disc="/TW/Font" />
 		<folder external="Message" disc="/EU/EngEU/Message" />	
 		<folder external="Message" disc="/EU/GerEU/Message" />
 		<folder external="Message" disc="/EU/FraEU/Message" />
@@ -41,6 +43,8 @@
 		<folder external="Message" disc="/US/FraUS/Message" />
 		<folder external="Message" disc="/US/SpaUS/Message" />
 		<folder external="Message" disc="/JP/Message" />
+		<folder external="Message" disc="/KR/Message" />
+		<folder external="Message" disc="/TW/Message" />
 		<folder external="NewerRes" disc="/NewerRes" create="true" />
 		<folder external="WorldMap" disc="/WorldMap" create="true" />
 		<folder external="Others" />

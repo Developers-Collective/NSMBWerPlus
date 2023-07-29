@@ -5,6 +5,7 @@
 #include <sfx.h>
 #include <stage.h>
 #include "boss.h"
+#include <profile.h>
 
 // Externs
 	extern "C" int posIsInZone(Vec,float*,float*,u8 zone);
@@ -22,7 +23,7 @@ class daEnMegaDosun_c : public daBoss {
 	int onExecute();
 	int onDraw();
 
-	static daEnMegaDosun_c *build();
+	public: static dActor_c *build();
 
 	mHeapAllocator_c allocator;		// _524
 
@@ -79,7 +80,12 @@ class daEnMegaDosun_c : public daBoss {
 	CREATE_STATE(daEnMegaDosun_c, Grow);
 	CREATE_STATE(daEnMegaDosun_c, Outro);
 
-daEnMegaDosun_c *daEnMegaDosun_c::build() {
+const char* ThwompaDompNameList[] = {"dossun", NULL};
+const SpriteData ThwompaDompSpriteData = {ProfileId::BossThwompaDomp, 0, 0, 0, 0xFFFFFFC0, 0x10, 0x60, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ThwompaDompProfile(&daEnMegaDosun_c::build, SpriteId::BossThwompaDomp, &ThwompaDompSpriteData, ProfileId::EN_GHOST_JUGEM, ProfileId::BossThwompaDomp, "BossThwompaDomp", ThwompaDompNameList);
+
+dActor_c *daEnMegaDosun_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daEnMegaDosun_c));
 	return new(buffer) daEnMegaDosun_c;
 }
