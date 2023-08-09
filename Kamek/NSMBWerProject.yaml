@@ -1,14 +1,13 @@
 output_dir: "NewerASM"
 code_address: 0x808D9000
 modules:
-  # - processed/heapbar.yaml
   - processed/profile.yaml
   - processed/prolog.yaml
   # - processed/corseClear.yaml
   - processed/apDebug.yaml
   # - processed/hardMode.yaml
   # - processed/creditsMgr.yaml
-  # - processed/endingMgr.yaml
+  - processed/endingMgr.yaml
   - processed/chestnut.yaml
   - processed/flipblock.yaml
   # - processed/fileselect.yaml
@@ -27,6 +26,7 @@ modules:
   - processed/firelaser.yaml
   - processed/spritetex.yaml
   # - processed/gakenoko.yaml
+  # - processed/heapbar.yaml
   - processed/poweruphax.yaml
   - processed/randtiles.yaml
   - processed/objkinoko.yaml
@@ -44,6 +44,7 @@ modules:
   - processed/compression.yaml
   # - processed/crowdclapper.yaml
   # - processed/blocksnake.yaml
+  - processed/classic_controller.yaml
   - processed/topman.yaml
   - processed/bossMegaGoomba.yaml
   - processed/bossFuzzyBear.yaml
@@ -54,7 +55,8 @@ modules:
   - processed/bossPodouble.yaml
   - processed/bossTopman.yaml
   - processed/bossCaptainBowser.yaml
-  #- processed/bossBridgeBowser.yaml
+  - processed/bossBombDrop.yaml
+  # - processed/bossBridgeBowser.yaml # uncomment to replace normal bowser with bridge bowser
   - processed/effectVideo.yaml
   - processed/fakeStarCoin.yaml
   - processed/shyguy.yaml
@@ -64,16 +66,16 @@ modules:
   - processed/thundercloud.yaml
   - processed/makeYourOwn.yaml
   - processed/challengeStar.yaml
-  # - processed/singAlong.yaml
+  - processed/singAlong.yaml
   - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
   - processed/nsmbwUpdated.yaml
   - processed/bossPlayerClown.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  # - processed/actorlog.yaml
+  - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
-  - processed/classic_controller.yaml
+  # - processed/TPCclassic_controller.yaml
   - processed/redRingRewards.yaml
   - processed/GameDisplay.yaml

@@ -1,0 +1,17 @@
+---
+source_files: [../src/endingMgr.cpp]
+hooks: 
+# random hook to keep the compiler from freaking out when the other 2 are disabled
+  - name: expandMapHeap
+    type: patch
+    addr_pal: 0x808df15c
+    data: '3c800004'
+
+# UNCOMMENT THESE TO FIX NEWERS ENDING IN MULTIPLAYER
+#  - name: DisablePeachThankMP
+#    type: nop_insn
+#    area_pal: 0x80B4A020
+
+#  - name: DisablePeachDmEscort
+#    type: nop_insn
+#    area_pal: 0x80B49E80

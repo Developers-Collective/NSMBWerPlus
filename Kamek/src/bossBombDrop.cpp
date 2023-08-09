@@ -4,7 +4,7 @@
 #include <profileid.h>
 #include <sfx.h>
 #include "boss.h"
-
+#include <profile.h>
 
 const char* BDarcNameList [] = {
 	"koopa_clown_bomb",
@@ -25,7 +25,7 @@ class dDroppedBomb : public dEn_c {
 
 	u32 cmgr_returnValue;
 
-	static dDroppedBomb *build();
+	public: static dActor_c *build();
 
 	void updateModelMatrices();
 	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
@@ -44,7 +44,10 @@ void dDroppedBomb::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther
 	this->kill();
 }
 
-dDroppedBomb *dDroppedBomb::build() {
+const char* EmptyBombDropFileList[] = {NULL};
+Profile DroppedBombProfile(&dDroppedBomb::build, ProfileId::BossBombDropped, NULL, ProfileId::WM_SMALLCLOUD, ProfileId::BossBombDropped, "DroppedBomb", EmptyBombDropFileList);
+
+dActor_c *dDroppedBomb::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dDroppedBomb));
 	return new(buffer) dDroppedBomb;
 }
@@ -193,10 +196,14 @@ class dBombDrop : public dStageActor_c {
 	int eventA;
 	int eventB;
 
-	static dBombDrop *build();
+	public: static dActor_c *build();
 };
 
-dBombDrop *dBombDrop::build() {
+const SpriteData BossBombDropSpriteData = {ProfileId::BossBombDrop, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile BossBombDropProfile(&dBombDrop::build, SpriteId::BossBombDrop, &BossBombDropSpriteData, ProfileId::WM_CLOUD, ProfileId::BossBombDrop, "BossBombDrop", BDarcNameList);
+
+dActor_c *dBombDrop::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dBombDrop));
 	return new(buffer) dBombDrop;
 }
@@ -237,14 +244,14 @@ int dBombDrop::onExecute() {
 	bool active;
 	active = dFlagMgr_c::instance->active(eventA);
 	if (active) {
-		create(ProfileId::WM_SMALLCLOUD, eventA+1, &pos , &rot, 0);
+		create(ProfileId::BossBombDropped, eventA+1, &pos , &rot, 0);
 		HackyBombDropVariable = true;
 		dFlagMgr_c::instance->set(eventA, 0, false, false, false);
 	}
 
 	active = dFlagMgr_c::instance->active(eventB);
 	if (active) {
-		create(ProfileId::WM_SMALLCLOUD, eventB+1, &pos, &rot, 0);
+		create(ProfileId::BossBombDropped, eventB+1, &pos, &rot, 0);
 		HackyBombDropVariable = true;
 		dFlagMgr_c::instance->set(eventB, 0, false, false, false);
 	}

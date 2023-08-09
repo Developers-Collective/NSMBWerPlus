@@ -547,6 +547,10 @@ enum
 	BossCaptainBowser = 523,
 	KoopaThrow = 524,
 	KFlameThrower = 525,
+	BossBombDrop = 526,
+	EndingMgr = 527,
+	SingAlong = 528,
+	SongBlock = 529,
 
     Num
 };
@@ -1362,6 +1366,12 @@ enum
 	BossCaptainBowser, //791
 	KoopaThrow, //792
 	KFlameThrower, //793
+	BossBombDrop, //794
+	BossBombDropped, //795
+	EndingMgr, //796
+	SingAlong, //797
+	SongBlock, //798
+	SongPrize, //799
 
     Num
 };

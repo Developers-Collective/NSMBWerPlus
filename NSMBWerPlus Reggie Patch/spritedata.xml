@@ -2505,5 +2505,130 @@
 
   <sprite id="525" name="(Unused) Captain Bowser Flame Breath" notes="Captain Bowser uses this in the NewerSMBW Final Boss Fight. &lt;br&gt; &lt;br&gt;&lt;font color=&quot;red&quot;&gt;Cannot be placed as an individual sprite.&lt;/font&gt;">
   </sprite> <!-- #525: (Unused) Captain Bowser Flame Breath -->
+
+  <sprite id="526" name="Bomb Drop Controller" yoshinotes="The Bomb Dropper does work with Yoshi. When the player is hit and he's on Yoshi, he will dismount Yoshi." notes="When one of the Triggering Events is activated, this controller will drop a large exploding spiked ball above either Bowser or a specific player straight down from the height of the sprite's placement.
+  &lt;br&gt;It will then activate the consecutive Event ID for the Triggered Event after the bomb explodes. The bomb has the same model that Bowser Jr uses in his 3rd boss fight." advancednotes="Feeling adventurous? Try making a multiplayer level that uses this sprite to create a versus style game which disables player respawn and triggers an event when only one player is left alive.">
+    <value nybble="5.2-6.4" title="Triggering Event ID #1" comment="Activating this Event will drop a bomb on the specified target, and then activate the numerical consecutive Event ID. Finally, the Event ID will be immediately deactivated, and can be reactivated again." idtype="Triggering Event"/>
+    <value nybble="7.2-8.4" title="Triggering Event ID #2" comment="Activating this Event will drop a bomb on the specified target, and then activate the numerical consecutive Event ID. Finally, the Event ID will be immediately deactivated, and can be reactivated again." idtype="Triggering Event"/>
+    <list nybble="12" title="Target" comment="This determines which target the bomb will drop above. Players have the ability to outrun the bomb.">
+      <entry value="0">Bowser</entry>
+      <entry value="1">Mario (P1)</entry>
+      <entry value="2">Luigi (P2)</entry>
+      <entry value="3">ToadA (P3)</entry>
+      <entry value="4">ToadB (P4)</entry>
+    </list>
+  </sprite> <!-- #526: Bomb Drop Controller -->
+
+  <sprite id="527" name="Newer Cutscene Controller: Credits" notes="&lt;font color=&quot;red&quot;&gt;This sprite is predominately hardcoded in how it functions. Custom usage is not recommended.&lt;/font&gt;" advancednotes="It needs a very specific level set-up to function. Shows the Bowser cutscene that runs in a separate level.">
+  </sprite> <!-- #527: Newer Cutscene Controller: Credits -->
+
+  <sprite id="528" name="Toad House Minigame - Music House" noyoshi="True" notes="This sprite is used to generate the Music House bonus game from NewerSMBW. The blocks will spawn centered on the sprite's placement. Playing the mini-game to completion will cause the level to end in completion." advancednotes="Additional songs can be added with a little adjustment to the sprite's code. Simple edits can allow for new songs in your hack.">
+    <list nybble="5" title="1st Chord Prize" comment="This determines the prize awarded for passing the first Chord of the song.">
+      <entry value="0">Mushroom</entry>
+      <entry value="1">Fire Flower</entry>
+      <entry value="2">Propeller</entry>
+      <entry value="3">Ice Flower</entry>
+      <entry value="4">Penguin Suit</entry>
+      <entry value="5">Mini Mushroom</entry>
+      <entry value="6">Star</entry>
+      <entry value="7">Hammer Suit</entry>
+      <entry value="8">1-Up</entry>
+      <entry value="9">50 Coins</entry>
+    </list>
+    <list nybble="6" title="2nd Chord Prize" comment="This determines the prize awarded for passing the second Chord of the song.">
+      <entry value="0">Mushroom</entry>
+      <entry value="1">Fire Flower</entry>
+      <entry value="2">Propeller</entry>
+      <entry value="3">Ice Flower</entry>
+      <entry value="4">Penguin Suit</entry>
+      <entry value="5">Mini Mushroom</entry>
+      <entry value="6">Star</entry>
+      <entry value="7">Hammer Suit</entry>
+      <entry value="8">1-Up</entry>
+      <entry value="9">50 Coins</entry>
+    </list>
+    <list nybble="7" title="3rd Chord Prize" comment="This determines the prize awarded for passing the third Chord of the song.">
+      <entry value="0">Mushroom</entry>
+      <entry value="1">Fire Flower</entry>
+      <entry value="2">Propeller</entry>
+      <entry value="3">Ice Flower</entry>
+      <entry value="4">Penguin Suit</entry>
+      <entry value="5">Mini Mushroom</entry>
+      <entry value="6">Star</entry>
+      <entry value="7">Hammer Suit</entry>
+      <entry value="8">1-Up</entry>
+      <entry value="9">50 Coins</entry>
+    </list>
+    <list nybble="8" title="4th Chord Prize" comment="This determines the prize awarded for passing the fourth Chord of the song.">
+      <entry value="0">Mushroom</entry>
+      <entry value="1">Fire Flower</entry>
+      <entry value="2">Propeller</entry>
+      <entry value="3">Ice Flower</entry>
+      <entry value="4">Penguin Suit</entry>
+      <entry value="5">Mini Mushroom</entry>
+      <entry value="6">Star</entry>
+      <entry value="7">Hammer Suit</entry>
+      <entry value="8">1-Up</entry>
+      <entry value="9">50 Coins</entry>
+    </list>
+    <list nybble="12" title="Song" comment="This determines the song that must be played in the minigame. The number of Stars (*) represents the difficulty. The world the song was used within in Newer is listed in parentheses.">
+      <entry value="3">SMB3 Clouds |*    | (Goldwood)</entry>
+      <entry value="6">SMW Castle |*    | (Crystal Cave)</entry>
+      <entry value="8">Yoshi Story Theme |*    | (Yoshi Island)</entry>
+      <entry value="2">SMB Starman |**   | (Star Road)</entry>
+      <entry value="7">SMW Theme |**   | (Mt. Mush)</entry>
+      <entry value="13">Koopahari Desert |**   | (Desert)</entry>
+      <entry value="0">SMB Melody |***  | (Cherry)</entry>
+      <entry value="9">SM64 Peaches Castle |***  | (Yoshi Island)</entry>
+      <entry value="10">SM64 Koopa Road |***  | (Koopa Planet)</entry>
+      <entry value="11">Frappe Snowland |***  | (FreezeFlame)</entry>
+      <entry value="1">SMB Underground |**** | (Koopa Core)</entry>
+      <entry value="5">SMB3 Underwater |**** | (Sewer)</entry>
+      <entry value="12">Ghost Luigi Mansion theme |**** | (Ghost)</entry>
+      <entry value="4">SMB3 Hammer Bros |*****| (MiniMega)</entry>
+      <entry value="14">Gusty Garden Galaxy |*****| (Space)</entry>
+      <entry value="15">Unused Slot |     | ()</entry>
+    </list>
+    <checkbox nybble="11.4" title="Always used in NewerSMBW" comment="Unknown effect. While this is always used in NewerSMBW's Music Houses, there's no discernable difference between having this enabled and not."/>
+  </sprite> <!-- #528: Toad House Minigame - Music House -->
+
+  <sprite id="529" name="Lighting - Music House Glow Block" notes="These are the colored Glow Blocks that act like normal blocks. They can be spawned by [15] in NewerSMBW's Music Houses. They can either be used as decoration, or as an item block.">
+    <dualbox nybble="11.4" title1="Plays a Musical Note" title2="Awards an Item" comment="This determines if the glow block will play a note when struck or award an item."/>
+    <list nybble="7-8" title="Item" comment="This determines the item rewarded." comment2="[Bug] Block will award unlimited items." advancedcomment="The block can be set to both award an item and play a musical note, but it is not recommended." requirednybble="11.4">
+      <entry value="0">None</entry>
+      <entry value="1">Star</entry>
+      <entry value="2">Coin</entry>
+      <entry value="3">Mushroom</entry>
+      <entry value="6">Hammer Suit</entry>
+      <entry value="7">1-up</entry>
+      <entry value="9">Fire Flower</entry>
+      <entry value="14">Ice Flower</entry>
+      <entry value="17">Penguin Suit</entry>
+      <entry value="21">Propeller Mushroom</entry>
+      <entry value="25">Mini Mushroom</entry>
+    </list>
+    <list nybble="12" title="Color" comment="This determines the color of the glow block. Value 0 has no recolor in the 'block_light.arc' file. If a color (white) was added, it would work fine." requirednybble="11.4">
+      <entry value="0">Nothing (Crashes)</entry>
+      <entry value="1">Red</entry>
+      <entry value="2">Orange</entry>
+      <entry value="3">Yellow</entry>
+      <entry value="4">Green</entry>
+      <entry value="5">Cyan</entry>
+      <entry value="6">Blue</entry>
+      <entry value="7">Violet</entry>
+      <entry value="8">Black</entry>
+    </list>
+    <list nybble="12" title="Color &amp; Note" comment="This determines which note is played when a player hits the block. &lt;font color=&quot;Red&quot;&gt;*[Bug] Value 0: Nothing - C1♯ currently crashes the game.&lt;/font&gt;" requirednybble="11.4" requiredval="0">
+      <entry value="0">Nothing - C1♯ (C1 Sharp)*</entry>
+      <entry value="1">Red - C1 (High C)</entry>
+      <entry value="2">Orange - D1</entry>
+      <entry value="3">Yellow - E1</entry>
+      <entry value="4">Green - F1</entry>
+      <entry value="5">Cyan - G1</entry>
+      <entry value="6">Blue - A1</entry>
+      <entry value="7">Violet - B1</entry>
+      <entry value="8">Black - C0 (Deep C)</entry>
+    </list>
+  </sprite> <!-- #529: Music House Glow Block -->
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

@@ -1016,7 +1016,6 @@ void daCaptainBowser::executeState_PanToExit() {
 		dEn_c *clown = clownPointers[i];
 		clown->pos.y -= 1.5f;
 		if (clown->pos.y < targetClownY && !exitedFlag) {
-			/* UNCOMMENT TO RE-ENABLE THE NEWER CUTSCENE
 			RESTART_CRSIN_LevelStartStruct.purpose = 0; 
 			RESTART_CRSIN_LevelStartStruct.world1 = 7;
 			RESTART_CRSIN_LevelStartStruct.world2 = 7;
@@ -1027,9 +1026,9 @@ void daCaptainBowser::executeState_PanToExit() {
 			RESTART_CRSIN_LevelStartStruct.unk4 = 0; // load replay
 			DontShowPreGame = true;
 			ExitStage(ProfileId::RESTART_CRSIN, 0, BEAT_LEVEL, MARIO_WIPE);
-			exitedFlag = true; */
+			exitedFlag = true;
 
-			ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
+			//ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
 
 			for (int i = 0; i < 4; i++)
 				if (Player_Lives[i] == 0)

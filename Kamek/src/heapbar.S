@@ -150,4 +150,3 @@ gdhbdgdfg:
 THE_THING: .string "A thing: %x - %x and %x\n"
 dgdfgdfg: .string "FREE: %x SIZE: %x\n"
 .align 4
-

@@ -1702,6 +1702,27 @@ class SpriteImage_CaptainBowser(SLib.SpriteImage_Static):  # 213
     def loadImages():
         SLib.loadIfNotInImageCache('CaptainBowser', 'captain_bowser.png')
 
+class SpriteImage_MusicBlock(SLib.SpriteImage_StaticMultiple): # 17
+    def __init__(self, parent):
+        super().__init__(parent, 1.5)
+        self.offset = (0, -45)
+
+    @staticmethod
+    def loadImages():
+        if 'MusicBlock1' in ImageCache: return
+        for i in range(8):
+            ImageCache['MusicBlock%d' % (i + 1)] = SLib.GetImg('music_block_%d.png' % (i + 1))
+
+    def dataChanged(self):
+        colour = (self.parent.spritedata[5] & 0xF) % 9
+
+        if colour == 0:
+            self.image = ImageCache['MusicBlock1']
+        else:
+            self.image = ImageCache['MusicBlock%d' % colour]
+
+        super().dataChanged()
+
 ImageClasses = {
     13: SpriteImage_ClownCar,
     20: SpriteImage_NewerGoomba,
@@ -1772,4 +1793,5 @@ ImageClasses = {
     521: SpriteImage_Podouble,
     522: SpriteImage_TopmanBoss,
     523: SpriteImage_CaptainBowser,
+    529: SpriteImage_MusicBlock,
 }

@@ -246,7 +246,7 @@ dActor_c *daClownShot::build() {
 }
 
 const char* EmptyClownShotFileList[] = {NULL};
-Profile CustomClownShotProfile(&daClownShot::build, ProfileId::CustomClownShot, NULL, ProfileId::CustomClownShot, ProfileId::CustomClownShot, "Custom Clown Shot", EmptyClownShotFileList);
+Profile CustomClownShotProfile(&daClownShot::build, ProfileId::CustomClownShot, NULL, ProfileId::WM_PAKKUN, ProfileId::CustomClownShot, "Custom Clown Shot", EmptyClownShotFileList);
 
 
 int daClownShot::onCreate() {

@@ -1,6 +1,8 @@
 #include <game.h>
 #include <common.h>
 #include <gameDisplay.h>
+#include <stage.h>
+#include <profileid.h>
 
 extern "C" void *dAcPy_c__ChangePowerupWithAnimation(void * Player, int powerup);
 extern "C" int CheckExistingPowerup(void * Player);
@@ -53,7 +55,18 @@ int dGameDisplay_c::newOnExecute() {
 		}
 
 		GetSpecificPlayerActor(0)->pos = playerPos; 
-	} 
+	}
+	/* if (nowPressed & WPAD_MINUS) {
+		ExitStage(ProfileId::MOVIE, OPENING_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	}
+
+	if (nowPressed & WPAD_B) {
+		ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	}
+
+	if (nowPressed & WPAD_A) {
+		ExitStage(ProfileId::MOVIE, POST_CREDIT_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	} */
 
 	return orig_val;
 }

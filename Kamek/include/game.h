@@ -235,7 +235,7 @@ public:
 	u8 field_06;				// 0x06
 	u8 switch_on;				// 0x07
 	u8 field_08;				// 0x08
-	u8 powerups_available[7];	// 0x09
+	u8 powerups_available[7];	// 0x09 - unused: now uses new_powerups_available
 	u8 toad_level_idx[10];		// 0x10
 	u8 player_continues[4];		// 0x1A
 	u8 player_coins[4];			// 0x1E
@@ -256,8 +256,11 @@ public:
 		u8 hint_movie_bought[70];	// 0x6FC
 
 		struct {
-			// ALL Newer additions should go here
+			// ALL additions should go here
 			// This array has been verified as safe to replace
+			u8 field_6FC;						//0x6FC
+			u8 new_powerups_available[8];		//0x6FD
+		/*
 			char newerWorldName[32]; // 0x6FC
 			GXColor fsTextColours[2]; // 0x71C
 			GXColor fsHintColours[2]; // 0x724
@@ -268,6 +271,7 @@ public:
 			u8 newerWorldID; // 0x739
 			u8 titleScreenWorld; // 0x73A
 			u8 titleScreenLevel; // 0x73B
+		*/
 			// Pretty much full up here...
 		};
 	};
@@ -4163,5 +4167,7 @@ class StageC4 {
 		u32 _10, _14;
 		u8 flags, _19, _1A, willDisplay, _1C, _1D;
 };
+
+extern "C" void *MapSoundPlayer(void *SoundRelatedClass, int soundID, int unk);
 
 #endif

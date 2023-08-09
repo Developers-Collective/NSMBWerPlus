@@ -23,7 +23,7 @@ extern bool HackyBombDropVariable;
 void BowserDoomSpriteCollision(dEn_c *bowser, ActivePhysics *apThis, ActivePhysics *apOther) {
 	// If you collide with something or other, call the fireball collision
 
-	if (apOther->owner->profileId == ProfileId::WM_SMALLCLOUD) {
+	if (apOther->owner->profileId == ProfileId::BossBombDropped) {
 
 		if (lastBomb == apOther->owner->id) { return; }
 		if (!HackyBombDropVariable) return;

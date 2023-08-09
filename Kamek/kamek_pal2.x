@@ -1,5 +1,65 @@
 SECTIONS {
 
+	disableAnim__Q23m2d13EmbedLayout_cFi = 0x800C9580;
+	getRootPane__Q23m2d17EmbedLayoutBase_cFv = 0x80007220;
+
+	MapSoundPlayer = 0x801954C0;
+	QueryGlobal5758 = 0x800B3B50;
+
+	NextStageActorDisableFlags = 0x80429FD8;
+	StageActorDisableFlags = 0x80429FDA;
+
+	doneWithCheckIfInStage = 0x800E1E40;
+	doneWithAddRemoconState = 0x800DD848;
+	doneWithChangeIDForCC = 0x800DCF9C;
+
+	dRemoconMng_c_ptr = 0x8042A308;
+	DoStuffWtihWiimote = 0x802BCCB0;
+	CoreControllerPtr = 0x80377F88;
+	assignSomeColoursToWindow = 0x800B3C50;
+	_ZN17dWarningManager_c22StateID_WarningNunchukE = 0x80375248;
+	StateID_WarningNunchuk__17dWarningManager_c = 0x80375248;
+	doneWithPatchShowNunchuk = 0x8010DA50;
+	doneWithShowClassic = 0x8010E098;
+	doneWithShowClassic2 = 0x8010E0B8;
+	doneWithCreateClassic = 0x8010D640;
+	CreateClassicReturn = 0x8010D6D0;
+	doneWithDrawClassic = 0x8010D7C4;
+	DeleteClassicReturn = 0x8010D850;
+	DeleteClassicContinue2 = 0x8010D83C;
+	doneWithCtorClassic = 0x8010D2FC;
+	doneWithDtorClassic = 0x8010D56C;
+	doneWithCheckForClassic = 0x8010DFF0;
+	CheckForClassicContinue = 0x8010DFF4;
+	_ZN17dWarningManager_c26messWithExistingSceneCountEv = 0x8010DC60;
+	messWithExistingSceneCount__17dWarningManager_cFv = 0x8010DC60;
+	_ZN17dWarningManager_c13checkForCloseEv = 0x8010DBE0;
+	checkForClose__17dWarningManager_cFv = 0x8010DBE0;
+	_ZN17dWarningManager_c22setStateToOutOfWarningEv = 0x8010DC40;
+	setStateToOutOfWarning__17dWarningManager_cFv = 0x8010DC40;
+	doneWithSetClassicVisibility0 = 0x8010E690;
+	ExecuteClassicForSomeReasonReturn = 0x8010E35C;
+	doneWithExecuteClassicForSomeReason = 0x8010E33C;
+	RemoconConnectExtension_executeWaitReturn = 0x800DCC10;
+	RemoconConnectExtension_executeNoneReturn = 0x800DCD44;
+	RemoconConnectExtension_executeFreestyleReturn = 0x800DCE74;
+	RemoconConnectExtension_executeOtherReturn = 0x800DCF98;
+	_ZN23RemoconConnectExtension12StateID_NoneE = 0x80371BF0;
+	StateID_None__23RemoconConnectExtension = 0x80371BF0;
+	_ZN23RemoconConnectExtension17StateID_FreestyleE = 0x80371C30;
+	StateID_Freestyle__23RemoconConnectExtension = 0x80371C30;
+	_ZN23RemoconConnectExtension13StateID_OtherE = 0x80371C70;
+	StateID_Other__23RemoconConnectExtension = 0x80371C70;
+	RemoconConnect_StateVTable = 0x80319574;
+	inside_kpads = 0x803A1DC8;
+	doneWithGiveClassicARemoconID = 0x800B5E08;
+	doneWithPatchControllerIcon = 0x800E6EB8;
+
+	dword_8042A740 = 0x8042A740;
+
+
+	CurrentWarningManager = 0x8042A5B8;
+
 	onCreate_orig__14dCourseClear_cFv = 0x80779A40;
 
 	StateID_Flagdown__12daEnGlpole_c = 0x80B15510;

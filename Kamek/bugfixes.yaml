@@ -384,8 +384,3 @@ hooks:
   # - name: DisableQuickSave
     # type: nop_insn
     # area_pal: 0x8077AA7C
-
-  - name: expandMapHeap
-    type: patch
-    addr_pal: 0x808df15c
-    data: '3c800004'

@@ -3,6 +3,7 @@
 #include <profileid.h>
 #include <sfx.h>
 #include <stage.h>
+#include <profile.h>
 
 extern void *SoundRelatedClass;
 
@@ -24,10 +25,15 @@ class dEndingMgr_c : public daBossDemo_c {
 
 	int timer;
 
-	static dEndingMgr_c *build();
+	public: static dActor_c *build();
 };
 
-dEndingMgr_c *dEndingMgr_c::build() {
+const char *EndingMgrArcNameList[] = {0};
+const SpriteData EndingMgrSpriteData = {ProfileId::EndingMgr, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile EndingMgrProfile(&dEndingMgr_c::build, SpriteId::EndingMgr, &EndingMgrSpriteData, ProfileId::RIVER_MGR, ProfileId::EndingMgr, "EndingMgr", EndingMgrArcNameList);
+
+dActor_c *dEndingMgr_c::build() {
 	void *buf = AllocFromGameHeap1(sizeof(dEndingMgr_c));
 	return new(buf) dEndingMgr_c;
 }
@@ -286,16 +292,7 @@ void dEndingMgr_c::executeState_ThanksPeach() {
 		} else if (peach->stage == 9) {
 			timer++;
 			if (timer == 90) {
-				RESTART_CRSIN_LevelStartStruct.purpose = 0;
-				RESTART_CRSIN_LevelStartStruct.world1 = 6;
-				RESTART_CRSIN_LevelStartStruct.world2 = 6;
-				RESTART_CRSIN_LevelStartStruct.level1 = 40;
-				RESTART_CRSIN_LevelStartStruct.level2 = 40;
-				RESTART_CRSIN_LevelStartStruct.areaMaybe = 0;
-				RESTART_CRSIN_LevelStartStruct.entrance = 0xFF;
-				RESTART_CRSIN_LevelStartStruct.unk4 = 0; // load replay
-				DontShowPreGame = true;
-				ExitStage(ProfileId::RESTART_CRSIN, 0, BEAT_LEVEL, MARIO_WIPE);
+				ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
 			}
 		}
 	}
