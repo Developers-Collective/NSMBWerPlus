@@ -15,7 +15,7 @@ int dGameDisplay_c::newOnExecute() {
 	int nowPressed = Remocon_GetPressed(GetActiveRemocon());
 
 	if(nowPressed & WPAD_MINUS) {
-		enableDebugMode = !enableDebugMode;
+		//enableDebugMode = !enableDebugMode; //uncomment to enable collision renderer
 	}
 
 	if(nowPressed & WPAD_B) {

@@ -14,7 +14,7 @@
 		</section>
 	</options>
 	<patch id="NSMBWer+Core">
-		<savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="false" />
+		<!-- <savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="false" /> -->
 		<folder external="Effect" disc="/Effect" />
 		<folder external="Stage" disc="/Stage" create="true" length="500000" />
 		<folder external="Stage/Texture" disc="/Stage/Texture" create="true" length="1000000" />

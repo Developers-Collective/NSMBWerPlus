@@ -3,9 +3,7 @@
 
 ### Introduction
 
-This fork of the NSMBWer repo is a heavily modified version that aims to keep it up to date with current NSMBW modding while keeping everything from Vanilla intact.
-Most notably, this version uses Abood's more sprites mod to implement every custom sprite and actor from Newer while keeping the ones they replaced.
-I'm releasing this in a heavily unfinished state, I will keep updating the project until I see it as complete.
+This Branch of NSMBWer+ is intended to be identical to the original game, read the original readme on a general idea of what NSMBWer+ is.
 
 ### Licensing
 
@@ -30,7 +28,7 @@ A build is inside this folder, including the SpriteTex files, an XML and the rel
 want to create a mod, starting with this is suggested. Keep in mind this build doesn't include the
 custom music or tilesets from Newer.
 
-It also includes an edited 01-01, 01-06, and 06-01 that removes old unused sprite settings from Nintendo set
+It also includes an edited 01-01, 01-06, 06-01, and 06-02 that removes old unused sprite settings from Nintendo set
 on several sprites that, now would crash NSMBWer. They are different flags for sprite recolors
 that don't exist in base Newer.
 
@@ -58,16 +56,11 @@ specific to game hacks like Newer:
 
 You may learn how to compiler the NSMBWer+ source code on [This Website][horizoncodesetup]
 
-Changes:
-* General folder and YAML cleanup
-* Changes that break vanilla levels (such as the newer chest mod) have been re-implemented. A branch that removes all these major changes will be added in the future.
-* Every sprite mentioned in the section below has been moved to new sprite slots to avoid overriding any original game sprites to have compatibility with the original game.
-* Added 2-Castle hardcode fixes from AnotherSMBW
-* Added more effects to effect spawner
-* Support for Yoshi Drums in music slots 200+
-* Load custom music from the default BRSTM folder
-* Porting of some Newer Wii sprites to new slots
-* Ported fixes from RoadrunnerWMC's NSMBW-Updated project.
+Changes from base NSMBWer+:
+* Removed hammer suit
+* Removed Yoshi spritetex
+* Collision renderer is disabled by default
+* Restored the original ambush chest settings
 
 Supported mods:
 * Actor Spawner
@@ -79,7 +72,6 @@ Supported mods:
 * Fire Laser
 * Flipblock
 * Giga Goomba
-* Hammer Suit
 * Line God
 * Magic Platform
 * Message Box
@@ -100,13 +92,13 @@ Supported mods:
 * Spine Coaster Platforms
 * Fake Star Coin
 * Classic Controller Support
-
-#### Upcoming Changes/Fixes
-* Move all Newer sprites to new slots
-* Pirahnatlas support(?)
-* Fix NSMBW bugs
-* Add Hammer Suit rendering on the worldmap
-* Fix Boo Circles
+* Music House Minigame
+* All bosses from Newer
+* Newer's ending cutscene (BUGGED: Needs a code change to allow it to work properly in multiplayer)
+* Switch palaces + blocks
+* Silver stars
+* Pumpkin Goomba
+* Rideable clowncar
 
 ### Credits
 * Nin0 - Programming Assistance, General Assistance, Numerous bits of code, original NSMBWer

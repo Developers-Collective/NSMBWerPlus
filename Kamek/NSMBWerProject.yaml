@@ -27,7 +27,7 @@ modules:
   - processed/spritetex.yaml
   # - processed/gakenoko.yaml
   # - processed/heapbar.yaml
-  - processed/poweruphax.yaml
+  # - processed/poweruphax.yaml
   - processed/randtiles.yaml
   - processed/objkinoko.yaml
   - processed/tilegod.yaml
@@ -73,9 +73,8 @@ modules:
   - processed/bossPlayerClown.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  - processed/actorlog.yaml
+  # - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
-  # - processed/TPCclassic_controller.yaml
   - processed/redRingRewards.yaml
   - processed/GameDisplay.yaml

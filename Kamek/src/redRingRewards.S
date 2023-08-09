@@ -21,4 +21,3 @@ redRingRewards:
 	.long 0x00000019 #Mini Mushroom
 	.long 0x00000001 #Power Star
 	.long 0x00000007 #1-UP Mushroom
-	.long 0x00000006 #Hammer	
