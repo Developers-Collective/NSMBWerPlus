@@ -210,7 +210,7 @@ dActor_c *dBombDrop::build() {
 
 
 bool HackyBombDropVariable = false;
-extern int BridgeBowserHP;
+int BridgeBowserHP;
 
 int dBombDrop::onCreate() {
 	BridgeBowserHP = 2;

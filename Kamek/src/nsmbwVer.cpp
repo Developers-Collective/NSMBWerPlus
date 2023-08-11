@@ -1,4 +1,5 @@
 #include "nsmbwVer.h"
+#include <game.h>
 
 NSMBWVer getNsmbwVer()
 {	

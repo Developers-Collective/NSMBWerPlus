@@ -140,7 +140,7 @@ int dLevelSpecial_c::onExecute() {
 		newEvState = 1;
 	
 	if (newEvState == this->lastEvState)
-		return;
+		return true;
 		
 	
 	u8 offState;
