@@ -66,7 +66,6 @@ Changes:
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
 * Load custom music from the default BRSTM folder
-* Porting of most Newer Wii sprites to new slots
 * Ported fixes from RoadrunnerWMC's NSMBW-Updated project.
 
 Supported mods:
@@ -107,6 +106,9 @@ Supported mods:
 * Silver stars
 * Pumpkin Goomba
 * Rideable clowncar
+* Gakenoko restoration
+* Sprite 22 (early micro goombas) restoration
+* MANTA_MGR2 and WATER_LIFT now have their own sprites
 
 #### Upcoming Changes/Fixes
 * Pirahnatlas support(?)
