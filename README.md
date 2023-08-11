@@ -99,6 +99,9 @@ Supported mods:
 * Silver stars
 * Pumpkin Goomba
 * Rideable clowncar
+* Gakenoko restoration
+* Sprite 22 (early micro goombas) restoration
+* MANTA_MGR2 and WATER_LIFT now have their own sprites
 
 ### Credits
 * Nin0 - Programming Assistance, General Assistance, Numerous bits of code, original NSMBWer
