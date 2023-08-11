@@ -982,8 +982,8 @@ void dSingAlong::addPowerups() {
 			block->player_coins[i] = 1 + block->player_coins[i];
 		}
 
-		block->player_lives[i] = this->Powerups[8] + block->player_lives[i];
-		if (block->player_lives[i] > 99) { block->player_lives[i] = 99; }
+		Player_Lives[i] = this->Powerups[8] + Player_Lives[i];
+		if (Player_Lives[i] > 99) { Player_Lives[i] = 99; }
 	}
 
 	return;

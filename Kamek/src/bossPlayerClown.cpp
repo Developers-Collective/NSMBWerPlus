@@ -96,6 +96,7 @@ int CConExecute(dEn_c *clown) {
 		clown->speed.x = 0.0f;
 		clown->speed.y = 0.0f;
 	}
+	return true;
 }
 
 void CCafterCreate(dEn_c *clown, u32 param) {

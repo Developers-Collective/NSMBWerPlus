@@ -15,7 +15,7 @@ extern "C" void *BowserDamageNormal(dEn_c *);
 extern "C" void *BowserDamageKill(dEn_c *);
 extern "C" void *BowserDamageEnd(dEn_c *);
 
-int BridgeBowserHP = 2;
+extern int BridgeBowserHP;
 int lastBomb = 0;
 
 extern bool HackyBombDropVariable;

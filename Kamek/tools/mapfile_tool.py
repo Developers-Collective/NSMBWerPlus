@@ -6,7 +6,6 @@ import yaml
 original = 'pal'
 todo = ['pal2', 'ntsc', 'ntsc2', 'jpn', 'jpn2', 'kor', 'twn']
 fix_for = {}
-version_str = 'Kamek 0.3 by Treeki and RoadRunnerWMC'
 
 
 def make_hex_offset(offs):
@@ -594,7 +593,6 @@ def do_project(f, already_done):
 
 
 def main():
-    print(version_str)
 
     if not os.path.isdir('processed'):
         os.mkdir('processed')
