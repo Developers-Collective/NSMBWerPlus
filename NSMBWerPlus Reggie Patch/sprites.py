@@ -102,6 +102,28 @@ class SpriteImage_NewerParaGoomba(SLib.SpriteImage_StaticMultiple):  # 21
         super().dataChanged()
 
 
+class SpriteImage_NewerBabyGoomba(SLib.SpriteImage_StaticMultiple):  # 22
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('BabyGoomba', 'babygoomba.png')
+        if 'BabyGoomba1' in ImageCache: return
+        for i in range(8):
+            ImageCache['BabyGoomba%d' % (i + 1)] = SLib.GetImg('babygoomba_%d.png' % (i + 1))
+
+    def dataChanged(self):
+
+        color = (self.parent.spritedata[2] & 0xF) % 9
+
+        if color == 0:
+            self.image = ImageCache['BabyGoomba']
+            self.offset = (-1, -4)
+        else:
+            self.image = ImageCache['BabyGoomba%d' % color]
+            self.offset = (0, -4) if color not in (7, 8) else (0, -5)
+
+        super().dataChanged()
+
+
 class SpriteImage_NewerBuzzyBeetle(SLib.SpriteImage_StaticMultiple):  # 24
     @staticmethod
     def loadImages():
@@ -1609,6 +1631,7 @@ ImageClasses = {
     13: SpriteImage_ClownCar,
     20: SpriteImage_NewerGoomba,
     21: SpriteImage_NewerParaGoomba,
+    22: SpriteImage_NewerBabyGoomba,
     24: SpriteImage_NewerBuzzyBeetle,
     25: SpriteImage_NewerSpiny,
     26: SpriteImage_NewerUpsideDownSpiny,
@@ -1669,4 +1692,5 @@ ImageClasses = {
     522: SpriteImage_TopmanBoss,
     523: SpriteImage_CaptainBowser,
     529: SpriteImage_MusicBlock,
+    244: SpriteImage_LineEvent,
 }

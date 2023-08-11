@@ -1,11 +1,10 @@
+22 : DUMMY_ACTOR : EN_MAME_KURIBO
 244 : RIVER_MGR : Line God
-246 : TAG_THUNDER : Level Special
 
 
 
 -- All Replaced Profiles --
 RIVER_MGR
-TAG_THUNDER
 
 
 
