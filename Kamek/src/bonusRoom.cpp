@@ -163,7 +163,7 @@ int Songs[16][4][16][3] = {
 	}
 };
 
-const char* Prizes[9][4] = {
+const char* Prizes[10][4] = {
 	{ "I_kinoko", 		"g3d/I_kinoko.brres", 			"I_kinoko", 			"wait2" },
 	{ "I_fireflower", 	"g3d/I_fireflower.brres", 		"I_fireflower", 		"wait2" },
 	{ "I_propeller", 	"g3d/I_propeller.brres",	 	"I_propeller_model", 	"wait2" },
@@ -171,6 +171,7 @@ const char* Prizes[9][4] = {
 	{ "I_penguin", 		"g3d/I_penguin.brres", 			"I_penguin", 			"wait2" },
 	{ "I_kinoko_bundle","g3d/I_mini_kinoko.brres", 		"I_mini_kinoko", 		"wait2" },
 	{ "I_star", 		"g3d/I_star.brres", 			"I_star", 				"wait2" },
+	{ "I_hammer",		"g3d/I_fireflower.brres",		"I_star",				"wait2" },
 	{ "I_kinoko_bundle","g3d/I_life_kinoko.brres", 		"I_life_kinoko", 		"wait2" },
 	{ "obj_coin", 		"g3d/obj_coin.brres", 			"obj_coin", 			"wait2" }
 };
@@ -543,6 +544,7 @@ int dSingAlong::onCreate() {
 	this->Powerups[4] = 0; // Penguin
 	this->Powerups[5] = 0; // MiniShroom
 	this->Powerups[6] = 0; // Starman
+	this->Powerups[8] = 0; // Hammer
 	this->Powerups[8] = 0; // 1-ups
 	this->Powerups[9] = 0; // Coins
 
