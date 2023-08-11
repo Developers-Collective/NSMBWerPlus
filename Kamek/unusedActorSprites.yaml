@@ -1,0 +1,9 @@
+---
+source_files: [../src/unusedActorSprites.cpp]
+hooks:
+  - name: MakeSprite22SpawnBabyGoomba
+    type: patch
+    addr_pal: 0x8030a6b0
+    #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+    # Orig 02EB 0000  00000000 00000000  00000000 00000000 00000000 00000000  0000 0000 0000 0000  0000 0000
+    data: '0035 0000  00000008 FFFFFFF0  00000000 00000008 00000008 00000008  0000 0000 0000 0000  0000 0000'

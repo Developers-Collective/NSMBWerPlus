@@ -551,6 +551,11 @@ enum
 	EndingMgr = 527,
 	SingAlong = 528,
 	SongBlock = 529,
+	EventLooper = 530,
+	LevelSpecial = 531,
+	Linegod = 532,
+	MantaMgr2 = 533,
+	Waterlift = 534,
 
     Num
 };
@@ -1372,6 +1377,11 @@ enum
 	SingAlong, //797
 	SongBlock, //798
 	SongPrize, //799
+	EventLooper, //800
+	LevelSpecial, //801
+	Linegod, //802
+	MantaMgr2, //803
+	Waterlift, //804
 
     Num
 };

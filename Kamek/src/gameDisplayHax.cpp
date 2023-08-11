@@ -14,7 +14,21 @@ int dGameDisplay_c::newOnExecute() {
 	int orig_val = this->onExecute_orig();
 	int nowPressed = Remocon_GetPressed(GetActiveRemocon());
 
-	if(nowPressed & WPAD_MINUS) {
+#ifdef MOVIETESTS
+	if (nowPressed & WPAD_MINUS) {
+		ExitStage(ProfileId::MOVIE, OPENING_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	}
+
+	if (nowPressed & WPAD_B) {
+		ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	}
+
+	if (nowPressed & WPAD_A) {
+		ExitStage(ProfileId::MOVIE, POST_CREDIT_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
+	} 
+#endif
+#ifndef MOVIETESTS
+    if(nowPressed & WPAD_MINUS) {
 		enableDebugMode = !enableDebugMode;
 	}
 
@@ -55,18 +69,7 @@ int dGameDisplay_c::newOnExecute() {
 		}
 
 		GetSpecificPlayerActor(0)->pos = playerPos; 
-	}
-	/* if (nowPressed & WPAD_MINUS) {
-		ExitStage(ProfileId::MOVIE, OPENING_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
-	}
-
-	if (nowPressed & WPAD_B) {
-		ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
-	}
-
-	if (nowPressed & WPAD_A) {
-		ExitStage(ProfileId::MOVIE, POST_CREDIT_MOVIE, EXIT_LEVEL, CIRCLE_WIPE);
-	} */
-
+	} 
+#endif
 	return orig_val;
 }

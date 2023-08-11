@@ -15,17 +15,16 @@ modules:
   # - processed/cutScene.yaml
   - processed/bonepiece.yaml
   - processed/bugfixes.yaml
-  # - processed/koopatlas.yaml
   # - processed/pregame.yaml
   # - processed/layouthax.yaml
   - processed/animtiles.yaml
-  - soundPlayer.yaml
+  - processed/soundPlayer.yaml
   # - processed/bowserKey.yaml
   - processed/levelspecial.yaml
   - processed/mrsun.yaml
   - processed/firelaser.yaml
   - processed/spritetex.yaml
-  # - processed/gakenoko.yaml
+  - processed/gakenoko.yaml
   # - processed/heapbar.yaml
   - processed/poweruphax.yaml
   - processed/randtiles.yaml
@@ -38,11 +37,10 @@ modules:
   - processed/msgbox.yaml
   # - processed/replay.yaml
   - processed/growup.yaml
-  # - processed/eventlooper.yaml
+  - processed/eventlooper.yaml
   - processed/spritespawner.yaml
   - processed/spriteswapper.yaml
   - processed/compression.yaml
-  # - processed/crowdclapper.yaml
   # - processed/blocksnake.yaml
   - processed/classic_controller.yaml
   - processed/topman.yaml
@@ -68,14 +66,15 @@ modules:
   - processed/challengeStar.yaml
   - processed/singAlong.yaml
   - processed/pumpkinGoomba.yaml
-  # - processed/pengi.yaml
   - processed/nsmbwUpdated.yaml
   - processed/bossPlayerClown.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
-  - processed/actorlog.yaml
+  # - processed/actorlog.yaml
   # - processed/anmlog.yaml
   # - processed/layoutDebug.yaml
   # - processed/TPCclassic_controller.yaml
   - processed/redRingRewards.yaml
   - processed/GameDisplay.yaml
+  - processed/specialExit.yaml
+  - processed/unusedActorSprites.yaml

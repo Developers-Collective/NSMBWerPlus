@@ -79,6 +79,11 @@ hooks:
     addr_pal: 0x8086b278
     data: '88bf06fd' #Orig: 88bf0009
 
+  - name: ClearAllNewItems
+    type: patch
+    addr_pal: 0x80789040
+    data: '2c110008' #Orig: 2c110007
+
 #=======================================================#
 
   - name: anotherSIpatch

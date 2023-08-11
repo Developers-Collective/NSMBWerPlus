@@ -40,6 +40,19 @@ hooks:
     addr_pal: 0x80ad2e5c
     data: 'ffba5Ffe'
 
+# jumbo_ray_respawner_2.cpp
+  - name: fixJumbo1
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80860070
+    target_func: 'fixJumbo1'
+
+  - name: fixJumbo2
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808600d4
+    target_func: 'fixJumbo2'
+
 # lightmaps.cpp
   - name: fixLightmapsForDolphin
     type: branch_insn
