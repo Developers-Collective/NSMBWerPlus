@@ -258,8 +258,6 @@ public:
 		struct {
 			// ALL additions should go here
 			// This array has been verified as safe to replace
-			u8 field_6FC;						//0x6FC
-			u8 new_powerups_available[8];		//0x6FD
 		/*
 			char newerWorldName[32]; // 0x6FC
 			GXColor fsTextColours[2]; // 0x71C
