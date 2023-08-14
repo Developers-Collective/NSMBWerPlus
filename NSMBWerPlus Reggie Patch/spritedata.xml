@@ -79,7 +79,7 @@
       <entry value="8">Gray Santa</entry>
     </list>
     <checkbox nybble="8.4" title="Place Behind Other Sprites" comment="When enabled, this changes the relative Z-Order of the Goomba placing it further behind other sprites."/>
-  </sprite> <!-- #535: Baby Goomba -->
+  </sprite> <!-- #22: Baby Goomba -->
   
   <sprite id="24" name="Buzzy Beetle" sizehacks="True" notes="A standard Buzzy Beetle enemy that walks towards the player when it loads.">
     <list nybble="6" title="Color" comment="This determines the color of the Buzzy Beetle.">
@@ -1371,6 +1371,12 @@
       <entry value="8">Pink</entry>
     </list>
   </sprite> <!-- #269: Parachute Bob-Omb -->
+
+  <sprite id="273" name="Jumbo Ray Respawner 2" notes="A controller that will respawn or otherwise spawn additional Jumbo Rays.">
+    <value nybble="12" title="Ray ID" comment="This determines which Jumbo Rays will be respawned by this controller." idtype="Ray"/>
+    <value nybble="7-9" title="Spawn Delay While Ridden" comment="This determines how soon after the launch of the initial Jumbo Ray that another one will be spawned. Used whenever at least one Ray is being ridden by a player." comment2="A value of 16 is equal to about the width of one Jumbo Ray. &lt;font color=&quot;red&quot;&gt;Do not use a value of 0 or the game will crash.&lt;/font&gt;"/>
+    <value nybble="5-6" title="Spawn Delay While Not Ridden" comment="Used instead of the other Spawn Delay whenever no Rays are currently being ridden." />
+  </sprite> <!-- #273: Jumbo Ray Respawner 2 -->
   
   <sprite id="280" name="Giant Ice Block" notes="A large 3x3 ice block that can be broken with an explosion.">
     <list nybble="12.3-12.4" title="Frozen Inside" comment="This determines what type of object is frozen inside the block." comment2="Bob-Omb ice blocks will explode to other nearby ice blocks.">
@@ -2661,15 +2667,9 @@
     </list>
   </sprite> <!-- #531: Special Event -->
   
-  <sprite id="533" name="Jumbo Ray Respawner 2" notes="A controller that will respawn or otherwise spawn additional Jumbo Rays.">
-    <value nybble="12" title="Ray ID" comment="This determines which Jumbo Rays will be respawned by this controller." idtype="Ray"/>
-    <value nybble="7-9" title="Spawn Delay While Ridden" comment="This determines how soon after the launch of the initial Jumbo Ray that another one will be spawned. Used whenever at least one Ray is being ridden by a player." comment2="A value of 16 is equal to about the width of one Jumbo Ray. &lt;font color=&quot;red&quot;&gt;Do not use a value of 0 or the game will crash.&lt;/font&gt;"/>
-    <value nybble="5-6" title="Spawn Delay While Not Ridden" comment="Used instead of the other Spawn Delay whenever no Rays are currently being ridden." />
-  </sprite> <!-- #533: Jumbo Ray Respawner 2 -->
-  
   <!-- Research settings -->
-  <sprite id="534" name="Water Lift" notes="A Platform that floats on water.">
-  </sprite> <!-- #534: Water Lift -->
+  <sprite id="533" name="Water Lift" notes="A Platform that floats on water.">
+  </sprite> <!-- #533: Water Lift -->
   
 </sprites>
 <!-- Thank you so much for a-playing my game! -->
