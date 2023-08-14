@@ -36,7 +36,7 @@ enum
     EN_KURIBO = 20,
     EN_PATA_KURIBO = 21,
     /*
-    DUMMY_ACTOR = 22,
+    DUMMY_ACTOR = 22, now EN_MAME_KURIBO
     */
     AC_LIFT_RIDE_HMOVE = 23,
     EN_MET = 24,
@@ -291,7 +291,7 @@ enum
     EN_MOUSE = 271,
     EN_ICEBROS = 272,
     /*
-    DUMMY_ACTOR = 273,
+    DUMMY_ACTOR = 273, now MANTA_MGR2
     */
     AC_GEAR_GYRATION = 274,
     LIFT_RIDE_OFF = 275,
@@ -554,8 +554,7 @@ enum
 	EventLooper = 530,
 	LevelSpecial = 531,
 	Linegod = 532,
-	MantaMgr2 = 533,
-	Waterlift = 534,
+	Waterlift = 533,
 
     Num
 };
@@ -1380,8 +1379,7 @@ enum
 	EventLooper, //800
 	LevelSpecial, //801
 	Linegod, //802
-	MantaMgr2, //803
-	Waterlift, //804
+	Waterlift, //803
 
     Num
 };
