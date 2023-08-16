@@ -5,6 +5,7 @@ Kamek/tmp
 Kamek/tools/__pycache__
 Kamek/tools/devkitPPC
 Kamek/- Build - Test.bat
+Kamek/- Build - TestAllRegions.bat
 Kamek/- Build - Release.bat
 .vscode
 *.onetoc2

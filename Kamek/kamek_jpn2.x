@@ -492,7 +492,6 @@ SECTIONS {
 
 	dStockItem = 0x807AF4D0;
 
-	playBoomerangSound__16daBoomerangHax_cFv = 0x807C7610;
 	pow = 0x802E53B4;
 	onExecute_orig__14dGameDisplay_cFv = 0x80157DA0;
 	onCreate_orig__14dGameDisplay_cFv = 0x80157840;
@@ -506,8 +505,6 @@ SECTIONS {
 	spriteCollision_orig__12daEnBomhei_cFP13ActivePhysicsP13ActivePhysics = 0x809C9910;
 
 
-	DoFrogFootsteps = 0x8004D624;
-	DontDoFrogFootsteps = 0x8004D634;
 	NoSwimBegin = 0x801300C0;
 	YesSwimBegin = 0x80130084;
 	NoSwimHip0a = 0x80130408;
@@ -2519,37 +2516,6 @@ SECTIONS {
 	vf138__17daFireBall_Base_cFv = 0x800413E0;
 	vf13C__17daFireBall_Base_cFv = 0x800413D0;
 
-	DoGoldFromProjectileShootCheck_Fix = 0x8013B824;
-
-	//__ct__16daGoldFireBall_cFv = 0x8011A280;
-	__dt__16daGoldFireBall_cFv = 0x8011AD80;
-	onCreate_orig__16daGoldFireBall_cFv = 0x80040960;
-	onExecute_orig__16daGoldFireBall_cFv = 0x80040BD0;
-	onDelete__16daGoldFireBall_cFv = 0x8011A960;
-	checkSomethingElseAboutCSensor__16daGoldFireBall_cFv = 0x8011AC90;
-	CheckFireballLimit__16daGoldFireBall_cFv = 0x8011AD30;
-	vf138__16daGoldFireBall_cFv = 0x8011A360;
-	vf13C__16daGoldFireBall_cFv = 0x8011A370;
-
-	updateSpawnLimits__16daGoldFireBall_cFv = 0x8011A380;
-	calledInOnCreate_b__16daGoldFireBall_cFv = 0x8011A490;
-	calledInOnCreate_c__16daGoldFireBall_cFv = 0x8011A5C0;
-	setZOrder_maybe__16daGoldFireBall_cFv = 0x8011A400;
-	doFireSplash__16daGoldFireBall_cFv = 0x8011A780;
-
-	initialAdjacentCheck__16daGoldFireBall_cFv = 0x8011A610;
-	theFuck__16daGoldFireBall_cFv = 0x8011A6C0;
-	collisionCallback__16daGoldFireBall_cFP13ActivePhysicsP13ActivePhysics = 0x8011A860;
-	checkSomethingAboutSlopesAndQuicksand__17daFireBall_Base_cFv = 0x8011ABA0;
-	querySomethingByRCollDetector__17daFireBall_Base_cFv = 0x8011AC30;
-	checkSomethingElseAboutCSensor__17daFireBall_Base_cFv = 0x8011AC90;
-	setSpeed__17daFireBall_Base_cFv = 0x8011ACA0;
-	CheckFireballLimit__17daFireBall_Base_cFv = 0x8011AD30;
-
-	beginState_Move_orig__16daGoldFireBall_cFv = 0x8011A9C0;
-	executeState_Move_orig__16daGoldFireBall_cFv = 0x8011A9E0;
-	endState_Move_orig__16daGoldFireBall_cFv = 0x8011A9D0;
-
 	afterExecute_orig__7dShit_cFi = 0x80038670;
 
 	EffectSpawnerThatTakesPlayerCountIntoAccount = 0x8008F9F0;
@@ -2560,9 +2526,6 @@ SECTIONS {
 
 	continueFromOldPlaySound = 0x80198A44;
 	continueFromCheckBouncingBlock = 0x8011AB64;
-	goldFireHitAdjacent = 0x8011AAD0;
-	continueFromReplaceGoldHitSFXEnemy = 0x8011A920;
-
 	dword_80357158 = 0x80356BD8;
 	dword_803572A0 = 0x80356D20;
 	EffectRelated = 0x8016D450;

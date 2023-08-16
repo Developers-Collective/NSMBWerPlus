@@ -9,6 +9,13 @@ extern "C" int CheckExistingPowerup(void * Player);
 extern bool enableDebugMode;
 bool enablePlayerDebug;
 Vec playerPos;
+static const int secretCode[] = {
+	WPAD_UP,WPAD_UP,WPAD_DOWN,WPAD_DOWN,
+	WPAD_LEFT,WPAD_RIGHT,WPAD_LEFT,WPAD_RIGHT,
+	WPAD_ONE,WPAD_TWO,0
+};
+static const int secretCodeButtons = WPAD_UP|WPAD_DOWN|WPAD_LEFT|WPAD_RIGHT|WPAD_ONE|WPAD_TWO;
+static int secretCodeIndex = 0;
 
 int dGameDisplay_c::newOnExecute() {
 	int orig_val = this->onExecute_orig();
@@ -70,6 +77,26 @@ int dGameDisplay_c::newOnExecute() {
 
 		GetSpecificPlayerActor(0)->pos = playerPos; 
 	} 
+/*	if (nowPressed & secretCodeButtons) { //more debug crap
+		int nextKey = secretCode[secretCodeIndex];
+		if (nowPressed & nextKey) {
+			secretCodeIndex++;
+			if (secretCode[secretCodeIndex] == 0) {
+				secretCodeIndex = 0;
+				SaveFile *file = GetSaveFile();
+				SaveBlock *block = file->GetBlock(file->header.current_file);
+				OSReport("Here's your items you sissy!\n");
+				int i = 1;
+				for (int i = 0; i < 9; i++) {
+					block->new_powerups_available[i] = 99;
+				};
+			}
+			return;
+		} else {
+			secretCodeIndex = 0;
+		}
+	}
+*/
 #endif
 	return orig_val;
 }

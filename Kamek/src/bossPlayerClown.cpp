@@ -31,10 +31,14 @@ class dClownCarSpawner : public dStageActor_c {
 public:
 	static dActor_c *build();
 	int onCreate();
+	int onExecute();
+	int onDelete();
+
+	u32 carID;
 };
 
 
-const SpriteData ClownCarSpawnerSpriteData = { ProfileId::CustomClownCar, 0, 0 , 0 , 0, 0, 0, 0, 0, 0, 0, 0 };
+const SpriteData ClownCarSpawnerSpriteData = { ProfileId::CustomClownCar, 0, 0 , 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 0 };
 Profile ClownCarSpawnerProfile(&dClownCarSpawner::build, SpriteId::CustomClownCar, &ClownCarSpawnerSpriteData, ProfileId::CustomClownCar, ProfileId::CustomClownCar, "CustomClown", PCCarcNameList);
 
 
@@ -44,8 +48,21 @@ dActor_c* dClownCarSpawner::build() {
 }
 
 
-s32 dClownCarSpawner::onCreate() {
-	dStageActor_c* actor = (dStageActor_c*) dStageActor_c::create(ProfileId::JR_CLOWN_FOR_PLAYER, settings, &(this->pos), 0, 0);
+int dClownCarSpawner::onCreate() {
+	this->carID = dStageActor_c::create(ProfileId::JR_CLOWN_FOR_PLAYER, settings, &(this->pos), 0, 0)->id;
+	return true;
+}
+
+int dClownCarSpawner::onExecute() {
+	dStageActor_c* car = (dStageActor_c*)fBase_c::searchById(this->carID);
+	checkZoneBoundaries(0);
+	this->pos = car->pos;
+	return true;
+}
+
+int dClownCarSpawner::onDelete() {
+	dStageActor_c* car = (dStageActor_c*)fBase_c::searchById(this->carID);
+	if(car) car->Delete(0);
 	return true;
 }
 
