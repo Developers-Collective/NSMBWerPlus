@@ -61,6 +61,7 @@ Changes from base NSMBWer+:
 * Removed Yoshi spritetex
 * Collision renderer is disabled by default
 * Restored the original ambush chest settings
+* 2-Castle hardcode removed (can be re-enabled with a code change)
 
 Supported mods:
 * Actor Spawner
