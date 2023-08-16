@@ -375,12 +375,6 @@ hooks:
     addr_pal: 0x80888B78
     data: '280000FF'
 
-  - name: StockItemFix
-    type: patch
-    addr_ntsc: 0x80101110
-    addr_pal: 0x80101220
-    data: '4E800020'
-
   # - name: DisableQuickSave
     # type: nop_insn
     # area_pal: 0x8077AA7C

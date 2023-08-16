@@ -15,6 +15,7 @@
 #else
 #define GAME_NAME "NSMBWer+ Vanilla"
 #endif
+#define RELEASECOMPILE
 const bool dsisrFun = false;
 const bool gprFun = false;
 
