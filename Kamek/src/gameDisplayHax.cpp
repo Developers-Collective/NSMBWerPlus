@@ -36,7 +36,7 @@ int dGameDisplay_c::newOnExecute() {
 #endif
 #ifndef MOVIETESTS
     if(nowPressed & WPAD_MINUS) {
-		enableDebugMode = !enableDebugMode;
+		//enableDebugMode = !enableDebugMode;
 	}
 
 	if(nowPressed & WPAD_B) {
