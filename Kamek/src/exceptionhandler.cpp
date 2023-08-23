@@ -2,19 +2,7 @@
 #include "fileload.h"
 #include "nsmbwVer.h"
 
-#if defined(ANOTHER_WII)
-#define GAME_NAME "Another v3.2"
-#elif defined(HOLIDAY_SPECIAL)
-#define GAME_NAME "NerXMAS v1.12"
-#elif defined(SUMMER_SUN)
-#define GAME_NAME "SumSun v1.12"
-#elif defined(FALLING_LEAF)
-#define GAME_NAME "Newer FL v1.12"
-#elif defined(NEWER_WII)
-#define GAME_NAME "Newer Wii v1.30"
-#else
 #define GAME_NAME "NSMBWer+"
-#endif
 const bool dsisrFun = false;
 const bool gprFun = false;
 

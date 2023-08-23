@@ -2694,8 +2694,8 @@ public:
 	u8 _67D, _67E, _67F, _680;
 	u32 _684;
 	u8 _688, isGroundPound, anotherFlag, _68B, _68C, _68D, _68E, _68F;
-	u32 _690;
-	u8 _694;
+	u32 in_coin_depends_on_nyb10;
+	u8 playerID;
 
 	// Regular methods
 	void blockInit(float initialY);

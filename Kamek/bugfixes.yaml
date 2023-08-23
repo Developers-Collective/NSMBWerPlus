@@ -57,9 +57,9 @@ hooks:
    # target_func: 'mpPauseFix4'
    # src_addr_pal: 0x8014169C
 
- # - name: MPDeathPauseFix
-  #  type: nop_insn
-  #  area_pal: 0x8013DA70
+  - name: MPDeathPauseFix
+    type: nop_insn
+    area_pal: 0x8013DA70
 
   - name: FixMemoryLeaks
     type: patch
@@ -315,65 +315,65 @@ hooks:
     src_addr_pal: 0x80816370
     target_func: 'JrFloorFireHax'
  
- # - name: CastleHardcode1
-  #  type: patch
-  #  addr_pal: 0x8000D064
-  #  data: '280000FF'
+  - name: CastleHardcode1
+    type: patch
+    addr_pal: 0x8000D064
+    data: '280000FF'
 
- # - name: CastleHardcode2
-  #  type: patch
-  #  addr_pal: 0x80079BD0
-  #  data: '280000FF' 
+  - name: CastleHardcode2
+    type: patch
+    addr_pal: 0x80079BD0
+    data: '280000FF' 
 
- # - name: CastleHardcode3
-  #  type: patch
-  #  addr_pal: 0x80079F60
-  #  data: '280000FF' 
+  - name: CastleHardcode3
+    type: patch
+    addr_pal: 0x80079F60
+    data: '280000FF' 
 
- # - name: CastleHardcode4
-  #  type: patch
-  #  addr_pal: 0x8007A898
-  #  data: '280000FF'
+  - name: CastleHardcode4
+    type: patch
+    addr_pal: 0x8007A898
+    data: '280000FF'
 
- # - name: CastleHardcode5
-  #  type: patch
-  #  addr_pal: 0x80083A80
-  #  data: '38600000' 
+  - name: CastleHardcode5
+    type: patch
+    addr_pal: 0x80083A80
+    data: '38600000' 
 
- # - name: CastleHardcode6
-  #  type: patch
-  #  addr_pal: 0x800EBDE4
-  #  data: '280000FF'
+  - name: CastleHardcode6
+    type: patch
+    addr_pal: 0x800EBDE4
+    data: '280000FF'
 
- # - name: CastleHardcode7
-  #  type: patch
-  #  addr_pal: 0x80101C60
-  #  data: '280000FF' 
+  - name: CastleHardcode7
+    type: patch
+    addr_pal: 0x80101C60
+    data: '280000FF' 
 
- # - name: CastleHardcode8
-  #  type: patch
-  #  addr_pal: 0x8015530C
-  #  data: '280000FF' 
+  - name: CastleHardcode8
+    type: patch
+    addr_pal: 0x8015530C
+    data: '280000FF' 
 
- # - name: CastleHardcode9
-  #  type: patch
-  #  addr_pal: 0x807B4EA8
-  #  data: '280000FF' 
+  - name: CastleHardcode9
+    type: patch
+    addr_pal: 0x807B4EA8
+    data: '280000FF' 
 
- # - name: CastleHardcode10
-  #  type: patch
-  #  addr_pal: 0x807B5328
-  #  data: '280000FF' 
+  - name: CastleHardcode10
+    type: patch
+    addr_pal: 0x807B5328
+    data: '280000FF' 
 
- # - name: CastleHardcode11
-  #  type: patch
-  #  addr_pal: 0x80888958
-  #  data: '280000FF' 
+  - name: CastleHardcode11
+    type: patch
+    addr_pal: 0x80888958
+    data: '280000FF' 
 
- # - name: CastleHardcode12
-  #  type: patch
-  #  addr_pal: 0x80888B78
-  #  data: '280000FF'
+  - name: CastleHardcode12
+    type: patch
+    addr_pal: 0x80888B78
+    data: '280000FF'
 
   # - name: DisableQuickSave
     # type: nop_insn
