@@ -12,5 +12,8 @@ Kamek/- Build - Release.bat
 Kamek/tools/kamek_test.py
 Kamek/kamek_configs_test.yaml
 Kamek/tools/renameNewer_test.py
-Kamek/src/SuperQBlock.cpp
-Kamek/SuperQBlock.yaml
+Kamek/tools/license.dat
+Kamek/tools/lmgr11.dll
+Kamek/tools/mwasmeppc.exe
+Kamek/tools/mwcceppc.exe
+Kamek/tools/mwldeppc.exe
