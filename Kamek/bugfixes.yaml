@@ -8,18 +8,6 @@ hooks:
     src_addr_pal: 0x8010D014
     target_func: 'TryAndFixScoreGlitch'
 
-  - name: ReplaceExceptionOccurred
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80234CE0
-    target_func: 'ReplaceExceptionOccurred'
-  - {name: DeleteMainInfo, type: patch, addr_pal: 0x8034D410, data: '00000000'}
-  - {name: DeleteTrace, type: patch, addr_pal: 0x8034D590, data: '00000000'}
-  - {name: DeleteTraceHeadings, type: patch, addr_pal: 0x8034D5B8, data: '00000000'}
-  - {name: DeleteContextExc, type: patch, addr_pal: 0x8034D614, data: '00000000'}
-  - {name: DeleteContext, type: patch, addr_pal: 0x8034D634, data: '00000000'}
-  - {name: DeleteDsisrDar, type: patch, addr_pal: 0x8034D770, data: '00000000'}
-
   - name: RedRingEventControl
     type: branch_insn
     branch_type: b
@@ -386,12 +374,6 @@ hooks:
     type: patch
     addr_pal: 0x80888B78
     data: '280000FF'
-
-  - name: StockItemFix
-    type: patch
-    addr_ntsc: 0x80101110
-    addr_pal: 0x80101220
-    data: '4E800020'
 
   # - name: DisableQuickSave
     # type: nop_insn

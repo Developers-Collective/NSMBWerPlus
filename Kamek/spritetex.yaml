@@ -27,8 +27,6 @@ hooks:
 #  - name: TEX_WoodBox
 #    type: branch_insn
 #    branch_type: bl
-#    NOTES: 'fix ntsc addr later'
-#    src_addr_ntsc: 0x80ACBFB0
 #    src_addr_pal: 0x80ACBFB0
 #    target_func: 'TEX_WoodBox'
 
@@ -633,11 +631,11 @@ hooks:
     src_addr_pal: 0x809114B4
     target_func: 'TEX_YoshiEggSetFrame'
 
-  - name: TEX_YoshiEggEffect
+  - name: Insert_EFF_YoshiEggColor
     type: branch_insn
     branch_type: bl
-    src_addr_pal: 0x80911658
-    target_func: 'TEX_YoshiEggEffect'
+    src_addr_pal: 0x80911624
+    target_func: 'Insert_EFF_YoshiEggColor'
 
   - name: TEX_YoshiSetColour
     type: branch_insn
@@ -820,3 +818,9 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80AAE8E0
     target_func: 'BooZOrder'
+
+  - name: TEX_RollingBarrel
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80A58034
+    target_func: 'TEX_RollingBarrel'

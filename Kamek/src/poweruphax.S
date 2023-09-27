@@ -1,6 +1,7 @@
 .text
 .align 4
-.set sp, 1
+
+#include <asm_setup.S>
 
 .extern returnFromGPSFASixth
 .extern daEnItem_c__GetWhetherPlayerCanGetPowerupOrNot
@@ -17,17 +18,6 @@
 .extern doneSettingThePowerupTexture
 .extern doneSettingThePowerupTexture2
 .extern returnFromPowerupSoundChange
-
-#ifndef __MWERKS__
-.set r0,0;   .set r1,1;   .set r2,2; .set r3,3;   .set r4,4
-.set r5,5;   .set r6,6;   .set r7,7;   .set r8,8;   .set r9,9
-.set r10,10; .set r11,11; .set r12,12; .set r13,13; .set r14,14
-.set r15,15; .set r16,16; .set r17,17; .set r18,18; .set r19,19
-.set r20,20; .set r21,21; .set r22,22; .set r23,23; .set r24,24
-.set r25,25; .set r26,26; .set r27,27; .set r28,28; .set r29,29
-.set r30,30; .set r31,31; .set f0,0; .set f2,2; .set f3,3
-.set f1,1;   .set f30,30; .set f31,31
-#endif
 
 .global DisableHatForHammer
 DisableHatForHammer:
@@ -84,9 +74,9 @@ FukidashiFix:
 
 .global PlayerGetHeight
 PlayerGetHeight:
-	lwz r0, 0x14D4(r3)
+	lwz r0, 0x14D4(r3) # r0 = this->characterID
 	
-	lwz r4, 0x1090(r3)
+	lwz r4, 0x1090(r3) # r4 = this->powerup
 	slwi r4, r4, 3
 	
 	cmpwi r0, 0
@@ -145,7 +135,7 @@ GetAsdfTable:
 	cmpwi r0, -1
 	bne dontGetThisOne
 	
-	lwz r0, 0x1090(r3)
+	lwz r0, 0x1090(r3)	#r0 = this->powerup
 	extsb r4, r0
 	
 dontGetThisOne:
@@ -179,7 +169,7 @@ DealWithBlahTable:
 	ori r4, r4, BlahTable@l
 	
 	# get blahtableoffset entry based on powerup
-	lwz r0, 0x1090(r3)
+	lwz r0, 0x1090(r3)	#r0 = this->powerup
 	slwi r0, r0, 2
 	lwzx r0, r5, r0
 	
@@ -256,20 +246,20 @@ PlumberSetPowerupFix:
 	
 	cmpwi r0, 7
 	beq doHammerTex
-	
+
 	li r4, 0
 	b gotTexID
 	
 doFireTex:
-	li r4, 1
+	li r4, 1	#These are Pat0 frame ID
 	b gotTexID
 	
 doIceTex:
-	li r4, 2
+	li r4, 2	#These are Pat0 frame ID
 	b gotTexID
 	
 doHammerTex:
-	li r4, 3
+	li r4, 3	#These are Pat0 frame ID
 	
 gotTexID:
 	lwz r12, 0(r31)
@@ -282,7 +272,7 @@ gotTexID:
 
 
 
-.global PlumberSetPowerupFix2
+.global PlumberSetPowerupFix2 #same as the first one, like, literally
 PlumberSetPowerupFix2:
 	cmpwi r31, 2
 	beq doFireTex2
@@ -292,20 +282,20 @@ PlumberSetPowerupFix2:
 	
 	cmpwi r31, 7
 	beq doHammerTex2
-	
+
 	li r4, 0
 	b gotTexID2
 	
 doFireTex2:
-	li r4, 1
+	li r4, 1	#These are Pat0 frame ID
 	b gotTexID2
 	
 doIceTex2:
-	li r4, 2
+	li r4, 2	#These are Pat0 frame ID
 	b gotTexID2
 	
 doHammerTex2:
-	li r4, 3
+	li r4, 3	#These are Pat0 frame ID
 	
 gotTexID2:
 	lwz r3, 0x2A64(r30)
@@ -340,7 +330,7 @@ SetHammerToEnItemDCA:
 	bne DontSetHammer
 	
 	li r0, 5
-	sth r0, 0xDCA(r31)
+	sth r0, 0xDCA(r31) #So basically DCA is the value in EN_ITEM that stores the internal powerup type
 	
 DontSetHammer:
 	lwz r0, 0x14(sp)
@@ -350,11 +340,13 @@ DontSetHammer:
 	blr
 
 .global SetHammerToEnItemDCASpecial
-SetHammerToEnItemDCASpecial:
-	cmplwi r4, 0x19
-	b _not19
-	li r0, 0xD
-	sth r0, 0xDCA(r3)
+SetHammerToEnItemDCASpecial: #sooo this is a big mess so lemme explain it
+	#just so you know: 0xD is the mini shroom's DCA internal value, 5 is the hammer's
+	#also, 0x19 is the mini shroom's DCB internal value, 6 is the hammer's
+	cmplwi r4, 0x19			#if the current DCB isn't a mini shroom
+	bne _not19				#then go to _not19
+	li r0, 0xD				#else, store 0xD in r0
+	sth r0, 0xDCA(r3)		#then store r0 in the DCA
 _not19:
 	cmplwi r4, 6
 	bnelr
@@ -382,7 +374,7 @@ FixPowerupSound:
 
 	lwz r5, 0x14DC(r29) # Original powerup
 	lwz r0, 0x1090(r29) # New powerup
-	# if NEW is 1 (big) and OLD is not 0 or 3, then play 273 (powerdown)
+	# If NEW is 1 (big) and OLD is not 0 or 3, then play 273 (powerdown)
 	cmpwi r0, 1
 	bne dontConsiderPowerdown
 
@@ -417,8 +409,6 @@ WeirdAnimLoadHack:
 	# neither of those succeeded
 	crclr 4*cr0+eq
 	blr
-
-
 
 .global TryToGiveMarioHammerSuit
 TryToGiveMarioHammerSuit:
@@ -458,8 +448,6 @@ ReturnFromTTGMHS:
 	# leftover instruction from what we replaced to add the bl
 	cmpwi r29, 0
 	blr
-
-
 
 .global ThrowHammer
 ThrowHammer:
@@ -828,9 +816,89 @@ Wm2dPlayerDrawHS:
 	addi r1, r1, 0x10
 	blr
 
+
+
+#DO IT A THIRD TIME
+.global WmPlayerCtorHS
+WmPlayerCtorHS:
+	stwu r1, -0x10(r1)
+	mflr r0
+	stw r0, 0x14(r1)
+	stw r31, 0xC(r1)
+	mr r31, r3
+
+	bl build__21dHammerSuitRenderer_cFv
+	stw r3, 0x2D08(r31)
+
+	mr r3, r31
+	lwz r31, 0xC(r1)
+	lwz r0, 0x14(r1)
+	mtlr r0
+	addi r1, r1, 0x10
+	blr
+
+.global WmPlayerDtorHS
+WmPlayerDtorHS:
+	stwu r1, -0x10(r1)
+	mflr r0
+	stw r0, 0x14(r1)
+	stw r31, 0xC(r1)
+	stw r30, 8(r1)
+
+	mr r31, r4
+	mr r30, r3
+
+	cmpwi r3, 0
+	beq oops3
+	lwz r3, 0x2D08(r30)
+	li r4, 1
+	bl __dt__21dHammerSuitRenderer_cFv
+oops3:
+	
+	mr r3, r30
+	mr r4, r31
+	bl RealAcPyDtor
+
+	lwz r30, 8(r1)
+	lwz r31, 0xC(r1)
+	lwz r0, 0x14(r1)
+	mtlr r0
+	addi r1, r1, 0x10
+	blr
+
+.global WmPlayerSetMeUpHS
+WmPlayerSetMeUpHS:
+	# partway in: r31 = this
+	lwz r3, 0x2D08(r31)
+	addi r4, r31, 0x2A60
+	bl setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_c
+
+	# epilogue
+	li r3, 1
+	lwz r31, 0xC(r1)
+	lwz r0, 0x14(r1)
+	mtlr r0
+	addi r1, r1, 0x10
+	blr
+
+.global WmPlayerDrawHS
+WmPlayerDrawHS:
+	# partway in: r31 = this
+	lwz r3, 0x2D08(r31)
+	bl draw__21dHammerSuitRenderer_cFv
+
+	# epilogue
+	li r3, 1
+	lwz r0, 0x14(r1)
+	lwz r31, 0xC(r1)
+	mtlr r0
+	addi r1, r1, 0x10
+	blr
+
 .extern _restgpr_27
 .extern RealAcPyDtor
 .extern RealWm2dPlayerDtor
+.extern WmPlayerDtor
 .extern build__21dHammerSuitRenderer_cFv
 .extern __dt__21dHammerSuitRenderer_cFv
 .extern setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_ci
@@ -966,10 +1034,6 @@ ToadTextures:
 BrosArcFileName:
 	.string "hammerM"
 
-.global I_hammerArcFilename
-I_hammerArcFilename:
-	.string "I_hammer"
-
 .global I_hammerResFile
 I_hammerResFile:
 #	.string "g3d/I_hammer.brres"
@@ -992,7 +1056,15 @@ SI_kinoko: .string "SI_kinoko"
 .global SI_hammer
 SI_hammer: .string "SI_hammer"
 
+.global I_hammerArcFilename
+I_hammerArcFilename:
+	.string "I_hammer"
+
 g3d: .string "g3d/"
+
+brres: .string ".brres"
+
+g3dmodel: .string "g3d/model.brres"
 
 .text
 .global AddHSToBattleItem_FixWait2Anim
@@ -1007,6 +1079,17 @@ InsertLostG3D:
 	ori r4, r4, g3d@l
 	blr
 
+.global InsertLostBRRES
+InsertLostBRRES:
+	lis r4, brres@h
+	ori r4, r4, brres@l
+	blr
+
+.global InsertLostG3DModel
+InsertLostG3DModel:
+	lis r5, g3dmodel@h
+	ori r5, r5, g3dmodel@l
+	blr
 .data
 wait2: .string "wait2"
 
@@ -1479,24 +1562,39 @@ ptrToTwo: .long 2
 float0_85: .float 0.85
 
 .text
-.global SkawoHatesMe, SkawoStillHatesMe
+.global WMItem_AddBrres, WMItem_AddMdl0
 
-SkawoHatesMe:
+WMItem_AddBrres:
 	lwzx r4, r27, r0
 	cmpwi r0, 28
-	bnelr
+	beq doFireFlowerBrres	
+	blr
+doFireFlowerBrres:
 	lis r5, FireflowerFileName@h
 	ori r5, r5, FireflowerFileName@l
 	blr
-SkawoStillHatesMe:
+WMItem_AddMdl0:
 	lwzx r4, r4, r0
 	cmpwi r0, 28
-	bnelr
+	beq doFireFlowerMdl0
+	blr
+doFireFlowerMdl0:
 	lis r4, FireflowerModelName@h
 	ori r4, r4, FireflowerModelName@l
 	blr
+
+.extern callFooDeath
+.global HammerFoo
+HammerFoo:
+	b callFooDeath
+
+.extern dPlayerMdl_c__createPlayerModel
+.global createPlayerModelOrig
+createPlayerModelOrig:
+	stwu r1, -0x70(r1)
+	b dPlayerMdl_c__createPlayerModel
+
 .data
 FireflowerFileName: .string "g3d/I_fireflower.brres"
 FireflowerModelName: .string "I_fireflower"
 .align 4
-

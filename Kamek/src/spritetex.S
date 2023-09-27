@@ -130,9 +130,16 @@ TEX_YoshiEggSetColour:
 	stw r6, 0x10(sp)
 	stw r7, 0x0C(sp)
 
+	or r3, r28, r28			#get settings
+	andis. r3, r3, 0x20		#if bit 21 set use settings color
+	cmpwi r3, 0
+	bne	useSettingEggColor
+
 	li r3, 10
 	bl GenerateRandomNumber
-	stw r3, 0x5F8(r9)
+	or	r8, r3, r3
+useSettingEggColor:
+	stw r8, 0x5F8(r9)
 
 	lwz r0, 0x24(sp)
 	mr r3, r9
@@ -178,12 +185,43 @@ TEX_YoshiEggSetFrame:
 	clrlwi r5, r5, 30
 	blr
 
-	
-.global TEX_YoshiEggEffect
-TEX_YoshiEggEffect:
+.extern aWm_ob_eggbreak, aWm_ob_eggbre_0, aWm_ob_eggbre_1, aWm_ob_eggbre_2
+.data
+.align 4
 
-	lwz r0, 0x5F8(r3)
-	clrlwi r0, r0, 30
+EFF_YoshiEggColor:
+	.long aWm_ob_eggbre_1
+	.long aWm_ob_eggbre_2
+	.long aWm_ob_eggbre_0
+	.long aWm_ob_eggbreak
+	.long aWm_ob_eggbre_3
+	.long aWm_ob_eggbre_4
+	.long aWm_ob_eggbre_5
+	.long aWm_ob_eggbre_6
+	.long aWm_ob_eggbre_7
+	.long aWm_ob_eggbre_8
+	.long 0
+
+aWm_ob_eggbre_3:
+	.string "Wm_ob_eggbreak_darkblue"
+aWm_ob_eggbre_4:
+	.string "Wm_ob_eggbreak_red"
+aWm_ob_eggbre_5:
+	.string "Wm_ob_eggbreak_orange"
+aWm_ob_eggbre_6:
+	.string "Wm_ob_eggbreak_black"
+aWm_ob_eggbre_7:
+	.string "Wm_ob_eggbreak_white"
+aWm_ob_eggbre_8:
+	.string "Wm_ob_eggbreak_purple"
+
+.text
+.align 4
+
+.global Insert_EFF_YoshiEggColor
+Insert_EFF_YoshiEggColor:
+	lis r8, EFF_YoshiEggColor@h
+	ori r8, r8, EFF_YoshiEggColor@l
 	blr
 
 
@@ -343,6 +381,8 @@ TEX_BuzzyShell:
 TEX_SpinyShell:
 .global TEX_Coaster
 TEX_Coaster:
+.global TEX_RollingBarrel
+TEX_RollingBarrel:
 	lwz r5, 4(r3)
 	srwi r5, r5, 24
 	andi. r5, r5, 0xF

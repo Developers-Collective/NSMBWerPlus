@@ -1,7 +1,9 @@
 #include <common.h>
 #include <game.h>
 #include <g3dhax.h>
+#include <profileid.h>
 #include <sfx.h>
+#include <profile.h>
 
 class daElectricLine : public dEn_c {
 	int onCreate();
@@ -17,7 +19,7 @@ class daElectricLine : public dEn_c {
 	u32 timer;
 	char loops;
 
-	static daElectricLine *build();
+	public: static dActor_c *build();
 
 	USING_STATES(daElectricLine);
 	DECLARE_STATE(Activate);
@@ -25,7 +27,12 @@ class daElectricLine : public dEn_c {
 	DECLARE_STATE(Die);
 };
 
-daElectricLine *daElectricLine::build() {
+const char *ElectricLineArcList[] = {0};
+const SpriteData ElectricLineSpriteData = {ProfileId::ElectricLine, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile ElectricLineProfile(&daElectricLine::build, SpriteId::ElectricLine, &ElectricLineSpriteData, ProfileId::KAWANAGARE, ProfileId::ElectricLine, "ElectricLine", ElectricLineArcList);
+
+dActor_c *daElectricLine::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daElectricLine));
 	return new(buffer) daElectricLine;
 }
@@ -54,9 +61,9 @@ int daElectricLine::onCreate() {
 	}
 
 
-	Needles = (daNeedles*)create(NEEDLE_FOR_KOOPA_JR_B, settings, &temppos, &this->rot, 0);
+	Needles = (daNeedles*)create(ProfileId::NEEDLE_FOR_KOOPA_JR_B, settings, &temppos, &this->rot, 0);
 	Needles->doStateChange(&daNeedles::StateID_DemoWait);
-	
+
 	// Needles->aPhysics.info.category1 = 0x3;
 	// Needles->aPhysics.info.bitfield1 = 0x4F;
 	// Needles->aPhysics.info.bitfield2 = 0xffbafffe;
@@ -77,7 +84,7 @@ int daElectricLine::onDelete() {
 }
 
 int daElectricLine::onExecute() {
-	acState.execute();	
+	acState.execute();
 	return true;
 }
 
@@ -97,11 +104,11 @@ int daElectricLine::onDraw() {
 ///////////////
 // Activate State
 ///////////////
-	void daElectricLine::beginState_Activate() { 
+	void daElectricLine::beginState_Activate() {
 		this->timer = this->delay;
 		Needles->doStateChange(&daNeedles::StateID_Idle);
 	}
-	void daElectricLine::executeState_Activate() { 
+	void daElectricLine::executeState_Activate() {
 		if (this->loops) {
 			this->timer--;
 			if (this->timer == 0) {
@@ -115,19 +122,19 @@ int daElectricLine::onDraw() {
 ///////////////
 // Deactivate State
 ///////////////
-	void daElectricLine::beginState_Deactivate() { 
-		this->timer = this->delay; 
+	void daElectricLine::beginState_Deactivate() {
+		this->timer = this->delay;
 		Needles->removeMyActivePhysics();
 		Needles->doStateChange(&daNeedles::StateID_DemoWait);
 	}
-	void daElectricLine::executeState_Deactivate() { 
+	void daElectricLine::executeState_Deactivate() {
 
 		this->timer--;
 		if (this->timer == 0) {
 			doStateChange(&StateID_Activate);
 		}
 	}
-	void daElectricLine::endState_Deactivate() { 
+	void daElectricLine::endState_Deactivate() {
 		Needles->addMyActivePhysics();
 	}
 

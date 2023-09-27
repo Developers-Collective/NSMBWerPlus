@@ -1,11 +1,12 @@
 #include <game.h>
+#include <profile.h>
 
 class dSpriteSpawner_c : public dStageActor_c {
 	public:
-		static dSpriteSpawner_c *build();
+		static dActor_c *build();
 
 		u64 classicEventOverride;
-		Actors profileID;
+		u32 profileID;
 		bool respawn;
 		u32 childSettings;
 		u32 childID;
@@ -16,7 +17,13 @@ class dSpriteSpawner_c : public dStageActor_c {
 
 /*****************************************************************************/
 // Glue Code
-dSpriteSpawner_c *dSpriteSpawner_c::build() {
+
+const char *SpriteSpawnerFileList[] = {0};
+const SpriteData SpriteSpawnerSpriteData = { ProfileId::SpriteSpawner, 16, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile SpriteSpawnerProfile(&dSpriteSpawner_c::build, SpriteId::SpriteSpawner, &SpriteSpawnerSpriteData, ProfileId::EN_BOYON, ProfileId::SpriteSpawner, "SpriteSpawner", SpriteSpawnerFileList);
+
+dActor_c *dSpriteSpawner_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dSpriteSpawner_c));
 	dSpriteSpawner_c *c = new(buffer) dSpriteSpawner_c;
 	return c;
@@ -27,7 +34,7 @@ int dSpriteSpawner_c::onCreate() {
 	char classicEventNum = (settings >> 28) & 0xF;
 	classicEventOverride = (classicEventNum == 0) ? 0 : ((u64)1 << (classicEventNum - 1));
 
-	profileID = (Actors)((settings >> 16) & 0x7FF);
+	profileID = (settings >> 16) & 0x7FF;
 	respawn = (settings >> 27) & 1;
 
 	u16 tempSet = settings & 0xFFFF;
@@ -54,7 +61,7 @@ int dSpriteSpawner_c::onExecute() {
 			return true;
 
 		if (childID) {
-			dStageActor_c *ac = (dStageActor_c*)fBase_c::search(childID);
+			dStageActor_c *ac = (dStageActor_c*)fBase_c::searchById(childID);
 			if (ac) {
 				pos = ac->pos;
 				ac->Delete(1);
@@ -65,7 +72,7 @@ int dSpriteSpawner_c::onExecute() {
 
 	if (respawn) {
 		if (childID) {
-			dStageActor_c *ac = (dStageActor_c*)fBase_c::search(childID);
+			dStageActor_c *ac = (dStageActor_c*)fBase_c::searchById(childID);
 
 			if (!ac) {
 				dStageActor_c *newAc = dStageActor_c::create(profileID, childSettings, &pos, 0, 0);

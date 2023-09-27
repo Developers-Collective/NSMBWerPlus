@@ -1,27 +1,24 @@
 #include <common.h>
 #include <game.h>
 #include <dCourse.h>
+#include <profile.h>
 
-struct LevelSpecial {
-	u32 id;			// 0x00
-	u32 settings;	// 0x04
-	u16 name;		// 0x08
-	u8 _0A[6];		// 0x0A
-	u8 _10[0x9C];	// 0x10
-	float x;		// 0xAC
-	float y;		// 0xB0
-	float z;		// 0xB4
-	u8 _B8[0x318];	// 0xB8
-	// Any variables you add to the class go here; starting at offset 0x3D0
-	u64 eventFlag;	// 0x3D0
-	u8 type;		// 0x3D4
-	u8 effect;		// 0x3D5
-	u8 lastEvState;	// 0x3D6
-	u8 func;		// 0x3D7
+class dLevelSpecial_c : public dEn_c {
+public:
+	u64 eventFlag;
+	u8 type;
+	u8 effect;
+	u8 lastEvState;
+	u8 func;
 	u32 keepTime;
 	u32 setTime;
-};
 
+	int onCreate();
+	int onExecute();
+
+	static dActor_c* build();
+
+};
 
 extern u16 TimeStopFlag;
 extern u32 AlwaysDrawFlag;
@@ -55,14 +52,10 @@ static const float BGScaleChoices[] = {0.1f, 0.15f, 0.25f, 0.375f, 0.5f, 0.625f,
 
 bool NoMichaelBuble = false;
 
-void LevelSpecial_Update(LevelSpecial *self);
 bool ResetAfterLevel();
 
 #define ACTIVATE	1
 #define DEACTIVATE	0
-
-fBase_c *FindActorByID(u32 id);
-
 
 extern "C" void dAcPy_vf294(void *Mario, dStateBase_c *state, u32 unk);
 void MarioStateChanger(void *Mario, dStateBase_c *state, u32 unk) {
@@ -111,40 +104,43 @@ void FuckinBubbles() {
 	}
 }
 
-bool LevelSpecial_Create(LevelSpecial *self) {
-	char eventNum	= (self->settings >> 24)	& 0xFF;
-	self->eventFlag = (u64)1 << (eventNum - 1);
-	
-	self->keepTime  = 0;
-	
-	self->type		= (self->settings)			& 15;
-	self->effect	= (self->settings >> 4)		& 15;
-	self->setTime	= (self->settings >> 8)     & 0xFFFF;
+dActor_c* dLevelSpecial_c::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(dLevelSpecial_c));
+	return new(buffer) dLevelSpecial_c;
+}
 
-	self->lastEvState = 0xFF;
+const char *LevelSpecialArcList[] = {0};
+const SpriteData LevelSpecialSpriteData = { ProfileId::LevelSpecial, 0, 0, 0, 0, 0x8, 0x8, 0, 0, 0, 0, 2 };
+Profile LevelSpecialProfile(&dLevelSpecial_c::build, SpriteId::LevelSpecial, &LevelSpecialSpriteData, ProfileId::TAG_THUNDER, ProfileId::LevelSpecial, "LevelSpecial", LevelSpecialArcList);
+
+
+int dLevelSpecial_c::onCreate() {
+    char eventNum	= (this->settings >> 24)	& 0xFF;
+	this->eventFlag = (u64)1 << (eventNum - 1);
 	
-	LevelSpecial_Update(self);
+	this->keepTime  = 0;
 	
+	this->type		= (this->settings)			& 15;
+	this->effect	= (this->settings >> 4)		& 15;
+	this->setTime	= (this->settings >> 8)     & 0xFFFF;
+
+	this->lastEvState = 0xFF;
+
+	this->onExecute();
+
 	return true;
 }
 
-bool LevelSpecial_Execute(LevelSpecial *self) {
-	if (self->keepTime > 0) {
-		time = self->keepTime; }
-
-	LevelSpecial_Update(self);
-	return true;
-}
-
-
-void LevelSpecial_Update(LevelSpecial *self) {
-	
+int dLevelSpecial_c::onExecute() {
+	if (this->keepTime > 0) {
+		time = this->keepTime; }
+    
 	u8 newEvState = 0;
-	if (dFlagMgr_c::instance->flags & self->eventFlag)
+	if (dFlagMgr_c::instance->flags & this->eventFlag)
 		newEvState = 1;
 	
-	if (newEvState == self->lastEvState)
-		return;
+	if (newEvState == this->lastEvState)
+		return true;
 		
 	
 	u8 offState;
@@ -152,18 +148,18 @@ void LevelSpecial_Update(LevelSpecial *self) {
 	{
 		offState = (newEvState == 1) ? 1 : 0;
 
-		switch (self->type) {
+		switch (this->type) {
 			// case 1:											// Time Freeze
-			// 	TimeStopFlag = self->effect * 0x100;
+			// 	TimeStopFlag = this->effect * 0x100;
 			// 	break;
 				
 			case 2:											// Stop Timer
-				self->keepTime  = time;
+				this->keepTime  = time;
 				break;
 		
 	
 			case 3:											// Mario Gravity
-				if (self->effect == 0)
+				if (this->effect == 0)
 				{											//Low grav
 					MarioDescentRate = -2;
 					MarioJumpArc = 0.5;
@@ -180,16 +176,16 @@ void LevelSpecial_Update(LevelSpecial *self) {
 				break;
 	
 			case 4:											// Set Time
-				time = (self->setTime << 0xC) - 1; // Possibly - 0xFFF?
+				time = (this->setTime << 0xC) - 1; // Possibly - 0xFFF?
 				break;
 
 
 			case 5:											// Global Enemy Size
 				SizerOn = 3;
 
-				GlobalSpriteSize = GlobalSizeFloatModifications[self->effect];
-				GlobalRiderSize = GlobalRiderFloatModifications[self->effect];
-				GlobalSpriteSpeed = GlobalRiderFloatModifications[self->effect];
+				GlobalSpriteSize = GlobalSizeFloatModifications[this->effect];
+				GlobalRiderSize = GlobalRiderFloatModifications[this->effect];
+				GlobalSpriteSpeed = GlobalRiderFloatModifications[this->effect];
 
 				AlwaysDrawFlag = 0x38600001;
 				AlwaysDrawBranch = 0x4E800020;
@@ -199,7 +195,7 @@ void LevelSpecial_Update(LevelSpecial *self) {
 				AlwaysDrawFlag = 0x38600001;
 				AlwaysDrawBranch = 0x4E800020;
 
-				if (self->effect == 0)
+				if (this->effect == 0)
 				{	
 					SizerOn = 1;							// Nyb 5
 				}
@@ -219,10 +215,10 @@ void LevelSpecial_Update(LevelSpecial *self) {
 
 			case 9:
 				BGScaleEnabled = true;
-				BGScaleFront.x = BGScaleChoices[(self->settings >> 20) & 15];
-				BGScaleFront.y = BGScaleChoices[(self->settings >> 16) & 15];
-				BGScaleBack.x = BGScaleChoices[(self->settings >> 12) & 15];
-				BGScaleBack.y = BGScaleChoices[(self->settings >> 8) & 15];
+				BGScaleFront.x = BGScaleChoices[(this->settings >> 20) & 15];
+				BGScaleFront.y = BGScaleChoices[(this->settings >> 16) & 15];
+				BGScaleBack.x = BGScaleChoices[(this->settings >> 12) & 15];
+				BGScaleBack.y = BGScaleChoices[(this->settings >> 8) & 15];
 				break;
 
 			default:
@@ -234,13 +230,13 @@ void LevelSpecial_Update(LevelSpecial *self) {
 	{
 		offState = (newEvState == 1) ? 0 : 1;
 
-		switch (self->type) {
+		switch (this->type) {
 			// case 1:											// Time Freeze
 			// 	TimeStopFlag = 0;
 			// 	break;
 				
 			case 2:											// Stop Timer
-				self->keepTime  = 0;
+				this->keepTime  = 0;
 				break;
 		
 	
@@ -291,10 +287,8 @@ void LevelSpecial_Update(LevelSpecial *self) {
 
 
 
-
 	
 	
-	self->lastEvState = newEvState;
+	this->lastEvState = newEvState;
+	return true;
 }
-
-#undef time

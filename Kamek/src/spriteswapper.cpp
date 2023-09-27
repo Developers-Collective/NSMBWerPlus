@@ -1,13 +1,13 @@
 #include <common.h>
 #include <game.h>
-
+#include <profile.h>
 
 class SpriteSpawnerTimed : public dStageActor_c {
 public:
 	int onCreate();
 	int onExecute();
 
-	static SpriteSpawnerTimed *build();
+	static dActor_c *build();
 
 	u64 eventFlag;	// 0x3D0
 	u16 type;		// 0x3D4
@@ -16,8 +16,12 @@ public:
 	u32 timer;
 };
 
+const char *SpriteSwapperFileList[] = {0};
+const SpriteData SpriteSwapperSpriteData = { ProfileId::SpriteSwapper, 16, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile SpriteSwapperProfile(&SpriteSpawnerTimed::build, SpriteId::SpriteSwapper, &SpriteSwapperSpriteData, ProfileId::EN_REMOCON_TORIMOCHI, ProfileId::SpriteSwapper, "SpriteSwapper", SpriteSwapperFileList);
 
-SpriteSpawnerTimed *SpriteSpawnerTimed::build() {
+dActor_c *SpriteSpawnerTimed::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(SpriteSpawnerTimed));
 	return new(buffer) SpriteSpawnerTimed;
 }

@@ -1,108 +1,98 @@
 #include <common.h>
 #include <game.h>
+#include <profile.h>
 
-struct EventLooper {
-	u32 id;			// 0x00
-	u32 settings;	// 0x04
-	u16 name;		// 0x08
-	u8 _0A[6];		// 0x0A
-	u8 _10[0x9C];	// 0x10
-	float x;		// 0xAC
-	float y;		// 0xB0
-	float z;		// 0xB4
-	u8 _B8[0x318];	// 0xB8
-	// Any variables you add to the class go here; starting at offset 0x3D0
-	u64 eventFlag;	// 0x3D0
-	u64 eventActive;	// 0x3D0
-	u8 delay;		// 0x3D4
-	u8 delayCount;	// 0x3D7
+class daEventLooper_c : public dStageActor_c {
+    u8 event_begin;
+    u8 event_final;
+    u8 event_current; // bigger to allow special value if there is no current
+    u8 event_next;
+    u8 event_activation; // bigger to allow special value if there is no activation
+
+    u32 delay;
+    u32 delay_count;
+
+    int onCreate();
+    int onExecute();
+
+    public: static dActor_c *build();
 };
 
-void EventLooper_Update(EventLooper *self);
+const char *EventLooperArcNameList[] = {0};
+const SpriteData EventLooperSpriteData = {ProfileId::EventLooper, 8, 0xFFFFFFF0, 0, 0x10, 8, 0x10, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile EventLooperProfile(&daEventLooper_c::build, SpriteId::EventLooper, &EventLooperSpriteData, ProfileId::EN_HELPOS, ProfileId::EventLooper, "EventLooper", EventLooperArcNameList);
 
-
-
-bool EventLooper_Create(EventLooper *self) {
-	char eventStart	= (self->settings >> 24)	& 0xFF;
-	char eventEnd	= (self->settings >> 16)	& 0xFF;
-
-	// Putting all the events into the flag
-	int i;
-	u64 q = (u64)0;
-	for(i=eventStart;i<(eventEnd+1);i++)
-	{
-		q = q | ((u64)1 << (i - 1));
-	}
-		
-	self->eventFlag = q;
-	
-	self->delay		= (((self->settings) & 0xFF) + 1) * 10;
-	self->delayCount = 0;
-	
-	char tmpEvent= (self->settings >> 8)	& 0xFF;
-	if (tmpEvent == 0)
-	{
-		self->eventActive = (u64)0xFFFFFFFFFFFFFFFF;
-	}
-	else
-	{
-		self->eventActive = (u64)1 << (tmpEvent - 1);
-		
-	}
-	
-
-	if (dFlagMgr_c::instance->flags & self->eventActive)
-	{
-		u64 evState = (u64)1 << (eventStart - 1);
-		dFlagMgr_c::instance->flags |= evState;
-	}
-
-	EventLooper_Update(self);
-	
-	return true;
+dActor_c* daEventLooper_c::build() {
+    void* buffer = AllocFromGameHeap1(sizeof(daEventLooper_c));
+    return new(buffer) daEventLooper_c;
 }
 
-bool EventLooper_Execute(EventLooper *self) {
-	EventLooper_Update(self);
-	return true;
+int daEventLooper_c::onCreate() {
+    // Nybble 5-6: first event id
+    this->event_begin = (this->settings >> 24) & 0xFF;
+    // Nybble 7-8: final event id
+    this->event_final = (this->settings >> 16) & 0xFF;
+
+    // Nybble 9-10: activation event id (0 for none) - this
+    // sprite only does things while this event id is active.
+    this->event_activation = (this->settings >> 8) & 0xFF;
+
+    // Nybble 11-12: delay
+    // n0 = 1 frame, n1 to n249 = n * 10 frames
+    // n250 = 60 seconds, n251 = 90 seconds, n252 = 120 seconds
+    // n253 = 150 seconds, n254 = 180 seconds, n255 = 210 seconds
+    u8 value = this->settings & 0xFF;
+    if (value == 0) {
+        this->delay = 1;
+    } else if (value < 250) {
+        this->delay = value * 10;
+    } else {
+        this->delay = (value - 248) * 30 * 60;
+    }
+
+    // Set the first event id
+    dFlagMgr_c::instance->set(this->event_begin, 0, false, false, false);
+
+    // Set the other variables properly
+    this->delay_count = 0;
+    this->event_current = this->event_begin;
+    this->event_next = this->event_begin + 1;
+
+    // Make sure we don't activate events past the final event id
+    if (this->event_next > this->event_final) {
+        this->event_next = this->event_begin;
+    }
+
+    return 1;
 }
 
+int daEventLooper_c::onExecute() {
+    if (this->event_activation != 0 && dFlagMgr_c::instance->inactive(this->event_activation - 1)) {
+        return 1;
+    }
 
-void EventLooper_Update(EventLooper *self) {
-	
-	if ((dFlagMgr_c::instance->flags & self->eventActive) == 0)
-		return;
+    // Count down the delay
+    if (this->delay_count < this->delay) {
+        this->delay_count++;
+        return 1;
+    }
 
-	// Waiting for the right moment
-	if (self->delayCount < self->delay) 
-	{
+    // Reset the delay
+    this->delay_count = 0;
 
-		self->delayCount = self->delayCount + 1;
-		return;
-	}	
-	
-	// Reset the delay
-	self->delayCount = 0;
-	
-	// Find which event(s) is/are on
-	u64 evState = dFlagMgr_c::instance->flags & self->eventFlag;
-	
-	// Turn off the old events
-	dFlagMgr_c::instance->flags = dFlagMgr_c::instance->flags & (~self->eventFlag);
-	
-	// Shift them right if they can, if not, reset!
-	evState = evState << 1;
-	if (evState < self->eventFlag)
-	{
-		dFlagMgr_c::instance->flags = dFlagMgr_c::instance->flags | evState;
-	}
-	
-	else
-	{
-		char eventStart	= (self->settings >> 24)	& 0xFF;
-		evState = (u64)1 << (eventStart - 1);
-		dFlagMgr_c::instance->flags = dFlagMgr_c::instance->flags | evState;
-	}
-	
-	
+    // Deactivate the current event
+    dFlagMgr_c::instance->set(this->event_current, 0, false, false, false);
+
+    // Activate the next event
+    dFlagMgr_c::instance->set(this->event_next, 0, false, false, false);
+
+    // Update the current event and increment the next event
+    this->event_current = this->event_next;
+    this->event_next++;
+    if (this->event_next > this->event_final) {
+        this->event_next = this->event_begin;
+    }
+
+    return 1;
 }

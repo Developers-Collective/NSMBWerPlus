@@ -535,17 +535,6 @@ BGScaleEnabled: .byte 0
 #	icbi r0, r3
 #	blr
 
-.text
-.align 4
-.global ReplaceExceptionOccurred
-ReplaceExceptionOccurred:
-	lis r3, NewExceptionOccurred@h
-	ori r3, r3, NewExceptionOccurred@l
-	blr
-
-.data
-NewExceptionOccurred:
-.string "Whoops! Newer 1.0.2 has crashed.\nPlease take a screenshot of the info below\nand send it to newer@newerteam.com.\nYou can scroll through this report using the D-Pad.\n"
 UniLogStr: .string "[ULog] returning %8x to: %x > %x > %x > %x > %x > %x\n"
 #WillAlloc: .string "[AH] Will allocate %x bytes aligned by %x\n"
 #Alloced: .string "[AH] Allocated %p\n"

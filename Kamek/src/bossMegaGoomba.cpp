@@ -3,6 +3,7 @@
 #include <g3dhax.h>
 #include <sfx.h>
 #include "boss.h"
+#include <profile.h>
 
 extern "C" void *StageScreen;
 
@@ -55,7 +56,7 @@ class daMegaGoomba_c : public dEn_c {
 	
 	void dieFall_Begin();
 	void dieFall_Execute();
-	static daMegaGoomba_c *build();
+	static dActor_c *build();
 
 	void setupBodyModel();
 	void setupCollision();
@@ -105,8 +106,11 @@ class daMegaGoomba_c : public dEn_c {
 	DECLARE_STATE(Turn);
 };
 
+const SpriteData MegaGoombaSpriteData = {ProfileId::BossMegaGoomba, -24, -16, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile MegaGoombaProfile(&daMegaGoomba_c::build, SpriteId::BossMegaGoomba, &MegaGoombaSpriteData, ProfileId::AC_BLOCK_GROUP, ProfileId::BossMegaGoomba, "GigaGoomba", MGarcNameList);
 
-daMegaGoomba_c *daMegaGoomba_c::build() {
+dActor_c *daMegaGoomba_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daMegaGoomba_c));
 	return new(buffer) daMegaGoomba_c;
 }

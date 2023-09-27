@@ -1,0 +1,83 @@
+<wiidisc version="1" shiftfiles="true" root="/NSMBWer+" log="true">
+	<id game="SMN">
+		<region type="P"/>
+		<region type="E"/>
+		<region type="J"/>
+		<region type="K"/>
+		<region type="W"/>
+	</id>
+	<options>
+		<section name="NSMBWer+">
+			<option name="Game" id="NSMBWer+Core" default="1">
+				<choice name="Enabled"><patch id="NSMBWer+Core"/></choice>
+			</option>
+		</section>
+	</options>
+	<patch id="NSMBWer+Core">
+		<savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="false" />
+		<folder external="Effect" disc="/Effect" />
+		<folder external="Stage" disc="/Stage" create="true" length="500000" />
+		<folder external="Stage/Texture" disc="/Stage/Texture" create="true" length="1000000" />
+		<folder external="Object" disc="/Object" create="true" />
+		<folder external="TitleReplay" disc="/Replay/title" create="true" />
+		<folder external="Layout" disc="/Layout" create="true" />
+		<folder external="Sound/stream/" />
+		<folder external="Sound/stream/sfx" disc="/Sound/stream/sfx" create="true" />
+		<folder external="Sound" />
+		<folder external="Font" disc="/EU/EngEU/Font" />
+		<folder external="Font" disc="/EU/GerEU/Font" />
+		<folder external="Font" disc="/EU/FraEU/Font" />
+		<folder external="Font" disc="/EU/SpaEU/Font" />
+		<folder external="Font" disc="/EU/ItaEU/Font" />
+		<folder external="Font" disc="/US/EngUS/Font" />
+		<folder external="Font" disc="/US/FraUS/Font" />
+		<folder external="Font" disc="/US/SpaUS/Font" />
+		<folder external="Font" disc="/JP/Font" />
+		<folder external="Font" disc="/KR/Font" />
+		<folder external="Font" disc="/TW/Font" />
+		<folder external="Message" disc="/EU/EngEU/Message" />	
+		<folder external="Message" disc="/EU/GerEU/Message" />
+		<folder external="Message" disc="/EU/FraEU/Message" />
+		<folder external="Message" disc="/EU/SpaEU/Message" />
+		<folder external="Message" disc="/EU/ItaEU/Message" />
+		<folder external="Message" disc="/US/EngUS/Message" />
+		<folder external="Message" disc="/US/FraUS/Message" />
+		<folder external="Message" disc="/US/SpaUS/Message" />
+		<folder external="Message" disc="/JP/Message" />
+		<folder external="Message" disc="/KR/Message" />
+		<folder external="Message" disc="/TW/Message" />
+		<folder external="NewerRes" disc="/NewerRes" create="true" />
+		<folder external="WorldMap" disc="/WorldMap" create="true" />
+		<folder external="Others" />
+		<folder external="Others{$__region}" />
+		<folder external="MovieDemo" disc="/MovieDemo" />
+
+		<!-- Expand ArchiveHeap -->
+		<!-- EU -->    <memory offset="0x800E4A84" value="3C600140" original="3C600120" />
+		<!-- US -->    <memory offset="0x800E4994" value="3C600140" original="3C600120" />
+		<!-- JP -->    <memory offset="0x800E4914" value="3C600140" original="3C600120" />
+		<!-- KR/TW --> <memory offset="0x800E4AA4" value="3C600140" original="3C600120" />
+
+		<!-- Expand 2DHeap -->
+		<!-- EU -->    <memory offset="0x800B64EC" value="3C800032" original="3C800030" />
+		<!-- US -->    <memory offset="0x800B649C" value="3C800032" original="3C800030" />
+		<!-- JP -->    <memory offset="0x800B641C" value="3C800032" original="3C800030" />
+		<!-- KR/TW --> <memory offset="0x800B65AC" value="3C800032" original="3C800030" />
+
+		<!-- Disable debug key sequence -->
+		<!-- EU -->    <memory offset="0x800E4E84" value="38600000" original="3863330C" />
+		<!-- US -->    <memory offset="0x800E4D70" value="38600000" original="3863300C" />
+		<!-- JP -->    <memory offset="0x800E4CF0" value="38600000" original="38632E2C" />
+		<!-- KR/TW --> <memory offset="0x800E4E80" value="38600000" original="3863364C" />
+		
+		<!-- Disable unnecessary exception info -->
+		<!-- EU -->    <memory offset="0x800E4E8C" value="38600021" original="3860003F" />
+		<!-- US -->    <memory offset="0x800E4D78" value="38600021" original="3860003F" />
+		<!-- JP -->    <memory offset="0x800E4CF8" value="38600021" original="3860003F" />
+		<!-- KR/TW --> <memory offset="0x800E4E88" value="38600021" original="3860003F" />
+
+		<!-- Common -->
+		<memory offset="0x800046F0" valuefile="Loader.bin" />
+		<memory offset="0x8000406C" value="48000684" original="38000000" />		
+	</patch>
+</wiidisc>

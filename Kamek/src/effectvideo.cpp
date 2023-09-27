@@ -2,7 +2,7 @@
 #include <game.h>
 #include <g3dhax.h>
 #include <sfx.h>
-
+#include <profile.h>
 
 extern "C" bool SpawnEffect(const char*, int, Vec*, S16Vec*, Vec*);
 
@@ -20,12 +20,16 @@ class EffectVideo : public dEn_c {
 	u8 type;
 	float scale;
 
-	static EffectVideo *build();
+	public: static dActor_c *build();
 
 };
 
+const char *EffectSpawnerArcNameList[] = {0};
+const SpriteData EffectSpawnerSpriteData = {ProfileId::EffectSpawner, 8, 0xfffffff8, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 8};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile EffectSpawnerProfile(&EffectVideo::build, SpriteId::EffectSpawner, &EffectSpawnerSpriteData, ProfileId::LIFT_TORIDE_ROLL, ProfileId::EffectSpawner, "Effect Spawner", EffectSpawnerArcNameList);
 
-EffectVideo *EffectVideo::build() {
+dActor_c *EffectVideo::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(EffectVideo));
 	return new(buffer) EffectVideo;
 }

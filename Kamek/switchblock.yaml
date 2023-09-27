@@ -1,0 +1,30 @@
+---
+source_files: [../src/switchblock.S]
+hooks:
+  - name: PrepareReplay_SwitchPatch
+    type: patch
+    addr_pal: 0x8091F800
+    data: '60000000 60000000 60000000 98830380'
+
+  - name: MoveInfoFromWorldDataToStructArray_SwitchPatch
+    type: patch
+    addr_pal: 0x80102C28
+    data: '60000000 3B800001 60000000 3BC0002A 60000000 98830380'
+
+  - name: BG_GM_InitRedSwitchFlag_SwitchPatch
+    type: branch_insn
+    src_addr_pal: 0x800784D0
+    branch_type: b
+    target_func: 'BG_GM_InitRedSwitchFlag_Patch'
+
+  - name: ProcessTileNum_EndPatch
+    type: branch_insn
+    src_addr_pal: 0x80081B54
+    branch_type: b
+    target_func: 'ProcessTileNum_EndPatch'
+
+  - name: CheckBehaviourOverride_EndPatch
+    type: branch_insn
+    src_addr_pal: 0x80081A4C
+    branch_type: b
+    target_func: 'CheckBehaviourOverride_EndPatch'

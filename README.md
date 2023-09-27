@@ -1,11 +1,11 @@
-# NSMBWer
+# NSMBWer+
 ## Source Code Public Release
 
 ### Introduction
 
-This fork of the NewerSMBW repo is a slightly modified version which runs most of the sprite mods whilst
-keeping the original game's map system intact and working. Among the notable changes, this version of
-Kamek is based on CodeWarrior and supports Python 3. More details below.
+This fork of the NSMBWer repo is a heavily modified version that aims to keep it up to date with current NSMBW modding while keeping everything from Vanilla intact.
+Most notably, this version uses Abood's more sprites mod to implement every custom sprite and actor from Newer while keeping the ones they replaced.
+I'm releasing this in a heavily unfinished state, I will keep updating the project until I see it as complete.
 
 ### Licensing
 
@@ -25,13 +25,13 @@ Copyright (c) 2010-2013 Treeki, Tempus, megazig
 
 ### What's Here
 
-#### NSMBWer Super Mario Bros. Wii
+#### NSMBWer+
 A build is inside this folder, including the SpriteTex files, an XML and the related folders. If you
 want to create a mod, starting with this is suggested. Keep in mind this build doesn't include the
 custom music or tilesets from Newer.
 
-It also includes an edited 01-01 and 01-06 that removes old unused sprite settings from Nintendo set
-on the Rolling Hills that, now would crash NSMBWer. They are different flags for the Rolling Hill recolors
+It also includes an edited 01-01, 01-06, 06-01, and 06-02 that removes old unused sprite settings from Nintendo set
+on several sprites that, now would crash NSMBWer. They are different flags for sprite recolors
 that don't exist in base Newer.
 
 #### Kamek
@@ -56,16 +56,17 @@ specific to game hacks like Newer:
 - The compiled output is converted to a specific format expected by the
   Newer loader.
 
-#### Newer Hacks
+You may learn how to compiler the NSMBWer+ source code on [This Website][horizoncodesetup]
 
 Changes:
 * General folder and YAML cleanup
-* Removed some changes that have an impact on the original game (such as the Chest mod)
-* RYOM moved over Mega Thwomp (11 -> 322) and Thundercloud moved over Super Topman (168 -> 251) to avoid overriding map actors
+* Changes that break vanilla levels (such as the newer chest mod) have been re-implemented. Check the vanilla branch if you'd like to have these changed removed for your mod.
+* Every sprite mentioned in the section below has been moved to new sprite slots to avoid overriding any original game sprites to have compatibility with the original game.
 * Added 2-Castle hardcode fixes from AnotherSMBW
 * Added more effects to effect spawner
 * Support for Yoshi Drums in music slots 200+
 * Load custom music from the default BRSTM folder
+* Ported fixes from RoadrunnerWMC's NSMBW-Updated project.
 
 Supported mods:
 * Actor Spawner
@@ -74,12 +75,10 @@ Supported mods:
 * Chestnut
 * Electric Line
 * Event Block
-* Event Looper
 * Fire Laser
 * Flipblock
 * Giga Goomba
-* Hammer Suit (BUGGED: Accessing the item menu on the map currently crashes the game, and Mario's hat still shows, so it's disabled)
-* LH Compression
+* Hammer Suit
 * Line God
 * Magic Platform
 * Message Box
@@ -88,7 +87,7 @@ Supported mods:
 * Mushroom Platform Slant Mod
 * RYOM
 * S/E Spawner
-* Shy Guys (not the giant ones)
+* Shy Guys, and the giant ones
 * Size Hacks
 * Special Event
 * Sprite Retextures
@@ -97,10 +96,35 @@ Supported mods:
 * Tile God
 * Topman
 * Universal Tileset Slot Mod
+* Spine Coaster Platforms
+* Fake Star Coin
+* Classic Controller Support
+* Music House Minigame
+* All bosses from Newer
+* Newer's ending cutscene (BUGGED: Needs a code change to allow it to work properly in multiplayer)
+* Switch palaces + blocks
+* Silver stars
+* Pumpkin Goomba
+* Rideable clowncar
+* Gakenoko restoration
+* Sprite 22 (early micro goombas) restoration
+* MANTA_MGR2 and WATER_LIFT now have their own sprites
 
-#### Other Stuff
-Other Stuff includes, well, other stuff:
-* Riivolution XML (files load from the NSMBwer folder)
-* ISO Builder XML (for patching main.dol)
-* ObjectPatch (modified Object files for use as a template, some retail levels will still crash due to Nintendo leaving unused nybbles set)
-* ReggiePatch (a Reggie patch based on the NewerSMBW one)
+#### Upcoming Changes/Fixes
+* Pirahnatlas support(?)
+* Add Hammer Suit rendering on the worldmap
+
+### Credits
+* Nin0 - Programming Assistance, General Assistance, Numerous bits of code, original NSMBWer
+* Bupcraft, Lurker, Kirblue - Bug Reporting
+* Abood - More Sprites code
+* CLF78 - Original NSMBWer, Korean/Taiwanese support, additional More Sprites code
+* EternityShack - Crash Reporter
+* Luminyx - Programming assistance
+* Danster - original NSMBWer
+* Ninji, Tempus - original NewerSMBW
+* RoadrunnerWMC - Reggie! Next spritedata, NSMBW Updated code, Korean/Taiwanese support
+* G4L - Fixed NewerSMBW models
+
+[horizoncodesetup]:
+https://horizon.miraheze.org/wiki/Setting_Up_and_Compiling_the_Newer_Sources#Windows_(Newer_Super_Mario_All-Stars_Revived_and_NSMBWer_only)

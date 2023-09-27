@@ -38,7 +38,7 @@ class dMsgBoxManager_c : public dStageActor_c {
 		DECLARE_STATE(BoxDisappearWait);
 
 		static dMsgBoxManager_c *instance;
-		static dMsgBoxManager_c *build();
+		static dActor_c *build();
 
 	private:
 		struct entry_s {

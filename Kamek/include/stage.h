@@ -76,9 +76,9 @@ enum StageGroup {
 
 
 enum SceneParameters {
-	SOMETHING_TODO_WITH_MOVIE = 1,
-	SOMETHING_TODO_WITH_MOVIE2 = 2,
-	SOMETHING_TODO_WITH_MOVIE3 = 3
+	OPENING_MOVIE = 1,
+	DEFEAT_BOWSER_MOVIE = 2,
+	POST_CREDIT_MOVIE = 3
 };
 
 enum PowerupStoreTypes {

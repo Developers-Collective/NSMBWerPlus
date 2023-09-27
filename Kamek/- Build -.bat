@@ -16,7 +16,7 @@ pause
 exit
 
 :kamek
-python tools/kamek.py NewerProjectKP.yaml --no-rels --use-mw --gcc-type=powerpc-eabi --gcc-path=C:\devkitPro\devkitPPC\bin\ --gcc-append-exe --mw-path=tools --fast-hack
+python tools/kamek.py NSMBWerProject.yaml --no-rels --use-mw --gcc-type=powerpc-eabi --gcc-path=tools\devkitPPC\bin --gcc-append-exe --mw-path=tools --fast-hack
 if %errorlevel%==0 goto rename
 pause
 exit
@@ -28,7 +28,7 @@ pause
 exit
 
 :move
-move "%~dp0\Build\*" C:\Dolphin\NSMBWer\NewerRes >nul
+move "%~dp0\Build\*" >nul
 if %errorlevel%==0 goto end
 pause
 exit

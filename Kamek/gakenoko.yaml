@@ -1,0 +1,26 @@
+---
+source_files: [../src/gakenoko.cpp, ../src/gakenoko.S]
+hooks:
+  - name: restoreCtor
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80A025A0
+    target_func: 'EN_GAKE_NOKO_ctor_new(daEnGakeNoko_c *)'
+
+  - name: move
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80a02de4
+    target_func: 'move'
+
+  - name: foolMove
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80a02f80
+    target_func: 'foolMove'
+
+  - name: fall
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80a032c8
+    target_func: 'fall'
