@@ -1,5 +1,4 @@
 SECTIONS {
-
 	disableAnim__Q23m2d13EmbedLayout_cFi = 0x800C95A0;
 	getRootPane__Q23m2d17EmbedLayoutBase_cFv = 0x80007220;
 
