@@ -17,7 +17,7 @@ public:
 };
 
 const char *SpriteSwapperFileList[] = {0};
-const SpriteData SpriteSwapperSpriteData = { ProfileId::SpriteSwapper, 16, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+const SpriteData SpriteSwapperSpriteData = { ProfileId::SpriteSwapper, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
 Profile SpriteSwapperProfile(&SpriteSpawnerTimed::build, SpriteId::SpriteSwapper, &SpriteSwapperSpriteData, ProfileId::EN_REMOCON_TORIMOCHI, ProfileId::SpriteSwapper, "SpriteSwapper", SpriteSwapperFileList);
 
@@ -39,7 +39,11 @@ int SpriteSpawnerTimed::onCreate() {
 	this->inheritSet = (tempSet & 3) | ((tempSet & 0xC) << 2) | ((tempSet & 0x30) << 4) | ((tempSet & 0xC0) << 6) | ((tempSet & 0x300) << 8) | ((tempSet & 0xC00) << 10) | ((tempSet & 0x3000) << 12) | ((tempSet & 0xC000) << 14);
 	
 	this->timer = 0;
-	
+	#if defined(REGION_K) || defined(REGION_W) //adjust actor id!
+		if (type > 701) {
+			type = type + 2;
+		}
+	#endif
 	return true;
 }
 

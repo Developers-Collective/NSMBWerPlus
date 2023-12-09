@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
 # Kamek - build tool for custom C++ code in New Super Mario Bros. Wii
-# All rights reserved (c) Treeki 2010 - 2012
-# Header files compiled by Treeki, Tempus and megazig
+# All rights reserved (c) Ninji 2010 - 2013
+# Header files compiled by Ninji, Chronometrics and megazig
 
 # Requires PyYAML and pyelftools
 
-version_str = 'Kamek 0.2 by Treeki'
+version_str = 'Kamek by Ninji'
 
 import binascii
 import os
@@ -29,6 +29,7 @@ use_rels = True
 use_mw = False
 use_wine = False
 mw_path = ''
+filt_path = ''
 gcc_path = ''
 gcc_type = 'powerpc-eabi'
 gcc_append_exe = False
@@ -41,7 +42,7 @@ fast_hack = False
 
 def parse_cmd_options():
     global use_rels, use_mw, use_wine, show_cmd, delete_temp, only_build, fast_hack
-    global override_config_file, gcc_type, gcc_path, gcc_append_exe, mw_path
+    global override_config_file, gcc_type, gcc_path, gcc_append_exe, mw_path, filt_path
 
     if '--no-rels' in sys.argv:
         use_rels = False
@@ -82,6 +83,9 @@ def parse_cmd_options():
 
         if arg.startswith('--mw-path='):
             mw_path = arg[10:] + '/'
+
+        if arg.startswith('--filt-path='):
+            filt_path = arg[12:] + '/'
 
     if len(only_build) == 0:
         only_build = None
@@ -131,11 +135,11 @@ def generate_ocarina_patch(destOffset, data):
     remainder = count % 4
     if remainder == 3:
         out.append('%08X 0000%s' % (destOffset | 0x2000000, binascii.hexlify(data[sourceOffset:sourceOffset+2])))
-        out.append('%08X 000000%s' % (destOffset, binascii.hexlify(data[sourceOffset+2])))
+        out.append('%08X 000000%02x' % (destOffset, data[sourceOffset+2]))
     elif remainder == 2:
         out.append('%08X 0000%s' % (destOffset | 0x2000000, binascii.hexlify(data[sourceOffset:sourceOffset+2])))
     elif remainder == 1:
-        out.append('%08X 000000%s' % (destOffset, binascii.hexlify(data[sourceOffset])))
+        out.append('%08X 000000%02x' % (destOffset, data[sourceOffset]))
 
     return '\n'.join(out)
 
@@ -386,8 +390,8 @@ class KamekBuilder(object):
 
         if use_mw:
             # metrowerks setup
-            cc_command = ['%smwcceppc.exe' % mw_path, '-I.', '-I-', '-I.', '-nostdinc', '-Cpp_exceptions', 'off', '-Os', '-proc', 'gekko', '-fp', 'hard', '-enum', 'int', '-sdata', '0', '-sdata2', '0', '-g', '-RTTI', 'off', '-use_lmw_stmw', 'on']
-            as_command = ['%smwasmeppc.exe' % mw_path, '-I.', '-I-', '-I.', '-nostdinc', '-proc', 'gekko', '-d', '__MWERKS__']
+            cc_command = ['%smwcceppc.exe' % mw_path, '-I.', '-I-', '-I.', '-nostdinc', '-Cpp_exceptions', 'off', '-fp', 'hard', '-enum', 'int', '-sdata', '0', '-sdata2', '0', '-g', '-RTTI', 'off', '-use_lmw_stmw', 'on']
+            as_command = ['%smwasmeppc.exe' % mw_path, '-I.', '-I-', '-I.', '-nostdinc', '-d', '__MWERKS__']
 
             if 'defines' in self._config:
                 for d in self._config['defines']:
@@ -411,9 +415,8 @@ class KamekBuilder(object):
             cc_command = ['%s%s-g++' % (gcc_path, gcc_type), '-nodefaultlibs', '-I.', '-fno-builtin', '-Os', '-fno-exceptions', '-fno-rtti', '-mno-sdata']
             as_command = cc_command
 
-            if 'defines' in self._config:
-                for d in self._config['defines']:
-                    cc_command.append('-D%s' % d)
+            for d in self._config.get('defines', []) + self.project.data.get('defines', []):
+                cc_command.append('-D%s' % d)
 
             for i in self._config['include_dirs']:
                 cc_command.append('-I%s' % i)
@@ -455,7 +458,12 @@ class KamekBuilder(object):
                 if show_cmd:
                     print_debug(new_command)
 
-                errorVal = subprocess.call(new_command)
+                try:
+                    errorVal = subprocess.call(new_command)
+                except:
+                    print('An error occured while calling the compiler. Please make sure CodeWarrior is installed correctly into the tools folder.')
+                    sys.exit(1)
+                
                 if errorVal != 0:
                     print('BUILD FAILED!')
                     print('compiler returned %d - an error occurred while compiling %s' % (errorVal, sourcefile))
@@ -578,7 +586,8 @@ class KamekBuilder(object):
         print_debug('Running c++filt')
         opsys = sys.platform
         if opsys == 'darwin': opsys = 'osx'
-        p = subprocess.Popen('%s/c++filt/%s/%s-c++filt' % (mw_path, opsys, gcc_type), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        print('%s/%s/%s-c++filt' % (filt_path, opsys, gcc_type))
+        p = subprocess.Popen('%s/%s/%s-c++filt' % (filt_path, opsys, gcc_type), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         symbolNameList = [sym[1] for sym in self._symbols]
         filtResult = p.communicate('\n'.join(symbolNameList).encode('utf-8'))

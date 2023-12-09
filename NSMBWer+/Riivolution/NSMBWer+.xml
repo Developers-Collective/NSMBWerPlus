@@ -8,22 +8,24 @@
 	</id>
 	<options>
 		<section name="NSMBWer+">
-			<option name="Game" id="NSMBWer+Core" default="1">
-				<choice name="Enabled"><patch id="NSMBWer+Core"/></choice>
+			<option name="Game" id="NSMBWer+" default="1">
+				<choice name="Enabled"><patch id="NSMBWer+"/></choice>
 			</option>
 		</section>
 	</options>
-	<patch id="NSMBWer+Core">
+	<patch id="NSMBWer+">
+		<!-- Delete the next line out when making your mod, or if you're having crashes on startup -->
 		<savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="false" />
-		<folder external="Effect" disc="/Effect" />
-		<folder external="Stage" disc="/Stage" create="true" length="500000" />
-		<folder external="Stage/Texture" disc="/Stage/Texture" create="true" length="1000000" />
-		<folder external="Object" disc="/Object" create="true" />
+		<folder external="./" disc="/" recursive ="true" create="true" />
+		<folder external="Tilesets" disc="/Stage/Texture" create="true" />
 		<folder external="TitleReplay" disc="/Replay/title" create="true" />
-		<folder external="Layout" disc="/Layout" create="true" />
-		<folder external="Sound/stream/" />
-		<folder external="Sound/stream/sfx" disc="/Sound/stream/sfx" create="true" />
-		<folder external="Sound" />
+		<folder external="BGs" disc="/Object" create="true" />
+		<folder external="SpriteTex" disc="/Object" create="true" />
+		<folder external="Layouts" disc="/Layout" create="true" />
+		<folder external="Music" disc="/Sound" create="true" />
+		<folder external="Music/sfx" disc="/Sound/stream/sfx" create="true" />
+		<folder external="Music/stream" disc="/Sound/stream" create="true" />
+		<folder external="Music/rsar" disc="/Sound" />
 		<folder external="Font" disc="/EU/EngEU/Font" />
 		<folder external="Font" disc="/EU/GerEU/Font" />
 		<folder external="Font" disc="/EU/FraEU/Font" />
@@ -46,11 +48,16 @@
 		<folder external="Message" disc="/JP/Message" />
 		<folder external="Message" disc="/KR/Message" />
 		<folder external="Message" disc="/TW/Message" />
-		<folder external="NewerRes" disc="/NewerRes" create="true" />
-		<folder external="WorldMap" disc="/WorldMap" create="true" />
 		<folder external="Others" />
 		<folder external="Others{$__region}" />
-		<folder external="MovieDemo" disc="/MovieDemo" />
+		<folder external="Maps" disc="/WorldMap" create="true" />
+		<folder external="Stages" disc="/Stage" create="true" />
+		
+		<!-- Save name change -->
+		<!-- EU -->    <memory offset="0x802F148C" value="7769696D6A3264" original="7769696D6A3264" />
+		<!-- US -->    <memory offset="0x802F118C" value="7769696D6A3264" original="7769696D6A3264" />
+		<!-- JP -->    <memory offset="0x802F0FAC" value="7769696D6A3264" original="7769696D6A3264" />
+		<!-- KR/TW --> <memory offset="0x802F17CC" value="7769696D6A3264" original="7769696D6A3264" />
 
 		<!-- Expand ArchiveHeap -->
 		<!-- EU -->    <memory offset="0x800E4A84" value="3C600140" original="3C600120" />

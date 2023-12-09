@@ -33,7 +33,6 @@ hooks:
   - name: TEX_Bush
     type: branch_insn
     branch_type: bl
-    src_addr_ntsc: 0x80875BB4
     src_addr_pal: 0x80875BB4
     target_func: 'TEX_Bush'
 

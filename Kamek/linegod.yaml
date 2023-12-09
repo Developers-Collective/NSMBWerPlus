@@ -29,3 +29,9 @@ hooks:
     type: patch
     addr_pal: 0x80898798
     data: '3860 0400'
+
+# This sucks so fucking much but I just want this update out
+  - name: LineGodSpriteFix
+    type: patch
+    addr_pal: 0x8030c960
+    data: '02EB 0000'

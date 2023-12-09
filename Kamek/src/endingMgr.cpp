@@ -292,7 +292,21 @@ void dEndingMgr_c::executeState_ThanksPeach() {
 		} else if (peach->stage == 9) {
 			timer++;
 			if (timer == 90) {
-				ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
+				#ifdef NEWERCREDITS
+					RESTART_CRSIN_LevelStartStruct.purpose = 0;
+					RESTART_CRSIN_LevelStartStruct.world1 = 6;
+					RESTART_CRSIN_LevelStartStruct.world2 = 6;
+					RESTART_CRSIN_LevelStartStruct.level1 = 40;
+					RESTART_CRSIN_LevelStartStruct.level2 = 40;
+					RESTART_CRSIN_LevelStartStruct.areaMaybe = 0;
+					RESTART_CRSIN_LevelStartStruct.entrance = 0xFF;
+					RESTART_CRSIN_LevelStartStruct.unk4 = 0; // load replay
+					DontShowPreGame = true;
+					ExitStage(RESTART_CRSIN, 0, BEAT_LEVEL, MARIO_WIPE);
+				#endif
+				#ifndef NEWERCREDITS
+					ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
+				#endif
 			}
 		}
 	}

@@ -1,5 +1,12 @@
 #include <common.h>
 #include <game.h>
+#include <profile.h>
+
+//I fucking hate this
+const char* LineGodFileList [] = {0};
+extern "C" dActor_c *RIVERMGRBuild();
+const SpriteData LineGodSpriteData = { ProfileId::RIVER_MGR, 0, 0, 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 8};
+Profile LineGodProfile(&RIVERMGRBuild, SpriteId::LineGod, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::RIVER_MGR, "Line God", LineGodFileList);
 
 // TODO: make "No Deactivation"
 
@@ -154,7 +161,7 @@ void LineGod_BuildList(LineGod *self) {
 }
 
 bool LineGod_AppendToList(LineGod *self, BgActor *ac) {
-	
+
 	for (int search = 0; search < 8; search++) {
 		if (self->ac[search] == 0) {
 			self->ac[search] = ac;
@@ -166,7 +173,7 @@ bool LineGod_AppendToList(LineGod *self, BgActor *ac) {
 }
 
 void LineGod_Update(LineGod *self) {
-	
+
 	u8 newEvState = 0;
 	if (dFlagMgr_c::instance->flags & self->eventFlag)
 		newEvState = 1;

@@ -808,8 +808,8 @@ void daCaptainBowser::executeState_Outro() {
 						sa->profileId == ProfileId::EN_STAR_COIN ||
 						sa->profileId == ProfileId::EN_HATENA_BALLOON ||
 						sa->profileId == ProfileId::EN_ITEM ||
-						sa->profileId == ProfileId::EN_TARZANROPE || // Meteor
-						sa->profileId == ProfileId::WM_ANCHOR) { // Koopa Throw
+						sa->profileId == ProfileId::Meteor || // Meteor
+						sa->profileId == ProfileId::KoopaThrow) { // Koopa Throw
 					sa->killedByLevelClear();
 					sa->Delete(1);
 				}

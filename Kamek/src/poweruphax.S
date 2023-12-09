@@ -828,7 +828,7 @@ WmPlayerCtorHS:
 	mr r31, r3
 
 	bl build__21dHammerSuitRenderer_cFv
-	stw r3, 0x2D08(r31)
+	stw r3, 0x308(r31)
 
 	mr r3, r31
 	lwz r31, 0xC(r1)
@@ -850,14 +850,14 @@ WmPlayerDtorHS:
 
 	cmpwi r3, 0
 	beq oops3
-	lwz r3, 0x2D08(r30)
+	lwz r3, 0x308(r30)
 	li r4, 1
 	bl __dt__21dHammerSuitRenderer_cFv
 oops3:
 	
 	mr r3, r30
 	mr r4, r31
-	bl RealAcPyDtor
+	bl RealWmPlayerDtor
 
 	lwz r30, 8(r1)
 	lwz r31, 0xC(r1)
@@ -869,8 +869,8 @@ oops3:
 .global WmPlayerSetMeUpHS
 WmPlayerSetMeUpHS:
 	# partway in: r31 = this
-	lwz r3, 0x2D08(r31)
-	addi r4, r31, 0x2A60
+	lwz r3, 0x308(r31)
+	addi r4, r31, 0x1cc
 	bl setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_c
 
 	# epilogue
@@ -884,7 +884,7 @@ WmPlayerSetMeUpHS:
 .global WmPlayerDrawHS
 WmPlayerDrawHS:
 	# partway in: r31 = this
-	lwz r3, 0x2D08(r31)
+	lwz r3, 0x308(r31)
 	bl draw__21dHammerSuitRenderer_cFv
 
 	# epilogue
@@ -898,7 +898,7 @@ WmPlayerDrawHS:
 .extern _restgpr_27
 .extern RealAcPyDtor
 .extern RealWm2dPlayerDtor
-.extern WmPlayerDtor
+.extern RealWmPlayerDtor
 .extern build__21dHammerSuitRenderer_cFv
 .extern __dt__21dHammerSuitRenderer_cFv
 .extern setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_ci
@@ -1587,12 +1587,6 @@ doFireFlowerMdl0:
 .global HammerFoo
 HammerFoo:
 	b callFooDeath
-
-.extern dPlayerMdl_c__createPlayerModel
-.global createPlayerModelOrig
-createPlayerModelOrig:
-	stwu r1, -0x70(r1)
-	b dPlayerMdl_c__createPlayerModel
 
 .data
 FireflowerFileName: .string "g3d/I_fireflower.brres"

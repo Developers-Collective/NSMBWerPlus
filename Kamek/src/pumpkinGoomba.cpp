@@ -53,7 +53,7 @@ class dGoombaPie : public dEn_c {
 	DECLARE_STATE(Burst);
 };
 
-const SpriteData PumpkinGoombaSpriteData = { ProfileId::PumpkinGoomba, 8, 10, 0 , 0xFFFFFFF8, 0x8, 0x8, 0, 0, 0, 0, 0};
+const SpriteData PumpkinGoombaSpriteData = { ProfileId::PumpkinGoomba, 8, 0x10, 0 , 0xFFFFFFF8, 8, 8, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
 Profile PumpkinGoombaProfile(&dGoombaPie::build, SpriteId::PumpkinGoomba, &PumpkinGoombaSpriteData, ProfileId::WM_KINOKO_STAR, ProfileId::PumpkinGoomba, "PumpkinGoomba", GParcNameList);
 

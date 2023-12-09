@@ -35,9 +35,7 @@ enum
     */
     EN_KURIBO = 20,
     EN_PATA_KURIBO = 21,
-    /*
-    DUMMY_ACTOR = 22, now EN_MAME_KURIBO
-    */
+    EN_MAME_KURIBO = 22,
     AC_LIFT_RIDE_HMOVE = 23,
     EN_MET = 24,
     EN_TOGEZO = 25,
@@ -290,9 +288,7 @@ enum
     WAKI_PARABOM = 270,
     EN_MOUSE = 271,
     EN_ICEBROS = 272,
-    /*
-    DUMMY_ACTOR = 273, now MANTA_MGR2
-    */
+    MANTA_MGR2 = 273,
     AC_GEAR_GYRATION = 274,
     LIFT_RIDE_OFF = 275,
     EN_OBAKEDOOR = 276,
@@ -553,8 +549,8 @@ enum
 	SongBlock = 529,
 	EventLooper = 530,
 	LevelSpecial = 531,
-	Linegod = 532,
-	Waterlift = 533,
+	Waterlift = 532,
+	LineGod = 533,
 
     Num
 };
@@ -1187,91 +1183,87 @@ enum
 	AC_LIGHT_WATER = 618,
 	AC_COPYRIGHT = 619,
 	WII_STRAP = 620,
-	#ifdef REGION_C
-	NV_SCREEN = 621,
-	ANTI_ADDICTION_SCREEN = 622,
-	#endif
-	WM_CS_SEQ_MNG,
-	WORLD_CAMERA,
-	WM_MAP,
-	WM_IBARA,
-	WM_ANTLION_MNG,
-	WM_CASTLE,
-	WM_TOWER,
-	WM_PEACH_CASTLE,
-	WM_KILLER,
-	WM_KILLERBULLET,
-	WM_SINKSHIP,
-	WM_SWITCH,
-	WM_START,
-	WM_KINOKO_BASE,
-	WM_KINOKO_RED,
-	WM_KINOKO_1UP,
-	WM_KINOKO_STAR,
-	WM_COURSE,
-	WM_STOP,
-	WM_TORIDE,
-	WM_GHOST,
-	WM_DOKAN,
-	WM_CANNON,
-	WM_KOOPASHIP,
-	WM_BOSS_BASE,
-	WM_BOSS_LARRY,
-	WM_BOSS_ROY,
-	WM_BOSS_WENDY,
-	WM_BOSS_IGGY,
-	WM_BOSS_LEMMY,
-	WM_BOSS_MORTON,
-	WM_BOSS_LUDWIG,
-	WM_BOSS_KAMECK,
-	WM_ANTLION,
-	WM_KURIBO,
-	WM_PUKU,
-	WM_PAKKUN,
-	WM_BROS,
-	WM_JUGEM,
-	WM_PLAYER,
-	WM_SUBPLAYER,
-	WM_NOTE,
-	WM_TREASURESHIP,
-	WM_DIRECTOR,
-	WM_GRID,
-	WM_ISLAND,
-	WM_ITEM,
-	WM_CS_W3_PALM,
-	WM_SURRENDER,
-	WM_KOOPA_CASTLE,
-	WM_ANCHOR,
-	WM_PAKKUNHEAD,
-	WM_CLOUD,
-	WM_SMALLCLOUD,
-	WM_KOOPAJR,
-	WM_PEACH,
-	WM_BOARD,
-	WM_BUBBLE,
-	WM_KINOBALLOON,
-	WM_SANDPILLAR,
-	WM_YOGANPILLAR,
-	WM_KINOPIO,
-	WM_DANCE_PAKKUN,
-	WM_DOKANROUTE,
-	WM_HANACHAN,
-	WM_TOGEZO,
-	WM_MANTA,
-	WM_TERESA,
-	WORLD_SELECT,
-	WORLD_SELECT_GUIDE,
-	COLLECTION_COIN_BASE,
-	COLLECTION_COIN,
-	COURSE_SELECT_MENU,
-	NUMBER_OF_PEOPLE_CHANGE,
-	STOCK_ITEM,
-	STOCK_ITEM_SHADOW,
-	EASY_PAIRING,
-	WM_2D_PLAYER,
-	EVENT_OPENING_TITLE,
-	SELECT_PLAYER,
-	MULTI_COURSE_SELECT,
+	WM_CS_SEQ_MNG = 621,
+	WORLD_CAMERA = 622,
+	WM_MAP = 623,
+	WM_IBARA = 624,
+	WM_ANTLION_MNG = 625,
+	WM_CASTLE = 626,
+	WM_TOWER = 627,
+	WM_PEACH_CASTLE = 628,
+	WM_KILLER = 629,
+	WM_KILLERBULLET = 630,
+	WM_SINKSHIP = 631,
+	WM_SWITCH = 632,
+	WM_START = 633,
+	WM_KINOKO_BASE = 634,
+	WM_KINOKO_RED = 635,
+	WM_KINOKO_1UP = 636,
+	WM_KINOKO_STAR = 637,
+	WM_COURSE = 638,
+	WM_STOP = 639,
+	WM_TORIDE = 640,
+	WM_GHOST = 641,
+	WM_DOKAN = 642,
+	WM_CANNON = 643,
+	WM_KOOPASHIP = 644,
+	WM_BOSS_BASE = 645,
+	WM_BOSS_LARRY = 646,
+	WM_BOSS_ROY = 647,
+	WM_BOSS_WENDY = 648,
+	WM_BOSS_IGGY = 649,
+	WM_BOSS_LEMMY = 650,
+	WM_BOSS_MORTON = 651,
+	WM_BOSS_LUDWIG = 652,
+	WM_BOSS_KAMECK = 653,
+	WM_ANTLION = 654,
+	WM_KURIBO = 655,
+	WM_PUKU = 656,
+	WM_PAKKUN = 657,
+	WM_BROS = 658,
+	WM_JUGEM = 659,
+	WM_PLAYER = 660,
+	WM_SUBPLAYER = 661,
+	WM_NOTE = 662,
+	WM_TREASURESHIP = 663,
+	WM_DIRECTOR = 664,
+	WM_GRID = 665,
+	WM_ISLAND = 666,
+	WM_ITEM = 667,
+	WM_CS_W3_PALM = 668,
+	WM_SURRENDER = 669,
+	WM_KOOPA_CASTLE = 670,
+	WM_ANCHOR = 671,
+	WM_PAKKUNHEAD = 672,
+	WM_CLOUD = 673,
+	WM_SMALLCLOUD = 674,
+	WM_KOOPAJR = 675,
+	WM_PEACH = 676,
+	WM_BOARD = 677,
+	WM_BUBBLE = 678,
+	WM_KINOBALLOON = 679,
+	WM_SANDPILLAR = 680,
+	WM_YOGANPILLAR = 681,
+	WM_KINOPIO = 682,
+	WM_DANCE_PAKKUN = 683,
+	WM_DOKANROUTE = 684,
+	WM_HANACHAN = 685,
+	WM_TOGEZO = 686,
+	WM_MANTA = 687,
+	WM_TERESA = 688,
+	WORLD_SELECT = 689,
+	WORLD_SELECT_GUIDE = 690,
+	COLLECTION_COIN_BASE = 691,
+	COLLECTION_COIN = 692,
+	COURSE_SELECT_MENU = 693,
+	NUMBER_OF_PEOPLE_CHANGE = 694,
+	STOCK_ITEM = 695,
+	STOCK_ITEM_SHADOW = 696,
+	EASY_PAIRING = 697,
+	WM_2D_PLAYER = 698,
+	EVENT_OPENING_TITLE = 699,
+	SELECT_PLAYER = 700,
+	MULTI_COURSE_SELECT = 701,
 	#if defined(REGION_K) || defined(REGION_W) // The Korean and Taiwanese versions have two extra profiles here. Who thought this was a good idea?
 	MULTI_COURSE_SELECT_TOURNAMENT = 702,
 	MULTI_COURSE_SELECT_TOURNAMENT_BUTTON = 703,
@@ -1336,50 +1328,50 @@ enum
     EventBlock, //757
     SpriteSpawner, //758
     SpriteSwapper, //759
-    CustomClownCar, //760
-    CustomClownShot, //761
-	ThunderCloud, //762
-	MSGBoxManager, //763
-	MSGBox, //764
-	MagicPlatform, //765
-	Meteor, //766
-	Topman, //767
-	ElectricLine, //768
-	MrSun, //769
-	Chestnut, //770
-	RYOM, //771
-	EffectSpawner, //772
-	FireLaser, //773
-	BossMegaGoomba, //774
-	RYOMRes1, //775
-	RYOMRes2, //776
-	RYOMRes3, //777
-	RYOMRes4, //778
-	RYOMRes5, //779
-	RYOMRes6, //780
-	RYOMRes7, //781
-	SpecialExit, //782
-	BossFuzzyBear, //783
-  	BossThwompaDomp, //784
-	BossRamboo, //785
-	BossBalboaWrench, //786
-	BossWrenchThrow, //787
-	BossSamurshai, //788
-	BossPodouble, //789
-	BossTopman, //790
-	BossCaptainBowser, //791
-	KoopaThrow, //792
-	KFlameThrower, //793
-	BossBombDrop, //794
-	BossBombDropped, //795
-	EndingMgr, //796
-	SingAlong, //797
-	SongBlock, //798
-	SongPrize, //799
-	EventLooper, //800
-	LevelSpecial, //801
-	Linegod, //802
-	Waterlift, //803
+    CustomClownShot, //760
+	ThunderCloud, //761
+	MSGBoxManager, //762
+	MSGBox, //763
+	MagicPlatform, //764
+	Meteor, //765
+	Topman, //766
+	ElectricLine, //767
+	MrSun, //768
+	Chestnut, //769
+	RYOM, //770
+	EffectSpawner, //771
+	FireLaser, //772
+	BossMegaGoomba, //773
+	RYOMRes1, //774
+	RYOMRes2, //775
+	RYOMRes3, //776
+	RYOMRes4, //777
+	RYOMRes5, //778
+	RYOMRes6, //779
+	RYOMRes7, //780
+	SpecialExit, //781
+	BossFuzzyBear, //782
+  	BossThwompaDomp, //783
+	BossRamboo, //784
+	BossBalboaWrench, //785
+	BossWrenchThrow, //786
+	BossSamurshai, //787
+	BossPodouble, //788
+	BossTopman, //789
+	BossCaptainBowser, //790
+	KoopaThrow, //791
+	KFlameThrower, //792
+	BossBombDrop, //793
+	BossBombDropped, //794
+	EndingMgr, //795
+	SingAlong, //796
+	SongBlock, //797
+	SongPrize, //798
+	EventLooper, //799
+	LevelSpecial, //800
+	Linegod, //801
+	Pengi, //802
+	WM_MANAGER, //803
 
     Num
 };

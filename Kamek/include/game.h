@@ -4,11 +4,8 @@
 //#define offsetof(type, member)	((__std(size_t)) &(((type *) 0)->member))
 
 #include <common.h>
-#include <rvl/mtx.h>
-#include <rvl/GXEnum.h>
-#include <rvl/vifuncs.h>
-#include <rvl/arc.h>
-#include <rvl/tpl.h>
+#include <sdk/gx.h>
+#include <sdk/tpl.h>
 #define offsetof(type, member)	((u32) &(((type *) 0)->member))
 
 #include <g3dhax.h>
@@ -246,42 +243,24 @@ public:
 	u8 worlds_available[10];	// 0x32
 	u32 ambush_countdown[10];	// 0x3C
 	u16 field_64;				// 0x64
-	union {
-		u16 credits_hiscore;		// 0x66
-		u16 spentStarCoins;
-	};
+	u16 credits_hiscore;		// 0x66
 	u16 score;					// 0x68
 	u32 completions[10][0x2A];	// 0x6C
-	union {
-		u8 hint_movie_bought[70];	// 0x6FC
-
-		struct {
-			// ALL additions should go here
-			// This array has been verified as safe to replace
-			u8 field_6FC;						//0x6FC
-			u8 new_powerups_available[8];		//0x6FD
-		/*
-			char newerWorldName[32]; // 0x6FC
-			GXColor fsTextColours[2]; // 0x71C
-			GXColor fsHintColours[2]; // 0x724
-			GXColor hudTextColours[2]; // 0x72C
-			s16 hudHintH; // 0x734
-			s8 hudHintS, hudHintL; // 0x736
-			u8 currentMapMusic; // 0x738
-			u8 newerWorldID; // 0x739
-			u8 titleScreenWorld; // 0x73A
-			u8 titleScreenLevel; // 0x73B
-		*/
-			// Pretty much full up here...
-		};
-	};
+	u8 hint_movie_bought[70];	// 0x6FC
 	u8 toad_location[10];		// 0x742
 	u8 field_74C[10][4];		// 0x74C
 	u8 field_774[10][4];		// 0x774
 	u8 field_79C[10][4];		// 0x79C
 	u8 death_counts[10][0x2A];	// 0x7C4
 	u8 death_count_3_4_switch;	// 0x968
-	u8 pad[0x13];				// 0x969
+	union {
+		u8 pad[0x13];				// 0x969
+		struct  {
+			// savefile mods go here now, don't use 6FC
+			u8 new_powerups_available[8]; //0x969
+		};
+		
+	};
 	u32 checksum;				// 0x97C
 
 	u32 GetLevelCondition(int world, int level);
@@ -430,6 +409,7 @@ u32 QueryGlobal5758(u32 check);
 
 void SaveGame(void *classDoesntMatter, bool isQuick);
 
+#include <actors.h>
 void *CreateParentedObject(short classID, void *parent, int settings, char something);
 void *CreateChildObject(short classID, void *parent, int settings, int unk1, int unk2);
 
@@ -573,7 +553,7 @@ class mMtx {
 
 	float* operator[](int row) { return data[row]; }
 
-	operator MtxPtr() const { return (MtxPtr)this; }
+	operator Mtx *() { return &data; }
 
 	/* Create New Ones */
 	void zero();
@@ -603,16 +583,6 @@ class mMtx {
 	void getUnknown(S16Vec *target);
 };
 
-
-
-float FastS16toFloat(s16 value) {
-	register s16 *pValue = &value;
-	register float output;
-	#ifndef __CLANG
-	asm { psq_l output, 0(pValue), 1, 3 }
-	#endif
-	return output;
-}
 
 
 namespace nw4r {
@@ -742,19 +712,12 @@ namespace lyt {
 			u16 width, height;
 			f32 minLOD, magLOD;
 			u16 lodBias, palEntryNum;
-			struct
-			{
-				u32                 textureFormat:      4;
-				u32                 mipmap:             1;
-				u32                 wrapS:              2;
-				u32                 wrapT:              2;
-				u32                 minFilter:          3;
-				u32                 magFilter:          1;
-				u32                 biasClampEnable:    1;
-				u32                 edgeLODEnable:      1;
-				u32                 anisotropy:         2;
-				u32                 paletteFormat:      2;
-			}   mBits;
+			u32 settingsBitfield;
+
+			int getFormat() { return (settingsBitfield >> 28); }
+			void setFormat(int fmt) {
+				settingsBitfield = (fmt << 28) | (settingsBitfield & 0xFFFFFFF);
+			}
 
 			void ReplaceImage(TPLPalette *tpl, unsigned long id);
 	};
@@ -919,156 +882,62 @@ namespace lyt {
 
 
 namespace g3d {
-struct CameraData
-{
-enum Flag
-    {
-FLAG_CAMERA_LOOKAT          = 0x00000001,
-FLAG_CAMERA_ROTATE = 0x00000002,
-FLAG_CAMERA_AIM    = 0x00000004,
-MASK_CAMERA        = 0x00000007,
+struct CameraData {
+	Mtx cameraMtx;
+	Mtx44 projectionMtx;
 
-FLAG_CMTX_VALID    = 0x00000008,
+	u32 flags;
 
-FLAG_PROJ_FLUSTUM  = 0x00000010,
-FLAG_PROJ_PERSP    = 0x00000020,
-FLAG_PROJ_ORTHO    = 0x00000040,
-MASK_PROJ          = 0x00000070,
+	VEC3 camPos;
+	VEC3 camUp;
+	VEC3 camTarget;
+	VEC3 camRotate;
+	float camValue;
 
-FLAG_PMTX_VALID             = 0x00000080,
+	int projectionType;
+	float fovy;
+	float aspect;
+	float near, far;
+	float top, bottom, left, right;
 
-FLAG_VIEWPORT_JITTER_ABOVE  = 0x00000100
-    };
+	float _CC, _D0, _D4, _D8;
 
-Mtx  cameraMtx;
-Mtx44  projMtx;
+	float viewportX, viewportY;
+	float viewportWidth, viewportHeight;
+	float viewportNearZ, viewportFarZ;
 
-u32 flags;
-
-VEC3   cameraPos;
-VEC3   cameraUp;
-VEC3   cameraTarget;
-VEC3   cameraRotate;
-f32    cameraTwist;
-
-GXProjectionType    projType;
-f32                 projFovy;
-f32                 projAspect;
-f32                 projNear;
-f32                 projFar;
-f32                 projTop;
-f32                 projBottom;
-f32                 projLeft;
-f32                 projRight;
-
-f32                 lightScaleS;
-f32                 lightScaleT;
-f32                 lightTransS;
-f32                 lightTransT;
-
-VEC2   viewportOrigin;
-VEC2   viewportSize;
-f32    viewportNear;
-f32    viewportFar;
-
-u32    scissorX;
-u32    scissorY;
-u32    scissorWidth;
-u32    scissorHeight;
-
-s32    scissorOffsetX;
-s32    scissorOffsetY;
+	int scissorX, scissorY, scissorWidth, scissorHeight;
+	int scissorOffsetX, scissorOffsetY;
 };
-
-/* Correct camera
-cameraMtx:
-1.0 0.0 0.0 -0.0
-0.0 1.0 0.0 -0.0
-0.0 0.0 1.0 -6000.0
-
-projMtx:
-0.002345 0.000000  0.000000 -1.000000
-0.000000 0.004386  0.000000 -1.000000
-0.000000 0.000000 -0.000005 -0.500000
-0.000000 0.000000  0.000000  1.000000
-
-flags: 000000C9 : FLAG_CAMERA_LOOKAT | FLAG_CMTX_VALID | FLAG_PROJ_ORTHO | FLAG_PMTX_VALID
-
-cameraPos: {0, 0, 15}
-cameraUp: {0, 1, 0}
-cameraTarget: {0, 0, 0}
-cameraRotate: {0, 0, 0}
-cameraTwist: 0
-
-projType: 1
-projFovy: 60
-projAspect: 1.333333
-projNear: -100000
-projFar: 100000
-projTop: 456
-projBottom: 0
-projLeft: 0
-projRight: 853
-
-lightScaleS: 0.5
-lightScaleT: 0.5
-lightTransS: 0.5
-lightTransT: 0.5
-
-viewportOrigin: {0,0}
-viewportSize: {640,456}
-viewportNear: 0
-viewportFar: 1
-
-scissorX: 0
-scissorY: 0
-scissorWidth: 0x280
-scissorHeight: 0x1C8
-
-scissorOffsetX: 0
-scissorOffsetY: 0
-*/
 
 class Camera {
 public:
-	enum PostureType { POSTURE_LOOKAT, POSTURE_ROTATE, POSTURE_AIM };
-	struct PostureInfo
-	{
-	PostureType tp;
-	VEC3   cameraUp;
-	VEC3   cameraTarget;
-	VEC3   cameraRotate;
-	f32         cameraTwist;
+	struct PostureInfo {
+		int mode;
+		VEC3 up;
+		VEC3 target;
+		VEC3 cameraRotate;
+		float cameraTwist;
 	};
-private:
 	CameraData *data;
-public:
 	Camera(CameraData *pCamera);
 	void Init();
 	void Init(u16 efbWidth, u16 efbHeight, u16 xfbWidth, u16 xfbHeight, u16 viWidth, u16 viHeight);
-	//void SetPosition(f32 x, f32 y, f32 z);
 	void SetPosition(const VEC3 &pos);
-	//void GetPosition(f32 *px, f32 *py, f32 *pz) const;
-	void GetPosition(VEC3 *pPos) const;
+	void GetPosition(VEC3 *pos) const;
 	void SetPosture(const PostureInfo &info);
-	//void GetPosture(PostureInfo *info) const;
 	void SetCameraMtxDirectly(const Mtx &mtx);
-	void GetCameraMtx(Mtx *pMtx) const;
-	void SetOrtho(f32 top, f32 bottom, f32 left, f32 right, f32 near, f32 far);
-	//void SetFrustum(f32 top, f32 bottom, f32 left, f32 right, f32 near, f32 far);
 	void SetPerspective(f32 fovy, f32 aspect, f32 near, f32 far);
+	void SetOrtho(f32 top, f32 bottom, f32 left, f32 right, f32 near, f32 far);
 	void SetProjectionMtxDirectly(const Mtx44 *pMtx);
-	void GetProjectionMtx(Mtx44 *pMtx) const;
-	//GXProjectionType GetProjectionType() const;
 	void SetScissor(u32 xOrigin, u32 yOrigin, u32 width, u32 height);
 	void SetScissorBoxOffset(s32 xOffset, s32 yOffset);
-	//void GetScissor(u32 *xOrigin, u32 *yOrigin, u32 *width, u32 *height);
 	void SetViewport(f32 xOrigin, f32 yOrigin, f32 width, f32 height);
-	//void SetViewport(f32 xOrigin, f32 yOrigin, f32 width, f32 height, f32 near, f32 far);
 	void SetViewportZRange(f32 near, f32 far);
 	void SetViewportJitter(u32 field);
-	//void SetViewportJitter(f32 xOrigin, f32 yOrigin, f32 width, f32 height, f32 near, f32 far, u32 field);
 	void GetViewport(f32 *xOrigin, f32 *yOrigin, f32 *width, f32 *height, f32 *near, f32 *far) const;
+	void GetCameraMtx(Mtx *pMtx) const;
+	void GetProjectionMtx(Mtx44 *pMtx) const;
 	void GXSetViewport() const;
 	void GXSetProjection() const;
 	void GXSetScissor() const;
@@ -1076,7 +945,7 @@ public:
 };
 
 namespace G3DState {
-	GXRenderModeObj *GetRenderModeObj();
+	GXRModeObj *GetRenderModeObj();
 }
 }
 }
@@ -1184,7 +1053,7 @@ namespace EGG {
 
 
 		// isCentered might actually be isNotCentered, dunno
-		Frustum(GXProjectionType projType, Vec2 size, bool isCentered, float near, float far); // 802C6D20
+		Frustum(u32 projType, Vec2 size, bool isCentered, float near, float far); // 802C6D20
 		Frustum(Frustum &f); // 802C6D90
 		virtual ~Frustum(); // 802C75F0
 
@@ -1292,7 +1161,7 @@ namespace EGG {
 
 	class ProjectOrtho /* : public something? */ {
 		public:
-			virtual GXProjectionType getProjectionType();
+			virtual u32 getProjectionType();
 			virtual void setGXProjection();
 			virtual void _vf10(); // null
 			virtual VEC2 _vf14(VEC2 *something);
@@ -2177,6 +2046,7 @@ public:
 	void UpdateObjectPosBasedOnSpeedValuesReal();
 	void HandleXSpeed();
 	void HandleYSpeed();
+	static dActor_c* create(Actors type, u32 settings, VEC3 *pos, void *rot);
 };
 
 class dStageActor_c : public dActor_c {
@@ -2956,7 +2826,7 @@ public:
 	virtual void disableStarColours();			// 800D6D60
 	virtual void enableStarEffects();			// 800BD740
 	virtual void disableStarEffects();			// 800BD730
-	virtual void getModelMatrix(u32 unk, MtxPtr dest);	// 800D5820
+	virtual void getModelMatrix(u32 unk, Mtx *dest);	// 800D5820
 	virtual int _vf54();						// 80318D0C
 	virtual bool _vf58(int type, char *buf, bool unk); // 800D6930
 	virtual void startAnimation(int id, float updateRate, float unk, float frame);	// 800D5EC0
@@ -3034,14 +2904,14 @@ private:
 class mTexture_c {
 public:
 	mTexture_c();	// 802C0D20
-	mTexture_c(u16 width, u16 height, GXTexFmt format);	// 802C0D70
+	mTexture_c(u16 width, u16 height, u32 format);	// 802C0D70
 
 	// vtable is at 80350450
 	virtual ~mTexture_c();	// 802C0DB0
 	virtual void setFlagTo1();	// 802C0E20
 
 	void setImageBuffer(void *buffer);	// 802C0E30
-	void load(GXTexMapID id);			// 802C0E50
+	void load(u32 id);			// 802C0E50
 	void makeTexObj(GXTexObj *obj);		// 802C0E90
 	void flushDC();						// 802C0F10
 
@@ -3131,8 +3001,8 @@ namespace nw4r {
 				float posX;
 				float posY;
 				float posZ;
-				GXTexFilter minFilt;
-				GXTexFilter magFilt;
+				u32 minFilt;
+				u32 magFilt;
 				u16 completelyUnknown;
 				u8 alpha;
 				u8 isFixedWidth;
@@ -3152,7 +3022,7 @@ namespace nw4r {
 				float CalcStringWidth(wchar_t const *string, int length) const;
 
 				float Print(wchar_t const *string, int length);
-
+				
 				float CalcLineWidth(wchar_t const *string, int length);
 
 				float GetLineSpace() const;
@@ -3193,7 +3063,7 @@ namespace lyt {
 		void *GetResource(u32 dirKey, const char *filename, u32 *sizePtr);
 		void *GetFont(const char *name);
 
-		ARCHandle arc;
+		char arcHandle[0x1C]; // should be a struct, but I'm too lazy to reverse it >_>
 		u32 unk_20;
 		ut::LinkList list; // 0x24
 		char rootDirName[0x80]; // 0x30
@@ -3923,6 +3793,8 @@ class dStockItem_c : public dBase_c {
 
 	void setScalesOfSomeThings();
 	int getIconPictureIDforPlayer(int i);
+
+	int newOnExecute();
 };
 
 class dYesNoWindow_c : public dBase_c {
@@ -4166,6 +4038,222 @@ class StageC4 {
 		int stageNum, selection, playerNum;
 		u32 _10, _14;
 		u8 flags, _19, _1A, willDisplay, _1C, _1D;
+};
+
+class dGameDisplay_c : dBase_c {
+	public:
+		m2d::EmbedLayout_c layout;
+		mEf::es2 effect;
+		u32 _330;
+		u32 _334;
+		u32 _338;
+		u32 _33C;
+		u32 _340;
+		u32 _344;
+		u32 _348;
+		u32 _34C;
+		u32 _350;
+		u32 _354;
+		u32 _358;
+		u32 _35C;
+		u32 _360;
+		u32 _364;
+		u32 _368;
+		u32 _36C;
+		u32 _370;
+		u32 _374;
+		u32 _378;
+		u32 _37C;
+		u32 _380;
+		u32 _384;
+		u32 _388;
+		u32 _38C;
+		u32 _390;
+		u32 _394;
+		u32 _398;
+		u32 _39C;
+		u32 _3A0;
+		u32 _3A4;
+		dStateMgr_c state;
+		u32 _3CC;
+		u32 _3D0;
+		u32 _3D4;
+		u32 _3D8;
+		u32 coins;
+		u32 timer;
+		u32 _3E4;
+		u32 score;
+		u32 _3EC;
+		u32 _3F0;
+		u32 _3F4;
+		u32 _3F8;
+		u32 _3FC;
+		u32 _400;
+		u32 _404;
+		u32 _408;
+		u32 _40C;
+		u32 _410;
+		u32 _414;
+		u32 _418;
+		u32 _41C;
+		u32 _420;
+		u32 _424;
+		u32 _428;
+		u32 _42C;
+		u32 _430;
+		u32 mustAtLeast2ForScoreToCount;
+		u32 _438;
+		u32 _43C;
+		u32 _440;
+		u32 _444;
+		u8 _448;
+		u8 _449;
+		u8 _44A;
+		u8 _44B;
+		u8 _44C;
+		u8 _44D;
+		u8 _44E;
+		u8 _44F;
+		u8 _450;
+		u8 _451;
+		u8 _452;
+		u8 _453;
+		u8 _454;
+		u8 _455;
+		u8 _456;
+		u8 _457;
+		u32 _458;
+		u32 _45C;
+		u32 _460;
+		u32 _464;
+		u32 _468;
+		u32 _46C;
+		u32 _470;
+		u32 _474;
+		u32 _478;
+		u32 _47C;
+		u32 _480;
+		u32 _484;
+		u32 _488;
+		u32 _48C;
+		u32 _490;
+		nw4r::lyt::Picture* p_collectOff_00;
+		nw4r::lyt::Picture* p_collection_00;
+		nw4r::lyt::Picture* p_collectOff_01;
+		nw4r::lyt::Picture* p_collection_01;
+		nw4r::lyt::Picture* p_collectOff_02;
+		nw4r::lyt::Picture* p_collection_02;
+		nw4r::lyt::Picture* p_marioIcon_00;
+		nw4r::lyt::Picture* p_luijiIcon_00;
+		nw4r::lyt::Picture* p_kinoB_00;
+		nw4r::lyt::Picture* p_kinoY_00;
+		u32 _4BC;
+		u32 _4C0;
+		u32 _4C4;
+		u32 _4C8;
+		u32 _4CC;
+		u32 _4D0;
+		u32 _4D4;
+		u32 _4D8;
+		nw4r::lyt::TextBox* coinBox;
+		nw4r::lyt::TextBox* timerBox;
+		nw4r::lyt::TextBox* scoreBox;
+		u32 _4E8;
+		u32 _4EC;
+		u32 _4F0;
+		u32 _4F4;
+		u8  _4F8;
+		u32* StarCoin1;
+		u32* StarCoin2;
+		u32* StarCoin3;
+		u8  _505;
+		u8  _506;
+		u8  _507;
+		u8 blob1[0x51C - 0x508];
+		u32 _51C;
+		u8 blob2[0x5A0 - 0x524];
+		u32 _5A0;
+	   
+		static dGameDisplay_c* instance;
+
+		int newOnExecute();
+		int onExecute_orig();
+
+		USING_STATES(dGameDisplay_c);
+		REF_NINTENDO_STATE(ProcGoalEnd);
+};
+
+class dCourseSelectManager_c : public dBase_c {
+public:
+	dStateWrapper_c<dCourseSelectManager_c> state;
+
+	u32 courseSelectMenuPtr;
+	u32 numberOfPeopleChangePtr;
+	u32 stockItemPtr;
+	u32 whateverthisisPtr;
+	u32 collectionCoinPtr;
+	u32 worldSelectPtr;
+
+	u32 unk1;
+
+	u8 guide[0x450];
+
+	u32 ptr2dPlayer0;
+	u32 ptr2dPlayer1;
+	u32 ptr2dPlayer2;
+	u32 ptr2dPlayer3;
+
+	u32 easyPairingPtr;
+	u32 continuePtr;
+	u32 yesNoWindowPtr;
+	u32 someMsgPtr;
+	u32 letterWindowPtr;
+
+	u8 layoutLoaded;
+
+	u8 field_53D;
+	u8 doesSomethingWithMenuSelect;
+	u8 doesWorldSelect;
+	u8 field_540;
+	u8 doesContinueCheckWait;
+	u8 doesSaveWindowOpen;
+	u8 field_543;
+	u8 doesMsgOpenAnimeEndWait;
+	u8 startedSomeMsgThing;
+	u8 endedSomeMsgThing;
+	u8 doesYesNoWindowOpenAnimeEndWait;
+	u8 doesStockItemSelectWait;
+	u8 doSetPowerupsInWm2dPlayer;
+	u8 field_54A;
+	u8 field_54B;
+	u8 field_54C;
+	u8 doesLetterWindowWait;
+	u8 _54E;
+	u8 _54F;
+
+	u32 selectedMenuItem;
+	u32 field_554;
+	u32 countdownForSomethingInMenuSelect;
+	u32 somethingCopiedIntoYesNoWindow;
+
+	u8 unk2[0x10];
+	u8 pad[12];
+
+	static dCourseSelectManager_c* instance;
+
+	void sub_80931170();
+	void sub_809310F0();
+
+	void sub_80931090();
+	void sub_80931110();
+
+	void changeToNormalState();
+
+	void endState_CharacterChangeWait_new();
+	
+	USING_STATES(dCourseSelectManager_c);
+	REF_NINTENDO_STATE(KeyWait);
+	REF_NINTENDO_STATE(StockItemSelectWait);
 };
 
 extern "C" void *MapSoundPlayer(void *SoundRelatedClass, int soundID, int unk);

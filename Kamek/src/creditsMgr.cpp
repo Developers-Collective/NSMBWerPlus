@@ -1,27 +1,11 @@
 #include <game.h>
 #include <sfx.h>
 #include <dCourse.h>
-#include <profileid.h>
 #include <stage.h>
 #include <playeranim.h>
-#define GEKKO
-#include "rvl/mtx.h"
-#include "rvl/GXEnum.h"
-#include "rvl/GXStruct.h"
-#include "rvl/GXTransform.h"
-#include "rvl/GXGeometry.h"
-#include "rvl/GXDispList.h"
-#include "rvl/GXLighting.h"
-#include "rvl/GXTev.h"
-#include "rvl/GXTexture.h"
-#include "rvl/GXCull.h"
-#include "rvl/GXPixel.h"
-#include "rvl/GXBump.h"
-#include "rvl/GXVert.h"
-#include "rvl/vifuncs.h"
-#include <rvl/GXFrameBuffer.h>
-#include <rvl/tpl.h>
 #include <newer.h>
+#include <profile.h>
+#define NEWERCREDITS
 void *EGG__Heap__alloc(unsigned long size, int unk, void *heap);
 void EGG__Heap__free(void *ptr, void *heap);
 
@@ -664,12 +648,21 @@ void dCreditsMgr_c::playerLookUp() {
 void dCreditsMgr_c::theEnd() {
 	GetTheEnd()->willShow = true;
 }
+
+extern "C" u32 CreateBootParam();
+//updated to match vanilla maps + world 9 unlocks
 void dCreditsMgr_c::exitStage() {
 	SaveBlock *save = GetSaveFile()->GetBlock(-1);
 	bool wasPreviouslyBeat = (save->bitfield & 2) != 0;
 	save->bitfield |= 2;
-
-	ExitStage(ProfileId::WORLD_MAP, wasPreviouslyBeat ? 0 : 0x20000000, BEAT_LEVEL, CIRCLE_WIPE);
+	OSReport("wasPreviouslyBeat: %d\n", wasPreviouslyBeat);
+	u32 WorldMapBootParam = CreateBootParam();
+	OSReport("BootParam: %d\n", WorldMapBootParam);
+	if (!wasPreviouslyBeat) {
+		DoSceneChange(ProfileId::WORLD_9_DEMO, 0, false);
+	} else {
+		DoSceneChange(ProfileId::WORLD_MAP, WorldMapBootParam, false);
+	}
 }
 
 Vec2 dCreditsMgr_c::_vf70() {
@@ -687,7 +680,7 @@ void EFBMagic2() {
 	if (getNextEFB) {
 		getNextEFB = false;
 
-		GXRenderModeObj *ro = nw4r::g3d::G3DState::GetRenderModeObj();
+		GXRModeObj *ro = nw4r::g3d::G3DState::GetRenderModeObj();
 		efbTexture.format = GX_TF_RGB565;
 		efbTexture.width = ro->fbWidth;
 		efbTexture.height = ro->efbHeight;
@@ -698,7 +691,7 @@ void EFBMagic2() {
 			efbTexture.allocateBuffer(GameHeaps[2]);
 
 		GXSetTexCopySrc(0, 0, efbTexture.width, efbTexture.height);
-		GXSetTexCopyDst(efbTexture.width, efbTexture.height, (GXTexFmt)efbTexture.format, GX_FALSE);
+		GXSetTexCopyDst(efbTexture.width, efbTexture.height, efbTexture.format, GX_FALSE);
 		GXSetCopyFilter(GX_FALSE, 0, GX_FALSE, 0);
 		GXCopyTex(efbTexture.getBuffer(), GX_FALSE);
 
@@ -731,19 +724,19 @@ void dFlipbookRenderer_c::execute() {
 
 static void setupGXForDrawingCrap() {
 	GXSetNumChans(0);
-	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_REG, GX_SRC_REG, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_REG, GX_SRC_REG, GX_LIGHTNULL, GX_DF_NONE, GX_AF_NONE);
 	GXSetChanAmbColor(GX_COLOR0A0, (GXColor){255,255,255,255});
 	GXSetChanMatColor(GX_COLOR0A0, (GXColor){255,255,255,255});
 	GXSetNumTexGens(1);
-	GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX3x4, GX_TG_NRM, GX_IDENTITY, GX_FALSE, GX_PTIDENTITY);
+	GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX3x4, GX_TG_NRM, GX_IDENTITY, GX_FALSE, GX_DTTIDENTITY);
 
 	GXSetNumTevStages(1);
 	GXSetNumIndStages(0);
 	for (int i = 0; i < 0x10; i++)
-		GXSetTevDirect((GXTevStageID)i);
+		GXSetTevDirect(i);
 
 	GXSetTevOp(GX_TEVSTAGE0, GX_REPLACE);
-	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP0, GX_COLOR_NULL);
+	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP0, GX_COLORNULL);
 
 	GXSetTevSwapModeTable(GX_TEV_SWAP0, GX_CH_RED, GX_CH_GREEN, GX_CH_BLUE, GX_CH_ALPHA);
 
@@ -941,8 +934,6 @@ void dFlipbookRenderer_c::drawOpa() {
 	GXEnd();
 }
 
-#include <rvl/OSCache.h>
-
 void dFlipbookRenderer_c::loadNewBG(int bgID, bool isBackface) {
 	OSReport("Will load BG: %d\n", bgID);
 
@@ -967,21 +958,16 @@ void dFlipbookRenderer_c::loadNewBG(int bgID, bool isBackface) {
 		tplBufferSize[setID] = bufSize;
 	}
 
-	//CXUncompContextLH context;
-	//CXInitUncompContextLH(&context, tplBuffer);
-	//int result = CXReadUncompLH(&context, sourceBuf, 0x1000000);
-	//OSReport("Source buf: %p / Dest buf: %p / Dest size: %d (0x%x)\n", sourceBuf, tplBuffer, bufSize, bufSize);
-	//OSReport("CXReadUncompLH result: %d\n", result);
 	CXUncompressLZ(sourceBuf, tplBuffer[setID]);
 	OSReport("Butts. Decompressing %p to %p.\n", sourceBuf, tplBuffer[setID]);
 
-	TPLBind((TPLPalettePtr)tplBuffer[setID]);
-	TPLDescriptorPtr desc = TPLGet((TPLPalettePtr)tplBuffer[setID], 0);
-	TPLHeaderPtr tex = desc->textureHeader;
+	TPLBind((TPLPalette*)tplBuffer[setID]);
+	TPLImage *image = TPLGet((TPLPalette*)tplBuffer[setID], 0);
+	TPLTexHeader *tex = image->texture;
 	OSReport("Received TPLHeader %p; Data: %p; Size: %d x %d; Format; %d\n", tex, tex->data, tex->width, tex->height, tex->format);
 
 	GXInitTexObj(&bgTexObj[setID], tex->data, tex->width, tex->height,
-			(GXTexFmt)tex->format, tex->wrapS, tex->wrapT, GX_FALSE);
+			tex->format, tex->wrapS, tex->wrapT, GX_FALSE);
 }
 
 dFlipbookRenderer_c::dFlipbookRenderer_c() {
@@ -1015,8 +1001,10 @@ void LoadDanceValues() {
 
 	dCreditsMgr_c *cred = dCreditsMgr_c::instance;
 
-	if (!cred)
+	if (!cred) {
+		replayRecord();
 		return;
+	}
 	danceInfo_s *cmd = cred->danceCommand;
 	if (!cmd)
 		return;
@@ -1036,8 +1024,6 @@ void LoadDanceValues() {
 		DanceValues_Bahps = 0;
 		DanceValues_CreditsControl = 0;
 	}
-
-	replayRecord();
 }
 
 

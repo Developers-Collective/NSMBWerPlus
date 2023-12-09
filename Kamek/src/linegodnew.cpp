@@ -2,6 +2,8 @@
 #include <game.h>
 #include <profile.h>
 
+// TODO: make "No Deactivation"
+
 struct BgActor {
 	u16 def_id;		// 0x00
 	u16 x;			// 0x02
@@ -45,50 +47,59 @@ struct BG_GM_hax {
 
 extern BG_GM_hax *BG_GM_ptr;
 
+// Regular class is 0x3D0.
+// Let's add stuff to the end just to be safe.
+// Size is now 0x400
+// 80898798 38600400
+
 #define LINEGOD_FUNC_ACTIVATE	0
 #define LINEGOD_FUNC_DEACTIVATE	1
 
-class dLinegod_c : public dEn_c {
+class daEnLineGod_c : public dEn_c {
 public:
-	u32 id;
-	u32 settings;
-	u16 name;
-	u8 _0A[6];
-	u8 _10[0x9C];
-	float x;
-	float y;
-	float z;
-	u8 _B8[0x318];
-	u64 eventFlag;
-	u8 func;
-	u8 width;
-	u8 height;
-	u8 lastEvState;
-	BgActor *ac[8];
+	u32 id;			// 0x00
+	u32 settings;	// 0x04
+	u16 name;		// 0x08
+	u8 _0A[6];		// 0x0A
+	u8 _10[0x9C];	// 0x10
+	float x;		// 0xAC
+	float y;		// 0xB0
+	float z;		// 0xB4
+	u8 _B8[0x318];	// 0xB8
+	u64 eventFlag;	// 0x3D0
+	u8 func;		// 0x3D4
+	u8 width;		// 0x3D5
+	u8 height;		// 0x3D6
+	u8 lastEvState;	// 0x3D7
+	BgActor *ac[8];	// 0x3D8
 
 	int onCreate();
 	int onExecute();
-    void BuildList();
-    bool AppendToList(BgActor *ac);
 
 	static dActor_c* build();
+
+	void LineGod_BuildList(daEnLineGod_c *self);
+	bool LineGod_AppendToList(daEnLineGod_c *self, BgActor *ac);
+	void LineGod_Update(daEnLineGod_c *self);
 };
+
+const char *LineGodArcNameList[] = {0};
+const SpriteData LineGodSpriteData = {ProfileId::Linegod, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile LineGodProfile(&daEnLineGod_c::build, SpriteId::LineGod, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::Linegod, "LineGod", LineGodArcNameList);
+
+dActor_c *daEnLineGod_c::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(daEnLineGod_c));
+	return new(buffer) daEnLineGod_c;
+}
 
 fBase_c *FindActorByID(u32 id);
 
 u16 *GetPointerToTile(BG_GM_hax *self, u16 x, u16 y, u16 layer, short *blockID_p, bool unused);
 
-dActor_c* dLinegod_c::build() {
-	void *buffer = AllocFromGameHeap1(sizeof(dLinegod_c));
-	return new(buffer) dLinegod_c;
-}
 
-const char *LinegodNameList[] = {0};
-const SpriteData LinegodSpriteData = { ProfileId::Linegod, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 0 };
-Profile LinegodProfile(&dLinegod_c::build, SpriteId::Linegod, &LinegodSpriteData, ProfileId::RIVER_MGR, ProfileId::Linegod, "Linegod", LinegodNameList);
-
-
-int dLinegod_c::onCreate() {
+int daEnLineGod_c::onCreate() {
+	OSReport("doing onCreate\n");
 	char eventNum	= (this->settings >> 24)	& 0xFF;
 	this->eventFlag = (u64)1 << (eventNum - 1);
 	
@@ -100,78 +111,39 @@ int dLinegod_c::onCreate() {
 	
 	this->lastEvState = 0xFF;
 	
-	this->BuildList();
-
+	OSReport("settings read, going to buildlist\n");
+	LineGod_BuildList(this);
+	OSReport("going to onExecute\n");
 	this->onExecute();
-
+	
 	return true;
 }
 
-int dLinegod_c::onExecute() {
-    	
-	u8 newEvState = 0;
-	if (dFlagMgr_c::instance->flags & this->eventFlag)
-		newEvState = 1;
-	
-	if (newEvState == this->lastEvState)
-		return;
-	
-	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
-	u16 y_bias = -(BG_GM_ptr->_0x8FE6C / 16);
-	
-	
-	u8 offState;
-	if (this->func == LINEGOD_FUNC_ACTIVATE)
-		offState = (newEvState == 1) ? 1 : 0;
-	else
-		offState = (newEvState == 1) ? 0 : 1;
-	
-	
-	for (int i = 0; i < 8; i++) {
-		if (this->ac[i] != 0) {
-			BgActor *ac = this->ac[i];
-			
-			
-			ac->EXTRA_off = offState;
-			if (offState == 1 && ac->actor_id != 0) {
-				fBase_c *assoc_ac = FindActorByID(ac->actor_id);
-				if (assoc_ac != 0)
-					assoc_ac->Delete();
-				ac->actor_id = 0;
-			}
-			
-			u16 *tile = GetPointerToTile(BG_GM_ptr, (ac->x + x_bias) * 16, (ac->y + y_bias) * 16, 0, 0, 0);
-			if (offState == 1)
-				*tile = 0;
-			else
-				*tile = BgActorDefs[ac->def_id].tilenum;
-			
-		}
-	}
-	
-	
-	
-	this->lastEvState = newEvState;
+int daEnLineGod_c::onExecute() {
+	OSReport("doing Execute\n");
+	OSReport("going to Update\n");
+	LineGod_Update(this);
 	return true;
 }
 
-void dLinegod_c::BuildList() {
+void daEnLineGod_c::LineGod_BuildList(daEnLineGod_c *self) {
+	OSReport("doing buildlist\n");
 	for (int clearIdx = 0; clearIdx < 8; clearIdx++) {
-		this->ac[clearIdx] = 0;
+		self->ac[clearIdx] = 0;
 	}
 	
 	
 
-	float gLeft = this->x - (BG_GM_ptr->_0x8FE64 - fmod(BG_GM_ptr->_0x8FE64, 16));
-	float gTop = this->y - (BG_GM_ptr->_0x8FE6C - fmod(BG_GM_ptr->_0x8FE6C, 16));
+	float gLeft = self->x - (BG_GM_ptr->_0x8FE64 - fmod(BG_GM_ptr->_0x8FE64, 16));
+	float gTop = self->y - (BG_GM_ptr->_0x8FE6C - fmod(BG_GM_ptr->_0x8FE6C, 16));
 
 	// 1 unit padding to avoid catching stuff that is not in our rectangle
 	Vec grect1 = (Vec){
-		gLeft + 1, gTop - (this->height * 16) + 1, 0
+		gLeft + 1, gTop - (self->height * 16) + 1, 0
 	};
 
 	Vec grect2 = (Vec){
-		gLeft + (this->width * 16) - 1, gTop - 1, 0
+		gLeft + (self->width * 16) - 1, gTop - 1, 0
 	};
 
 	
@@ -197,18 +169,68 @@ void dLinegod_c::BuildList() {
 		};
 
 		if (RectanglesOverlap(&arect1, &arect2, &grect1, &grect2))
-			this->AppendToList(ac);
+			OSReport("going to appendtolist\n");
+			self->LineGod_AppendToList(self, ac);
 	}
 }
 
-bool dLinegod_c::AppendToList(BgActor *ac) {
+bool daEnLineGod_c::LineGod_AppendToList(daEnLineGod_c *self, BgActor *ac) {
+	OSReport("doing appendtolist\n");
 	
 	for (int search = 0; search < 8; search++) {
-		if (this->ac[search] == 0) {
-			this->ac[search] = ac;
+		if (self->ac[search] == 0) {
+			self->ac[search] = ac;
 			return true;
 		}
 	}
 	
 	return false;
 }
+
+void daEnLineGod_c::LineGod_Update(daEnLineGod_c *self) {
+	OSReport("doing Update\n");
+	u8 newEvState = 0;
+	if (dFlagMgr_c::instance->flags & self->eventFlag)
+		newEvState = 1;
+	
+	if (newEvState == self->lastEvState)
+		return;
+	
+	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
+	u16 y_bias = -(BG_GM_ptr->_0x8FE6C / 16);
+	
+	
+	u8 offState;
+	if (self->func == LINEGOD_FUNC_ACTIVATE)
+		offState = (newEvState == 1) ? 1 : 0;
+	else
+		offState = (newEvState == 1) ? 0 : 1;
+	
+	
+	for (int i = 0; i < 8; i++) {
+		if (self->ac[i] != 0) {
+			BgActor *ac = self->ac[i];
+			
+			
+			ac->EXTRA_off = offState;
+			if (offState == 1 && ac->actor_id != 0) {
+				fBase_c *assoc_ac = FindActorByID(ac->actor_id);
+				if (assoc_ac != 0)
+					assoc_ac->Delete();
+				ac->actor_id = 0;
+			}
+			
+			u16 *tile = GetPointerToTile(BG_GM_ptr, (ac->x + x_bias) * 16, (ac->y + y_bias) * 16, 0, 0, 0);
+			if (offState == 1)
+				*tile = 0;
+			else
+				*tile = BgActorDefs[ac->def_id].tilenum;
+			
+		}
+	}
+	
+	
+	
+	self->lastEvState = newEvState;
+}
+

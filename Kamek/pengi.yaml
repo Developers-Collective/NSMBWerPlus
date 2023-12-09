@@ -1,0 +1,5 @@
+---
+# wtf was this ever even for???? updated it to use a new actor slot just in case it does something 
+#(no, I'm not wasting a sprite slot on it)
+source_files: [../src/penguin.cpp]
+hooks: []

@@ -1,4 +1,9 @@
 ---
-source_files: [../src/effectvideo.cpp]
-hooks: []
-
+source_files: [../src/effectvideo.cpp, ../src/effectvideo.S]
+hooks: 
+# Allow loading the breff for whatever sprite we want
+  - name: BreffLoadPatch
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x809201EC
+    target_func: 'BreffLoadPatch'

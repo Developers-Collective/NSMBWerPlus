@@ -1,4 +1,23 @@
 SECTIONS {
+	StateID_KeyWait__17dCollectionCoin_c = 0x80990ff0;
+	StateID_ExitAnimeEndWait__17dCollectionCoin_c = 0x809910b0;
+	CollectionCoinNextWorld = 0x80774ab0;
+	CollectionCoinPreviousWorld = 0x80774a00;
+
+	RIVERMGRBuild = 0x80898790;
+	CreateBootParam = 0x80102b50;
+
+	dClownCarPlayerBuild = 0x8080f910;
+	dWaterLiftBuild = 0x808bef40;
+
+	GetDanceValues_DummyBlockAndGrass = 0x8006A1C0;
+	CheckDanceValues_DummyBlockAndGrass = 0x8006A1D0;
+	GetDanceValues_Bahps = 0x8006A1F0;
+    CheckDanceValues_Bahps = 0x8006A200;
+	GetDanceValues_CreditsControl = 0x8006A220;
+	GetDanceValues_AnimSpeed = 0x8006A230;
+	SetCurrentStageMusic = 0x8006A240;
+	GetCurrentStageMusic = 0x8006A250;
 
 	disableAnim__Q23m2d13EmbedLayout_cFi = 0x800C9580;
 	getRootPane__Q23m2d17EmbedLayoutBase_cFv = 0x80007220;
@@ -8,55 +27,6 @@ SECTIONS {
 
 	NextStageActorDisableFlags = 0x80429FD8;
 	StageActorDisableFlags = 0x80429FDA;
-
-	doneWithCheckIfInStage = 0x800E1E40;
-	doneWithAddRemoconState = 0x800DD848;
-	doneWithChangeIDForCC = 0x800DCF9C;
-
-	dRemoconMng_c_ptr = 0x8042A308;
-	DoStuffWtihWiimote = 0x802BCCB0;
-	CoreControllerPtr = 0x80377F88;
-	assignSomeColoursToWindow = 0x800B3C50;
-	_ZN17dWarningManager_c22StateID_WarningNunchukE = 0x80375248;
-	StateID_WarningNunchuk__17dWarningManager_c = 0x80375248;
-	doneWithPatchShowNunchuk = 0x8010DA50;
-	doneWithShowClassic = 0x8010E098;
-	doneWithShowClassic2 = 0x8010E0B8;
-	doneWithCreateClassic = 0x8010D640;
-	CreateClassicReturn = 0x8010D6D0;
-	doneWithDrawClassic = 0x8010D7C4;
-	DeleteClassicReturn = 0x8010D850;
-	DeleteClassicContinue2 = 0x8010D83C;
-	doneWithCtorClassic = 0x8010D2FC;
-	doneWithDtorClassic = 0x8010D56C;
-	doneWithCheckForClassic = 0x8010DFF0;
-	CheckForClassicContinue = 0x8010DFF4;
-	_ZN17dWarningManager_c26messWithExistingSceneCountEv = 0x8010DC60;
-	messWithExistingSceneCount__17dWarningManager_cFv = 0x8010DC60;
-	_ZN17dWarningManager_c13checkForCloseEv = 0x8010DBE0;
-	checkForClose__17dWarningManager_cFv = 0x8010DBE0;
-	_ZN17dWarningManager_c22setStateToOutOfWarningEv = 0x8010DC40;
-	setStateToOutOfWarning__17dWarningManager_cFv = 0x8010DC40;
-	doneWithSetClassicVisibility0 = 0x8010E690;
-	ExecuteClassicForSomeReasonReturn = 0x8010E35C;
-	doneWithExecuteClassicForSomeReason = 0x8010E33C;
-	RemoconConnectExtension_executeWaitReturn = 0x800DCC10;
-	RemoconConnectExtension_executeNoneReturn = 0x800DCD44;
-	RemoconConnectExtension_executeFreestyleReturn = 0x800DCE74;
-	RemoconConnectExtension_executeOtherReturn = 0x800DCF98;
-	_ZN23RemoconConnectExtension12StateID_NoneE = 0x80371BF0;
-	StateID_None__23RemoconConnectExtension = 0x80371BF0;
-	_ZN23RemoconConnectExtension17StateID_FreestyleE = 0x80371C30;
-	StateID_Freestyle__23RemoconConnectExtension = 0x80371C30;
-	_ZN23RemoconConnectExtension13StateID_OtherE = 0x80371C70;
-	StateID_Other__23RemoconConnectExtension = 0x80371C70;
-	RemoconConnect_StateVTable = 0x80319574;
-	inside_kpads = 0x803A1DC8;
-	doneWithGiveClassicARemoconID = 0x800B5E08;
-	doneWithPatchControllerIcon = 0x800E6EB8;
-
-	dword_8042A740 = 0x8042A740;
-
 
 	CurrentWarningManager = 0x8042A5B8;
 
@@ -78,7 +48,6 @@ SECTIONS {
 	stockItemPlayerModelScale = 0x8093c0e4;
 	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809a2500;
 
-	dPlayerMdl_c__createPlayerModel = 0x800d3474;
 	callFooDeath = 0x80A6B410;
 
 	FUN_8085f5c0 = 0x8085f5c0;
@@ -490,7 +459,7 @@ SECTIONS {
 	_8042A788 = 0x8042A788;
 	sub_8019C390 = 0x8019C390;
 
-	dStockItem = 0x807af730;
+	dStockItem = 0x807afa00;
 
 	pow = 0x802E5894;
 	onExecute_orig__14dGameDisplay_cFv = 0x801580D0;
@@ -662,7 +631,7 @@ SECTIONS {
 
 	RealAcPyDtor = 0x80144820;
 	RealWm2dPlayerDtor = 0x808C5500;
-	WmPlayerDtor = 80902890;
+	RealWmPlayerDtor = 0x80902890;
 	RealYoshiDtor = 0x8014B6C0;
 
 	InsertIntIntoTextBox1 = 0x800B3BE0;
@@ -1547,17 +1516,15 @@ SECTIONS {
 	setup__Q23m3d5mdl_cFQ34nw4r3g3d6ResMdlPvUiiPUi = 0x80169ED0;
 	oneSetupType__Q23m3d5mdl_cFv = 0x80064C10;
 	sub_80064BF0__Q23m3d5mdl_cFv = 0x80064BF0;
-	setDrawMatrix__Q23m3d5mdl_cFPA4_Cf = 0x8016A2B0; /*addAnyway*/
+	setDrawMatrix__Q23m3d5mdl_cFPA3_A4_Cf = 0x8016A2B0;
 	setScale__Q23m3d5mdl_cFfff = 0x8016A270;
 	setScale__Q23m3d5mdl_cFP7Point3d = 0x8016A290;
 	calcWorld__Q23m3d5mdl_cFb = 0x8016A2E0;
 	bindAnim__Q23m3d5mdl_cFPQ23m3d6banm_cf = 0x8016a0c0;
-	_ZN3m3d5mdl_c8bindAnimEPNS_6banm_cE = 0x8016A070; /*addAnyway*/
 	vf1C__Q3m3d5mdl_cFv = 0x8016a080;
-	getMatrixForNode__Q23m3d5mdl_cFUiPA4_f = 0x801682C0; /*addAnyway*/
-	_ZN3m3d5mdl_c18scheduleForDrawingEv = 0x8016A220; /*addAnyway*/
+	getMatrixForNode__Q23m3d5mdl_cFUiPA3_A4_f = 0x801682C0;
 
-	SetCullModeForMaterial__FPQ23m3d5mdl_ci11_GXCullMode = 0x8000D190;
+	SetCullModeForMaterial__FPQ23m3d5mdl_ciUi = 0x8000D190;
 	SetupTextures_Player__FPQ23m3d5mdl_ci = 0x800B3E50;
 	SetupTextures_Map__FPQ23m3d5mdl_ci = 0x800B3F50;
 	SetupTextures_Boss__FPQ23m3d5mdl_ci = 0x800B4050;
@@ -2551,6 +2518,13 @@ SECTIONS {
 	spriteFiles = 0x8031ab4c;
 	profileNames = 0x80320b58;
 
+	instance__22dCourseSelectManager_c = 0x809A2370;
+	StateID_KeyWait__22dCourseSelectManager_c = 0x809A2440;
+	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809a2500;
+	sub_80931170__22dCourseSelectManager_cFv = 0x80931170;
+	sub_809310F0__22dCourseSelectManager_cFv = 0x809310F0;
+	sub_80931090__22dCourseSelectManager_cFv = 0x80931090;
+	sub_80931110__22dCourseSelectManager_cFv = 0x80931110;
 
 	.text : {
 		FILL (0)

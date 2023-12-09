@@ -61,7 +61,7 @@ startLoop:
 
 .data
 PMsg:
-	.string "NSMBWer+ - Hacks by Treeki, Tempus, and Ryguy 2009-2023\nNSMBWer+\n.ctors: %p - %p\n"
+	.string "NSMBWer+ - Hacks by Treeki, Tempus, Ryguy and others 2009-2023\nNSMBWer+\n.ctors: %p - %p\n"
 
 PMsg2:
 	.string "%d inits called\n"

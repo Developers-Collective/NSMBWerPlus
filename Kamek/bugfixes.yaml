@@ -1,6 +1,6 @@
 ---
 # The stuff that has been commented out can be reenabled at will
-source_files: [../src/randomcrap.S, ../src/music.cpp, ../src/fix38.S, ../src/nullsub.S]
+source_files: [../src/randomcrap.S, ../src/music.cpp, ../src/fix38.S, ../src/nullsub.S, ../src/levelinfo.cpp, ../src/newer.cpp, ../src/boss.cpp]
 hooks:
   - name: TryAndFixScoreGlitch
     type: branch_insn
@@ -19,43 +19,52 @@ hooks:
     addr_pal: 0x809CB118
     data: '2C1C0003'
 
-  # - name: DisableTerrainShading
-    # type: patch
-    # addr_pal: 0x8008E6F8
-    # data: '38600000'
+#  - name: DisableTerrainShading
+#    type: patch
+#    addr_pal: 0x8008E6F8
+#    data: '38600000'
 
-  # - name: TitleReplayLevels
-    # type: patch
-    # addr_pal: 0x802F4CD0
-    # data: '0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002 0002'
+#  - name: RemoveOpeningCS
+#    type: nop_insn
+#    area_pal: [0x809191C8, 0x809191D8]
 
-  # - name: NoTitleScreenMovie
-    # type: nop_insn
-    # area_pal: 0x80781FB8
+  - name: TitleReplayLevels
+    type: patch
+    addr_pal: 0x802F4CD0
+    data: '0003 0005 0100 0103 0200 0204 0215 0300 0304 0403 0404 0414 0517 0605 0706'
 
- # - name: MPPauseFix1
-   # type: branch_insn
-   # branch_type: bl
-   # target_func: 'mpPauseFix1'
-   # src_addr_pal: 0x801410C4
+#  - name: NoTitleScreenMovie
+#    type: nop_insn
+#    area_pal: 0x80781FB8
 
- # - name: MPPauseFix2
-   # type: branch_insn
-   # branch_type: bl
-   # target_func: 'mpPauseFix2'
-   # src_addr_pal: 0x801410DC
+#  - name: SkipReplays
+#    type: patch
+#    addr_pal: 0x80781FBC
+#    data: '38600000'
 
- # - name: MPPauseFix3
-   # type: branch_insn
-   # branch_type: b
-   # target_func: 'mpPauseFix3'
-   # src_addr_pal: 0x801412A0
+# - name: MPPauseFix1
+#   type: branch_insn
+#   branch_type: bl
+#   target_func: 'mpPauseFix1'
+#   src_addr_pal: 0x801410C4
 
- # - name: MPPauseFix4
-   # type: branch_insn
-   # branch_type: bl
-   # target_func: 'mpPauseFix4'
-   # src_addr_pal: 0x8014169C
+# - name: MPPauseFix2
+#   type: branch_insn
+#   branch_type: bl
+#   target_func: 'mpPauseFix2'
+#   src_addr_pal: 0x801410DC
+
+# - name: MPPauseFix3
+#   type: branch_insn
+#   branch_type: b
+#   target_func: 'mpPauseFix3'
+#   src_addr_pal: 0x801412A0
+
+#  - name: MPPauseFix4
+#    type: branch_insn
+#    branch_type: bl
+#    target_func: 'mpPauseFix4'
+#    src_addr_pal: 0x8014169C
 
   - name: MPDeathPauseFix
     type: nop_insn
@@ -108,32 +117,36 @@ hooks:
     branch_type: b
     target_func: 'after_course_getMusicForZone'
 
-  # IDs to nuke: 1, 2, 4, 10
-  # - name: MusicNukeBahpsNormal1
-    # type: patch
-    # addr_pal: 0x802F6BC8
-    # data: '00000000 00000000 00000000 00000000'
-  # - name: MusicNukeBahpsNormal2
-    # type: patch
-    # addr_pal: 0x802F6BE0
-    # data: '00000000 00000000'
-  # - name: MusicNukeBahpsNormal3
-    # type: patch
-    # addr_pal: 0x802F6C10
-    # data: '00000000 00000000'
+# IDs to nuke: 1, 2, 4, 10
+#  - name: MusicNukeBahpsNormal1
+#    type: patch
+#    addr_pal: 0x802F6BC8
+#    data: '00000000 00000000 00000000 00000000'
 
-  # - name: MusicNukeBahpsFast1
-    # type: patch
-    # addr_pal: 0x802F6CB0
-    # data: '00000000 00000000 00000000 00000000'
-  # - name: MusicNukeBahpsFast2
-    # type: patch
-    # addr_pal: 0x802F6CC8
-    # data: '00000000 00000000'
-  # - name: MusicNukeBahpsFast3
-    # type: patch
-    # addr_pal: 0x802F6CF8
-    # data: '00000000 00000000'
+#  - name: MusicNukeBahpsNormal2
+#    type: patch
+#    addr_pal: 0x802F6BE0
+#    data: '00000000 00000000'
+
+#  - name: MusicNukeBahpsNormal3
+#    type: patch
+#    addr_pal: 0x802F6C10
+#    data: '00000000 00000000'
+
+#  - name: MusicNukeBahpsFast1
+#    type: patch
+#    addr_pal: 0x802F6CB0
+#    data: '00000000 00000000 00000000 00000000'
+
+#  - name: MusicNukeBahpsFast2
+#    type: patch
+#    addr_pal: 0x802F6CC8
+#    data: '00000000 00000000'
+
+#  - name: MusicNukeBahpsFast3
+#    type: patch
+#    addr_pal: 0x802F6CF8
+#    data: '00000000 00000000'
 
   - name: Fix38WithJumpCoin
     src_addr_pal: 0x807EBC5C
@@ -141,51 +154,43 @@ hooks:
     branch_type: b
     target_func: 'fix38WithJumpCoin'
 
-  # - name: 1-1 BG Fix
-    # type: patch
-    # addr_ntsc: 0x80117F6C
-    # addr_pal: 0x801180AC
-    # data: '38000003'
+#  - name: 1-1 BG Fix
+#    type: patch
+#    addr_pal: 0x801180AC
+#    data: '38000003'
     
   - name: PipeFix_NodeCalc
     type: patch
-    addr_ntsc: 0x800508F8
     addr_pal: 0x800508F8
     data: 'A01E0010540007FF41820014A0E300043807FFFEB01F042C4800000C38000001B01F042CA0A30002A89F042C80C6003C7C052214540020367CA60214A8850002'
     
   - name: PipeFix_ExitPatch1
     type: patch
-    addr_ntsc: 0x80050A5C
     addr_pal: 0x80050A5C
     data: '88030013'
     
   - name: PipeFix_ExitPatch2
     type: patch
-    addr_ntsc: 0x80050A60
     addr_pal: 0x80050A60
     data: '2C000000'
     
   - name: PipeFix_ExitPatch3
     type: patch
-    addr_ntsc: 0x80050A68
     addr_pal: 0x80050A68
     data: '2C000001'
     
   - name: PipeFix_ExitPatch4
     type: patch
-    addr_ntsc: 0x80050A70
     addr_pal: 0x80050A70
     data: '2C000002'
     
   - name: PipeFix_ExitPatch5
     type: patch
-    addr_ntsc: 0x80050A78
     addr_pal: 0x80050A78
     data: '2C000003'
     
   - name: PipeFix_ExitPatch6
     type: patch
-    addr_ntsc: 0x80050A88
     addr_pal: 0x80050A88
     data: '389F065C'
     
@@ -375,6 +380,7 @@ hooks:
     addr_pal: 0x80888B78
     data: '280000FF'
 
-  # - name: DisableQuickSave
-    # type: nop_insn
-    # area_pal: 0x8077AA7C
+  - name: FixOriginalBubbleCollision
+    type: patch
+    addr_pal: 0x802f4e80
+    data: '00000000 41800000 41900000 41900000'

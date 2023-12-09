@@ -1,5 +1,5 @@
 ---
-source_files: [../src/switchblock.S]
+source_files: [../src/switchblock.S, ../src/palaceDude.cpp]
 hooks:
   - name: PrepareReplay_SwitchPatch
     type: patch

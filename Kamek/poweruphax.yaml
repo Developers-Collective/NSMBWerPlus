@@ -52,39 +52,39 @@ hooks:
     addr_pal: 0x809272CC
     data: '907a08e0' #Orig: 907a02f4
 
-#==================new powerupAvailable==================#
+#==================new powerupsAvailable==================#
 
   - name: FixVanillaMap11
     type: patch
     addr_pal: 0x800bb3a8
-    data: '88a506fd' #Orig: 88a50009
+    data: '88a50969' #Orig: 88a50009
 
   - name: FixVanillaMap12
     type: patch
     addr_pal: 0x800bb358
-    data: '88a506fd' #Orig: 88a50009
+    data: '88a50969' #Orig: 88a50009
 
   - name: FixVanillaMap13
     type: patch
     addr_pal: 0x800ce434
-    data: '98a306fd' #Orig: 98a30009
+    data: '98a30969' #Orig: 98a30009
 
   - name: FixVanillaMap14
     type: patch
     addr_pal: 0x800bb3f8
-    data: '880306fd' #Orig: 88030009
+    data: '88030969' #Orig: 88030009
 
   - name: FixToadHouseItems
     type: patch
     addr_pal: 0x8086b278
-    data: '88bf06fd' #Orig: 88bf0009
+    data: '88bf0969' #Orig: 88bf0009
+
+#=======================================================#
 
   - name: ClearAllNewItems
     type: patch
     addr_pal: 0x80789040
     data: '2c110008' #Orig: 2c110007
-
-#=======================================================#
 
   - name: anotherSIpatch
     type: patch
@@ -250,7 +250,7 @@ hooks:
   - name: LoadThisShittyCount
     type: patch
     addr_pal: 0x8091EC6C
-    data: '38c00026' #original: 38c00023, should probably be 39 but this works
+    data: '38c00026' #original: 38c00023
     
   - name: AlwaysLoadBrosArc
     type: add_func_pointer
@@ -781,10 +781,10 @@ hooks:
     src_addr_pal: 0x808C5910
     branch_type: b
 
-  - name: BiggerWmPlayer
-    type: patch
-    addr_pal: 0x80902798
-    data: '3860 0310'
+#  - name: BiggerWmPlayer
+#    type: patch
+#    addr_pal: 0x80902798
+#    data: '3860 0310'
 
 #  - name: WmPlayerCtorHS
 #    type: branch_insn
