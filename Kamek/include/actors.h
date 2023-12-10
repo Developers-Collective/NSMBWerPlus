@@ -762,6 +762,62 @@ enum Actors {
 	DUMMY_ACTOR, //747
 	LASTACTOR_STAGE, //748
 	LASTACTOR, //749
+
+    // Start of custom entries
+    FlipBlock, //750
+    BonePiece, //751
+    FakeStarCoin, //752
+    ShyGuy, //753
+    ShyGuyGiant, //754
+    ChallengeStar, //755
+    PumpkinGoomba, //756
+    EventBlock, //757
+    SpriteSpawner, //758
+    SpriteSwapper, //759
+    CustomClownShot, //760
+	ThunderCloud, //761
+	MSGBoxManager, //762
+	MSGBox, //763
+	MagicPlatform, //764
+	Meteor, //765
+	Topman, //766
+	ElectricLine, //767
+	MrSun, //768
+	Chestnut, //769
+	RYOM, //770
+	EffectSpawner, //771
+	FireLaser, //772
+	BossMegaGoomba, //773
+	RYOMRes1, //774
+	RYOMRes2, //775
+	RYOMRes3, //776
+	RYOMRes4, //777
+	RYOMRes5, //778
+	RYOMRes6, //779
+	RYOMRes7, //780
+	SpecialExit, //781
+	BossFuzzyBear, //782
+  	BossThwompaDomp, //783
+	BossRamboo, //784
+	BossBalboaWrench, //785
+	BossWrenchThrow, //786
+	BossSamurshai, //787
+	BossPodouble, //788
+	BossTopman, //789
+	BossCaptainBowser, //790
+	KoopaThrow, //791
+	KFlameThrower, //792
+	BossBombDrop, //793
+	BossBombDropped, //794
+	EndingMgr, //795
+	SingAlong, //796
+	SongBlock, //797
+	SongPrize, //798
+	EventLooper, //799
+	LevelSpecial, //800
+	Linegod, //801
+	Pengi, //802
+	WM_MANAGER, //803
 };
 
 struct Actor {

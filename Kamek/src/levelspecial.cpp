@@ -287,7 +287,6 @@ int dLevelSpecial_c::onExecute() {
 
 
 
-
 	
 	
 	this->lastEvState = newEvState;

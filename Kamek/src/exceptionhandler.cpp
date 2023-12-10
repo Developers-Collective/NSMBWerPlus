@@ -2,19 +2,7 @@
 #include "fileload.h"
 #include "nsmbwVer.h"
 
-#if defined(ANOTHER_WII)
-#define GAME_NAME "Another v3.2"
-#elif defined(HOLIDAY_SPECIAL)
-#define GAME_NAME "NerXMAS v1.12"
-#elif defined(SUMMER_SUN)
-#define GAME_NAME "SumSun v1.12"
-#elif defined(FALLING_LEAF)
-#define GAME_NAME "Newer FL v1.12"
-#elif defined(NEWER_WII)
-#define GAME_NAME "Newer Wii v1.30"
-#else
-#define GAME_NAME "NSMBWer+ Vanilla"
-#endif
+#define GAME_NAME "NSMBWer+ 1.0V (DIRTY)"
 const bool dsisrFun = false;
 const bool gprFun = false;
 
@@ -110,9 +98,9 @@ char *GetRegionAndVersion()
 		case jpn2:
 			return "JPNv2";
 		case kor:
-			return "kor";
+			return "KOR";
 		case twn:
-			return "twn";
+			return "TWN";
 		default:
 			return "UNKNOWN";
 	}
@@ -142,12 +130,7 @@ char *GetErrorDescription(u16 OSError)
 void PrintContext(u16 OSError, void *_osContext, u32 _dsisr, u32 _dar)
 {
     OSContext *osContext = (OSContext *)_osContext;
-	#ifdef RELEASECOMPILE
-    nw4r::db::Exception_Printf_("Whoops! " GAME_NAME " has crashed - %s\n\nPlease send the information below to\nryguy0777 on Discord\nYou can scroll through this report using the D-Pad.\n[%s]\n", GetErrorDescription(OSError), GetRegionAndVersion());
-    #endif
-    #ifndef RELEASECOMPILE
     nw4r::db::Exception_Printf_("Whoops! " GAME_NAME " has crashed - %s\n\nPlease send the information below to the mod creator\nYou can scroll through this report using the D-Pad.\n[%s]\n", GetErrorDescription(OSError), GetRegionAndVersion());
-    #endif
     nw4r::db::Exception_Printf_("SRR0: %08X | DSISR: %08X | DAR: %08X\n", osContext->srr[0]);
 
     if (gprFun)

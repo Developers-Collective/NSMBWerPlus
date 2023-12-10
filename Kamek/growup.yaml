@@ -202,11 +202,11 @@ hooks:
     addr_pal: 0x8042C6BC
     data: "45ABE000"
 
-  - name: BooZOrderHack
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80AAEAAC 
-    target_func: 'BooZOrderHack'
+#  - name: BooZOrderHack
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x80AAEAAC 
+#    target_func: 'BooZOrderHack'
 
 
 #

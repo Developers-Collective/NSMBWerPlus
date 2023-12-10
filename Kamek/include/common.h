@@ -18,6 +18,19 @@ typedef unsigned char u8;
 typedef float f32;
 typedef double f64;
 
+typedef volatile s64 vs64;
+typedef volatile s32 vs32;
+typedef volatile s16 vs16;
+typedef volatile s8 vs8;
+
+typedef volatile u64 vu64;
+typedef volatile u32 vu32;
+typedef volatile u16 vu16;
+typedef volatile u8 vu8;
+
+typedef volatile f64 vf64;
+typedef volatile f32 vf32;
+
 typedef unsigned long ulong;
 typedef unsigned int uint;
 typedef unsigned short ushort;
@@ -34,25 +47,16 @@ typedef int BOOL;
 #define NULL 0
 
 /* Structures */
-typedef f32 Mtx[3][4];
-typedef f32 (*MtxPtr)[4];
-typedef f32 Mtx44[4][4];
-typedef f32 (*Mtx44Ptr)[4];
-typedef f32 ROMtx[4][3];
-typedef f32 (*ROMtxPtr)[3];
-
 typedef struct { f32 x, y; } VEC2, Vec2, *Vec2Ptr, Point2d, *Point2dPtr;
 typedef struct { f32 x, y, z; } VEC3, Vec, Vec3, *VecPtr, Point3d, *Point3dPtr;
 typedef struct { s16 x; s16 y; s16 z; }S16Vec, *S16VecPtr;
-typedef struct { f32 x, y, z, w; } Quaternion, *QuaternionPtr, Qtrn, *QtrnPtr;
-typedef struct { u32 x, y, z, w; } Recti;
 
 typedef struct { f32 frame, value, slope; } HermiteKey;
 
 extern "C" const char * strrchr ( const char * str, int character );
 extern "C" int strcmp ( const char * str1, const char * str2 );
 
-#include "rvl/mtx.h"
+#include "sdk/mtx.h"
 
 
 // Stop the auto completion from whining
@@ -133,38 +137,12 @@ float sqrtf(float x) {
 	#define InfiniteLoop for (;;) { asm("nop"); }
 #endif
 
-typedef struct
-{
-    u8   *destp;                         // Write-destination pointer:                     4B
-    s32  destCount;                      // Remaining size to write:                     4B
-    s32  forceDestCount;                 // Forcibly set the decompression size             4B
-    u16  huffTable9 [ 1 << (9 + 1) ];    // Huffman encoding table: 2048B
-    u16  huffTable12[ 1 << (5 + 1) ];    // Huffman encoding table: 128B
-    u16  *nodep;                         // Node during a Huffman table search: 4B
-    s32  tableSize9;                     // Table size during a load: 4B
-    s32  tableSize12;                    // Table size during a load: 4B
-    u32  tableIdx;                       // Index for the table load position: 4B
-    u32  stream;                         // Bit stream for loading: 4B
-    u32  stream_len;                     // Number of valid stream bits for loading: 4B
-    u16  length;                         // Read length for LZ compression: 2B
-    s8   offset_bits;                    // Bit length for offset information: 1B
-    u8   headerSize;                     // Size of header being read:             1B
-}                                        //                             Total is 2216B
-CXUncompContextLH;
-
-extern "C" void CXInitUncompContextLH( CXUncompContextLH * context, void* dest );
-extern "C" s32 CXReadUncompLH( CXUncompContextLH *context, const void* data, u32 len );
 extern "C" u32 CXGetUncompressedSize( const void *srcp );
 extern "C" void CXUncompressLZ( const void *srcp, void *destp );
 
-static inline BOOL CXIsFinishedUncompLH( const CXUncompContextLH *context )
-{
-    return (context->destCount > 0 || context->headerSize > 0)? FALSE : TRUE;
-}
-
 namespace nw4r { namespace db {
     void Exception_Printf_(const char *msg, ...);
-    void* sException();
+	void* sException();
 }}
 
 

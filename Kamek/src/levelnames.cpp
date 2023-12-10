@@ -1,15 +1,13 @@
+// Alright, so you might be wondering what this is...
+// This is essentially the early pregame you see in early newer videos, just remade to work with modern levelinfo
+// You'll need to make the layout yourself though... it's pretty simple, just add a TXT_WorldName and TXT_LevelName textbox in your pregame layout.
 #include <common.h>
 #include <game.h>
 #include <profileid.h>
 #include <stage.h>
-#include "levelinfo_old.h"
+#include "levelinfo.h"
 #include "fileload.h"
 #include "layoutlib.h"
-
-//#define DEBUG_NAMES
-
-#ifndef DEBUG_NAMES
-#endif
 
 extern char CurrentLevel;
 extern char CurrentWorld;
@@ -17,6 +15,8 @@ extern char CurrentWorld;
 int DoNames(int state) {
 	int wnum = (int)CurrentWorld;
 	int lnum = (int)CurrentLevel;
+	const char *levelname;
+	const char *worldname;
 
 	// Skip the title screen
 	// and only process the code if the State is set to 1
@@ -32,17 +32,18 @@ int DoNames(int state) {
 			void *levelObj = EmbeddedLayout_FindTextBoxByName((Layout*)((u32)ptr+0xB0), "TXT_LevelName");
 			if (worldObj == 0 || levelObj == 0) return state;
 
-			/*char *file = RetrieveFileFromArc(ARC_TABLE, "Mario", "newer/names.bin");
-			char *worldname = file + (wnum * 0x40);
-			char *levelname = file + 0x280 + (wnum * 0xA80) + (lnum * 0x40);*/
-			FileHandle fh;
-			void *info = LoadFile(&fh, "/NewerRes/LevelInfo.bin");
-
-			LevelInfo_Prepare(&fh);
-			LevelInfo_Entry *entry = LevelInfo_SearchSlot(info, wnum, lnum);
-			char *worldname = LevelInfo_GetName(info, entry);
-			char *levelname = "";
-
+			dLevelInfo_c::entry_s *level = dLevelInfo_c::s_info.searchBySlot(CurrentWorld, CurrentLevel);
+			dLevelInfo_c::entry_s *world = dLevelInfo_c::s_info.searchByDisplayNum(CurrentWorld+1, 100);
+			if (level) {
+				levelname = dLevelInfo_c::s_info.getNameForLevel(level);
+			} else {
+				levelname = "Not found in LevelInfo!";
+			}
+			if (world) {
+				worldname = dLevelInfo_c::s_info.getNameForLevel(world);
+			} else {
+				worldname = "Not found in LevelInfo!";
+			}
 			void *vtable = *((void**)levelObj);
 			void *funcaddr = *((void**)((u32)vtable+0x7C));
 			int (*SetString)(void*, unsigned short*, unsigned short);
@@ -56,15 +57,9 @@ int DoNames(int state) {
 
 			SetString(worldObj, wbuffer, 0);
 			SetString(levelObj, lbuffer, 0);
-
-			FreeFile(&fh);
 		}
 	} else {
 	}
 
 	return state;
-}
-
-int DoNamesTest2(int state, u32 ptr) {
-	return DoNames(state);
 }

@@ -1,32 +1,8 @@
-#define GEKKO
-
 #include <common.h>
-#include "rvl/mtx.h"
-#include "rvl/GXEnum.h"
-#include "rvl/GXStruct.h"
-#include "rvl/GXTransform.h"
-#include "rvl/GXGeometry.h"
-#include "rvl/GXDispList.h"
-#include "rvl/GXLighting.h"
-#include "rvl/GXTev.h"
-#include "rvl/GXTexture.h"
-#include "rvl/GXCull.h"
-#include "rvl/GXPixel.h"
-#include "rvl/GXBump.h"
-//#include "rvl/GXVert.h"
-#include "rvl/vifuncs.h"
+#include <game.h>
 
 extern u32 Global5758;
 extern u8 GlobalEnableFlag;
-
-#define GXPosition3f32(x,y,z) \
-	*((volatile float*)0xCC008000) = (x); \
-	*((volatile float*)0xCC008000) = (y); \
-	*((volatile float*)0xCC008000) = (z);
-
-#define GXColor1u32(x) \
-	*((volatile u32*)0xCC008000) = (x);
-
 
 extern "C" {
 
@@ -43,12 +19,12 @@ void cppGXStart() {
 	GXLoadPosMtxImm(identity, GX_PNMTX0);
 	
 	GXSetNumTevStages(1);
-	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL, GX_COLOR0A0);
+	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORDNULL, GX_TEXMAP_NULL, GX_COLOR0A0);
 	GXSetTevOp(GX_TEVSTAGE0, GX_PASSCLR);
 	GXSetTevDirect(GX_TEVSTAGE0);
 	
 	GXSetNumChans(1);
-	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_VTX, GX_SRC_VTX, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_VTX, GX_SRC_VTX, GX_LIGHTNULL, GX_DF_NONE, GX_AF_NONE);
 	
 	GXClearVtxDesc();
 	GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
@@ -74,7 +50,7 @@ float y_positions[] = {
 #define END_AT 80.0f
 
 u32 colours[] = {
-	-1,
+	0,
 	0x0000ffff,
 	0xff0000ff,
 	0xffffffff,

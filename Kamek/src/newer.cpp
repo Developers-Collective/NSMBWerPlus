@@ -106,12 +106,6 @@ void getNewerLevelNumberString(int world, int level, wchar_t *dest) {
 	}
 }
 
-int getUnspentStarCoinCount() {
-	SaveBlock *save = GetSaveFile()->GetBlock(-1);
-	int coinsSpent = save->spentStarCoins;
-	return getStarCoinCount() - coinsSpent;
-}
-
 int getStarCoinCount() {
 	SaveBlock *save = GetSaveFile()->GetBlock(-1);
 	int coinsEarned = 0;

@@ -91,23 +91,10 @@ RandomTileData::Section *RandomTileData::getSection(const char *name) {
 
 RandomTileData *RandomTileData::instance = 0;
 
-dDvdLoader_c s_levelInfoLoader;
-bool s_levelInfoLoaded = false;
 dDvdLoader_c RandTileLoader;
 
 // This is a bit hacky but I'm lazy
-bool LoadLevelInfo() {
-	if (s_levelInfoLoaded)
-		return true;
-
-	void *data = s_levelInfoLoader.load("/NewerRes/LevelInfo.bin");
-	if (data) {
-		s_levelInfoLoaded = true;
-		return true;
-	}
-
-	return false;
-}
+bool LoadLevelInfo();
 
 extern "C" bool RandTileLoadHook() {
 	// OSReport("Trying to load...");

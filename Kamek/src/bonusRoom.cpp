@@ -171,7 +171,6 @@ const char* Prizes[10][4] = {
 	{ "I_penguin", 		"g3d/I_penguin.brres", 			"I_penguin", 			"wait2" },
 	{ "I_kinoko_bundle","g3d/I_mini_kinoko.brres", 		"I_mini_kinoko", 		"wait2" },
 	{ "I_star", 		"g3d/I_star.brres", 			"I_star", 				"wait2" },
-	{ "I_hammer",		"g3d/I_fireflower.brres",		"I_star",				"wait2" },
 	{ "I_kinoko_bundle","g3d/I_life_kinoko.brres", 		"I_life_kinoko", 		"wait2" },
 	{ "obj_coin", 		"g3d/obj_coin.brres", 			"obj_coin", 			"wait2" }
 };
@@ -544,7 +543,6 @@ int dSingAlong::onCreate() {
 	this->Powerups[4] = 0; // Penguin
 	this->Powerups[5] = 0; // MiniShroom
 	this->Powerups[6] = 0; // Starman
-	this->Powerups[8] = 0; // Hammer
 	this->Powerups[8] = 0; // 1-ups
 	this->Powerups[9] = 0; // Coins
 
@@ -968,7 +966,7 @@ void dSingAlong::addPowerups() {
 	SaveFile *file = GetSaveFile();
 	SaveBlock *block = file->GetBlock(file->header.current_file);
 
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < 8; i++) { // Change this to 8 to support hammers
 		block->powerups_available[i] = block->powerups_available[i] + this->Powerups[i];
 
 		if (block->powerups_available[i] > 99) { block->powerups_available[i] = 99; }

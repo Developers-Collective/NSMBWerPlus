@@ -27,9 +27,3 @@ fix38WithJumpCoin:
 
 isExemptedActor:
 	b continueFromFlagObjCheck
-
-.global CheckExistingPowerup
-CheckExistingPowerup:
-
-	lwz r3, 0x14E0(r3)
-	blr

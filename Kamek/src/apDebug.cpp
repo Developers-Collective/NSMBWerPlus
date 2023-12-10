@@ -1,19 +1,4 @@
 #include <game.h>
-#define GEKKO
-#include "rvl/mtx.h"
-#include "rvl/GXEnum.h"
-#include "rvl/GXStruct.h"
-#include "rvl/GXTransform.h"
-#include "rvl/GXGeometry.h"
-#include "rvl/GXDispList.h"
-#include "rvl/GXLighting.h"
-#include "rvl/GXTev.h"
-#include "rvl/GXTexture.h"
-#include "rvl/GXCull.h"
-#include "rvl/GXPixel.h"
-#include "rvl/GXBump.h"
-#include "rvl/GXVert.h"
-#include "rvl/vifuncs.h"
 
 class APDebugDrawer : public m3d::proc_c {
 	public:
@@ -73,10 +58,10 @@ void APDebugDrawer::drawXlu() {
 
 	GXSetNumIndStages(0);
 	for (int i = 0; i < 0x10; i++)
-		GXSetTevDirect((GXTevStageID)i);
+		GXSetTevDirect(i);
 
 	GXSetNumChans(1);
-	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_REG, GX_SRC_VTX, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+	GXSetChanCtrl(GX_COLOR0A0, GX_DISABLE, GX_SRC_REG, GX_SRC_VTX, GX_LIGHTNULL, GX_DF_NONE, GX_AF_NONE);
 	GXSetChanAmbColor(GX_COLOR0A0, (GXColor){255,255,255,255});
 	GXSetChanMatColor(GX_COLOR0A0, (GXColor){255,255,255,255});
 	GXSetNumTexGens(0);
@@ -86,7 +71,7 @@ void APDebugDrawer::drawXlu() {
 
 	GXSetTevSwapModeTable(GX_TEV_SWAP0, GX_CH_RED, GX_CH_GREEN, GX_CH_BLUE, GX_CH_ALPHA);
 
-	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL, GX_COLOR0A0);
+	GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORDNULL, GX_TEXMAP_NULL, GX_COLOR0A0);
 	GXSetTevOp(GX_TEVSTAGE0, GX_PASSCLR);
 //	GXSetTevColorIn(GX_TEVSTAGE0, GX_CC_C1, GX_CC_C0, GX_CC_RASC, GX_CC_ZERO);
 //	GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, GX_TRUE, GX_TEVPREV);

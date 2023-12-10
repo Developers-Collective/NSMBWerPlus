@@ -1,0 +1,9 @@
+---
+source_files: [../src/layoutlib.S, ../src/levelnames.cpp]
+hooks:
+  - name: CallNameHack
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80B6C488
+    target_func: 'DoNames(int)'
+

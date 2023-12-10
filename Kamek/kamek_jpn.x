@@ -1,2555 +1,2530 @@
 SECTIONS {
-	disableAnim__Q23m2d13EmbedLayout_cFi = 0x800C9410;
-	getRootPane__Q23m2d17EmbedLayoutBase_cFv = 0x80007220;
+	StateID_KeyWait__17dCollectionCoin_c = 2157512944;
+	StateID_ExitAnimeEndWait__17dCollectionCoin_c = 2157513136;
+	CollectionCoinNextWorld = 2155301552;
+	CollectionCoinPreviousWorld = 2155301376;
 
-	MapSoundPlayer = 0x80195190;
-	QueryGlobal5758 = 0x800B3B50;
+	RIVERMGRBuild = 2156496160;
+	CreateBootParam = 2148542912;
 
-	NextStageActorDisableFlags = 0x80429A18;
-	StageActorDisableFlags = 0x80429A1A;
+	dClownCarPlayerBuild = 2155935392;
+	dWaterLiftBuild = 2156653776;
 
-	doneWithCheckIfInStage = 0x800E1CD0;
-	doneWithAddRemoconState = 0x800DD6D8;
-	doneWithChangeIDForCC = 0x800DCE2C;
+	GetDanceValues_DummyBlockAndGrass = 2147918272;
+	CheckDanceValues_DummyBlockAndGrass = 2147918288;
+	GetDanceValues_Bahps = 2147918320;
+    CheckDanceValues_Bahps = 2147918336;
+	GetDanceValues_CreditsControl = 2147918368;
+	GetDanceValues_AnimSpeed = 2147918384;
+	SetCurrentStageMusic = 2147918400;
+	GetCurrentStageMusic = 2147918416;
 
-	dRemoconMng_c_ptr = 0x80429D48;
-	DoStuffWtihWiimote = 0x802BC7D0;
-	CoreControllerPtr = 0x80377A08;
-	assignSomeColoursToWindow = 0x800B3C50;
-	_ZN17dWarningManager_c22StateID_WarningNunchukE = 0x80374CC8;
-	StateID_WarningNunchuk__17dWarningManager_c = 0x80374CC8;
-	doneWithPatchShowNunchuk = 0x8010D8C0;
-	doneWithShowClassic = 0x8010DF08;
-	doneWithShowClassic2 = 0x8010DF28;
-	doneWithCreateClassic = 0x8010D4B0;
-	CreateClassicReturn = 0x8010D540;
-	doneWithDrawClassic = 0x8010D634;
-	DeleteClassicReturn = 0x8010D6C0;
-	DeleteClassicContinue2 = 0x8010D6AC;
-	doneWithCtorClassic = 0x8010D16C;
-	doneWithDtorClassic = 0x8010D3DC;
-	doneWithCheckForClassic = 0x8010DE60;
-	CheckForClassicContinue = 0x8010DE64;
-	_ZN17dWarningManager_c26messWithExistingSceneCountEv = 0x8010DAD0;
-	messWithExistingSceneCount__17dWarningManager_cFv = 0x8010DAD0;
-	_ZN17dWarningManager_c13checkForCloseEv = 0x8010DA50;
-	checkForClose__17dWarningManager_cFv = 0x8010DA50;
-	_ZN17dWarningManager_c22setStateToOutOfWarningEv = 0x8010DAB0;
-	setStateToOutOfWarning__17dWarningManager_cFv = 0x8010DAB0;
-	doneWithSetClassicVisibility0 = 0x8010E500;
-	ExecuteClassicForSomeReasonReturn = 0x8010E1CC;
-	doneWithExecuteClassicForSomeReason = 0x8010E1AC;
-	RemoconConnectExtension_executeWaitReturn = 0x800DCAA0;
-	RemoconConnectExtension_executeNoneReturn = 0x800DCBD4;
-	RemoconConnectExtension_executeFreestyleReturn = 0x800DCD04;
-	RemoconConnectExtension_executeOtherReturn = 0x800DCE28;
-	_ZN23RemoconConnectExtension12StateID_NoneE = 0x80371670;
-	StateID_None__23RemoconConnectExtension = 0x80371670;
-	_ZN23RemoconConnectExtension17StateID_FreestyleE = 0x803716B0;
-	StateID_Freestyle__23RemoconConnectExtension = 0x803716B0;
-	_ZN23RemoconConnectExtension13StateID_OtherE = 0x803716F0;
-	StateID_Other__23RemoconConnectExtension = 0x803716F0;
-	RemoconConnect_StateVTable = 0x8031907C;
-	inside_kpads = 0x803A1848;
-	doneWithGiveClassicARemoconID = 0x800B5D38;
-	doneWithPatchControllerIcon = 0x800E6D28;
+	disableAnim__Q23m2d13EmbedLayout_cFi = 2148307984;
+	getRootPane__Q23m2d17EmbedLayoutBase_cFv = 2147512864;
 
-	dword_8042A740 = 0x8042A180;
+	MapSoundPlayer = 2149142928;
+	QueryGlobal5758 = 2148219728;
 
+	NextStageActorDisableFlags = 2151848472;
+	StageActorDisableFlags = 2151848474;
 
-	CurrentWarningManager = 0x80429FF8;
+	CurrentWarningManager = 2151849976;
 
-	onCreate_orig__14dCourseClear_cFv = 0x80779A00;
+	onCreate_orig__14dCourseClear_cFv = 2155321856;
 
-	StateID_Flagdown__12daEnGlpole_c = 0x80B14DF0;
-	StateID_ProcGoalEnd__14dGameDisplay_c = 0x80376EB8;
+	StateID_Flagdown__12daEnGlpole_c = 2159103472;
+	StateID_ProcGoalEnd__14dGameDisplay_c = 2151116472;
 
-	sub_8004DD00__10daPlBase_cFv = 0x8004DD00;
-	daEnGlpole_c__CheckThis = 0x80A0AA90;
+	sub_8004DD00__10daPlBase_cFv = 2147802368;
+	daEnGlpole_c__CheckThis = 2158013072;
 
-	aWm_ob_eggbreak = 0x80989648;
-	aWm_ob_eggbre_0 = 0x8098965C;
-	aWm_ob_eggbre_1 = 0x80989670;
-	aWm_ob_eggbre_2 = 0x80989684;
+	aWm_ob_eggbreak = 2157483592;
+	aWm_ob_eggbre_0 = 2157483612;
+	aWm_ob_eggbre_1 = 2157483632;
+	aWm_ob_eggbre_2 = 2157483652;
 
-	returnFromChangeRedRingArray = 0x80A93B7C;
-	stockItemPowerupModelScale = 0x8093C36C;
-	stockItemPlayerModelScale = 0x8093BE24;
-	StateID_StockItemSelectWait__22dCourseSelectManager_c = 0x809A1E00;
+	returnFromChangeRedRingArray = 2158574460;
+	stockItemPowerupModelScale = 2157167468;
+	stockItemPlayerModelScale = 2157166116;
+	StateID_StockItemSelectWait__22dCourseSelectManager_c = 2157583872;
 
-	dPlayerMdl_c__createPlayerModel = 0x800D3304;
-	callFooDeath = 0x80A6AD10;
+	callFooDeath = 2158406928;
 
-	FUN_8085f5c0 = 0x8085F350;
-	fixJumbo1return = 0x8085FE04;
-	fixJumbo2return	= 0x8085FE68;
+	FUN_8085f5c0 = 2156262224;
+	fixJumbo1return = 2156264964;
+	fixJumbo2return	= 2156265064;
 
-	ContinueFromSixteenthHook = 0x80143370;
+	ContinueFromSixteenthHook = 2148807536;
 
-	layerZPositionForByugoHack = 0x8042B674;
+	layerZPositionForByugoHack = 2151855732;
 
-	continueNodeSetup = 0x808E7EE0;
+	continueNodeSetup = 2156822240;
 
-	continueFromChangeSmallScore100Color = 0x80015474;
-	continueFromChangeSmallScore1000Color1 = 0x80015344;
-	continueFromChangeSmallScore1000Color2 = 0x80015374;
-	continueFromChangeSmallScore1UPColor1 = 0x800B47F4;
-	continueFromChangeSmallScore1UPColor2 = 0x800B4824;
+	continueFromChangeSmallScore100Color = 2147570804;
+	continueFromChangeSmallScore1000Color1 = 2147570500;
+	continueFromChangeSmallScore1000Color2 = 2147570548;
+	continueFromChangeSmallScore1UPColor1 = 2148222964;
+	continueFromChangeSmallScore1UPColor2 = 2148223012;
 
-    doneWithPatchAnimNameArray = 0x808CE04C;
-    doneWithPatchAnimByte34Array = 0x808CE09C;
-    bindAnimCobCourse = 0x808CE670;
-    CurrentWorldNumForWorldMap = 0x80429F6D;
-    CurrentWorldNumForWorldMapSub = 0x80429F6E;
+    doneWithPatchAnimNameArray = 2156716108;
+    doneWithPatchAnimByte34Array = 2156716188;
+    bindAnimCobCourse = 2156717680;
+    CurrentWorldNumForWorldMap = 2151849837;
+    CurrentWorldNumForWorldMapSub = 2151849838;
 
-	disableDemoControl__10daPlBase_cFv = 0x80051EF0;
-	useDemoControl__10daPlBase_cFv = 0x80051E70;
-	stunPlayer__7dAcPy_cFv = 0x80137320;
-	unstunPlayer__7dAcPy_cFv = 0x80137460;
-	StateID_Quake__10daPlBase_c = 0x80376130;
+	disableDemoControl__10daPlBase_cFv = 2147819248;
+	useDemoControl__10daPlBase_cFv = 2147819120;
+	stunPlayer__7dAcPy_cFv = 2148758304;
+	unstunPlayer__7dAcPy_cFv = 2148758624;
+	StateID_Quake__10daPlBase_c = 2151113008;
 
-	sub_8004DD00__10daPlBase_cFv = 0x8004DD00;
-	daEnGlpole_c__CheckThis = 0x80A0AA90;
+	sub_8004DD00__10daPlBase_cFv = 2147802368;
+	daEnGlpole_c__CheckThis = 2158013072;
 
-	continueAt8005e724 = 0x8005E724;
-	continueAt80147214 = 0x80146EE4;
+	continueAt8005e724 = 2147870500;
+	continueAt80147214 = 2148822756;
 
-	ContinueWithoutCourage = 0x80151350;
-	ContinueWithCourage = 0x80151318;
-	ContinueEatNoneExecute = 0x8014EB78;
-	daYoshi_c__endState_EatNone = 0x8014EB50;
+	ContinueWithoutCourage = 2148864848;
+	ContinueWithCourage = 2148864792;
+	ContinueEatNoneExecute = 2148854648;
+	daYoshi_c__endState_EatNone = 2148854608;
 
 
 	/* instance__14dWorldCamera_c = 0x8156d728; /* wrong??? */
 
-	continueIsWXS1 = 0x808E7F00;
-	continueWithPat0SetupFromWXS0 = 0x808E7EF0;
-	LAB_808e81d4 = 0x808E7F14;
+	continueIsWXS1 = 2156822272;
+	continueWithPat0SetupFromWXS0 = 2156822256;
+	LAB_808e81d4 = 2156822292;
 
-	StateID_Turn__Goomba = 0x803532AC;
-	StateID_Ice__Goomba = 0x80357D84;
-	StateID_DieFall__Goomba = 0x80357974;
-	StateID_DieOther__Goomba = 0x80357AF4;
-	StateID_Walk__Goomba = 0x8035326C;
+	StateID_Turn__Goomba = 2150970028;
+	StateID_Ice__Goomba = 2150989188;
+	StateID_DieFall__Goomba = 2150988148;
+	StateID_DieOther__Goomba = 2150988532;
+	StateID_Walk__Goomba = 2150969964;
 
-	daEnKuriboBase_c__isFrozen = 0x80032800;
+	daEnKuriboBase_c__isFrozen = 2147690496;
 
-	it_is_right = 0x807B0DB0;
-	not_right = 0x807B0DC4;
-	it_is_right2 = 0x807B1004;
-	not_right2 = 0x807B1018;
-	dStockItem__manipulateItemID = 0x807B0670;
-	tryAndMoveRight = 0x807B06E0;
-	tryAndMoveLeft = 0x807B06A4;
-	cantChange = 0x807B06EC;
-	continueRightLoop = 0x807B06CC;
-	continueLeftLoop = 0x807B0690;
+	it_is_right = 2155548080;
+	not_right = 2155548100;
+	it_is_right2 = 2155548676;
+	not_right2 = 2155548696;
+	dStockItem__manipulateItemID = 2155546224;
+	tryAndMoveRight = 2155546336;
+	tryAndMoveLeft = 2155546276;
+	cantChange = 2155546348;
+	continueRightLoop = 2155546316;
+	continueLeftLoop = 2155546256;
 
-	PtrToWM_CS_SEQ_MNG = 0x80429ECC;
-	dCsSeqMng_c__GetCutName = 0x80101560;
-	FUN_801017c0 = 0x80101630;
-	dCourseSelectGuide_c__loadLives = 0x80010800;
-	returnForCalledFromExecute = 0x808FBA28;
-	continueInCalledFromExecute = 0x808FB054;
-	continueAt80904158 = 0x80903E98;
-	continueAt8090415C = 0x80903E9C;
-	LAB_809042ec = 0x8090402C;
-	FUN_808fbd00 = 0x808FBA40;
-	FUN_808fbd10 = 0x808FBA50;
+	PtrToWM_CS_SEQ_MNG = 2151849676;
+	dCsSeqMng_c__GetCutName = 2148537696;
+	FUN_801017c0 = 2148537904;
+	dCourseSelectGuide_c__loadLives = 2147551232;
+	returnForCalledFromExecute = 2156902952;
+	continueInCalledFromExecute = 2156900436;
+	continueAt80904158 = 2156936856;
+	continueAt8090415C = 2156936860;
+	LAB_809042ec = 2156937260;
+	FUN_808fbd00 = 2156902976;
+	FUN_808fbd10 = 2156902992;
 
-	aLightMainscene = 0x8098CE30;
-	aLightChikascen = 0x8098CE48;
-	aLightWaterscen = 0x8098CE60;
-	aLightFirescene = 0x8098CE78;
-	aLightSabakusce = 0x8098CE90;
-	aLightKaigansce = 0x8098CEAC;
-	aLightDaishizen = 0x8098CEC8;
-	aLightYukidaysc = 0x8098CEE4;
-	aLightSorascene = 0x8098CF00;
-	aLightIwabascen = 0x8098CF18;
-	aLightToridesce = 0x8098CF30;
-	aLightShiroscen = 0x8098CF50;
-	aLightObakescen = 0x8098CF68;
-	aLightKurayamic = 0x8098CF80;
-	aLightObakeouts = 0x8098CFA0;
-	aLightShinkaisc = 0x8098CFBC;
-	aLightSabakuchi = 0x8098CFD8;
-	aLightKorichika = 0x8098CFF8;
-	aLightFire2scen = 0x8098D018;
-	aLightKoopascen = 0x8098D030;
-	aLightFire3scen = 0x8098D048;
-	aLightKumorisor = 0x8098D060;
-	aLightToride2sc = 0x8098D080;
+	aLightMainscene = 2157497904;
+	aLightChikascen = 2157497928;
+	aLightWaterscen = 2157497952;
+	aLightFirescene = 2157497976;
+	aLightSabakusce = 2157498000;
+	aLightKaigansce = 2157498028;
+	aLightDaishizen = 2157498056;
+	aLightYukidaysc = 2157498084;
+	aLightSorascene = 2157498112;
+	aLightIwabascen = 2157498136;
+	aLightToridesce = 2157498160;
+	aLightShiroscen = 2157498192;
+	aLightObakescen = 2157498216;
+	aLightKurayamic = 2157498240;
+	aLightObakeouts = 2157498272;
+	aLightShinkaisc = 2157498300;
+	aLightSabakuchi = 2157498328;
+	aLightKorichika = 2157498360;
+	aLightFire2scen = 2157498392;
+	aLightKoopascen = 2157498416;
+	aLightFire3scen = 2157498440;
+	aLightKumorisor = 2157498464;
+	aLightToride2sc = 2157498496;
 
-	aLightMainsce_0 = 0x8098D09C;
-	aLightChikasc_0 = 0x8098D0B4;
-	aLightWatersc_0 = 0x8098D0CC;
-	aLightFiresce_0 = 0x8098D0E4;
-	aLightSabakus_0 = 0x8098D100;
-	aLightKaigans_0 = 0x8098D118;
-	aLightDaishiz_0 = 0x8098D130;
-	aLightYukiday_0 = 0x8098D14C;
-	aLightSorasce_0 = 0x8098D168;
-	aLightIwabasc_0 = 0x8098D180;
-	aLightTorides_0 = 0x8098D198;
-	aLightShirosc_0 = 0x8098D1B0;
-	aLightObakesc_0 = 0x8098D1C8;
-	aLightKurayam_0 = 0x8098D1E0;
-	aLightObakeou_0 = 0x8098D200;
-	aLightShinkai_0 = 0x8098D21C;
-	aLightSabakuc_0 = 0x8098D238;
-	aLightKorichi_0 = 0x8098D258;
-	aLightFire2sc_0 = 0x8098D274;
-	aLightKoopasc_0 = 0x8098D28C;
-	aLightFire3sc_0 = 0x8098D2A4;
-	aLightKumoris_0 = 0x8098D2BC;
-	aLightToride2_0 = 0x8098D2D8;
+	aLightMainsce_0 = 2157498524;
+	aLightChikasc_0 = 2157498548;
+	aLightWatersc_0 = 2157498572;
+	aLightFiresce_0 = 2157498596;
+	aLightSabakus_0 = 2157498624;
+	aLightKaigans_0 = 2157498648;
+	aLightDaishiz_0 = 2157498672;
+	aLightYukiday_0 = 2157498700;
+	aLightSorasce_0 = 2157498728;
+	aLightIwabasc_0 = 2157498752;
+	aLightTorides_0 = 2157498776;
+	aLightShirosc_0 = 2157498800;
+	aLightObakesc_0 = 2157498824;
+	aLightKurayam_0 = 2157498848;
+	aLightObakeou_0 = 2157498880;
+	aLightShinkai_0 = 2157498908;
+	aLightSabakuc_0 = 2157498936;
+	aLightKorichi_0 = 2157498968;
+	aLightFire2sc_0 = 2157498996;
+	aLightKoopasc_0 = 2157499020;
+	aLightFire3sc_0 = 2157499044;
+	aLightKumoris_0 = 2157499068;
+	aLightToride2_0 = 2157499096;
 
-	aFogMainscene_b = 0x8098D2F4;
-	aFogChikascene_ = 0x8098D308;
-	aFogWaterscene_ = 0x8098D31C;
-	aFogFirescene_b = 0x8098D330;
-	aFogSabakuscene = 0x8098D344;
-	aFogKaiganscene = 0x8098D35C;
-	aFogDaishizensc = 0x8098D378;
-	aFogYukidayscen = 0x8098D390;
-	aFogSorascene_b = 0x8098D3A8;
-	aFogIwabascene_ = 0x8098D3BC;
-	aFogToridescene = 0x8098D3D0;
-	aFogShiroscene_ = 0x8098D3E8;
-	aFogObakescene_ = 0x8098D3FC;
-	aFogKurayamichi = 0x8098D410;
-	aFogObakeoutsce = 0x8098D42C;
-	aFogShinkaiscen = 0x8098D444;
-	aFogSabakuchika = 0x8098D45C;
-	aFogKorichikasc = 0x8098D478;
-	aFogFire2scene_ = 0x8098D490;
-	aFogKoopascene_ = 0x8098D4A4;
-	aFogFire3scene_ = 0x8098D4B8;
-	aFogKumorisoras = 0x8098D4CC;
-	aFogToride2scen = 0x8098D4E8;
+	aFogMainscene_b = 2157499124;
+	aFogChikascene_ = 2157499144;
+	aFogWaterscene_ = 2157499164;
+	aFogFirescene_b = 2157499184;
+	aFogSabakuscene = 2157499204;
+	aFogKaiganscene = 2157499228;
+	aFogDaishizensc = 2157499256;
+	aFogYukidayscen = 2157499280;
+	aFogSorascene_b = 2157499304;
+	aFogIwabascene_ = 2157499324;
+	aFogToridescene = 2157499344;
+	aFogShiroscene_ = 2157499368;
+	aFogObakescene_ = 2157499388;
+	aFogKurayamichi = 2157499408;
+	aFogObakeoutsce = 2157499436;
+	aFogShinkaiscen = 2157499460;
+	aFogSabakuchika = 2157499484;
+	aFogKorichikasc = 2157499512;
+	aFogFire2scene_ = 2157499536;
+	aFogKoopascene_ = 2157499556;
+	aFogFire3scene_ = 2157499576;
+	aFogKumorisoras = 2157499596;
+	aFogToride2scen = 2157499624;
 
 
-	aRouteinfo_1 = 0x8098D66C;
-	aCollectioncoincoursesort = 0x8098D678;
-	aCobcastle_1 = 0x8098D694;
-	aCobcourse_0 = 0x8098D6A0;
-	aCobkinokored_3 = 0x8098D580;
-	aCobkinoko1up_4 = 0x8098D590;
-	aCobkinokosta_3 = 0x8098D5A0;
-	aCobstart_0 = 0x8098D6AC;
-	aCobanchor_0 = 0x8098D6B8;
-	aCobtoride_1 = 0x8098D6C4;
-	aCobghost_1 = 0x8098D6D0;
-	aCobcannon_1 = 0x8098D6DC;
-	aCobkoopaship_5 = 0x8098D5B0;
-	aCharacter_s_12 = 0x8098D6E8;
-	aCobsurrender_0 = 0x8098D6F8;
-	aCobkinopio_1 = 0x8098D708;
-	create__8dActor_cF6ActorsUiP7Point3dPv = 0x8006CA80;
+	aRouteinfo_1 = 2157500012;
+	aCollectioncoincoursesort = 2157500024;
+	aCobcastle_1 = 2157500052;
+	aCobcourse_0 = 2157500064;
+	aCobkinokored_3 = 2157499776;
+	aCobkinoko1up_4 = 2157499792;
+	aCobkinokosta_3 = 2157499808;
+	aCobstart_0 = 2157500076;
+	aCobanchor_0 = 2157500088;
+	aCobtoride_1 = 2157500100;
+	aCobghost_1 = 2157500112;
+	aCobcannon_1 = 2157500124;
+	aCobkoopaship_5 = 2157499824;
+	aCharacter_s_12 = 2157500136;
+	aCobsurrender_0 = 2157500152;
+	aCobkinopio_1 = 2157500168;
+	create__8dActor_cF6ActorsUiP7Point3dPv = 2147928704;
 
-	returnToOriginalScriptCode = 0x8010153C;
+	returnToOriginalScriptCode = 2148537660;
 
-	destroyBarrel = 0x807C1B50; /* extern "C" void destroyBarrel(dStageActor_c *); */
+	destroyBarrel = 2155617104; /* extern "C" void destroyBarrel(dStageActor_c *); */
 
-	StateID_FoolMove__14daEnGakeNoko_c = 0x80B144C0;
-	StateID_Move__14daEnGakeNoko_c = 0x80B14500;
+	StateID_FoolMove__14daEnGakeNoko_c = 2159101120;
+	StateID_Move__14daEnGakeNoko_c = 2159101184;
 
-	pipeCannonShot__7dAcPy_cFiff = 0x80146C30;
+	pipeCannonShot__7dAcPy_cFiff = 2148822064;
 
-	dealsWithGoalPutonCapAnimation__7dAcPy_cFv = 0x80140110;
-	cannonShot__7dAcPy_cFiss = 0x801403F0;
+	dealsWithGoalPutonCapAnimation__7dAcPy_cFv = 2148794640;
+	cannonShot__7dAcPy_cFiss = 2148795376;
 
-	getZoneByID__9dCourse_cFUcP5mRect = 0x8008E410;
+	getZoneByID__9dCourse_cFUcP5mRect = 2148066320;
 
 	/* timeclock.S */
-	updateUI = 0x800E39A8;
-	ApparentlyStartsMusic = 0x8019BA60;
-	continueTimerLeq100 = 0x800E3988;
-	continueAt8019e154 = 0x8019DE24;
-	continueAt8019e140 = 0x8019DE10;
+	updateUI = 2148415912;
+	ApparentlyStartsMusic = 2149169760;
+	continueTimerLeq100 = 2148415880;
+	continueAt8019e154 = 2149178916;
+	continueAt8019e140 = 2149178896;
 
-	instance__7StageC4 = 0x80429CF8;
-	mHeapAllocator_c_done = 0x8016A7C0;
+	instance__7StageC4 = 2151849208;
+	mHeapAllocator_c_done = 2148968384;
 
-	dEventOpeningTitle_c_StateID_PressButtonExitAnimeEndWait = 0x809917F0;
+	dEventOpeningTitle_c_StateID_PressButtonExitAnimeEndWait = 2157516784;
 
-	sub_809CAE10 = 0x809CA710;
+	sub_809CAE10 = 2157750032;
 
-	loc_8091288C = 0x809125CC;
+	loc_8091288C = 2156996044;
 
-	pow = 0x802E53B4;
+	pow = 2150519732;
 
 	/* Portal - data */
 	PortalHook_1_byte       = 0x8154BA7B;
 	PortalHook_2_offset_2   = 0x8154B904;
-	PortalHook_3_external_1 = 0x80760D08;
+	PortalHook_3_external_1 = 2155221704;
 	PortalHook_3_external_2 = 0x8154B804;
 
 	/* Portal - code */
-	PortalHook_1_ret   = 0x80162914; /* inside CreateParentedObject(u16 classID, void* parent, u32 settings, u8 unk) */
-	PortalHook_2_ret   = 0x80064354; /* inside dStageActor_c::beforeCreate */
-	PortalHook_3_ret   = 0x800E3968;
-	PortalHook_4_ret   = 0x80095954; /* inside dEn_c::collisionCallback(ActivePhysics* self, ActivePhysics* other) */
-	PortalHook_5_ret_1 = 0x80095984;
-	PortalHook_5_ret_2 = 0x80095BD4;
+	PortalHook_1_ret   = 2148935956; /* inside CreateParentedObject(u16 classID, void* parent, u32 settings, u8 unk) */
+	PortalHook_2_ret   = 2147894100; /* inside dStageActor_c::beforeCreate */
+	PortalHook_3_ret   = 2148415848;
+	PortalHook_4_ret   = 2148096340; /* inside dEn_c::collisionCallback(ActivePhysics* self, ActivePhysics* other) */
+	PortalHook_5_ret_1 = 2148096388;
+	PortalHook_5_ret_2 = 2148096980;
 
 	/* upside down */
-	IsGravityEnabled = 0x802F6420;
-	GravityFloat_maybe = 0x8042B584;
-	line_80054688 = 0x80054688;
-	line_8005714C = 0x8005714C;
-	ZoneMaxYValue_maybe = 0x80001910;
-	JumpingShit = 0x8005E6F0;
-	ArcNein = 0x80057A68;
-	loc_8005475C = 0x8005475C;
-	loc_8005467C = 0x8005467C;
-	ContinueFromFirstHook = 0x80070EF8;
-	ContinueFromSecondHook = 0x800E43D0;
-	ContinueFromThirdHook = 0x80057108;
-	ContinueFromFourthHook = 0x801273F0;
-	ContinueFromFifthHook = 0x80057154;
-	ContinueFromSixthHook_One = 0x8004C5EC;
-	ContinueFromSixthHook_Two = 0x8004C5C4;
-	ContinueFromSeventhHook = 0x8006CDE4;
-	ContinueFromEighthHook = 0x801C09F0;
-	ContinueFromNinthHook = 0x800B07F0;
-	ContinueFromTenthHook = 0x80127F28;
-	ContinueFromEleventhHook = 0x809264B4;
-	ContinueFromTwelvethHook = 0x8006F7B8;
-	ContinueFromThirteenthHook = 0x80064F54;
-	ContinueFromFourteenthHook = 0x80070CC4;
+	IsGravityEnabled = 2150589472;
+	GravityFloat_maybe = 2151855492;
+	line_80054688 = 2147829384;
+	line_8005714C = 2147840332;
+	ZoneMaxYValue_maybe = 2147490064;
+	JumpingShit = 2147870448;
+	ArcNein = 2147842664;
+	loc_8005475C = 2147829596;
+	loc_8005467C = 2147829372;
+	ContinueFromFirstHook = 2147946232;
+	ContinueFromSecondHook = 2148418512;
+	ContinueFromThirdHook = 2147840264;
+	ContinueFromFourthHook = 2148692976;
+	ContinueFromFifthHook = 2147840340;
+	ContinueFromSixthHook_One = 2147796460;
+	ContinueFromSixthHook_Two = 2147796420;
+	ContinueFromSeventhHook = 2147929572;
+	ContinueFromEighthHook = 2149321200;
+	ContinueFromNinthHook = 2148206576;
+	ContinueFromTenthHook = 2148695848;
+	ContinueFromEleventhHook = 2157077684;
+	ContinueFromTwelvethHook = 2147940280;
+	ContinueFromThirteenthHook = 2147897172;
+	ContinueFromFourteenthHook = 2147945668;
 
 	/* effectvideo.cpp */
-	LoadBreffKoopa = 0x80920090;
-	LoadBreffKoopaJr = 0x80920084;
-	returnFromBreffLoadPatch = 0x8091FF30;
+	LoadBreffKoopa = 2157052048;
+	LoadBreffKoopaJr = 2157052036;
+	returnFromBreffLoadPatch = 2157051696;
 
 	/* daEnShell_c */
-	sub_8003A240__FPvPv = 0x8003A240;
-	daEnShell_c_StateID_Sleep = 0x80353764;
-	daEnShell_c_StateID_Slide = 0x803537E4;
-	_ZN11daEnShell_c13StateID_SlideE = 0x803537E4;/*addAnyway*/
-	afterExecute__11daEnShell_cFi = 0x80038670;
-	__dt__11daEnShell_cFv = 0x80038080;
-	isOutOfView__11daEnShell_cFv = 0x8003A010;
-	kill__11daEnShell_cFv = 0x8003A0C0;
-	_vf74__11daEnShell_cFv = 0x8003A010;
-	itemPickedUp__11daEnShell_cFv = 0x8003AB80;
-	_vf7C__11daEnShell_cFv = 0x80039610;
-	eatIn__11daEnShell_cFv = 0x8003A570;
-	spitOut__11daEnShell_cFPv = 0x8003A5D0;
-	stageActorCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80038800;
-	spriteCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80038830;
-	playerCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x800389E0;
-	yoshiCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80039010;
-	collidedWithCatD_Drill__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80039B40;
-	collidedWithCat7_GroundPound__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80039BF0;
-	collidedWithCat7_GroundPoundYoshi__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x80039D70;
-	collidedWithCat9_RollingObject__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x800393A0;
-	collidedWithCat2_Iceball_or_15_YoshiIce__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 0x8003A7B0;
-	dieFall_Begin__11daEnShell_cFv = 0x8003BE00;
-	dieFall_Execute__11daEnShell_cFv = 0x8003BE80;
-	dieFall_End__11daEnShell_cFv = 0x8003BE70;
-	_vf220__11daEnShell_cFPv = 0x80039680;
-	_vf224__11daEnShell_cFv = 0x8003BFF0;
-	_vf238__11daEnShell_cFv = 0x8003A8C0;
-	_vf248__11daEnShell_cFi = 0x800392C0;
-	bouncePlayerWhenJumpedOn__11daEnShell_cFPv = 0x800392F0;
-	addScoreWhenHit__11daEnShell_cFPv = 0x80039590;
-	_vf25C__11daEnShell_cFPv = 0x8003BF80;
-	beginState_Carry__11daEnShell_cFv = 0x8003B020;
-	executeState_Carry__11daEnShell_cFv = 0x8003B200;
-	endState_Carry__11daEnShell_cFv = 0x8003B140;
-	beginState_Sleep__11daEnShell_cFv = 0x8003AE40;
-	executeState_Sleep__11daEnShell_cFv = 0x8003AEE0;
-	endState_Sleep__11daEnShell_cFv = 0x8003AEB0;
-	beginState_Slide__11daEnShell_cFv = 0x8003B3E0;
-	executeState_Slide__11daEnShell_cFv = 0x8003B830;
-	endState_Slide__11daEnShell_cFv = 0x8003B6F0;
-	beginState_Wakeup__11daEnShell_cFv = 0x8003BB40;
-	executeState_Wakeup__11daEnShell_cFv = 0x8003BBB0;
-	endState_Wakeup__11daEnShell_cFv = 0x8003BBA0;
-	beginState_WakeupReverse__11daEnShell_cFv = 0x8003BD30;
-	executeState_WakeupReverse__11daEnShell_cFv = 0x8003BD60;
-	endState_WakeupReverse__11daEnShell_cFv = 0x8003BD50;
-	beginState_WakeupTurn__11daEnShell_cFv = 0x8003BC30;
-	executeState_WakeupTurn__11daEnShell_cFv = 0x8003BC80;
-	endState_WakeupTurn__11daEnShell_cFv = 0x8003BC70;
-	_vf2C8__11daEnShell_cFv = 0x80039690;
-	_vf2CC__11daEnShell_cFv = 0x8003AA60;
-	relatedToSpriteCollision__11daEnShell_cFv = 0x800389D0;
-	_vf2D4__11daEnShell_cFv = 0x80039000;
-	isNotSliding__11daEnShell_cFv = 0x800392B0;
-	relatedToYoshiOrPlayerCollision__11daEnShell_cFv = 0x80038FF0;
-	_vf2E0__11daEnShell_cFv = 0x8003BD20;
-	turnSlightly__11daEnShell_cFv = 0x8003BD10;
-	_vf2E8__11daEnShell_cFv = 0x8003A410;
-	spawnKickHitEffect__11daEnShell_cFv = 0x80039790;
-	_vf2F0__11daEnShell_cFv = 0x8003BE60;
-	_vf2F4__11daEnShell_cFv = 0x80038660;
-	spawnTailEffect__11daEnShell_cFv = 0x8003BB30;
-	_vf2FC__11daEnShell_cFv = 0x8003A210;
+	sub_8003A240__FPvPv = 2147721792;
+	daEnShell_c_StateID_Sleep = 2150971236;
+	daEnShell_c_StateID_Slide = 2150971364;
+	_ZN11daEnShell_c13StateID_SlideE = 2150971364;/*addAnyway*/
+	afterExecute__11daEnShell_cFi = 2147714672;
+	__dt__11daEnShell_cFv = 2147713152;
+	isOutOfView__11daEnShell_cFv = 2147721232;
+	kill__11daEnShell_cFv = 2147721408;
+	_vf74__11daEnShell_cFv = 2147721232;
+	itemPickedUp__11daEnShell_cFv = 2147724160;
+	_vf7C__11daEnShell_cFv = 2147718672;
+	eatIn__11daEnShell_cFv = 2147722608;
+	spitOut__11daEnShell_cFPv = 2147722704;
+	stageActorCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147715072;
+	spriteCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147715120;
+	playerCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147715552;
+	yoshiCollision__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147717136;
+	collidedWithCatD_Drill__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147720000;
+	collidedWithCat7_GroundPound__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147720176;
+	collidedWithCat7_GroundPoundYoshi__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147720560;
+	collidedWithCat9_RollingObject__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147718048;
+	collidedWithCat2_Iceball_or_15_YoshiIce__11daEnShell_cFP13ActivePhysicsP13ActivePhysics = 2147723184;
+	dieFall_Begin__11daEnShell_cFv = 2147728896;
+	dieFall_Execute__11daEnShell_cFv = 2147729024;
+	dieFall_End__11daEnShell_cFv = 2147729008;
+	_vf220__11daEnShell_cFPv = 2147718784;
+	_vf224__11daEnShell_cFv = 2147729392;
+	_vf238__11daEnShell_cFv = 2147723456;
+	_vf248__11daEnShell_cFi = 2147717824;
+	bouncePlayerWhenJumpedOn__11daEnShell_cFPv = 2147717872;
+	addScoreWhenHit__11daEnShell_cFPv = 2147718544;
+	_vf25C__11daEnShell_cFPv = 2147729280;
+	beginState_Carry__11daEnShell_cFv = 2147725344;
+	executeState_Carry__11daEnShell_cFv = 2147725824;
+	endState_Carry__11daEnShell_cFv = 2147725632;
+	beginState_Sleep__11daEnShell_cFv = 2147724864;
+	executeState_Sleep__11daEnShell_cFv = 2147725024;
+	endState_Sleep__11daEnShell_cFv = 2147724976;
+	beginState_Slide__11daEnShell_cFv = 2147726304;
+	executeState_Slide__11daEnShell_cFv = 2147727408;
+	endState_Slide__11daEnShell_cFv = 2147727088;
+	beginState_Wakeup__11daEnShell_cFv = 2147728192;
+	executeState_Wakeup__11daEnShell_cFv = 2147728304;
+	endState_Wakeup__11daEnShell_cFv = 2147728288;
+	beginState_WakeupReverse__11daEnShell_cFv = 2147728688;
+	executeState_WakeupReverse__11daEnShell_cFv = 2147728736;
+	endState_WakeupReverse__11daEnShell_cFv = 2147728720;
+	beginState_WakeupTurn__11daEnShell_cFv = 2147728432;
+	executeState_WakeupTurn__11daEnShell_cFv = 2147728512;
+	endState_WakeupTurn__11daEnShell_cFv = 2147728496;
+	_vf2C8__11daEnShell_cFv = 2147718800;
+	_vf2CC__11daEnShell_cFv = 2147723872;
+	relatedToSpriteCollision__11daEnShell_cFv = 2147715536;
+	_vf2D4__11daEnShell_cFv = 2147717120;
+	isNotSliding__11daEnShell_cFv = 2147717808;
+	relatedToYoshiOrPlayerCollision__11daEnShell_cFv = 2147717104;
+	_vf2E0__11daEnShell_cFv = 2147728672;
+	turnSlightly__11daEnShell_cFv = 2147728656;
+	_vf2E8__11daEnShell_cFv = 2147722256;
+	spawnKickHitEffect__11daEnShell_cFv = 2147719056;
+	_vf2F0__11daEnShell_cFv = 2147728992;
+	_vf2F4__11daEnShell_cFv = 2147714656;
+	spawnTailEffect__11daEnShell_cFv = 2147728176;
+	_vf2FC__11daEnShell_cFv = 2147721744;
 
-	rotateShell__11daEnShell_cFv = 0x8003A3A0;
+	rotateShell__11daEnShell_cFv = 2147722144;
 
 	/* locs for asm hacks */
-	loc_80038BE8 = 0x80038BE8;
+	loc_80038BE8 = 2147716072;
 
 	/* daYoshi_c */
-	Yoshi_EatNoneState = 0x80376C08;
-	daYoshi_c_sub_8014EE40 = 0x8014EB10;
-	endState_HipAttack_orig__9daYoshi_cFv = 0x8014E470;
-	onExecute_orig__9daYoshi_cFv = 0x80046BB0;
-	endState_HipAttack_orig__10daYoshi2_cFv = 0x8014E470;
-	onExecute_orig__10daYoshi2_cFv = 0x80046BB0;
-	doSwallow__9daYoshi_cFv = 0x8014F650;
-	doThisStupidAnimationYouAsshole = 0x8014F67C;
-	originalHipAttackStage4Continue = 0x80049544;
+	Yoshi_EatNoneState = 2151115784;
+	daYoshi_c_sub_8014EE40 = 2148854544;
+	endState_HipAttack_orig__9daYoshi_cFv = 2148852848;
+	onExecute_orig__9daYoshi_cFv = 2147773360;
+	endState_HipAttack_orig__10daYoshi2_cFv = 2148852848;
+	onExecute_orig__10daYoshi2_cFv = 2147773360;
+	doSwallow__9daYoshi_cFv = 2148857424;
+	doThisStupidAnimationYouAsshole = 2148857468;
+	originalHipAttackStage4Continue = 2147784004;
 
 	/* dGameDisplay_c */
-	instance__14dGameDisplay_c = 0x8042A048;
-	onCreate_orig__14dGameDisplay_cFv = 0x80157840;
-	onExecute_orig__14dGameDisplay_cFv = 0x80157DA0;
+	instance__14dGameDisplay_c = 2151850056;
+	onCreate_orig__14dGameDisplay_cFv = 2148890688;
+	onExecute_orig__14dGameDisplay_cFv = 2148892064;
 
-	ContinueFromFlyingYoshi = 0x80054B4C;
+	ContinueFromFlyingYoshi = 2147830604;
 
 	/* daYoshiFire_c */
-	daYoshiFire_c_vf8C__FP13dStageActor_cP13dStageActor_c = 0x809126F0;
+	daYoshiFire_c_vf8C__FP13dStageActor_cP13dStageActor_c = 2156996336;
 
 	/* dPlayerInput_c */
-	getHeldDown__14dPlayerInput_c = 0x8005E500;
-	getHeldUp__14dPlayerInput_c = 0x8005E4F0;
-	_ZN14dPlayerInput_c9getHeldUpEv = 0x8005E4F0;/*addAnyway*/
-	detectGroundPound__14dPlayerInput_c = 0x8005E300;
-	_ZN14dPlayerInput_c17detectGroundPoundEv = 0x8005E300;/*addAnyway*/
-	getHeldTwo__14dPlayerInput_c = 0x8005E580;
-	getHeldTwo__14dPlayerInput_cFv = 0x8005E580;
-	_ZN14dPlayerInput_c10getHeldTwoEv = 0x8005E580;/*addAnyway*/
+	getHeldDown__14dPlayerInput_c = 2147869952;
+	getHeldUp__14dPlayerInput_c = 2147869936;
+	_ZN14dPlayerInput_c9getHeldUpEv = 2147869936;/*addAnyway*/
+	detectGroundPound__14dPlayerInput_c = 2147869440;
+	_ZN14dPlayerInput_c17detectGroundPoundEv = 2147869440;/*addAnyway*/
+	getHeldTwo__14dPlayerInput_c = 2147870080;
+	getHeldTwo__14dPlayerInput_cFv = 2147870080;
+	_ZN14dPlayerInput_c10getHeldTwoEv = 2147870080;/*addAnyway*/
 
-	GetResNodeNumEntries__Q34nw4r3g3d6ResMdlCFv = 0x8023B170;
-	MEMAllocFromAllocator = 0x801D5350;
-	__vt__Q34nw4r3g3d9AnmObjChr = 0x8034E3F0;
-	__vt__Q34nw4r3g3d12AnmObjChrRes = 0x8034E2E8;
-	GetAnmResult__Q34nw4r3g3d9ResAnmChrCFPQ34nw4r3g3d12ChrAnmResultUlf = 0x802414A0;
+	GetResNodeNumEntries__Q34nw4r3g3d6ResMdlCFv = 2149822832;
+	MEMAllocFromAllocator = 2149405520;
+	__vt__Q34nw4r3g3d9AnmObjChr = 2150949872;
+	__vt__Q34nw4r3g3d12AnmObjChrRes = 2150949608;
+	GetAnmResult__Q34nw4r3g3d9ResAnmChrCFPQ34nw4r3g3d12ChrAnmResultUlf = 2149848224;
 
-	StartAnimOrig = 0x800D5D50;
-	YoshiStateOrig = 0x8014B730;
-	Exception_Printf___Q24nw4r2dbFPCce = 0x80234890;
+	StartAnimOrig = 2148359504;
+	YoshiStateOrig = 2148841264;
+	Exception_Printf___Q24nw4r2dbFPCce = 2149795984;
 
-	ContinueFromFuckLineLiftActivation = 0x80839894;
+	ContinueFromFuckLineLiftActivation = 2156107924;
 
-	CanExitThisLevel = 0x800B4D60;
+	CanExitThisLevel = 2148224352;
 
-	LoaderDotBinPointer = 0x80001800;
-	ContinueFromConsole = 0x80101754;
+	LoaderDotBinPointer = 2147489792;
+	ContinueFromConsole = 2148538196;
 
-	ContinueFromTinyTable = 0x80146524;
-	ContinueFromLoadingCRSIN = 0x8091E9B8;
-	ContinueFromAlternateQBlock = 0x80022858;
-	ContinueFromPropellerBegin = 0x8013C0EC;
-	QBlockTable = 0x802EE140;
+	ContinueFromTinyTable = 2148820260;
+	ContinueFromLoadingCRSIN = 2157046200;
+	ContinueFromAlternateQBlock = 2147625048;
+	ContinueFromPropellerBegin = 2148778220;
+	QBlockTable = 2150555968;
 
-	ret0ice = 0x8013B870;
-	retice = 0x8013B874;
-	retice2 = 0x8013C070;
+	ret0ice = 2148776048;
+	retice = 2148776052;
+	retice2 = 2148778096;
 
-	playerCollision_orig__10daEnNoko_cFP13ActivePhysicsP13ActivePhysics = 0x800389E0;
-	onCreate_orig__10daEnNoko_cFv = 0x80A71EF0;
-	addScoreWhenHit_orig__10daEnNoko_cFPv = 0x80039590;
+	playerCollision_orig__10daEnNoko_cFP13ActivePhysicsP13ActivePhysics = 2147715552;
+	onCreate_orig__10daEnNoko_cFv = 2158436080;
+	addScoreWhenHit_orig__10daEnNoko_cFPv = 2147718544;
 
-	playerCollision_orig__10daEnPata_cFP13ActivePhysicsP13ActivePhysics = 0x800389E0;
-	addScoreWhenHit_orig__10daEnPata_cFPv = 0x80039590;
-	onExecute_orig__10daEnPata_cFv = 0x80A724E0;
+	playerCollision_orig__10daEnPata_cFP13ActivePhysicsP13ActivePhysics = 2147715552;
+	addScoreWhenHit_orig__10daEnPata_cFPv = 2147718544;
+	onExecute_orig__10daEnPata_cFv = 2158437600;
 
-	onCreate_orig__10BulletBillFv = 0x80A48D40;
-	playerCollision_orig__10BulletBillFP13ActivePhysicsP13ActivePhysics = 0x80A49670;
-	addScoreWhenHit_orig__10BulletBillFPv = 0x80A49B10;
-	ContinueFromSpikyFix = 0x80A4C950;
+	onCreate_orig__10BulletBillFv = 2158267712;
+	playerCollision_orig__10BulletBillFP13ActivePhysicsP13ActivePhysics = 2158270064;
+	addScoreWhenHit_orig__10BulletBillFPv = 2158271248;
+	ContinueFromSpikyFix = 2158283088;
 
-	GabonRock_DropOutState = 0x809985F0;
-	GabonRock_CrushState = 0x809985B0;
-	forceHCGROPushBack = 0x8001DED0;
-	continueFromHCGRO = 0x8001DEC8;
+	GabonRock_DropOutState = 2157544944;
+	GabonRock_CrushState = 2157544880;
+	forceHCGROPushBack = 2147606224;
+	continueFromHCGRO = 2147606216;
 
-	DanceValues_AnimSpeed = 0x804276AE;
-	DanceValues_DummyBlockAndGrass = 0x80429A89;
-	DanceValues_Bahps = 0x80429A8A;
-	DanceValues_CreditsControl = 0x80429A8B;
+	DanceValues_AnimSpeed = 2151839406;
+	DanceValues_DummyBlockAndGrass = 2151848585;
+	DanceValues_Bahps = 2151848586;
+	DanceValues_CreditsControl = 2151848587;
 
-	CreditsModeActive = 0x80429F3F;
-	GetRail = 0x800D9040;
-	instance__7Stage80 = 0x80429D28;
-	continueAddToCoinCount = 0x80060254;
-	continueAddToScore = 0x800B3544;
+	CreditsModeActive = 2151849791;
+	GetRail = 2148372544;
+	instance__7Stage80 = 2151849256;
+	continueAddToCoinCount = 2147877460;
+	continueAddToScore = 2148218180;
 
-	StaffCreditsAddCoin = 0x800B5100;
-	ContinueFromEFBMagic2 = 0x802BC1D4;
-	TogeTekkyuIceballCollision = 0x80AB66A0;
-	_8042A788 = 0x8042A1C8;
-	sub_8019C390 = 0x8019C060;
+	StaffCreditsAddCoin = 2148225280;
+	ContinueFromEFBMagic2 = 2150351316;
+	TogeTekkyuIceballCollision = 2158716576;
+	_8042A788 = 2151850440;
+	sub_8019C390 = 2149171296;
 
-	dStockItem = 0x807AF4C0;
+	dStockItem = 2155542416;
 
-	pow = 0x802E53B4;
-	onExecute_orig__14dGameDisplay_cFv = 0x80157DA0;
-	onCreate_orig__14dGameDisplay_cFv = 0x80157840;
-	instance__14dGameDisplay_c = 0x8042A048;
-	onCreate_orig__13daGabonRock_cFv = 0x807F8920;
-	onCreate_orig__12EN_STAR_COINFv = 0x80AA9140;
+	pow = 2150519732;
+	onExecute_orig__14dGameDisplay_cFv = 2148892064;
+	onCreate_orig__14dGameDisplay_cFv = 2148890688;
+	instance__14dGameDisplay_c = 2151850056;
+	onCreate_orig__13daGabonRock_cFv = 2155841824;
+	onCreate_orig__12EN_STAR_COINFv = 2158661952;
 
-	onCreate_orig__12daEnBomhei_cFv = 0x809C8730;
-	StateID_Sleep__12daEnBomhei_c = 0x80B12388;
-	playerCollision_orig__12daEnBomhei_cFP13ActivePhysicsP13ActivePhysics = 0x809C92C0;
-	spriteCollision_orig__12daEnBomhei_cFP13ActivePhysicsP13ActivePhysics = 0x809C98F0;
+	onCreate_orig__12daEnBomhei_cFv = 2157741872;
+	StateID_Sleep__12daEnBomhei_c = 2159092616;
+	playerCollision_orig__12daEnBomhei_cFP13ActivePhysicsP13ActivePhysics = 2157744832;
+	spriteCollision_orig__12daEnBomhei_cFP13ActivePhysicsP13ActivePhysics = 2157746416;
 
 
-	NoSwimBegin = 0x801300C0;
-	YesSwimBegin = 0x80130084;
-	NoSwimHip0a = 0x80130408;
-	YesSwimHip0a = 0x801303E0;
-	NoSwimHip0b = 0x80130484;
-	YesSwimHip0b = 0x80130494;
-	NoSwimHip1 = 0x80130A4C;
-	YesSwimHip1 = 0x80130A40;
-	NoSwimHip2 = 0x801312BC;
-	YesSwimHip2 = 0x801312A4;
-	NoSwimHip3a = 0x801316AC;
-	YesSwimHip3a = 0x801316B8;
-	NoSwimHip3b = 0x80131764;
-	YesSwimHip3b = 0x80131754;
+	NoSwimBegin = 2148729024;
+	YesSwimBegin = 2148728964;
+	NoSwimHip0a = 2148729864;
+	YesSwimHip0a = 2148729824;
+	NoSwimHip0b = 2148729988;
+	YesSwimHip0b = 2148730004;
+	NoSwimHip1 = 2148731468;
+	YesSwimHip1 = 2148731456;
+	NoSwimHip2 = 2148733628;
+	YesSwimHip2 = 2148733604;
+	NoSwimHip3a = 2148734636;
+	YesSwimHip3a = 2148734648;
+	NoSwimHip3b = 2148734820;
+	YesSwimHip3b = 2148734804;
 
-	StateID_Wait__24daEnBossKoopaDemoPeach_c = 0x80B8BC50;
-	StateID_Call__24daEnBossKoopaDemoPeach_c = 0x80B8BC90;
-	StateID_Turn__24daEnBossKoopaDemoPeach_c = 0x80B8BCD0;
-	StateID_Open__24daEnBossKoopaDemoPeach_c = 0x80B8BD10;
-	StateID_Rescue__24daEnBossKoopaDemoPeach_c = 0x80B8BD50;
-	StateID_Thank__24daEnBossKoopaDemoPeach_c = 0x80B8BD90;
+	StateID_Wait__24daEnBossKoopaDemoPeach_c = 2159590480;
+	StateID_Call__24daEnBossKoopaDemoPeach_c = 2159590544;
+	StateID_Turn__24daEnBossKoopaDemoPeach_c = 2159590608;
+	StateID_Open__24daEnBossKoopaDemoPeach_c = 2159590672;
+	StateID_Rescue__24daEnBossKoopaDemoPeach_c = 2159590736;
+	StateID_Thank__24daEnBossKoopaDemoPeach_c = 2159590800;
 
-	__vt__12daBossDemo_c = 0x80301324;
-	onExecute__12daBossDemo_cFv = 0x8001CCB0;
-	onDraw__12daBossDemo_cFv = 0x8001CCF0;
-	willBeDeleted__12daBossDemo_cFv = 0x8001CD00;
-	onDelete__12daBossDemo_cFv = 0x8001CD10;
-	endState_BattleEdDemo__12daBossDemo_cFv = 0x8001D190;
-	executeState_BattleEdDemo__12daBossDemo_cFv = 0x8001D1A0;
-	beginState_BattleEdDemo__12daBossDemo_cFv = 0x8001D180;
-	endState_BattleIn__12daBossDemo_cFv = 0x8001D100;
-	executeState_BattleIn__12daBossDemo_cFv = 0x8001D110;
-	beginState_BattleIn__12daBossDemo_cFv = 0x8001D090;
-	endState_BattleStDemo__12daBossDemo_cFv = 0x8001D070;
-	executeState_BattleStDemo__12daBossDemo_cFv = 0x8001D080;
-	beginState_BattleStDemo__12daBossDemo_cFv = 0x8001D060;
-	endState_Ready__12daBossDemo_cFv = 0x8001CF60;
-	executeState_Ready__12daBossDemo_cFv = 0x8001CF70;
-	beginState_Ready__12daBossDemo_cFv = 0x8001CF50;
-	beatLevel__12daBossDemo_cFv = 0x8001CE00;
-	exitLevel__12daBossDemo_cFv = 0x8001CE40;
+	__vt__12daBossDemo_c = 2150634276;
+	onExecute__12daBossDemo_cFv = 2147601584;
+	onDraw__12daBossDemo_cFv = 2147601648;
+	willBeDeleted__12daBossDemo_cFv = 2147601664;
+	onDelete__12daBossDemo_cFv = 2147601680;
+	endState_BattleEdDemo__12daBossDemo_cFv = 2147602832;
+	executeState_BattleEdDemo__12daBossDemo_cFv = 2147602848;
+	beginState_BattleEdDemo__12daBossDemo_cFv = 2147602816;
+	endState_BattleIn__12daBossDemo_cFv = 2147602688;
+	executeState_BattleIn__12daBossDemo_cFv = 2147602704;
+	beginState_BattleIn__12daBossDemo_cFv = 2147602576;
+	endState_BattleStDemo__12daBossDemo_cFv = 2147602544;
+	executeState_BattleStDemo__12daBossDemo_cFv = 2147602560;
+	beginState_BattleStDemo__12daBossDemo_cFv = 2147602528;
+	endState_Ready__12daBossDemo_cFv = 2147602272;
+	executeState_Ready__12daBossDemo_cFv = 2147602288;
+	beginState_Ready__12daBossDemo_cFv = 2147602256;
+	beatLevel__12daBossDemo_cFv = 2147601920;
+	exitLevel__12daBossDemo_cFv = 2147601984;
 
-	instance__19BalloonRelatedClass = 0x80429AA8;
+	instance__19BalloonRelatedClass = 2151848616;
 
-	PlayerAnimStates = 0x802F1170;
-	ContinueFromFixFireballSensorSetup = 0x8011A500;
-	GetPosForLayoutEffect__FP4VEC3b = 0x800B37E0;
+	PlayerAnimStates = 2150568304;
+	ContinueFromFixFireballSensorSetup = 2148640000;
+	GetPosForLayoutEffect__FP4VEC3b = 2148218848;
 
-	ContinueFromJustOneBomb = 0x80A11CAC;
+	ContinueFromJustOneBomb = 2158042284;
 
-	SmoothRotation__FPsss = 0x8015F300;
+	SmoothRotation__FPsss = 2148922112;
 
-	KazanRock_OriginalCollisionCallback = 0x8081F1B0;
-	KazanRock_Explode = 0x8081EF20;
+	KazanRock_OriginalCollisionCallback = 2155999664;
+	KazanRock_Explode = 2155999008;
 
-	GetPlayerOrYoshi__Fi = 0x8005FB90;
-	findByID__10daPlBase_cFi = 0x8005FB90;
-	findByID__7dAcPy_cFi = 0x8005F900;
-	justFaceSpecificDirection__10daPlBase_cFi = 0x80051F30;
-	moveInDirection__10daPlBase_cFPfPf = 0x80052080;
-	getYoshi__7dAcPy_cFv = 0x80139760;
-	setAnimePlayWithAnimID__10daPlBase_cFi = 0x80052170;
-	setAnimePlayStandardType__10daPlBase_cFi = 0x80052290;
-	setFlag__14dPlayerInput_cFQ214dPlayerInput_c5Flags = 0x8005E3B0;
-	setPermanentForcedButtons__14dPlayerInput_cFUi = 0x8005E910;
-	setTransientForcedButtons__14dPlayerInput_cFUi = 0x8005E960;
-	unsetPermanentForcedButtons__14dPlayerInput_cFUi = 0x8005E930;
-	areWeShaking__14dPlayerInput_cFv = 0x8005E780;
-	setFlag__10daPlBase_cFi = 0x80056C70;
-	clearFlag__10daPlBase_cFi = 0x80056CB0;
-	testFlag__10daPlBase_cFi = 0x80056CF0;
-	isReadyForDemoControlAction__10daPlBase_cFv = 0x80052030;
+	GetPlayerOrYoshi__Fi = 2147875728;
+	findByID__10daPlBase_cFi = 2147875728;
+	findByID__7dAcPy_cFi = 2147875072;
+	justFaceSpecificDirection__10daPlBase_cFi = 2147819312;
+	moveInDirection__10daPlBase_cFPfPf = 2147819648;
+	getYoshi__7dAcPy_cFv = 2148767584;
+	setAnimePlayWithAnimID__10daPlBase_cFi = 2147819888;
+	setAnimePlayStandardType__10daPlBase_cFi = 2147820176;
+	setFlag__14dPlayerInput_cFQ214dPlayerInput_c5Flags = 2147869616;
+	setPermanentForcedButtons__14dPlayerInput_cFUi = 2147870992;
+	setTransientForcedButtons__14dPlayerInput_cFUi = 2147871072;
+	unsetPermanentForcedButtons__14dPlayerInput_cFUi = 2147871024;
+	areWeShaking__14dPlayerInput_cFv = 2147870592;
+	setFlag__10daPlBase_cFi = 2147839088;
+	clearFlag__10daPlBase_cFi = 2147839152;
+	testFlag__10daPlBase_cFi = 2147839216;
+	isReadyForDemoControlAction__10daPlBase_cFv = 2147819568;
 
-	instance__15dWaterManager_c = 0x80429E20;
-	queryPosition__15dWaterManager_cFP7Point2dP7Point2dPfPsi = 0x800EB8B0;
+	instance__15dWaterManager_c = 2151849504;
+	queryPosition__15dWaterManager_cFP7Point2dP7Point2dPfPsi = 2148448432;
 
-	OriginalPowBlockActivated = 0x800A0C70;
+	OriginalPowBlockActivated = 2148142192;
 
-	isReplayEnabled = 0x80002EEE;
+	isReplayEnabled = 2147495662;
 
-	UpdateSelectCursor = 0x800B44D0;
-	HideSelectCursor = 0x8010C700;
-	SelectCursorPointer = 0x80429FE8;
+	UpdateSelectCursor = 2148222160;
+	HideSelectCursor = 2148583168;
+	SelectCursorPointer = 2151849960;
 
-	getIconPictureIDforPlayer__12dStockItem_cFi = 0x807AF920;
-	CrapUpPositions__FP7Point3dPC7Point3d = 0x800B32E0;
+	getIconPictureIDforPlayer__12dStockItem_cFi = 2155542816;
+	CrapUpPositions__FP7Point3dPC7Point3d = 2148217568;
 
-	ContinueFromCalcPowerupResult = 0x800FC894;
-	ContinueFromFixCalcPowerupResultForMushroom = 0x800FC85C;
-	ContinueFromSILayoutExtraStuffs = 0x807AF738;
-	ContinueFromResetHammerAnimOnOpen = 0x807B08CC;
-	ContinueFromHideItemsByDefault = 0x807AF5D0;
-	MakeSFISound = 0x807B05D4;
-	ContinueFromSIAddSound = 0x807B0630;
-	ChosenStartChoice = 0x807B0A94;
-	ContinueFromSISLayoutExtraStuffs = 0x807B1FF0;
-	ContinueFromUpdateSIS = 0x807B22B8;
+	ContinueFromCalcPowerupResult = 2148518036;
+	ContinueFromFixCalcPowerupResultForMushroom = 2148517980;
+	ContinueFromSILayoutExtraStuffs = 2155542328;
+	ContinueFromResetHammerAnimOnOpen = 2155546828;
+	ContinueFromHideItemsByDefault = 2155541968;
+	MakeSFISound = 2155546068;
+	ContinueFromSIAddSound = 2155546160;
+	ChosenStartChoice = 2155547284;
+	ContinueFromSISLayoutExtraStuffs = 2155552752;
+	ContinueFromUpdateSIS = 2155553464;
 
-	EnemyBounceValue = 0x8042A030;
+	EnemyBounceValue = 2151850032;
 
 /* Scrolling is annoying, clown car goes here! */
-	searchById__7fBase_cFUi = 0x80162B10;
-	searchByProfileId__7fBase_cFUsP7fBase_c = 0x80162B60;
-	searchByBaseType__7fBase_cFiP7fBase_c = 0x80162BC0;
+	searchById__7fBase_cFUi = 2148936464;
+	searchByProfileId__7fBase_cFUsP7fBase_c = 2148936544;
+	searchByBaseType__7fBase_cFiP7fBase_c = 2148936640;
 
-	AddStockPowerup = 0x800BB260;
-	continueFromStrongBox2 = 0x808AAD60;
-	continueFromStrongBox = 0x808AA268;
+	AddStockPowerup = 2148250208;
+	continueFromStrongBox2 = 2156572000;
+	continueFromStrongBox = 2156569192;
 
-	_8042A788 = 0x8042A1C8;
-	playFanfare__FPvi = 0x8019C060;
-	somethingAboutSound__FPv = 0x8019C800;
+	_8042A788 = 2151850440;
+	playFanfare__FPvi = 2149171296;
+	somethingAboutSound__FPv = 2149173248;
 
-	AxVoice_SetADPCM = 0x80262CA0;
-	Voice_SetADPCMLoop = 0x80281760;
+	AxVoice_SetADPCM = 2149985440;
+	Voice_SetADPCMLoop = 2150111072;
 
-	DetachSound__Q34nw4r3snd11SoundHandleFv = 0x8027A010;
-	Pause__Q44nw4r3snd6detail10BasicSoundFbi = 0x80266250;
-	Stop__Q44nw4r3snd6detail10BasicSoundFi = 0x80266060;
-	SetPitch__Q44nw4r3snd6detail10BasicSoundFf = 0x802672C0;
-	SetVolume__Q44nw4r3snd6detail10BasicSoundFfi = 0x80267230;
-	StrmSound_SetTrackVolume = 0x8027F6A0;
+	DetachSound__Q34nw4r3snd11SoundHandleFv = 2150080528;
+	Pause__Q44nw4r3snd6detail10BasicSoundFbi = 2149999184;
+	Stop__Q44nw4r3snd6detail10BasicSoundFi = 2149998688;
+	SetPitch__Q44nw4r3snd6detail10BasicSoundFf = 2150003392;
+	SetVolume__Q44nw4r3snd6detail10BasicSoundFfi = 2150003248;
+	StrmSound_SetTrackVolume = 2150102688;
 
-	DontShowPreGame = 0x80429ED0;
-	RESTART_CRSIN_LevelStartStruct = 0x80373AE0;
-	DrawTheFuckingHat = 0x800CA4F4;
-	DontDrawTheFuckingHat = 0x800CA528;
+	DontShowPreGame = 2151849680;
+	RESTART_CRSIN_LevelStartStruct = 2151103200;
+	DrawTheFuckingHat = 2148312308;
+	DontDrawTheFuckingHat = 2148312360;
 
-	continueFromMpPauseFix1 = 0x8004E050;
-	continueFromMpPauseFix2 = 0x80141270;
-	continueFromMpPauseFix3 = 0x80140F74;
-	CheckIfSinglePlayer = 0x800FC940;
+	continueFromMpPauseFix1 = 2147803216;
+	continueFromMpPauseFix2 = 2148799088;
+	continueFromMpPauseFix3 = 2148798324;
+	CheckIfSinglePlayer = 2148518208;
 
-	TextWriterCrapContinue = 0x800E57FC;
-	StockWMInit_LoadEffects__FPv = 0x80926850;
+	TextWriterCrapContinue = 2148423676;
+	StockWMInit_LoadEffects__FPv = 2157078608;
 
-	CleanUpEffectThings__Fv = 0x80093520;
-	FreeEffects__Fi = 0x800934D0;
-	FreeBreff__Fi = 0x80093170;
-	FreeBreft__Fi = 0x800931B0;
+	CleanUpEffectThings__Fv = 2148087072;
+	FreeEffects__Fi = 2148086992;
+	FreeBreff__Fi = 2148086128;
+	FreeBreft__Fi = 2148086192;
 
-	__dt__18BGGMEffectRendererFv = 0x80092E30;
-	__vt__18BGGMEffectRenderer = 0x80311428;
-	__construct_array = 0x802DC7B0;
+	__dt__18BGGMEffectRendererFv = 2148085296;
+	__vt__18BGGMEffectRenderer = 2150700072;
+	__construct_array = 2150483888;
 
-	GetBMG__Fv = 0x800CDBE0;
-	findStringForMessageID__Q23EGG6MsgResCFii = 0x802D7670;
-	WriteBMGToTextBox__FPQ34nw4r3lyt7TextBoxPQ27dScript5Res_ciiie = 0x800C99E0;
-	_Z26WriteParsedStringToTextBoxPN4nw4r3lyt7TextBoxEPKwiPA1_13__va_list_tagPN7dScript5Res_cE = 0x800C9E00; /*addAnyway*//*mi*/
-	CheckForUSD1ShadowEntry__FPQ34nw4r3lyt7TextBox = 0x800C9A80;
-	GetExtUserDataNum__Q34nw4r3lyt4PaneCFv = 0x802AC270;
+	GetBMG__Fv = 2148326368;
+	findStringForMessageID__Q23EGG6MsgResCFii = 2150463088;
+	WriteBMGToTextBox__FPQ34nw4r3lyt7TextBoxPQ27dScript5Res_ciiie = 2148309472;
+	_Z26WriteParsedStringToTextBoxPN4nw4r3lyt7TextBoxEPKwiPA1_13__va_list_tagPN7dScript5Res_cE = 2148310528; /*addAnyway*//*mi*/
+	CheckForUSD1ShadowEntry__FPQ34nw4r3lyt7TextBox = 2148309632;
+	GetExtUserDataNum__Q34nw4r3lyt4PaneCFv = 2150285936;
 
-	m2d__Anm_c__Load = 0x801641C0;/*mi*/
-	m2d__AnmResHandler_c__Load = 0x80163C70;/*mi*/
+	m2d__Anm_c__Load = 2148942272;/*mi*/
+	m2d__AnmResHandler_c__Load = 2148940912;/*mi*/
 
-	RealAcPyDtor = 0x801444F0;
-	RealWm2dPlayerDtor = 0x808C5290;
-	WmPlayerDtor = 80902890;
-	RealYoshiDtor = 0x8014B390;
+	RealAcPyDtor = 2148812016;
+	RealWm2dPlayerDtor = 2156679824;
+	RealWmPlayerDtor = 2156930512;
+	RealYoshiDtor = 2148840336;
 
-	InsertIntIntoTextBox1 = 0x800B3BE0;
-	WriteNumberToTextBox__FPiPCiPQ34nw4r3lyt7TextBoxb = 0x800B3B60;
-	WriteNumberToTextBox__FPiPQ34nw4r3lyt7TextBoxb = 0x800B3BE0;
+	InsertIntIntoTextBox1 = 2148219872;
+	WriteNumberToTextBox__FPiPCiPQ34nw4r3lyt7TextBoxb = 2148219744;
+	WriteNumberToTextBox__FPiPQ34nw4r3lyt7TextBoxb = 2148219872;
 
-	__ct__20daJrClownForPlayer_cFv = 0x80810210;
-	__dt__20daJrClownForPlayer_cFv = 0x808102D0; /* Beans indeed. */
+	__ct__20daJrClownForPlayer_cFv = 2155938320;
+	__dt__20daJrClownForPlayer_cFv = 2155938512; /* Beans indeed. */
 
-	PClownCarExecute = 0x800A3600;
-	PClownCarAfterCreate = 0x800951D0;
-	PClownCarDraw = 0x80810920;
-	PClownCarMove = 0x80811C00;
-	ContinueFromClownCarDetectAdjacent = 0x80811E94;
+	PClownCarExecute = 2148152832;
+	PClownCarAfterCreate = 2148094416;
+	PClownCarDraw = 2155940128;
+	PClownCarMove = 2155944960;
+	ContinueFromClownCarDetectAdjacent = 2155945620;
 
-	sAllocatorFunc__FrmHeap = 0x8042DFF0;/*mi*/
+	sAllocatorFunc__FrmHeap = 2151866352;/*mi*/
 
-	GetActivePlayerCount = 0x8005FFB0;
-	GetCountofActivePlayers = 0x8005FFB0;
-	GetActiveLivingPlayerCount = 0x8005FEF0;
+	GetActivePlayerCount = 2147876784;
+	GetCountofActivePlayers = 2147876784;
+	GetActiveLivingPlayerCount = 2147876592;
 
-	getEffectiveScreenLeft__19ClassWithCameraInfoFv = 0x80082240;
-	instance__19ClassWithCameraInfo = 0x80429B20;
+	getEffectiveScreenLeft__19ClassWithCameraInfoFv = 2148016704;
+	instance__19ClassWithCameraInfo = 2151848736;
 
-	BowserExitDemoState = 0x8005B5D0;
-	MagicEnd = 0x807CCBA0;
-	KeyLoopSet = 0x80804410;
+	BowserExitDemoState = 2147857872;
+	MagicEnd = 2155662240;
+	KeyLoopSet = 2155889680;
 
 /* Some collision shit for giant shy guys */
 
-	BigHanaPlayer = 0x809B21C0;
-	BigHanaYoshi = 0x809B23D0;
-	BigHanaWeirdGP = 0x809B2680;
-	BigHanaGroundPound = 0x809B25F0;
-	BigHanaFireball = 0x809B3350;
-	BigHanaIceball = 0x809B3320;
+	BigHanaPlayer = 2157650368;
+	BigHanaYoshi = 2157650896;
+	BigHanaWeirdGP = 2157651584;
+	BigHanaGroundPound = 2157651440;
+	BigHanaFireball = 2157654864;
+	BigHanaIceball = 2157654816;
 
-	dAcPy_vf3F4 = 0x80145F00;
-	dAcPy_vf3F8 = 0x80145FE0;
-	dAcPy_vf3FC = 0x801466E0;
+	dAcPy_vf3F4 = 2148818688;
+	dAcPy_vf3F8 = 2148818912;
+	dAcPy_vf3FC = 2148820704;
 
-	dAcPy_vf294 = 0x80047390;
+	dAcPy_vf294 = 2147775376;
 
 /* Back to other shit I didn't want to scroll for */
 
-	Cloud_death_execute = 0x809DD480;
-	Cloud_execute = 0x809DF640;
+	Cloud_death_execute = 2157827200;
+	Cloud_execute = 2157835840;
 
-	GlobalTickCount = 0x8042A088;
+	GlobalTickCount = 2151850120;
 
-	GetSpecificPlayerActor = 0x8005F900;
-	Actor_SearchByID = 0x80162B10;
-	TimeStopFlag = 0x80429A1A;
-	TimerBranch = 0x800E3948;
-	MarioDescentRate = 0x8042B584;
-	MarioJumpArc = 0x802F543C;
-	MarioJumpMax = 0x8042B568;
-	MiniMarioJumpArc = 0x802F5484;
-	MarioSize = 0x8042B594;
-	AlwaysDrawFlag = 0x80064540;
-	AlwaysDrawBranch = 0x80064544;
-	GenerateRandomNumber = 0x800B2EE0;
-	OneofManySoundPlayers = 0x800CE840;
-	BombSleepState = 0x80B12388;
-	NoFreezie = 0x800A0B08;
-	GameTimer = 0x80429D90;
-	GameTimerB = 0x80D254F8;
+	GetSpecificPlayerActor = 2147875072;
+	Actor_SearchByID = 2148936464;
+	TimeStopFlag = 2151848474;
+	TimerBranch = 2148415816;
+	MarioDescentRate = 2151855492;
+	MarioJumpArc = 2150585404;
+	MarioJumpMax = 2151855464;
+	MiniMarioJumpArc = 2150585476;
+	MarioSize = 2151855508;
+	AlwaysDrawFlag = 2147894592;
+	AlwaysDrawBranch = 2147894596;
+	GenerateRandomNumber = 2148216544;
+	OneofManySoundPlayers = 2148329536;
+	BombSleepState = 2159092616;
+	NoFreezie = 2148141832;
+	GameTimer = 2151849360;
+	GameTimerB = 2161267960;
 
-	DoSceneChange__FUsUiUi = 0x800E1DE0;
+	DoSceneChange__FUsUiUi = 2148408800;
 
-	FrSqrt__Q24nw4r4mathFf = 0x802379B0;
-	SinFIdx__Q24nw4r4mathFf = 0x802379E0;
-	CosFIdx__Q24nw4r4mathFf = 0x80237A50;
-	SinCosFIdx__Q24nw4r4mathFPfPff = 0x80237AB0;
+	FrSqrt__Q24nw4r4mathFf = 2149808560;
+	SinFIdx__Q24nw4r4mathFf = 2149808608;
+	CosFIdx__Q24nw4r4mathFf = 2149808720;
+	SinCosFIdx__Q24nw4r4mathFPfPff = 2149808816;
 
-	archiveHeap__5mHeap = 0x8042A16C;
-	commandHeap__5mHeap = 0x8042A170;
-	dylinkHeap__5mHeap = 0x8042A174;
-	assertHeap__5mHeap = 0x8042A178;
-	gameHeaps__5mHeap = 0x803779C8;
+	archiveHeap__5mHeap = 2151850348;
+	commandHeap__5mHeap = 2151850352;
+	dylinkHeap__5mHeap = 2151850356;
+	assertHeap__5mHeap = 2151850360;
+	gameHeaps__5mHeap = 2151119304;
 
-	init__18StandOnTopColliderFP13dStageActor_cfffffsUcP7Point2d = 0x800DB100;
-	__ct__18StandOnTopColliderFv = 0x800DB0B0;
-	__dt__18StandOnTopColliderFv = 0x80044400;
-	_ZN18StandOnTopCollider6updateEv = 0x800DB270; /*addAnyway*/
+	init__18StandOnTopColliderFP13dStageActor_cfffffsUcP7Point2d = 2148380928;
+	__ct__18StandOnTopColliderFv = 2148380848;
+	__dt__18StandOnTopColliderFv = 2147763200;
+	_ZN18StandOnTopCollider6updateEv = 2148381296; /*addAnyway*/
 
 
-	__dt__13BasicColliderFv = 0x800DAD80;
-	globalListHead__13BasicCollider = 0x80429D3C;
+	__dt__13BasicColliderFv = 2148380032;
+	globalListHead__13BasicCollider = 2151849276;
 
-	addToList__13BasicColliderFv = 0x800DAE00;
-	removeFromList__13BasicColliderFv = 0x800DAE50;
+	addToList__13BasicColliderFv = 2148380160;
+	removeFromList__13BasicColliderFv = 2148380240;
 
-	__ct__21RideableActorColliderFv = 0x800DB3D0;
-	init__21RideableActorColliderFP13dStageActor_cP7Point2dP7Point2d = 0x800DB420;
-	init__21RideableActorColliderFP13dStageActor_cffff = 0x800DB4B0;
-	setPosition__21RideableActorColliderFP7Point2dP7Point2d = 0x800DB510;
-	setPosition__21RideableActorColliderFffff = 0x800DB570;
+	__ct__21RideableActorColliderFv = 2148381648;
+	init__21RideableActorColliderFP13dStageActor_cP7Point2dP7Point2d = 2148381728;
+	init__21RideableActorColliderFP13dStageActor_cffff = 2148381872;
+	setPosition__21RideableActorColliderFP7Point2dP7Point2d = 2148381968;
+	setPosition__21RideableActorColliderFffff = 2148382064;
 
-	drawWithMatrix__21SomethingAboutShroomsFfP4mMtx = 0x800BC630;
+	drawWithMatrix__21SomethingAboutShroomsFfP4mMtx = 2148255280;
 
-	original_onCreate__13daObjKinoko_cFv = 0x8087F660;
+	original_onCreate__13daObjKinoko_cFv = 2156394080;
 
-	instance__13dCourseFull_c = 0x80429BB8;
-	getRectByID__9dCourse_cFUcP5mRect = 0x8008E890;
-	getNextGotoByID__9dCourse_cFUc = 0x8008E3D0;
+	instance__13dCourseFull_c = 2151848888;
+	getRectByID__9dCourse_cFUcP5mRect = 2148067472;
+	getNextGotoByID__9dCourse_cFUc = 2148066256;
 
-	modifyPlayerPropertiesWithRollingObject = 0x80057820;
-	EN_LandbarrelPlayerCollision = 0x80A57BA0;
+	modifyPlayerPropertiesWithRollingObject = 2147842080;
+	EN_LandbarrelPlayerCollision = 2158328736;
 
 /* Boss Related */
-	instance__16dStageActorMgr_c = 0x80429A68;
+	instance__16dStageActorMgr_c = 2151848552;
 
-	StartBGMMusic = 0x807DB1B0;
-	StopBGMMusic = 0x807DB1C0;
-	instance__11dStage32C_c = 0x80429C30;
-	instance__7WLClass = 0x804299B4;
-	disableDemoControl__7WLClassFb = 0x8005CA50;
-	demoControlAllPlayers__7WLClassFv = 0x8005C930;
+	StartBGMMusic = 2155721136;
+	StopBGMMusic = 2155721152;
+	instance__11dStage32C_c = 2151849008;
+	instance__7WLClass = 2151848372;
+	disableDemoControl__7WLClassFb = 2147863120;
+	demoControlAllPlayers__7WLClassFv = 2147862832;
 
-	ShakeScreen = 0x800D8BE0;
-	StageScreen = 0x80429D28;
-	stunPlayer = 0x80137320;
-	unstunPlayer = 0x80137460;
+	ShakeScreen = 2148371424;
+	StageScreen = 2151849256;
+	stunPlayer = 2148758304;
+	unstunPlayer = 2148758624;
 
-	createChild__13dStageActor_cFUsP13dStageActor_cUiP7Point3dP6S16VecUc = 0x80064680;
-	GameMgrBossEndFunc = 0x8001CDB0;
-	MakeMarioEnterDemoMode = 0x807C7CE0;
-	MakeMarioExitDemoMode = 0x8005CA50;
-	ForceMarioExitDemoMode = 0x8005CA50;
+	createChild__13dStageActor_cFUsP13dStageActor_cUiP7Point3dP6S16VecUc = 2147894912;
+	GameMgrBossEndFunc = 2147601840;
+	MakeMarioEnterDemoMode = 2155642080;
+	MakeMarioExitDemoMode = 2147863120;
+	ForceMarioExitDemoMode = 2147863120;
 
-	ResetPlayerState = 0x80052170;
-	UpdateGameMgr = 0x8001CDB0;
-	UnsetShit = 0x80056CB0;
+	ResetPlayerState = 2147819888;
+	UpdateGameMgr = 2147601840;
+	UnsetShit = 2147839152;
 
-	StateID_DemoSt2__12daKameckDemo = 0x80999504;
-	StateID_DemoSt__12daKameckDemo = 0x80999544;
-	StateID_DemoWait__12daKameckDemo = 0x80999584;
+	StateID_DemoSt2__12daKameckDemo = 2157548804;
+	StateID_DemoSt__12daKameckDemo = 2157548868;
+	StateID_DemoWait__12daKameckDemo = 2157548932;
 
-	StateID_Fall__13daBossKoopa_c = 0x80B8B8AC;
+	StateID_Fall__13daBossKoopa_c = 2159589548;
 
-	StateID_DemoWait__9daNeedles = 0x8099C88C;
-	StateID_DemoAwake__9daNeedles = 0x8099C8D0;
-	StateID_Idle__9daNeedles = 0x8099C910;
-	StateID_Die__9daNeedles = 0x8099C950;
+	StateID_DemoWait__9daNeedles = 2157561996;
+	StateID_DemoAwake__9daNeedles = 2157562064;
+	StateID_Idle__9daNeedles = 2157562128;
+	StateID_Die__9daNeedles = 2157562192;
 
-	StateID_None__7dPlayer = 0x80353F9C;
-	StateID_Walk__7dPlayer = 0x80353FDC;
-	StateID_Jump__7dPlayer = 0x8035401C;
-	StateID_DemoNone__7dPlayer = 0x8035441C;
-	StateID_DemoWait__7dPlayer = 0x8035449C;
-	StateID_DemoGoal__7dPlayer = 0x8035485C;
-	StateID_DemoControl__7dPlayer = 0x8035489C;
+	StateID_None__7dPlayer = 2150973340;
+	StateID_Walk__7dPlayer = 2150973404;
+	StateID_Jump__7dPlayer = 2150973468;
+	StateID_DemoNone__7dPlayer = 2150974492;
+	StateID_DemoWait__7dPlayer = 2150974620;
+	StateID_DemoGoal__7dPlayer = 2150975580;
+	StateID_DemoControl__7dPlayer = 2150975644;
 
-	PlayWrenchSound = 0x808A9250;
-	WaterManager = 0x80429E20;
-	CheckforLiquid = 0x800EB8B0;
+	PlayWrenchSound = 2156565072;
+	WaterManager = 2151849504;
+	CheckforLiquid = 2148448432;
 
-	BowserFireballCollision = 0x80B7E140;
-	BowserDamageAnmClr = 0x80B3EB00;
-	BowserDamageStepTwo = 0x80B1F1D0;
-	BowserDamageNormal = 0x80B1F1F0;
-	BowserDamageKill = 0x80098D80;
-	BowserDamageEnd = 0x80B3EE30;
+	BowserFireballCollision = 2159534400;
+	BowserDamageAnmClr = 2159274752;
+	BowserDamageStepTwo = 2159145424;
+	BowserDamageNormal = 2159145456;
+	BowserDamageKill = 2148109696;
+	BowserDamageEnd = 2159275568;
 
 /* Mr Sun Related */
 
-	ActivePhysics_InitWithStruct = 0x8008C3E0;
-	ActivePhysics_AddToList = 0x8008C330;
-	__ct__13ActivePhysicsFv = 0x8008C200;
-	__dt__13ActivePhysicsFv = 0x8008C260;
-	HandleXSpeed = 0x8006CD90;
-	HandleYSpeed = 0x8006CDE0;
-	UpdateObjectPosBasedOnSpeedValues_real = 0x8006CD40;
-	dSprite_c__getXDirectionOfFurthestPlayerRelativeToVEC3  = 0x80096240;/*mi*/
-	CalculateDistanceFromActorsNextPosToFurthestPlayer = 0x80064740;
+	ActivePhysics_InitWithStruct = 2148058080;
+	ActivePhysics_AddToList = 2148057904;
+	__ct__13ActivePhysicsFv = 2148057600;
+	__dt__13ActivePhysicsFv = 2148057696;
+	HandleXSpeed = 2147929488;
+	HandleYSpeed = 2147929568;
+	UpdateObjectPosBasedOnSpeedValues_real = 2147929408;
+	dSprite_c__getXDirectionOfFurthestPlayerRelativeToVEC3  = 2148098624;/*mi*/
+	CalculateDistanceFromActorsNextPosToFurthestPlayer = 2147895104;
 
-	doSpriteMovement = 0x800955F0;
-
-
-	instance__17dEffectBreakMgr_c = 0x80429C08;
-	spawnTile__17dEffectBreakMgr_cFP7Point3dUic = 0x800925F0;
-
-	CollidedWithTile = 0x80070CB0;
-	SomeStrangeModification = 0x80096E60;
+	doSpriteMovement = 2148095472;
 
 
-	Actor_GetVec3WithValuesAdded = 0x8006CED0;
-	ConvertStagePositionIntoScreenPosition__Maybe  = 0x8006A4B0;/*mi*/
-	AnotherSoundRelatedFunction = 0x80197D10;
-	YetAnotherSoundPlayer = 0x80198DD0;
-	CheckIfPlayingSound = 0x80196410;
-	RelatedToPlayingSoundsAlongsideAnims = 0x801051C0;
+	instance__17dEffectBreakMgr_c = 2151848968;
+	spawnTile__17dEffectBreakMgr_cFP7Point3dUic = 2148083184;
 
-	SoundRelatedClass = 0x8042A1A8;
-	MapSoundPlayer = 0x80195190;
-	PlaySoundWithFunctionB4 = 0x80194EA0;
-
-	ConvertStagePositionToScreenPosition__FP7Point2dP7Point3d = 0x8006A4B0;
-
-	PlaySoundAtPosition__17SoundPlayingClassFiP7Point2dUi = 0x80198A40;
-	instance2__17SoundPlayingClass = 0x80429A80;
-
-	ExitStage__Fiiii = 0x801021E0;
-	ExitStageRealRest = 0x801021E4;
-	LastPowerupStoreType = 0x80428D74;
+	CollidedWithTile = 2147945648;
+	SomeStrangeModification = 2148101728;
 
 
-	zero__4mMtxFv = 0x8016EF60;
-	rotationX__4mMtxFPs = 0x8016EA00;
-	applyRotationX__4mMtxFPs = 0x8016EAC0;
-	rotationY__4mMtxFPs = 0x8016EB20;
-	applyRotationY__4mMtxFPs = 0x8016EBE0;
-	rotationZ__4mMtxFPs = 0x8016EC40;
-	applyRotationZ__4mMtxFPs = 0x8016ED00;
-	applyRotationYXZ__4mMtxFPsPsPs = 0x8016ED60;
-	applyRotationZYX__4mMtxFPsPsPs = 0x8016EDE0;
+	Actor_GetVec3WithValuesAdded = 2147929808;
+	ConvertStagePositionIntoScreenPosition__Maybe  = 2147919024;/*mi*/
+	AnotherSoundRelatedFunction = 2149154064;
+	YetAnotherSoundPlayer = 2149158352;
+	CheckIfPlayingSound = 2149147664;
+	RelatedToPlayingSoundsAlongsideAnims = 2148553152;
 
-	_savefpr_14 = 0x802DCAB8;
-	_savefpr_15 = 0x802DCABC;
-	_savefpr_16 = 0x802DCAC0;
-	_savefpr_17 = 0x802DCAC4;
-	_savefpr_18 = 0x802DCAC8;
-	_savefpr_19 = 0x802DCACC;
-	_savefpr_20 = 0x802DCAD0;
-	_savefpr_21 = 0x802DCAD4;
-	_savefpr_22 = 0x802DCAD8;
-	_savefpr_23 = 0x802DCADC;
-	_savefpr_24 = 0x802DCAE0;
-	_savefpr_25 = 0x802DCAE4;
-	_savefpr_26 = 0x802DCAE8;
-	_savefpr_27 = 0x802DCAEC;
-	_savefpr_28 = 0x802DCAF0;
-	_savefpr_29 = 0x802DCAF4;
-	_savefpr_30 = 0x802DCAF8;
-	_savefpr_31 = 0x802DCAFC;
+	SoundRelatedClass = 2151850408;
+	MapSoundPlayer = 2149142928;
+	PlaySoundWithFunctionB4 = 2149142176;
 
-	_restfpr_14 = 0x802DCB04;
-	_restfpr_15 = 0x802DCB08;
-	_restfpr_16 = 0x802DCB0C;
-	_restfpr_17 = 0x802DCB10;
-	_restfpr_18 = 0x802DCB14;
-	_restfpr_19 = 0x802DCB18;
-	_restfpr_20 = 0x802DCB1C;
-	_restfpr_21 = 0x802DCB20;
-	_restfpr_22 = 0x802DCB24;
-	_restfpr_23 = 0x802DCB28;
-	_restfpr_24 = 0x802DCB2C;
-	_restfpr_25 = 0x802DCB30;
-	_restfpr_26 = 0x802DCB34;
-	_restfpr_27 = 0x802DCB38;
-	_restfpr_28 = 0x802DCB3C;
-	_restfpr_29 = 0x802DCB40;
-	_restfpr_30 = 0x802DCB44;
-	_restfpr_31 = 0x802DCB48;
+	ConvertStagePositionToScreenPosition__FP7Point2dP7Point3d = 2147919024;
 
-	_savegpr_14 = 0x802DCB50;
-	_savegpr_15 = 0x802DCB54;
-	_savegpr_16 = 0x802DCB58;
-	_savegpr_17 = 0x802DCB5C;
-	_savegpr_18 = 0x802DCB60;
-	_savegpr_19 = 0x802DCB64;
-	_savegpr_20 = 0x802DCB68;
-	_savegpr_21 = 0x802DCB6C;
-	_savegpr_22 = 0x802DCB70;
-	_savegpr_23 = 0x802DCB74;
-	_savegpr_24 = 0x802DCB78;
-	_savegpr_25 = 0x802DCB7C;
-	_savegpr_26 = 0x802DCB80;
-	_savegpr_27 = 0x802DCB84;
-	_savegpr_28 = 0x802DCB88;
-	_savegpr_29 = 0x802DCB8C;
-	_savegpr_30 = 0x802DCB90;
-	_savegpr_31 = 0x802DCB94;
+	PlaySoundAtPosition__17SoundPlayingClassFiP7Point2dUi = 2149157440;
+	instance2__17SoundPlayingClass = 2151848576;
 
-	_restgpr_14 = 0x802DCB9C;
-	_restgpr_15 = 0x802DCBA0;
-	_restgpr_16 = 0x802DCBA4;
-	_restgpr_17 = 0x802DCBA8;
-	_restgpr_18 = 0x802DCBAC;
-	_restgpr_19 = 0x802DCBB0;
-	_restgpr_20 = 0x802DCBB4;
-	_restgpr_21 = 0x802DCBB8;
-	_restgpr_22 = 0x802DCBBC;
-	_restgpr_23 = 0x802DCBC0;
-	_restgpr_24 = 0x802DCBC4;
-	_restgpr_25 = 0x802DCBC8;
-	_restgpr_26 = 0x802DCBCC;
-	_restgpr_27 = 0x802DCBD0;
-	_restgpr_28 = 0x802DCBD4;
-	_restgpr_29 = 0x802DCBD8;
-	_restgpr_30 = 0x802DCBDC;
-	_restgpr_31 = 0x802DCBE0;
-
-	__shl2i = 0x802DCFFC;
-
-	__nw__FUl = 0x802B9020;
-	__dl__FPv = 0x802B9090;
-	__dla__FPv = 0x802B90A0;
-
-	__construct_new_array = 0x802DC5F0;
-	__destroy_new_array = 0x802DC920;
-	__destroy_arr = 0x802DC8A8;
-	sub_80024C20 = 0x80024C20;
-
-	__register_global_object = 0x802DC590;
-	__ptmf_scall = 0x802DCA0C;
+	ExitStage__Fiiii = 2148540896;
+	ExitStageRealRest = 2148540900;
+	LastPowerupStoreType = 2151845236;
 
 
-	setup__13FunctionChainFPPFPv_bUs = 0x8015F410;
+	zero__4mMtxFv = 2148986720;
+	rotationX__4mMtxFPs = 2148985344;
+	applyRotationX__4mMtxFPs = 2148985536;
+	rotationY__4mMtxFPs = 2148985632;
+	applyRotationY__4mMtxFPs = 2148985824;
+	rotationZ__4mMtxFPs = 2148985920;
+	applyRotationZ__4mMtxFPs = 2148986112;
+	applyRotationYXZ__4mMtxFPsPsPs = 2148986208;
+	applyRotationZYX__4mMtxFPsPsPs = 2148986336;
+
+	_savefpr_14 = 2150484664;
+	_savefpr_15 = 2150484668;
+	_savefpr_16 = 2150484672;
+	_savefpr_17 = 2150484676;
+	_savefpr_18 = 2150484680;
+	_savefpr_19 = 2150484684;
+	_savefpr_20 = 2150484688;
+	_savefpr_21 = 2150484692;
+	_savefpr_22 = 2150484696;
+	_savefpr_23 = 2150484700;
+	_savefpr_24 = 2150484704;
+	_savefpr_25 = 2150484708;
+	_savefpr_26 = 2150484712;
+	_savefpr_27 = 2150484716;
+	_savefpr_28 = 2150484720;
+	_savefpr_29 = 2150484724;
+	_savefpr_30 = 2150484728;
+	_savefpr_31 = 2150484732;
+
+	_restfpr_14 = 2150484740;
+	_restfpr_15 = 2150484744;
+	_restfpr_16 = 2150484748;
+	_restfpr_17 = 2150484752;
+	_restfpr_18 = 2150484756;
+	_restfpr_19 = 2150484760;
+	_restfpr_20 = 2150484764;
+	_restfpr_21 = 2150484768;
+	_restfpr_22 = 2150484772;
+	_restfpr_23 = 2150484776;
+	_restfpr_24 = 2150484780;
+	_restfpr_25 = 2150484784;
+	_restfpr_26 = 2150484788;
+	_restfpr_27 = 2150484792;
+	_restfpr_28 = 2150484796;
+	_restfpr_29 = 2150484800;
+	_restfpr_30 = 2150484804;
+	_restfpr_31 = 2150484808;
+
+	_savegpr_14 = 2150484816;
+	_savegpr_15 = 2150484820;
+	_savegpr_16 = 2150484824;
+	_savegpr_17 = 2150484828;
+	_savegpr_18 = 2150484832;
+	_savegpr_19 = 2150484836;
+	_savegpr_20 = 2150484840;
+	_savegpr_21 = 2150484844;
+	_savegpr_22 = 2150484848;
+	_savegpr_23 = 2150484852;
+	_savegpr_24 = 2150484856;
+	_savegpr_25 = 2150484860;
+	_savegpr_26 = 2150484864;
+	_savegpr_27 = 2150484868;
+	_savegpr_28 = 2150484872;
+	_savegpr_29 = 2150484876;
+	_savegpr_30 = 2150484880;
+	_savegpr_31 = 2150484884;
+
+	_restgpr_14 = 2150484892;
+	_restgpr_15 = 2150484896;
+	_restgpr_16 = 2150484900;
+	_restgpr_17 = 2150484904;
+	_restgpr_18 = 2150484908;
+	_restgpr_19 = 2150484912;
+	_restgpr_20 = 2150484916;
+	_restgpr_21 = 2150484920;
+	_restgpr_22 = 2150484924;
+	_restgpr_23 = 2150484928;
+	_restgpr_24 = 2150484932;
+	_restgpr_25 = 2150484936;
+	_restgpr_26 = 2150484940;
+	_restgpr_27 = 2150484944;
+	_restgpr_28 = 2150484948;
+	_restgpr_29 = 2150484952;
+	_restgpr_30 = 2150484956;
+	_restgpr_31 = 2150484960;
+
+	__shl2i = 2150486012;
+
+	__nw__FUl = 2150338592;
+	__dl__FPv = 2150338704;
+	__dla__FPv = 2150338720;
+
+	__construct_new_array = 2150483440;
+	__destroy_new_array = 2150484256;
+	__destroy_arr = 2150484136;
+	sub_80024C20 = 2147634208;
+
+	__register_global_object = 2150483344;
+	__ptmf_scall = 2150484492;
+
+
+	setup__13FunctionChainFPPFPv_bUs = 2148922384;
 
 	/* collisionMgr_c */
-	__ct__14collisionMgr_c = 0x8006CF40;
-	__dt__14collisionMgr_c = 0x8006CF40;
-	clear1__14collisionMgr_cFv = 0x8006CFE0;
-	clear2__14collisionMgr_cFv = 0x8006D000;
-	init__14collisionMgr_cFP13dStageActor_cPC12sensorBase_sPC12sensorBase_sPC12sensorBase_s = 0x8006D090;
-	Clear3__14collisionMgr_cFv = 0x8006D440;
-	calculateBelowCollision__14collisionMgr_cFv = 0x8006DB30;
-	isOnTopOfTile__14collisionMgr_cCFv = 0x80070CB0;
-	calculateAboveCollision__14collisionMgr_cFUi = 0x8006EF40;
-	calculateBelowCollisionWithSmokeEffect__14collisionMgr_cFv = 0x80072BC0;
-	calculateAdjacentCollision__14collisionMgr_cFPf = 0x8006FA40;
-	s_80070760__14collisionMgr_cFv = 0x80070760;
-	s_800707E0__14collisionMgr_cFv = 0x800707E0;
-	getTileBehaviour1At__14collisionMgr_cFffUc = 0x80070BA0;
-	getTileBehaviour1At__14collisionMgr_cFUsUsUc = 0x80070C40;
-	getTileBehaviour2At__14collisionMgr_cFffUc = 0x80070BF0;
-	getTileBehaviour2At__14collisionMgr_cFUsUsUc = 0x80070C60;
-	getBelowSubType__14collisionMgr_c = 0x80070720;
-	_ZN14collisionMgr_c15getBelowSubTypeEv = 0x80070720;/*addAnyway*/
+	__ct__14collisionMgr_c = 2147929920;
+	__dt__14collisionMgr_c = 2147929920;
+	clear1__14collisionMgr_cFv = 2147930080;
+	clear2__14collisionMgr_cFv = 2147930112;
+	init__14collisionMgr_cFP13dStageActor_cPC12sensorBase_sPC12sensorBase_sPC12sensorBase_s = 2147930256;
+	Clear3__14collisionMgr_cFv = 2147931200;
+	calculateBelowCollision__14collisionMgr_cFv = 2147932976;
+	isOnTopOfTile__14collisionMgr_cCFv = 2147945648;
+	calculateAboveCollision__14collisionMgr_cFUi = 2147938112;
+	calculateBelowCollisionWithSmokeEffect__14collisionMgr_cFv = 2147953600;
+	calculateAdjacentCollision__14collisionMgr_cFPf = 2147940928;
+	s_80070760__14collisionMgr_cFv = 2147944288;
+	s_800707E0__14collisionMgr_cFv = 2147944416;
+	getTileBehaviour1At__14collisionMgr_cFffUc = 2147945376;
+	getTileBehaviour1At__14collisionMgr_cFUsUsUc = 2147945536;
+	getTileBehaviour2At__14collisionMgr_cFffUc = 2147945456;
+	getTileBehaviour2At__14collisionMgr_cFUsUsUc = 2147945568;
+	getBelowSubType__14collisionMgr_c = 2147944224;
+	_ZN14collisionMgr_c15getBelowSubTypeEv = 2147944224;/*addAnyway*/
 
 	/* freezeMgr_c */
-	__ct_11freezeMgr_c = 0x800B83C0;
-	__dt__11freezeMgr_cFv = 0x800B8460;
-	doSomethingCool1__11freezeMgr_c = 0x800B84D0;
-	doSomethingCool2__11freezeMgr_c = 0x800B85A0;
-	setSomething__11freezeMgr_cFUiUiUi = 0x800B8670;
-	Create_ICEACTORs__11freezeMgr_cFPvi = 0x800B8680;
-	Delete_ICEACTORs__11freezeMgr_c = 0x800B87D0;
-	SetIceTimer_pt1__11freezeMgr_c = 0x800B8850;
-	SetIceTimer_pt2__11freezeMgr_c = 0x800B88B0;
-	CheckIceTimer_lte_Value__11freezeMgr_c = 0x800B8930;
-	doSomethingCool3__11freezeMgr_c = 0x800B89A0;
-	doSomethingCool4__11freezeMgr_c = 0x800B8A30;
-	doSomethingCool5__11freezeMgr_c = 0x800B8AB0;
-	doSomethingCool6__11freezeMgr_c = 0x800B8B30;
-	DoMeltNormal__11freezeMgr_c = 0x800B8BB0;
-	doSomethingCool7__11freezeMgr_c = 0x800B8C70;
-	CheckCountdownTimer__11freezeMgr_c = 0x800B8E60;
+	__ct_11freezeMgr_c = 2148238272;
+	__dt__11freezeMgr_cFv = 2148238432;
+	doSomethingCool1__11freezeMgr_c = 2148238544;
+	doSomethingCool2__11freezeMgr_c = 2148238752;
+	setSomething__11freezeMgr_cFUiUiUi = 2148238960;
+	Create_ICEACTORs__11freezeMgr_cFPvi = 2148238976;
+	Delete_ICEACTORs__11freezeMgr_c = 2148239312;
+	SetIceTimer_pt1__11freezeMgr_c = 2148239440;
+	SetIceTimer_pt2__11freezeMgr_c = 2148239536;
+	CheckIceTimer_lte_Value__11freezeMgr_c = 2148239664;
+	doSomethingCool3__11freezeMgr_c = 2148239776;
+	doSomethingCool4__11freezeMgr_c = 2148239920;
+	doSomethingCool5__11freezeMgr_c = 2148240048;
+	doSomethingCool6__11freezeMgr_c = 2148240176;
+	DoMeltNormal__11freezeMgr_c = 2148240304;
+	doSomethingCool7__11freezeMgr_c = 2148240496;
+	CheckCountdownTimer__11freezeMgr_c = 2148240992;
 
-	__vt__7fBase_c = 0x80329178;
-	onCreate__7fBase_cFv = 0x80161B90;
-	onDelete__7fBase_cFv = 0x80161C40;
-	onExecute__7fBase_cFv = 0x80161EE0;
-	willBeDeleted__7fBase_cFv = 0x801620E0;
-	moreHeapShit__7fBase_cFUiPv = 0x80162400;
-	createHeap__7fBase_cFUiPv = 0x80162600;
-	heapCreated__7fBase_cFv = 0x801626C0;
-	Delete__7fBase_cFv = 0x80162320;
-	findNextUninitialisedProcess__7fBase_cFv = 0x801627C0;
-	hasUninitialisedProcesses__7fBase_cFv = 0x80162830;
-	onDraw__7fBase_cFv = 0x80161FE0;
-	_Z15fBase_c__DeletePv = 0x80162320;
-	fBase_c__Delete__FPv = 0x80162320;
+	__vt__7fBase_c = 2150797688;
+	onCreate__7fBase_cFv = 2148932496;
+	onDelete__7fBase_cFv = 2148932672;
+	onExecute__7fBase_cFv = 2148933344;
+	willBeDeleted__7fBase_cFv = 2148933856;
+	moreHeapShit__7fBase_cFUiPv = 2148934656;
+	createHeap__7fBase_cFUiPv = 2148935168;
+	heapCreated__7fBase_cFv = 2148935360;
+	Delete__7fBase_cFv = 2148934432;
+	findNextUninitialisedProcess__7fBase_cFv = 2148935616;
+	hasUninitialisedProcesses__7fBase_cFv = 2148935728;
+	onDraw__7fBase_cFv = 2148933600;
+	_Z15fBase_c__DeletePv = 2148934432;
+	fBase_c__Delete__FPv = 2148934432;
 
-	__vt__15StageActorLight = 0x80317680;
-	init__15StageActorLightFPvi = 0x800CCA00;
-	update__15StageActorLight = 0x800CCAC0;
-	draw__15StageActorLight = 0x800CCB70;
-	_ZN15StageActorLight6updateEv = 0x800CCB70; /*addAnyway*/
-	_ZN15StageActorLight4drawEv = 0x800CCB70; /*addAnyway*/
-	__dt__15StageActorLight = 0x800414A0;
+	__vt__15StageActorLight = 2150725248;
+	init__15StageActorLightFPvi = 2148321792;
+	update__15StageActorLight = 2148321984;
+	draw__15StageActorLight = 2148322160;
+	_ZN15StageActorLight6updateEv = 2148322160; /*addAnyway*/
+	_ZN15StageActorLight4drawEv = 2148322160; /*addAnyway*/
+	__dt__15StageActorLight = 2147751072;
 
-	GetExplanationString__7dBase_cFv = 0x8006C660;
+	GetExplanationString__7dBase_cFv = 2147927648;
 
-	__vt__15daEnBlockMain_c = 0x80301CC8;
-	__dt__15daEnBlockMain_cFv = 0x80023340;
-	calledWhenUpMoveBegins__15daEnBlockMain_cFv = 0x80022E80;
-	calledWhenDownMoveBegins__15daEnBlockMain_cFv = 0x80022F60;
-	calledWhenUpMoveExecutes__15daEnBlockMain_cFv = 0x80022F30;
-	calledWhenUpMoveDiffExecutes__15daEnBlockMain_cFv = 0x800231A0;
-	calledWhenDownMoveExecutes__15daEnBlockMain_cFv = 0x80023010;
-	calledWhenDownMoveEndExecutes__15daEnBlockMain_cFv = 0x80023080;
-	calledWhenDownMoveDiffExecutes__15daEnBlockMain_cFv = 0x800232C0;
-	calledWhenDownMoveDiffEndExecutes__15daEnBlockMain_cFv = 0x80023330;
-	updateScale__15daEnBlockMain_cFb = 0x80022DC0;
-	upMove_Begin__15daEnBlockMain_cFv = 0x80022E60;
-	upMove_Execute__15daEnBlockMain_cFv = 0x80022EA0;
-	upMove_End__15daEnBlockMain_cFv = 0x80022E90;
-	downMove_Begin__15daEnBlockMain_cFv = 0x80022F40;
-	downMove_Execute__15daEnBlockMain_cFv = 0x80022F80;
-	downMove_End__15daEnBlockMain_cFv = 0x80022F70;
-	downMoveEnd_Begin__15daEnBlockMain_cFv = 0x80023020;
-	downMoveEnd_Execute__15daEnBlockMain_cFv = 0x80023040;
-	downMoveEnd_End__15daEnBlockMain_cFv = 0x80023030;
-	upMove_Diff_Begin__15daEnBlockMain_cFv = 0x80023090;
-	upMove_Diff_Execute__15daEnBlockMain_cFv = 0x800230D0;
-	upMove_Diff_End__15daEnBlockMain_cFv = 0x800230C0;
-	downMove_Diff_Begin__15daEnBlockMain_cFv = 0x800231B0;
-	downMove_Diff_Execute__15daEnBlockMain_cFv = 0x800231F0;
-	downMove_Diff_End__15daEnBlockMain_cFv = 0x800231E0;
-	downMove_DiffEnd_Begin__15daEnBlockMain_cFv = 0x800232D0;
-	downMove_DiffEnd_Execute__15daEnBlockMain_cFv = 0x800232F0;
-	downMove_DiffEnd_End__15daEnBlockMain_cFv = 0x800232E0;
-	blockInit__15daEnBlockMain_cFf = 0x80021690;
-	blockUpdate__15daEnBlockMain_cFv = 0x800217B0;
-	blockResult__15daEnBlockMain_cFv = 0x800212C0;
-	PhysicsCallback1__15daEnBlockMain_c = 0x80021180;
-	PhysicsCallback2__15daEnBlockMain_c = 0x80021170;
-	PhysicsCallback3__15daEnBlockMain_c = 0x800211A0;
-	OPhysicsCallback1__15daEnBlockMain_c = 0x80020BF0;
-	OPhysicsCallback2__15daEnBlockMain_c = 0x80020E70;
-	OPhysicsCallback3__15daEnBlockMain_c = 0x80021010;
-	StateID_UpMove__15daEnBlockMain_c = 0x803527B4;
-	StateID_DownMove__15daEnBlockMain_c = 0x803527F4;
-	StateID_DownMoveEnd__15daEnBlockMain_c = 0x80352834;
-	StateID_UpMove_Diff__15daEnBlockMain_c = 0x80352874;
-	StateID_DownMove_Diff__15daEnBlockMain_c = 0x803528B4;
-	StateID_DownMove_DiffEnd__15daEnBlockMain_c = 0x803528F4;
+	__vt__15daEnBlockMain_c = 2150636744;
+	__dt__15daEnBlockMain_cFv = 2147627840;
+	calledWhenUpMoveBegins__15daEnBlockMain_cFv = 2147626624;
+	calledWhenDownMoveBegins__15daEnBlockMain_cFv = 2147626848;
+	calledWhenUpMoveExecutes__15daEnBlockMain_cFv = 2147626800;
+	calledWhenUpMoveDiffExecutes__15daEnBlockMain_cFv = 2147627424;
+	calledWhenDownMoveExecutes__15daEnBlockMain_cFv = 2147627024;
+	calledWhenDownMoveEndExecutes__15daEnBlockMain_cFv = 2147627136;
+	calledWhenDownMoveDiffExecutes__15daEnBlockMain_cFv = 2147627712;
+	calledWhenDownMoveDiffEndExecutes__15daEnBlockMain_cFv = 2147627824;
+	updateScale__15daEnBlockMain_cFb = 2147626432;
+	upMove_Begin__15daEnBlockMain_cFv = 2147626592;
+	upMove_Execute__15daEnBlockMain_cFv = 2147626656;
+	upMove_End__15daEnBlockMain_cFv = 2147626640;
+	downMove_Begin__15daEnBlockMain_cFv = 2147626816;
+	downMove_Execute__15daEnBlockMain_cFv = 2147626880;
+	downMove_End__15daEnBlockMain_cFv = 2147626864;
+	downMoveEnd_Begin__15daEnBlockMain_cFv = 2147627040;
+	downMoveEnd_Execute__15daEnBlockMain_cFv = 2147627072;
+	downMoveEnd_End__15daEnBlockMain_cFv = 2147627056;
+	upMove_Diff_Begin__15daEnBlockMain_cFv = 2147627152;
+	upMove_Diff_Execute__15daEnBlockMain_cFv = 2147627216;
+	upMove_Diff_End__15daEnBlockMain_cFv = 2147627200;
+	downMove_Diff_Begin__15daEnBlockMain_cFv = 2147627440;
+	downMove_Diff_Execute__15daEnBlockMain_cFv = 2147627504;
+	downMove_Diff_End__15daEnBlockMain_cFv = 2147627488;
+	downMove_DiffEnd_Begin__15daEnBlockMain_cFv = 2147627728;
+	downMove_DiffEnd_Execute__15daEnBlockMain_cFv = 2147627760;
+	downMove_DiffEnd_End__15daEnBlockMain_cFv = 2147627744;
+	blockInit__15daEnBlockMain_cFf = 2147620496;
+	blockUpdate__15daEnBlockMain_cFv = 2147620784;
+	blockResult__15daEnBlockMain_cFv = 2147619520;
+	PhysicsCallback1__15daEnBlockMain_c = 2147619200;
+	PhysicsCallback2__15daEnBlockMain_c = 2147619184;
+	PhysicsCallback3__15daEnBlockMain_c = 2147619232;
+	OPhysicsCallback1__15daEnBlockMain_c = 2147617776;
+	OPhysicsCallback2__15daEnBlockMain_c = 2147618416;
+	OPhysicsCallback3__15daEnBlockMain_c = 2147618832;
+	StateID_UpMove__15daEnBlockMain_c = 2150967220;
+	StateID_DownMove__15daEnBlockMain_c = 2150967284;
+	StateID_DownMoveEnd__15daEnBlockMain_c = 2150967348;
+	StateID_UpMove_Diff__15daEnBlockMain_c = 2150967412;
+	StateID_DownMove_Diff__15daEnBlockMain_c = 2150967476;
+	StateID_DownMove_DiffEnd__15daEnBlockMain_c = 2150967540;
 
-	__ct__5dEn_cFv = 0x80094E80;
-	__dt__5dEn_cFv = 0x80095130;
-	sub_80097050__5dEn_cFv = 0x80097050;
-	manageBelowCollision__5dEn_cFv = 0x80096F60;
-	afterCreate__5dEn_cFi = 0x800951D0;
-	beforeExecute__5dEn_cFv = 0x80095240;
-	afterExecute__5dEn_cFi = 0x80095480;
-	beforeDraw__5dEn_cFv = 0x800954A0;
-	kill__5dEn_cFv = 0x80097F70;
-	eatIn__5dEn_cFv = 0x80097C40;
-	disableEatIn__5dEn_cFv = 0x80097CB0;
-	_vf8C__5dEn_cFPv = 0x80097D30;
-	_vfCC__5dEn_cFP7Point2df = 0x800973F0;
-	_vfD0__5dEn_cFP7Point2df = 0x800974F0;
-	doStateChange__5dEn_cFP12dStateBase_c = 0x800A7DF0;
-	_ZN5dEn_c5_vfACEPv = 0x80097DF0; /*addAnyway*/
-	collisionCallback__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095950;
-	preSpriteCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095CE0;
-	prePlayerCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095D30;
-	preYoshiCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095F50;
-	stageActorCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80096060;
-	spriteCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095C10;
-	playerCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095C20;
-	yoshiCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x80095C80;
-	collisionCat3_StarPower__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009F840;
-	collisionCat5_Mario__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FB50;
-	_vf108__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FE40;
-	collisionCatD_Drill__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FFD0;
-	_vf110__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FFC0;
-	collisionCat8_FencePunch__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FCE0;
-	collisionCat7_GroundPound__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A0150;
-	collisionCat7_GroundPoundYoshi__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A02D0;
-	_vf120__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FCD0;
-	collisionCatA_PenguinMario__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009FCC0;
-	collisionCat11_PipeCannon__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x8009F9D0;
-	collisionCat9_RollingObject__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A0700;
-	collisionCat1_Fireball_E_Explosion__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A08D0;
-	collisionCat2_IceBall_15_YoshiIce__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A0A30;
-	collisionCat13_Hammer__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A03C0;
-	collisionCat14_YoshiFire__5dEn_cFP13ActivePhysicsP13ActivePhysics = 0x800A0550;
-	killWithSpecifiedState__5dEn_cFP13dStageActor_cP7Point2dP12dStateBase_cUi = 0x800A0EA0;
-	_vf140__5dEn_cFP13dStageActor_c = 0x800A10B0;
-	powBlockActivated__5dEn_cFb = 0x800A0C70;
-	_vf148__5dEn_cFv = 0x800A12A0;
-	_vf14C__5dEn_cFv = 0x800A1370;
-	canBePowed__5dEn_cFv = 0x800206D0;
-	eatenByYoshiProbably__5dEn_cFv = 0x80096230;
-	killByDieFall__5dEn_cFP13dStageActor_c = 0x800A1190;
-	playHpdpSound1__5dEn_cFv = 0x800A1C00;
-	playEnemyDownSound1__5dEn_cFv = 0x800A1BB0;
-	playEnemyDownComboSound__5dEn_cFPv = 0x800A1C80;
-	playHpdpSound2__5dEn_cFv = 0x800A1D90;
-	_vf168__5dEn_cFv = 0x800A1E10;
-	dieFumi_Begin__5dEn_cFv = 0x800A1470;
-	dieFumi_Execute__5dEn_cFv = 0x800A1600;
-	dieFumi_End__5dEn_cFv = 0x800A1820;
-	dieFall_Begin__5dEn_cFv = 0x800A16A0;
-	dieFall_Execute__5dEn_cFv = 0x800A1830;
-	dieFall_End__5dEn_cFv = 0x800A1820;
-	dieBigFall_Begin__5dEn_cFv = 0x800A1910;
-	dieBigFall_Execute__5dEn_cFv = 0x800A1930;
-	dieBigFall_End__5dEn_cFv = 0x800A1920;
-	dieSmoke_Begin__5dEn_cFv = 0x800A1980;
-	dieSmoke_Execute__5dEn_cFv = 0x800A1A00;
-	dieSmoke_End__5dEn_cFv = 0x800A19F0;
-	dieYoshiFumi_Begin__5dEn_cFv = 0x800A1AC0;
-	dieYoshiFumi_Execute__5dEn_cFv = 0x800A1B40;
-	dieYoshiFumi_End__5dEn_cFv = 0x800A1B30;
-	dieIceVanish_Begin__5dEn_cFv = 0x800A1A10;
-	dieIceVanish_Execute__5dEn_cFv = 0x800A1AB0;
-	dieIceVanish_End__5dEn_cFv = 0x800A1AA0;
-	dieGoal_Begin__5dEn_cFv = 0x800A1B50;
-	dieGoal_Execute__5dEn_cFv = 0x800A1B70;
-	dieGoal_End__5dEn_cFv = 0x800A1B60;
-	dieOther_Begin__5dEn_cFv = 0x800A1B80;
-	dieOther_Execute__5dEn_cFv = 0x800A1BA0;
-	dieOther_End__5dEn_cFv = 0x800A1B90;
-	eatIn_Begin__5dEn_cFv = 0x800A81C0;
-	eatIn_Execute__5dEn_cFv = 0x800A81E0;
-	eatIn_End__5dEn_cFv = 0x800A81D0;
-	eatNow_Begin__5dEn_cFv = 0x800A8260;
-	eatNow_Execute__5dEn_cFv = 0x800A8280;
-	eatNow_End__5dEn_cFv = 0x800A8270;
-	eatOut_Begin__5dEn_cFv = 0x800A8290;
-	eatOut_Execute__5dEn_cFv = 0x800A82B0;
-	eatOut_End__5dEn_cFv = 0x800A82A0;
-	hitSpin_Begin__5dEn_cFv = 0x800A8190;
-	hitSpin_Execute__5dEn_cFv = 0x800A81B0;
-	hitSpin_End__5dEn_cFv = 0x800A81A0;
-	ice_Begin__5dEn_cFv = 0x800A7E90;
-	ice_Execute__5dEn_cFv = 0x800A7F40;
-	ice_End__5dEn_cFv = 0x800A7F30;
-	spawnHitEffectAtPosition__5dEn_cF7Point2d = 0x80095520;
-	doSomethingWithHardHitAndSoftHitEffects__5dEn_cF7Point3d = 0x80095530;
-	playEnemyDownSound2__5dEn_cFv = 0x80095580;
-	add2ToYSpeed__5dEn_cFv = 0x800955D0;
-	_vf218__5dEn_cFv = 0x80095890;
-	_vf21C__5dEn_cFv = 0x80097770;
-	_vf220__5dEn_cFPv = 0x80097F20;
-	_vf224__5dEn_cFv = 0x80097F60;
-	_vf228__5dEn_cFv = 0x800206C0;
-	CreateIceActors__5dEn_cFv = 0x800A8060;
-	_vf230__5dEn_cFv = 0x800A8150;
-	_vf234__5dEn_cFv = 0x800A8160;
-	_vf238__5dEn_cFv = 0x800A8180;
-	_vf23C__5dEn_cFv = 0x800206B0;
-	_vf240__5dEn_cFv = 0x800206A0;
-	_vf244__5dEn_cFv = 0x80020690;
-	_vf248__5dEn_cFi = 0x800968E0;
-	bouncePlayerWhenJumpedOn__5dEn_cFPv = 0x80096710;
-	addScoreWhenHit__5dEn_cFPv = 0x80096700;
-	_vf254__5dEn_cFPv = 0x80096720;
-	_vf258__5dEn_cFPv = 0x80096760;
-	_vf25C__5dEn_cFPv = 0x80096770;
-	_vf260__5dEn_cFPv = 0x80096910;
-	_vf264__5dEn_cFP13dStageActor_c = 0x80096D60;
-	_vf268__5dEn_cFPv = 0x80096A20;
-	spawnHitEffectAtPositionAgain__5dEn_cF7Point2d = 0x80096DF0;
-	playMameStepSound__5dEn_cFv = 0x80096C40;
-	_vf274__5dEn_cFv = 0x80096E50;
-	_vf278__5dEn_cFPv = 0x80096B30;
-	_vf27C__5dEn_cFv = 0x80096E40;
+	__ct__5dEn_cFv = 2148093568;
+	__dt__5dEn_cFv = 2148094256;
+	sub_80097050__5dEn_cFv = 2148102224;
+	manageBelowCollision__5dEn_cFv = 2148101984;
+	afterCreate__5dEn_cFi = 2148094416;
+	beforeExecute__5dEn_cFv = 2148094528;
+	afterExecute__5dEn_cFi = 2148095104;
+	beforeDraw__5dEn_cFv = 2148095136;
+	kill__5dEn_cFv = 2148106096;
+	eatIn__5dEn_cFv = 2148105280;
+	disableEatIn__5dEn_cFv = 2148105392;
+	_vf8C__5dEn_cFPv = 2148105520;
+	_vfCC__5dEn_cFP7Point2df = 2148103152;
+	_vfD0__5dEn_cFP7Point2df = 2148103408;
+	doStateChange__5dEn_cFP12dStateBase_c = 2148171248;
+	_ZN5dEn_c5_vfACEPv = 2148105712; /*addAnyway*/
+	collisionCallback__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148096336;
+	preSpriteCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097248;
+	prePlayerCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097328;
+	preYoshiCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097872;
+	stageActorCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148098144;
+	spriteCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097040;
+	playerCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097056;
+	yoshiCollision__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148097152;
+	collisionCat3_StarPower__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148137024;
+	collisionCat5_Mario__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148137808;
+	_vf108__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138560;
+	collisionCatD_Drill__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138960;
+	_vf110__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138944;
+	collisionCat8_FencePunch__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138208;
+	collisionCat7_GroundPound__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148139344;
+	collisionCat7_GroundPoundYoshi__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148139728;
+	_vf120__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138192;
+	collisionCatA_PenguinMario__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148138176;
+	collisionCat11_PipeCannon__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148137424;
+	collisionCat9_RollingObject__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148140800;
+	collisionCat1_Fireball_E_Explosion__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148141264;
+	collisionCat2_IceBall_15_YoshiIce__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148141616;
+	collisionCat13_Hammer__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148139968;
+	collisionCat14_YoshiFire__5dEn_cFP13ActivePhysicsP13ActivePhysics = 2148140368;
+	killWithSpecifiedState__5dEn_cFP13dStageActor_cP7Point2dP12dStateBase_cUi = 2148142752;
+	_vf140__5dEn_cFP13dStageActor_c = 2148143280;
+	powBlockActivated__5dEn_cFb = 2148142192;
+	_vf148__5dEn_cFv = 2148143776;
+	_vf14C__5dEn_cFv = 2148143984;
+	canBePowed__5dEn_cFv = 2147616464;
+	eatenByYoshiProbably__5dEn_cFv = 2148098608;
+	killByDieFall__5dEn_cFP13dStageActor_c = 2148143504;
+	playHpdpSound1__5dEn_cFv = 2148146176;
+	playEnemyDownSound1__5dEn_cFv = 2148146096;
+	playEnemyDownComboSound__5dEn_cFPv = 2148146304;
+	playHpdpSound2__5dEn_cFv = 2148146576;
+	_vf168__5dEn_cFv = 2148146704;
+	dieFumi_Begin__5dEn_cFv = 2148144240;
+	dieFumi_Execute__5dEn_cFv = 2148144640;
+	dieFumi_End__5dEn_cFv = 2148145184;
+	dieFall_Begin__5dEn_cFv = 2148144800;
+	dieFall_Execute__5dEn_cFv = 2148145200;
+	dieFall_End__5dEn_cFv = 2148145184;
+	dieBigFall_Begin__5dEn_cFv = 2148145424;
+	dieBigFall_Execute__5dEn_cFv = 2148145456;
+	dieBigFall_End__5dEn_cFv = 2148145440;
+	dieSmoke_Begin__5dEn_cFv = 2148145536;
+	dieSmoke_Execute__5dEn_cFv = 2148145664;
+	dieSmoke_End__5dEn_cFv = 2148145648;
+	dieYoshiFumi_Begin__5dEn_cFv = 2148145856;
+	dieYoshiFumi_Execute__5dEn_cFv = 2148145984;
+	dieYoshiFumi_End__5dEn_cFv = 2148145968;
+	dieIceVanish_Begin__5dEn_cFv = 2148145680;
+	dieIceVanish_Execute__5dEn_cFv = 2148145840;
+	dieIceVanish_End__5dEn_cFv = 2148145824;
+	dieGoal_Begin__5dEn_cFv = 2148146000;
+	dieGoal_Execute__5dEn_cFv = 2148146032;
+	dieGoal_End__5dEn_cFv = 2148146016;
+	dieOther_Begin__5dEn_cFv = 2148146048;
+	dieOther_Execute__5dEn_cFv = 2148146080;
+	dieOther_End__5dEn_cFv = 2148146064;
+	eatIn_Begin__5dEn_cFv = 2148172224;
+	eatIn_Execute__5dEn_cFv = 2148172256;
+	eatIn_End__5dEn_cFv = 2148172240;
+	eatNow_Begin__5dEn_cFv = 2148172384;
+	eatNow_Execute__5dEn_cFv = 2148172416;
+	eatNow_End__5dEn_cFv = 2148172400;
+	eatOut_Begin__5dEn_cFv = 2148172432;
+	eatOut_Execute__5dEn_cFv = 2148172464;
+	eatOut_End__5dEn_cFv = 2148172448;
+	hitSpin_Begin__5dEn_cFv = 2148172176;
+	hitSpin_Execute__5dEn_cFv = 2148172208;
+	hitSpin_End__5dEn_cFv = 2148172192;
+	ice_Begin__5dEn_cFv = 2148171408;
+	ice_Execute__5dEn_cFv = 2148171584;
+	ice_End__5dEn_cFv = 2148171568;
+	spawnHitEffectAtPosition__5dEn_cF7Point2d = 2148095264;
+	doSomethingWithHardHitAndSoftHitEffects__5dEn_cF7Point3d = 2148095280;
+	playEnemyDownSound2__5dEn_cFv = 2148095360;
+	add2ToYSpeed__5dEn_cFv = 2148095440;
+	_vf218__5dEn_cFv = 2148096144;
+	_vf21C__5dEn_cFv = 2148104048;
+	_vf220__5dEn_cFPv = 2148106016;
+	_vf224__5dEn_cFv = 2148106080;
+	_vf228__5dEn_cFv = 2147616448;
+	CreateIceActors__5dEn_cFv = 2148171872;
+	_vf230__5dEn_cFv = 2148172112;
+	_vf234__5dEn_cFv = 2148172128;
+	_vf238__5dEn_cFv = 2148172160;
+	_vf23C__5dEn_cFv = 2147616432;
+	_vf240__5dEn_cFv = 2147616416;
+	_vf244__5dEn_cFv = 2147616400;
+	_vf248__5dEn_cFi = 2148100320;
+	bouncePlayerWhenJumpedOn__5dEn_cFPv = 2148099856;
+	addScoreWhenHit__5dEn_cFPv = 2148099840;
+	_vf254__5dEn_cFPv = 2148099872;
+	_vf258__5dEn_cFPv = 2148099936;
+	_vf25C__5dEn_cFPv = 2148099952;
+	_vf260__5dEn_cFPv = 2148100368;
+	_vf264__5dEn_cFP13dStageActor_c = 2148101472;
+	_vf268__5dEn_cFPv = 2148100640;
+	spawnHitEffectAtPositionAgain__5dEn_cF7Point2d = 2148101616;
+	playMameStepSound__5dEn_cFv = 2148101184;
+	_vf274__5dEn_cFv = 2148101712;
+	_vf278__5dEn_cFPv = 2148100912;
+	_vf27C__5dEn_cFv = 2148101696;
 
-	StateID_DieFumi__5dEn_c = 0x80357934;
-	StateID_DieFall__5dEn_c = 0x80357974;
-	StateID_DieBigFall__5dEn_c = 0x803579B4;
-	StateID_DieSmoke__5dEn_c = 0x803579F4;
-	StateID_DieIceVanish__5dEn_c = 0x80357A34;
-	StateID_DieYoshiFumi__5dEn_c = 0x80357A74;
-	StateID_DieGoal__5dEn_c = 0x80357AB4;
-	StateID_DieOther__5dEn_c = 0x80357AF4;
+	StateID_DieFumi__5dEn_c = 2150988084;
+	StateID_DieFall__5dEn_c = 2150988148;
+	StateID_DieBigFall__5dEn_c = 2150988212;
+	StateID_DieSmoke__5dEn_c = 2150988276;
+	StateID_DieIceVanish__5dEn_c = 2150988340;
+	StateID_DieYoshiFumi__5dEn_c = 2150988404;
+	StateID_DieGoal__5dEn_c = 2150988468;
+	StateID_DieOther__5dEn_c = 2150988532;
 
-	doSpriteMovement__5dEn_cFv = 0x800955F0;
-	CheckIfPlayerBelow__5dEn_cFff = 0x800978C0;
-	stuffRelatingToCollisions__5dEn_cFfff = 0x800957B0;
-	checkLiquidImmersion__5dEn_cFP7Point2df = 0x80097250;
-	bouncePlayer__5dEn_cFPvf = 0x800967A0;
+	doSpriteMovement__5dEn_cFv = 2148095472;
+	CheckIfPlayerBelow__5dEn_cFff = 2148104384;
+	stuffRelatingToCollisions__5dEn_cFfff = 2148095920;
+	checkLiquidImmersion__5dEn_cFP7Point2df = 2148102736;
+	bouncePlayer__5dEn_cFPvf = 2148100000;
 
-	__ct__13dActorState_cFv = 0x80066FC0;
-	__dt__13dActorState_cFv = 0x800671B0;
-	beginState_Gegneric__13dActorState_cFv = 0x80067230;
-	endState_Gegneric__13dActorState_cFv = 0x80067240;
-	executeState_Gegneric__13dActorState_cFv = 0x80067250;
+	__ct__13dActorState_cFv = 2147905472;
+	__dt__13dActorState_cFv = 2147905968;
+	beginState_Gegneric__13dActorState_cFv = 2147906096;
+	endState_Gegneric__13dActorState_cFv = 2147906112;
+	executeState_Gegneric__13dActorState_cFv = 2147906128;
 
-	_vfD8__18dActorMultiState_cFv = 0x80067590;
-	_vfDC__18dActorMultiState_cFv = 0x800675B0;
-	_vfE0__18dActorMultiState_cFv = 0x800675A0;
+	_vfD8__18dActorMultiState_cFv = 2147906960;
+	_vfDC__18dActorMultiState_cFv = 2147906992;
+	_vfE0__18dActorMultiState_cFv = 2147906976;
 
-	__ct__13dStageActor_cFv = 0x80064110;
-	__dt__13dStageActor_cFv = 0x800642B0;
-	beforeCreate__13dStageActor_cFv = 0x80064350;
-	afterCreate__13dStageActor_cFi = 0x80064380;
-	beforeDelete__13dStageActor_cFv = 0x80064390;
-	afterDelete__13dStageActor_cFi = 0x800643E0;
-	beforeExecute__13dStageActor_cFv = 0x800643F0;
-	afterExecute__13dStageActor_cFi = 0x80064490;
-	beforeDraw__13dStageActor_cFv = 0x80064540;
-	afterDraw__13dStageActor_cFi = 0x800645E0;
-	GetExplanationString__13dStageActor_cFv = 0x800645F0;
-	isOutOfView__13dStageActor_cFv = 0x80065080;
-	kill__13dStageActor_cFv = 0x80065650;
-	_vf68__13dStageActor_cFv = 0x8001D210;
-	_vf6C__13dStageActor_cFv = 0x8001D200;
-	_vf70__13dStageActor_cFv = 0x80065620;
-	_vf74__13dStageActor_cFv = 0x8001D1F0;
-	itemPickedUp__13dStageActor_cFv = 0x80065820;
-	_vf7C__13dStageActor_cFv = 0x8001D1E0;
-	eatIn__13dStageActor_cFv = 0x80065830;
-	disableEatIn__13dStageActor_cFv = 0x80065850;
-	_vf88__13dStageActor_cFv = 0x80065860;
-	_vf8C__13dStageActor_cFPv = 0x80065870;
-	_vf90__13dStageActor_cFP13dStageActor_c = 0x80065880;
-	_vf94__13dStageActor_cFPv = 0x80065AC0;
-	removeMyActivePhysics__13dStageActor_cFv = 0x80066080;
-	addMyActivePhysics__13dStageActor_cFv = 0x80066090;
-	returnRegularScale__13dStageActor_cFv = 0x80065950;
-	_vfA4__13dStageActor_cFPv = 0x80065970;
-	_vfA8__13dStageActor_cFPv = 0x80065A00;
-	_vfAC__13dStageActor_cFPv = 0x80065A40;
-	killedByLevelClear__13dStageActor_cFv = 0x80065660;
-	_vfB4__13dStageActor_cFv = 0x80065B40;
-	_vfB8__13dStageActor_cFv = 0x8001D1D0;
-	_vfBC__13dStageActor_cFv = 0x80065B50;
-	_vfC0__13dStageActor_cFv = 0x80065B60;
-	_vfC4__13dStageActor_cFv = 0x80065B70;
-	_vfC8__13dStageActor_cFP7Point2df = 0x80065CC0;
-	_vfCC__13dStageActor_cFP7Point2df = 0x80065DC0;
-	_vfD0__13dStageActor_cFP7Point2df = 0x80065EC0;
-	outOfZone__13dStageActor_cF7Point3dPfUc = 0x80064DA0;
-	checkZoneBoundaries__13dStageActor_cFUi = 0x80064F50;
-	create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc = 0x80064610;
-	create__13dStageActor_cF6ActorsUiP4VEC3P6S16VecUc = 0x80064610;
-	Delete__13dStageActor_cFUc = 0x80064D10;
-	create__13dStageActor_cFUsUiP7Point3dP6S16VecUc = 0x80064610;
+	__ct__13dStageActor_cFv = 2147893520;
+	__dt__13dStageActor_cFv = 2147893936;
+	beforeCreate__13dStageActor_cFv = 2147894096;
+	afterCreate__13dStageActor_cFi = 2147894144;
+	beforeDelete__13dStageActor_cFv = 2147894160;
+	afterDelete__13dStageActor_cFi = 2147894240;
+	beforeExecute__13dStageActor_cFv = 2147894256;
+	afterExecute__13dStageActor_cFi = 2147894416;
+	beforeDraw__13dStageActor_cFv = 2147894592;
+	afterDraw__13dStageActor_cFi = 2147894752;
+	GetExplanationString__13dStageActor_cFv = 2147894768;
+	isOutOfView__13dStageActor_cFv = 2147897472;
+	kill__13dStageActor_cFv = 2147898960;
+	_vf68__13dStageActor_cFv = 2147602960;
+	_vf6C__13dStageActor_cFv = 2147602944;
+	_vf70__13dStageActor_cFv = 2147898912;
+	_vf74__13dStageActor_cFv = 2147602928;
+	itemPickedUp__13dStageActor_cFv = 2147899424;
+	_vf7C__13dStageActor_cFv = 2147602912;
+	eatIn__13dStageActor_cFv = 2147899440;
+	disableEatIn__13dStageActor_cFv = 2147899472;
+	_vf88__13dStageActor_cFv = 2147899488;
+	_vf8C__13dStageActor_cFPv = 2147899504;
+	_vf90__13dStageActor_cFP13dStageActor_c = 2147899520;
+	_vf94__13dStageActor_cFPv = 2147900096;
+	removeMyActivePhysics__13dStageActor_cFv = 2147901568;
+	addMyActivePhysics__13dStageActor_cFv = 2147901584;
+	returnRegularScale__13dStageActor_cFv = 2147899728;
+	_vfA4__13dStageActor_cFPv = 2147899760;
+	_vfA8__13dStageActor_cFPv = 2147899904;
+	_vfAC__13dStageActor_cFPv = 2147899968;
+	killedByLevelClear__13dStageActor_cFv = 2147898976;
+	_vfB4__13dStageActor_cFv = 2147900224;
+	_vfB8__13dStageActor_cFv = 2147602896;
+	_vfBC__13dStageActor_cFv = 2147900240;
+	_vfC0__13dStageActor_cFv = 2147900256;
+	_vfC4__13dStageActor_cFv = 2147900272;
+	_vfC8__13dStageActor_cFP7Point2df = 2147900608;
+	_vfCC__13dStageActor_cFP7Point2df = 2147900864;
+	_vfD0__13dStageActor_cFP7Point2df = 2147901120;
+	outOfZone__13dStageActor_cF7Point3dPfUc = 2147896736;
+	checkZoneBoundaries__13dStageActor_cFUi = 2147897168;
+	create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc = 2147894800;
+	create__13dStageActor_cF6ActorsUiP4VEC3P6S16VecUc = 2147894800;
+	Delete__13dStageActor_cFUc = 2147896592;
+	create__13dStageActor_cFUsUiP7Point3dP6S16VecUc = 2147894800;
 
-	__ct__8dScene_cFv = 0x800E1930;
-	__dt__8dScene_cFv = 0x800E19A0;
-	beforeCreate__8dScene_cFv = 0x800E1A20;
-	afterCreate__8dScene_cFi = 0x800E1A60;
-	beforeDelete__8dScene_cFv = 0x800E1AD0;
-	afterDelete__8dScene_cFi = 0x800E1B00;
-	beforeExecute__8dScene_cFv = 0x800E1B60;
-	afterExecute__8dScene_cFi = 0x800E1CA0;
-	beforeDraw__8dScene_cFv = 0x800E1CF0;
-	afterDraw__8dScene_cFi = 0x800E1D20;
+	__ct__8dScene_cFv = 2148407600;
+	__dt__8dScene_cFv = 2148407712;
+	beforeCreate__8dScene_cFv = 2148407840;
+	afterCreate__8dScene_cFi = 2148407904;
+	beforeDelete__8dScene_cFv = 2148408016;
+	afterDelete__8dScene_cFi = 2148408064;
+	beforeExecute__8dScene_cFv = 2148408160;
+	afterExecute__8dScene_cFi = 2148408480;
+	beforeDraw__8dScene_cFv = 2148408560;
+	afterDraw__8dScene_cFi = 2148408608;
 
-	__ct__8dActor_cFv = 0x8006C6D0;
-	__dt__8dActor_cFv = 0x8006C7F0;
-	UpdateObjectPosBasedOnSpeedValuesReal__8dActor_cFv = 0x8006CD40;
-	HandleXSpeed__8dActor_cFv = 0x8006CD90;
-	HandleYSpeed__8dActor_cFv = 0x8006CDE0;
+	__ct__8dActor_cFv = 2147927760;
+	__dt__8dActor_cFv = 2147928048;
+	UpdateObjectPosBasedOnSpeedValuesReal__8dActor_cFv = 2147929408;
+	HandleXSpeed__8dActor_cFv = 2147929488;
+	HandleYSpeed__8dActor_cFv = 2147929568;
 
-	__ct__7dBase_cFv = 0x8006C420;
-	__dt__7dBase_cFv = 0x8006C490;
-	beforeCreate__7dBase_cFv = 0x8006C540;
-	afterCreate__7dBase_cFi = 0x8006C570;
-	beforeDelete__7dBase_cFv = 0x8006C580;
-	afterDelete__7dBase_cFi = 0x8006C5B0;
-	beforeExecute__7dBase_cFv = 0x8006C5C0;
-	afterExecute__7dBase_cFi = 0x8006C600;
-	beforeDraw__7dBase_cFv = 0x8006C610;
-	afterDraw__7dBase_cFi = 0x8006C650;
+	__ct__7dBase_cFv = 2147927072;
+	__dt__7dBase_cFv = 2147927184;
+	beforeCreate__7dBase_cFv = 2147927360;
+	afterCreate__7dBase_cFi = 2147927408;
+	beforeDelete__7dBase_cFv = 2147927424;
+	afterDelete__7dBase_cFi = 2147927472;
+	beforeExecute__7dBase_cFv = 2147927488;
+	afterExecute__7dBase_cFi = 2147927552;
+	beforeDraw__7dBase_cFv = 2147927568;
+	afterDraw__7dBase_cFi = 2147927632;
 
 
-	specialDraw1__8dActor_cFv = 0x8006CA50;
-	specialDraw2__8dActor_cFv = 0x8006CA60;
-	_vf58__8dActor_cFv = 0x8001D1C0;
-	_vf5C__8dActor_cFv = 0x8001D1B0;
+	specialDraw1__8dActor_cFv = 2147928656;
+	specialDraw2__8dActor_cFv = 2147928672;
+	_vf58__8dActor_cFv = 2147602880;
+	_vf5C__8dActor_cFv = 2147602864;
 
-	__ct__12dStateBase_cFPCc = 0x8015F5D0;
-	__dt__12dStateBase_cFv = 0x8015F610;
-	isInvalid__12dStateBase_cFv = 0x8015F650;
-	isEqualNotUsedForSomeReason__12dStateBase_cFP12dStateBase_c = 0x8015F660;
-	isEqual__12dStateBase_cFP12dStateBase_c = 0x8015F6D0;
-	isNotEqual__12dStateBase_cFP12dStateBase_c = 0x8015F6E0;
-	getName__12dStateBase_cFv = 0x8015F730;
-	getID__12dStateBase_cFv = 0x8015F740;
+	__ct__12dStateBase_cFPCc = 2148922832;
+	__dt__12dStateBase_cFv = 2148922896;
+	isInvalid__12dStateBase_cFv = 2148922960;
+	isEqualNotUsedForSomeReason__12dStateBase_cFP12dStateBase_c = 2148922976;
+	isEqual__12dStateBase_cFP12dStateBase_c = 2148923088;
+	isNotEqual__12dStateBase_cFP12dStateBase_c = 2148923104;
+	getName__12dStateBase_cFv = 2148923184;
+	getID__12dStateBase_cFv = 2148923200;
 
 	/* HACK HACK */
 	/* These don't actually exist, they're just here to save us some space for newer */
-	isSameStateName__12dStateBase_cFPCc = 0x800142A0;
-	doBegin__12dStateBase_cFPv = 0x80012970;
-	doExecute__12dStateBase_cFPv = 0x80012940;
-	doEnd__12dStateBase_cFPv = 0x80012910;
+	isSameStateName__12dStateBase_cFPCc = 2147566240;
+	doBegin__12dStateBase_cFPv = 2147559792;
+	doExecute__12dStateBase_cFPv = 2147559744;
+	doEnd__12dStateBase_cFPv = 2147559696;
 	/* END HACK */
 
-	mNoState__12dStateBase_c = 0x80377784;
+	mNoState__12dStateBase_c = 2151118724;
 
-	__dt__15dStateMgrBase_cFv = 0x8015F800;
+	__dt__15dStateMgrBase_cFv = 2148923392;
 
-	__ct__11dStateMgr_cFP17dStatePointless_cP20dStateExecutorBase_cP12dStateBase_c = 0x8015FAA0;
+	__ct__11dStateMgr_cFP17dStatePointless_cP20dStateExecutorBase_cP12dStateBase_c = 2148924064;
 
-	__ct__10dFlagMgr_c = 0x800E3A60;
-	setup__10dFlagMgr_cFb = 0x800E3B20;
-	applyAndClearAllTimedActions__10dFlagMgr_cFv = 0x800E3EA0;
-	execute__10dFlagMgr_cFv = 0x800E3F90;
-	set__10dFlagMgr_cFUcibbbUi = 0x800E4140;
-	findLowestFlagInSet__10dFlagMgr_cFUiUl = 0x800E43F0;
-	setSpecial__10dFlagMgr_cFUcffUcUiUl = 0x800E44D0;
-	get8__10dFlagMgr_cFUc = 0x800E4510;
-	get108__10dFlagMgr_cFUc = 0x800E4520;
-	get208__10dFlagMgr_cFUc = 0x800E4530;
-	get248__10dFlagMgr_cFUc = 0x800E4540;
-	get448__10dFlagMgr_cFUc = 0x800E4560;
-	instance__10dFlagMgr_c = 0x80429D98;
-
-
-	clear__13ActivePhysicsFv = 0x8008C2C0;
-	removeFromList__13ActivePhysicsFv = 0x8008C380;
-	addToList__13ActivePhysicsFv = 0x8008C330;
-	initWithStruct__13ActivePhysicsFP8dActor_cPCQ213ActivePhysics4Info = 0x8008C3E0;
-	bottom__13ActivePhysicsFv = 0x8008C4F0;
-
-	globalListHead__13ActivePhysics = 0x80429B80;
+	__ct__10dFlagMgr_c = 2148416096;
+	setup__10dFlagMgr_cFb = 2148416288;
+	applyAndClearAllTimedActions__10dFlagMgr_cFv = 2148417184;
+	execute__10dFlagMgr_cFv = 2148417424;
+	set__10dFlagMgr_cFUcibbbUi = 2148417856;
+	findLowestFlagInSet__10dFlagMgr_cFUiUl = 2148418544;
+	setSpecial__10dFlagMgr_cFUcffUcUiUl = 2148418768;
+	get8__10dFlagMgr_cFUc = 2148418832;
+	get108__10dFlagMgr_cFUc = 2148418848;
+	get208__10dFlagMgr_cFUc = 2148418864;
+	get248__10dFlagMgr_cFUc = 2148418880;
+	get448__10dFlagMgr_cFUc = 2148418912;
+	instance__10dFlagMgr_c = 2151849368;
 
 
-	__ct__7PhysicsFv = 0x8007F7A0;
-	__dt__7PhysicsFv = 0x8007F810;
-	baseSetup__7PhysicsFP8dActor_cPvPvPvUcUc = 0x8007F9B0;
-	setup__7PhysicsFP8dActor_cffffPvPvPvUcUcP7Point2d = 0x8007FA40;
-	setup__7PhysicsFP8dActor_cPQ27Physics4InfoUcUcP7Point2d = 0x8007FB10;
-	setupRound__7PhysicsFP8dActor_cfffPvPvPvUcUcP7Point2d = 0x8007FB80;
-	globalListHead__7Physics = 0x80429B00;
-	setPtrToRotation__7PhysicsFPs = 0x8007FD80;
+	clear__13ActivePhysicsFv = 2148057792;
+	removeFromList__13ActivePhysicsFv = 2148057984;
+	addToList__13ActivePhysicsFv = 2148057904;
+	initWithStruct__13ActivePhysicsFP8dActor_cPCQ213ActivePhysics4Info = 2148058080;
+	bottom__13ActivePhysicsFv = 2148058352;
 
-	spinningPhysicsCallback = 0x808A2110;
-	/* spinningPhysicsCallback__7Physics = 0x808A2110; */
+	globalListHead__13ActivePhysics = 2151848832;
 
-	addToList__7PhysicsFv = 0x8007F900;
-	removeFromList__7PhysicsFv = 0x8007F950;
-	update__7PhysicsFv = 0x8007FDA0;
 
-	getTileRendererList__7dBgGm_cFi = 0x80078520;
+	__ct__7PhysicsFv = 2148005792;
+	__dt__7PhysicsFv = 2148005904;
+	baseSetup__7PhysicsFP8dActor_cPvPvPvUcUc = 2148006320;
+	setup__7PhysicsFP8dActor_cffffPvPvPvUcUcP7Point2d = 2148006464;
+	setup__7PhysicsFP8dActor_cPQ27Physics4InfoUcUcP7Point2d = 2148006672;
+	setupRound__7PhysicsFP8dActor_cfffPvPvPvUcUcP7Point2d = 2148006784;
+	globalListHead__7Physics = 2151848704;
+	setPtrToRotation__7PhysicsFPs = 2148007296;
 
-	getPointerToTile__8BgGmBaseFiiiPib = 0x80077520;
-	getPointerToTile2__8BgGmBaseFiiiPib = 0x80077520;
-	getTileNumAtPosition__8BgGmBaseFiiii = 0x800775A0;
-	getTileNumAtPositionWithoutSpecial__8BgGmBaseFiii = 0x80077610;
-	getBehaviourForTileNum__8BgGmBaseFUi = 0x80077470;
-	getEffectiveTileBehaviour__8BgGmBaseFUs = 0x800774A0;
-	getTileBit__8BgGmBaseFiii = 0x80077810;
-	getCollisionInfo__8BgGmBaseFiiUc = 0x80077650;
-	placeTile__8BgGmBaseFUsUsii = 0x80077860;
-	makeSplash__8BgGmBaseFffi = 0x80078410;
+	spinningPhysicsCallback = 2156536080;
+	/* spinningPhysicsCallback__7Physics = 2156536080; */
 
-	add__Q212TileRenderer4ListFP12TileRenderer = 0x80014820;
-	remove__Q212TileRenderer4ListFP12TileRenderer = 0x80014860;
+	addToList__7PhysicsFv = 2148006144;
+	removeFromList__7PhysicsFv = 2148006224;
+	update__7PhysicsFv = 2148007328;
 
-	__ct__12TileRendererFv = 0x800145B0;
-	__dt__12TileRendererFv = 0x800145F0;
-	setPosition__12TileRendererFfff = 0x800146B0;
-	setVars__12TileRendererFf = 0x800146D0;
+	getTileRendererList__7dBgGm_cFi = 2147976480;
 
-	__ct__21dPlayerModelHandler_cFUc = 0x800D6C40;
-	loadModel__21dPlayerModelHandler_cFUcii = 0x800D6D70;
-	setSRT__21dPlayerModelHandler_cF7Point3d6S16Vec7Point3d = 0x800D6EC0;
-	callVF20__21dPlayerModelHandler_cFv = 0x800D6F80;
-	draw__21dPlayerModelHandler_cFv = 0x800D6FA0;
-	update__21dPlayerModelHandler_cFv = 0x800D6E10;
-	setMatrix__21dPlayerModelHandler_cFPA4_f  = 0x800D6E30; /*addAnyway*/
+	getPointerToTile__8BgGmBaseFiiiPib = 2147972384;
+	getPointerToTile2__8BgGmBaseFiiiPib = 2147972384;
+	getTileNumAtPosition__8BgGmBaseFiiii = 2147972512;
+	getTileNumAtPositionWithoutSpecial__8BgGmBaseFiii = 2147972624;
+	getBehaviourForTileNum__8BgGmBaseFUi = 2147972208;
+	getEffectiveTileBehaviour__8BgGmBaseFUs = 2147972256;
+	getTileBit__8BgGmBaseFiii = 2147973136;
+	getCollisionInfo__8BgGmBaseFiiUc = 2147972688;
+	placeTile__8BgGmBaseFUsUsii = 2147973216;
+	makeSplash__8BgGmBaseFffi = 2147976208;
 
-	_Z19RetrieveFileFromArcPvPcS0_ = 0x800DF100;
-	_Z8OSReportPKcz = 0x8015F540;
-	OSReport__FPCce = 0x8015F540;
-	_Z7OSFatal7GXColorS_PKc = 0x801AF3E0;
+	add__Q212TileRenderer4ListFP12TileRenderer = 2147567648;
+	remove__Q212TileRenderer4ListFP12TileRenderer = 2147567712;
 
-	GetSomeSizeRelatedBULLSHIT__Fv = 0x800E2500;
-	CalculateSomethingAboutRatio__Fffff = 0x800E2670;
-	CalculateSomethingElseAboutRatio__Fv = 0x800E2740;
-	DoSomethingCameraRelatedWithEGGScreen__FiPQ23EGG6Screen = 0x80169030;
+	__ct__12TileRendererFv = 2147567024;
+	__dt__12TileRendererFv = 2147567088;
+	setPosition__12TileRendererFfff = 2147567280;
+	setVars__12TileRendererFf = 2147567312;
 
-	GlobalScreenWidth = 0x80429E0C;
-	GlobalScreenHeight = 0x80429E10;
+	__ct__21dPlayerModelHandler_cFUc = 2148363328;
+	loadModel__21dPlayerModelHandler_cFUcii = 2148363632;
+	setSRT__21dPlayerModelHandler_cF7Point3d6S16Vec7Point3d = 2148363968;
+	callVF20__21dPlayerModelHandler_cFv = 2148364160;
+	draw__21dPlayerModelHandler_cFv = 2148364192;
+	update__21dPlayerModelHandler_cFv = 2148363792;
+	setMatrix__21dPlayerModelHandler_cFPA4_f  = 2148363824; /*addAnyway*/
 
-	currentScreenSizeID = 0x8042AC28;
-	ScreenSizesAndMultipliers = 0x80350240;
+	_Z19RetrieveFileFromArcPvPcS0_ = 2148397312;
+	_Z8OSReportPKcz = 2148922688;
+	OSReport__FPCce = 2148922688;
+	_Z7OSFatal7GXColorS_PKc = 2149250016;
 
-	setOrtho__Q23EGG7FrustumFffffff = 0x802C68F0;
+	GetSomeSizeRelatedBULLSHIT__Fv = 2148410624;
+	CalculateSomethingAboutRatio__Fffff = 2148410992;
+	CalculateSomethingElseAboutRatio__Fv = 2148411200;
+	DoSomethingCameraRelatedWithEGGScreen__FiPQ23EGG6Screen = 2148962352;
 
-	__ct__Q23EGG6ScreenFv = 0x802D0AD0;
-	__dt__Q23EGG6ScreenFv = 0x802D08B0;
-	_ZN3EGG6Screen14loadIntoCameraEN4nw4r3g3d6CameraE = 0x802D0E20; /*addAnyway*/
+	GlobalScreenWidth = 2151849484;
+	GlobalScreenHeight = 2151849488;
 
-	__vt__Q23EGG12LookAtCamera = 0x8034FDD8;
-	_ZN3EGG12LookAtCamera15calculateMatrixEv = 0x802BE810; /*addAnyway*/
-	assignToNW4RCamera__Q23EGG12LookAtCameraFRQ34nw4r3g3d6Camera = 0x802BE690;
+	currentScreenSizeID = 2151853096;
+	ScreenSizesAndMultipliers = 2150957632;
 
-	__ct__Q23EGG12ProjectOrthoFv = 0x802BF1E0;
-	setVolume__Q23EGG12ProjectOrthoFffff = 0x802BF230;
-	_ZN3EGG12ProjectOrtho18setOrthoOntoCameraERN4nw4r3g3d6CameraE = 0x802BFC30; /*addAnyway*/
+	setOrtho__Q23EGG7FrustumFffffff = 2150394096;
 
-	GetCameraByID__Fi = 0x80164930;
-	GetCurrentCameraID__Fv = 0x80164950;
-	SetCurrentCameraID__Fi = 0x80164960;
+	__ct__Q23EGG6ScreenFv = 2150435536;
+	__dt__Q23EGG6ScreenFv = 2150434992;
+	_ZN3EGG6Screen14loadIntoCameraEN4nw4r3g3d6CameraE = 2150436384; /*addAnyway*/
 
-	LinkScene__Fi = 0x80164A20;
-	UnlinkScene__Fi = 0x801649A0;
+	__vt__Q23EGG12LookAtCamera = 2150956504;
+	_ZN3EGG12LookAtCamera15calculateMatrixEv = 2150361104; /*addAnyway*/
+	assignToNW4RCamera__Q23EGG12LookAtCameraFRQ34nw4r3g3d6Camera = 2150360720;
 
-	SceneCalcWorld__Fi = 0x80164AE0;
-	SceneCameraStuff__Fi = 0x80164B70;
+	__ct__Q23EGG12ProjectOrthoFv = 2150363616;
+	setVolume__Q23EGG12ProjectOrthoFffff = 2150363696;
+	_ZN3EGG12ProjectOrtho18setOrthoOntoCameraERN4nw4r3g3d6CameraE = 2150366256; /*addAnyway*/
 
-	CalcMaterial__Fv = 0x80164B60;
-	DrawOpa__Fv = 0x80164C40;
-	DrawXlu__Fv = 0x80164C50;
+	GetCameraByID__Fi = 2148944176;
+	GetCurrentCameraID__Fv = 2148944208;
+	SetCurrentCameraID__Fi = 2148944224;
 
-	ChangeAlphaUpdate__Fb = 0x802D2D90;
-	ChangeColorUpdate__Fb = 0x802D2D30;
+	LinkScene__Fi = 2148944416;
+	UnlinkScene__Fi = 2148944288;
 
-	DoSpecialDrawing1__Fv = 0x8006CAE0;
-	DoSpecialDrawing2__Fv = 0x8006CB40;
+	SceneCalcWorld__Fi = 2148944608;
+	SceneCameraStuff__Fi = 2148944752;
 
-	SetupLYTDrawing__Fv = 0x80163030;
-	ClearLayoutDrawList__Fv = 0x80162F80;
+	CalcMaterial__Fv = 2148944736;
+	DrawOpa__Fv = 2148944960;
+	DrawXlu__Fv = 2148944976;
 
-	RenderAllLayouts__Fv = 0x800067A0;
-	DrawAllLayoutsBeforeX__Fi = 0x80163110;
-	DrawAllLayoutsAfterX__Fi = 0x801631A0;
-	DrawAllLayoutsAfterXandBeforeY__Fii = 0x80163230;
+	ChangeAlphaUpdate__Fb = 2150444432;
+	ChangeColorUpdate__Fb = 2150444336;
 
-	findPaneByName__Q23m2d17EmbedLayoutBase_cCFPCc = 0x80007300;
-	findTextBoxByName__Q23m2d17EmbedLayoutBase_cCFPCc = 0x80007320;
-	findPictureByName__Q23m2d17EmbedLayoutBase_cCFPCc = 0x800073D0;
-	findWindowByName__Q23m2d17EmbedLayoutBase_cCFPCc = 0x80007470;
+	DoSpecialDrawing1__Fv = 2147928800;
+	DoSpecialDrawing2__Fv = 2147928896;
 
-	__ct__Q23m2d13EmbedLayout_cFv = 0x800C88D0;
-	__dt__Q23m2d13EmbedLayout_cFv = 0x800C8920;
-	_ZN3m2d13EmbedLayout_c5buildEPKcPNS_8ResAcc_cE = 0x800C8990; /*addAnyway*/
-	loadArc__Q23m2d13EmbedLayout_cFPCcb = 0x800C8C30;
-	getPanes__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt4Panei = 0x800C8CE0;
-	getWindows__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt6Windowi = 0x800C8D50;
-	getPictures__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt7Picturei = 0x800C8DC0;
-	getTextBoxes__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt7TextBoxi = 0x800C8E30;
-	setLangStrings__Q23m2d13EmbedLayout_cFPPCcPCiii = 0x800C8EA0;
-	loadAnimations__Q23m2d13EmbedLayout_cFPPCci = 0x800C8F30;
-	loadGroups__Q23m2d13EmbedLayout_cFPPCcPCii = 0x800C9070;
-	enableNonLoopAnim__Q23m2d13EmbedLayout_cFib = 0x800C9270;
-	enableLoopAnim__Q23m2d13EmbedLayout_cFi = 0x800C9300;
-	resetAnim__Q23m2d13EmbedLayout_cFib = 0x800C9350;
-	disableAllAnimations__Q23m2d13EmbedLayout_cFv = 0x800C9480;
-	isAnimOn__Q23m2d13EmbedLayout_cFi = 0x800C9590;
-	isAnyAnimOn__Q23m2d13EmbedLayout_cFv = 0x800C95C0;
-	free__Q23m2d13EmbedLayout_cFv = 0x800C98B0;
-	execAnimations__Q23m2d13EmbedLayout_cFv = 0x800C94E0;
+	SetupLYTDrawing__Fv = 2148937776;
+	ClearLayoutDrawList__Fv = 2148937600;
 
-	attachArc__Q23m2d8ResAcc_cFPvPCc = 0x80163470;
+	RenderAllLayouts__Fv = 2147510176;
+	DrawAllLayoutsBeforeX__Fi = 2148938000;
+	DrawAllLayoutsAfterX__Fi = 2148938144;
+	DrawAllLayoutsAfterXandBeforeY__Fii = 2148938288;
 
-	setSpeed__Q23m2d11FrameCtrl_cFf = 0x801635F0;
+	findPaneByName__Q23m2d17EmbedLayoutBase_cCFPCc = 2147513088;
+	findTextBoxByName__Q23m2d17EmbedLayoutBase_cCFPCc = 2147513120;
+	findPictureByName__Q23m2d17EmbedLayoutBase_cCFPCc = 2147513296;
+	findWindowByName__Q23m2d17EmbedLayoutBase_cCFPCc = 2147513456;
 
-	scheduleForDrawing__Q23m2d6Base_cFv = 0x80163660;
+	__ct__Q23m2d13EmbedLayout_cFv = 2148305104;
+	__dt__Q23m2d13EmbedLayout_cFv = 2148305184;
+	_ZN3m2d13EmbedLayout_c5buildEPKcPNS_8ResAcc_cE = 2148305296; /*addAnyway*/
+	loadArc__Q23m2d13EmbedLayout_cFPCcb = 2148305968;
+	getPanes__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt4Panei = 2148306144;
+	getWindows__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt6Windowi = 2148306256;
+	getPictures__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt7Picturei = 2148306368;
+	getTextBoxes__Q23m2d13EmbedLayout_cCFPPCcPPQ34nw4r3lyt7TextBoxi = 2148306480;
+	setLangStrings__Q23m2d13EmbedLayout_cFPPCcPCiii = 2148306592;
+	loadAnimations__Q23m2d13EmbedLayout_cFPPCci = 2148306736;
+	loadGroups__Q23m2d13EmbedLayout_cFPPCcPCii = 2148307056;
+	enableNonLoopAnim__Q23m2d13EmbedLayout_cFib = 2148307568;
+	enableLoopAnim__Q23m2d13EmbedLayout_cFi = 2148307712;
+	resetAnim__Q23m2d13EmbedLayout_cFib = 2148307792;
+	disableAllAnimations__Q23m2d13EmbedLayout_cFv = 2148308096;
+	isAnimOn__Q23m2d13EmbedLayout_cFi = 2148308368;
+	isAnyAnimOn__Q23m2d13EmbedLayout_cFv = 2148308416;
+	free__Q23m2d13EmbedLayout_cFv = 2148309168;
+	execAnimations__Q23m2d13EmbedLayout_cFv = 2148308192;
 
-	RenderEffects__Fii = 0x80093F10;
+	attachArc__Q23m2d8ResAcc_cFPvPCc = 2148938864;
 
-	RemoveAllFromScnRoot__Fv = 0x80164C80;
-	Reset3DState__Fv = 0x80164CD0;
+	setSpeed__Q23m2d11FrameCtrl_cFf = 2148939248;
 
-	GetRenderModeObj__Q34nw4r3g3d8G3DStateFv = 0x8024D3E0;
+	scheduleForDrawing__Q23m2d6Base_cFv = 2148939360;
 
-	__ct__Q34nw4r3g3d6CameraFPQ34nw4r3g3d10CameraData = 0x802535E0;
-	SetOrtho__Q34nw4r3g3d6CameraFffffff = 0x80253A80;
-	SetPerspective__Q34nw4r3g3d6CameraFffff = 0x80253A40;
-	SetViewportJitter__Q34nw4r3g3d6CameraFUi = 0x80253C30;
-	SetPosture__Q34nw4r3g3d6CameraFRCQ44nw4r3g3d6Camera11PostureInfo = 0x802537D0;
-	SetPosition__Q34nw4r3g3d6CameraFRC4VEC3 = 0x80253760;
-	SetPosition__Q34nw4r3g3d6CameraFRC7Point3d = 0x80253760;
-	GetPosition__Q34nw4r3g3d6CameraCFP7Point3d = 0x802537A0;
-	GetViewport__Q34nw4r3g3d6CameraCFPfPfPfPfPfPf = 0x80253C70;
-	SetViewportZRange__Q34nw4r3g3d6CameraFff = 0x80253C10;
-	SetCameraMtxDirectly__Q34nw4r3g3d6CameraFRA3_A4_Cf = 0x802539F0;
-	GetCameraMtx__Q34nw4r3g3d6CameraCFPA3_A4_f = 0x80253EC0;
+	RenderEffects__Fii = 2148089616;
 
-	CheckRevision__Q34nw4r3g3d7ResFileCFv = 0x8023A670;
-	Init__Q34nw4r3g3d7ResFileFv = 0x8023A3A0;
-	Bind__Q34nw4r3g3d7ResFileFQ34nw4r3g3d7ResFile = 0x8023A160;
-	GetResMdl__Q34nw4r3g3d7ResFileCFPCc = 0x80239C40;
-	GetResTex__Q34nw4r3g3d7ResFileCFPCc = 0x80239D30;
-	g3dMemAllocator__Q24nw4r3g3d = 0x8042A0E8;
-	__ScnMdl__Construct__Q24nw4r3g3dFPvPUiPvUii = 0x8025C830;
-	__ScnMdlSimple__Construct__Q24nw4r3g3dFPvPUiPvi = 0x8025A190;
-	InsertIntoScene__Q24nw4r3g3dFPv = 0x80164C60;
+	RemoveAllFromScnRoot__Fv = 2148945024;
+	Reset3DState__Fv = 2148945104;
 
-	GetResMat__Q34nw4r3g3d6ResMdlCFPCc = 0x8023B570;
-	GetResNode__Q34nw4r3g3d6ResMdlCFPCc = 0x8023B010;
+	GetRenderModeObj__Q34nw4r3g3d8G3DStateFv = 2149897184;
 
-	DisableIndirectTexturing__3m3dFv = 0x80164D60;
-	InitTexObjWithResTex__3m3dFP9_GXTexObjPvUiUiUiUi = 0x802C7A80;
+	__ct__Q34nw4r3g3d6CameraFPQ34nw4r3g3d10CameraData = 2149922272;
+	SetOrtho__Q34nw4r3g3d6CameraFffffff = 2149923456;
+	SetPerspective__Q34nw4r3g3d6CameraFffff = 2149923392;
+	SetViewportJitter__Q34nw4r3g3d6CameraFUi = 2149923888;
+	SetPosture__Q34nw4r3g3d6CameraFRCQ44nw4r3g3d6Camera11PostureInfo = 2149922768;
+	SetPosition__Q34nw4r3g3d6CameraFRC4VEC3 = 2149922656;
+	SetPosition__Q34nw4r3g3d6CameraFRC7Point3d = 2149922656;
+	GetPosition__Q34nw4r3g3d6CameraCFP7Point3d = 2149922720;
+	GetViewport__Q34nw4r3g3d6CameraCFPfPfPfPfPfPf = 2149923952;
+	SetViewportZRange__Q34nw4r3g3d6CameraFff = 2149923856;
+	SetCameraMtxDirectly__Q34nw4r3g3d6CameraFRA3_A4_Cf = 2149923312;
+	GetCameraMtx__Q34nw4r3g3d6CameraCFPA3_A4_f = 2149924544;
+
+	CheckRevision__Q34nw4r3g3d7ResFileCFv = 2149820016;
+	Init__Q34nw4r3g3d7ResFileFv = 2149819296;
+	Bind__Q34nw4r3g3d7ResFileFQ34nw4r3g3d7ResFile = 2149818720;
+	GetResMdl__Q34nw4r3g3d7ResFileCFPCc = 2149817408;
+	GetResTex__Q34nw4r3g3d7ResFileCFPCc = 2149817648;
+	g3dMemAllocator__Q24nw4r3g3d = 2151850216;
+	__ScnMdl__Construct__Q24nw4r3g3dFPvPUiPvUii = 2149959728;
+	__ScnMdlSimple__Construct__Q24nw4r3g3dFPvPUiPvi = 2149949840;
+	InsertIntoScene__Q24nw4r3g3dFPv = 2148944992;
+
+	GetResMat__Q34nw4r3g3d6ResMdlCFPCc = 2149823856;
+	GetResNode__Q34nw4r3g3d6ResMdlCFPCc = 2149822480;
+
+	DisableIndirectTexturing__3m3dFv = 2148945248;
+	InitTexObjWithResTex__3m3dFP9_GXTexObjPvUiUiUiUi = 2150398592;
 
 	/* This is preliminary and kinda strange, most of these just point to ScnLeaf for now */
-	setup__Q23m3d6proc_cFPvPUi = 0x80164DE0;
-	returnUnknown__Q23m3d6proc_cFv = 0x8000F720;
+	setup__Q23m3d6proc_cFPvPUi = 2148945376;
+	returnUnknown__Q23m3d6proc_cFv = 2147546912;
 
-	__ct__Q23m3d9scnLeaf_cFv = 0x80169E20;
-	__dt__Q23m3d9scnLeaf_cFv = 0x80169E40;
-	free__Q23m3d9scnLeaf_cFv = 0x80169EA0;
-	scheduleForDrawing__Q23m3d9scnLeaf_cFv = 0x80169EF0;
-	getViewMatrix__Q23m3d9scnLeaf_cFPA3_A4_f = 0x80169FA0;
+	__ct__Q23m3d9scnLeaf_cFv = 2148965920;
+	__dt__Q23m3d9scnLeaf_cFv = 2148965952;
+	free__Q23m3d9scnLeaf_cFv = 2148966048;
+	scheduleForDrawing__Q23m3d9scnLeaf_cFv = 2148966128;
+	getViewMatrix__Q23m3d9scnLeaf_cFPA3_A4_f = 2148966304;
 	/* End preliminary section */
 
-	__vt__Q23m3d5mdl_c = 0x803293A4;
-	__ct__Q23m3d5mdl_cFv = 0x80169AE0;
-	__dt__Q23m3d5mdl_cFv = 0x80169B30;
-	setup__Q23m3d5mdl_cFQ34nw4r3g3d6ResMdlPvUiiPUi = 0x80169BA0;
-	oneSetupType__Q23m3d5mdl_cFv = 0x80064C10;
-	sub_80064BF0__Q23m3d5mdl_cFv = 0x80064BF0;
-	setDrawMatrix__Q23m3d5mdl_cFPA4_Cf = 0x80169F80; /*addAnyway*/
-	setScale__Q23m3d5mdl_cFfff = 0x80169F40;
-	setScale__Q23m3d5mdl_cFP7Point3d = 0x80169F60;
-	calcWorld__Q23m3d5mdl_cFb = 0x80169FB0;
-	bindAnim__Q23m3d5mdl_cFPQ23m3d6banm_cf = 0x80169D90;
-	_ZN3m3d5mdl_c8bindAnimEPNS_6banm_cE = 0x80169D40; /*addAnyway*/
-	vf1C__Q3m3d5mdl_cFv = 0x80169D50;
-	getMatrixForNode__Q23m3d5mdl_cFUiPA4_f = 0x80167F90; /*addAnyway*/
-	_ZN3m3d5mdl_c18scheduleForDrawingEv = 0x80169EF0; /*addAnyway*/
-
-	SetCullModeForMaterial__FPQ23m3d5mdl_ci11_GXCullMode = 0x8000D190;
-	SetupTextures_Player__FPQ23m3d5mdl_ci = 0x800B3E50;
-	SetupTextures_Map__FPQ23m3d5mdl_ci = 0x800B3F50;
-	SetupTextures_Boss__FPQ23m3d5mdl_ci = 0x800B4050;
-	SetupTextures_Enemy__FPQ23m3d5mdl_ci = 0x800B4170;
-	SetupTextures_MapObj__FPQ23m3d5mdl_ci = 0x800B42B0;
-	SetupTextures_Item__FPQ23m3d5mdl_ci = 0x800B43D0;
-
-	__ct__16mHeapAllocator_cFv = 0x80069020;
-	__dt__16mHeapAllocator_cFv = 0x80069060;
-	link__16mHeapAllocator_cFiPvPCci = 0x800690C0;
-	unlink__16mHeapAllocator_cFv = 0x800690E0;
-
-	__ct__10mTexture_cFv = 0x802C0840;
-	__ct__10mTexture_cFUsUsUi = 0x802C0890;
-	__dt__10mTexture_cFv = 0x802C08D0;
-	load__10mTexture_cFUi = 0x802C0970;
-	load__10mTexture_cF11_GXTexMapID = 0x802C0970;
-	flushDC__10mTexture_cFv = 0x802C0A30;
-	makeLinearGradient__10mTexture_cFicUsUs8_GXColor8_GXColorb = 0x802C0C40;
-	allocateBuffer__10mTexture_cFPv = 0x802C0FF0;
-	plotPixel__10mTexture_cFUsUs8_GXColor = 0x802C1090;
-
-	SetFontSize__Q34nw4r2ut10CharWriterFff = 0x8022D100;
-
-	__ct__Q34nw4r2ut10TextWriterFv = 0x80230590;
-	__dt__Q34nw4r2ut10TextWriterFv = 0x802305F0;
-	CalcStringWidth__Q34nw4r2ut10TextWriterCFPCwi = 0x80230EE0;
-
-	GameHeaps = 0x803779C8;
-
-	BGDatClass = 0x80429B10;
-	instance__10BGDatClass = 0x80429B10;
-	GetTilesetName__FPvii = 0x800813F0;
-	OriginalTilesetLoadingThing = 0x80083560;
-
-	getTilesetName__10BGDatClassFii = 0x800813F0;
-
-	getPointerToTile__12TilemapClassFiiPUib = 0x80083B40;
-
-	IsWideScreen__Fv = 0x800B5430;
-
-	Player_Active = 0x80354BD0;
-	Player_ID = 0x80354BE0;
-	Player_Powerup = 0x80354BF0;
-	Player_Flags = 0x80354C00;
-	Player_Lives = 0x80354C10;
-	Player_Coins = 0x80354C20;
-
-	AllocateMemoryBlock = 0x801626D0;
-	EnsureAllArcsAreLoaded = 0x800DF460;
-	FindRotationController = 0x8002AC00;
-	GetObjectName = 0x80101730;
-	GetObjectParent = 0x801623A0;
-	OSReport = 0x8015F540;
-
-	StagePtr = 0x80429EE8;
-
-	_Z20CreateParentedObjectsPvic = 0x80162910;
-	_Z47CheckIfMenuShouldBeCancelledForSpecifiedWiimotei = 0x800B5320;
-	_Z21StartTitleScreenStagebi = 0x80101750;
-	_Z17CreateChildObjectsPviii = 0x8006CBA0;
-
-	CreateParentedObject__FsPvic = 0x80162910;
-	CheckIfMenuShouldBeCancelledForSpecifiedWiimote__Fi = 0x800B5320;
-	StartTitleScreenStage__Fbi = 0x80101750;
-	CreateChildObject__FsPviii = 0x8006CBA0;
-
-	ObjCreate1 = 0x80162910;
-	ObjCreate2 = 0x80162930;
-	RestoreObjectState = 0x800B0FD0;
-	QueueArcLoad = 0x800DF7C0;
-	RetrieveFileFromArc = 0x800DF100;
-	RetrieveFileFromArcAlt = 0x800DF340;
-
-	SpawnSprite = 0x80064610;
-	StoreObjectState = 0x800B1100;
-	TriggerEventFlag = 0x800E49B0;
-
-	_ZN8SaveFile14CheckIfWritingEv = 0x800E03D0;
-	_Z8SaveGamePvb = 0x8092F330;
-
-	CheckIfWriting__8SaveFileFv = 0x800E03D0;
-	SaveGame__FPvb = 0x8092F330;
-
-	_Z9DVD_Startv = 0x8006A6F0;
-	_Z12DVD_LoadFilePvPcS0_S_ = 0x800DF7C0;
-	_Z12DVD_FreeFilePvPc = 0x800DF0B0;
-	_Z16DVD_StillLoadingPv = 0x800DF460;
-	_Z7DVD_Endv = 0x8006A760;
-
-	DVD_Start__Fv = 0x8006A6F0;
-	DVD_LoadFile__FPvPcPcPv  = 0x800DF7C0;
-	DVD_FreeFile__FPvPc = 0x800DF0B0;
-	DVD_StillLoading__FPv = 0x800DF460;
-	DVD_End__Fv = 0x8006A760;
-	DVD_GetFile__FPvPCcPCc = 0x800DF100;
-	DVD_GetFile__FPvPCcPCcPUi = 0x800DF160;
-
-	__ct__12dDvdLoader_cFv = 0x8008F140;
-	__dt__12dDvdLoader_cFv = 0x8008F170;
-	load__12dDvdLoader_cFPCcUcPv = 0x8008F1B0;
-	unload__12dDvdLoader_cFv = 0x8008F310;
-
-	SZSDecompClass = 0x80377864;
-	LZDecompClass = 0x80377870;
-	LHDecompClass = 0x8037787C;
-	LRCDecompClass = 0x80377888;
-	RLDecompClass = 0x80377894;
-	StoreCompressionClassList = 0x8016AEA0;
-	DecompBufferPointer = 0x80429190;
-
-	TryAndFindCompressedFile = 0x8016B8B0;
-
-	_Z22BgTexMng__LoadAnimTilePvisPcS0_c = 0x80087B60; /* same for ntsc */
-	BgTexMng__LoadAnimTile__FPvisPcPcc = 0x80087B60; /* same for ntsc */
-
-	_Z12ActivateWipei = 0x800B0DB0;
-	ActivateWipe__Fi = 0x800B0DB0;
-
-	CurrentDrawFunc = 0x80429C78;
-
-	currentHeap = 0x8042AB30;
-
-	_Z20GameSetup__LoadScenePv = 0x809192A0;
-	_Z9FreeScenei = 0x801646C0;
-	_Z17GameSetupDrawFuncv = 0x809176D0;
-	_Z16WorldMapDrawFuncv = 0x809264B0;
-
-	GameSetup__LoadScene__FPv = 0x809192A0;
-	FreeScene__Fi = 0x801646C0;
-	GameSetupDrawFunc__Fv = 0x809176D0;
-	WorldMapDrawFunc__Fv = 0x809264B0;
-
-	memcpy = 0x80004364;
-	memset = 0x800046B4;
-	strncat = 0x802E1878;
-	strncpy = 0x802E1808;
-	strcmp = 0x802E18C4;
-	sprintf = 0x802E15EC;
-	strrchr = 0x802E1A50;
-
-	wcslen = 0x802E422C;
-	wcscpy = 0x802E4248;
-
-	IOS_Open = 0x80224A80;
-	IOS_Close = 0x80224C70;
-	IOS_Seek = 0x80225220;
-	IOS_Read = 0x80224E20;
-	IOS_Write = 0x80225030;
-
-	ArchiveHeap = 0x8042A16C;
-	DVDClass = 0x80429D58;
-	GameMgrP = 0x80429C9C;
-	SaveFileBuffer = 0x8035DA40;
-	SaveFileInstance = 0x80429D60;
-
-	World = 0x80429D6B;
-	WS_ptr = 0x8098DA14;
-	CS_ptr1 = 0x80428558;
-	CS_ptr2 = 0x80428DB0;
-	CS_ptr3 = 0x80983FDC;
-	CS_ptr4 = 0x80984E58;
-	model = 0x8031B8D8;
-
-	aWorld1 = 0x808DE86B;
-	aWorld2 = 0x800EE627;
-
-	SaveHandlerInstance = 0x80429CD8;
-	RemoconMng = 0x80429C70;
-	ActiveWiimoteID = 0x8042A184;
-	ActiveWiimote = 0x8042A188;
-
-	MakeScene = 0x80007610;
-	GetRes = 0x800DF100;
-	GetSceneLightInfo = 0x80164980;
-	GetAnmScn = 0x8023A0F0;
-	BindAnmScn = 0x802424E0;
-	AssignAnmScnToLightInfo = 0x802C8650;
-	LoadBlight = 0x80919630;
-	LoadBlmap = 0x80919620;
-
-	_Z23QueryPlayerAvailabilityi = 0x800B4690;
-	_Z12DoStartLevelPvP10StartLevel = 0x800BB700;
-	_Z20SetSomeConditionShitiij = 0x80102650;
-	_Z8WpadShiti = 0x8016F450;
-	_Z32CheckIfContinueShouldBeActivatedv = 0x800B5270;
-	_Z24SearchForIndexOfPlayerIDi = 0x80060110;
-
-	QueryPlayerAvailability__Fi = 0x800B4690;
-	DoStartLevel__FPvP14StartLevelInfo = 0x800BB700;
-	SetSomeConditionShit__FiiUi = 0x80102650;
-	WpadShit__Fi = 0x8016F450;
-	CheckIfContinueShouldBeActivated__Fv = 0x800B5270;
-	SearchForIndexOfPlayerID__Fi = 0x80060110;
-
-	_Z18AllocFromGameHeap1j = 0x801626D0;
-	_Z17FreeFromGameHeap1Pv = 0x80162730;
-
-	AllocFromGameHeap1__FUi = 0x801626D0;
-	FreeFromGameHeap1__FPv = 0x80162730;
-
-	AllocFromGameHeap1 = 0x801626D0;
-
-	_Z19lyt__Layout__LayoutPv = 0x802AC950;
-	_Z15lyt__Layout__dtPvi = 0x802AC990;
-	_Z18lyt__Layout__BuildPvPKvS_ = 0x802ACAC0;
-
-	ReplaceImage__Q34nw4r3lyt6TexMapFP10TPLPaletteUl = 0x802B4A70;
-
-	_Z47nsmbw__ArcResourceAccessor__ArcResourceAccessorPv = 0x802B6430;
-	_Z30nsmbw__ArcResourceAccessor__dtPvi = 0x80006930;
-	_Z31nsmbw__ArcResourceAccessor__SetPvS_PKc = 0x802B6490;
-	_Z39nsmbw__ArcResourceAccessor__GetResourcePvmPKcPm = 0x80006A50;
-
-	_Z23lyt__DrawInfo__DrawInfoPv = 0x802B4B40;
-	_Z17lyt__DrawInfo__dtPvi = 0x802B4BC0;
-
-	_Z15PSMTXTransApplyPA4_fS0_fff = 0x801C0A20;
-
-	_Z13NSMBWLoadFileP15NSMBWFileHandlePciPv = 0x8008F1B0;
-	_Z13NSMBWFreeFileP15NSMBWFileHandle = 0x8008F310;
-
-	_Z16NSMBWBrlan__LoadPvPKcS_S_b = 0x80163C70;
-	_Z16NSMBWBrlan__FreePv = 0x80163DC0;
-
-	_Z24DVDConvertPathToEntrynumPKc = 0x801CA490;
-	_Z11DVDFastOpeniP9DVDHandle = 0x801CA7A0;
-	_Z11DVDReadPrioP9DVDHandlePviii = 0x801CA930;
-	_Z8DVDCloseP9DVDHandle = 0x801CA810;
-
-	DVDConvertPathToEntrynum__FPCc = 0x801CA490;
-	DVDFastOpen__FiP9DVDHandle = 0x801CA7A0;
-	DVDReadPrio__FP9DVDHandlePviii = 0x801CA930;
-	DVDClose__FP9DVDHandle = 0x801CA810;
-	DVDCancel = 0x801CF1E0;
-
-	DVDConvertPathToEntrynum = 0x801CA490;
-
-	_ZN8SaveFile8GetBlockEi = 0x800E0300;
-	_ZN8SaveFile10GetQSBlockEi = 0x800E0330;
-
-	GetBlock__8SaveFileFi = 0x800E0300;
-	GetQSBlock__8SaveFileFi = 0x800E0330;
-
-	_ZN9SaveBlock17GetLevelConditionEii = 0x800CE320;
-
-	GetLevelCondition__9SaveBlockFii = 0x800CE320;
-	CheckLevelCondition__9SaveBlockFiii = 0x800CE340;
-	SetLevelCondition__9SaveBlockFiii = 0x800CE370;
-	UnsetLevelCondition__9SaveBlockFiii = 0x800CE390;
-
-	_Z20CheckIfWeCantDoStuffv = 0x8076DB90;
-	_Z15QueryGlobal5758j = 0x800B3B50;
-
-	UpdateSavefileChecksums = 0x800E0430;
-
-
-
-	CheckIfWeCantDoStuff__Fv = 0x8076DB90;
-	QueryGlobal5758__FUi = 0x800B3B50;
-
-	_Z16EGG__Heap__allocmiPv = 0x802B8AD0;
-	_Z15EGG__Heap__freePvS_ = 0x802B8D80;
-
-	EGG__Heap__alloc__FUliPv = 0x802B8AD0;
-	EGG__Heap__free__FPvPv = 0x802B8D80;
-
-	_Z5__nwam = 0x802B9060;
-	_Z19construct_new_arrayPvS_S_ii = 0x802DC5F0;
-	_Z11DeleteArrayPvS_ = 0x802DC920;
-
-	_Z8MTXOrthoPA4_fffffff = 0x801C1160;
-	_Z15GXSetProjectionPA4_fh = 0x801C9650;
-
-	_Z8IOS_OpenPKcj = 0x80224A80;
-	_Z9IOS_WriteiPKvi = 0x80225030;
-	_Z9IOS_Closei = 0x80224C70;
-
-	_Z6strlenPKc = 0x802DC4AC;
-	strlen__FPCc = 0x802DC4AC;
-	strlen = 0x802DC4AC;
-	strcpy = 0x802E1748;
-	strncmp = 0x802E19E0;
-
-	atan = 0x802E7A24;
-	atan2 = 0x802E8420;
-	cos = 0x802E7DCC;
-	sin = 0x802E82D4;
-	ceil = 0x802E7C54;
-	floor = 0x802E7E94;
-
-	LayoutHelper_Link = 0x80163470;
-
-	__nwa__FUl = 0x802B9060;
-
-	_Z19EmbeddedLayout_ctorP6Layout = 0x800C88D0;
-	_Z19EmbeddedLayout_dtorP6Layoutb = 0x800C8920;
-	_Z19EmbeddedLayout_FreeP6Layout = 0x800C98B0;
-	_Z25EmbeddedLayout_LoadArcOldP6LayoutPKcb = 0x800C8C30;
-	_Z25EmbeddedLayout_LoadBrlansP6LayoutPPKci = 0x800C8F30;
-	_Z25EmbeddedLayout_LoadGroupsP6LayoutPPKcPii = 0x800C9070;
-	_Z38EmbeddedLayout_ResetAnimToInitialStateP6Layoutib = 0x800C9350;
-	_Z22EmbeddedLayout_ProcessP6Layout = 0x800C94E0;
-	_Z28EmbeddedLayout_AddToDrawListP6Layout = 0x80163660;
-	_Z32EmbeddedLayout_EnableNonLoopAnimP6Layoutib = 0x800C9270;
-	_Z29EmbeddedLayout_EnableLoopAnimP6Layouti = 0x800C9300;
-	_Z30EmbeddedLayout_DisableAllAnimsP6Layout = 0x800C9480;
-	_Z35EmbeddedLayout_CheckIfAnimationIsOnP6Layouti = 0x800C9590;
-	_Z29EmbeddedLayout_FindPaneByNameP6LayoutPKc = 0x80007300;
-	_Z32EmbeddedLayout_FindTextBoxByNameP6LayoutPKc = 0x80007320;
-
-	EmbeddedLayout_ctor__FP6Layout = 0x800C88D0;
-	EmbeddedLayout_dtor__FP6Layoutb = 0x800C8920;
-	EmbeddedLayout_Free__FP6Layout = 0x800C98B0;
-	EmbeddedLayout_LoadArcOld__FP6LayoutPKcb = 0x800C8C30;
-	EmbeddedLayout_LoadBrlans__FP6LayoutPPCci = 0x800C8F30;
-	EmbeddedLayout_LoadGroups__FP6LayoutPPCcPii = 0x800C9070;
-	EmbeddedLayout_ResetAnimToInitialState__FP6Layoutib = 0x800C9350;
-	EmbeddedLayout_Process__FP6Layout = 0x800C94E0;
-	EmbeddedLayout_AddToDrawList__FP6Layout = 0x80163660;
-	EmbeddedLayout_EnableNonLoopAnim__FP6Layoutib = 0x800C9270;
-	EmbeddedLayout_EnableLoopAnim__FP6Layouti = 0x800C9300;
-	EmbeddedLayout_DisableAllAnims__FP6Layout = 0x800C9480;
-	EmbeddedLayout_CheckIfAnimationIsOn__FP6Layouti = 0x800C9590;
-	EmbeddedLayout_FindPaneByName__FP6LayoutPCc = 0x80007300;
-	EmbeddedLayout_FindTextBoxByName__FP6LayoutPCc = 0x80007320;
-
-	_Z6memsetPvij = 0x800046B4;
-	_Z7sprintfPcPKcz = 0x802E15EC;
-	_Z8snprintfPciPKcz = 0x802E14F8;
-	_Z6strcatPKcS0_ = 0x802E184C;
-
-	_Z6memsetPvij = 0x800046B4;
-	sprintf__FPcPCce = 0x802E15EC;
-	snprintf__FPcUlPCce = 0x802E14F8;
-	memcmp__FPCvPCvUi = 0x802DEEA8;
-	_Z6strcatPKcS0_ = 0x802E184C;
-
-	_Znaj = 0x802B9020;
-
-	_Z23Hook_GetGXRenderModeObjv = 0x8024D3E0;
-	Hook_GetGXRenderModeObj__Fv = 0x8024D3E0;
-
-	_Z3sinf = 0x802E82D4;
-	_Z3cosf = 0x802E7DCC;
-
-	ARCInitHandle = 0x8019F470;
-	ARCOpen = 0x8019F510;
-	ARCFastOpen = 0x8019F7C0;
-	ARCConvertPathToEntrynum = 0x8019F810;
-	ARCGetStartAddrInMem = 0x8019FC60;
-	ARCGetStartOffset = 0x8019FC80;
-	ARCGetLength = 0x8019FC90;
-	ARCClose = 0x8019FCA0;
-	ARCChangeDir = 0x8019FCB0;
-	ARCOpenDir = 0x8019FD10;
-	ARCReadDir = 0x8019FD90;
-	ARCCloseDir = 0x8019FE50;
-
-	GXGetTexBufferSize = 0x801C69B0;
-	DCFlushRange = 0x801AC280;
-	DCStoreRangeNoSync = 0x801AC310;
-
-	VIGetNextField = 0x801BDCF0;
-
-	PSMTXIdentity = 0x801C02E0;
-	PSMTXCopy = 0x801C0310;
-	PSMTXConcat = 0x801C0350;
-	PSMTXInverse = 0x801C05B0;
-	PSMTXRotRad = 0x801C0780;
-	PSMTXRotAxisRad = 0x801C0960;
-	PSMTXTrans = 0x801C09E0;
-	PSMTXTransApply = 0x801C0A20;
-	PSMTXScale = 0x801C0A70;
-	PSMTXScaleApply = 0x801C0AA0;
-	PSMTXMultVec = 0x801C0F70;
-
-	PSVECAdd = 0x801C1200;
-	PSVECSubtract = 0x801C1230;
-	PSVECScale = 0x801C1260;
-	PSVECNormalize = 0x801C1280;
+	__vt__Q23m3d5mdl_c = 2150798244;
+	__ct__Q23m3d5mdl_cFv = 2148965088;
+	__dt__Q23m3d5mdl_cFv = 2148965168;
+	setup__Q23m3d5mdl_cFQ34nw4r3g3d6ResMdlPvUiiPUi = 2148965280;
+	oneSetupType__Q23m3d5mdl_cFv = 2147896336;
+	sub_80064BF0__Q23m3d5mdl_cFv = 2147896304;
+	setDrawMatrix__Q23m3d5mdl_cFPA3_A4_Cf = 2148966272;
+	setScale__Q23m3d5mdl_cFfff = 2148966208;
+	setScale__Q23m3d5mdl_cFP7Point3d = 2148966240;
+	calcWorld__Q23m3d5mdl_cFb = 2148966320;
+	bindAnim__Q23m3d5mdl_cFPQ23m3d6banm_cf = 2148965776;
+	vf1C__Q3m3d5mdl_cFv = 2148965712;
+	getMatrixForNode__Q23m3d5mdl_cFUiPA3_A4_f = 2148958096;
+
+	SetCullModeForMaterial__FPQ23m3d5mdl_ciUi = 2147537296;
+	SetupTextures_Player__FPQ23m3d5mdl_ci = 2148220496;
+	SetupTextures_Map__FPQ23m3d5mdl_ci = 2148220752;
+	SetupTextures_Boss__FPQ23m3d5mdl_ci = 2148221008;
+	SetupTextures_Enemy__FPQ23m3d5mdl_ci = 2148221296;
+	SetupTextures_MapObj__FPQ23m3d5mdl_ci = 2148221616;
+	SetupTextures_Item__FPQ23m3d5mdl_ci = 2148221904;
+
+	__ct__16mHeapAllocator_cFv = 2147913760;
+	__dt__16mHeapAllocator_cFv = 2147913824;
+	link__16mHeapAllocator_cFiPvPCci = 2147913920;
+	unlink__16mHeapAllocator_cFv = 2147913952;
+
+	__ct__10mTexture_cFv = 2150369344;
+	__ct__10mTexture_cFUsUsUi = 2150369424;
+	__dt__10mTexture_cFv = 2150369488;
+	load__10mTexture_cFUi = 2150369648;
+	load__10mTexture_cF11_GXTexMapID = 2150369648;
+	flushDC__10mTexture_cFv = 2150369840;
+	makeLinearGradient__10mTexture_cFicUsUs8_GXColor8_GXColorb = 2150370368;
+	allocateBuffer__10mTexture_cFPv = 2150371312;
+	plotPixel__10mTexture_cFUsUs8_GXColor = 2150371472;
+
+	SetFontSize__Q34nw4r2ut10CharWriterFff = 2149765376;
+
+	__ct__Q34nw4r2ut10TextWriterFv = 2149778832;
+	__dt__Q34nw4r2ut10TextWriterFv = 2149778928;
+	CalcStringWidth__Q34nw4r2ut10TextWriterCFPCwi = 2149781216;
+
+	GameHeaps = 2151119304;
+
+	BGDatClass = 2151848720;
+	instance__10BGDatClass = 2151848720;
+	GetTilesetName__FPvii = 2148013040;
+	OriginalTilesetLoadingThing = 2148021600;
+
+	getTilesetName__10BGDatClassFii = 2148013040;
+
+	getPointerToTile__12TilemapClassFiiPUib = 2148023104;
+
+	IsWideScreen__Fv = 2148226096;
+
+	Player_Active = 2150976464;
+	Player_ID = 2150976480;
+	Player_Powerup = 2150976496;
+	Player_Flags = 2150976512;
+	Player_Lives = 2150976528;
+	Player_Coins = 2150976544;
+
+	AllocateMemoryBlock = 2148935376;
+	EnsureAllArcsAreLoaded = 2148398176;
+	FindRotationController = 2147658752;
+	GetObjectName = 2148538160;
+	GetObjectParent = 2148934560;
+	OSReport = 2148922688;
+
+	StagePtr = 2151849704;
+
+	_Z20CreateParentedObjectsPvic = 2148935952;
+	_Z47CheckIfMenuShouldBeCancelledForSpecifiedWiimotei = 2148225824;
+	_Z21StartTitleScreenStagebi = 2148538192;
+	_Z17CreateChildObjectsPviii = 2147928992;
+
+	CreateParentedObject__FsPvic = 2148935952;
+	CheckIfMenuShouldBeCancelledForSpecifiedWiimote__Fi = 2148225824;
+	StartTitleScreenStage__Fbi = 2148538192;
+	CreateChildObject__FsPviii = 2147928992;
+
+	ObjCreate1 = 2148935952;
+	ObjCreate2 = 2148935984;
+	RestoreObjectState = 2148208592;
+	QueueArcLoad = 2148399040;
+	RetrieveFileFromArc = 2148397312;
+	RetrieveFileFromArcAlt = 2148397888;
+
+	SpawnSprite = 2147894800;
+	StoreObjectState = 2148208896;
+	TriggerEventFlag = 2148420016;
+
+	_ZN8SaveFile14CheckIfWritingEv = 2148402128;
+	_Z8SaveGamePvb = 2157114160;
+
+	CheckIfWriting__8SaveFileFv = 2148402128;
+	SaveGame__FPvb = 2157114160;
+
+	_Z9DVD_Startv = 2147919600;
+	_Z12DVD_LoadFilePvPcS0_S_ = 2148399040;
+	_Z12DVD_FreeFilePvPc = 2148397232;
+	_Z16DVD_StillLoadingPv = 2148398176;
+	_Z7DVD_Endv = 2147919712;
+
+	DVD_Start__Fv = 2147919600;
+	DVD_LoadFile__FPvPcPcPv  = 2148399040;
+	DVD_FreeFile__FPvPc = 2148397232;
+	DVD_StillLoading__FPv = 2148398176;
+	DVD_End__Fv = 2147919712;
+	DVD_GetFile__FPvPCcPCc = 2148397312;
+	DVD_GetFile__FPvPCcPCcPUi = 2148397408;
+
+	__ct__12dDvdLoader_cFv = 2148069696;
+	__dt__12dDvdLoader_cFv = 2148069744;
+	load__12dDvdLoader_cFPCcUcPv = 2148069808;
+	unload__12dDvdLoader_cFv = 2148070160;
+
+	SZSDecompClass = 2151118948;
+	LZDecompClass = 2151118960;
+	LHDecompClass = 2151118972;
+	LRCDecompClass = 2151118984;
+	RLDecompClass = 2151118996;
+	StoreCompressionClassList = 2148970144;
+	DecompBufferPointer = 2151846288;
+
+	TryAndFindCompressedFile = 2148972720;
+
+	_Z22BgTexMng__LoadAnimTilePvisPcS0_c = 2148039520; /* same for ntsc */
+	BgTexMng__LoadAnimTile__FPvisPcPcc = 2148039520; /* same for ntsc */
+
+	_Z12ActivateWipei = 2148208048;
+	ActivateWipe__Fi = 2148208048;
+
+	CurrentDrawFunc = 2151849080;
+
+	currentHeap = 2151852848;
+
+	_Z20GameSetup__LoadScenePv = 2157023904;
+	_Z9FreeScenei = 2148943552;
+	_Z17GameSetupDrawFuncv = 2157016784;
+	_Z16WorldMapDrawFuncv = 2157077680;
+
+	GameSetup__LoadScene__FPv = 2157023904;
+	FreeScene__Fi = 2148943552;
+	GameSetupDrawFunc__Fv = 2157016784;
+	WorldMapDrawFunc__Fv = 2157077680;
+
+	memcpy = 2147500900;
+	memset = 2147501748;
+	strncat = 2150504568;
+	strncpy = 2150504456;
+	strcmp = 2150504644;
+	sprintf = 2150503916;
+	strrchr = 2150505040;
+
+	wcslen = 2150515244;
+	wcscpy = 2150515272;
+
+	IOS_Open = 2149730944;
+	IOS_Close = 2149731440;
+	IOS_Seek = 2149732896;
+	IOS_Read = 2149731872;
+	IOS_Write = 2149732400;
+
+	ArchiveHeap = 2151850348;
+	DVDClass = 2151849304;
+	GameMgrP = 2151849116;
+	SaveFileBuffer = 2151012928;
+	SaveFileInstance = 2151849312;
+
+	World = 2151849323;
+	WS_ptr = 2157500948;
+	CS_ptr1 = 2151843160;
+	CS_ptr2 = 2151845296;
+	CS_ptr3 = 2157461468;
+	CS_ptr4 = 2157465176;
+	model = 2150742232;
+
+	aWorld1 = 2156783723;
+	aWorld2 = 2148460071;
+
+	SaveHandlerInstance = 2151849176;
+	RemoconMng = 2151849072;
+	ActiveWiimoteID = 2151850372;
+	ActiveWiimote = 2151850376;
+
+	MakeScene = 2147513872;
+	GetRes = 2148397312;
+	GetSceneLightInfo = 2148944256;
+	GetAnmScn = 2149818608;
+	BindAnmScn = 2149852384;
+	AssignAnmScnToLightInfo = 2150401616;
+	LoadBlight = 2157024816;
+	LoadBlmap = 2157024800;
+
+	_Z23QueryPlayerAvailabilityi = 2148222608;
+	_Z12DoStartLevelPvP10StartLevel = 2148251392;
+	_Z20SetSomeConditionShitiij = 2148542032;
+	_Z8WpadShiti = 2148987984;
+	_Z32CheckIfContinueShouldBeActivatedv = 2148225648;
+	_Z24SearchForIndexOfPlayerIDi = 2147877136;
+
+	QueryPlayerAvailability__Fi = 2148222608;
+	DoStartLevel__FPvP14StartLevelInfo = 2148251392;
+	SetSomeConditionShit__FiiUi = 2148542032;
+	WpadShit__Fi = 2148987984;
+	CheckIfContinueShouldBeActivated__Fv = 2148225648;
+	SearchForIndexOfPlayerID__Fi = 2147877136;
+
+	_Z18AllocFromGameHeap1j = 2148935376;
+	_Z17FreeFromGameHeap1Pv = 2148935472;
+
+	AllocFromGameHeap1__FUi = 2148935376;
+	FreeFromGameHeap1__FPv = 2148935472;
+
+	AllocFromGameHeap1 = 2148935376;
+
+	_Z19lyt__Layout__LayoutPv = 2150287696;
+	_Z15lyt__Layout__dtPvi = 2150287760;
+	_Z18lyt__Layout__BuildPvPKvS_ = 2150288064;
+
+	ReplaceImage__Q34nw4r3lyt6TexMapFP10TPLPaletteUl = 2150320752;
+
+	_Z47nsmbw__ArcResourceAccessor__ArcResourceAccessorPv = 2150327344;
+	_Z30nsmbw__ArcResourceAccessor__dtPvi = 2147510576;
+	_Z31nsmbw__ArcResourceAccessor__SetPvS_PKc = 2150327440;
+	_Z39nsmbw__ArcResourceAccessor__GetResourcePvmPKcPm = 2147510864;
+
+	_Z23lyt__DrawInfo__DrawInfoPv = 2150320960;
+	_Z17lyt__DrawInfo__dtPvi = 2150321088;
+
+	_Z15PSMTXTransApplyPA4_fS0_fff = 2149321248;
+
+	_Z13NSMBWLoadFileP15NSMBWFileHandlePciPv = 2148069808;
+	_Z13NSMBWFreeFileP15NSMBWFileHandle = 2148070160;
+
+	_Z16NSMBWBrlan__LoadPvPKcS_S_b = 2148940912;
+	_Z16NSMBWBrlan__FreePv = 2148941248;
+
+	_Z24DVDConvertPathToEntrynumPKc = 2149360784;
+	_Z11DVDFastOpeniP9DVDHandle = 2149361568;
+	_Z11DVDReadPrioP9DVDHandlePviii = 2149361968;
+	_Z8DVDCloseP9DVDHandle = 2149361680;
+
+	DVDConvertPathToEntrynum__FPCc = 2149360784;
+	DVDFastOpen__FiP9DVDHandle = 2149361568;
+	DVDReadPrio__FP9DVDHandlePviii = 2149361968;
+	DVDClose__FP9DVDHandle = 2149361680;
+	DVDCancel = 2149380576;
+
+	DVDConvertPathToEntrynum = 2149360784;
+
+	_ZN8SaveFile8GetBlockEi = 2148401920;
+	_ZN8SaveFile10GetQSBlockEi = 2148401968;
+
+	GetBlock__8SaveFileFi = 2148401920;
+	GetQSBlock__8SaveFileFi = 2148401968;
+
+	_ZN9SaveBlock17GetLevelConditionEii = 2148328224;
+
+	GetLevelCondition__9SaveBlockFii = 2148328224;
+	CheckLevelCondition__9SaveBlockFiii = 2148328256;
+	SetLevelCondition__9SaveBlockFiii = 2148328304;
+	UnsetLevelCondition__9SaveBlockFiii = 2148328336;
+
+	_Z20CheckIfWeCantDoStuffv = 2155273104;
+	_Z15QueryGlobal5758j = 2148219728;
+
+	UpdateSavefileChecksums = 2148402224;
+
+
+
+	CheckIfWeCantDoStuff__Fv = 2155273104;
+	QueryGlobal5758__FUi = 2148219728;
+
+	_Z16EGG__Heap__allocmiPv = 2150337232;
+	_Z15EGG__Heap__freePvS_ = 2150337920;
+
+	EGG__Heap__alloc__FUliPv = 2150337232;
+	EGG__Heap__free__FPvPv = 2150337920;
+
+	_Z5__nwam = 2150338656;
+	_Z19construct_new_arrayPvS_S_ii = 2150483440;
+	_Z11DeleteArrayPvS_ = 2150484256;
+
+	_Z8MTXOrthoPA4_fffffff = 2149323104;
+	_Z15GXSetProjectionPA4_fh = 2149357136;
+
+	_Z8IOS_OpenPKcj = 2149730944;
+	_Z9IOS_WriteiPKvi = 2149732400;
+	_Z9IOS_Closei = 2149731440;
+
+	_Z6strlenPKc = 2150483116;
+	strlen__FPCc = 2150483116;
+	strlen = 2150483116;
+	strcpy = 2150504264;
+	strncmp = 2150504928;
+
+	atan = 2150529572;
+	atan2 = 2150532128;
+	cos = 2150530508;
+	sin = 2150531796;
+	ceil = 2150530132;
+	floor = 2150530708;
+
+	LayoutHelper_Link = 2148938864;
+
+	__nwa__FUl = 2150338656;
+
+	_Z19EmbeddedLayout_ctorP6Layout = 2148305104;
+	_Z19EmbeddedLayout_dtorP6Layoutb = 2148305184;
+	_Z19EmbeddedLayout_FreeP6Layout = 2148309168;
+	_Z25EmbeddedLayout_LoadArcOldP6LayoutPKcb = 2148305968;
+	_Z25EmbeddedLayout_LoadBrlansP6LayoutPPKci = 2148306736;
+	_Z25EmbeddedLayout_LoadGroupsP6LayoutPPKcPii = 2148307056;
+	_Z38EmbeddedLayout_ResetAnimToInitialStateP6Layoutib = 2148307792;
+	_Z22EmbeddedLayout_ProcessP6Layout = 2148308192;
+	_Z28EmbeddedLayout_AddToDrawListP6Layout = 2148939360;
+	_Z32EmbeddedLayout_EnableNonLoopAnimP6Layoutib = 2148307568;
+	_Z29EmbeddedLayout_EnableLoopAnimP6Layouti = 2148307712;
+	_Z30EmbeddedLayout_DisableAllAnimsP6Layout = 2148308096;
+	_Z35EmbeddedLayout_CheckIfAnimationIsOnP6Layouti = 2148308368;
+	_Z29EmbeddedLayout_FindPaneByNameP6LayoutPKc = 2147513088;
+	_Z32EmbeddedLayout_FindTextBoxByNameP6LayoutPKc = 2147513120;
+
+	EmbeddedLayout_ctor__FP6Layout = 2148305104;
+	EmbeddedLayout_dtor__FP6Layoutb = 2148305184;
+	EmbeddedLayout_Free__FP6Layout = 2148309168;
+	EmbeddedLayout_LoadArcOld__FP6LayoutPKcb = 2148305968;
+	EmbeddedLayout_LoadBrlans__FP6LayoutPPCci = 2148306736;
+	EmbeddedLayout_LoadGroups__FP6LayoutPPCcPii = 2148307056;
+	EmbeddedLayout_ResetAnimToInitialState__FP6Layoutib = 2148307792;
+	EmbeddedLayout_Process__FP6Layout = 2148308192;
+	EmbeddedLayout_AddToDrawList__FP6Layout = 2148939360;
+	EmbeddedLayout_EnableNonLoopAnim__FP6Layoutib = 2148307568;
+	EmbeddedLayout_EnableLoopAnim__FP6Layouti = 2148307712;
+	EmbeddedLayout_DisableAllAnims__FP6Layout = 2148308096;
+	EmbeddedLayout_CheckIfAnimationIsOn__FP6Layouti = 2148308368;
+	EmbeddedLayout_FindPaneByName__FP6LayoutPCc = 2147513088;
+	EmbeddedLayout_FindTextBoxByName__FP6LayoutPCc = 2147513120;
+
+	_Z6memsetPvij = 2147501748;
+	_Z7sprintfPcPKcz = 2150503916;
+	_Z8snprintfPciPKcz = 2150503672;
+	_Z6strcatPKcS0_ = 2150504524;
+
+	_Z6memsetPvij = 2147501748;
+	sprintf__FPcPCce = 2150503916;
+	snprintf__FPcUlPCce = 2150503672;
+	memcmp__FPCvPCvUi = 2150493864;
+	_Z6strcatPKcS0_ = 2150504524;
+
+	_Znaj = 2150338592;
+
+	_Z23Hook_GetGXRenderModeObjv = 2149897184;
+	Hook_GetGXRenderModeObj__Fv = 2149897184;
+
+	_Z3sinf = 2150531796;
+	_Z3cosf = 2150530508;
+
+	ARCInitHandle = 2149184624;
+	ARCOpen = 2149184784;
+	ARCFastOpen = 2149185472;
+	ARCConvertPathToEntrynum = 2149185552;
+	ARCGetStartAddrInMem = 2149186656;
+	ARCGetStartOffset = 2149186688;
+	ARCGetLength = 2149186704;
+	ARCClose = 2149186720;
+	ARCChangeDir = 2149186736;
+	ARCOpenDir = 2149186832;
+	ARCReadDir = 2149186960;
+	ARCCloseDir = 2149187152;
+
+	GXGetTexBufferSize = 2149345712;
+	DCFlushRange = 2149237376;
+	DCStoreRangeNoSync = 2149237520;
+
+	VIGetNextField = 2149309680;
+
+	PSMTXIdentity = 2149319392;
+	PSMTXCopy = 2149319440;
+	PSMTXConcat = 2149319504;
+	PSMTXInverse = 2149320112;
+	PSMTXRotRad = 2149320576;
+	PSMTXRotAxisRad = 2149321056;
+	PSMTXTrans = 2149321184;
+	PSMTXTransApply = 2149321248;
+	PSMTXScale = 2149321328;
+	PSMTXScaleApply = 2149321376;
+	PSMTXMultVec = 2149322608;
+
+	PSVECAdd = 2149323264;
+	PSVECSubtract = 2149323312;
+	PSVECScale = 2149323360;
+	PSVECNormalize = 2149323392;
 	/*PSVECSquareMag*/
-	PSVECMag = 0x801C12D0;
-	PSVECDotProduct = 0x801C1320;
-	PSVECCrossProduct = 0x801C1340;
-	PSVECSquareDistance = 0x801C1380;
-	PSVECDistance = 0x801C1460;
+	PSVECMag = 2149323472;
+	PSVECDotProduct = 2149323552;
+	PSVECCrossProduct = 2149323584;
+	PSVECSquareDistance = 2149323648;
+	PSVECDistance = 2149323872;
 
-	C_MTXLookAt = 0x801C0BB0;
-	C_MTXFrustum = 0x801C0FD0;
-	C_MTXPerspective = 0x801C1070;
-	C_MTXOrtho = 0x801C1160;
+	C_MTXLookAt = 2149321648;
+	C_MTXFrustum = 2149322704;
+	C_MTXPerspective = 2149322864;
+	C_MTXOrtho = 2149323104;
 
-	GXPixModeSync = 0x801C4D80;
-	GXSetTexCopySrc = 0x801C5770;
-	GXSetTexCopyDst = 0x801C57E0;
-	GXSetCopyFilter = 0x801C5D50;
-	GXCopyTex = 0x801C60A0;
-	GXSetVtxDesc = 0x801C35D0;
-	GXClearVtxDesc = 0x801C3E80;
-	GXSetVtxAttrFmt = 0x801C3EC0;
-	GXSetArray = 0x801C4590;
-	GXInvalidateVtxCache = 0x801C45D0;
-	GXSetTexCoordGen2 = 0x801C45E0;
-	GXSetNumTexGens = 0x801C4830;
-	GXBegin = 0x801C5380;
-	GXSetLineWidth = 0x801C55B0;
-	GXSetPointSize = 0x801C55F0;
-	GXSetCullMode = 0x801C5670;
-	GXInitLightAttn = 0x801C6240;
-	GXInitLightSpot = 0x801C6280;
-	GXInitLightDistAttn = 0x801C6420;
-	GXInitLightPos = 0x801C64F0;
-	GXInitLightDir = 0x801C6520;
-	GXInitSpecularDir = 0x801C6570;
-	GXInitLightColor = 0x801C6680;
-	GXLoadLightObjImm = 0x801C6690;
-	GXSetChanAmbColor = 0x801C6710;
-	GXSetChanMatColor = 0x801C67F0;
-	GXSetNumChans = 0x801C68D0;
-	GXSetChanCtrl = 0x801C6900;
-	GXInitTexObj = 0x801C6BA0;
-	GXInitTexObjCI = 0x801C6DB0;
-	GXInitTexObjLOD = 0x801C6E00;
-	GXInitTexObjTlut = 0x801C6F30;
-	GXInitTexObjWrapMode = 0x801C6F10;
-	GXLoadTexObj = 0x801C72D0;
-	GXInvalidateTexAll = 0x801C74D0;
-	GXSetNumIndStages = 0x801C7F20;
-	GXSetTevDirect = 0x801C7F40;
-	GXSetTevOp = 0x801C8060;
-	GXSetTevColorIn = 0x801C8100;
-	GXSetTevAlphaIn = 0x801C8140;
-	GXSetTevColorOp = 0x801C8180;
-	GXSetTevAlphaOp = 0x801C81E0;
-	GXSetTevColor = 0x801C8240;
-	GXSetTevColorS10 = 0x801C82A0;
-	GXSetTevKColor = 0x801C8310;
-	GXSetTevKColorSel = 0x801C8370;
-	GXSetTevKAlphaSel = 0x801C83C0;
-	GXSetTevSwapMode = 0x801C8410;
-	GXSetTevSwapModeTable = 0x801C8450;
-	GXSetAlphaCompare = 0x801C84D0;
-	GXSetTevOrder = 0x801C85A0;
-	GXSetNumTevStages = 0x801C8700;
-	GXSetFog = 0x801C8730;
-	GXSetFogRangeAdj = 0x801C8AC0;
-	GXSetBlendMode = 0x801C8BD0;
-	GXSetColorUpdate = 0x801C8C20;
-	GXSetAlphaUpdate = 0x801C8C50;
-	GXSetZMode = 0x801C8C80;
-	GXSetZCompLoc = 0x801C8CC0;
-	GXSetDither = 0x801C8DA0;
-	GXSetDstAlpha = 0x801C8DD0;
-	GXCallDisplayList = 0x801C93F0;
-	GXSetProjection = 0x801C9650;
-	GXLoadPosMtxImm = 0x801C9750;
-	GXLoadNrmMtxImm = 0x801C97D0;
-	GXSetCurrentMtx = 0x801C9870;
-	GXSetViewportJitter = 0x801C99E0;
-	GXSetViewport = 0x801C9A20;
-	GXDrawDone = 0x801C4CB0;
+	GXPixModeSync = 2149338496;
+	GXSetTexCopySrc = 2149341040;
+	GXSetTexCopyDst = 2149341152;
+	GXSetCopyFilter = 2149342544;
+	GXCopyTex = 2149343392;
+	GXSetVtxDesc = 2149332432;
+	GXClearVtxDesc = 2149334656;
+	GXSetVtxAttrFmt = 2149334720;
+	GXSetArray = 2149336464;
+	GXInvalidateVtxCache = 2149336528;
+	GXSetTexCoordGen2 = 2149336544;
+	GXSetNumTexGens = 2149337136;
+	GXBegin = 2149340032;
+	GXSetLineWidth = 2149340592;
+	GXSetPointSize = 2149340656;
+	GXSetCullMode = 2149340784;
+	GXInitLightAttn = 2149343808;
+	GXInitLightSpot = 2149343872;
+	GXInitLightDistAttn = 2149344288;
+	GXInitLightPos = 2149344496;
+	GXInitLightDir = 2149344544;
+	GXInitSpecularDir = 2149344624;
+	GXInitLightColor = 2149344896;
+	GXLoadLightObjImm = 2149344912;
+	GXSetChanAmbColor = 2149345040;
+	GXSetChanMatColor = 2149345264;
+	GXSetNumChans = 2149345488;
+	GXSetChanCtrl = 2149345536;
+	GXInitTexObj = 2149346208;
+	GXInitTexObjCI = 2149346736;
+	GXInitTexObjLOD = 2149346816;
+	GXInitTexObjTlut = 2149347120;
+	GXInitTexObjWrapMode = 2149347088;
+	GXLoadTexObj = 2149348048;
+	GXInvalidateTexAll = 2149348560;
+	GXSetNumIndStages = 2149351200;
+	GXSetTevDirect = 2149351232;
+	GXSetTevOp = 2149351520;
+	GXSetTevColorIn = 2149351680;
+	GXSetTevAlphaIn = 2149351744;
+	GXSetTevColorOp = 2149351808;
+	GXSetTevAlphaOp = 2149351904;
+	GXSetTevColor = 2149352000;
+	GXSetTevColorS10 = 2149352096;
+	GXSetTevKColor = 2149352208;
+	GXSetTevKColorSel = 2149352304;
+	GXSetTevKAlphaSel = 2149352384;
+	GXSetTevSwapMode = 2149352464;
+	GXSetTevSwapModeTable = 2149352528;
+	GXSetAlphaCompare = 2149352656;
+	GXSetTevOrder = 2149352864;
+	GXSetNumTevStages = 2149353216;
+	GXSetFog = 2149353264;
+	GXSetFogRangeAdj = 2149354176;
+	GXSetBlendMode = 2149354448;
+	GXSetColorUpdate = 2149354528;
+	GXSetAlphaUpdate = 2149354576;
+	GXSetZMode = 2149354624;
+	GXSetZCompLoc = 2149354688;
+	GXSetDither = 2149354912;
+	GXSetDstAlpha = 2149354960;
+	GXCallDisplayList = 2149356528;
+	GXSetProjection = 2149357136;
+	GXLoadPosMtxImm = 2149357392;
+	GXLoadNrmMtxImm = 2149357520;
+	GXSetCurrentMtx = 2149357680;
+	GXSetViewportJitter = 2149358048;
+	GXSetViewport = 2149358112;
+	GXDrawDone = 2149338288;
 
 	wgPipe = 0xCC008000;
 
-	TPLBind = 0x80227FE0;
-	TPLGet = 0x80228100;
+	TPLBind = 2149744608;
+	TPLGet = 2149744896;
 
-	CXInitUncompContextLH = 0x801D6D30;
-	CXReadUncompLH = 0x801D6D70;
-	CXGetUncompressedSize = 0x801D7F60;
-	CXUncompressLZ = 0x801D7FA0;
+	CXInitUncompContextLH = 2149412144;
+	CXReadUncompLH = 2149412208;
+	CXGetUncompressedSize = 2149416800;
+	CXUncompressLZ = 2149416864;
 
 	/* Gakenoko stuff */
-	mHeapAllocatorSubclass_Link = 0x800690C0;
-	mHeapAllocatorSubclass_UnLink = 0x800690E0;
+	mHeapAllocatorSubclass_Link = 2147913920;
+	mHeapAllocatorSubclass_UnLink = 2147913952;
 
-	GetResMdl = 0x80239C40;
-	GetResAnmChr = 0x80239EC0;
-	GetResAnmVis = 0x80239F30;
-	GetResAnmClr = 0x80239FA0;
-	GetResAnmTexPat = 0x8023A010;
-	GetResAnmTexSrt = 0x8023A080;
+	GetResMdl = 2149817408;
+	GetResAnmChr = 2149818048;
+	GetResAnmVis = 2149818160;
+	GetResAnmClr = 2149818272;
+	GetResAnmTexPat = 2149818384;
+	GetResAnmTexSrt = 2149818496;
 
-	GetResAnmChr__Q34nw4r3g3d7ResFileCFPCc = 0x80239EC0;
-	GetResAnmVis__Q34nw4r3g3d7ResFileCFPCc = 0x80239F30;
-	GetResAnmClr__Q34nw4r3g3d7ResFileCFPCc = 0x80239FA0;
-	GetResAnmTexPat__Q34nw4r3g3d7ResFileCFPCc = 0x8023A010;
-	GetResAnmTexSrt__Q34nw4r3g3d7ResFileCFPCc = 0x8023A080;
+	GetResAnmChr__Q34nw4r3g3d7ResFileCFPCc = 2149818048;
+	GetResAnmVis__Q34nw4r3g3d7ResFileCFPCc = 2149818160;
+	GetResAnmClr__Q34nw4r3g3d7ResFileCFPCc = 2149818272;
+	GetResAnmTexPat__Q34nw4r3g3d7ResFileCFPCc = 2149818384;
+	GetResAnmTexSrt__Q34nw4r3g3d7ResFileCFPCc = 2149818496;
 
-	__vt__Q23EGG9Allocator = 0x8034F9E0;
+	__vt__Q23EGG9Allocator = 2150955488;
 
-	__ct__12mAllocator_cFv = 0x8016A3F0;
-	__vt__12mAllocator_c = 0x80329424;
-	__dt__12mAllocator_cFv = 0x8016A440;
-	setup__12mAllocator_cFPvi = 0x8016A4A0;
+	__ct__12mAllocator_cFv = 2148967408;
+	__vt__12mAllocator_c = 2150798372;
+	__dt__12mAllocator_cFv = 2148967488;
+	setup__12mAllocator_cFPvi = 2148967584;
 
-	__vt__Q23m3d6banm_c = 0x80329340;
-	__dt__Q23m3d6banm_cFv = 0x80167CD0;
-	detach__Q23m3d6banm_cFv = 0x80167D40;
-	process__Q23m3d6banm_cFv = 0x8002A1F0;
-	setupHeap__Q23m3d6banm_cFv = 0x80167DB0;
-	testAnmFlag__Q23m3d6banm_cFv = 0x80167E70;
-	getCurrentFrame__Q23m3d6banm_cFv = 0x80167E90;
-	setCurrentFrame__Q23m3d6banm_cFf = 0x80167EB0;
-	getUpdateRate__Q23m3d6banm_cFv = 0x80167ED0;
-	setUpdateRate__Q23m3d6banm_cFf = 0x80167EF0;
-	__ct__Q23m3d6fanm_cFv = 0x80168B20;
-	__vt__Q23m3d6fanm_c = 0x80329388;
-	__dt__Q23m3d6fanm_cFv = 0x80168B90;
-	process__Q23m3d6fanm_cFv = 0x80168BF0;
-	setCurrentFrame__Q23m3d6fanm_cFf = 0x80168DF0;
-	isAnimationDone__Q23m3d6fanm_cFv = 0x80168E30;
-	querySomething__Q23m3d6fanm_cFv = 0x80168EF0;
+	__vt__Q23m3d6banm_c = 2150798144;
+	__dt__Q23m3d6banm_cFv = 2148957392;
+	detach__Q23m3d6banm_cFv = 2148957504;
+	process__Q23m3d6banm_cFv = 2147656176;
+	setupHeap__Q23m3d6banm_cFv = 2148957616;
+	testAnmFlag__Q23m3d6banm_cFv = 2148957808;
+	getCurrentFrame__Q23m3d6banm_cFv = 2148957840;
+	setCurrentFrame__Q23m3d6banm_cFf = 2148957872;
+	getUpdateRate__Q23m3d6banm_cFv = 2148957904;
+	setUpdateRate__Q23m3d6banm_cFf = 2148957936;
+	__ct__Q23m3d6fanm_cFv = 2148961056;
+	__vt__Q23m3d6fanm_c = 2150798216;
+	__dt__Q23m3d6fanm_cFv = 2148961168;
+	process__Q23m3d6fanm_cFv = 2148961264;
+	setCurrentFrame__Q23m3d6fanm_cFf = 2148961776;
+	isAnimationDone__Q23m3d6fanm_cFv = 2148961840;
+	querySomething__Q23m3d6fanm_cFv = 2148962032;
 
-	__vt__Q23m3d8anmChr_c = 0x80303228;
-	__dt__Q23m3d8anmChr_cFv = 0x800260C0;
-	vf0C__Q23m3d8anmChr_cFv = 0x8002A210;
-	setup__Q23m3d8anmChr_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmChrP12mAllocator_cPUi = 0x80164EE0;
-	bind__Q23m3d8anmChr_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmChrb = 0x80165000;
-	internalBind__Q23m3d8anmChr_cFv = 0x80165090;
+	__vt__Q23m3d8anmChr_c = 2150642216;
+	__dt__Q23m3d8anmChr_cFv = 2147639488;
+	vf0C__Q23m3d8anmChr_cFv = 2147656208;
+	setup__Q23m3d8anmChr_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmChrP12mAllocator_cPUi = 2148945632;
+	bind__Q23m3d8anmChr_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmChrb = 2148945920;
+	internalBind__Q23m3d8anmChr_cFv = 2148946064;
 
 	/* m3d::anmVis_c */
-	__vt__Q23m3d8anmVis_c = 0x80AD7A58;
-	__dt__Q23m3d8anmVis_cFv = 0x809B1990;
-	vf0C__Q23m3d8anmVis_cFv = 0x809B3520;
-	setup__Q23m3d8anmVis_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmVisP12mAllocator_cPUi = 0x80167A50;
-	bind__Q23m3d8anmVis_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmVisb = 0x80167B70;
-	internalBind__Q23m3d8anmVis_cFv = 0x80167C60;
+	__vt__Q23m3d8anmVis_c = 2158852696;
+	__dt__Q23m3d8anmVis_cFv = 2157648272;
+	vf0C__Q23m3d8anmVis_cFv = 2157655328;
+	setup__Q23m3d8anmVis_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmVisP12mAllocator_cPUi = 2148956752;
+	bind__Q23m3d8anmVis_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmVisb = 2148957040;
+	internalBind__Q23m3d8anmVis_cFv = 2148957280;
 
 	/* m3d::anmClr_c */
-	__vt__Q23m3d8anmClr_c = 0x80329280;
-	__dt__Q23m3d8anmClr_cFv = 0x80165C80;
-	vf0C__Q23m3d8anmClr_cFv = 0x801661B0;
+	__vt__Q23m3d8anmClr_c = 2150797952;
+	__dt__Q23m3d8anmClr_cFv = 2148949120;
+	vf0C__Q23m3d8anmClr_cFv = 2148950448;
 
-	setup__Q23m3d8anmClr_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmClrP12mAllocator_cPUii = 0x80165A40;
-	bind__Q23m3d8anmClr_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmClrii = 0x80165DE0;
+	setup__Q23m3d8anmClr_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d9ResAnmClrP12mAllocator_cPUii = 2148948544;
+	bind__Q23m3d8anmClr_cFPQ23m3d5mdl_cQ34nw4r3g3d9ResAnmClrii = 2148949472;
 
-	getFrameForEntry__Q23m3d8anmClrFv = 0x801660F0;
-	setFrameForEntry__Q23m3d8anmClrFfi = 0x80166100;
-	getUpdateRateForEntry__Q23m3d8anmClrFv = 0x80166110;
-	setUpdateRateForEntry__Q23m3d8anmClrFfi = 0x80166120;
-	isEntryAnimationDone__Q23m3d8anmClrFi = 0x80166130;
-	queryEntrySomething__Q23m3d8anmClrFv = 0x80166140;
-	setEntryByte34__Q23m3d8anmClrFUci = 0x80166150;
-	getEntryField28__Q23m3d8anmClrFv = 0x80166170;
+	getFrameForEntry__Q23m3d8anmClrFv = 2148950256;
+	setFrameForEntry__Q23m3d8anmClrFfi = 2148950272;
+	getUpdateRateForEntry__Q23m3d8anmClrFv = 2148950288;
+	setUpdateRateForEntry__Q23m3d8anmClrFfi = 2148950304;
+	isEntryAnimationDone__Q23m3d8anmClrFi = 2148950320;
+	queryEntrySomething__Q23m3d8anmClrFv = 2148950336;
+	setEntryByte34__Q23m3d8anmClrFUci = 2148950352;
+	getEntryField28__Q23m3d8anmClrFv = 2148950384;
 
 	/* m3d::anmTexPat_c */
-	__vt__Q23m3d11anmTexPat_c = 0x803292B0;
-	__dt__Q23m3d11anmTexPat_cFv = 0x80166880;
-	detach__Q23m3d11anmTexPat_cFv = 0x801668F0;
-	setup__Q23m3d11anmTexPat_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d12ResAnmTexPatP12mAllocator_cPUii = 0x80166640;
-	bindEntry__Q23m3d11anmTexPat_cFv = 0x801669E0;
-	bindEntry__Q23m3d11anmTexPat_cFPQ23m3d5mdl_cPQ34nw4r3g3d12ResAnmTexPatii = 0x801669E0;
-	process__Q23m3d11anmTexPat_cFv = 0x80166BE0;
-	processOneEntry__Q23m3d11anmTexPat_cFv = 0x80166C90;
-	getFrameForEntry__Q23m3d11anmTexPat_cFi = 0x80166CF0;
-	setFrameForEntry__Q23m3d11anmTexPat_cFfi = 0x80166D00;
-	getUpdateRateForEntry__Q23m3d11anmTexPat_cFv = 0x80166D10;
-	setUpdateRateForEntry__Q23m3d11anmTexPat_cFfi = 0x80166D20;
-	isEntryAnimationDone__Q23m3d11anmTexPat_cFv = 0x80166D30;
-	queryEntrySomething__Q23m3d11anmTexPat_cFv = 0x80166D40;
-	setEntryByte34__Q23m3d11anmTexPat_cFUci = 0x80166D50;
-	getEntryField28__Q23m3d11anmTexPat_cFv = 0x80166D70;
-	vf0C__Q23m3d11anmTexPat_cFv = 0x80166D90;
+	__vt__Q23m3d11anmTexPat_c = 2150798000;
+	__dt__Q23m3d11anmTexPat_cFv = 2148952192;
+	detach__Q23m3d11anmTexPat_cFv = 2148952304;
+	setup__Q23m3d11anmTexPat_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d12ResAnmTexPatP12mAllocator_cPUii = 2148951616;
+	bindEntry__Q23m3d11anmTexPat_cFv = 2148952544;
+	bindEntry__Q23m3d11anmTexPat_cFPQ23m3d5mdl_cPQ34nw4r3g3d12ResAnmTexPatii = 2148952544;
+	process__Q23m3d11anmTexPat_cFv = 2148953056;
+	processOneEntry__Q23m3d11anmTexPat_cFv = 2148953232;
+	getFrameForEntry__Q23m3d11anmTexPat_cFi = 2148953328;
+	setFrameForEntry__Q23m3d11anmTexPat_cFfi = 2148953344;
+	getUpdateRateForEntry__Q23m3d11anmTexPat_cFv = 2148953360;
+	setUpdateRateForEntry__Q23m3d11anmTexPat_cFfi = 2148953376;
+	isEntryAnimationDone__Q23m3d11anmTexPat_cFv = 2148953392;
+	queryEntrySomething__Q23m3d11anmTexPat_cFv = 2148953408;
+	setEntryByte34__Q23m3d11anmTexPat_cFUci = 2148953424;
+	getEntryField28__Q23m3d11anmTexPat_cFv = 2148953456;
+	vf0C__Q23m3d11anmTexPat_cFv = 2148953488;
 
-	AllocSizeForAnmTexSrt = 0x80167150;
-	setup__Q23m3d11anmTexSrt_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d12ResAnmTexSrtP12mAllocator_cPUii = 0x80167230;
-	__vt__Q23m3d11anmTexSrt_c = 0x803292E0;
-	__dt__Q23m3d11anmTexSrt_cFv = 0x801674B0;
-	detach__Q23m3d11anmTexSrt_cFv = 0x80167520;
-	bindEntry__Q23m3d11anmTexSrt_cFPQ23m3d5mdl_cQ34nw4r3g3d12ResAnmTexSrtii = 0x80167610;
-	sub80167a80__Q23m3d11anmTexSrt_cFv = 0x80167750;
-	process__Q23m3d11anmTexSrt_cFv = 0x80167810;
-	processOneEntry__Q23m3d11anmTexSrt_cFi = 0x801678C0;
-	getFrameForEntry__Q23m3d11anmTexSrt_cFi = 0x80167920;
-	setFrameForEntry__Q23m3d11anmTexSrt_cFfi = 0x80167930;
-	getUpdateRateForEntry__Q23m3d11anmTexSrt_cFi = 0x80167940;
-	setUpdateRateForEntry__Q23m3d11anmTexSrt_cFfi = 0x80167950;
-	isEntryAnimationDone__Q23m3d11anmTexSrt_cFi = 0x80167960;
-	setEntryByte34__Q23m3d11anmTexSrt_cFUci = 0x80167970;
-	getEntryField28__Q23m3d11anmTexSrt_cFi = 0x80167990;
-	getEntryField2C__Q23m3d11anmTexSrt_cFi = 0x801679B0;
-	vf0C__Q23m3d11anmTexSrt_cFv = 0x801679D0;
-
-
-	m3d__mdl_c__DoStuff = 0x80169BA0;/*mi*/
-
-	__ashldi3 = 0x802DCFFC;
+	AllocSizeForAnmTexSrt = 2148954448;
+	setup__Q23m3d11anmTexSrt_cFQ34nw4r3g3d6ResMdlQ34nw4r3g3d12ResAnmTexSrtP12mAllocator_cPUii = 2148954672;
+	__vt__Q23m3d11anmTexSrt_c = 2150798048;
+	__dt__Q23m3d11anmTexSrt_cFv = 2148955312;
+	detach__Q23m3d11anmTexSrt_cFv = 2148955424;
+	bindEntry__Q23m3d11anmTexSrt_cFPQ23m3d5mdl_cQ34nw4r3g3d12ResAnmTexSrtii = 2148955664;
+	sub80167a80__Q23m3d11anmTexSrt_cFv = 2148955984;
+	process__Q23m3d11anmTexSrt_cFv = 2148956176;
+	processOneEntry__Q23m3d11anmTexSrt_cFi = 2148956352;
+	getFrameForEntry__Q23m3d11anmTexSrt_cFi = 2148956448;
+	setFrameForEntry__Q23m3d11anmTexSrt_cFfi = 2148956464;
+	getUpdateRateForEntry__Q23m3d11anmTexSrt_cFi = 2148956480;
+	setUpdateRateForEntry__Q23m3d11anmTexSrt_cFfi = 2148956496;
+	isEntryAnimationDone__Q23m3d11anmTexSrt_cFi = 2148956512;
+	setEntryByte34__Q23m3d11anmTexSrt_cFUci = 2148956528;
+	getEntryField28__Q23m3d11anmTexSrt_cFi = 2148956560;
+	getEntryField2C__Q23m3d11anmTexSrt_cFi = 2148956592;
+	vf0C__Q23m3d11anmTexSrt_cFv = 2148956624;
 
 
-	_Z13FindActorByIDj = 0x80162B10;
-	FindActorByID__FUi = 0x80162B10;
+	m3d__mdl_c__DoStuff = 2148965280;/*mi*/
 
-	EventTable = 0x80429D98;
-	dBgActorManager = 0x80429AF8;
+	__ashldi3 = 2150486012;
 
-	ContinueBgActorSpawn = 0x8007EA9C;
 
-	SomeModelAnimationClass_Setup = 0x80164EE0;
+	_Z13FindActorByIDj = 2148936464;
+	FindActorByID__FUi = 2148936464;
 
-	EGGTSystem_Pointer = 0x80429DAC;
+	EventTable = 2151849368;
+	dBgActorManager = 2151848696;
 
-	dSys_c__RootHeapMEM1 = 0x80429DB0;/*mi*/
-	dSys_c__RootHeapMEM2 = 0x80429DB4;/*mi*/
+	ContinueBgActorSpawn = 2148002460;
 
-	BG_GM_ptr = 0x80429AF0;
-	instance__7dBgGm_c = 0x80429AF0;
+	SomeModelAnimationClass_Setup = 2148945632;
 
-	BgActorDefs = 0x80429AFC;
+	EGGTSystem_Pointer = 2151849388;
 
-	_Z16GetPointerToTileP9BG_GM_haxtttPsb = 0x80077520;
-	GetPointerToTile__FP9BG_GM_haxUsUsUsPsb = 0x80077520;
+	dSys_c__RootHeapMEM1 = 2151849392;/*mi*/
+	dSys_c__RootHeapMEM2 = 2151849396;/*mi*/
 
-	GameHeap1 = 0x803779CC;
-	GameHeap2 = 0x803779D0;
-	WiimotePtr1 = 0x80377A08;
+	BG_GM_ptr = 2151848688;
+	instance__7dBgGm_c = 2151848688;
 
-	continueFromFlagObjCheck = 0x807EB9F4;
-	returnFromFlagObjCheck = 0x807EBA0C;
+	BgActorDefs = 2151848700;
 
-	Global5758 = 0x80429C68;
-	GlobalEnableFlag = 0x80429A1A;
+	_Z16GetPointerToTileP9BG_GM_haxtttPsb = 2147972384;
+	GetPointerToTile__FP9BG_GM_haxUsUsUsPsb = 2147972384;
 
-	EggControllerClassPtrMaybe = 0x80429C70;
+	GameHeap1 = 2151119308;
+	GameHeap2 = 2151119312;
+	WiimotePtr1 = 2151119368;
 
-	MEMGetTotalFreeSizeForExpHeap = 0x801D45F0;
+	continueFromFlagObjCheck = 2155788788;
+	returnFromFlagObjCheck = 2155788812;
 
-	sub_80064BD0 = 0x80064BD0;
-	sub_80166970 = 0x80166640;
-	sub_80166D10 = 0x801669E0;
+	Global5758 = 2151849064;
+	GlobalEnableFlag = 2151848474;
 
-	daEnGakeNoko_c__StateID_FoolMove = 0x80B144C0;/*mi*/
+	EggControllerClassPtrMaybe = 2151849072;
 
-	EnItem_BindAnimation_Continued = 0x80A28AE4;
-	dAcPy_c__ChangePowerupWithAnimation = 0x801458D0;/*mi*/
-	PlayerProjectileShooting = 0x8013B9A0;
+	MEMGetTotalFreeSizeForExpHeap = 2149402096;
 
-	PlayPlayerSound = 0x80057E70;
-	CreateActor = 0x80064610;
-	Actor_SearchByName = 0x80162B60;
+	sub_80064BD0 = 2147896272;
+	sub_80166970 = 2148951616;
+	sub_80166D10 = 2148952544;
 
-	daEnItem_c__GetWhetherPlayerCanGetPowerupOrNot = 0x80A2B760;/*mi*/
+	daEnGakeNoko_c__StateID_FoolMove = 2159101120;/*mi*/
 
-	returnFromGPSFASixth = 0x80141CC8;
+	EnItem_BindAnimation_Continued = 2158136036;
+	dAcPy_c__ChangePowerupWithAnimation = 2148817104;/*mi*/
+	PlayerProjectileShooting = 2148776352;
 
-	continuePlumberSetPowerupTexture = 0x800CA5AC;
-	doneSettingThePowerupTexture = 0x800D46CC;
-	doneSettingThePowerupTexture2 = 0x80141244;
-	ContinueFromThatFix = 0x800D4630;
+	PlayPlayerSound = 2147843696;
+	CreateActor = 2147894800;
+	Actor_SearchByName = 2148936544;
 
-	continueToadPowerupSet = 0x800BCF04;
+	daEnItem_c__GetWhetherPlayerCanGetPowerupOrNot = 2158147424;/*mi*/
 
-	continuePlumberSetPowerupTextureDebug = 0x800CA544;
+	returnFromGPSFASixth = 2148801736;
 
-	returnFromPowerupSoundChange = 0x8014110C;
+	continuePlumberSetPowerupTexture = 2148312492;
+	doneSettingThePowerupTexture = 2148353740;
+	doneSettingThePowerupTexture2 = 2148799044;
+	ContinueFromThatFix = 2148353584;
 
-	ExitFromTileGodHack = 0x807E1414;
+	continueToadPowerupSet = 2148257540;
 
-	SomeTable_802F5440 = 0x802F4F60;
-	SomeTable_802F5580 = 0x802F50A0;
-	SomeTable_802F56C0 = 0x802F51E0;
+	continuePlumberSetPowerupTextureDebug = 2148312388;
 
-	BlahTable = 0x80324FC8;
+	returnFromPowerupSoundChange = 2148798732;
 
-	TileTable = 0x802EF7D8;
+	ExitFromTileGodHack = 2155746324;
 
-	CurrentLevel = 0x803159BD;
-	CurrentWorld = 0x803159BC;
-	CurrentStartedArea = 0x803159B6; /*WRONG*/
-	CurrentStartedEntrance = 0x803159B7; /*WRONG*/
+	SomeTable_802F5440 = 2150584160;
+	SomeTable_802F5580 = 2150584480;
+	SomeTable_802F56C0 = 2150584800;
 
-	GetRandomSeed = 0x800B2EC0;
-	RandomSeed = 0x80429C64;
+	BlahTable = 2150780872;
 
-	MakeRandomNumber__Fi = 0x800B2EE0;
-	MakeRandomNumberForTiles__Fi = 0x801611B0;
+	TileTable = 2150561752;
 
-	StrangeReplayValue1 = 0x804276AE;
-	StrangeReplayValue2 = 0x80429A89;
-	StrangeReplayValue3 = 0x80429A8A;
+	CurrentLevel = 2150717885;
+	CurrentWorld = 2150717884;
+	CurrentStartedArea = 2150717878; /*WRONG*/
+	CurrentStartedEntrance = 2150717879; /*WRONG*/
 
-	OSGetTime = 0x801B5D90;
-	OSTicksToCalendarTime = 0x801B5E90;
-	snprintf = 0x802E14F8;
-	continueFromReplayHookStart = 0x80924424;
-	continueFromReplayEndHook = 0x801020AC;
-	returnFromRecorder = 0x800B5FF0;
-	dontSkipReplayPrepare = 0x8091F42C;
-	doSkipReplayPrepare = 0x8091F64C;
-	GetSomeGlobalClass = 0x801092C0;
-	SomeUnknownClass5408 = 0x80429FB8;
-	SomeWipeClass = 0x8042A160;
-	QueryGlobal5758 = 0x800B3B50;
+	GetRandomSeed = 2148216512;
+	RandomSeed = 2151849060;
 
-	Crsin_EffectResWaitProc = 0x809A16A8;
-	Crsin_ReplayResWaitProc = 0x809A1668;
+	MakeRandomNumber__Fi = 2148216544;
+	MakeRandomNumberForTiles__Fi = 2148929968;
 
-	SoundClassRelated = 0x80429A7C;
-	BufferToCheckIfPlaying = 0x8042A1A8;
-	StopSoundBasic = 0x801952B0;
-	StopSoundRelated = 0x80195D20;
+	StrangeReplayValue1 = 2151839406;
+	StrangeReplayValue2 = 2151848585;
+	StrangeReplayValue3 = 2151848586;
 
-	GetHermiteCurveValue = 0x8017D330;
-	GetHermiteCurveValue__FfP10HermiteKeyUi = 0x8017D330;
+	OSGetTime = 2149277072;
+	OSTicksToCalendarTime = 2149277328;
+	snprintf = 2150503672;
+	continueFromReplayHookStart = 2157069348;
+	continueFromReplayEndHook = 2148540588;
+	returnFromRecorder = 2148229104;
+	dontSkipReplayPrepare = 2157048876;
+	doSkipReplayPrepare = 2157049420;
+	GetSomeGlobalClass = 2148569792;
+	SomeUnknownClass5408 = 2151849912;
+	SomeWipeClass = 2151850336;
+	QueryGlobal5758 = 2148219728;
 
-	SpawnEffect = 0x8016C6A0;
+	Crsin_EffectResWaitProc = 2157581992;
+	Crsin_ReplayResWaitProc = 2157581928;
 
-	__ct__Q23EGG6EffectFv = 0x802D78B0;
+	SoundClassRelated = 2151848572;
+	BufferToCheckIfPlaying = 2151850408;
+	StopSoundBasic = 2149143216;
+	StopSoundRelated = 2149145888;
 
-	__vt__Q23mEf8effect_c = 0x80329788;
+	GetHermiteCurveValue = 2149045040;
+	GetHermiteCurveValue__FfP10HermiteKeyUi = 2149045040;
 
-	__vt__Q23mEf3es2 = 0x803296C0;
-	__dt__Q23mEf3es2Fv = 0x80025F60;
-	_ZN3mEf3es25spawnEPKcjPK4VEC3PK6S16VecS5_ = 0x8016D090; /*addAnyway*/
+	SpawnEffect = 2148976288;
 
-	RectanglesOverlap__FP7Point3dP7Point3dP7Point3dP7Point3d = 0x800B3100;
+	__ct__Q23EGG6EffectFv = 2150463664;
 
-	fmod = 0x802E8424;
+	__vt__Q23mEf8effect_c = 2150799240;
+
+	__vt__Q23mEf3es2 = 2150799040;
+	__dt__Q23mEf3es2Fv = 2147639136;
+	_ZN3mEf3es25spawnEPKcjPK4VEC3PK6S16VecS5_ = 2148978832; /*addAnyway*/
+
+	RectanglesOverlap__FP7Point3dP7Point3dP7Point3dP7Point3d = 2148217088;
+
+	fmod = 2150532132;
 
 	/* MEGA TESTS */
-	usedForDeterminingStatePress_or_playerCollision = 0x800964A0;
-	DoStuffAndMarkDead = 0x80097170;
-	SmoothRotation = 0x8015F300;
-	ClassAt1EC_Init = 0x8006D090;
-	HandlesOverallScale = 0x8009EA50;
-	posIsInZone = 0x800B5660;
-	ScreenPositionClass = 0x80429D28;
-	ShakeScreen = 0x800D8BE0;
+	usedForDeterminingStatePress_or_playerCollision = 2148099232;
+	DoStuffAndMarkDead = 2148102512;
+	SmoothRotation = 2148922112;
+	ClassAt1EC_Init = 2147930256;
+	HandlesOverallScale = 2148133456;
+	posIsInZone = 2148226656;
+	ScreenPositionClass = 2151849256;
+	ShakeScreen = 2148371424;
 
 	/* daEnemy_c */
 	/*FIXME bad vtable address :( */
-	//__vt__9daEnemy_c = 0x80AE7B68;
-	_vf58__9daEnemy_cFv = 0x809A4DA0;
-	_vf5C__9daEnemy_cFv = 0x809A4D90;
-	_vf68__9daEnemy_cFv = 0x809A4DE0;
-	ptrToWhichPlayer__9daEnemy_cFv = 0x809A2E10;
-	_vf74__9daEnemy_cFv = 0x809A4DD0;
-	_vf7C__9daEnemy_cFv = 0x809A4DC0;
-	_vfB8__9daEnemy_cFv = 0x809A4DB0;
-	_vf228__9daEnemy_cFv = 0x809A4E20;
-	_vf23C__9daEnemy_cFv = 0x809A4E10;
-	_vf240__9daEnemy_cFv = 0x809A4E00;
-	_vf244__9daEnemy_cFv = 0x809A4DF0;
+	//__vt__9daEnemy_c = 2158918504;
+	_vf58__9daEnemy_cFv = 2157596064;
+	_vf5C__9daEnemy_cFv = 2157596048;
+	_vf68__9daEnemy_cFv = 2157596128;
+	ptrToWhichPlayer__9daEnemy_cFv = 2157587984;
+	_vf74__9daEnemy_cFv = 2157596112;
+	_vf7C__9daEnemy_cFv = 2157596096;
+	_vfB8__9daEnemy_cFv = 2157596080;
+	_vf228__9daEnemy_cFv = 2157596192;
+	_vf23C__9daEnemy_cFv = 2157596176;
+	_vf240__9daEnemy_cFv = 2157596160;
+	_vf244__9daEnemy_cFv = 2157596144;
 
 	/* daEnDosun_c */
-	__ct_11daEnDosun_cFv = 0x809F5390;
-	__ct_14daEnBigDosun_cFv = 0x809F5420;
-	__vt__11daEnDosun_c = 0x80AE7B28;
-	onCreate__11daEnDosun_cFv = 0x809F54B0;
-	onDelete__11daEnDosun_cFv = 0x809F5890;
-	onExecute__11daEnDosun_cFv = 0x809F5710;
-	onDraw__11daEnDosun_cFv = 0x809F5760;
-	__dt_11daEnDosun_cFv = 0x809F6A00;
-	kill__11daEnDosun_cFv = 0x809F69D0;
-	killedByLevelClear__11daEnDosun_cFv = 0x809F60D0;
-	collisionCat3_StarPower__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F5910;
-	_vf108__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F58A0;
-	collisionCatD_Drill__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F69F0;
-	_vf110__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F5950;
-	collisionCat7_GroundPound__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F69E0;
-	collisionCat9_RollingObject__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F6960;
-	collisionCat1_Fireball_E_Explosion__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F69A0;
-	collisionCat2_IceBall_15_YoshiIce__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 0x809F6970;
-	_vf144__11daEnDosun_cFi = 0x809F59E0;
-	DieFall_Begin__11daEnDosun_cFv = 0x809F66C0;
-	DieFall_Execute__11daEnDosun_cFv = 0x809F67D0;
-	DieFall_End__11daEnDosun_cFv = 0x809F67C0;
-	Ice_Begin__11daEnDosun_cFv = 0x809F68E0;
-	Ice_Execute__11daEnDosun_cFv = 0x809F6950;
-	Ice_End__11daEnDosun_cFv = 0x809F6940;
-	CreateIceActors__11daEnDosun_cFv = 0x809F5B20;
-	setupBodyModel__11daEnDosun_cFv = 0x809F5CB0;
-	s_809F6530__11daEnDosun_cFv = 0x809F5DF0;
-	spawnEffects__11daEnDosun_cFv = 0x809F5F60;
-	StateID_UpWait__11daEnDosun_c = 0x80B13C50;
-	StateID_DownMoveWait__11daEnDosun_c = 0x80B13C90;
-	StateID_PuruMove__11daEnDosun_c = 0x80B13CD0;
-	StateID_DownMove_Kameck__11daEnDosun_c = 0x80B13D10;
-	StateID_DownMove__11daEnDosun_c = 0x80B13D50;
-	StateID_DownWait__11daEnDosun_c = 0x80B13D90;
-	StateID_UpMove__11daEnDosun_c = 0x80B13DD0;
-	StateID_DieFall__11daEnDosun_c = 0x80B13E0C;
-	StateID_Ice__11daEnDosun_c = 0x80B13E4C;
+	__ct_11daEnDosun_cFv = 2157925264;
+	__ct_14daEnBigDosun_cFv = 2157925408;
+	__vt__11daEnDosun_c = 2158918440;
+	onCreate__11daEnDosun_cFv = 2157925552;
+	onDelete__11daEnDosun_cFv = 2157926544;
+	onExecute__11daEnDosun_cFv = 2157926160;
+	onDraw__11daEnDosun_cFv = 2157926240;
+	__dt_11daEnDosun_cFv = 2157931008;
+	kill__11daEnDosun_cFv = 2157930960;
+	killedByLevelClear__11daEnDosun_cFv = 2157928656;
+	collisionCat3_StarPower__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157926672;
+	_vf108__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157926560;
+	collisionCatD_Drill__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157930992;
+	_vf110__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157926736;
+	collisionCat7_GroundPound__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157930976;
+	collisionCat9_RollingObject__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157930848;
+	collisionCat1_Fireball_E_Explosion__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157930912;
+	collisionCat2_IceBall_15_YoshiIce__11daEnDosun_cFP13ActivePhysicsP13ActivePhysics = 2157930864;
+	_vf144__11daEnDosun_cFi = 2157926880;
+	DieFall_Begin__11daEnDosun_cFv = 2157930176;
+	DieFall_Execute__11daEnDosun_cFv = 2157930448;
+	DieFall_End__11daEnDosun_cFv = 2157930432;
+	Ice_Begin__11daEnDosun_cFv = 2157930720;
+	Ice_Execute__11daEnDosun_cFv = 2157930832;
+	Ice_End__11daEnDosun_cFv = 2157930816;
+	CreateIceActors__11daEnDosun_cFv = 2157927200;
+	setupBodyModel__11daEnDosun_cFv = 2157927600;
+	s_809F6530__11daEnDosun_cFv = 2157927920;
+	spawnEffects__11daEnDosun_cFv = 2157928288;
+	StateID_UpWait__11daEnDosun_c = 2159098960;
+	StateID_DownMoveWait__11daEnDosun_c = 2159099024;
+	StateID_PuruMove__11daEnDosun_c = 2159099088;
+	StateID_DownMove_Kameck__11daEnDosun_c = 2159099152;
+	StateID_DownMove__11daEnDosun_c = 2159099216;
+	StateID_DownWait__11daEnDosun_c = 2159099280;
+	StateID_UpMove__11daEnDosun_c = 2159099344;
+	StateID_DieFall__11daEnDosun_c = 2159099404;
+	StateID_Ice__11daEnDosun_c = 2159099468;
 
-	SpawnThwompEffects = 0x809F5F60;
+	SpawnThwompEffects = 2157928288;
 
-	HurtMarioBecauseOfBeingSquashed = 0x80056370;
+	HurtMarioBecauseOfBeingSquashed = 2147836784;
 
-	instance__7StageE4 = 0x80429A60;
-	killAllEnemiesAtLevelEnd__7StageE4Fi = 0x80066A40;
+	instance__7StageE4 = 2151848544;
+	killAllEnemiesAtLevelEnd__7StageE4Fi = 2147904064;
 
-	JrClownEndDemoState = 0x80999288;
-	JrClownDemoWaitState = 0x80999184;
-	ClownDemoWaitState = 0x80357B5C;
+	JrClownEndDemoState = 2157548168;
+	JrClownDemoWaitState = 2157547908;
+	ClownDemoWaitState = 2150988636;
 
-	spawnCoinJump__7StageE4FRC7Point3diii = 0x80066630;
-	sub_800757B0__14collisionMgr_cFP7Point3dPfUcic = 0x800757B0;
+	spawnCoinJump__7StageE4FRC7Point3diii = 2147903024;
+	sub_800757B0__14collisionMgr_cFP7Point3dPfUcic = 2147964848;
 
-	sException__Q24nw4r2dbFv = 0x803DA2E0;
+	sException__Q24nw4r2dbFv = 2151523040;
 
-	originalSprites = 0x80309E60;
-	originalProfiles = 0x8076A748;
-	ObjectProfileList = 0x8042A0D8;
-	spriteFiles = 0x8031A654;
-	profileNames = 0x80320660;
+	originalSprites = 2150669920;
+	originalProfiles = 2155259720;
+	ObjectProfileList = 2151850200;
+	spriteFiles = 2150737492;
+	profileNames = 2150762080;
 
-	NoFlowers = 0x80077FCC;
-	HasFlowers = 0x80077FC8;
-	Pa1Daishizen = 0x80971F54;
-	returnFromFlowerBuild1 = 0x8087607C;
-	returnFromFlowerBuild2 = 0x808763E4;
-	returnFromFlowerBuild2ItsGrassland = 0x808760FC;
-	returnFromFlowerBuild2ItsDaishizen = 0x80876118;
-	returnFromFlowerBuild3 = 0x80876194;
-	returnFromFlowerBuild3ItsGrassland = 0x80876160;
-	returnFromFlowerBuild3ItsDaishizen = 0x8087617C;
-	returnFromFlowerBuild4 = 0x80876310;
-	ObjHana = 0x80971F78;
-	ObjKusa = 0x80972000;
-	ObjKusaBrres = 0x80971FEC;
+	NoFlowers = 2147975116;
+	HasFlowers = 2147975112;
+	Pa1Daishizen = 2157387604;
+	returnFromFlowerBuild1 = 2156355708;
+	returnFromFlowerBuild2 = 2156356580;
+	returnFromFlowerBuild2ItsGrassland = 2156355836;
+	returnFromFlowerBuild2ItsDaishizen = 2156355864;
+	returnFromFlowerBuild3 = 2156355988;
+	returnFromFlowerBuild3ItsGrassland = 2156355936;
+	returnFromFlowerBuild3ItsDaishizen = 2156355964;
+	returnFromFlowerBuild4 = 2156356368;
+	ObjHana = 2157387640;
+	ObjKusa = 2157387776;
+	ObjKusaBrres = 2157387756;
 
-	returnFromAirshipCloudsNotGood = 0x809DD734;
-	returnFromAirshipCloudsIsGood = 0x809DD728;
+	returnFromAirshipCloudsNotGood = 2157827892;
+	returnFromAirshipCloudsIsGood = 2157827880;
 
-	returnFromLavaCheck1False = 0x80075364;
-	returnFromLavaCheck1True = 0x80075304;
-	returnFromLavaCheck2False = 0x800920CC;
-	returnFromLavaCheck2True = 0x80092090;
-	returnFromLavaCheck3 = 0x8011F298;
-	returnFromLavaCheck4False = 0x800EBCBC;
-	returnFromLavaCheck4True = 0x800EBC80;
-	returnFromLavaCheck5False = 0x8000BA70;
-	returnFromLavaCheck5True = 0x8000C5C0;
+	returnFromLavaCheck1False = 2147963748;
+	returnFromLavaCheck1True = 2147963652;
+	returnFromLavaCheck2False = 2148081868;
+	returnFromLavaCheck2True = 2148081808;
+	returnFromLavaCheck3 = 2148659864;
+	returnFromLavaCheck4False = 2148449468;
+	returnFromLavaCheck4True = 2148449408;
+	returnFromLavaCheck5False = 2147531376;
+	returnFromLavaCheck5True = 2147534272;
 
-	orig_wm_build = 0x809886C4;
+	orig_wm_build = 2157479620;
 
 
-	SI_Kinoko = 0x8098D94C;
-	SI_Fireflower = 0x8098D958;
-	SI_Propeller = 0x8098D968;
-	SI_Iceflower = 0x8098D978;
-	SI_Penguin = 0x8098D988;
-	SI_Star = 0x8098D998;
+	SI_Kinoko = 2157500748;
+	SI_Fireflower = 2157500760;
+	SI_Propeller = 2157500776;
+	SI_Iceflower = 2157500792;
+	SI_Penguin = 2157500808;
+	SI_Star = 2157500824;
 
-	aSi_kinoko_0 = 0x8098D94C;
-	aSi_fireflowe_0 = 0x8098D958;
-	aSi_propeller_0 = 0x8098D968;
-	aSi_iceflower_0 = 0x8098D978;
-	aSi_penguin_0 = 0x8098D988;
-	aSi_star_0 = 0x8098D998;
+	aSi_kinoko_0 = 2157500748;
+	aSi_fireflowe_0 = 2157500760;
+	aSi_propeller_0 = 2157500776;
+	aSi_iceflower_0 = 2157500792;
+	aSi_penguin_0 = 2157500808;
+	aSi_star_0 = 2157500824;
 
-	aSi_kinoko = 0x80982C4C;
-	aSi_fireflower = 0x80982C58;
-	aSi_propeller = 0x80982C68;
-	aSi_iceflower = 0x80982C78;
-	aSi_penguin = 0x80982C88;
-	aSi_kinoko = 0x80982C4C;
-	aSi_star = 0x80982C98;
+	aSi_kinoko = 2157456460;
+	aSi_fireflower = 2157456472;
+	aSi_propeller = 2157456488;
+	aSi_iceflower = 2157456504;
+	aSi_penguin = 2157456520;
+	aSi_kinoko = 2157456460;
+	aSi_star = 2157456536;
 
-	aI_kinoko_6 = 0x80982BB8;
-	aI_fireflower_1 = 0x80982BC4;
-	aI_propeller_4 = 0x80982BD4;
-	aI_iceflower_4 = 0x80982BE0;
-	aI_penguin_4 = 0x80982AEC;
-	aI_kinoko_6 = 0x80982BB8;
-	aI_star_4 = 0x80982BF8;
-	aI_propeller_model_2 = 0x80982C1C;
+	aI_kinoko_6 = 2157456312;
+	aI_fireflower_1 = 2157456324;
+	aI_propeller_4 = 2157456340;
+	aI_iceflower_4 = 2157456352;
+	aI_penguin_4 = 2157456108;
+	aI_kinoko_6 = 2157456312;
+	aI_star_4 = 2157456376;
+	aI_propeller_model_2 = 2157456412;
 
-	goToSpecificWorld__Fiii = 0x80102610;
-	AssembleScWorldMapSettings__FUcii = 0x801029E0;
-	DoShitWithWMPlayer__Fi = 0x809072D0;
+	goToSpecificWorld__Fiii = 2148541968;
+	AssembleScWorldMapSettings__FUcii = 2148542944;
+	DoShitWithWMPlayer__Fi = 2156950224;
 
-	beginState_Shoot__Fi = 0x808BCA10;
+	beginState_Shoot__Fi = 2156644880;
 
-	_ZN10TimeKeeper8instanceE = 0x80429D90;
-	instance__10TimeKeeper = 0x80429D90;
-	_ZN10TimeKeeper7setTimeEi = 0x800E3890;
-	setTime__10TimeKeeperFi = 0x800E3890;
+	_ZN10TimeKeeper8instanceE = 2151849360;
+	instance__10TimeKeeper = 2151849360;
+	_ZN10TimeKeeper7setTimeEi = 2148415632;
+	setTime__10TimeKeeperFi = 2148415632;
 
 	/*
-	daEnGakeNoko_c__StateID_FoolMove = 0x80B144C0;
-	dAcPy_c__ChangePowerupWithAnimation = 0x801458D0;
-	daEnItem_c__GetWhetherPlayerCanGetPowerupOrNot = 0x80A2B760;
-	StageF70__fancilyAddScoreFromPosition = 0x800E22C0;
-	StageF70__fancilyAddScoreFromActor = 0x800E2340;
-	dEn_c__addScoreWhenHitTwo = 0x80096700;
-	dSprite_c__getXDirectionOfFurthestPlayerRelativeToVEC3 = 0x80096240;
-	ConvertStagePositionIntoScreenPosition__Maybe = 0x8006A4B0;
-	m3d__mdl_c__DoStuff = 0x80169BA0;
-	dSys_c__RootHeapMEM1 = 0x80429DB0;
-	dSys_c__RootHeapMEM2 = 0x80429DB4;
+	daEnGakeNoko_c__StateID_FoolMove = 2159101120;
+	dAcPy_c__ChangePowerupWithAnimation = 2148817104;
+	daEnItem_c__GetWhetherPlayerCanGetPowerupOrNot = 2158147424;
+	StageF70__fancilyAddScoreFromPosition = 2148410048;
+	StageF70__fancilyAddScoreFromActor = 2148410176;
+	dEn_c__addScoreWhenHitTwo = 2148099840;
+	dSprite_c__getXDirectionOfFurthestPlayerRelativeToVEC3 = 2148098624;
+	ConvertStagePositionIntoScreenPosition__Maybe = 2147919024;
+	m3d__mdl_c__DoStuff = 2148965280;
+	dSys_c__RootHeapMEM1 = 2151849392;
+	dSys_c__RootHeapMEM2 = 2151849396;
 	*/
 
-	continueFromPowerupAppearSFX = 0x800225D4;
-	PlaySoundForSoundPlayingClass__17SoundPlayingClassFiUiPUi = 0x80199DC0;
+	continueFromPowerupAppearSFX = 2147624404;
+	PlaySoundForSoundPlayingClass__17SoundPlayingClassFiUiPUi = 2149162432;
 
-	__dt_17daFireBall_Base_cFv = 0x80041400;
-	__vt__17daFireBall_Base_c = 0x80306840;
+	__dt_17daFireBall_Base_cFv = 2147750912;
+	__vt__17daFireBall_Base_c = 2150656064;
 
-	StateID_Move__17daFireBall_Base_cFv = 0x80353C8C;
-	StateID_Kill__17daFireBall_Base_cFv = 0x80353CCC;
-	StateID_EatIn__17daFireBall_Base_cFv = 0x80353D0C;
-	StateID_EatNow__17daFireBall_Base_cFv = 0x80353D4C;
+	StateID_Move__17daFireBall_Base_cFv = 2150972556;
+	StateID_Kill__17daFireBall_Base_cFv = 2150972620;
+	StateID_EatIn__17daFireBall_Base_cFv = 2150972684;
+	StateID_EatNow__17daFireBall_Base_cFv = 2150972748;
 
-	onCreate__17daFireBall_Base_cFv = 0x80040960;
-	willBeDeleted__17daFireBall_Base_cFv = 0x80040DC0;
-	onDelete__17daFireBall_Base_cFv = 0x80040DD0;
-	beforeExecute__17daFireBall_Base_cFv = 0x80040B00;
-	onExecute__17daFireBall_Base_cFv = 0x80040BD0;
-	onDraw__17daFireBall_Base_cFv = 0x80040D90;
+	onCreate__17daFireBall_Base_cFv = 2147748192;
+	willBeDeleted__17daFireBall_Base_cFv = 2147749312;
+	onDelete__17daFireBall_Base_cFv = 2147749328;
+	beforeExecute__17daFireBall_Base_cFv = 2147748608;
+	onExecute__17daFireBall_Base_cFv = 2147748816;
+	onDraw__17daFireBall_Base_cFv = 2147749264;
 
-	updateSpawnLimits__17daFireBall_Base_cFv = 0x80040AD0;
-	calledInOnCreate_b__17daFireBall_Base_cFv = 0x80040AE0;
-	calledInOnCreate_c__17daFireBall_Base_cFv = 0x80040AF0;
-	sub_80040BC0__17daFireBall_Base_cFv = 0x80040BC0;
-	setZOrder_maybe__17daFireBall_Base_cFv = 0x80040D70;
-	playFireballEffect__17daFireBall_Base_cFv = 0x80040D80;
-	killIfOutOfZone_maybe__17daFireBall_Base_cFv = 0x80040DE0;
-	setUpCollSensor__17daFireBall_Base_cFv = 0x80040E70;
-	playFireballHitEffect__17daFireBall_Base_cFv = 0x80040EC0;
-	eatIn__17daFireBall_Base_cFv = 0x80040F10;
-	updateLights__17daFireBall_Base_cFv = 0x80040F70;
-	getSizeOfLight__17daFireBall_Base_cFv = 0x80040FF0;
-	doFireSplash__17daFireBall_Base_cFv = 0x80041000;
-	doLavaSplash__17daFireBall_Base_cFv = 0x800410F0;
-	doPoisonSplash__17daFireBall_Base_cFv = 0x800411D0;
-	disableEatIn__17daFireBall_Base_cFv = 0x800413F0;
+	updateSpawnLimits__17daFireBall_Base_cFv = 2147748560;
+	calledInOnCreate_b__17daFireBall_Base_cFv = 2147748576;
+	calledInOnCreate_c__17daFireBall_Base_cFv = 2147748592;
+	sub_80040BC0__17daFireBall_Base_cFv = 2147748800;
+	setZOrder_maybe__17daFireBall_Base_cFv = 2147749232;
+	playFireballEffect__17daFireBall_Base_cFv = 2147749248;
+	killIfOutOfZone_maybe__17daFireBall_Base_cFv = 2147749344;
+	setUpCollSensor__17daFireBall_Base_cFv = 2147749488;
+	playFireballHitEffect__17daFireBall_Base_cFv = 2147749568;
+	eatIn__17daFireBall_Base_cFv = 2147749648;
+	updateLights__17daFireBall_Base_cFv = 2147749744;
+	getSizeOfLight__17daFireBall_Base_cFv = 2147749872;
+	doFireSplash__17daFireBall_Base_cFv = 2147749888;
+	doLavaSplash__17daFireBall_Base_cFv = 2147750128;
+	doPoisonSplash__17daFireBall_Base_cFv = 2147750352;
+	disableEatIn__17daFireBall_Base_cFv = 2147750896;
 
-	beginState_Move__17daFireBall_Base_cFv = 0x800412B0;
-	executeState_Move__17daFireBall_Base_cFv = 0x800412C0;
-	endState_Move__17daFireBall_Base_cFv = 0x800412D0;
-	beginState_EatIn__17daFireBall_Base_cFv = 0x800412E0;
-	executeState_EatIn__17daFireBall_Base_cFv = 0x800412F0;
-	endState_EatIn__17daFireBall_Base_cFv = 0x80041300;
-	beginState_EatNow__17daFireBall_Base_cFv = 0x80041330;
-	executeState_EatNow__17daFireBall_Base_cFv = 0x80041340;
-	endState_EatNow__17daFireBall_Base_cFv = 0x80041350;
-	beginState_Kill__17daFireBall_Base_cFv = 0x80041360;
-	executeState_Kill__17daFireBall_Base_cFv = 0x800413B0;
-	endState_Kill__17daFireBall_Base_cFv = 0x800413A0;
+	beginState_Move__17daFireBall_Base_cFv = 2147750576;
+	executeState_Move__17daFireBall_Base_cFv = 2147750592;
+	endState_Move__17daFireBall_Base_cFv = 2147750608;
+	beginState_EatIn__17daFireBall_Base_cFv = 2147750624;
+	executeState_EatIn__17daFireBall_Base_cFv = 2147750640;
+	endState_EatIn__17daFireBall_Base_cFv = 2147750656;
+	beginState_EatNow__17daFireBall_Base_cFv = 2147750704;
+	executeState_EatNow__17daFireBall_Base_cFv = 2147750720;
+	endState_EatNow__17daFireBall_Base_cFv = 2147750736;
+	beginState_Kill__17daFireBall_Base_cFv = 2147750752;
+	executeState_Kill__17daFireBall_Base_cFv = 2147750832;
+	endState_Kill__17daFireBall_Base_cFv = 2147750816;
 
-	Move_Begin__17daFireBall_Base_cFv = 0x800412B0;
-	Move_Execute__17daFireBall_Base_cFv = 0x800412C0;
-	Move_End__17daFireBall_Base_cFv = 0x800412D0;
-	eatIn_Begin__17daFireBall_Base_cFv = 0x800412E0;
-	eatIn_Execute__17daFireBall_Base_cFv = 0x800412F0;
-	eatIn_End__17daFireBall_Base_cFv = 0x80041300;
-	eatNow_Begin__17daFireBall_Base_cFv = 0x80041330;
-	eatNow_Execute__17daFireBall_Base_cFv = 0x80041340;
-	eatNow_End__17daFireBall_Base_cFv = 0x80041350;
-	Kill_Begin__17daFireBall_Base_cFv = 0x80041360;
-	Kill_Execute__17daFireBall_Base_cFv = 0x800413B0;
-	Kill_End__17daFireBall_Base_cFv = 0x800413A0;
+	Move_Begin__17daFireBall_Base_cFv = 2147750576;
+	Move_Execute__17daFireBall_Base_cFv = 2147750592;
+	Move_End__17daFireBall_Base_cFv = 2147750608;
+	eatIn_Begin__17daFireBall_Base_cFv = 2147750624;
+	eatIn_Execute__17daFireBall_Base_cFv = 2147750640;
+	eatIn_End__17daFireBall_Base_cFv = 2147750656;
+	eatNow_Begin__17daFireBall_Base_cFv = 2147750704;
+	eatNow_Execute__17daFireBall_Base_cFv = 2147750720;
+	eatNow_End__17daFireBall_Base_cFv = 2147750736;
+	Kill_Begin__17daFireBall_Base_cFv = 2147750752;
+	Kill_Execute__17daFireBall_Base_cFv = 2147750832;
+	Kill_End__17daFireBall_Base_cFv = 2147750816;
 
-	vf138__17daFireBall_Base_cFv = 0x800413E0;
-	vf13C__17daFireBall_Base_cFv = 0x800413D0;
+	vf138__17daFireBall_Base_cFv = 2147750880;
+	vf13C__17daFireBall_Base_cFv = 2147750864;
 
-	afterExecute_orig__7dShit_cFi = 0x80038670;
+	afterExecute_orig__7dShit_cFi = 2147714672;
 
-	EffectSpawnerThatTakesPlayerCountIntoAccount = 0x8008F9F0;
+	EffectSpawnerThatTakesPlayerCountIntoAccount = 2148071920;
 
-	returnFromNewDirectWallHit = 0x8011A5A4;
-	continueFromDontKillYourself = 0x800409C8;
-	getBlockTypeFromTilenum = 0x80088210;
+	returnFromNewDirectWallHit = 2148640164;
+	continueFromDontKillYourself = 2147748296;
+	getBlockTypeFromTilenum = 2148041232;
 
-	continueFromOldPlaySound = 0x80198A44;
-	continueFromCheckBouncingBlock = 0x8011AB64;
-	dword_80357158 = 0x80356BD8;
-	dword_803572A0 = 0x80356D20;
-	EffectRelated = 0x8016D450;
+	continueFromOldPlaySound = 2149157444;
+	continueFromCheckBouncingBlock = 2148641636;
+	dword_80357158 = 2150984664;
+	dword_803572A0 = 2150984992;
+	EffectRelated = 2148979792;
 
-	daEnSnakeBlock_c__StateID_Move = 0x80B1ACF8;
-	doSomethingElseWithTravelInfoBuffer__SnakeSubEx = 0x80AA6CE0;
-	continueFromFirstLoop = 0x80AA7510;
-	continueFromNodeLoop = 0x80AA7580;
-	continueFromSnakeBlockLoop3 = 0x80AA6D54;
-	continueFromStoreIsLoopToR9_1 = 0x80AA7EA0;
-	continueFromStoreIsLoopToR9_2 = 0x80AA7EB0;
-	cancelNodeLoop = 0x80AA7A38;
-	firstLoop = 0x80AA74C0;
-	loopForNodes = 0x80AA752C;
-	finishNodeLoop = 0x80AA7A38;
-	abs = 0x802DE324;
-	dRail__getRailByID_static = 0x800D9040;
-	loc_80AA86FC = 0x80AA7FFC;
+	daEnSnakeBlock_c__StateID_Move = 2159127800;
+	doSomethingElseWithTravelInfoBuffer__SnakeSubEx = 2158652640;
+	continueFromFirstLoop = 2158654736;
+	continueFromNodeLoop = 2158654848;
+	continueFromSnakeBlockLoop3 = 2158652756;
+	continueFromStoreIsLoopToR9_1 = 2158657184;
+	continueFromStoreIsLoopToR9_2 = 2158657200;
+	cancelNodeLoop = 2158656056;
+	firstLoop = 2158654656;
+	loopForNodes = 2158654764;
+	finishNodeLoop = 2158656056;
+	abs = 2150490916;
+	dRail__getRailByID_static = 2148372544;
+	loc_80AA86FC = 2158657532;
 
-	originalSprites = 0x80309E60;
-	originalProfiles = 0x8076A748;
-	ObjectProfileList = 0x8042A0D8;
-	spriteFiles = 0x8031A654;
-	profileNames = 0x80320660;
+	originalSprites = 2150669920;
+	originalProfiles = 2155259720;
+	ObjectProfileList = 2151850200;
+	spriteFiles = 2150737492;
+	profileNames = 2150762080;
 
+	instance__22dCourseSelectManager_c = 2157583472;
+	StateID_KeyWait__22dCourseSelectManager_c = 2157583680;
+	StateID_StockItemSelectWait__22dCourseSelectManager_c = 2157583872;
+	sub_80931170__22dCourseSelectManager_cFv = 2157121200;
+	sub_809310F0__22dCourseSelectManager_cFv = 2157121072;
+	sub_80931090__22dCourseSelectManager_cFv = 2157120976;
+	sub_80931110__22dCourseSelectManager_cFv = 2157121104;
 
 	.text : {
 		FILL (0)
