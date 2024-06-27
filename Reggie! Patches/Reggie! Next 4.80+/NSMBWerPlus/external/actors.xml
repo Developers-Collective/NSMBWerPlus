@@ -4025,8 +4025,8 @@
         <property name="Sprite" value="531" />
     </option>
 	<option value="801">
-        <property name="Name" value="Line God - crashes, use 50" />
-        <property name="Usability" value="xxx" />
+        <property name="Name" value="Line God" />
+        <property name="Usability" value="***" />
         <property name="Sprite" value="533" />
     </option>
 	<option value="802">

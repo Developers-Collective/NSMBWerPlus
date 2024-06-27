@@ -117,47 +117,44 @@ void CCafterCreate(dEn_c *clown, u32 param) {
 }
 
 void CConExecuteMove(dEn_c *clown) {
-	if(clown->settings >> 4 & 1) {
+	u8 player = cPlayerOccupying->which_player;
+	// OSReport("Angle = %x, %x, %x", (GetSpecificPlayerActor(player))->rot.y, (GetSpecificPlayerActor(player))->rot.x, (GetSpecificPlayerActor(player))->rot.z);
+	// OSReport("Clown = %x, %x, %x", (clown)->rot.y, (clown)->rot.x, (clown)->rot.z);
 
-		u8 player = cPlayerOccupying->which_player;
-		// OSReport("Angle = %x, %x, %x", (GetSpecificPlayerActor(player))->rot.y, (GetSpecificPlayerActor(player))->rot.x, (GetSpecificPlayerActor(player))->rot.z);
-		// OSReport("Clown = %x, %x, %x", (clown)->rot.y, (clown)->rot.x, (clown)->rot.z);
+	Vec tempPos;
+	
+	u32 buttonPushed = Remocon_GetPressed(GetRemoconMng()->controllers[cPlayerOccupying->which_player]);
+	if ((buttonPushed & 0x0100) && ((clown->settings >> 4) & 1)) {
+	
+		if (cTimer > 90) {
+			if (clown->direction == 0) { // Going right
+				tempPos = (Vec){clown->pos.x + 32.0, clown->pos.y + 32.0, 3564.0};
+				dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+				spawned->speed.x = 5.0;
+			}
+			else {
+				tempPos = (Vec){clown->pos.x - 32.0, clown->pos.y + 32.0, 3564.0};
+				dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+				spawned->speed.x = -5.0;
+			}
 
-		Vec tempPos;
-		
-		u32 buttonPushed = Remocon_GetPressed(GetRemoconMng()->controllers[cPlayerOccupying->which_player]);
-		if (buttonPushed & 0x0100) {
-			
-			if (cTimer > 90) {
-				if (clown->direction == 0) { // Going right
-					tempPos = (Vec){clown->pos.x + 32.0, clown->pos.y + 32.0, 3564.0};
-					dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
-					spawned->speed.x = 5.0;
-				}
-				else {
-					tempPos = (Vec){clown->pos.x - 32.0, clown->pos.y + 32.0, 3564.0};
-					dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
-					spawned->speed.x = -5.0;
-				}
-
-				SpawnEffect("Wm_en_killervanish", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){0.1, 0.1, 0.1});
-				nw4r::snd::SoundHandle handle;
-				PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_HOUDAI_S_SHOT, 1);
+			SpawnEffect("Wm_en_killervanish", 0, &tempPos, &(S16Vec){0,0,0}, &(Vec){0.1, 0.1, 0.1});
+			nw4r::snd::SoundHandle handle;
+			PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_HOUDAI_S_SHOT, 1);
 
 			cTimer = 0;
-			}
 		}
-
-		cTimer++;
-
-		ClassWithCameraInfo *cwci = ClassWithCameraInfo::instance;
-		float leftBound = cwci->screenLeft + 12.0f;
-		float rightBound = (cwci->screenLeft + cwci->screenWidth) - 12.0f;
-		if (clown->pos.x < leftBound)
-			clown->pos.x = leftBound;
-		if (clown->pos.x > rightBound)
-			clown->pos.x = rightBound;
 	}
+
+	cTimer++;
+
+	ClassWithCameraInfo *cwci = ClassWithCameraInfo::instance;
+	float leftBound = cwci->screenLeft + 12.0f;
+	float rightBound = (cwci->screenLeft + cwci->screenWidth) - 12.0f;
+	if (clown->pos.x < leftBound)
+		clown->pos.x = leftBound;
+	if (clown->pos.x > rightBound)
+		clown->pos.x = rightBound;
 
 	// run normal move
 	PClownCarMove(clown);

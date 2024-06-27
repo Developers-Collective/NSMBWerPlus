@@ -13,13 +13,3 @@ Kamek/tools/*.pyc
 *.pyc
 Kamek/tools/__pycache__
 __pycache__
-.vscode
-Kamek/makeNSMBWer-test.bat
-Kamek/makeNSMBWer-testAllRegions.bat
-Kamek/makeGame-test.py
-Kamek/makeGame-testAllRegions.py
-Kamek/tools/kamek_test.py
-Kamek/kamek_configs_test.yaml
-Kamek/Loader/compile.bat
-Kamek/Loader/powerpc-eabi-as.exe
-Kamek/Loader/powerpc-eabi-ld.exe

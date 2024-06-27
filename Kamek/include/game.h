@@ -1912,7 +1912,10 @@ class fBase_c {
 public:
 	u32 id;
 	u32 settings;
-	u16 profileId;
+	union {
+		u16 name;
+		u16 profileId;
+	};
 	bool isCreated;
 	bool isDeleted;
 	bool wasNotDeferred;

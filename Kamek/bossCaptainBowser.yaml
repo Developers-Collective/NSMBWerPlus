@@ -6,14 +6,21 @@ hooks:
   # HOOKS FOR CLOWN CAR
   ################################################
   - name: ClownCarFloor
-    type: patch
-    addr_pal: 0x80810A40
-    data: '60000000'
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80810A40
+    target_func: 'ClownCarFloor'
 
   - name: ClownCarWalls
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80811280
+    target_func: 'ClownCarWalls'
+  
+  - name: ClownCarAllocation
     type: patch
-    addr_pal: 0x80937A60
-    data: '471C4000'
+    addr_pal: 0x8080F918
+    data: '386017D0' # Replace 0x0FD0 which how much space I want to allocate
 
   # Official Funcs
   - name: ClownCarCtor

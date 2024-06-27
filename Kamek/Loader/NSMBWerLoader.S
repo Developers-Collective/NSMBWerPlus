@@ -155,7 +155,7 @@ RegionDetected:
 
 
 memcpybuffer: .long 0, 0, 0
-FSLStart: .string "<< NSMBWER_LOADER \trelease build: Oct 19 2023 19:31:35 >>\n"
+FSLStart: .string "<< NSMBWER_LOADER \trelease build: Jun 23 2024 21:26:04 >>\n"
 FSLRegion: .string "-Found Region xx_x\n"
 FSLBCA: .string "-Removed BCA Check\n"
 FSLFinish: .string "-Patched GameInitTable\n"
@@ -508,7 +508,7 @@ Step4: .string "4: Done. Loading relocs...\n"
 Step5: .string "5: Done. Patching...\n"
 Step6: .string "6: Done. Linking...\n"
 Step7: .string "7: Done. Closing Relocs & System files...\n"
-Step8: .string "8: Done! Hacks loaded!"
+Step8: .string "8: Done! Hacks loaded!\n"
 Secret: .string "Hmm... what are you doing here?\nLooking for secrets, huh?\nWell then, congrats for finding this message!\n"
 ErrorOpenSys: .string "FATAL ERROR: System file could not be opened."
 ErrorAlloc: .string "FATAL ERROR: Failed to allocate memory (%d)."
@@ -518,11 +518,6 @@ ErrorFileMissing:
     .ascii "Something went wrong while installing.\n"
     .ascii "The following file is required, but can't be found on the SD card or USB drive:\n"
     .ascii "/NSMBWer+%s\n"
-    .ascii "\n"
-    .ascii "For troubleshooting and installation\n"
-    .ascii "instructions, see:\n"
-    .ascii "    http://newerteam.com/help.\n"
-    .ascii "\n"
     .ascii "Disc version: %d\n"
     .ascii "Game region: %c"
     .byte 0

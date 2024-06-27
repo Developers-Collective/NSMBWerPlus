@@ -6,8 +6,6 @@
 #include <profileid.h>
 #include <stage.h>
 #include "levelinfo.h"
-#include "fileload.h"
-#include "layoutlib.h"
 
 extern char CurrentLevel;
 extern char CurrentWorld;
@@ -17,7 +15,8 @@ int DoNames(int state) {
 	int lnum = (int)CurrentLevel;
 	const char *levelname;
 	const char *worldname;
-
+	nw4r::lyt::TextBox
+		*worldObj, *levelObj;
 	// Skip the title screen
 	// and only process the code if the State is set to 1
 	// (the screen has been initialised)
@@ -28,8 +27,9 @@ int DoNames(int state) {
 		// FIX !!!!!
 
 		if (ptr != 0) {
-			void *worldObj = EmbeddedLayout_FindTextBoxByName((Layout*)((u32)ptr+0xB0), "TXT_WorldName");
-			void *levelObj = EmbeddedLayout_FindTextBoxByName((Layout*)((u32)ptr+0xB0), "TXT_LevelName");
+			m2d::EmbedLayout_c *layout = (m2d::EmbedLayout_c*)((u32)ptr+0xB0);
+			worldObj = layout->findTextBoxByName("TXT_WorldName");
+			levelObj = layout->findTextBoxByName("TXT_LevelName");
 			if (worldObj == 0 || levelObj == 0) return state;
 
 			dLevelInfo_c::entry_s *level = dLevelInfo_c::s_info.searchBySlot(CurrentWorld, CurrentLevel);
@@ -37,26 +37,26 @@ int DoNames(int state) {
 			if (level) {
 				levelname = dLevelInfo_c::s_info.getNameForLevel(level);
 			} else {
-				levelname = "Not found in LevelInfo!";
+				char levelNumber[15];
+				sprintf(levelNumber, "%d-%d (UNNAMED)", wnum+1, lnum+1);
+				levelname = levelNumber;
 			}
 			if (world) {
 				worldname = dLevelInfo_c::s_info.getNameForLevel(world);
 			} else {
-				worldname = "Not found in LevelInfo!";
+				char worldNumber[8];
+				sprintf(worldNumber, "World %d", wnum+1);
+				worldname = worldNumber;
 			}
-			void *vtable = *((void**)levelObj);
-			void *funcaddr = *((void**)((u32)vtable+0x7C));
-			int (*SetString)(void*, unsigned short*, unsigned short);
-			SetString = (int(*)(void*, unsigned short*, unsigned short))funcaddr;
 
-			unsigned short wbuffer[0x40], lbuffer[0x40];
+			wchar_t wbuffer[0x40], lbuffer[0x40];
 			for (int i = 0; i < 0x40; i++) {
 				wbuffer[i] = (unsigned short)worldname[i];
 				lbuffer[i] = (unsigned short)levelname[i];
 			}
 
-			SetString(worldObj, wbuffer, 0);
-			SetString(levelObj, lbuffer, 0);
+			worldObj->SetString(wbuffer);
+			levelObj->SetString(lbuffer);
 		}
 	} else {
 	}

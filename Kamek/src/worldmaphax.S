@@ -62,6 +62,60 @@ useNewFileListR31:
 	ori r31, r31, newAlwaysLoadedList@l
 	blr
 
+.extern FUN_800f6920
+.extern setSRT__21dPlayerModelHandler_cF7Point3d6S16Vec7Point3d
+.extern update__21dPlayerModelHandler_cFv
+.global newShadowScales
+newShadowScales:
+	stwu r1, -0x30(r1)
+	mfspr r0, LR
+    lis r4, newScalesTable@h
+    stw r0, 0x34(r1)
+    subi r4, r4, newScalesTable@l
+    stw r31, 0x2c(r1)
+    or r31, r3, r3
+    lwz r5, 0x1d0(r3)
+	lis r12, randomFloat@h
+	ori r12, r12, randomFloat@l
+    lfs f1, 0x0(r12)
+	lbz r0, 0x152(r5)
+    mulli r0, r0, 0xc
+    add r4, r4, r0
+    lfs f2, 0x0(r4)
+    lfs f3,0x4(r4)
+    lfs f4, 0x8(r4)
+    bl FUN_800f6920
+    lfs f0, 0xb4(r31)
+    addi r3, r31, 0x1cc
+    lfs f1, 0xb0(r31)
+    addi r4, r1, 0x1c
+    lfs f2, 0xac(r31)
+    addi r5, r1, 0x8
+    stfs f2, 0x1c(r1)
+    addi r6, r1, 0x10
+    stfs f1, 0x20(r1)
+    stfs f0, 0x24(r1)
+    lfs f0, 0xe4(r31)
+    lfs f1, 0xe0(r31)
+    lfs f2, 0xdc(r31)
+    stfs f2, 0x10(r1)
+    stfs f1, 0x14(r1)
+    stfs f0, 0x18(r1)
+    lha r0, 0x100(r31)
+    sth r0, 0x8(r1)
+    lha r0, 0x102(r31)
+    sth r0, 0xa(r1)
+    lha r0, 0x104(r31)
+    sth r0, 0xc(r1)
+    bl setSRT__21dPlayerModelHandler_cF7Point3d6S16Vec7Point3d
+    addi r3, r31, 0x1cc
+    bl update__21dPlayerModelHandler_cFv
+    lwz r0, 0x34(r1)
+    lwz r31, 0x2c(r1)
+    mtspr LR ,r0
+    addi r1, r1, 0x30
+    blr
+
 .data
 .global newAlwaysLoadedList
 newAlwaysLoadedList:
@@ -81,3 +135,32 @@ newAlwaysLoadedList:
 	.long aCharacter_s_12
 	.long aCobsurrender_0
 	.long aCobkinopio_1
+
+.global newScalesTable
+newScalesTable:
+	.float 0.6
+	.float 1.0
+	.float 0.6
+	.float 0.8
+	.float 1.0
+	.float 0.8
+	.float 0.8
+	.float 1.0
+	.float 0.8
+	.float 0.4
+	.float 1.0
+	.float 0.4
+	.float 0.8
+	.float 1.0
+	.float 0.8
+	.float 0.8
+	.float 1.0
+	.float 0.8
+	.float 0.8
+	.float 1.0
+	.float 0.8
+	.float 0.8 #NEW: scales for hammer
+	.float 1.0
+	.float 0.8
+
+randomFloat: .float 0.5

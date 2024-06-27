@@ -834,14 +834,49 @@
   <sprite id="200" name="Micro Goomba" notes="A very small Goomba that clings to the player until they spin jump to shake them off.">
   </sprite> <!-- #200: Micro Goomba -->
   
-  <sprite id="203" name="Chest" notes="A chest that will award some type of inventory item to the player. Note that opening a chest will complete the level with the standard exit.">
-    <dependency notes="NewerSMBW rewrote this sprite's settings data in a way that breaks Ambush levels. As such the following information is outdated. [432] is still required, however.&lt;br&gt;&lt;br&gt;Requires ONE of these two sprites in order to not cause the game to crash. Which one depends on how the Chest is being used. If you're using it as part of an Ambush level, [454] is required. If you're using it without the Ambush arrangement, [432] is required to be placed somewhere in the level, even if it's outside of the active Zones. Additionally, if you allow the player to leave the vicinity of the Chest before it exits the player from the level, they will be able to open it again for another item, so do not allow the player to do this.">
+  <sprite id="203" name="Chest" notes="A chest affected by gravity that will award some type of inventory item to the player. Note that opening a chest will complete the level with the standard exit. Keep in mind that if you allow the player to leave the vicinity of the chest before it exits the player from the level, they will be able to open it again for another item, so do not allow the player to do this.">
+   <dependency notes="Requires ONE of these two sprites in order to not cause the game to crash. Which one depends on how the chest is being used. If you're using it as part of an Ambush level, [454] is required. If you're using it without the Ambush arrangement, [432] is required to be placed somewhere in the level, even if it's outside of the active Zones.">
       <suggested sprite="432"/>
-      <!--<suggested sprite="454" />-->
+      <suggested sprite="454"/>
     </dependency>
+	<dualbox nybble="7" title1="Vanilla Behavior" title2="Newer Behavior" comment="This determines if the chest will behave like how it does in vanilla, or newer"/>
     <value nybble="3.2-4.4" title="Triggering Event ID" comment="The Chest will only appear when the Triggering Event is 0 or is activated. It will not disappear if the Event is deactivated." idtype="Triggering Event"/>
-    <value nybble="8.2-8.4" title="Number of Items Awarded" comment="This determines the number of different items awarded." comment2="[Bug] Item 5 mistakenly uses this value, so keep in mind this limits the possible awards. &lt;br&gt;&lt;br&gt;If awarding 5 items, the 5th item must be a Star. &lt;br&gt;If awarding 6 items, the 5th item must be a Penguin Suit. &lt;br&gt;If awarding 7 items, the 5th item must be a Hammer. &lt;br&gt;You cannot award 8 items."/>
-    <list nybble="12" title="Item 1" comment="This determines what main item will appear from the Chest.">
+	<list nybble="10" title="Chest Type" comment="Determines the behavior and contents of the chest." requirednybble="7" requiredval="0">
+      <entry value="0">Default</entry>
+      <entry value="1">Triggered by Ambush Controller</entry>
+      <entry value="2">Contains Toad (Unused)</entry>
+    </list>
+    <list nybble="8" title="Mushroom Reward Amount" comment="Determines the number of Mushrooms the chest spawns. Specifying more than 5 Mushrooms can cause glitchy visual behavior, but it still works." requirednybble="7,10" requiredval="0,1-2"> <!-- Appears Chest Type Value 1-2 -->
+      <entry value="0">3 Mushrooms</entry>
+      <entry value="1">4 Mushrooms</entry>
+      <entry value="2">5 Mushrooms</entry>
+      <entry value="3">6 Mushrooms</entry>
+      <entry value="4">7 Mushrooms</entry>
+      <entry value="5">8 Mushrooms</entry>
+      <entry value="6">9 Mushrooms</entry>
+      <entry value="7">10 Mushrooms</entry>
+      <entry value="8">11 Mushrooms</entry>
+      <entry value="9">12 Mushrooms</entry>
+      <entry value="10">13 Mushrooms</entry>
+      <entry value="11">14 Mushrooms</entry>
+      <entry value="12">15 Mushrooms</entry>
+      <entry value="13">16 Mushrooms</entry>
+      <entry value="14">17 Mushrooms</entry>
+      <entry value="15">18 Mushrooms</entry>
+    </list>
+    <list nybble="12" title="Contains" comment="Determines the item in the chest. This only works with the Default Chest Type, as the other settings would just spawn Mushrooms." requirednybble="7,10" requiredval="0,0"> <!-- Appears only for Default Chests -->
+      <entry value="0">Nothing</entry> <!-- 1, 9-14 is Nothing -->
+      <entry value="2">Mushroom</entry>
+      <entry value="3">Fire Flower</entry>
+      <entry value="8">Ice Flower</entry>
+      <entry value="4">Propeller Shroom</entry>
+      <entry value="5">Penguin Suit</entry>
+      <entry value="6">Mini Mushroom</entry>
+      <entry value="7">Star</entry>
+      <entry value="15">Random</entry>
+    </list>
+    <value nybble="8.2-8.4" title="Number of Items Awarded" comment="This determines the number of different items awarded." comment2="[Bug] Item 5 mistakenly uses this value, so keep in mind this limits the possible awards. &lt;br&gt;&lt;br&gt;If awarding 5 items, the 5th item must be a Star. &lt;br&gt;If awarding 6 items, the 5th item must be a Penguin Suit. &lt;br&gt;If awarding 7 items, the 5th item must be a Hammer. &lt;br&gt;You cannot award 8 items." requirednybble="7" requiredval="1"/>
+    <list nybble="12" title="Item 1" comment="This determines what main item will appear from the Chest." requirednybble="7" requiredval="1">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -851,7 +886,7 @@
       <entry value="4">Mini Mushroom</entry>
       <entry value="5">Star</entry>
     </list>
-    <list nybble="11" title="Item 2" comment="This determines what other item(s) will appear from the Chest." requirednybble="8.2-8.4" requiredval="2-7">
+    <list nybble="11" title="Item 2" comment="This determines what other item(s) will appear from the Chest." requirednybble="7,8.2-8.4" requiredval="1,2-7">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -861,7 +896,7 @@
       <entry value="4">Mini Mushroom</entry>
       <entry value="5">Star</entry>
     </list>
-    <list nybble="10" title="Item 3" comment="This determines what other item(s) will appear from the Chest." requirednybble="8.2-8.4" requiredval="3-7">
+    <list nybble="10" title="Item 3" comment="This determines what other item(s) will appear from the Chest." requirednybble="7,8.2-8.4" requiredval="1,3-7">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -871,7 +906,7 @@
       <entry value="4">Mini Mushroom</entry>
       <entry value="5">Star</entry>
     </list>
-    <list nybble="9" title="Item 4" comment="This determines what other item(s) will appear from the Chest." requirednybble="8.2-8.4" requiredval="4-7">
+    <list nybble="9" title="Item 4" comment="This determines what other item(s) will appear from the Chest." requirednybble="7,8.2-8.4" requiredval="1,4-7">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -881,7 +916,7 @@
       <entry value="4">Mini Mushroom</entry>
       <entry value="5">Star</entry>
     </list>
-    <list nybble="8.2-8.4" title="Item 5" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 5 mistakenly uses this value, so keep in mind this limits the possible awards. &lt;br&gt;&lt;br&gt;If awarding 5 items, the 5th item must be a Star. &lt;br&gt;If awarding 6 items, the 5th item must be a Penguin Suit. &lt;br&gt;If awarding 7 items, the 5th item must be a Hammer. &lt;br&gt;You cannot award 8 items." requirednybble="8.2-8.4" requiredval="5-7">
+    <list nybble="8.2-8.4" title="Item 5" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 5 mistakenly uses this value, so keep in mind this limits the possible awards. &lt;br&gt;&lt;br&gt;If awarding 5 items, the 5th item must be a Star. &lt;br&gt;If awarding 6 items, the 5th item must be a Penguin Suit. &lt;br&gt;If awarding 7 items, the 5th item must be a Hammer. &lt;br&gt;You cannot award 8 items." requirednybble="7,8.2-8.4" requiredval="1,5-7">
       <entry value="5">Star</entry>
       <entry value="6">Penguin Suit</entry>
       <entry value="7">Hammer</entry>
@@ -891,7 +926,7 @@
       <entry value="2">Unusable</entry>
       <entry value="4">Unusable</entry>
     </list>
-    <list nybble="6" title="Item 6" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 6 is visually a little bit glitchy, as the item awarded is shown nearby the chest." requirednybble="8.2-8.4" requiredval="6-7">
+    <list nybble="6" title="Item 6" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 6 is visually a little bit glitchy, as the item awarded is shown nearby the chest." requirednybble="7,8.2-8.4" requiredval="1,6-7">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -901,7 +936,7 @@
       <entry value="4">Mini Mushroom</entry>
       <entry value="5">Star</entry>
     </list>
-    <list nybble="5" title="Item 7" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 6 is visually a little bit glitchy, as the item awarded is shown behind the chest." requirednybble="8.2-8.4" requiredval="7">
+    <list nybble="5" title="Item 7" comment="This determines what other item(s) will appear from the Chest." comment2="[Bug] Item 6 is visually a little bit glitchy, as the item awarded is shown behind the chest." requirednybble="7,8.2-8.4" requiredval="1,7">
       <entry value="0">Mushroom</entry>
       <entry value="1">Fire Flower</entry>
       <entry value="3">Ice Flower</entry>
@@ -2058,8 +2093,9 @@
   
   <sprite id="493" name="Player Clowncar" noyoshi="True" notes="A rideable Clowncar" advancedcomment="This sprite is very buggy, please keep in mind this sprite was designed for use in the NewerSMBW final boss fight and there is no documentation for what issues you might encounter. Be sure to test your level for crashes and glitches. Cannon shots behave similarly but not identically to Bob-omb explosions. Water causes it to react similarly to Yoshi, with the player jumping off and the Clowncar sinking.">
     <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
+	<checkbox nybble="8.3" title="Unrestricted Movement" comment="When enabled, the clown car will have free movement across the entire level instead of the original airship room's boundaries."/>
 	<checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
-	<dualbox nybble="10" title1="Original Size" title2="Largee Size" comment="This changes the size of the clowncar from the one used in the World 6 airship to the size used by NewerSMBW's final boss."/>
+	<dualbox nybble="10" title1="Original Size" title2="Larger Size" comment="This changes the size of the clowncar from the one used in the World 6 airship to the size used by NewerSMBW's final boss."/>
   </sprite> <!-- #493: Rideable Clowncar with Cannon -->
   
   <sprite id="494" name="Thundercloud" notes="This creates an unhappy Thundercloud that is similar to a Lakitu's cloud. It will slingshot around the top of the stage and occasionally shoot down Thunder. This Thunder will turn non-tiny Marios into Mini-Mario, and kill Mini-Marios outright. The Thunder will not reach beneath solid terrain.">

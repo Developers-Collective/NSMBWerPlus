@@ -72,7 +72,7 @@ modules:
   - processed/singAlong.yaml
   - processed/pumpkinGoomba.yaml
   # - processed/pengi.yaml
-  - processed/actorlog.yaml
+  # - processed/actorlog.yaml
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
   - processed/nsmbwUpdated.yaml
