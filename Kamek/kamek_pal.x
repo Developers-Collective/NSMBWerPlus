@@ -1,4 +1,10 @@
 SECTIONS {
+	continueToFanfare = 0x8019c294;
+	continueFromKinopio = 0x807b9f8c;
+	FUN_800f6920 = 0x800f6920;
+	continueFromOrigStrongBox2 = 0x808aaf94;
+	continueFromOrigStrongBox = 0x808aa454;
+
 	StateID_KeyWait__17dCollectionCoin_c = 0x80990ff0;
 	StateID_ExitAnimeEndWait__17dCollectionCoin_c = 0x809910b0;
 	CollectionCoinNextWorld = 0x80774ab0;

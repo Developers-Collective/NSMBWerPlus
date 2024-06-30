@@ -39,7 +39,39 @@ notAdjacent:
 	mr r3, r30
 	b ContinueFromClownCarDetectAdjacent
 
+.global ClownCarFloor
+ClownCarFloor:
+	lbz r12, 0x5(r31) 		#settings
+	andi. r12, r12, 0x2 	#bit 31
+	cmpwi r12, 1			#if bit 31 is not set
+	blt OriginalFloor
+	blr
+
+OriginalFloor:
+	stfs f0,0xb0(r31)
+	blr
+
+.global ClownCarWalls
+ClownCarWalls:
+	lis r12, originalWallFloat@h
+	ori r12, r12, originalWallFloat@l
+	lfs f2, 0(r12)
+
+	lbz r12, 0x5(r3) 		#settings
+	andi. r12, r12, 0x2 	#bit 31
+	cmpwi r12, 0			#if bit 31 is set
+	bgt NewWall
+	blr
+
+NewWall:
+	lis r12, newWallFloat@h
+	ori r12, r12, newWallFloat@l
+	lfs f2, 0(r12)
+	blr
+
 
 .data
 .align 4
 zeroFloat: .float 0.0
+originalWallFloat: .float 224.0
+newWallFloat: .float 40000.0

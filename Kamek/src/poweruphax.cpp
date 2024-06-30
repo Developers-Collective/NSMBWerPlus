@@ -48,14 +48,14 @@ void dHammerSuitRenderer_c::setup(dPlayerModelHandler_c *handler, int sceneID) {
 
 	if (victim->player_id_2 <= 1) {
 		helmet.setup(rf.GetResMdl((victim->player_id_2 == 0) ? "marioHelmet" : "luigiHelmet"), &allocator, 0, 1, 0);
-		SetupTextures_MapObj(&helmet, sceneID);
+		SetupTextures_Player(&helmet, sceneID);
 	}
 
 	const char *shellNames[] = {
 		"shell", "shell", "shell", "shell", "shell"
 	};
 	shell.setup(rf.GetResMdl(shellNames[victim->player_id_2]), &allocator, 0, 1, 0);
-	SetupTextures_MapObj(&shell, sceneID);
+	SetupTextures_Player(&shell, sceneID);
 
 	allocator.unlink();
 
@@ -81,6 +81,7 @@ void dHammerSuitRenderer_c::draw() {
 	if (victim->player_id_2 <= 1) {
 		// Materials: 2=hair 3=hat; Modes: BACK=visible ALL=invisible
 		SetCullModeForMaterial(&victim->getCurrentModel()->head, 3, GX_CULL_ALL);
+		SetCullModeForMaterial(&victim->getCurrentModel()->head, 2, GX_CULL_ALL);
 
 		Mtx headMtx;
 		victimModel->getMatrixForNode(headNodeID, &headMtx);

@@ -2,12 +2,6 @@
 #include <game.h>
 #include <profile.h>
 
-//I fucking hate this
-const char* LineGodFileList [] = {0};
-extern "C" dActor_c *RIVERMGRBuild();
-const SpriteData LineGodSpriteData = { ProfileId::RIVER_MGR, 0, 0, 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 8};
-Profile LineGodProfile(&RIVERMGRBuild, SpriteId::LineGod, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::RIVER_MGR, "Line God", LineGodFileList);
-
 // TODO: make "No Deactivation"
 
 struct BgActor {
@@ -53,87 +47,76 @@ struct BG_GM_hax {
 
 extern BG_GM_hax *BG_GM_ptr;
 
-// Regular class is 0x3D0.
-// Let's add stuff to the end just to be safe.
-// Size is now 0x400
-// 80898798 38600400
-
 #define LINEGOD_FUNC_ACTIVATE	0
 #define LINEGOD_FUNC_DEACTIVATE	1
 
-struct LineGod {
-	u32 id;			// 0x00
-	u32 settings;	// 0x04
-	u16 name;		// 0x08
-	u8 _0A[6];		// 0x0A
-	u8 _10[0x9C];	// 0x10
-	float x;		// 0xAC
-	float y;		// 0xB0
-	float z;		// 0xB4
-	u8 _B8[0x318];	// 0xB8
-	u64 eventFlag;	// 0x3D0
-	u8 func;		// 0x3D4
-	u8 width;		// 0x3D5
-	u8 height;		// 0x3D6
-	u8 lastEvState;	// 0x3D7
-	BgActor *ac[8];	// 0x3D8
+class daLineGod_c : public dStageActor_c {
+	int onCreate();
+	int onExecute();
+
+	u64 eventFlag;
+	u8 func;
+	u8 width;
+	u8 height;
+	u8 lastEvState;
+	BgActor *ac[8];
+
+	public: static dActor_c *build();
+
+	void BuildList();
+	bool AppendToList(BgActor *ac);
+	void Update();
 };
 
+dActor_c *daLineGod_c::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(daLineGod_c));
+	return new(buffer) daLineGod_c;
+}
 
-fBase_c *FindActorByID(u32 id);
+const char* LineGodFileList [] = {0};
+const SpriteData LineGodSpriteData = { ProfileId::Linegod, 0, 0, 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 8};
+Profile LineGodProfile(&daLineGod_c::build, SpriteId::LineGod, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::Linegod, "Line God", LineGodFileList);
 
 u16 *GetPointerToTile(BG_GM_hax *self, u16 x, u16 y, u16 layer, short *blockID_p, bool unused);
 
+int daLineGod_c::onCreate() {
+	char eventNum = (this->settings >> 24) & 0xFF;
+	this->eventFlag = (u64)1 << (eventNum - 1);
 
+	this->func = (this->settings) & 1;
+	this->width = (this->settings >> 4) & 0xF;
+	this->width = (this->settings >> 8) & 0xF;
 
-void LineGod_BuildList(LineGod *self);
-bool LineGod_AppendToList(LineGod *self, BgActor *ac);
-void LineGod_Update(LineGod *self);
+	this->lastEvState = 0xFF;
 
+	BuildList();
+	Update();
 
-bool LineGod_Create(LineGod *self) {
-	char eventNum	= (self->settings >> 24)	& 0xFF;
-	self->eventFlag = (u64)1 << (eventNum - 1);
-	
-	
-	
-	self->func		= (self->settings)			& 1;
-	self->width		= (self->settings >> 4)		& 15;
-	self->height	= (self->settings >> 8)		& 15;
-	
-	self->lastEvState = 0xFF;
-	
-	LineGod_BuildList(self);
-	LineGod_Update(self);
-	
 	return true;
 }
 
-bool LineGod_Execute(LineGod *self) {
-	LineGod_Update(self);
+int daLineGod_c::onExecute() {
+	Update();
 	return true;
 }
 
-void LineGod_BuildList(LineGod *self) {
+void daLineGod_c::BuildList() {
 	for (int clearIdx = 0; clearIdx < 8; clearIdx++) {
-		self->ac[clearIdx] = 0;
+		this->ac[clearIdx] = 0;
 	}
-	
-	
 
-	float gLeft = self->x - (BG_GM_ptr->_0x8FE64 - fmod(BG_GM_ptr->_0x8FE64, 16));
-	float gTop = self->y - (BG_GM_ptr->_0x8FE6C - fmod(BG_GM_ptr->_0x8FE6C, 16));
+	float gLeft = this->pos.x - (BG_GM_ptr->_0x8FE64 - fmod(BG_GM_ptr->_0x8FE64, 16));
+	float gTop = this->pos.y - (BG_GM_ptr->_0x8FE6C - fmod(BG_GM_ptr->_0x8FE6C, 16));
 
 	// 1 unit padding to avoid catching stuff that is not in our rectangle
 	Vec grect1 = (Vec){
-		gLeft + 1, gTop - (self->height * 16) + 1, 0
+		gLeft + 1, gTop - (this->height * 16) + 1, 0
 	};
 
 	Vec grect2 = (Vec){
-		gLeft + (self->width * 16) - 1, gTop - 1, 0
+		gLeft + (this->width * 16) - 1, gTop - 1, 0
 	};
 
-	
 	for (int i = 0; i < dBgActorManager->count; i++) {
 		BgActor *ac = &dBgActorManager->array[i];
 
@@ -156,29 +139,27 @@ void LineGod_BuildList(LineGod *self) {
 		};
 
 		if (RectanglesOverlap(&arect1, &arect2, &grect1, &grect2))
-			LineGod_AppendToList(self, ac);
+			AppendToList(ac);
 	}
 }
 
-bool LineGod_AppendToList(LineGod *self, BgActor *ac) {
-
+bool daLineGod_c::AppendToList(BgActor *ac) {
 	for (int search = 0; search < 8; search++) {
-		if (self->ac[search] == 0) {
-			self->ac[search] = ac;
+		if (this->ac[search] == 0) {
+			this->ac[search] = ac;
 			return true;
 		}
 	}
-	
+
 	return false;
 }
 
-void LineGod_Update(LineGod *self) {
-
+void daLineGod_c::Update() {
 	u8 newEvState = 0;
-	if (dFlagMgr_c::instance->flags & self->eventFlag)
+	if (dFlagMgr_c::instance->flags & this->eventFlag)
 		newEvState = 1;
 	
-	if (newEvState == self->lastEvState)
+	if (newEvState == this->lastEvState)
 		return;
 	
 	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
@@ -186,20 +167,20 @@ void LineGod_Update(LineGod *self) {
 	
 	
 	u8 offState;
-	if (self->func == LINEGOD_FUNC_ACTIVATE)
+	if (this->func == LINEGOD_FUNC_ACTIVATE)
 		offState = (newEvState == 1) ? 1 : 0;
 	else
 		offState = (newEvState == 1) ? 0 : 1;
 	
 	
 	for (int i = 0; i < 8; i++) {
-		if (self->ac[i] != 0) {
-			BgActor *ac = self->ac[i];
+		if (this->ac[i] != 0) {
+			BgActor *ac = this->ac[i];
 			
 			
 			ac->EXTRA_off = offState;
 			if (offState == 1 && ac->actor_id != 0) {
-				fBase_c *assoc_ac = FindActorByID(ac->actor_id);
+				fBase_c *assoc_ac = searchById(ac->actor_id);
 				if (assoc_ac != 0)
 					assoc_ac->Delete();
 				ac->actor_id = 0;
@@ -216,5 +197,5 @@ void LineGod_Update(LineGod *self) {
 	
 	
 	
-	self->lastEvState = newEvState;
+	this->lastEvState = newEvState;
 }

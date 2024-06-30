@@ -30,9 +30,8 @@ void dLevelInfo_c::load(void *buffer) {
 
 		for (int lev = 0; lev < thisSect->levelCount; lev++) {
 			entry_s *level = &thisSect->levels[lev];
-			//this changes W9 unlocks for some reason
-			//if (level->levelSlot < 42)
-				//SetSomeConditionShit(level->worldSlot, level->levelSlot, level->flags);
+			if (level->levelSlot < 42)
+				SetSomeConditionShit(level->worldSlot, level->levelSlot, level->flags);
 
 			char *name = (char*)getNameForLevel(level);
 

@@ -399,6 +399,12 @@ RedRingEventControl:
 dontResetRREDelay:
 	b set__10dFlagMgr_cFUcibbbUi
 
+.global CheckExistingPowerup
+CheckExistingPowerup:
+
+	lwz r3, 0x14E0(r3)
+	blr
+
 .data
 .global BGScaleFront, BGScaleBack, BGScaleEnabled
 BGScale:

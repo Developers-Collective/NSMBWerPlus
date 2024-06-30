@@ -635,20 +635,6 @@ isHammerForToad:
 	b continueToadPowerupSet
 
 
-
-
-
-
-.global CheckExistingPowerup
-CheckExistingPowerup:
-
-	lwz r3, 0x14E0(r3)
-	blr
-
-
-
-
-
 .global AcPyCtorHS
 AcPyCtorHS:
 	stwu r1, -0x10(r1)
@@ -1109,8 +1095,19 @@ wait2: .string "wait2"
 
 .text
 .extern continueFromStrongBox
+.extern continueFromOrigStrongBox
 .global StrongboxInit
 StrongboxInit:
+	#first we do a check on nybble 7
+	lwz r12, 0x4(r3) 					#settings
+	rlwinm r12,r12,0xc,0x1c,0x1f 		#nybble 7
+	cmplwi r12, 1						#if nybble 7 is set
+	beq StrongboxNewer
+	# if it isn't set, we do vanilla game behavior
+	rlwinm. r0,r7,0x4,0x1c,0x1f 		#instruction we replaced
+	b continueFromOrigStrongBox
+
+StrongboxNewer:
 	# MODE
 	li r4, 2
 	stw r4, 0x8E0(r30)
@@ -1120,10 +1117,21 @@ StrongboxInit:
 	b continueFromStrongBox
 
 .extern continueFromStrongBox2
+.extern continueFromOrigStrongBox2
 .extern AddStockPowerup
 .extern create__13dStageActor_cF6ActorsUiP7Point3dP6S16VecUc
 .global StrongboxGiveBattleItem
 StrongboxGiveBattleItem:
+	#first we do a check on nybble 7
+	lwz r12, 0x4(r30) 					#settings
+	rlwinm r12,r12,0xc,0x1c,0x1f 		#nybble 7
+	cmplwi r12, 1						#if nybble 7 is set
+	beq GiveBattleItemNewer
+	# if it isn't set, we do vanilla game behavior
+	bl AddStockPowerup 					#instruction we replaced
+	b continueFromOrigStrongBox2
+
+GiveBattleItemNewer:
 	# save a reg we can use
 	stw r29, 0x24(r1)
 
@@ -1164,9 +1172,65 @@ StrongboxGiveBattleItem:
 	lwz r29, 0x24(r1)
 	b continueFromStrongBox2
 
+.global StrongboxMushroomCheck
+StrongboxMushroomCheck:
+	#first we do a check on nybble 7
+	lwz r12, 0x4(r30) 					#settings
+	rlwinm r12,r12,0xc,0x1c,0x1f 		#nybble 7
+	cmplwi r12, 1						#if nybble 7 is set
+	beq NoMushroom
+	# if it isn't set, we do vanilla game behavior
+	lis r5, -0x7fbd						#instruction we replaced
+	blr
+
+NoMushroom:
+	blr
+
+.global PassSettingsToToad
+PassSettingsToToad:
+	lwz r12, 0x4(r3)
+	li r3, 0x24
+	mr r4, r12
+	blr
+
+.extern continueFromKinopio
+.global StrongboxKinopio
+StrongboxKinopio:
+	#first we do a check on nybble 7
+	lwz r12, 0x4(r28) 					#settings
+	rlwinm r12,r12,0xc,0x1c,0x1f 		#nybble 7
+	cmplwi r12, 0 						#if nybble 7 isn't set
+	beq ShowKinopio
+	# if it is set, don't do anything (don't show toad)
+	b continueFromKinopio
+
+ShowKinopio:
+	bctrl
+	lwz r12, 0x3b4(r31)
+	addi r3, r31, 0x3b4
+	lwz r12, 0x14(r12)
+	mtspr CTR, r12
+	bctrl
+	b continueFromKinopio
+
+.extern continueToFanfare
+.global StrongboxFanfare
+StrongboxFanfare:
+	lwz r12, 0x4(r28) 					#settings
+	rlwinm r12,r12,0xc,0x1c,0x1f 		#nybble 7
+	cmplwi r12, 0 						#if nybble 7 isn't set
+	beq doFanfare
+	blr
+
+doFanfare:
+	stwu r1, -0x10(r1) # instruction we replaced
+	b continueToFanfare
+
 .data
 IndexItemsForStockItem:
 .byte 0,1,2,3,5,6,4,7
+Yes: .string "Bit 26 set!\n"
+No: .string "Bit 26 not set!\n"
 
 
 SLGWindow: .string "A00_Window"

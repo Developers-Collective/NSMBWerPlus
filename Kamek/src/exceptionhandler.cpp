@@ -2,12 +2,12 @@
 #include "fileload.h"
 #include "nsmbwVer.h"
 
-#define GAME_NAME "NSMBWer+ 1.0 (DIRTY)"
+#define GAME_NAME "NSMBWer+ 1.1V (DIRTY)"
 const bool dsisrFun = false;
 const bool gprFun = false;
 
 u32 srr0;
-const u32 dlcode = 0x80DFBCC0;
+const u32 dlcode = 0x80D26040;
 
 struct OSContext
 {

@@ -232,7 +232,7 @@ public:
 	u8 field_06;				// 0x06
 	u8 switch_on;				// 0x07
 	u8 field_08;				// 0x08
-	u8 powerups_available[7];	// 0x09 - unused: now uses new_powerups_available
+	u8 powerups_available[7];	// 0x09
 	u8 toad_level_idx[10];		// 0x10
 	u8 player_continues[4];		// 0x1A
 	u8 player_coins[4];			// 0x1E
@@ -253,14 +253,7 @@ public:
 	u8 field_79C[10][4];		// 0x79C
 	u8 death_counts[10][0x2A];	// 0x7C4
 	u8 death_count_3_4_switch;	// 0x968
-	union {
-		u8 pad[0x13];				// 0x969
-		struct  {
-			// savefile mods go here now, don't use 6FC
-			u8 new_powerups_available[8]; //0x969
-		};
-		
-	};
+	u8 pad[0x13];				// 0x969
 	u32 checksum;				// 0x97C
 
 	u32 GetLevelCondition(int world, int level);
@@ -1912,7 +1905,10 @@ class fBase_c {
 public:
 	u32 id;
 	u32 settings;
-	u16 profileId;
+	union {
+		u16 name;
+		u16 profileId;
+	};
 	bool isCreated;
 	bool isDeleted;
 	bool wasNotDeferred;

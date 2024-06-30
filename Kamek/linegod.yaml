@@ -1,18 +1,6 @@
 ---
-# Replaces RIVER_MGR
-
 source_files: [../src/linegod.cpp, ../src/linegod.S]
 hooks:
-  - name: LineGodCreate
-    type: add_func_pointer
-    src_addr_pal: 0x80979570
-    target_func: 'LineGod_Create(LineGod *)'
-    
-  - name: LineGodExecute
-    type: add_func_pointer
-    src_addr_pal: 0x80979588
-    target_func: 'LineGod_Execute(LineGod *)'
-    
   - name: LineGodSpawnFix
     type: branch_insn
     branch_type: b
@@ -24,14 +12,3 @@ hooks:
     branch_type: b
     src_addr_pal: 0x8007EA60
     target_func: 'BgActorSetInfoFix'
-    
-  - name: LineGodMemFix
-    type: patch
-    addr_pal: 0x80898798
-    data: '3860 0400'
-
-# This sucks so fucking much but I just want this update out
-  - name: LineGodSpriteFix
-    type: patch
-    addr_pal: 0x8030c960
-    data: '02EB 0000'

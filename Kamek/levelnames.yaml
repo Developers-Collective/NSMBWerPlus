@@ -1,5 +1,5 @@
 ---
-source_files: [../src/layoutlib.S, ../src/levelnames.cpp]
+source_files: [../src/levelnames.cpp]
 hooks:
   - name: CallNameHack
     type: branch_insn

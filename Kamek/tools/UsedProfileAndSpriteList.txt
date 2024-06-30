@@ -1,11 +1,11 @@
+-- All Replaced Sprites--
 22 : DUMMY_ACTOR : EN_MAME_KURIBO
-244 : RIVER_MGR : Line God
 273: DUMMY ACTOR : MANTA_MGR2
 
 
 
 -- All Replaced Profiles --
-RIVER_MGR
+None!
 
 
 

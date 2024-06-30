@@ -4,9 +4,71 @@
 # button press cutscene shit is called by 80904120
 # 80904440 determines what animation plays when entering a level
 
-# The stuff that has been commented out can be reenabled at will
-source_files: [../src/worldmaphax.S, ../src/worldmaphax.cpp]
+# The stuff that has been commented out can be enabled at will
+source_files: [../src/worldmaphax.S, ../src/worldmapManager.cpp, ../src/starcoinmenu.cpp, ../src/worldmapScripts.cpp, ../src/worldmapScripts.S]
 hooks:
+# Cannon Destinations
+  - {name: W1CannonDest, type: patch, addr_pal: 0x802f4cf0, data: '00000004'} #world num - 1
+  - {name: W2CannonDest, type: patch, addr_pal: 0x802f4cf4, data: '00000004'}
+  - {name: W3CannonDest, type: patch, addr_pal: 0x802f4cf8, data: '00000005'}
+  - {name: W4CannonDest, type: patch, addr_pal: 0x802f4cfc, data: '00000005'}
+  - {name: W5CannonDest, type: patch, addr_pal: 0x802f4d00, data: '00000007'}
+  - {name: W6CannonDest, type: patch, addr_pal: 0x802f4d04, data: '00000007'}
+  # yes, this is data from the vanilla game, world 7, 8, 9 and 10(?) all have the warp cannon value set to A, which would be world 11/B
+  # obviously this map doesn't exist and isn't even supported by the save file, but feel free to change what world it goes to
+  - {name: W7CannonDest, type: patch, addr_pal: 0x802f4d08, data: '0000000A'}
+  - {name: W8CannonDest, type: patch, addr_pal: 0x802f4d0C, data: '0000000A'}
+  - {name: W9CannonDest, type: patch, addr_pal: 0x802f4d10, data: '0000000A'}
+  - {name: WACannonDest, type: patch, addr_pal: 0x802f4d14, data: '0000000A'}
+
+# Quick Save
+  # - {name: DisableQuickSave, type: nop_insn, area_pal: 0x8077AA7C}
+  # - {name: DisableQuickSave2, type: nop_insn, area_pal: 0x8092FD08}
+
+# Level hardcode removals
+  # - {name: disableLevelToadCondSetting, type: nop_insn, area_pal: 0x80928008} not needed
+  - {name: disableLevelRegularCondSetting, type: nop_insn, area_pal: 0x80928448}
+  # - {name: disableLevelCannonCondSetting, type: nop_insn, area_pal: 0x80928424} not needed
+  - {name: disableLevelNormalCondSetting, type: nop_insn, area_pal: 0x809286bc}
+  - {name: disableLevelSecretCondSetting, type: nop_insn, area_pal: 0x809286e4}
+
+# Ambush Removal
+  # - {name: removeW1Goomba, type: nop_insn, area_pal: [0x808dfe70, 0x808dfe74]}
+  # - {name: removeW2Antlion, type: nop_insn, area_pal: 0x808e0130}
+  # - {name: removeW3Bros, type: nop_insn, area_pal: [0x808dfe88, 0x808dfe8c]}
+  # - {name: removeW4Fish, type: nop_insn, area_pal: [0x808dfe78, 0x808dfe7c]}
+  # - {name: removeW5Pirahna, type: nop_insn, area_pal: [0x808dfe80, 0x808dfe84]}
+  # - {name: removeW6BulletBill, type: patch, addr_pal: 0x808d5210, data: '4E800020'}
+  # - {name: removeW7Lakitu, type: nop_insn, area_pal: [0x808dfe90, 0x808dfe94]}
+  # - {name: removeW8Bubble, type: patch, addr_pal: 0x808ca570, data: '4E800020'}
+
+# Effect Removals
+  # - {name: removeW3Snow, type: nop_insn, area_pal: [0x80321978, 0x80321988]}
+  # - {name: removeW5PoisonBubble, type: nop_insn, area_pal: 0x803219cc}
+  # - {name: removeW8LavaEffects, type: nop_insn, area_pal: [0x80321998, 0x803219a8]}
+  # - {name: removeBowserCastleFire, type: nop_insn, area_pal: 0x80321aa4}
+  # - {name: removeW9Comets, type: nop_insn, area_pal: 0x803219e0}
+
+# Koopaling/Airship Removal
+  # - {name: removeAirship, type: patch, addr_pal: 0x808dbee0, data: '4E800020'}
+  # - {name: removeKoopalings, type: patch, addr_pal: 0x808f7100, data: '4E800020'} #needs to be used with previous patches, or else you get an invalid read
+
+# Misc Removals
+  # - {name: removeItemMenu, type: nop_insn, area_pal: 0x80904298}
+  # - {name: removeWorldSelect, type: nop_insn, area_pal: 0x809042e4}
+  # - {name: removeMapview, type: nop_insn, area_pal: 0x809041e8}
+  # - {name: removeTowerFlag, type: nop_insn, area_pal: 0x808f2c68}
+  # - {name: removeCastleFlag, type: nop_insn, area_pal: 0x808cd044}
+  # - {name: removeWMBoo, type: nop_insn, area_pal: 0x808d1494}
+  # - {name: removeW2Palm, type: nop_insn, area_pal: [0x808e1c70,0x808e1c74]}
+  # - {name: removeW4Palm, type: nop_insn, area_pal: [0x808e1c78, 0x808e1c7c]}
+  # - {name: removeW5Wiggler, type: nop_insn, area_pal: 0x808e1d38}
+  # - {name: removeW5Vine, type: nop_insn, area_pal: 0x808e1d88}
+  # - {name: removeW6Cloud, type: nop_insn, area_pal: 0x808e1da4}
+  # - {name: removeCloudsW7, type: nop_insn, area_pal: [0x808e1cf4, 0x808e1d10]}
+  # - {name: removeIvyW7, type: nop_insn, area_pal: 0x808e1cd0}
+  # - {name: removeBowserCastleFlag, type: nop_insn, area_pal: 0x808ff348}
+
 # important stuff, don't mess with unless you know what you're doing
   - name: wmLoop
     type: branch_insn
@@ -41,227 +103,14 @@ hooks:
     branch_type: b
     src_addr_pal: 0x807752d0
     target_func: 'addReplayAndHardMode(dCollectionCoin_c *)'
-                
-# GENERAL HACKS, APPLIES TO ALL OR MOST WORLDS
-#  - name: DisableQuickSave
-#    type: nop_insn
-#    area_pal: 0x8077AA7C
   
-#  - name: DisableQuickSave2
-#    type: nop_insn
-#    area_pal: 0x8092FD08
-
-#  - name: expandMapHeap
-#    type: patch
-#    addr_pal: 0x808df15c
-#    data: '3c800004'
-
-#  - name: removeAirshipCutsceneAllWorlds #World 1 is an exception, see its section for a removal of the airship cutscene
-#    type: patch
-#    addr_pal: 0x8031dc20
-#    data: '802f4118'
-
-#  - name: removeAirshipCutsceneAllWorlds2
-#    type: patch
-#    addr_pal: 0x8031dc2c
-#    data: '802f42f0'
-
-#  - name: removeAirship
-#    type: patch
-#    addr_pal: 0x808dbee0
-#    data: '4E800020'
-
-#  - name: removeKoopalings #needs to be used with previous patches, or else you get an invalid read
-#    type: patch
-#    addr_pal: 0x808f7100
-#    data: '4e800020'
+  - name: useCustomScripts
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x801016C8
+    target_func: 'useCustomScripts'
   
-#  - name: removeItemMenu
-#    type: nop_insn
-#    area_pal: 0x80904298
-
-#  - name: removeWorldSelect
-#    type: nop_insn
-#    area_pal: 0x809042e4
-
-#  - name: removeMapview
-#    type: nop_insn
-#    area_pal: 0x809041e8
-
-#  - name: removeTowerFlag
-#    type: nop_insn
-#    area_pal: 0x808f2c68
-  
-#  - name: removeCastleFlag
-#    type: nop_insn
-#    area_pal: 0x808cd044
-
-#  - name: removeWMBoo
-#    type: nop_insn
-#    area_pal: 0x808d1494
-  
-  #this will fix the shadow bug, temporarily at least
-  - name: removePlayerShadow
-    type: nop_insn
-    area_pal: 0x80902b14
-
-  - name: removeSubPlayerShadow
-    type: nop_insn
-    area_pal: 0x808eb700
-
-# WORLD 1
-  - name: W1CannonDest
+  - name: expandMapHeap
     type: patch
-    addr_pal: 0x802f4cf0
-    data: '00000004' #world num - 1
-
-#  - name: removeW1Goomba
-#    type: nop_insn
-#    area_pal: [0x808dfe70, 0x808dfe74]
-
-#  - name: removeOpeningSequenceW1
-#    type: patch
-#    addr_pal: 0x8031dc9c
-#    data: '802f4118'
-  
-#  - name: removeOpeningSequenceW1KeepAirship
-#    type: patch
-#    addr_pal: 0x8031dc9c
-#    data: '802f4068'
-
-#  - name: setPeachCastleEnterAnimNormal
-#    type: patch
-#    addr_pal: 0x80904538
-#    data: '3880001F'
-
-# WORLD 2
-  - name: W2CannonDest
-    type: patch
-    addr_pal: 0x802f4cf4
-    data: '00000004' #world num - 1
- 
-#  - name: removeW2Antlion
-#    type: nop_insn
-#    area_pal: 0x808e0130
-  
-#  - name: removeW2Palm
-#    type: nop_insn
-#    area_pal: 0x808e1c70
-
-# WORLD 3
-  - name: W3CannonDest
-    type: patch
-    addr_pal: 0x802f4cf8
-    data: '00000005' #world num - 1
-  
-#  - name: removeW3Bros
-#    type: nop_insn
-#    area_pal: [0x808dfe88, 0x808dfe8c]
-  
-#  - name: removeW3Snow
-#    type: nop_insn
-#    area_pal: [0x80321978, 0x80321988]
-
-# WORLD 4
-  - name: W4CannonDest
-    type: patch
-    addr_pal: 0x802f4cfc
-    data: '00000005' #world num - 1
-  
-#  - name: removeW4Palm
-#    type: nop_insn
-#    area_pal: 0x808e1c78
-  
-#  - name: removeW4Fish
-#    type: nop_insn
-#    area_pal: [0x808dfe78, 0x808dfe7c]
-
-# WORLD 5
-  - name: W5CannonDest
-    type: patch
-    addr_pal: 0x802f4d00
-    data: '00000007' #world num - 1
-
-#  - name: removeW5Vine
-#    type: nop_insn
-#    area_pal: 0x808e1d88
-  
-#  - name: removeW5Pirahna
-#    type: nop_insn
-#    area_pal: [0x808dfe80, 0x808dfe84]
-  
-#  - name: removeW5Wiggler
-#    type: nop_insn
-#    area_pal: 0x808e1d38
-
-#  - name: removeW5PoisonBubble
-#    type: nop_insn
-#    area_pal: 0x803219cc
-
-# WORLD 6
-  - name: W6CannonDest
-    type: patch
-    addr_pal: 0x802f4d04
-    data: '00000007' #world num - 1
-
-#  - name: removeW6Cloud
-#    type: nop_insn
-#    area_pal: 0x808e1da4
-  
-#  - name: removeW6BulletBill
-#    type: patch
-#    addr_pal: 0x808d5210
-#    data: '4E800020'
-
-# WORLD 7
-  # yes, this is data from the vanilla game, world 7, 8, 9 and 10(?) all have the warp cannon value set to A, which would be world 11/B
-  # obviously this map doesn't exist and isn't even supported by the save file, but feel free to change what world it goes to
-  - name: W7CannonDest 
-    type: patch
-    addr_pal: 0x802f4d08
-    data: '0000000A' #world num - 1
-  
-#  - name: removeW7Lakitu
-#    type: nop_insn
-#    area_pal: [0x808dfe90, 0x808dfe94]
-
-#  - name: removeCloudsW7
-#    type: nop_insn
-#    area_pal: [0x808e1cf4, 0x808e1d10]
-
-#  - name: removeIvyW7
-#    type: nop_insn
-#    area_pal: 0x808e1cd0
-
-# WORLD 8
-  - name: W8CannonDest 
-    type: patch
-    addr_pal: 0x802f4d0c
-    data: '0000000A' #world num - 1
-  
-#  - name: removeW8Bubble
-#    type: patch
-#    addr_pal: 0x808ca570
-#    data: '4E800020'
-  
-#  - name: removeW8LavaEffects
-#    type: nop_insn
-#    area_pal: [0x80321998, 0x803219a8]
-
-#  - name: removeBowserCastleFire
-#    type: nop_insn
-#    area_pal: 0x80321aa4
-
-#  - name: removeBowserCastleFlag
-#    type: nop_insn
-#    area_pal: 0x808ff348
-
-# WORLD 9
-  - name: W9CannonDest 
-    type: patch
-    addr_pal: 0x802f4d10
-    data: '0000000A' #world num - 1
-
-#  - name: removeW9Comets
-#    type: nop_insn
-#    area_pal: 0x803219e0
+    addr_pal: 0x808df15c
+    data: '3c800004'

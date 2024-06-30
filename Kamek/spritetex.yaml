@@ -612,51 +612,51 @@ hooks:
   - {name: BombMouseHole5, data: '00040200', addr_pal: 0x80ACE550, type: patch}
   - {name: BombMouseHole6, data: '00040200', addr_pal: 0x80ACE55C, type: patch}
 
-  - name: TEX_YoshiEggSetColour
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80911050
-    target_func: 'TEX_YoshiEggSetColour'
+#  - name: TEX_YoshiEggSetColour
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x80911050
+#    target_func: 'TEX_YoshiEggSetColour'
 
-  - name: TEX_YoshiEggSetBrres
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x809113D0
-    target_func: 'TEX_YoshiEggSetBrres'
+#  - name: TEX_YoshiEggSetBrres
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x809113D0
+#    target_func: 'TEX_YoshiEggSetBrres'
 
-  - name: TEX_YoshiEggSetFrame
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x809114B4
-    target_func: 'TEX_YoshiEggSetFrame'
+#  - name: TEX_YoshiEggSetFrame
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x809114B4
+#    target_func: 'TEX_YoshiEggSetFrame'
 
-  - name: Insert_EFF_YoshiEggColor
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80911624
-    target_func: 'Insert_EFF_YoshiEggColor'
+#  - name: Insert_EFF_YoshiEggColor
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x80911624
+#    target_func: 'Insert_EFF_YoshiEggColor'
 
-  - name: TEX_YoshiSetColour
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x8005E9C8
-    target_func: 'TEX_YoshiSetColour'
+#  - name: TEX_YoshiSetColour
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x8005E9C8
+#    target_func: 'TEX_YoshiSetColour'
 
-  - name: TEX_YoshiHack
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x800FE58C
-    target_func: 'TEX_YoshiHack'
+#  - name: TEX_YoshiHack
+#    type: branch_insn
+#    branch_type: bl
+#    src_addr_pal: 0x800FE58C
+#    target_func: 'TEX_YoshiHack'
 
-  - name: TEX_YoshiColourOrderA
-    type: patch
-    data: '3F8000004000000040400000'
-    addr_pal: 0x8093DAB4
+#  - name: TEX_YoshiColourOrderA
+#    type: patch
+#    data: '3F8000004000000040400000'
+#    addr_pal: 0x8093DAB4
 
-  - name: TEX_YoshiColourOrderB
-    type: patch
-    data: '00000003000000010000000200000000'
-    addr_pal: 0x8093DAD8
+#  - name: TEX_YoshiColourOrderB
+#    type: patch
+#    data: '00000003000000010000000200000000'
+#    addr_pal: 0x8093DAD8
 
   - name: TEX_AirshipGear
     type: branch_insn

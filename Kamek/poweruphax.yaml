@@ -857,22 +857,29 @@ hooks:
     src_addr_pal: 0x808AAF90
     target_func: 'StrongboxGiveBattleItem'
 
-  - name: StrongboxNoMushroom
-    type: nop_insn
-    area_pal: 0x808AB3E0
-
   - name: NoSoundBattleKinopio
-    type: nop_insn
-    area_pal: 0x808AB5FC
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x808AB5FC
+    target_func: 'StrongboxMushroomCheck'
+  
+  - name: PassChestSettingsToToad
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x808ab6b4
+    target_func: 'PassSettingsToToad'
 
   - name: NoDrawBattleKinopio
-    type: nop_insn
-    area_pal: [0x807B9F74,0x807B9F88]
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x807B9F74
+    target_func: 'StrongboxKinopio'
 
-  - name: NoBattleFanfare
-    type: patch
-    addr_pal: 0x8019C290
-    data: '4E800020'
+  - name: NoBattleFanfare #needs asm
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x8019C290
+    target_func: 'StrongboxFanfare'
 
   - name: RedRingRespectsHammerSuit
     type: patch
