@@ -117,16 +117,6 @@ are not supported due to a bug that prevents custom sprites from being used in t
 - Right click New Super Mario Bros. Wii and make sure the NSMBWer+ option is set
   to Enabled, and all other hacks are disabled. Press Launch and NSMBWer+ will load.
 
-#### Troubleshooting
-
-##### My Wii/Dolphin Emulator is freezing/crashing on startup!
-
-- Open the Riivolution xml file and remove line 18 (savefile redirect).
-  This savefile redirect is known to crash certain Wiis and on rare occasions
-  Dolphin Emulator. This redirect is present to prevent corruption of retail game
-  save files due to changes made to the save format. You may follow [this guide][save]
-  to rename the save file to prevent corruption of retail saves.
-
 ### Compiling Code (only if editing code)
 
 #### Setup
