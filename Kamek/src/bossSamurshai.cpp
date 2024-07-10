@@ -290,6 +290,7 @@ int daSamurshai::onCreate() {
 		this->resFile.data = getResource("Shynja", "g3d/Shynja.brres");
 		nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("Shynja");
 		bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
+		SetupTextures_Boss(&this->bodyModel, 0);
 
 		// Animations start here
 		nw4r::g3d::ResAnmChr anmChr = this->resFile.GetResAnmChr("c18_IDLE_R");

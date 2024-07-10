@@ -19,7 +19,7 @@ Copyright (c) 2010-2024 Newer Team, Ryguy
 - A Wii with Riivolution and CleanRip installed
   - Around 100 MB of free space will be needed for the storage device used
 - Alternatively, [Dolphin Emulator][dolemu] may be used
-  - The latest Beta or Development version must be used. Any release before version 5.0-15520 is unsupported
+  - The latest Release or Development version must be used. Any Release or Development version before 5.0-15520 is unsupported
 
 #### For compiling NSMBWer+ (only if editing code):
 

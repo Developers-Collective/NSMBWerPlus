@@ -332,7 +332,7 @@ int daDreidel::onCreate() {
 	this->resFile.data = getResource("topman", "g3d/begoman_spike.brres");
 	nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("begoman");
 	bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
-	SetupTextures_Map(&bodyModel, 0);
+	SetupTextures_Enemy(&this->bodyModel, 0);
 
 
 	// Animations start here
