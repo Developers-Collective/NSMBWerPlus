@@ -20,7 +20,7 @@ Copyright (c) 2010-2024 Newer Team, Ryguy
 - A Wii with Riivolution and CleanRip installed
   - Around 100 MB of free space will be needed for the storage device used
 - Alternatively, [Dolphin Emulator][dolemu] may be used
-  - The latest Beta or Development version must be used. Any release before version 5.0-15520 is unsupported
+  - The latest Release or Development version must be used. Any Release or Development version before 5.0-15520 is unsupported
 
 #### For compiling NSMBWer+ (only if editing code):
 
@@ -173,6 +173,14 @@ These files go in `/NewerRes` on the game disc (this folder is included in the R
 * Ported fixes from RoadrunnerWMC's NSMBW-Updated project.
 * Several vanilla sprites that have their behaviors modified have settings added for compatibility with vanilla levels.
 * Unused actors in the original game have been assigned sprite slots.
+
+
+## Changes From Main Branch:
+* Hammer suit/Powerup code has been removed.
+* Yoshi colors/spritetex have been remove.
+* 2-Castle hardcodes have been re-added.
+* 1-6 has been edited to fix an issue with rolling hills.
+* Patches to sprites that break vanilla levels have been removed.
 
 
 ### Credits

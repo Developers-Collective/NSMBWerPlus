@@ -61,37 +61,37 @@ hooks:
     target_func: 'fixLightmapsForDolphin'
 
 # rotation_controlled_coin.cpp
-  - name: rotationControlledCoinFix1
-    type: patch
-    addr_pal: 0x809e55f4
-    data: '3860c000'
+#  - name: rotationControlledCoinFix1
+#    type: patch
+#    addr_pal: 0x809e55f4
+#    data: '3860c000'
 
-  - name: rotationControlledCoinFix2
-    type: patch
-    addr_pal: 0x809e560c
-    data: '3860c000'
+#  - name: rotationControlledCoinFix2
+#    type: patch
+#    addr_pal: 0x809e560c
+#    data: '3860c000'
 
 # rotation_controlled_event_deactivation_block.cpp
-  - name: rotationControlledEventDeactivationBlockFix1
-    type: patch
-    addr_pal: 0x809e55f4
-    data: '3860c000'
+#  - name: rotationControlledEventDeactivationBlockFix1
+#    type: patch
+#    addr_pal: 0x809e55f4
+#    data: '3860c000'
 
-  - name: rotationControlledEventDeactivationBlockFix2
-    type: patch
-    addr_pal: 0x809e560c
-    data: '3860c000'
+#  - name: rotationControlledEventDeactivationBlockFix2
+#    type: patch
+#    addr_pal: 0x809e560c
+#    data: '3860c000'
 
 # rotation_controlled_q_block_and_brick_block.cpp
-  - name: rotationControlledQAndBrickBlockFix
-    type: patch
-    addr_pal: 0x809c15c4
-    data: '3860c000'
+#  - name: rotationControlledQAndBrickBlockFix
+#    type: patch
+#    addr_pal: 0x809c15c4
+#    data: '3860c000'
 
-  - name: rotationControlledEventDeactivationBlockFix2
-    type: patch
-    addr_pal: 0x809c15dc
-    data: '3860c000'
+#  - name: rotationControlledEventDeactivationBlockFix2
+#    type: patch
+#    addr_pal: 0x809c15dc
+#    data: '3860c000'
 
 # special_exit_controller.cpp
   - name: DontLetYoshiEatSpecialExitController

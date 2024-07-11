@@ -602,7 +602,7 @@ int daShyGuy::onCreate() {
 	}
 	nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("body_h");
 	bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
-
+    SetupTextures_Enemy(&this->bodyModel, 0);
 
 	// Animations start here
 	this->anmFile.data = getResource("shyguy", "g3d/ShyGuyAnimations.brres");

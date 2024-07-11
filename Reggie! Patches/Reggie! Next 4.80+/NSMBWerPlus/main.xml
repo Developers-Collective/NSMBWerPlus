@@ -4,4 +4,5 @@
     <folder name="external" path="external" />
     <file name="spritedata" path="spritedata.xml"/>
     <file name="sprites" path="sprites.py"/>
+    <file name="spritecategories" path="spritecategories.xml"/>
 </game>

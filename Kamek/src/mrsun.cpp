@@ -202,10 +202,10 @@ int daMrSun_c::onCreate() {
 
 		nw4r::g3d::ResFile rf(getResource("mrsun", "g3d/sun.brres"));
 		bodyModel.setup(rf.GetResMdl("Sun"), &allocator, 0x224, 1, 0);
-		SetupTextures_Map(&bodyModel, 0);
+		SetupTextures_Enemy(&bodyModel, 0);
 
 		glowModel.setup(rf.GetResMdl("SunGlow"), &allocator, 0x224, 1, 0);
-		SetupTextures_Boss(&glowModel, 0);
+		SetupTextures_Enemy(&glowModel, 0);
 	}
 
 	else { // It's a moon
@@ -213,7 +213,7 @@ int daMrSun_c::onCreate() {
 
 		nw4r::g3d::ResFile rf(getResource("mrsun", "g3d/moon.brres"));
 		bodyModel.setup(rf.GetResMdl("Moon"), &allocator, 0x224, 1, 0);
-		SetupTextures_Map(&bodyModel, 0);
+		SetupTextures_Enemy(&bodyModel, 0);
 	}
 
 	allocator.unlink();

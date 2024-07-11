@@ -20,7 +20,7 @@ int DoNames(int state) {
 	// Skip the title screen
 	// and only process the code if the State is set to 1
 	// (the screen has been initialised)
-	if (state == 1 && lnum != STAGE_TITLE) {
+	if (state == 1 && lnum != STAGE_TITLE) { // NOTE: Will not work with Newer's multiple titlescreens.
 		// grab the CRSIN object
 		fBase_c *ptr = fBase_c::searchByProfileId(ProfileId::CRSIN, 0);
 
@@ -45,7 +45,7 @@ int DoNames(int state) {
 				worldname = dLevelInfo_c::s_info.getNameForLevel(world);
 			} else {
 				char worldNumber[8];
-				sprintf(worldNumber, "World %d", wnum+1);
+				sprintf(worldNumber, "World %d (UNNAMED)", wnum+1);
 				worldname = worldNumber;
 			}
 
