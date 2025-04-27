@@ -98,7 +98,7 @@ bool LoadLevelInfo();
 
 extern "C" bool RandTileLoadHook() {
 	// OSReport("Trying to load...");
-	void *buf = RandTileLoader.load("/NewerRes/RandTiles.bin");
+	void *buf = RandTileLoader.load("/RandTiles.bin");
 	bool LIresult = LoadLevelInfo();
 	if (buf == 0) {
 		// OSReport("Failed.\n");

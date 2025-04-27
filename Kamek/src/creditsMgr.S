@@ -18,8 +18,8 @@ isCredits:
 .extern continueAddToScore
 .global StaffCreditsNoScore
 StaffCreditsNoScore:
-	lis r9, CreditsModeActive@h
-	ori r9, r9, CreditsModeActive@l
+	lis r9, isNewerCredits@h
+	ori r9, r9, isNewerCredits@l
 	lbz r9, 0(r9)
 	cmpwi r9, 1
 	beqlr
@@ -110,13 +110,87 @@ EFB_Crap:
 	lwz r3, 4(r30)
 	b ContinueFromEFBMagic2
 
+.extern drawFukidashi
+.global NoFukidashi
+NoFukidashi:
+	lis r12, isNewerCredits@h
+	ori r12, r12, isNewerCredits@l
+	lbz r12, 0(r12)
+	cmpwi r12, 1
+	beqlr
+	stwu r1, -0x10(r1)
+	b drawFukidashi
+
+.extern continueToSetAnim
+.extern dontDoEndingWait
+.global DisableEndingWaitAnim
+DisableEndingWaitAnim:
+	lis r12, isNewerCredits@h
+	ori r12, r12, isNewerCredits@l
+	lbz r12, 0(r12)
+	cmpwi r12, 1
+	beq dontDoAnim
+	lwz r3, 0x2a64(r30)
+	b continueToSetAnim
+
+dontDoAnim:
+	b dontDoEndingWait
+
+.extern continueToGPThing
+.extern dontDoGPThing
+.global DisableGroundPoundThing
+DisableGroundPoundThing:
+	lis r12, isNewerCredits@h
+	ori r12, r12, isNewerCredits@l
+	lbz r12, 0(r12)
+	cmpwi r12, 1
+	beq dontDoGP
+	lwz r3, 0x10d4(r31)
+	b continueToGPThing
+
+dontDoGP:
+	b dontDoGPThing
+
+.extern renderSJEffect
+.extern dontRender
+.global ReenableSpinJumpEffect
+ReenableSpinJumpEffect:
+	cmpwi r0, 0
+	bne checkIfNewerCredits
+	b renderSJEffect
+
+checkIfNewerCredits:
+	lis r12, isNewerCredits@h
+	ori r12, r12, isNewerCredits@l
+	lbz r12, 0(r12)
+	cmpwi r12, 1
+	bne notNewerCredits
+	b renderSJEffect
+
+notNewerCredits:
+	b dontRender
+
+.extern continueSpawnPlayersCredits
+.extern normalSpawnPlayers
+.global DisableEntranceHardcode
+DisableEntranceHardcode:
+	cmpwi r31, 0x17 # Boss standing entrance
+	beq newerCreditsEntry
+	lbz r4, 0x120e(r30)
+	b continueSpawnPlayersCredits
+
+newerCreditsEntry:
+	b normalSpawnPlayers
+
 .data
 .global CameraLockEnabled
 .global isLockPlayerRotation
 .global CameraLockPosition
 .global lockedPlayerRotation
+.global isNewerCredits
 CameraLockEnabled: .byte 0
 isLockPlayerRotation: .byte 0
 lockedPlayerRotation: .short 0
+isNewerCredits: .byte 0
 .align 4
 CameraLockPosition: .float 0.0, 0.0

@@ -28,3 +28,44 @@ hooks:
     src_addr_pal: 0x80081A4C
     branch_type: b
     target_func: 'CheckBehaviourOverride_EndPatch'
+  
+  # worldmap switch patches, instead of using entire u8, map switch now uses bit 5 of switch_palace_flag
+  
+  - name: changeSwitchActivation
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80927e90
+    target_func: 'enableWMSwitch(void)'
+  
+  - name: changeSwitchDeactivation
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80927eb0
+    target_func: 'disableWMSwitch(void)'
+  
+  - name: changeSwitchCheck
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80927ed0
+    target_func: 'getWMSwitch(void)'
+  
+  - name: setProperSwitchFlagInExtras
+    type: patch
+    addr_pal: 0x800bb7fc
+    data: '38000010'
+
+  - {name: fixSwitchFlagCheck1, type: branch_insn, branch_type: bl, src_addr_pal: 0x800784e0, target_func: 'checkSwitchBit5_r0r5'}
+  - {name: fixSwitchFlagCheck2, type: branch_insn, branch_type: bl, src_addr_pal: 0x800ee6d0, target_func: 'checkSwitchBit5_r4r4'}
+  - {name: fixSwitchFlagCheck3, type: branch_insn, branch_type: bl, src_addr_pal: 0x800fbb34, target_func: 'checkSwitchBit5_r0r4'}
+  - {name: fixSwitchFlagCheck4, type: branch_insn, branch_type: b, src_addr_pal: 0x801025ec, target_func: 'checkSwitchBit5_ReplayChooser'}
+  - {name: fixSwitchFlagCheck5, type: branch_insn, branch_type: bl, src_addr_pal: 0x808ce71c, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck6, type: branch_insn, branch_type: bl, src_addr_pal: 0x808ce768, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck7, type: branch_insn, branch_type: bl, src_addr_pal: 0x808ce83c, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck8, type: branch_insn, branch_type: bl, src_addr_pal: 0x808cedc8, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck9, type: branch_insn, branch_type: bl, src_addr_pal: 0x808edf44, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck10, type: branch_insn, branch_type: bl, src_addr_pal: 0x808fb7f8, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck11, type: branch_insn, branch_type: bl, src_addr_pal: 0x808fc8b0, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck12, type: branch_insn, branch_type: bl, src_addr_pal: 0x80906674, target_func: 'checkSwitchBit5_r0r3'}
+  - {name: fixSwitchFlagCheck13, type: branch_insn, branch_type: bl, src_addr_pal: 0x809252e8, target_func: 'checkSwitchBit5_r6r6'}
+  - {name: fixSwitchFlagCheck14, type: branch_insn, branch_type: bl, src_addr_pal: 0x809256cc, target_func: 'checkSwitchBit5_r6r6'}
+  - {name: fixSwitchFlagCheck15, type: branch_insn, branch_type: bl, src_addr_pal: 0x80ac37e8, target_func: 'checkSwitchBit5_r6r6'}

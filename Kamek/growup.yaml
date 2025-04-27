@@ -1,5 +1,5 @@
 ---
-source_files: [../src/growup.S]
+source_files: [../src/growup.S, ../src/growup.cpp]
 hooks:
 # After Actor onCreate
   - name: Global_Size
@@ -96,65 +96,44 @@ hooks:
 #    src_addr_pal: 0x80088938
 #    target_func: 'InheritSettings_C'
 
-  - name: FixingMegaGoombaAA
+  - name: goombaUseNybble7OnSplit
+    type: patch
+    addr_pal: 0x80a56890
+    data: '54007e78'
+  
+  - name: goombaUseNybble7OnSplit2
+    type: patch
+    addr_pal: 0x80a569fc
+    data: '54007e78'
+  
+  - name: middleGoombaUseNybble7OnSplit
+    type: patch
+    addr_pal: 0x80a6a4ac
+    data: '5400673f'
+  
+  - name: fixMegaGoombaStomp
     type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5AAA8
-    target_func: 'InheritSettings'
+    branch_type: b
+    src_addr_pal: 0x80a6a1c0
+    target_func: 'newSpawnGoombaFromMegaGoomba(dEn_c *)'
 
-  - name: FixingMegaGoombaAB
+  - name: fixMegaGoombaGP
     type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5AAC4
-    target_func: 'InheritSettings'
+    branch_type: b
+    src_addr_pal: 0x80a6a260
+    target_func: 'newSpawnGoombaFromMegaGoomba2(dEn_c *)'
+  
+  - name: fixLargeGoombaStomp
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80a5aa60
+    target_func: 'newSpawnMegaGoombaFromLargeGoomba(dEn_c *)'
 
-  - name: FixingMegaGoombaBA
+  - name: fixLargeGoombaGP
     type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5AB44
-    target_func: 'InheritSettings'
-
-  - name: FixingMegaGoombaBB
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5AB80
-    target_func: 'InheritSettings'
-
-  - name: FixingMegaGoombaBC
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5AB9C
-    target_func: 'InheritSettings'
-
-  - name: FixingMegaGoombaBD
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A5ABB8
-    target_func: 'InheritSettings'
-
-  - name: FixingLargeGoombaAA
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A6A208
-    target_func: 'InheritSettings'
-
-  - name: FixingLargeGoombaAB
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A6A22C
-    target_func: 'InheritSettings'
-
-  - name: FixingLargeGoombaBA
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A6A2A8
-    target_func: 'InheritSettings'
-
-  - name: FixingLargeGoombaBB
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80A6A2CC
-    target_func: 'InheritSettings'
+    branch_type: b
+    src_addr_pal: 0x80a5aaf0
+    target_func: 'newSpawnGoombaFromLargeGoomba(dEn_c *)'
 
   - name: Piranha_Collisions
     type: patch

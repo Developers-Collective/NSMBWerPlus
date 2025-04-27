@@ -41,24 +41,12 @@ CheckBehaviourOverride_EndPatch:
 	bne returnRegularBehaviour
 
 	# now do the rest of the checks:
-	cmplwi r29, 0x3B
+	cmplwi r29, 0x58
 	bne cboNotRed
 	andi. r3, r5, 1
 	beq cboNotRed
 	b returnSbBehaviour
 cboNotRed:
-	cmplwi r29, 0x3C
-	bne cboNotRed2
-	andi. r3, r5, 1
-	beq cboNotRed2
-	b returnSbBehaviour
-cboNotRed2:
-	cmplwi r29, 0x58
-	bne cboNotRed3
-	andi. r3, r5, 1
-	beq cboNotRed3
-	b returnSbBehaviour
-cboNotRed3:
 	cmplwi r29, 0x5A
 	bne cboNotGreen
 	andi. r3, r5, 2
@@ -77,6 +65,18 @@ cboNotYellow:
 	beq cboNotBlue
 	b returnSbBehaviour
 cboNotBlue:
+	cmplwi r29, 0x3B
+	bne cboNotWM1
+	andi. r3, r5, 0x10
+	beq cboNotWM1
+	b returnSbBehaviour
+cboNotWM1:
+	cmplwi r29, 0x3C
+	bne cboNotWM2
+	andi. r3, r5, 0x10
+	beq cboNotWM2
+	b returnSbBehaviour
+cboNotWM2:
 	b returnRegularBehaviour
 
 	# done!
@@ -125,26 +125,26 @@ not_green:
 	b ptnReturn
 not_yellow:
 	cmplwi r30, 0x54
-	bne not_red2
+	bne not_blue
 	andi. r3, r5, 8
-	beq not_red2
+	beq not_blue
 	li r3, 0x53
 	b ptnReturn
-not_red2:
-	cmplwi r30, 0x3B
-	bne not_red3
-	andi. r3, r5, 1
-	beq not_red3
-	li r3, 0x37
-	b ptnReturn
-not_red3:
-	cmplwi r30, 0x3C
-	bne not_blue
-	andi. r3, r5, 1
-	beq not_blue
-	li r3, 0x37
-	b ptnReturn
 not_blue:
+	cmplwi r30, 0x3B
+	bne not_WM1
+	andi. r3, r5, 0x10
+	beq not_WM1
+	li r3, 0x37
+	b ptnReturn
+not_WM1:
+	cmplwi r30, 0x3C
+	bne not_WM2
+	andi. r3, r5, 0x10
+	beq not_WM2
+	li r3, 0x37
+	b ptnReturn
+not_WM2:
 	mr r3, r30
 ptnReturn:
 	lwz r0, 0x14(r1)
@@ -154,3 +154,40 @@ ptnReturn:
 	addi r1, r1, 0x10
 	blr
 
+
+.global checkSwitchBit5_r0r3
+checkSwitchBit5_r0r3:
+	lbz r0, 0x380(r3)
+	srwi r0, r0, 4
+	blr
+
+.global checkSwitchBit5_r0r4
+checkSwitchBit5_r0r4:
+	lbz r0, 0x380(r4)
+	srwi r0, r0, 4
+	blr
+
+.global checkSwitchBit5_r4r4
+checkSwitchBit5_r4r4:
+	lbz r4, 0x380(r4)
+	srwi r4, r4, 4
+	blr
+
+.global checkSwitchBit5_r0r5
+checkSwitchBit5_r0r5:
+	lbz r0, 0x380(r5)
+	srwi r0, r0, 4
+	blr
+
+.extern continueReplayChooser
+.global checkSwitchBit5_ReplayChooser
+checkSwitchBit5_ReplayChooser:
+	lbz r0, 0x380(r6)
+	srwi r0, r0, 4
+	b continueReplayChooser
+
+.global checkSwitchBit5_r6r6
+checkSwitchBit5_r6r6:
+	lbz r6, 0x380(r6)
+	srwi r6, r6, 4
+	blr

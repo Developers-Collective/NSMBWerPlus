@@ -118,5 +118,11 @@ hooks:
   - name: fixShadowScales
     type: branch_insn
     branch_type: b
-    src_addr_pal: 0x809032c0
+    src_addr_pal: 0x809032ec
     target_func: 'newShadowScales'
+  
+  - name: fixShadowScales2
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808eb658
+    target_func: 'newShadowScales2'

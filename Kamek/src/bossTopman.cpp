@@ -76,9 +76,9 @@ public:
 };
 
 const char* BossTopmanNameList [] = {"topman", NULL};
-const SpriteData BossTopmanSpriteData = {ProfileId::BossTopman, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+const SpriteData BossTopmanSpriteData = {ProfileId::EN_BOSS_TOPMAN, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile BossTopmanProfile(&daDreidel::build, SpriteId::BossTopman, &BossTopmanSpriteData, ProfileId::SLOW_QUICK_TAG, ProfileId::BossTopman, "BossTopman", BossTopmanNameList);
+Profile BossTopmanProfile(&daDreidel::build, SpriteId::EN_BOSS_TOPMAN, &BossTopmanSpriteData, ProfileId::SLOW_QUICK_TAG, ProfileId::EN_BOSS_TOPMAN, "EN_BOSS_TOPMAN", BossTopmanNameList, 0x8);
 
 dActor_c *daDreidel::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daDreidel));

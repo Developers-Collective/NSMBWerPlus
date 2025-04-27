@@ -17,9 +17,9 @@ class dPalaceDude_c : public dStageActor_c {
 
 /*****************************************************************************/
 // Glue Code
-const SpriteData SpecialExitSpriteData = {ProfileId::SpecialExit, 10, 10, 0, 0, 0x200, 0x200, 0, 0, 200, 200, 0};
+const SpriteData SpecialExitSpriteData = {ProfileId::AC_SWITCH_SET, 10, 10, 0, 0, 0x200, 0x200, 0, 0, 200, 200, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile SpecialExitProfile(&dPalaceDude_c::build, SpriteId::SpecialExit, &SpecialExitSpriteData, ProfileId::WM_KINOBALLOON, ProfileId::SpecialExit, "SpecialExit", PalaceDudeFileList);
+Profile SpecialExitProfile(&dPalaceDude_c::build, SpriteId::AC_SWITCH_SET, &SpecialExitSpriteData, ProfileId::WM_KINOBALLOON, ProfileId::AC_SWITCH_SET, "AC_SWITCH_SET", PalaceDudeFileList);
 
 dActor_c *dPalaceDude_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dPalaceDude_c));
@@ -27,6 +27,8 @@ dActor_c *dPalaceDude_c::build() {
 	return c;
 }
 
+extern char CurrentWorld, CurrentLevel;
+extern "C" u32 AssembleScWorldMapSettings(u32 world_num, int level_num, int);
 
 int dPalaceDude_c::onExecute() {
 	if (dFlagMgr_c::instance->flags & spriteFlagMask) {
@@ -58,12 +60,21 @@ int dPalaceDude_c::onExecute() {
 //		OSReport("Palace Dude is activated, %d\n", dMsgBoxManager_c::instance->visible);
 		if (!dMsgBoxManager_c::instance->visible) {
 //			OSReport("Exiting\n");
-			u32 wmsettings = 0;
 			if (settings & 0xF000000) {
-				SaveGame(0, false);
-				wmsettings = 0x80000000;
+				// replicate what opening cutscene does
+				SaveBlock *save = GetSaveFile()->GetBlock(-1);
+				save->onWorldDataFlag(0, 1);
+				SaveFileInstance->prepareSave();
+				SaveFileInstance->calcCRC();
+				SaveFileInstance->startNandSave();
+
+				save->offWorldDataFlag(0, 1);
+				ActivateWipe(MARIO_WIPE);
+				u32 wmsettings = AssembleScWorldMapSettings(0, 0, 5);
+				DoSceneChange(ProfileId::WORLD_MAP, wmsettings, 0);
+			} else {
+				ExitStage(ProfileId::WORLD_MAP, 0, BEAT_LEVEL, MARIO_WIPE);
 			}
-			ExitStage(ProfileId::WORLD_MAP, wmsettings, BEAT_LEVEL, MARIO_WIPE);
 			hasExitedStage = true;
 		}
 	}
@@ -72,4 +83,14 @@ int dPalaceDude_c::onExecute() {
 
 }
 
+void enableWMSwitch() {
+	GameMgrP->switchPalaceFlag |= (1 << 4);
+}
 
+void disableWMSwitch() {
+	GameMgrP->switchPalaceFlag &= ~(1 << 4);
+}
+
+u8 getWMSwitch() {
+	return (GameMgrP->switchPalaceFlag >> 4);
+}

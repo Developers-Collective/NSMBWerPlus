@@ -231,15 +231,15 @@ hooks:
     data: '00000001'
     
     #It's not actually a function but who cares?
-  - name: AlwaysLoadBrosArc
-    type: add_func_pointer
-    src_addr_pal: 0x8098C488
-    target_func: 'BrosArcFileName'
+  # - name: AlwaysLoadBrosArc
+  #   type: add_func_pointer
+  #   src_addr_pal: 0x8098C488
+  #   target_func: 'BrosArcFileName'
 
-  - name: LoadHammerFromHammerMArc
-    type: patch
-    addr_pal: 0x8095CDD4
-    data: '68616D6D65724D00' # "hammerM\0"
+  # - name: LoadHammerFromHammerMArc
+  #   type: patch
+  #   addr_pal: 0x8095CDD4
+  #   data: '68616D6D65724D00' # "hammerM\0"
 
   - name: LoadThisShit
     type: branch_insn
@@ -252,10 +252,10 @@ hooks:
     addr_pal: 0x8091EC6C
     data: '38c00026' #original: 38c00023
     
-  - name: AlwaysLoadBrosArc
-    type: add_func_pointer
-    src_addr_pal: 0x8098C490
-    target_func: 'I_hammerArcFilename'
+  # - name: AlwaysLoadBrosArc
+  #   type: add_func_pointer
+  #   src_addr_pal: 0x8098C490
+  #   target_func: 'I_hammerArcFilename'
     
   - name: ChangeHammerBrres
     type: add_func_pointer
@@ -382,6 +382,12 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80143884
     target_func: 'GetPowerupScaleFloatAddr_r8_trash_r0_valshl2_r7_dest'
+  
+  - name: eggAddNewPowerups
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80911740
+    target_func: 'EggAddNewPowerups'
 
 # Below Here are added all the Hammer Collision hacks
   - name: HammerPodooboo
@@ -492,7 +498,7 @@ hooks:
   - name: HammerGhostCircle
     type: patch
     addr_pal: 0x80AD4158
-    data: '0008a80e'
+    data: '0008880e'
 
   - name: HammerPiranhaLily
     type: patch
@@ -781,33 +787,66 @@ hooks:
     src_addr_pal: 0x808C5910
     branch_type: b
 
-#  - name: BiggerWmPlayer
-#    type: patch
-#    addr_pal: 0x80902798
-#    data: '3860 0310'
+  # add a pointer to the HS renderer
+  - name: BiggerWmPlayer
+    type: patch
+    addr_pal: 0x80902798
+    data: '3860 0310'
+  
+  # set that pointer in the ctor
+  - name: WmPlayerCtorHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80902888
+    target_func: 'WmPlayerCtorHS'
+  
+  # replace the dtor
+  - name: WmPlayerDtorReplace
+    type: add_func_pointer
+    src_addr_pal: 0x80989440
+    target_func: 'WmPlayerDtorHS'
+  
+  # add the setup func
+  - name: WmPlayerSetMeUpHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x809029c4
+    target_func: 'WmPlayerSetMeUpHS'
+  
+  # add the draw func
+  - name: WmPlayerDrawHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80902adc
+    target_func: 'WmPlayerDrawHS'
 
-#  - name: WmPlayerCtorHS
-#    type: branch_insn
-#    target_func: 'WmPlayerCtorHS'
-#    src_addr_pal: 0x80902888
-#    branch_type: b
-
-#  - name: WmPlayerDtorReplace
-#    type: add_func_pointer
-#    target_func: 'WmPlayerDtorHS'
-#    src_addr_pal: 0x80989440
-
-#  - name: WmPlayerSetMeUpHS
-#    type: branch_insn
-#    target_func: 'WmPlayerSetMeUpHS' 
-#    src_addr_pal: 0x808C5A30 # wrong address
-#    branch_type: b
-
-#  - name: WmPlayerDrawHS
-#    type: branch_insn
-#    target_func: 'WmPlayerDrawHS'
-#    src_addr_pal: 0x80902AC0
-#    branch_type: b
+  - name: BiggerWmSubPlayer
+    type: patch
+    addr_pal: 0x808e8aa8
+    data: '3860 031C'
+  
+  - name: WmSubPlayerCtorHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808eb054
+    target_func: 'WmSubPlayerCtorHS'
+  
+  - name: WmSubPlayerDtorReplace
+    type: add_func_pointer
+    src_addr_pal: 0x80985be0
+    target_func: 'WmSubPlayerDtorHS'
+  
+  - name: WmSubPlayerSetMeUpHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808eb2ec
+    target_func: 'WmSubPlayerSetMeUpHS'
+  
+  - name: WmSubPlayerDrawHS
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x808eb6cc
+    target_func: 'WmSubPlayerDrawHS'
 
   - name: AddHSToBattleItem_AddArcName
     type: add_func_pointer
@@ -859,7 +898,7 @@ hooks:
 
   - name: NoSoundBattleKinopio
     type: branch_insn
-    branch_type: bl
+    branch_type: b
     src_addr_pal: 0x808AB5FC
     target_func: 'StrongboxMushroomCheck'
   

@@ -21,10 +21,9 @@ class daFireLaser_c : public dEn_c {
 	DECLARE_STATE(pewpewpew);
 };
 
-const char *FireLaserArcNameList[] = {0};
-const SpriteData FireLaserSpriteData = {ProfileId::FireLaser, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+const SpriteData FireLaserSpriteData = {ProfileId::EN_FIRELASER, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile FireLaserProfile(&daFireLaser_c::build, SpriteId::FireLaser, &FireLaserSpriteData, ProfileId::DUMMY_DOOR_PARENT, ProfileId::FireLaser, "FireLaser", FireLaserArcNameList);
+Profile FireLaserProfile(&daFireLaser_c::build, SpriteId::EN_FIRELASER, &FireLaserSpriteData, ProfileId::DUMMY_DOOR_PARENT, ProfileId::EN_FIRELASER, "EN_FIRELASER");
 
 
 dActor_c *daFireLaser_c::build() {

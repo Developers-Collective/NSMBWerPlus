@@ -81,9 +81,9 @@ class daEnMegaDosun_c : public daBoss {
 	CREATE_STATE(daEnMegaDosun_c, Outro);
 
 const char* ThwompaDompNameList[] = {"dossun", NULL};
-const SpriteData ThwompaDompSpriteData = {ProfileId::BossThwompaDomp, 0, 0, 0, 0xFFFFFFC0, 0x10, 0x60, 0, 0, 0, 0, 2};
+const SpriteData ThwompaDompSpriteData = {ProfileId::EN_BOSS_THWOMP, 0, 0, 0, 0xFFFFFFC0, 0x10, 0x60, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ThwompaDompProfile(&daEnMegaDosun_c::build, SpriteId::BossThwompaDomp, &ThwompaDompSpriteData, ProfileId::EN_GHOST_JUGEM, ProfileId::BossThwompaDomp, "BossThwompaDomp", ThwompaDompNameList);
+Profile ThwompaDompProfile(&daEnMegaDosun_c::build, SpriteId::EN_BOSS_THWOMP, &ThwompaDompSpriteData, ProfileId::EN_GHOST_JUGEM, ProfileId::EN_BOSS_THWOMP, "EN_BOSS_THWOMP", ThwompaDompNameList, 0x8);
 
 dActor_c *daEnMegaDosun_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daEnMegaDosun_c));

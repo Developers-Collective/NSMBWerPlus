@@ -82,9 +82,9 @@ bool dChallengeStar::collisionCatA_PenguinMario(ActivePhysics *apThis, ActivePhy
 }
 
 const char *ChallengeStarFileList[] = {0};
-const SpriteData ChallengeStarSpriteData = { ProfileId::ChallengeStar, 0, 0, 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0};
+const SpriteData ChallengeStarSpriteData = { ProfileId::EN_SILVERSTAR, 0, 0, 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ChallengeStarProfile(&dChallengeStar::build, SpriteId::ChallengeStar, &ChallengeStarSpriteData, ProfileId::WM_KURIBO, ProfileId::ChallengeStar, "ChallengeStar", ChallengeStarFileList);
+Profile ChallengeStarProfile(&dChallengeStar::build, SpriteId::EN_SILVERSTAR, &ChallengeStarSpriteData, ProfileId::WM_KURIBO, ProfileId::EN_SILVERSTAR, "EN_SILVERSTAR", ChallengeStarFileList, 0x20);
 
 
 dActor_c *dChallengeStar::build() {

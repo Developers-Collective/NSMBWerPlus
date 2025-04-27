@@ -2,14 +2,14 @@
 ### Introduction
 
 This fork of the NSMBWer repo is a heavily modified version that aims to keep it up to date with current NSMBW modding while keeping everything from Vanilla intact.
-Most notably, this version uses Abood's more sprites mod to implement every custom sprite and actor from Newer while keeping the ones they replaced.
+Most notably, this version uses the more sprites mod to implement every custom sprite and actor from Newer while keeping the ones they replaced.
 
 ### Licensing
 
 Like in the original repo, the source code and tools are released under the MIT license.
 See the `LICENSE` file in this repository for full details.
 
-Copyright (c) 2010-2024 Newer Team, Ryguy
+Copyright (c) 2010-2025 Newer Team, Ryguy
 
 ### Requirements
 
@@ -91,7 +91,7 @@ are not supported due to a bug that prevents custom sprites from being used in t
 
 #### If Running NSMBWer+ on a Real Wii
 
-- Install the Homebrew channel along with Riivolution, if you haven't already.
+- Install the Homebrew Channel along with Riivolution, if you haven't already.
   
 - Copy the contents of the `Riivolution` folder onto your storage device.
 
@@ -105,16 +105,16 @@ are not supported due to a bug that prevents custom sprites from being used in t
 
 #### If Running NSMBWer+ on Dolphin Emulator
 
-- Install the Homebrew channel and CleanRip on your Wii, if you haven't already.
+- Install the Homebrew Channel and CleanRip on your Wii, if you haven't already.
   Once CleanRip is installed follow [this guide][dump] to dump your game disc
   into a format Dolphin can read.
 
 - Move your game dump into the folder Dolphin will look for games in. Open
-  Dolphin's User folder and copy the contents of the `Riivolution` folder 
+  Dolphin's user folder and copy the contents of the `Riivolution` folder 
   onto the `Load\Riivolution` folder.
 
 - Right click New Super Mario Bros. Wii and make sure the NSMBWer+ option is set
-  to Enabled, and all other hacks are disabled. Press Launch and NSMBWer+ will load.
+  to Enabled, and all other hacks are disabled. Press launch and NSMBWer+ will load.
 
 #### Troubleshooting
 
@@ -158,6 +158,14 @@ are not supported due to a bug that prevents custom sprites from being used in t
   - Copy the files inside to `Kamek/tools/cw` - Kamek assumes they
     are there.
 
+  - Also make sure the following system variable is added
+    to your environment variables, with the name `LM_LICENSE_FILE`:
+
+  `C:\Program Files (x86)\Freescale\CW for MPC55xx and MPC56xx 2.10\license.dat`
+
+  - The ``license.dat`` file may alernatively be copied to
+    `Kamek/tools/cw`.
+
 #### Usage
 
 There is a script in the Kamek folder that invokes `makeGame.py`,
@@ -171,7 +179,7 @@ Open a terminal in the same directory and run it like:
 `./makeNSMBWer`
 
 The resulting output is placed in a folder called `Build_NSMBWerProject`.
-These files go in `/NewerRes` on the game disc (this folder is included in the Riivolution patch).
+These files go in `/Code` on the game disc (this folder is included in the Riivolution patch).
 
 ## Changes From NewerSMBW:
 * Sprite slot expansion, with all Newer sprites being ported to it.
@@ -187,17 +195,15 @@ These files go in `/NewerRes` on the game disc (this folder is included in the R
 
 
 ### Credits
-* Newer Team - original NewerSMBW Code
-* Nin0 & NSMLW Team - Programming Assistance, General Assistance, Numerous bits of code, original NSMBWer
-* Bupcraft, Lurker, Kirblue, SupaNES, King Pixel & Others - Bug Reporting
-* Abood - More Sprites code
-* CLF78 - Original NSMBWer, Korean/Taiwanese support, additional More Sprites code
+* Newer Team - Original NewerSMBW Code
+* Nin0 & NSMLW Team - Programming assistance, general assistance, numerous bits of code, original NSMBWer
+* Bupcraft, Lurker, Smecko Geck, SupaNES, King Pixel & Others - Bug reporting
+* CLF78 - Original NSMBWer, Korean/Taiwanese support
 * Luminyx - Programming assistance
 * Danster64 - original NSMBWer
-* RoadrunnerWMC - Reggie! Next spritedata, NSMBW Updated code, Korean/Taiwanese support
+* RoadrunnerWMC - Reggie! Next spritedata, NSMBW-Updated code, Korean/Taiwanese support
 * G4L - Fixed NewerSMBW models
 * RedStoneMatt/Asu-Chan - Programming assistance, code loader
-* Grop - Newer sprite fixes
 
 [cw]:
 http://cache.nxp.com/lgfiles/devsuites/PowerPC/CW55xx_v2_10_SE.exe?WT_TYPE=IDE%20-%20Debug,%20Compile%20and%20Build%20Tools&WT_VENDOR=FREESCALE&WT_FILE_FORMAT=exe&WT_ASSET=Downloads&fileExt=.exe
@@ -213,5 +219,3 @@ https://dolphin-emu.org/
 https://wii.hacks.guide/dump-games#dumping-a-wii-disc
 [save]:
 https://horizon.miraheze.org/wiki/Changing_the_Save_Filename
-[kam2]:
-https://github.com/Developers-Collective/NSMBWerPlus-Kamek2

@@ -1,11 +1,6 @@
 ---
-source_files: [../src/creditsMgr.cpp, ../src/creditsMgr.S, ../src/bowserEnding.cpp]
+source_files: [../src/creditsMgr.cpp, ../src/creditsMgr.S]
 hooks:
-  - name: BuildCreditsMgr
-    type: add_func_pointer
-    src_addr_pal: 0x8098A360
-    target_func: 'dCreditsMgr_c::build(void)'
-
   - name: StaffCreditsAddAllCoins
     type: branch_insn
     branch_type: b
@@ -18,23 +13,25 @@ hooks:
     src_addr_pal: 0x800B3540
     target_func: 'StaffCreditsNoScore'
 
-  - {name: CreditsUseHighScore0, type: patch, addr_pal: 0x800CE230, data: '38600000'}
-  - {name: CreditsDontSaveHighScore, type: nop_insn, area_pal: 0x807AE888}
+  #- {name: CreditsUseHighScore0, type: patch, addr_pal: 0x800CE230, data: '38600000'}
+  #- {name: CreditsDontSaveHighScore, type: nop_insn, area_pal: 0x807AE888}
 
-  - {name: DisableCreditsCrap1, type: patch, addr_pal: 0x80049608, data: '38000000'}
+  - {name: DisableCreditsCrap1, type: branch_insn, branch_type: b, src_addr_pal: 0x80049608, target_func: 'DisableGroundPoundThing'}
 #  - {name: DisableCreditsCrap2, type: patch, addr_pal: 0x80053144, data: '38000000'}
     # Related to entrances
-  - {name: DisableCreditsCrap3, type: patch, addr_pal: 0x8005F000, data: '38000000'}
-  - {name: DisableCreditsCrap4, type: patch, addr_pal: 0x801291AC, data: '38000000'}
+  - {name: DisableCreditsCrap3, type: branch_insn, branch_type: b, src_addr_pal: 0x8005f00c, target_func: 'DisableEntranceHardcode'}
+    # enable spinjump effect in credits
+  - {name: DisableCreditsCrap4, type: branch_insn, branch_type: b, src_addr_pal: 0x801291b0, target_func: 'ReenableSpinJumpEffect'}
     # Related to the ending_wait player anim
-  - {name: DisableCreditsCrap5, type: patch, addr_pal: 0x8012C394, data: '38000000'}
+  - {name: DisableCreditsCrap5, type: branch_insn, branch_type: b, src_addr_pal: 0x8012c3c4, target_func: 'DisableEndingWaitAnim'}
     # Disable existing coinjump crap
   - {name: DisableCreditsCrap6, type: patch, addr_pal: 0x80A2AC58, data: '38000000'}
 
   - name: NoFukidashi
-    type: patch
-    addr_pal: 0x80157210
-    data: '4E800020'
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80157210
+    target_func: 'NoFukidashi'
 
   - name: LoadDanceValues
     type: branch_insn
@@ -63,11 +60,6 @@ hooks:
     src_addr_pal: 0x802BC6B0
     target_func: 'EFB_Crap'
 
-  - name: CreditsSpriteFileInfo
-    type: add_func_pointer
-    src_addr_pal: 0x8031B29C
-    target_func: 'CreditsFileList'
-
   - name: AutoScrollInjector
     type: branch_insn
     branch_type: b
@@ -88,10 +80,9 @@ hooks:
     branch_type: bl
     src_addr_pal: 0x80145A90
     target_func: 'PlayerRotInjector3'
-
-  # vanilla bowser
-  - name: ExitToNewerCredits
+  
+  - name: dontRemovePlayerHatInCredits
     type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80922e40
-    target_func: 'exitToNewerCredits(void)'
+    branch_type: b
+    src_addr_pal: 0x80060ef0
+    target_func: 'checkBonusNoCap(void)'

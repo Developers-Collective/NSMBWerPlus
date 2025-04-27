@@ -1,38 +1,27 @@
----
+--- # By Nin0
 source_files: [../src/profile.cpp, ../src/profile.S]
 hooks:
-  - name: SpriteList_r30
+  - name: SpriteList_r3
     type: branch_insn
     branch_type: bl
-    src_addr_pal: 0x80068410
-    target_func: 'SpriteList_r30'
-  - name: SpriteList_r30_nop
+    src_addr_pal: 0x80068f34
+    target_func: 'SpriteList_r3'
+    
+  - name: SpriteList_r3_nop
     type: nop_insn
-    area_pal: 0x80068414
+    area_pal: 0x80068f38
 
-  - name: SpriteList_r9
+  - name: ProfileListInR3
     type: branch_insn
     branch_type: bl
-    src_addr_pal: 0x80068dfc
-    target_func: 'SpriteList_r9'
-  - name: SpriteList_r9_nop
-    type: nop_insn
-    area_pal: 0x80068e0c
+    src_addr_pal: 0x80161cec
+    target_func: 'ProfileListInR3'
 
   - name: SpriteList_r5
     type: branch_insn
     branch_type: bl
     src_addr_pal: 0x800688e4
     target_func: 'SpriteList_r5'
-
-  - name: SpriteList_r3
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x80068f34
-    target_func: 'SpriteList_r3'
-  - name: SpriteList_r3_nop
-    type: nop_insn
-    area_pal: 0x80068f38
 
   - name: SpriteList_r7
     type: branch_insn
@@ -43,23 +32,14 @@ hooks:
     type: nop_insn
     area_pal: 0x807fc8cc
 
-  - name: SpriteList_r29
+  - name: SpriteList_r9
     type: branch_insn
     branch_type: bl
-    src_addr_pal: 0x8085f67c
-    target_func: 'SpriteList_r29'
-  - name: SpriteList_r29_nop
+    src_addr_pal: 0x80068dfc
+    target_func: 'SpriteList_r9'
+  - name: SpriteList_r9_nop
     type: nop_insn
-    area_pal: 0x8085f68c
-
-  - name: SpriteList_r30_2
-    type: branch_insn
-    branch_type: bl
-    src_addr_pal: 0x8085f7f4
-    target_func: 'SpriteList_r30'
-  - name: SpriteList_r30_nop_2
-    type: nop_insn
-    area_pal: 0x8085f804
+    area_pal: 0x80068e0c            #changed from 0x80068dfc
 
   - name: SpriteList_r28
     type: branch_insn
@@ -69,6 +49,33 @@ hooks:
   - name: SpriteList_r28_nop
     type: nop_insn
     area_pal: 0x8085fc6c
+
+  - name: SpriteList_r29
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x8085f67c
+    target_func: 'SpriteList_r29'
+  - name: SpriteList_r29_nop
+    type: nop_insn
+    area_pal: 0x8085f68c
+
+  - name: SpriteList_r30
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x80068410
+    target_func: 'SpriteList_r30'
+  - name: SpriteList_r30_nop
+    type: nop_insn
+    area_pal: 0x80068414
+
+  - name: SpriteList_r30_2
+    type: branch_insn
+    branch_type: bl
+    src_addr_pal: 0x8085f7f4
+    target_func: 'SpriteList_r30'
+  - name: SpriteList_r30_nop_2
+    type: nop_insn
+    area_pal: 0x8085f804
 
   - name: SpriteList_r30_3
     type: branch_insn

@@ -80,9 +80,9 @@ bool daWrench::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *a
 }
 
 const char* WrenchThrowNameList[] = {"choropoo", NULL};
-const SpriteData WrenchThrowSpriteData = {ProfileId::BossWrenchThrow, 8, 0xFFFFFFE0, 0, 0x10, 8, 0x18, 0, 0, 0, 0, 0};
+const SpriteData WrenchThrowSpriteData = {ProfileId::EN_BOSS_WRENCH, 8, 0xFFFFFFE0, 0, 0x10, 8, 0x18, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile WrenchThrowProfile(&daWrench::build, SpriteId::BossWrenchThrow, &WrenchThrowSpriteData, ProfileId::EN_GAKE_NOKO, ProfileId::BossWrenchThrow, "BossWrenchThrow", WrenchThrowNameList);
+Profile WrenchThrowProfile(&daWrench::build, SpriteId::EN_BOSS_WRENCH, &WrenchThrowSpriteData, ProfileId::EN_GAKE_NOKO, ProfileId::EN_BOSS_WRENCH, "EN_BOSS_WRENCH", WrenchThrowNameList, 0x20);
 
 dActor_c *daWrench::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daWrench));

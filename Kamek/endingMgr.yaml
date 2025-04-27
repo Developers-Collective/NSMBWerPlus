@@ -1,12 +1,14 @@
 ---
-source_files: [../src/endingMgr.cpp]
-hooks: [
-# UNCOMMENT THESE TO FIX NEWER'S ENDING IN MULTIPLAYER
-#  - name: DisablePeachThankMP
-#    type: nop_insn
-#    area_pal: 0x80B4A020
+source_files: [../src/endingMgr.cpp, ../src/endingMgr.S]
+hooks: 
+  - name: DisablePeachThankMP
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80b4a01c
+    target_func: 'DisablePeachThankMP'
 
-#  - name: DisablePeachDmEscort
-#    type: nop_insn
-#    area_pal: 0x80B49E80
-]
+  - name: DisablePeachDmEscort
+    type: branch_insn
+    branch_type: b
+    src_addr_pal: 0x80B49E80
+    target_func: 'DisablePeachDmEscort'

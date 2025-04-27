@@ -2,7 +2,7 @@
 #include "fileload.h"
 #include "nsmbwVer.h"
 
-#define GAME_NAME "NSMBWer+ 1.1.1 (DIRTY)"
+#define GAME_NAME "NSMBWer+ 1.2 (DIRTY)"
 const bool dsisrFun = false;
 const bool gprFun = false;
 

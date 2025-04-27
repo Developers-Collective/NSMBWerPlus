@@ -1,4 +1,42 @@
 SECTIONS {
+	HasBonusNoCap = 0x80429fc8;
+	normalSpawnPlayers = 0x8005f098;
+	continueSpawnPlayersCredits = 0x8005f010;
+	renderSJEffect = 0x801291b8;
+	dontRender = 0x80129318;
+	continueToGPThing = 0x80049618;
+	dontDoGPThing = 0x80049634;
+	dontDoEndingWait = 0x8012c3f4;
+	continueToSetAnim = 0x8012c3c8;
+	drawFukidashi = 0x80157214;
+
+	AssembleScWorldMapSettings = 0x80102b70;
+	
+	offWorldDataFlag__9SaveBlockFiUc = 0x800ce470;
+	isWorldDataFlag__9SaveBlockFiUc = 0x800ce440;
+	onWorldDataFlag__9SaveBlockFiUc = 0x800ce450;
+	prepareSave__8SaveFileFv = 0x800e1780;
+	calcCRC__8SaveFileFv = 0x800e05a0;
+	startNandSave__8SaveFileFv = 0x800e0630;
+
+	continueReplayChooser = 0x801025f0;
+
+	skipDmEscort = 0x80b49e84;
+	CheckCurrentLevelAndArea = 0x80081be0;
+	continueToThank = 0x80b4a020;
+	continueToDontThankMP = 0x80b4a024;
+
+	continueFromKinoSound = 0x808ab600;
+
+	returnFromEggAddNewPowerups = 0x80911790;
+
+	returnFromScaleTable2 = 0x808eb668;
+	returnFromScaleTable = 0x809032fc;
+
+	returnFromWMSubPlayerDraw = 0x808eb6d0;
+	RealWmSubPlayerDtor = 0x808eb160;
+	returnFromWMPlayerDraw = 0x80902ae0;
+
 	continueToFanfare = 0x8019c294;
 	continueFromKinopio = 0x807b9f8c;
 	FUN_800f6920 = 0x800f6920;

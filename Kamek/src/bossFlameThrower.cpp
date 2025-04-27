@@ -20,10 +20,9 @@ class daKoopaBreath : public dEn_c {
 void daKoopaBreath::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) { DamagePlayer(this, apThis, apOther); }
 void daKoopaBreath::spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther) {}
 
-const char* KoopaFlameThrowerNameList[] = {0};
-const SpriteData KoopaFlameThrowerSpriteData = {ProfileId::KFlameThrower, 0x10, 0x10, 0, 0, 0x20, 0x20, 0x40, 0x40, 0, 0, 0};
+const SpriteData KoopaFlameThrowerSpriteData = {ProfileId::EN_BOSS_KOOPA_FLAME, 0x10, 0x10, 0, 0, 0x20, 0x20, 0x40, 0x40, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile KoopaFlameThrowerProfile(&daKoopaBreath::build, SpriteId::KFlameThrower, &KoopaFlameThrowerSpriteData, ProfileId::WM_ANTLION, ProfileId::KFlameThrower, "KoopaFlameThrower", KoopaFlameThrowerNameList);
+Profile KoopaFlameThrowerProfile(&daKoopaBreath::build, SpriteId::EN_BOSS_KOOPA_FLAME, &KoopaFlameThrowerSpriteData, ProfileId::WM_ANTLION, ProfileId::EN_BOSS_KOOPA_FLAME, "KoopaFlameThrower");
 
 dActor_c *daKoopaBreath::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daKoopaBreath));

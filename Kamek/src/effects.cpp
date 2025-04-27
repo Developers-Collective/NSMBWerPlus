@@ -1076,4 +1076,3 @@ void* CustomEffectSpawn(const char* name) {
 	// SKIP THE DTOR
 }
 */
-

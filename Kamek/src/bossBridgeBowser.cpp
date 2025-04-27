@@ -3,98 +3,262 @@
 #include <g3dhax.h>
 #include <profileid.h>
 #include <sfx.h>
-#include <stage.h>
 #include "boss.h"
+#include <profile.h>
 
-extern "C" void *BowserExitDemoState(void *, unsigned int);
-extern "C" void *ForceMarioExitDemoMode(void *, unsigned int);
-extern "C" void *BowserFireballCollision(dEn_c *, ActivePhysics *, ActivePhysics *);
-extern "C" void *BowserDamageAnmClr(dEn_c *);
-extern "C" void *BowserDamageStepTwo(dEn_c *);
-extern "C" void *BowserDamageNormal(dEn_c *);
-extern "C" void *BowserDamageKill(dEn_c *);
-extern "C" void *BowserDamageEnd(dEn_c *);
+const char* BDarcNameList [] = {
+	"koopa_clown_bomb",
+	NULL
+};
 
-extern int BridgeBowserHP;
-int lastBomb = 0;
 
-extern bool HackyBombDropVariable;
+class dDroppedBomb : public dEn_c {
+	int onCreate();
+	int onExecute();
+	int onDelete();
+	int onDraw();
 
-void BowserDoomSpriteCollision(dEn_c *bowser, ActivePhysics *apThis, ActivePhysics *apOther) {
-	// If you collide with something or other, call the fireball collision
+	void kill();
 
-	if (apOther->owner->profileId == ProfileId::BossBombDropped) {
+	mHeapAllocator_c allocator;
+	m3d::mdl_c bodyModel;
 
-		if (lastBomb == apOther->owner->id) { return; }
-		if (!HackyBombDropVariable) return;
-		HackyBombDropVariable = false;
+	u32 cmgr_returnValue;
 
-		// void * bowserClass = (void*)(((u32)bowser) + 0x5F8);
-		// int HP = *(int*)(((u32)bowserClass) + 4);
+	public: static dActor_c *build();
 
-		OSReport("HP: %d", BridgeBowserHP);
+	void updateModelMatrices();
+	void playerCollision(ActivePhysics *apThis, ActivePhysics *apOther);
+	// void spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther);
 
-		if (BridgeBowserHP <= 0) {
-			BridgeBowserHP = 0;
+	bool collisionCat1_Fireball_E_Explosion(ActivePhysics *apThis, ActivePhysics *apOther);
+	bool collisionCat2_IceBall_15_YoshiIce(ActivePhysics *apThis, ActivePhysics *apOther);
+	bool collisionCat9_RollingObject(ActivePhysics *apThis, ActivePhysics *apOther);
+	bool collisionCat13_Hammer(ActivePhysics *apThis, ActivePhysics *apOther);
+	bool collisionCat14_YoshiFire(ActivePhysics *apThis, ActivePhysics *apOther);
+	bool collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *apOther);
+};
 
-			*(int*)(((u32)bowser) + 0x540) = 0x28;
+void dDroppedBomb::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
+	DamagePlayer(this, apThis, apOther);
+	this->kill();
+}
 
-			BowserDamageAnmClr(bowser);
+Profile DroppedBombProfile(&dDroppedBomb::build, ProfileId::EN_BOSS_BOMB_DROPPED, NULL, ProfileId::WM_SMALLCLOUD, ProfileId::EN_BOSS_BOMB_DROPPED, "EN_BOSS_BOMB_DROPPED", NULL, 0x20);
 
-			BowserDamageStepTwo(bowser);
-			BowserDamageKill(bowser);
+dActor_c *dDroppedBomb::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(dDroppedBomb));
+	return new(buffer) dDroppedBomb;
+}
 
-			// WeirdLevelEndClass->sub_8005CB60(*otherActor->returnPtrToField38D());
+// void dDroppedBomb::spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther) { this->kill(); }
+bool dDroppedBomb::collisionCat1_Fireball_E_Explosion(ActivePhysics *apThis, ActivePhysics *apOther) {return true;}
+bool dDroppedBomb::collisionCat2_IceBall_15_YoshiIce(ActivePhysics *apThis, ActivePhysics *apOther) { return false; }
+bool dDroppedBomb::collisionCat9_RollingObject(ActivePhysics *apThis, ActivePhysics *apOther) {return true;}
+bool dDroppedBomb::collisionCat13_Hammer(ActivePhysics *apThis, ActivePhysics *apOther) {return true;}
+bool dDroppedBomb::collisionCat14_YoshiFire(ActivePhysics *apThis, ActivePhysics *apOther) {return true;}
+bool dDroppedBomb::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysics *apOther) {return true;}
 
-			// this->vf300(otherActor);
-			BowserDamageEnd(bowser);
+void dDroppedBomb::kill() {
+	PlaySoundAsync(this, SE_BOSS_JR_BOMB_BURST);
 
-			// daBossKoopaDemo_c *BowserDemo = (daBossKoopaDemo_c*)fBase_c::searchByProfileId(ProfileId::BOSS_KOOPA_DEMO, 0);
-			daBossKoopa_c *BowserClass = (daBossKoopa_c*)bowser;
-			OSReport("Koopa Controller: %x", BowserClass);
-			BowserClass->doStateChange(&daBossKoopa_c::StateID_Fall);
-			dFlagMgr_c::instance->set(3, 0, true, false, false);
+	SpawnEffect("Wm_en_explosion", 0, &this->pos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
+	SpawnEffect("Wm_mr_wirehit", 0, &this->pos, &(S16Vec){0,0,0}, &(Vec){1.25, 1.25, 1.25});
+	this->Delete(1);
+}
 
-			BridgeBowserHP = 2;
+int dDroppedBomb::onCreate() {
 
-		}
-		else {
-			*(int*)(((u32)bowser) + 0x540) = 0x28;
+	allocator.link(-1, GameHeaps[0], 0, 0x20);
 
-			BowserDamageAnmClr(bowser);
-			BowserDamageNormal(bowser);
+	nw4r::g3d::ResFile rf(getResource("koopa_clown_bomb", "g3d/koopa_clown_bomb.brres"));
+	bodyModel.setup(rf.GetResMdl("koopa_clown_bomb"), &allocator, 0x224, 1, 0);
+	SetupTextures_Enemy(&bodyModel, 0);
 
-			BridgeBowserHP -= 1;
-		}
+	allocator.unlink();
 
-		lastBomb = apOther->owner->id;
 
-		dEn_c * bomb = (dEn_c*)apOther->owner;
-		dFlagMgr_c::instance->set(bomb->settings & 0xFF, 0, true, false, false);
-		bomb->kill();
+	ActivePhysics::Info KoopaJunk;
+
+	KoopaJunk.xDistToCenter = -20.0f;
+	KoopaJunk.yDistToCenter = 0.0;
+	KoopaJunk.xDistToEdge = 20.0f;
+	KoopaJunk.yDistToEdge = 20.0f;
+
+	this->scale.x = 1.0;
+	this->scale.y = 1.0;
+	this->scale.z = 1.0;
+
+	KoopaJunk.category1 = 0x3;
+	KoopaJunk.category2 = 0x0;
+	KoopaJunk.bitfield1 = 0x4F;
+	KoopaJunk.bitfield2 = 0xFFFFFFFF;
+	KoopaJunk.unkShort1C = 0;
+	KoopaJunk.callback = &dEn_c::collisionCallback;
+
+	this->aPhysics.initWithStruct(this, &KoopaJunk);
+	this->aPhysics.addToList();
+
+
+	spriteSomeRectX = 20.f;
+	spriteSomeRectY = 20.f;
+	_320 = 0.0f;
+	_324 = 20.f;
+
+	// These structs tell stupid collider what to collide with - these are from koopa troopa
+	static const lineSensor_s below(12<<12, 4<<12, 0<<12);
+	static const pointSensor_s above(0<<12, 12<<12);
+	static const lineSensor_s adjacent(6<<12, 9<<12, 6<<12);
+
+	collMgr.init(this, &below, &above, &adjacent);
+	collMgr.calculateBelowCollisionWithSmokeEffect();
+
+	cmgr_returnValue = collMgr.isOnTopOfTile();
+
+
+	pos.z = 3300.0;
+	speed.y = -1.5f;
+
+	PlaySound(this, SE_EMY_ELCJ_THROW);
+	return true;
+}
+
+
+int dDroppedBomb::onDelete() {
+	return true;
+}
+
+int dDroppedBomb::onDraw() {
+	bodyModel.scheduleForDrawing();
+	return true;
+}
+
+
+void dDroppedBomb::updateModelMatrices() {
+	matrix.translation(pos.x, pos.y, pos.z);
+	matrix.applyRotationYXZ(&rot.x, &rot.y, &rot.z);
+
+	bodyModel.setDrawMatrix(matrix);
+	bodyModel.setScale(&scale);
+	bodyModel.calcWorld(false);
+}
+
+
+int dDroppedBomb::onExecute() {
+	// acState.execute();
+	updateModelMatrices();
+
+	rot.x += 0x200;
+	rot.y += 0x400;
+	rot.z += 0x600;
+
+	float rect[] = {this->_320, this->_324, this->spriteSomeRectX, this->spriteSomeRectY};
+	int ret = this->outOfZone(this->pos, (float*)&rect, this->currentZoneID);
+	if(ret) {
+		this->Delete(1);
+		dFlagMgr_c::instance->set(settings & 0xFF, 0, true, false, false);
 	}
 
-	return;
+	speed.y = speed.y - 0.01875;
+
+	HandleXSpeed();
+	HandleYSpeed();
+	doSpriteMovement();
+
+	cmgr_returnValue = collMgr.isOnTopOfTile();
+	collMgr.calculateBelowCollisionWithSmokeEffect();
+
+	if (collMgr.isOnTopOfTile() || (collMgr.outputMaybe & (0x15 << direction))) {
+		this->kill();
+		dFlagMgr_c::instance->set(settings & 0xFF, 0, true, false, false);
+	}
+
+	return true;
 }
 
-void BowserDoomStart(dStageActor_c *Controller) {
-	OSReport("Here we go!");
 
-	dEn_c *Bowser = (dEn_c*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_KOOPA, 0);
-	Bowser->Delete(1);
-	lastBomb = 0;
+
+
+
+// =========================================================================================================
+// ================================================ CONTROLLER =============================================
+// =========================================================================================================
+
+class dBombDrop : public dStageActor_c {
+	int onCreate();
+	int onExecute();
+	int onDelete();
+	int onDraw();
+
+	int timer;
+	dStageActor_c * target;
+	int eventA;
+	int eventB;
+
+	public: static dActor_c *build();
+};
+
+const SpriteData BossBombDropSpriteData = {ProfileId::EN_BOSS_BOMB, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile BossBombDropProfile(&dBombDrop::build, SpriteId::EN_BOSS_BOMB, &BossBombDropSpriteData, ProfileId::WM_CLOUD, ProfileId::EN_BOSS_BOMB, "EN_BOSS_BOMB", BDarcNameList);
+
+dActor_c *dBombDrop::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(dBombDrop));
+	return new(buffer) dBombDrop;
 }
 
-void BowserDoomExecute(dStageActor_c *Controller) {
-	dFlagMgr_c::instance->set(2, 0, true, false, false);
-	Controller->Delete(1);
+
+bool HackyBombDropVariable = false;
+int BridgeBowserHP;
+
+int dBombDrop::onCreate() {
+	BridgeBowserHP = 2;
+
+	int t = this->settings & 0xF;
+	this->eventA = ((this->settings >> 24) & 0xFF) - 1;
+	this->eventB = ((this->settings >> 16) & 0xFF) - 1;
+
+
+	if (t == 0) {
+		target = (dStageActor_c*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_KOOPA, 0);
+	}
+	else {
+		target = GetSpecificPlayerActor(t - 1);
+	}
+
+	dFlagMgr_c::instance->set(eventA, 0, false, false, false);
+	dFlagMgr_c::instance->set(eventB, 0, false, false, false);
+
+	HackyBombDropVariable = false;
+
+	return true;
 }
 
-void BowserDoomEnd(dStageActor_c *Controller) {
-	OSReport("Bai bai everybody");
-	Controller->Delete(1);
+int dBombDrop::onDelete() { return true; }
+int dBombDrop::onDraw() { return true; }
+
+int dBombDrop::onExecute() {
+	pos.x = target->pos.x;
+
+	bool active;
+	active = dFlagMgr_c::instance->active(eventA);
+	if (active) {
+		create(ProfileId::EN_BOSS_BOMB_DROPPED, eventA+1, &pos , &rot, 0);
+		HackyBombDropVariable = true;
+		dFlagMgr_c::instance->set(eventA, 0, false, false, false);
+	}
+
+	active = dFlagMgr_c::instance->active(eventB);
+	if (active) {
+		create(ProfileId::EN_BOSS_BOMB_DROPPED, eventB+1, &pos, &rot, 0);
+		HackyBombDropVariable = true;
+		dFlagMgr_c::instance->set(eventB, 0, false, false, false);
+	}
+
+	return true;
 }
 
-void BowserStartEnd(dStageActor_c *Controller) {
-	dFlagMgr_c::instance->set(1, 0, true, false, false);
-}
+
+
+
+

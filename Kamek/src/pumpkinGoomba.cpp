@@ -53,9 +53,9 @@ class dGoombaPie : public dEn_c {
 	DECLARE_STATE(Burst);
 };
 
-const SpriteData PumpkinGoombaSpriteData = { ProfileId::PumpkinGoomba, 8, 0x10, 0 , 0xFFFFFFF8, 8, 8, 0, 0, 0, 0, 0};
+const SpriteData PumpkinGoombaSpriteData = { ProfileId::EN_PUMPKIN_GOOMBA, 8, 0x10, 0 , 0xFFFFFFF8, 8, 8, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile PumpkinGoombaProfile(&dGoombaPie::build, SpriteId::PumpkinGoomba, &PumpkinGoombaSpriteData, ProfileId::WM_KINOKO_STAR, ProfileId::PumpkinGoomba, "PumpkinGoomba", GParcNameList);
+Profile PumpkinGoombaProfile(&dGoombaPie::build, SpriteId::EN_PUMPKIN_GOOMBA, &PumpkinGoombaSpriteData, ProfileId::WM_KINOKO_STAR, ProfileId::EN_PUMPKIN_GOOMBA, "EN_PUMPKIN_GOOMBA", GParcNameList, 0x12);
 
 dActor_c *dGoombaPie::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dGoombaPie));
@@ -160,11 +160,11 @@ int dGoombaPie::onCreate() {
 	this->resFile.data = getResource("pumpkin", "g3d/model.brres");
 	nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("Pumpkin");
 	bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
-	// SetupTextures_Map(&bodyModel, 0);
+	SetupTextures_Enemy(&bodyModel, 0);
 
 	mdl = this->resFile.GetResMdl("FX_Pumpkin");
 	burstModel.setup(mdl, &allocator, 0x224, 1, 0);
-	// SetupTextures_Map(&burstModel, 0);
+	SetupTextures_Enemy(&burstModel, 0);
 
 	allocator.unlink();
 

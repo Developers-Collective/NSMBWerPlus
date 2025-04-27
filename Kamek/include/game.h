@@ -206,6 +206,9 @@ bool IsWideScreen();
 
 #define SAVE_BIT_NO_SUPER_GUIDE 0x40
 
+// NSMBWer+ EXCLUSIVE
+#define SAVE_BIT_NSMBWERPLUS 0x80
+
 
 class SaveFirstBlock {
 public:
@@ -268,6 +271,10 @@ public:
 	void SetLevelCondition(int world, int level, int cond);
 	void UnsetLevelCondition(int world, int level, int cond);
 	bool CheckIfCoinCollected(int world, int level, int num);
+
+	void onWorldDataFlag(int world, u8 flag);
+	void offWorldDataFlag(int world, u8 flag);
+	bool isWorldDataFlag(int world, u8 flag);
 };
 
 class SaveFile {
@@ -290,6 +297,10 @@ public:
 	SaveBlock *GetQSBlock(int id);
 
 	bool CheckIfWriting(); // 0x800E0540
+
+	void prepareSave();
+	void calcCRC();
+	void startNandSave();
 };
 
 class SaveHandler {
@@ -410,6 +421,8 @@ u32 QueryGlobal5758(u32 check);
 void SaveGame(void *classDoesntMatter, bool isQuick);
 
 #include <actors.h>
+#include <profile.h>
+
 void *CreateParentedObject(short classID, void *parent, int settings, char something);
 void *CreateChildObject(short classID, void *parent, int settings, int unk1, int unk2);
 

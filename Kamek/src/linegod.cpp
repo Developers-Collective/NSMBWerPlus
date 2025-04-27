@@ -50,7 +50,7 @@ extern BG_GM_hax *BG_GM_ptr;
 #define LINEGOD_FUNC_ACTIVATE	0
 #define LINEGOD_FUNC_DEACTIVATE	1
 
-class daLineGod_c : public dStageActor_c {
+class LineGod : public dStageActor_c {
 	int onCreate();
 	int onExecute();
 
@@ -68,18 +68,17 @@ class daLineGod_c : public dStageActor_c {
 	void Update();
 };
 
-dActor_c *daLineGod_c::build() {
-	void *buffer = AllocFromGameHeap1(sizeof(daLineGod_c));
-	return new(buffer) daLineGod_c;
+dActor_c *LineGod::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(LineGod));
+	return new(buffer) LineGod;
 }
 
-const char* LineGodFileList [] = {0};
-const SpriteData LineGodSpriteData = { ProfileId::Linegod, 0, 0, 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 8};
-Profile LineGodProfile(&daLineGod_c::build, SpriteId::LineGod, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::Linegod, "Line God", LineGodFileList);
+const SpriteData LineGodSpriteData = { ProfileId::AC_LINEGOD, 0, 0, 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 8};
+Profile LineGodProfile(&LineGod::build, SpriteId::AC_LINEGOD, &LineGodSpriteData, ProfileId::RIVER_MGR, ProfileId::AC_LINEGOD, "AC_LINEGOD");
 
 u16 *GetPointerToTile(BG_GM_hax *self, u16 x, u16 y, u16 layer, short *blockID_p, bool unused);
 
-int daLineGod_c::onCreate() {
+int LineGod::onCreate() {
 	char eventNum = (this->settings >> 24) & 0xFF;
 	this->eventFlag = (u64)1 << (eventNum - 1);
 
@@ -95,12 +94,12 @@ int daLineGod_c::onCreate() {
 	return true;
 }
 
-int daLineGod_c::onExecute() {
+int LineGod::onExecute() {
 	Update();
 	return true;
 }
 
-void daLineGod_c::BuildList() {
+void LineGod::BuildList() {
 	for (int clearIdx = 0; clearIdx < 8; clearIdx++) {
 		this->ac[clearIdx] = 0;
 	}
@@ -143,7 +142,7 @@ void daLineGod_c::BuildList() {
 	}
 }
 
-bool daLineGod_c::AppendToList(BgActor *ac) {
+bool LineGod::AppendToList(BgActor *ac) {
 	for (int search = 0; search < 8; search++) {
 		if (this->ac[search] == 0) {
 			this->ac[search] = ac;
@@ -154,7 +153,7 @@ bool daLineGod_c::AppendToList(BgActor *ac) {
 	return false;
 }
 
-void daLineGod_c::Update() {
+void LineGod::Update() {
 	u8 newEvState = 0;
 	if (dFlagMgr_c::instance->flags & this->eventFlag)
 		newEvState = 1;

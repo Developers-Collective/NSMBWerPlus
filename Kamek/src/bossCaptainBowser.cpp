@@ -148,9 +148,9 @@ public:
 
 };
 
-const SpriteData BossCaptainBowserSpriteData = {ProfileId::BossCaptainBowser, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 2};
+const SpriteData BossCaptainBowserSpriteData = {ProfileId::EN_BOSS_CAPTAIN_BOWSER, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile BossCaptainBowserProfile(&daCaptainBowser::build, SpriteId::BossCaptainBowser, &BossCaptainBowserSpriteData, ProfileId::BRANCH, ProfileId::BossCaptainBowser, "BossCaptainBowser", CBarcNameList);
+Profile BossCaptainBowserProfile(&daCaptainBowser::build, SpriteId::EN_BOSS_CAPTAIN_BOWSER, &BossCaptainBowserSpriteData, ProfileId::BRANCH, ProfileId::EN_BOSS_CAPTAIN_BOWSER, "EN_BOSS_CAPTAIN_BOWSER", CBarcNameList, 0x8);
 
 dActor_c *daCaptainBowser::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daCaptainBowser));
@@ -189,7 +189,7 @@ bool daCaptainBowser::collisionCat13_Hammer(ActivePhysics *apThis, ActivePhysics
 }
 
 void daCaptainBowser::spriteCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (apOther->owner->profileId == ProfileId::CustomClownShot) { //time to get hurt
+	if (apOther->owner->profileId == ProfileId::JR_CLOWN_PLAYER_CANNONSHOT) { //time to get hurt
 		if (this->isInvulnerable) {
 			return;
 		}
@@ -542,12 +542,12 @@ int daCaptainBowser::onDraw() {
 
 		if (this->chrAnimation.getCurrentFrame() == 60.0) { // throw back
 			int num = GenerateRandomNumber(4);
-			CreateActor(ProfileId::KoopaThrow, 0x101 + ((num + 1) * 0x10), (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
+			CreateActor(ProfileId::EN_BOSS_KOOPA_THROW, 0x101 + ((num + 1) * 0x10), (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.getCurrentFrame() == 126.0) { // throw front
 			int num = GenerateRandomNumber(4);
-			CreateActor(ProfileId::KoopaThrow, ((num + 1) * 0x10) + 1, (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
+			CreateActor(ProfileId::EN_BOSS_KOOPA_THROW, ((num + 1) * 0x10) + 1, (Vec){pos.x+bowserX, pos.y+bowserY, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.isAnimationDone()) {
@@ -579,7 +579,7 @@ int daCaptainBowser::onDraw() {
 
 		if (this->chrAnimation.getCurrentFrame() == 70.5) { // spit fire
 			PlaySound(this, SE_BOSS_KOOPA_L_FIRE_SHOT);
-			CreateActor(ProfileId::KFlameThrower, 0, (Vec){pos.x-172.0, pos.y+152.0, pos.z}, 0, 0);
+			CreateActor(ProfileId::EN_BOSS_KOOPA_FLAME, 0, (Vec){pos.x-172.0, pos.y+152.0, pos.z}, 0, 0);
 		}
 
 		if (this->chrAnimation.isAnimationDone()) {
@@ -808,8 +808,8 @@ void daCaptainBowser::executeState_Outro() {
 						sa->profileId == ProfileId::EN_STAR_COIN ||
 						sa->profileId == ProfileId::EN_HATENA_BALLOON ||
 						sa->profileId == ProfileId::EN_ITEM ||
-						sa->profileId == ProfileId::Meteor || // Meteor
-						sa->profileId == ProfileId::KoopaThrow) { // Koopa Throw
+						sa->profileId == ProfileId::EN_METEOR || // Meteor
+						sa->profileId == ProfileId::EN_BOSS_KOOPA_THROW) { // Koopa Throw
 					sa->killedByLevelClear();
 					sa->Delete(1);
 				}

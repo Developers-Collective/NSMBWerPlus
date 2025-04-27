@@ -25,45 +25,41 @@ dActor_c* dRYOMRes_c::build() {
 }
 
 const SpriteData RYOMRes1SpriteData = 
-{ ProfileId::RYOMRes1, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_1, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes1Profile(&dRYOMRes_c::build, SpriteId::RYOMRes1, &RYOMRes1SpriteData, ProfileId::RYOMRes1, ProfileId::RYOMRes1, "RYOMRes1", RYOMRes1ArcNameList);
+Profile RYOMRes1Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_1, &RYOMRes1SpriteData, ProfileId::EN_RYOM_RES_1, ProfileId::EN_RYOM_RES_1, "EN_RYOM_RES_1", RYOMRes1ArcNameList);
 
 const SpriteData RYOMRes2SpriteData = 
-{ ProfileId::RYOMRes2, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_2, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes2Profile(&dRYOMRes_c::build, SpriteId::RYOMRes2, &RYOMRes2SpriteData, ProfileId::RYOMRes2, ProfileId::RYOMRes2, "RYOMRes2", RYOMRes2ArcNameList);
+Profile RYOMRes2Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_2, &RYOMRes2SpriteData, ProfileId::EN_RYOM_RES_2, ProfileId::EN_RYOM_RES_2, "EN_RYOM_RES_2", RYOMRes2ArcNameList);
 
 const SpriteData RYOMRes3SpriteData = 
-{ ProfileId::RYOMRes3, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_3, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes3Profile(&dRYOMRes_c::build, SpriteId::RYOMRes3, &RYOMRes3SpriteData, ProfileId::RYOMRes3, ProfileId::RYOMRes3, "RYOMRes3", RYOMRes3ArcNameList);
+Profile RYOMRes3Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_3, &RYOMRes3SpriteData, ProfileId::EN_RYOM_RES_3, ProfileId::EN_RYOM_RES_3, "EN_RYOM_RES_3", RYOMRes3ArcNameList);
 
 const SpriteData RYOMRes4SpriteData = 
-{ ProfileId::RYOMRes4, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_4, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes4Profile(&dRYOMRes_c::build, SpriteId::RYOMRes4, &RYOMRes4SpriteData, ProfileId::RYOMRes4, ProfileId::RYOMRes4, "RYOMRes4", RYOMRes4ArcNameList);
+Profile RYOMRes4Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_4, &RYOMRes4SpriteData, ProfileId::EN_RYOM_RES_4, ProfileId::EN_RYOM_RES_4, "EN_RYOM_RES_4", RYOMRes4ArcNameList);
 
 const SpriteData RYOMRes5SpriteData = 
-{ ProfileId::RYOMRes5, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_5, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes5Profile(&dRYOMRes_c::build, SpriteId::RYOMRes5, &RYOMRes5SpriteData, ProfileId::RYOMRes5, ProfileId::RYOMRes5, "RYOMRes5", RYOMRes5ArcNameList);
+Profile RYOMRes5Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_5, &RYOMRes5SpriteData, ProfileId::EN_RYOM_RES_5, ProfileId::EN_RYOM_RES_5, "EN_RYOM_RES_5", RYOMRes4ArcNameList);
 
 const SpriteData RYOMRes6SpriteData = 
-{ ProfileId::RYOMRes6, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_6, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes6Profile(&dRYOMRes_c::build, SpriteId::RYOMRes6, &RYOMRes6SpriteData, ProfileId::RYOMRes6, ProfileId::RYOMRes6, "RYOMRes6", RYOMRes6ArcNameList);
+Profile RYOMRes6Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_6, &RYOMRes6SpriteData, ProfileId::EN_RYOM_RES_6, ProfileId::EN_RYOM_RES_6, "EN_RYOM_RES_6", RYOMRes6ArcNameList);
 
 const SpriteData RYOMRes7SpriteData = 
-{ ProfileId::RYOMRes7, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+{ ProfileId::EN_RYOM_RES_7, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
 
-Profile RYOMRes7Profile(&dRYOMRes_c::build, SpriteId::RYOMRes7, &RYOMRes7SpriteData, ProfileId::RYOMRes7, ProfileId::RYOMRes7, "RYOMRes7", RYOMRes7ArcNameList);
+Profile RYOMRes7Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_7, &RYOMRes7SpriteData, ProfileId::EN_RYOM_RES_7, ProfileId::EN_RYOM_RES_7, "EN_RYOM_RES_7", RYOMRes7ArcNameList);
 
 // actual RYOM sprite
-
-const char *RYOMArcNameList[] = {
-	NULL
-};
 
 //////////////////////////////////////////////////////////
 //
@@ -105,9 +101,9 @@ class dMakeYourOwn : public dEn_c {
 	void setupAnim(const char* name, float rate);
 	void setupModel(const char* arcName, const char* brresName, const char* mdlName);
 };
-const SpriteData RYOMSpriteData = {ProfileId::RYOM, 0, 0, 0xFFFFFC00 ,0xFFFFFC00 ,0x400 ,0x400, 0, 0, 0, 0, 8};
+const SpriteData RYOMSpriteData = {ProfileId::EN_RYOM, 0, 0, 0xFFFFFC00 ,0xFFFFFC00 ,0x400 ,0x400, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile RYOMProfile(&dMakeYourOwn::build, SpriteId::RYOM, &RYOMSpriteData, ProfileId::WM_KOOPA_CASTLE, ProfileId::RYOM, "RYOMLoader", RYOMArcNameList);
+Profile RYOMProfile(&dMakeYourOwn::build, SpriteId::EN_RYOM, &RYOMSpriteData, ProfileId::WM_KOOPA_CASTLE, ProfileId::EN_RYOM, "EN_RYOM", NULL, 0x2);
 
 // This sets up how much space we have in memory
 dActor_c *dMakeYourOwn::build() {

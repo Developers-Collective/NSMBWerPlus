@@ -82,9 +82,9 @@ class daSamurshai : public daBoss {
 };
 
 const char* SSarcNameList [] = {"Shynja", NULL};
-const SpriteData SamurshaiSpriteData = {ProfileId::BossSamurshai, 0x10, 0x10, 0, 0, 0x40, 0x40, 0, 0, 0x40, 0x40, 0};
+const SpriteData SamurshaiSpriteData = {ProfileId::EN_BOSS_SHYGUY, 0x10, 0x10, 0, 0, 0x40, 0x40, 0, 0, 0x40, 0x40, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile SamurshaiProfile(&daSamurshai::build, SpriteId::BossSamurshai, &SamurshaiSpriteData, ProfileId::WM_PUKU, ProfileId::BossSamurshai, "Samurshai", SSarcNameList);
+Profile SamurshaiProfile(&daSamurshai::build, SpriteId::EN_BOSS_SHYGUY, &SamurshaiSpriteData, ProfileId::WM_PUKU, ProfileId::EN_BOSS_SHYGUY, "EN_BOSS_SHYGUY", SSarcNameList, 0x8);
 
 dActor_c *daSamurshai::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daSamurshai));

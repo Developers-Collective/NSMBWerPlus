@@ -3,7 +3,7 @@
 #include <dCourse.h>
 #include <profile.h>
 
-class dLevelSpecial_c : public dEn_c {
+class LevelSpecial : public dStageActor_c {
 public:
 	u64 eventFlag;
 	u8 type;
@@ -104,17 +104,16 @@ void FuckinBubbles() {
 	}
 }
 
-dActor_c* dLevelSpecial_c::build() {
-	void *buffer = AllocFromGameHeap1(sizeof(dLevelSpecial_c));
-	return new(buffer) dLevelSpecial_c;
+dActor_c* LevelSpecial::build() {
+	void *buffer = AllocFromGameHeap1(sizeof(LevelSpecial));
+	return new(buffer) LevelSpecial;
 }
 
-const char *LevelSpecialArcList[] = {0};
-const SpriteData LevelSpecialSpriteData = { ProfileId::LevelSpecial, 0, 0, 0, 0, 0x8, 0x8, 0, 0, 0, 0, 2 };
-Profile LevelSpecialProfile(&dLevelSpecial_c::build, SpriteId::LevelSpecial, &LevelSpecialSpriteData, ProfileId::TAG_THUNDER, ProfileId::LevelSpecial, "LevelSpecial", LevelSpecialArcList);
+const SpriteData LevelSpecialSpriteData = { ProfileId::AC_SPECIAL_EVENT, 0, 0, 0, 0, 0x8, 0x8, 0, 0, 0, 0, 2 };
+Profile LevelSpecialProfile(&LevelSpecial::build, SpriteId::AC_SPECIAL_EVENT, &LevelSpecialSpriteData, ProfileId::TAG_THUNDER, ProfileId::AC_SPECIAL_EVENT, "AC_SPECIAL_EVENT");
 
 
-int dLevelSpecial_c::onCreate() {
+int LevelSpecial::onCreate() {
     char eventNum	= (this->settings >> 24)	& 0xFF;
 	this->eventFlag = (u64)1 << (eventNum - 1);
 	
@@ -131,7 +130,7 @@ int dLevelSpecial_c::onCreate() {
 	return true;
 }
 
-int dLevelSpecial_c::onExecute() {
+int LevelSpecial::onExecute() {
 	if (this->keepTime > 0) {
 		time = this->keepTime; }
     

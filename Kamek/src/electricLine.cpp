@@ -27,10 +27,10 @@ class daElectricLine : public dEn_c {
 	DECLARE_STATE(Die);
 };
 
-const char *ElectricLineArcList[] = {0};
-const SpriteData ElectricLineSpriteData = {ProfileId::ElectricLine, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+const char *ElectricLineArcList[] = {"boss_koopaJr_toge", NULL};
+const SpriteData ElectricLineSpriteData = {ProfileId::EN_ELECTRIC_LINE, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ElectricLineProfile(&daElectricLine::build, SpriteId::ElectricLine, &ElectricLineSpriteData, ProfileId::KAWANAGARE, ProfileId::ElectricLine, "ElectricLine", ElectricLineArcList);
+Profile ElectricLineProfile(&daElectricLine::build, SpriteId::EN_ELECTRIC_LINE, &ElectricLineSpriteData, ProfileId::KAWANAGARE, ProfileId::EN_ELECTRIC_LINE, "EN_ELECTRIC_LINE", ElectricLineArcList);
 
 dActor_c *daElectricLine::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daElectricLine));

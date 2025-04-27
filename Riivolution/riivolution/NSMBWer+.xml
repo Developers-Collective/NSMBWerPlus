@@ -15,44 +15,46 @@
 	</options>
 	<patch id="NSMBWer+">
 		<!-- Delete the next line out when making your mod, or if you're having crashes on startup -->
-		<savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="false" />
-		<folder external="./" disc="/" recursive ="true" create="true" />
-		<folder external="Tilesets" disc="/Stage/Texture" create="true" />
-		<folder external="TitleReplay" disc="/Replay/title" create="true" />
-		<folder external="BGs" disc="/Object" create="true" />
-		<folder external="SpriteTex" disc="/Object" create="true" />
-		<folder external="Layouts" disc="/Layout" create="true" />
-		<folder external="Music" disc="/Sound" create="true" />
-		<folder external="Music/sfx" disc="/Sound/stream/sfx" create="true" />
-		<folder external="Music/stream" disc="/Sound/stream" create="true" />
-		<folder external="Music/rsar" disc="/Sound" />
-		<folder external="Font" disc="/EU/EngEU/Font" />
-		<folder external="Font" disc="/EU/GerEU/Font" />
-		<folder external="Font" disc="/EU/FraEU/Font" />
-		<folder external="Font" disc="/EU/SpaEU/Font" />
-		<folder external="Font" disc="/EU/ItaEU/Font" />
-		<folder external="Font" disc="/US/EngUS/Font" />
-		<folder external="Font" disc="/US/FraUS/Font" />
-		<folder external="Font" disc="/US/SpaUS/Font" />
-		<folder external="Font" disc="/JP/Font" />
-		<folder external="Font" disc="/KR/Font" />
-		<folder external="Font" disc="/TW/Font" />
-		<folder external="Message" disc="/EU/EngEU/Message" />	
-		<folder external="Message" disc="/EU/GerEU/Message" />
-		<folder external="Message" disc="/EU/FraEU/Message" />
-		<folder external="Message" disc="/EU/SpaEU/Message" />
-		<folder external="Message" disc="/EU/ItaEU/Message" />
-		<folder external="Message" disc="/US/EngUS/Message" />
-		<folder external="Message" disc="/US/FraUS/Message" />
-		<folder external="Message" disc="/US/SpaUS/Message" />
-		<folder external="Message" disc="/JP/Message" />
-		<folder external="Message" disc="/KR/Message" />
-		<folder external="Message" disc="/TW/Message" />
-		<folder external="Others" />
-		<folder external="Others{$__region}" />
-		<folder external="Maps" disc="/WorldMap" create="true" />
-		<folder external="Stages" disc="/Stage" create="true" />
+		<savegame external="/NSMBWer+/Save/{$__gameid}{$__region}" clone="true" />
 		
+		<!-- Vanilla folders, bar languages -->
+		<folder external="Effect" disc="/Effect" />
+		<folder external="Env" disc="/Env" />
+		<folder external="HomeButton2" disc="/HomeButton2" />
+		<folder external="Layout" disc="/Layout" create="true" />
+		<folder external="MovieDemo" disc="/MovieDemo" />
+		<folder external="Object" disc="/Object" create="true" />
+		<folder external="Replay/otakara" disc="/Replay/otakara" create="true" />
+		<folder external="Replay/otehon" disc="/Replay/otehon" create="true" />
+		<folder external="Replay/title" disc="/Replay/title" create="true" />
+		<folder external="Sound" disc="/Sound" create="true" />
+		<folder external="Sound/stream" disc="/Sound/stream" create="true" />
+		<folder external="Sound/sfx" disc="/Sound/new/sfx" create="true" />
+		<folder external="Stage" disc="/Stage" create="true" />
+		<folder external="Stage/Texture" disc="/Stage/Texture" create="true" />
+		<folder external="WorldMap" disc="/WorldMap" create="true" />
+		
+		<!-- Languages -->
+		<!-- If you want to use a single language for all versions of the game, use the Others folder -->
+		<folder external="Language/EU" disc="/EU" recursive="true" />
+		<folder external="Language/JP" disc="/JP" recursive="true" />
+		<folder external="Language/KR" disc="/KR" recursive="true" />
+		<folder external="Language/TW" disc="/TW" recursive="true" />
+		<folder external="Language/US" disc="/US" recursive="true" />
+		
+		<!-- New folders & files -->
+		<folder external="Code" disc="/Code" create="true" />
+		<folder external="LevelSamples" disc="/LevelSamples" create="true" />
+		<folder external="Others" />
+		<folder external="Others/Others{$__region}" />
+		
+		<file external="AnimTiles.bin" disc="/AnimTiles.bin" create="true"/>
+		<file external="LevelInfo.bin" disc="/LevelInfo.bin" create="true"/>
+		<file external="Messages.bin" disc="/Messages.bin" create="true"/>
+		<file external="NewerStaffRoll.bin" disc="/NewerStaffRoll.bin" create="true"/>
+		<file external="RandTiles.bin" disc="/RandTiles.bin" create="true"/>
+		
+		<!-- Not actually changed, just here for ease of access -->
 		<!-- Save name change -->
 		<!-- EU -->    <memory offset="0x802F148C" value="7769696D6A3264" original="7769696D6A3264" />
 		<!-- US -->    <memory offset="0x802F118C" value="7769696D6A3264" original="7769696D6A3264" />

@@ -12,6 +12,8 @@ class dHammerSuitRenderer_c {
 
 		dPlayerModel_c *victim;
 
+		int sceneNum;
+
 		dHammerSuitRenderer_c();
 		~dHammerSuitRenderer_c();
 		void setup(dPlayerModelHandler_c *handler);

@@ -33,9 +33,9 @@ public:
 	static dActor_c *build();
 };
 
-const SpriteData flipBlockSpriteData = { ProfileId::FlipBlock, 8, 0xFFFFFFF8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
+const SpriteData flipBlockSpriteData = { ProfileId::EN_FLIP_BLOCK, 8, 0xFFFFFFF8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0 };
  // Using WM_GRID as the execute order profile ID fixes bugs; original FlipBlock uses it as well
-Profile flipBlockProfile(&daEnFlipBlock_c::build, SpriteId::FlipBlock, &flipBlockSpriteData, ProfileId::WM_GRID, ProfileId::FlipBlock, "FlipBlock", FlipBlockFileList);
+Profile flipBlockProfile(&daEnFlipBlock_c::build, SpriteId::EN_FLIP_BLOCK, &flipBlockSpriteData, ProfileId::WM_GRID, ProfileId::EN_FLIP_BLOCK, "EN_FLIP_BLOCK", FlipBlockFileList, 0x2);
 
 
 CREATE_STATE(daEnFlipBlock_c, Wait);

@@ -37,9 +37,9 @@ const char* MEarcNameList [] = {
 	"kazan_rock",
 	NULL
 };
-const SpriteData MeteorSpriteData = {ProfileId::Meteor, 8, 0, 8, 0, 0x200, 0x200, 0x30, 0x30, 0, 0, 8};
+const SpriteData MeteorSpriteData = {ProfileId::EN_METEOR, 8, 0, 8, 0, 0x200, 0x200, 0x30, 0x30, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MeteorProfile(&dMeteor::build, SpriteId::Meteor, &MeteorSpriteData, ProfileId::EN_TARZANROPE, ProfileId::Meteor, "Meteor", MEarcNameList);
+Profile MeteorProfile(&dMeteor::build, SpriteId::EN_METEOR, &MeteorSpriteData, ProfileId::EN_TARZANROPE, ProfileId::EN_METEOR, "EN_METEOR", MEarcNameList, 0x2);
 
 dActor_c *dMeteor::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dMeteor));
@@ -55,7 +55,7 @@ void dMeteor::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) {
 }
 
 void MeteorPhysicsCallback(dMeteor *self, dEn_c *other) {
-	if (other->profileId == ProfileId::CustomClownShot) {
+	if (other->profileId == ProfileId::JR_CLOWN_PLAYER_CANNONSHOT) {
 		OSReport("CANNON COLLISION");
 
 		SpawnEffect("Wm_en_explosion", 0, &other->pos, &(S16Vec){0,0,0}, &(Vec){1.0, 1.0, 1.0});
@@ -90,8 +90,11 @@ int dMeteor::onCreate() {
 
 	this->resFile.data = getResource("kazan_rock", "g3d/kazan_rock.brres");
 	nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("kazan_rock");
-	bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
-	SetupTextures_Enemy(&bodyModel, 0);
+	bodyModel.setup(mdl, &allocator, 0x128, 1, 0);
+
+	if (this->settings >> 31) {
+		SetupTextures_MapObj(&bodyModel, 0);
+	}
 
 	allocator.unlink();
 

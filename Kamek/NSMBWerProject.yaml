@@ -8,7 +8,7 @@ modules:
   - processed/apDebug.yaml
   - processed/hardMode.yaml
   # - processed/layoutDebug.yaml
-  # - processed/creditsMgr.yaml
+  - processed/creditsMgr.yaml
   - processed/endingMgr.yaml
   - processed/chestnut.yaml
   - processed/flipblock.yaml
@@ -76,8 +76,5 @@ modules:
   - processed/exceptionHandler.yaml
   - processed/actors.yaml
   - processed/nsmbwUpdated.yaml
-  # - processed/anmlog.yaml
-  - processed/redRingRewards.yaml
-  # - processed/GameDisplay.yaml
   - processed/unusedActorSprites.yaml
   - processed/worldmaphax.yaml

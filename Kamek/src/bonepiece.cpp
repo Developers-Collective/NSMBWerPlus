@@ -23,8 +23,8 @@ class daBonePiece_c : public dStageActor_c {
 };
 
 //0289 0000  00000000 00000000  00000000 00000000 00000100 00000100  0000 0000 0000 0000  0002 0000
-const SpriteData BonePieceSpriteData = { ProfileId::BonePiece, 0, 0 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 2};
-Profile BonePieceProfile(&daBonePiece_c::build, SpriteId::BonePiece, &BonePieceSpriteData, ProfileId::WM_BOSS_IGGY, ProfileId::BonePiece, "BonePiece", BonePieceNameList);
+const SpriteData BonePieceSpriteData = { ProfileId::AC_BONE_PIECE, 0, 0 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+Profile BonePieceProfile(&daBonePiece_c::build, SpriteId::AC_BONE_PIECE, &BonePieceSpriteData, ProfileId::WM_BOSS_IGGY, ProfileId::AC_BONE_PIECE, "AC_BONE_PIECE", BonePieceNameList);
 
 // Glue Code
 dActor_c  *daBonePiece_c::build() {
