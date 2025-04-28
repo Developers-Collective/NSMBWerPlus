@@ -89,13 +89,55 @@ int LineGod::onCreate() {
 	this->lastEvState = 0xFF;
 
 	BuildList();
-	Update();
+	onExecute();
 
 	return true;
 }
 
 int LineGod::onExecute() {
-	Update();
+	u8 newEvState = 0;
+	if (dFlagMgr_c::instance->flags & this->eventFlag)
+		newEvState = 1;
+	
+	if (newEvState == this->lastEvState)
+		return;
+	
+	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
+	u16 y_bias = -(BG_GM_ptr->_0x8FE6C / 16);
+	
+	
+	u8 offState;
+	if (this->func == LINEGOD_FUNC_ACTIVATE)
+		offState = (newEvState == 1) ? 1 : 0;
+	else
+		offState = (newEvState == 1) ? 0 : 1;
+	
+	
+	for (int i = 0; i < 8; i++) {
+		if (this->ac[i] != 0) {
+			BgActor *ac = this->ac[i];
+			
+			
+			ac->EXTRA_off = offState;
+			if (offState == 1 && ac->actor_id != 0) {
+				fBase_c *assoc_ac = searchById(ac->actor_id);
+				if (assoc_ac != 0)
+					assoc_ac->Delete();
+				ac->actor_id = 0;
+			}
+			
+			u16 *tile = GetPointerToTile(BG_GM_ptr, (ac->x + x_bias) * 16, (ac->y + y_bias) * 16, 0, 0, 0);
+			if (offState == 1)
+				*tile = 0;
+			else
+				*tile = BgActorDefs[ac->def_id].tilenum;
+			
+		}
+	}
+	
+	
+	
+	this->lastEvState = newEvState;
 	return true;
 }
 
@@ -151,50 +193,4 @@ bool LineGod::AppendToList(BgActor *ac) {
 	}
 
 	return false;
-}
-
-void LineGod::Update() {
-	u8 newEvState = 0;
-	if (dFlagMgr_c::instance->flags & this->eventFlag)
-		newEvState = 1;
-	
-	if (newEvState == this->lastEvState)
-		return;
-	
-	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
-	u16 y_bias = -(BG_GM_ptr->_0x8FE6C / 16);
-	
-	
-	u8 offState;
-	if (this->func == LINEGOD_FUNC_ACTIVATE)
-		offState = (newEvState == 1) ? 1 : 0;
-	else
-		offState = (newEvState == 1) ? 0 : 1;
-	
-	
-	for (int i = 0; i < 8; i++) {
-		if (this->ac[i] != 0) {
-			BgActor *ac = this->ac[i];
-			
-			
-			ac->EXTRA_off = offState;
-			if (offState == 1 && ac->actor_id != 0) {
-				fBase_c *assoc_ac = searchById(ac->actor_id);
-				if (assoc_ac != 0)
-					assoc_ac->Delete();
-				ac->actor_id = 0;
-			}
-			
-			u16 *tile = GetPointerToTile(BG_GM_ptr, (ac->x + x_bias) * 16, (ac->y + y_bias) * 16, 0, 0, 0);
-			if (offState == 1)
-				*tile = 0;
-			else
-				*tile = BgActorDefs[ac->def_id].tilenum;
-			
-		}
-	}
-	
-	
-	
-	this->lastEvState = newEvState;
 }

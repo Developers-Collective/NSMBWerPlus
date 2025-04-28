@@ -965,10 +965,10 @@ void dSingAlong::addPowerups() {
 	SaveFile *file = GetSaveFile();
 	SaveBlock *block = file->GetBlock(file->header.current_file);
 
-	for (int i = 0; i < 7; i++) { // Change this to 8 to support hammers
-		block->powerups_available[i] = block->powerups_available[i] + this->Powerups[i];
+	for (int i = 0; i < 8; i++) { // Change this to 8 to support hammers
+		block->new_powerups_available[i] = block->new_powerups_available[i] + this->Powerups[i];
 
-		if (block->powerups_available[i] > 99) { block->powerups_available[i] = 99; }
+		if (block->new_powerups_available[i] > 99) { block->new_powerups_available[i] = 99; }
 	}
 
 	for (int i = 0; i < 4; i++) { // Make sure all players get the reward!
