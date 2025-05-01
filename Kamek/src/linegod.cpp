@@ -100,7 +100,7 @@ int LineGod::onExecute() {
 		newEvState = 1;
 	
 	if (newEvState == this->lastEvState)
-		return;
+		return true;
 	
 	u16 x_bias = (BG_GM_ptr->_0x8FE64 / 16);
 	u16 y_bias = -(BG_GM_ptr->_0x8FE6C / 16);

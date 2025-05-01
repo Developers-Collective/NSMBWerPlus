@@ -73,7 +73,7 @@ int dDroppedBomb::onCreate() {
 
 	nw4r::g3d::ResFile rf(getResource("koopa_clown_bomb", "g3d/koopa_clown_bomb.brres"));
 	bodyModel.setup(rf.GetResMdl("koopa_clown_bomb"), &allocator, 0x224, 1, 0);
-	SetupTextures_Enemy(&bodyModel, 0);
+	SetupTextures_MapObj(&bodyModel, 0);
 
 	allocator.unlink();
 
@@ -209,7 +209,7 @@ dActor_c *dBombDrop::build() {
 
 
 bool HackyBombDropVariable = false;
-int BridgeBowserHP;
+extern int BridgeBowserHP;
 
 int dBombDrop::onCreate() {
 	BridgeBowserHP = 2;

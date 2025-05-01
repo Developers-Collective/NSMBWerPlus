@@ -1826,16 +1826,18 @@
     <value nybble="5" title="Throwing Delay" comment="The amount of delay is inconsistent between increases in value."/>
   </sprite> <!-- #414: Spike/Stone Spike -->
 
-  <sprite id="431" name="Boss Controller - Bowser" noyoshi="True" notes="The main boss controller for the Retail Bowser battle.">
-    <dependency notes="Most of the final Bowser fight involves hardcoded elements, some of which that were removed in Newer. Directly copying 08-24 A4 from Newer is strongly recommended. Sprites won't spawn if on screen when entering the zone.">
-      <required sprite="439"/>
-      <required sprite="445"/>
-      <required sprite="449"/>
-      <required sprite="456"/>
-      <required sprite="478"/>
-      <required sprite="479"/>
-      <required sprite="482"/>
-      <suggested sprite="436"/>
+  <sprite id="431" name="Boss Controller - Bowser" noyoshi="True" notes="The main boss controller for the Retail Bowser battle. It will override the Zone's camera settings.">
+	<dualbox nybble="12.4" title1="Vanilla Fight" title2="Newer Fight" comment="The fight used by the controller."/>
+    <dependency notes="Most of the final Bowser fight involves hardcoded elements, so directly copying from the fight you're using is strongly recommended.">
+      <required sprite="122"/> <!-- Basic Platform - One-Way -->
+      <required sprite="419"/> <!-- Bowser -->
+      <required sprite="439"/> <!-- Peach in Cage - Fake -->
+      <required sprite="445"/> <!-- Peach in Cage - Real -->
+      <suggested sprite="449"/> <!-- Bowser Fireball Spawn Area -->
+      <required sprite="456"/> <!-- Final Boss - Bridge Pieces -->
+      <required sprite="478"/> <!-- Bowser Switch (Small) -->
+      <required sprite="479"/> <!-- Bowser Switch (Large) -->
+      <suggested sprite="482"/> <!-- Final Boss - Pre-Boss Camera Effects -->
     </dependency>
   </sprite> <!-- #431: Boss Controller - Bowser -->
   
@@ -2083,7 +2085,6 @@
     <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
 	<checkbox nybble="8.3" title="Unrestricted Movement" comment="When enabled, the clown car will have free movement across the entire level instead of the original airship room's boundaries."/>
 	<checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
-	<dualbox nybble="10" title1="Original Size" title2="Larger Size" comment="This changes the size of the clowncar from the one used in the World 6 airship to the size used by NewerSMBW's final boss."/>
   </sprite> <!-- #493: Rideable Clowncar with Cannon -->
   
   <sprite id="494" name="Thundercloud" notes="This creates an unhappy Thundercloud that is similar to a Lakitu's cloud. It will slingshot around the top of the stage and occasionally shoot down Thunder. This Thunder will turn non-tiny Marios into Mini-Mario, and kill Mini-Marios outright. The Thunder will not reach beneath solid terrain.">
@@ -2324,7 +2325,7 @@
 		<required sprite="495"/> <!-- Message Block Manager -->
 	</dependency>
     <value nybble="3-4" title="Triggering Event ID" comment="The Level Exit Controller will begin to eject the player from the level when the Triggering Event is activated." idtype="Triggering Event"/>
-    <checkbox nybble="6.4" title="Level Intro" comment="When enabled, the Level Exit Controller will show a message box for 1020 time units. It will then eject you from the level and set a hardcoded flag in the world settings that Newer uses when starting the game for the first time. The game will also be saved." comment2="It's not recommended to use this unless directly editing the NewerSMBW pack."/>
+    <checkbox nybble="6.4" title="Level Intro" comment="When enabled, the Level Exit Controller will show a message box for 17 seconds. It will then eject you from the level and set a hardcoded flag in the save file used when starting the game for the first time. The game will also be saved."/>
     <list nybble="5" title="Palace Activation" comment="This determines which colored blocks will be enabled after the player exits. If not using the Level Exit Controller as a Switch Palace, set it to value 8. Additionally, the message will be displayed for 270 time units and cannot be skipped, and the level will be completed." requirednybble="6.4" requiredval="0">
       <entry value="8">Nothing</entry>
       <entry value="0">Red Blocks</entry>

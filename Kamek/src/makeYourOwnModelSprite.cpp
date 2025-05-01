@@ -13,7 +13,7 @@ const char* RYOMRes5ArcNameList [] = { "RYOMRes5", NULL };
 const char* RYOMRes6ArcNameList [] = { "RYOMRes6", NULL };
 const char* RYOMRes7ArcNameList [] = { "RYOMRes7", NULL };
 
-class dRYOMRes_c : public dEn_c {
+class dRYOMRes_c : public dBase_c {
 public:
 	static dActor_c* build();
 	mHeapAllocator_c allocator;
@@ -21,7 +21,7 @@ public:
 
 dActor_c* dRYOMRes_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dRYOMRes_c));
-	return new(buffer) dRYOMRes_c;
+	return (dActor_c*)new(buffer) dRYOMRes_c;
 }
 
 const SpriteData RYOMRes1SpriteData = 
@@ -65,7 +65,7 @@ Profile RYOMRes7Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_7, &RYOMRes7Sp
 //
 //	How it works:
 //
-//		1) Skip down to line 70 - read the comments along the way if you like
+//		1) Skip down to line 131 - read the comments along the way if you like
 //		2) Change the stuff inside " " to be what you want.
 //		3) Copy paste an entire 'case' section of code, and change the number to change the setting it uses
 //		4) give it back to Tempus to compile in
@@ -74,7 +74,7 @@ Profile RYOMRes7Profile(&dRYOMRes_c::build, SpriteId::EN_RYOM_RES_7, &RYOMRes7Sp
 
 
 // This is the class allocator, you don't need to touch this
-class dMakeYourOwn : public dEn_c {
+class dMakeYourOwn : public dStageActor_c {
 	// Let's give ourselves a few functions
 	int onCreate();
 	int onDelete();

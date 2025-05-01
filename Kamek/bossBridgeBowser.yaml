@@ -1,5 +1,5 @@
 ---
-source_files: [../src/bossBridgeBowser.cpp]
+source_files: [../src/bossBridgeBowser.cpp, ../src/bossBombDrop.cpp]
 
 hooks:
   ################################################
@@ -11,6 +11,7 @@ hooks:
     src_addr_pal: 0x80B7E804
     target_func: 'BowserDoomSpriteCollision(dEn_c *, ActivePhysics *, ActivePhysics *)'
 
+  # doesn't seem to affect vanilla fight?
   - name: RemoveBowserAnimationCheck
     type: patch
     addr_pal: 0x80B4157C
@@ -20,11 +21,6 @@ hooks:
   #   type: patch
   #   addr_pal: 0x80B3E478
   #   data: '38000003'
-
-  - name: BowserBridgeHammerCollision
-    type: add_func_pointer
-    src_addr_pal: 0x80B7E848
-    target_func: 'ReturnNone'
 
   - name: PatchMagicStart
     type: add_func_pointer
@@ -45,6 +41,12 @@ hooks:
     type: add_func_pointer
     src_addr_pal: 0x80954BD4
     target_func: 'BowserStartEnd(dStageActor_c *)'
+  
+  # new
+  - name: FixMPGP
+    type: add_func_pointer
+    src_addr_pal: 0x80b7e854
+    target_func: 'BowserPowBlock(dEn_c *, int)'
 
 
   ################################################
@@ -52,7 +54,7 @@ hooks:
   ################################################
 
   - name: BowserFireballPatch
-    type: patch
-    addr_pal: 0x80B44950
-    data: '38000001'
+    type: add_func_pointer
+    src_addr_pal: 0x80b7ea4c
+    target_func: 'isBowserImmuneToFireBalls(void)'
 

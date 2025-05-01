@@ -1,4 +1,8 @@
 SECTIONS {
+	setDeathInfo_Quake_Boss = 0x80099d40;
+	initializeMagic = 0x807cce10;
+	executeMagic = 0x807ccf90;
+
 	HasBonusNoCap = 0x80429fc8;
 	normalSpawnPlayers = 0x8005f098;
 	continueSpawnPlayersCredits = 0x8005f010;

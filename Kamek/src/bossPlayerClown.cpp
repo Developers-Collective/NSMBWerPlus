@@ -79,7 +79,7 @@ int CConExecute(dEn_c *clown) {
 
 void CCafterCreate(dEn_c *clown, u32 param) {
 
-	if(clown->settings >> 8 & 1) {
+	if(clown->settings >> 4 & 1) {
 		clown->scale.x *= 1.25;
 		clown->scale.y *= 1.25;
 		clown->scale.z *= 1.25;
