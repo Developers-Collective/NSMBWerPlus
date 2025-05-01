@@ -9,7 +9,7 @@ bool LoadLevelInfo() {
 	if (s_levelInfoLoaded)
 		return true;
 
-	void *data = s_levelInfoLoader.load("/NewerRes/LevelInfo.bin");
+	void *data = s_levelInfoLoader.load("/LevelInfo.bin");
 	if (data) {
 		dLevelInfo_c::s_info.load(data);
 		s_levelInfoLoaded = true;

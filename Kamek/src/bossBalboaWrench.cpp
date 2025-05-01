@@ -70,9 +70,9 @@ class daBalboa_c : public daBoss {
 };
 
 const char* BalboaWrenchNameList[] = {"choropoo","lift_zen", NULL};
-const SpriteData BalboaWrenchSpriteData = {ProfileId::BossBalboaWrench, 0, 0xFFFFFFF8, 0, 0xFFFFFFB0, 0xA0, 0x50, 0, 0, 0, 0, 8};
+const SpriteData BalboaWrenchSpriteData = {ProfileId::EN_BOSS_ROCKY, 0, 0xFFFFFFF8, 0, 0xFFFFFFB0, 0xA0, 0x50, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile BalboaWrenchProfile(&daBalboa_c::build, SpriteId::BossBalboaWrench, &BalboaWrenchSpriteData, ProfileId::AC_LIFT_ICE_SPRING, ProfileId::BossBalboaWrench, "BossBalboaWrench", BalboaWrenchNameList);
+Profile BalboaWrenchProfile(&daBalboa_c::build, SpriteId::EN_BOSS_ROCKY, &BalboaWrenchSpriteData, ProfileId::AC_LIFT_ICE_SPRING, ProfileId::EN_BOSS_ROCKY, "EN_BOSS_ROCKY", BalboaWrenchNameList, 0x8);
 
 dActor_c *daBalboa_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daBalboa_c));
@@ -96,7 +96,7 @@ dActor_c *daBalboa_c::build() {
 	void balbieCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 
 	void balbieCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther) {
-		if (apOther->owner->profileId != ProfileId::BossWrenchThrow) {
+		if (apOther->owner->profileId != ProfileId::EN_BOSS_WRENCH) {
 			dEn_c::collisionCallback(apThis, apOther);
 		}
 	}
@@ -511,7 +511,7 @@ void daBalboa_c::updateModelMatrices() {
 
 			if (this->isBigBoss == 1) { settings = settings | 0x10; }
 
-			CreateActor(ProfileId::BossWrenchThrow, settings, this->pos, 0, 0);
+			CreateActor(ProfileId::EN_BOSS_WRENCH, settings, this->pos, 0, 0);
 		}
 
 		if(this->animationChr.isAnimationDone()) {
@@ -709,7 +709,7 @@ void daBalboa_c::updateModelMatrices() {
 
 			if (this->isBigBoss == 1) { settings = settings | 0x10; }
 
-			CreateActor(ProfileId::BossWrenchThrow, settings, this->pos, 0, 0);
+			CreateActor(ProfileId::EN_BOSS_WRENCH, settings, this->pos, 0, 0);
 		}
 
 		if(this->animationChr.isAnimationDone()) {

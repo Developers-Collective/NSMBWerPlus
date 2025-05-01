@@ -1,7 +1,0 @@
----
-source_files: [../src/gameDisplayHax.cpp]
-hooks:
-  - name: GameDisplayExecute
-    type: add_func_pointer
-    src_addr_pal: 0x80327A58
-    target_func: 'dGameDisplay_c::newOnExecute(void)'

@@ -170,9 +170,9 @@ bool daKoopaThrow::collisionCat7_GroundPound(ActivePhysics *apThis, ActivePhysic
 	return true;
 }
 
-const SpriteData KoopaThrowSpriteData = {ProfileId::KoopaThrow, 0x10, 0x10, 0, 0, 0x20, 0x20, 0x40, 0x40, 0, 0, 0};
+const SpriteData KoopaThrowSpriteData = {ProfileId::EN_BOSS_KOOPA_THROW, 0x10, 0x10, 0, 0, 0x20, 0x20, 0x40, 0x40, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile KoopaThrowProfile(&daKoopaThrow::build, SpriteId::KoopaThrow, &KoopaThrowSpriteData, ProfileId::WM_ANCHOR, ProfileId::KoopaThrow, "KoopaThrow", KPTarcNameList);
+Profile KoopaThrowProfile(&daKoopaThrow::build, SpriteId::EN_BOSS_KOOPA_THROW, &KoopaThrowSpriteData, ProfileId::WM_ANCHOR, ProfileId::EN_BOSS_KOOPA_THROW, "EN_BOSS_KOOPA_THROW", KPTarcNameList, 0x20);
 
 dActor_c *daKoopaThrow::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daKoopaThrow));

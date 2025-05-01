@@ -57,9 +57,9 @@ CREATE_STATE(daEnChestnut_c, Shake);
 CREATE_STATE(daEnChestnut_c, Fall);
 CREATE_STATE(daEnChestnut_c, Explode);
 
-const SpriteData ChestnutSpriteData = {ProfileId::Chestnut, 8, 0xFFFFFFF0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+const SpriteData ChestnutSpriteData = {ProfileId::EN_CHESTNUT, 8, 0xFFFFFFF0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ChestnutProfile(&daEnChestnut_c::build, SpriteId::Chestnut, &ChestnutSpriteData, ProfileId::REMO_SLIDE_DOOR, ProfileId::Chestnut, "Chestnut", ChestnutFileList);
+Profile ChestnutProfile(&daEnChestnut_c::build, SpriteId::EN_CHESTNUT, &ChestnutSpriteData, ProfileId::REMO_SLIDE_DOOR, ProfileId::EN_CHESTNUT, "EN_CHESTNUT", ChestnutFileList, 0x12);
 
 dActor_c *daEnChestnut_c::build() {
 	void *buf = AllocFromGameHeap1(sizeof(daEnChestnut_c));

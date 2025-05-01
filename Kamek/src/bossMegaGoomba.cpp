@@ -106,9 +106,9 @@ class daMegaGoomba_c : public dEn_c {
 	DECLARE_STATE(Turn);
 };
 
-const SpriteData MegaGoombaSpriteData = {ProfileId::BossMegaGoomba, -24, -16, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+const SpriteData MegaGoombaSpriteData = {ProfileId::EN_GIGA_GOOMBA, -24, -16, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MegaGoombaProfile(&daMegaGoomba_c::build, SpriteId::BossMegaGoomba, &MegaGoombaSpriteData, ProfileId::AC_BLOCK_GROUP, ProfileId::BossMegaGoomba, "GigaGoomba", MGarcNameList);
+Profile MegaGoombaProfile(&daMegaGoomba_c::build, SpriteId::EN_GIGA_GOOMBA, &MegaGoombaSpriteData, ProfileId::AC_BLOCK_GROUP, ProfileId::EN_GIGA_GOOMBA, "EN_GIGA_GOOMBA", MGarcNameList, 0x18);
 
 dActor_c *daMegaGoomba_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daMegaGoomba_c));

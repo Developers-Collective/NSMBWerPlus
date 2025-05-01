@@ -61,9 +61,9 @@ class daPengi : public dEn_c {
 	DECLARE_STATE(Die);
 };
 
-const SpriteData PengiSpriteData = { ProfileId::Pengi, 8, 0, 0 , 0xFFFFFF60, 0x140, 0xA0, 0, 0, 0, 0, 8};
+const SpriteData PengiSpriteData = { ProfileId::EN_PENGI, 8, 0, 0 , 0xFFFFFF60, 0x140, 0xA0, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile PengiProfile(&daPengi::build, NULL, &PengiSpriteData, ProfileId::TARZAN_ROPE, ProfileId::Pengi, "Pengi", PengiArcNameList);
+Profile PengiProfile(&daPengi::build, NULL, &PengiSpriteData, ProfileId::TARZAN_ROPE, ProfileId::EN_PENGI, "EN_PENGI", PengiArcNameList, 0x12);
 
 dActor_c *daPengi::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daPengi));

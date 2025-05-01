@@ -102,7 +102,7 @@ RegionDetected:
 
     lis       r3, FSLRegion@h
     ori       r3, r3, FSLRegion@l
-    li        r4, 14
+    li        r4, 10
     bl        InsertRegionIntoFileName
 
     lis       r3, FSLStart@h
@@ -112,7 +112,7 @@ RegionDetected:
     ori       r3, r3, FSLRegion@l
     callSysFunction OSReport
 
-    # Remove Anti-piracy
+    # Remove BCA Check
     lis       r3, 0x6000
     lwz       r30, BCACheck(r31)
     stw       r3, 0(r30)
@@ -155,7 +155,7 @@ RegionDetected:
 
 
 memcpybuffer: .long 0, 0, 0
-FSLStart: .string "<< NSMBWER_LOADER \trelease build: Jun 29 2024 21:00:45 >>\n"
+FSLStart: .string "<< NSMBWER_LOADER \trelease build: Apr 11 2025 23:29:04 >>\n"
 FSLRegion: .string "-Found Region xx_x\n"
 FSLBCA: .string "-Removed BCA Check\n"
 FSLFinish: .string "-Patched GameInitTable\n"
@@ -263,9 +263,9 @@ TWAddr:
     .long 0x80004070 # DoneWithFirstLoader
     .string "TW"
     .byte 0
-NewerSystem: .string "/NewerRes/Systemxx_x.bin"
-NewerDlcode: .string "/NewerRes/DLCodexx_x.bin"
-NewerDlrel:  .string "/NewerRes/DLRelocsxx_x.bin"
+NewerSystem: .string "/Code/Systemxx_x.bin"
+NewerDlcode: .string "/Code/DLCodexx_x.bin"
+NewerDlrel:  .string "/Code/DLRelocsxx_x.bin"
     .align 4
 
 RegionAddr:
@@ -288,14 +288,14 @@ main:
 
     lis       r3, NewerSystem@h
     ori       r3, r3, NewerSystem@l
-    li        r4, 0x10
+    li        r4, 0xC
     bl        InsertRegionIntoFileName
     lis       r3, NewerDlcode@h
     ori       r3, r3, NewerDlcode@l
     bl        InsertRegionIntoFileName
     lis       r3, NewerDlrel@h
     ori       r3, r3, NewerDlrel@l
-    li        r4, 0x12
+    li        r4, 0xE
     bl        InsertRegionIntoFileName
     #-------------------------
     # Step 1: Load system file
@@ -488,7 +488,7 @@ returnToGame:
     addi      r1, r1, 0x60
     blr
 
-InsertRegionIntoFileName: # inserts the region and version into NewerRes/Systemxx_x.bin
+InsertRegionIntoFileName: # inserts the region and version into Code/Systemxx_x.bin
     add       r3, r3, r4
     lbz       r5, 0x40(r31)
     stb       r5, 0(r3)

@@ -74,9 +74,9 @@ class dThunderCloud : public dEn_c {
 	DECLARE_STATE(Wait);
 };
 
-const SpriteData ThunderCloudSpriteData = {ProfileId::ThunderCloud, 0, 0, 0, 0, 0x200, 0x200, 0x30, 0x30, 0, 0, 0};
+const SpriteData ThunderCloudSpriteData = {ProfileId::EN_THUNDERCLOUD, 0, 0, 0, 0, 0x200, 0x200, 0x30, 0x30, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ThunderCloudProfile(&dThunderCloud::build, SpriteId::ThunderCloud, &ThunderCloudSpriteData, ProfileId::WM_BUBBLE, ProfileId::ThunderCloud, "ThunderCloud", TLCarcNameList);
+Profile ThunderCloudProfile(&dThunderCloud::build, SpriteId::EN_THUNDERCLOUD, &ThunderCloudSpriteData, ProfileId::WM_BUBBLE, ProfileId::EN_THUNDERCLOUD, "EN_THUNDERCLOUD", TLCarcNameList, 0x12);
 
 
 dActor_c *dThunderCloud::build() {
@@ -417,7 +417,7 @@ void dThunderCloud::endState_Wait() { }
 
 // Lightning State
 static void lightningCallback(ActivePhysics *one, ActivePhysics *two) {
-	if (one->owner->profileId == ProfileId::ThunderCloud && two->owner->profileId == ProfileId::ThunderCloud)
+	if (one->owner->profileId == ProfileId::EN_THUNDERCLOUD && two->owner->profileId == ProfileId::EN_THUNDERCLOUD)
 		return;
 	dEn_c::collisionCallback(one, two);
 }
@@ -490,7 +490,7 @@ void dThunderCloud::beginState_Lightning() {
 	}
 }
 void dThunderCloud::executeState_Lightning() {
-
+	float boltsize, boltpos;
 	switch (timer) {
 		case 0:
 			charge.spawn("Wm_en_birikyu", 0, &(Vec){pos.x, pos.y, pos.z}, &(S16Vec){0,0,0}, &(Vec){1.5, 1.5, 1.5});
@@ -502,8 +502,8 @@ void dThunderCloud::executeState_Lightning() {
 			PlaySound(this, SE_BOSS_JR_ELEC_APP);
 			PlaySound(this, SE_BOSS_JR_DAMAGE_ELEC);
 
-			float boltsize = (leader-14.0)/2;
-			float boltpos = -boltsize - 14.0;
+			boltsize = (leader-14.0)/2;
+			boltpos = -boltsize - 14.0;
 
 			bolt.spawn("Wm_jr_electricline", 0, &(Vec){pos.x, pos.y + boltpos, pos.z}, &(S16Vec){0,0,0}, &(Vec){1.0, boltsize/36.0, 1.0});
 			break;

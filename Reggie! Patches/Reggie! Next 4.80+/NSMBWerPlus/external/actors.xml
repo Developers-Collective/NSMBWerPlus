@@ -4039,4 +4039,9 @@
         <property name="Usability" value="xxx" />
         <property name="Sprite" value="" />
     </option>
+	<option value="804">
+        <property name="Name" value="Newer Credits Controller" />
+        <property name="Usability" value="***" />
+        <property name="Sprite" value="468" />
+    </option>
 </options>

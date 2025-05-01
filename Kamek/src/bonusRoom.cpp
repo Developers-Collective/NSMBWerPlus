@@ -204,9 +204,6 @@ const char* Notes[24] = {
 };
 
 const char* SAarcNameList [] = {
-	"obj_coin",
-	//"I_hammer",
-	"I_star",
 	"block_light",
 	"block_light_color",
 	"I_kinoko_bundle",
@@ -275,8 +272,7 @@ CREATE_STATE(dSongPrize, Wait);
 CREATE_STATE(dSongPrize, Shrink);
 CREATE_STATE(dSongPrize, Spin);
 
-const char* EmptySongPrizeFileList[] = {NULL};
-Profile SongPrizeProfile(&dSongPrize::build, ProfileId::SongPrize, NULL, ProfileId::WM_SINKSHIP, ProfileId::SongPrize, "SongPrize", EmptySongPrizeFileList);
+Profile SongPrizeProfile(&dSongPrize::build, ProfileId::EN_SONGPRIZE, NULL, ProfileId::WM_SINKSHIP, ProfileId::EN_SONGPRIZE, "EN_SONGPRIZE");
 
 dActor_c *dSongPrize::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dSongPrize));
@@ -508,9 +504,9 @@ class dSingAlong : public dStageActor_c {
 		DECLARE_STATE(Mistake);
 };
 
-const SpriteData SingAlongSpriteData = {ProfileId::SingAlong, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
+const SpriteData SingAlongSpriteData = {ProfileId::AC_SINGALONG, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile SingAlongProfile(&dSingAlong::build, SpriteId::SingAlong, &SingAlongSpriteData, ProfileId::WM_KILLERBULLET, ProfileId::SingAlong, "SingAlong", SAarcNameList);
+Profile SingAlongProfile(&dSingAlong::build, SpriteId::AC_SINGALONG, &SingAlongSpriteData, ProfileId::WM_KILLERBULLET, ProfileId::AC_SINGALONG, "AC_SINGALONG", SAarcNameList);
 
 dSingAlong *dSingAlong::instance = 0;
 dActor_c *dSingAlong::build() {
@@ -555,13 +551,13 @@ int dSingAlong::onCreate() {
 	float y = pos.y - 40.0;
 	float z = pos.z;
 
-	SBa = (dSongBlock*)create(ProfileId::SongBlock, 1, &(Vec){x-96.0+(32.0*0), y, z}, &rot, 0);
-	SBb = (dSongBlock*)create(ProfileId::SongBlock, 2, &(Vec){x-96.0+(32.0*1), y, z}, &rot, 0);
-	SBc = (dSongBlock*)create(ProfileId::SongBlock, 3, &(Vec){x-96.0+(32.0*2), y, z}, &rot, 0);
-	SBd = (dSongBlock*)create(ProfileId::SongBlock, 4, &(Vec){x-96.0+(32.0*3), y, z}, &rot, 0);
-	SBe = (dSongBlock*)create(ProfileId::SongBlock, 5, &(Vec){x-96.0+(32.0*4), y, z}, &rot, 0);
-	SBf = (dSongBlock*)create(ProfileId::SongBlock, 6, &(Vec){x-96.0+(32.0*5), y, z}, &rot, 0);
-	SBg = (dSongBlock*)create(ProfileId::SongBlock, 7, &(Vec){x-96.0+(32.0*6), y, z}, &rot, 0);
+	SBa = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 1, &(Vec){x-96.0+(32.0*0), y, z}, &rot, 0);
+	SBb = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 2, &(Vec){x-96.0+(32.0*1), y, z}, &rot, 0);
+	SBc = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 3, &(Vec){x-96.0+(32.0*2), y, z}, &rot, 0);
+	SBd = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 4, &(Vec){x-96.0+(32.0*3), y, z}, &rot, 0);
+	SBe = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 5, &(Vec){x-96.0+(32.0*4), y, z}, &rot, 0);
+	SBf = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 6, &(Vec){x-96.0+(32.0*5), y, z}, &rot, 0);
+	SBg = (dSongBlock*)create(ProfileId::EN_SONG_BLOCK, 7, &(Vec){x-96.0+(32.0*6), y, z}, &rot, 0);
 
 	// // Trigger the intro state
 	state.setState(&StateID_Intro);
@@ -658,7 +654,7 @@ void dSingAlong::executeState_Prize() {
 		PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_ITEM_APPEAR, 1);
 		//PlaySound(this, SE_OBJ_ITEM_APPEAR); // SE_OBJ_GOOD_ITEM_APPEAR
 
-		PrizeModel = (dSongPrize*)create(ProfileId::SongPrize, chorus + (prize[chorus] << 16), &pos, &rot, 0);
+		PrizeModel = (dSongPrize*)create(ProfileId::EN_SONGPRIZE, chorus + (prize[chorus] << 16), &pos, &rot, 0);
 	}
 
 	if (timer == -90) {
@@ -766,7 +762,7 @@ void dSingAlong::executeState_Mistake() {
 		nw4r::snd::SoundHandle handle;
 		PlaySoundWithFunctionB4(SoundRelatedClass, &handle, SE_OBJ_ITEM_APPEAR, 1);
 
-		PrizeModel = (dSongPrize*)create(ProfileId::SongPrize, chorus + (prize[chorus] << 16), &pos, &rot, 0);
+		PrizeModel = (dSongPrize*)create(ProfileId::EN_SONGPRIZE, chorus + (prize[chorus] << 16), &pos, &rot, 0);
 	}
 
 	if (timer == -90) {
@@ -999,9 +995,9 @@ void dSingAlong::addPowerups() {
 
 CREATE_STATE(dSongBlock, Wait);
 
-const SpriteData SongBlockSpriteData = {ProfileId::SongBlock, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
+const SpriteData SongBlockSpriteData = {ProfileId::EN_SONG_BLOCK, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile SongBlockProfile(&dSongBlock::build, SpriteId::SongBlock, &SongBlockSpriteData, ProfileId::WM_KILLER, ProfileId::SongBlock, "SongBlock", SAarcNameList);
+Profile SongBlockProfile(&dSongBlock::build, SpriteId::EN_SONG_BLOCK, &SongBlockSpriteData, ProfileId::WM_KILLER, ProfileId::EN_SONG_BLOCK, "EN_SONG_BLOCK", SAarcNameList);
 
 dActor_c *dSongBlock::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dSongBlock));

@@ -65,9 +65,9 @@ class daFuzzyBear_c : public daBoss {
 };
 
 const char* FuzzyBearNameList[] = {"chorobon", NULL};
-const SpriteData FuzzyBearSpriteData = {ProfileId::BossFuzzyBear, 8, 0xFFFFFFF8, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+const SpriteData FuzzyBearSpriteData = {ProfileId::EN_BOSS_FUZZY, 8, 0xFFFFFFF8, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile FuzzyBearProfile(&daFuzzyBear_c::build, SpriteId::BossFuzzyBear, &FuzzyBearSpriteData, ProfileId::WALLINSECT_MGR, ProfileId::BossFuzzyBear, "BossFuzzyBear", FuzzyBearNameList);
+Profile FuzzyBearProfile(&daFuzzyBear_c::build, SpriteId::EN_BOSS_FUZZY, &FuzzyBearSpriteData, ProfileId::WALLINSECT_MGR, ProfileId::EN_BOSS_FUZZY, "EN_BOSS_FUZZY", FuzzyBearNameList, 0x8);
 
 dActor_c *daFuzzyBear_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daFuzzyBear_c));

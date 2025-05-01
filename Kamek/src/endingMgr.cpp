@@ -28,10 +28,9 @@ class dEndingMgr_c : public daBossDemo_c {
 	public: static dActor_c *build();
 };
 
-const char *EndingMgrArcNameList[] = {0};
-const SpriteData EndingMgrSpriteData = {ProfileId::EndingMgr, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
+const SpriteData EndingMgrSpriteData = {ProfileId::AC_ENDING_MGR, 0, 0, 0, 0, 0x10, 0x10, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile EndingMgrProfile(&dEndingMgr_c::build, SpriteId::EndingMgr, &EndingMgrSpriteData, ProfileId::RIVER_MGR, ProfileId::EndingMgr, "EndingMgr", EndingMgrArcNameList);
+Profile EndingMgrProfile(&dEndingMgr_c::build, SpriteId::AC_ENDING_MGR, &EndingMgrSpriteData, ProfileId::RIVER_MGR, ProfileId::AC_ENDING_MGR, "AC_ENDING_MGR");
 
 dActor_c *dEndingMgr_c::build() {
 	void *buf = AllocFromGameHeap1(sizeof(dEndingMgr_c));
@@ -222,6 +221,7 @@ void dEndingMgr_c::beginState_ThanksPeach() {
 }
 void dEndingMgr_c::endState_ThanksPeach() {
 }
+extern "C" void startStaffCredit(GameMgr *);
 void dEndingMgr_c::executeState_ThanksPeach() {
 	daEnBossKoopaDemoPeach_c *peach = getPeach();
 	dStateBase_c *peachSt = peach->acState.getCurrentState();
@@ -292,21 +292,18 @@ void dEndingMgr_c::executeState_ThanksPeach() {
 		} else if (peach->stage == 9) {
 			timer++;
 			if (timer == 90) {
-				#ifdef NEWERCREDITS
-					RESTART_CRSIN_LevelStartStruct.purpose = 0;
-					RESTART_CRSIN_LevelStartStruct.world1 = 6;
-					RESTART_CRSIN_LevelStartStruct.world2 = 6;
-					RESTART_CRSIN_LevelStartStruct.level1 = 40;
-					RESTART_CRSIN_LevelStartStruct.level2 = 40;
-					RESTART_CRSIN_LevelStartStruct.areaMaybe = 0;
-					RESTART_CRSIN_LevelStartStruct.entrance = 0xFF;
-					RESTART_CRSIN_LevelStartStruct.unk4 = 0; // load replay
-					DontShowPreGame = true;
-					ExitStage(RESTART_CRSIN, 0, BEAT_LEVEL, MARIO_WIPE);
-				#endif
-				#ifndef NEWERCREDITS
-					ExitStage(ProfileId::MOVIE, DEFEAT_BOWSER_MOVIE, BEAT_LEVEL, MARIO_WIPE);
-				#endif
+				StartLevelInfo ls;
+				ls.purpose = 0;
+				ls.world1 = 0;
+				ls.world2 = 0;
+				ls.level1 = 41;
+				ls.level2 = 41;
+				ls.areaMaybe = 0;
+				ls.entrance = 0xFF;
+				ls.unk4 = 0; // load replay
+				DontShowPreGame = true;
+				ActivateWipe(MARIO_WIPE);
+				DoStartLevel(GameMgrP, &ls);
 			}
 		}
 	}

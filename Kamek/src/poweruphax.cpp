@@ -70,8 +70,10 @@ void dHammerSuitRenderer_c::setup(dPlayerModelHandler_c *handler, int sceneID) {
 		headNodeID = face_1.GetID();
 	}
 
-	nw4r::g3d::ResNode skl_root = playerResMdl->GetResNode("skl_root");
+	nw4r::g3d::ResNode skl_root = playerResMdl->GetResNode("spin");
 	rootNodeID = skl_root.GetID();
+	
+	this->sceneNum = sceneID;
 }
 
 void dHammerSuitRenderer_c::draw() {
@@ -89,6 +91,7 @@ void dHammerSuitRenderer_c::draw() {
 		helmet.setDrawMatrix(&headMtx);
 		helmet.setScale(1.0f, 1.0f, 1.0f);
 		helmet.calcWorld(false);
+		SetupTextures_Player(&helmet, sceneNum);
 
 		helmet.scheduleForDrawing();
 	}
@@ -99,6 +102,7 @@ void dHammerSuitRenderer_c::draw() {
 	shell.setDrawMatrix(&rootMtx);
 	shell.setScale(1.0f, 1.0f, 1.0f);
 	shell.calcWorld(false);
+	SetupTextures_Player(&shell, sceneNum);
 
 	shell.scheduleForDrawing();
 }

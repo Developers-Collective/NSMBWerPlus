@@ -5,7 +5,7 @@
 #include <playeranim.h>
 #include <newer.h>
 #include <profile.h>
-#define NEWERCREDITS
+
 void *EGG__Heap__alloc(unsigned long size, int unk, void *heap);
 void EGG__Heap__free(void *ptr, void *heap);
 
@@ -16,6 +16,8 @@ extern char isLockPlayerRotation;
 extern s16 lockedPlayerRotation;
 
 extern bool NoMichaelBuble;
+
+extern bool isNewerCredits;
 
 mTexture_c efbTexture;
 bool getNextEFB = false;
@@ -129,13 +131,14 @@ class dCreditsMgr_c : public dActorState_c {
 		void exitStage();
 
 		bool endingMode;
+		bool canSkipCredits;
 
 //		USING_STATES(dCreditsMgr_c);
 //		DECLARE_STATE(Wait);
 //		DECLARE_STATE(PlayLayoutAnim);
 //		DECLARE_STATE(Flipping);
 
-		static dCreditsMgr_c *build();
+		static dActor_c *build();
 		static dCreditsMgr_c *instance;
 };
 // CREATE_STATE(dCreditsMgr_c, Wait);
@@ -144,10 +147,14 @@ class dCreditsMgr_c : public dActorState_c {
 
 dCreditsMgr_c *dCreditsMgr_c::instance = 0;
 
-dCreditsMgr_c *dCreditsMgr_c::build() {
+dActor_c *dCreditsMgr_c::build() {
 	void *buf = AllocFromGameHeap1(sizeof(dCreditsMgr_c));
 	return new(buf) dCreditsMgr_c;
 }
+
+const SpriteData NewerCreditsSpriteData = {ProfileId::AC_NEWER_ENDING_MAIN, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2};
+// #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
+Profile NewerCreditsProfile(&dCreditsMgr_c::build, SpriteId::AC_NEWER_ENDING_MAIN, &NewerCreditsSpriteData, ProfileId::AC_ENDING_MAIN, ProfileId::AC_BATTLE_KINOPIO, "AC_NEWER_ENDING_MAIN", CreditsFileList, 0x2);
 
 
 int dCreditsMgr_c::onCreate() {
@@ -160,7 +167,7 @@ int dCreditsMgr_c::onCreate() {
 	if (!loadTitleLayout())
 		return false;
 
-	if (!scriptLoader.load("/NewerRes/NewerStaffRoll.bin"))
+	if (!scriptLoader.load("/NewerStaffRoll.bin"))
 		return false;
 
 	scriptPos = (const u8*)scriptLoader.buffer;
@@ -172,6 +179,11 @@ int dCreditsMgr_c::onCreate() {
 
 	renderer.loadNewBG(0, false);
 
+	isNewerCredits = true;
+
+	SaveBlock *save = GetSaveFile()->GetBlock(-1);
+	canSkipCredits = save->isWorldDataFlag(8, 1);
+
 	//acState.setState(&StateID_Wait);
 
 	return true;
@@ -181,6 +193,9 @@ int dCreditsMgr_c::onDelete() {
 	instance = 0;
 
 	isLockPlayerRotation = false;
+
+	CameraLockEnabled = false;
+	isNewerCredits = false;
 
 	scriptLoader.unload();
 	return layout.free() && titleLayout.free();
@@ -303,9 +318,11 @@ int dCreditsMgr_c::onExecute() {
 				case 4: // Show scores
 					staffCreditScore = GetStaffCreditScore();
 					staffCreditScore[0x279] = 1;
-					// Hide the high score bit
-					paneThing = *((nw4r::lyt::Pane**)(staffCreditScore + 0x274));
-					paneThing->SetVisible(false);
+					if (!settings & 2) {
+						// Hide the high score bit
+						paneThing = *((nw4r::lyt::Pane**)(staffCreditScore + 0x274));
+						paneThing->SetVisible(false);
+					}
 					OSReport("Staff Credit Score object is at %p, going to show it\n", staffCreditScore);
 					break;
 
@@ -381,6 +398,10 @@ int dCreditsMgr_c::onExecute() {
 					break;
 			}
 		}
+	}
+
+	if (Remocon_GetPressed(GetActiveRemocon()) & WPAD_PLUS && canSkipCredits) {
+		exitStage();
 	}
 
 	layout.execAnimations();
@@ -652,16 +673,16 @@ void dCreditsMgr_c::theEnd() {
 extern "C" u32 CreateBootParam();
 //updated to match vanilla maps + world 9 unlocks
 void dCreditsMgr_c::exitStage() {
-	SaveBlock *save = GetSaveFile()->GetBlock(-1);
-	bool wasPreviouslyBeat = (save->bitfield & 2) != 0;
-	save->bitfield |= 2;
-	OSReport("wasPreviouslyBeat: %d\n", wasPreviouslyBeat);
-	u32 WorldMapBootParam = CreateBootParam();
-	OSReport("BootParam: %d\n", WorldMapBootParam);
-	if (!wasPreviouslyBeat) {
-		DoSceneChange(ProfileId::WORLD_9_DEMO, 0, false);
+	if (settings & 1) {
+		ExitStage(MOVIE, 3, EXIT_LEVEL, CIRCLE_WIPE);
 	} else {
-		DoSceneChange(ProfileId::WORLD_MAP, WorldMapBootParam, false);
+		ActivateWipe(CIRCLE_WIPE);
+		if (canSkipCredits) { // game's been beaten
+			u32 worldMapSettings = CreateBootParam();
+			DoSceneChange(ProfileId::WORLD_MAP, worldMapSettings, 0);
+		} else {
+			DoSceneChange(ProfileId::WORLD_9_DEMO, 0, 0);
+		}
 	}
 }
 
@@ -1024,6 +1045,17 @@ void LoadDanceValues() {
 		DanceValues_Bahps = 0;
 		DanceValues_CreditsControl = 0;
 	}
+}
+
+extern u32 HasBonusNoCap;
+extern bool CreditsModeActive;
+void checkBonusNoCap() {
+	HasBonusNoCap = 0;
+	// don't remove hat if lives are less than 99, or if we're in credits
+	if (Player_Lives[0] < 99 || CreditsModeActive) {
+		return;
+	}
+	HasBonusNoCap = 1;
 }
 
 

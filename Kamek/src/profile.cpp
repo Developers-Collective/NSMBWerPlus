@@ -1,5 +1,5 @@
 #include <profile.h>
-
+#include <game.h>
 
 
 /* SPRITES */
@@ -83,14 +83,16 @@ Profile::Profile(dActor_c* (*buildFunc)(), u32 id, const SpriteData* spriteData,
 			customSpriteFiles[id - 483] = files;
 		}
 		profileId = spriteData->profileId;
-	} else {
+	}
+	else {
 		profileId = id;
 	}
 	
 	profiles[profileId] = this;
 	if (profileId < ORIGINAL_PROFILES) {
 		profileNames[profileId] = name;
-	} else {
+	}
+	else {
 		customProfileNames[profileId - ORIGINAL_PROFILES] = name;
 	}
 }

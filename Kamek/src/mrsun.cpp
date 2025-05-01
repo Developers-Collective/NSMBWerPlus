@@ -73,9 +73,9 @@ class daMrSun_c : public dEn_c {
 	DECLARE_STATE(Wait);
 };
 
-const SpriteData MrSunSpriteData = {ProfileId::MrSun, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+const SpriteData MrSunSpriteData = {ProfileId::EN_ANGRYSUN, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MrSunProfile(&daMrSun_c::build, SpriteId::MrSun, &MrSunSpriteData, ProfileId::EN_WALLINSECT, ProfileId::MrSun, "AngrySun", MSarcNameList);
+Profile MrSunProfile(&daMrSun_c::build, SpriteId::EN_ANGRYSUN, &MrSunSpriteData, ProfileId::EN_WALLINSECT, ProfileId::EN_ANGRYSUN, "EN_ANGRYSUN", MSarcNameList, 0x12);
 
 dActor_c *daMrSun_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daMrSun_c));

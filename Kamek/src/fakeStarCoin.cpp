@@ -47,8 +47,8 @@ class daFakeStarCoin : public dEn_c {
 
 };
 
-const SpriteData fakeStarCoinSpriteData = { ProfileId::FakeStarCoin, 0x80, 0 , 0x80, 0x80, 0x80, 0x80, 0, 0, 0x60, 0x50, 8};
-Profile fakeStarCoinProfile(&daFakeStarCoin::build, SpriteId::FakeStarCoin, &fakeStarCoinSpriteData, ProfileId::AC_LIFT_SEESAW, ProfileId::FakeStarCoin, "FakeStarCoin", FakeStarCoinFileList);
+const SpriteData fakeStarCoinSpriteData = { ProfileId::EN_FAKE_STARCOIN, 0x80, 0 , 0x80, 0x80, 0x80, 0x80, 0, 0, 0x60, 0x50, 8};
+Profile fakeStarCoinProfile(&daFakeStarCoin::build, SpriteId::EN_FAKE_STARCOIN, &fakeStarCoinSpriteData, ProfileId::AC_LIFT_SEESAW, ProfileId::EN_FAKE_STARCOIN, "EN_FAKE_STARCOIN", FakeStarCoinFileList, 0x22);
 
 void daFakeStarCoin::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther) { 
 

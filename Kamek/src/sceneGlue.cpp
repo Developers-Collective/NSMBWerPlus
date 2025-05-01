@@ -22,9 +22,6 @@ extern "C" void ExitStageWrapper(int scene, int sceneParams, int powerupStoreTyp
 	ExitStageReal(scene, sceneParams, powerupStoreType, wipe);
 }
 
-//if you're enabling newer's opening cutscene, just note that by using the default level slot (2-41)
-//you'll spawn in world 2 when the cutscene ends, not my fault, it's the vanilla maps fault
-//you can change it here if you want to start in World 1
 extern "C" void EnterOpeningLevel() {
 	DontShowPreGame = true;
 	RESTART_CRSIN_LevelStartStruct.purpose = 0;

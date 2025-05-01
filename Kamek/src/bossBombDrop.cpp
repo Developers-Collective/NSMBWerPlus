@@ -44,8 +44,7 @@ void dDroppedBomb::playerCollision(ActivePhysics *apThis, ActivePhysics *apOther
 	this->kill();
 }
 
-const char* EmptyBombDropFileList[] = {NULL};
-Profile DroppedBombProfile(&dDroppedBomb::build, ProfileId::BossBombDropped, NULL, ProfileId::WM_SMALLCLOUD, ProfileId::BossBombDropped, "DroppedBomb", EmptyBombDropFileList);
+Profile DroppedBombProfile(&dDroppedBomb::build, ProfileId::EN_BOSS_BOMB_DROPPED, NULL, ProfileId::WM_SMALLCLOUD, ProfileId::EN_BOSS_BOMB_DROPPED, "EN_BOSS_BOMB_DROPPED", NULL, 0x20);
 
 dActor_c *dDroppedBomb::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dDroppedBomb));
@@ -74,7 +73,7 @@ int dDroppedBomb::onCreate() {
 
 	nw4r::g3d::ResFile rf(getResource("koopa_clown_bomb", "g3d/koopa_clown_bomb.brres"));
 	bodyModel.setup(rf.GetResMdl("koopa_clown_bomb"), &allocator, 0x224, 1, 0);
-	SetupTextures_Enemy(&bodyModel, 0);
+	SetupTextures_MapObj(&bodyModel, 0);
 
 	allocator.unlink();
 
@@ -199,9 +198,9 @@ class dBombDrop : public dStageActor_c {
 	public: static dActor_c *build();
 };
 
-const SpriteData BossBombDropSpriteData = {ProfileId::BossBombDrop, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
+const SpriteData BossBombDropSpriteData = {ProfileId::EN_BOSS_BOMB, 0x10, 0x10, 0, 0, 0x200, 0x200, 0, 0, 0x200, 0x200, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile BossBombDropProfile(&dBombDrop::build, SpriteId::BossBombDrop, &BossBombDropSpriteData, ProfileId::WM_CLOUD, ProfileId::BossBombDrop, "BossBombDrop", BDarcNameList);
+Profile BossBombDropProfile(&dBombDrop::build, SpriteId::EN_BOSS_BOMB, &BossBombDropSpriteData, ProfileId::WM_CLOUD, ProfileId::EN_BOSS_BOMB, "EN_BOSS_BOMB", BDarcNameList);
 
 dActor_c *dBombDrop::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dBombDrop));
@@ -210,7 +209,7 @@ dActor_c *dBombDrop::build() {
 
 
 bool HackyBombDropVariable = false;
-int BridgeBowserHP;
+extern int BridgeBowserHP;
 
 int dBombDrop::onCreate() {
 	BridgeBowserHP = 2;
@@ -244,14 +243,14 @@ int dBombDrop::onExecute() {
 	bool active;
 	active = dFlagMgr_c::instance->active(eventA);
 	if (active) {
-		create(ProfileId::BossBombDropped, eventA+1, &pos , &rot, 0);
+		create(ProfileId::EN_BOSS_BOMB_DROPPED, eventA+1, &pos , &rot, 0);
 		HackyBombDropVariable = true;
 		dFlagMgr_c::instance->set(eventA, 0, false, false, false);
 	}
 
 	active = dFlagMgr_c::instance->active(eventB);
 	if (active) {
-		create(ProfileId::BossBombDropped, eventB+1, &pos, &rot, 0);
+		create(ProfileId::EN_BOSS_BOMB_DROPPED, eventB+1, &pos, &rot, 0);
 		HackyBombDropVariable = true;
 		dFlagMgr_c::instance->set(eventB, 0, false, false, false);
 	}

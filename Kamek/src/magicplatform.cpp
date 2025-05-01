@@ -58,10 +58,9 @@ class daEnMagicPlatform_c : public dEn_c {
 
 /*****************************************************************************/
 // Glue Code
-const char *MagicPlatformArcNameList[] = {0};
-const SpriteData MagicPlatformSpriteData = {ProfileId::MagicPlatform, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
+const SpriteData MagicPlatformSpriteData = {ProfileId::EN_MAGICPLATFORM, 0, 0, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 2};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MagicPlatformProfile(&daEnMagicPlatform_c::build, SpriteId::MagicPlatform, &MagicPlatformSpriteData, ProfileId::EN_SLIP_PENGUIN, ProfileId::MagicPlatform, "MagicPlatform", MagicPlatformArcNameList);
+Profile MagicPlatformProfile(&daEnMagicPlatform_c::build, SpriteId::EN_MAGICPLATFORM, &MagicPlatformSpriteData, ProfileId::EN_SLIP_PENGUIN, ProfileId::EN_MAGICPLATFORM, "EN_MAGICPLATFORM");
 
 dActor_c *daEnMagicPlatform_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daEnMagicPlatform_c));

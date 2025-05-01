@@ -141,9 +141,9 @@ class daShyGuy : public dEn_c {
 	int type;
 };
 
-const SpriteData ShyGuySpriteData = {ProfileId::ShyGuy, 0x10, -48, 0, 0xFFFFFFC0, 0x10, 0x40, 0x40, 0x40, 0, 0, 0};
+const SpriteData ShyGuySpriteData = {ProfileId::EN_SHYGUY, 0x10, -48, 0, 0xFFFFFFC0, 0x10, 0x40, 0x40, 0x40, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile ShyGuyProfile(&daShyGuy::build, SpriteId::ShyGuy, &ShyGuySpriteData, ProfileId::DUMMY_DOOR_CHILD, ProfileId::ShyGuy, "ShyGuy", SGarcNameList);
+Profile ShyGuyProfile(&daShyGuy::build, SpriteId::EN_SHYGUY, &ShyGuySpriteData, ProfileId::DUMMY_DOOR_CHILD, ProfileId::EN_SHYGUY, "EN_SHYGUY", SGarcNameList, 0x12);
 
 dActor_c *daShyGuy::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daShyGuy));
@@ -602,7 +602,7 @@ int daShyGuy::onCreate() {
 	}
 	nw4r::g3d::ResMdl mdl = this->resFile.GetResMdl("body_h");
 	bodyModel.setup(mdl, &allocator, 0x224, 1, 0);
-    SetupTextures_Enemy(&this->bodyModel, 0);
+	SetupTextures_Enemy(&this->bodyModel, 0);
 
 	// Animations start here
 	this->anmFile.data = getResource("shyguy", "g3d/ShyGuyAnimations.brres");

@@ -74,28 +74,33 @@ FukidashiFix:
 
 .global PlayerGetHeight
 PlayerGetHeight:
-	lwz r0, 0x14D4(r3) # r0 = this->characterID
-	
-	lwz r4, 0x1090(r3) # r4 = this->powerup
-	slwi r4, r4, 3
-	
-	cmpwi r0, 0
-	beq useNormal
-	cmpwi r0, 1
-	bne useDucking
-	
+    lwz r0, 0x14D4(r3) # r0 = this->characterID
+
+    cmpwi r0, 0
+    beq useNormal
+    cmpwi r0, 1
+    bne useDucking
+    
 useNormal:
-	lis r3, PlayerHeightsNormal@h
-	ori r3, r3, PlayerHeightsNormal@l
-	b gotOffset
-	
+    lwz r0, 0x1090(r3) # r0 = this->powerup
+
+    lis r3, PlayerHeightsNormal@h
+    ori r3, r3, PlayerHeightsNormal@l
+
+    b gotOffset
+    
 useDucking:
-	lis r3, PlayerHeightsDucking@h
-	ori r3, r3, PlayerHeightsDucking@l
-	
+    lwz r0, 0x1090(r3) # r0 = this->powerup
+
+    lis r3, PlayerHeightsDucking@h
+    ori r3, r3, PlayerHeightsDucking@l
+
+    b gotOffset
+
 gotOffset:
-	lfsx f1, r3, r4
-	blr
+    rlwinm r0, r0, 0x2, 0x0, 0x1d
+    lfsx f1, r3, r0
+    blr
 
 
 
@@ -635,6 +640,20 @@ isHammerForToad:
 	b continueToadPowerupSet
 
 
+
+
+
+
+.global CheckExistingPowerup
+CheckExistingPowerup:
+
+	lwz r3, 0x14E0(r3)
+	blr
+
+
+
+
+
 .global AcPyCtorHS
 AcPyCtorHS:
 	stwu r1, -0x10(r1)
@@ -804,7 +823,7 @@ Wm2dPlayerDrawHS:
 
 
 
-#DO IT A THIRD TIME
+# DO IT ANOTHER TIME
 .global WmPlayerCtorHS
 WmPlayerCtorHS:
 	stwu r1, -0x10(r1)
@@ -814,7 +833,7 @@ WmPlayerCtorHS:
 	mr r31, r3
 
 	bl build__21dHammerSuitRenderer_cFv
-	stw r3, 0x308(r31)
+	stw r3, 0x30C(r31)
 
 	mr r3, r31
 	lwz r31, 0xC(r1)
@@ -836,7 +855,7 @@ WmPlayerDtorHS:
 
 	cmpwi r3, 0
 	beq oops3
-	lwz r3, 0x308(r30)
+	lwz r3, 0x30C(r30)
 	li r4, 1
 	bl __dt__21dHammerSuitRenderer_cFv
 oops3:
@@ -855,42 +874,115 @@ oops3:
 .global WmPlayerSetMeUpHS
 WmPlayerSetMeUpHS:
 	# partway in: r31 = this
-	lwz r3, 0x308(r31)
+	lwz r3, 0x30C(r31)
 	addi r4, r31, 0x1cc
 	bl setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_c
 
 	# epilogue
-	li r3, 1
 	lwz r31, 0xC(r1)
+	li r3, 1
 	lwz r0, 0x14(r1)
-	mtlr r0
+	mtspr LR, r0
 	addi r1, r1, 0x10
 	blr
 
 .global WmPlayerDrawHS
 WmPlayerDrawHS:
 	# partway in: r31 = this
-	lwz r3, 0x308(r31)
+	lwz r3, 0x30C(r31)
 	bl draw__21dHammerSuitRenderer_cFv
 
 	# epilogue
-	li r3, 1
-	lwz r0, 0x14(r1)
+	lbz r0, 0x1a8(r31)
+	b returnFromWMPlayerDraw
+
+# DO IT A FOURTH TIME
+.global WmSubPlayerCtorHS
+WmSubPlayerCtorHS:
+	stwu r1, -0x10(r1)
+	mflr r0
+	stw r0, 0x14(r1)
+	stw r31, 0xC(r1)
+	mr r31, r3
+
+	bl build__21dHammerSuitRenderer_cFv
+	stw r3, 0x318(r31)
+
+	mr r3, r31
 	lwz r31, 0xC(r1)
+	lwz r0, 0x14(r1)
 	mtlr r0
 	addi r1, r1, 0x10
 	blr
+
+.global WmSubPlayerDtorHS
+WmSubPlayerDtorHS:
+	stwu r1, -0x10(r1)
+	mflr r0
+	stw r0, 0x14(r1)
+	stw r31, 0xC(r1)
+	stw r30, 8(r1)
+
+	mr r31, r4
+	mr r30, r3
+
+	cmpwi r3, 0
+	beq oops4
+	lwz r3, 0x318(r30)
+	li r4, 1
+	bl __dt__21dHammerSuitRenderer_cFv
+oops4:
+	
+	mr r3, r30
+	mr r4, r31
+	bl RealWmSubPlayerDtor
+
+	lwz r30, 8(r1)
+	lwz r31, 0xC(r1)
+	lwz r0, 0x14(r1)
+	mtlr r0
+	addi r1, r1, 0x10
+	blr
+
+.global WmSubPlayerSetMeUpHS
+WmSubPlayerSetMeUpHS:
+	# partway in: r31 = this
+	lwz r3, 0x318(r31)
+	lwz r4, 0x1cc(r31)
+	bl setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_c
+
+	# epilogue
+	lwz r31, 0x1C(r1)
+	li r3, 1
+	lwz r0, 0x24(r1)
+	mtspr LR, r0
+	addi r1, r1, 0x20
+	blr
+
+.global WmSubPlayerDrawHS
+WmSubPlayerDrawHS:
+	# partway in: r31 = this
+	lwz r3, 0x318(r31)
+	bl draw__21dHammerSuitRenderer_cFv
+
+	# epilogue
+	lbz r0, 0x1a8(r31)
+	b returnFromWMSubPlayerDraw
+
 
 .extern _restgpr_27
 .extern RealAcPyDtor
 .extern RealWm2dPlayerDtor
 .extern RealWmPlayerDtor
+.extern RealWmSubPlayerDtor
 .extern build__21dHammerSuitRenderer_cFv
 .extern __dt__21dHammerSuitRenderer_cFv
 .extern setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_ci
 .extern setup__21dHammerSuitRenderer_cFP21dPlayerModelHandler_c
 .extern draw__21dHammerSuitRenderer_cFv
 .extern draw__21dPlayerModelHandler_cFv
+.extern returnFromWMPlayerDraw
+.extern returnFromWMSubPlayerDraw
 
 .extern GabonRock_DropOutState
 .extern GabonRock_CrushState
@@ -1172,6 +1264,8 @@ GiveBattleItemNewer:
 	lwz r29, 0x24(r1)
 	b continueFromStrongBox2
 
+.extern PlaySoundAtPosition__17SoundPlayingClassFiP7Point2dUi
+.extern continueFromKinoSound
 .global StrongboxMushroomCheck
 StrongboxMushroomCheck:
 	#first we do a check on nybble 7
@@ -1180,11 +1274,10 @@ StrongboxMushroomCheck:
 	cmplwi r12, 1						#if nybble 7 is set
 	beq NoMushroom
 	# if it isn't set, we do vanilla game behavior
-	lis r5, -0x7fbd						#instruction we replaced
-	blr
+	bl PlaySoundAtPosition__17SoundPlayingClassFiP7Point2dUi
 
 NoMushroom:
-	blr
+	b continueFromKinoSound
 
 .global PassSettingsToToad
 PassSettingsToToad:
@@ -1229,8 +1322,6 @@ doFanfare:
 .data
 IndexItemsForStockItem:
 .byte 0,1,2,3,5,6,4,7
-Yes: .string "Bit 26 set!\n"
-No: .string "Bit 26 not set!\n"
 
 
 SLGWindow: .string "A00_Window"
@@ -1656,3 +1747,28 @@ HammerFoo:
 FireflowerFileName: .string "g3d/I_fireflower.brres"
 FireflowerModelName: .string "I_fireflower"
 .align 4
+
+.text
+.align 4
+
+.extern returnFromEggAddNewPowerups
+.global EggAddNewPowerups
+EggAddNewPowerups:
+	mr		r4, r3
+	slwi	r0, r4, 2
+	lis		r3, yoshiEggRewards@h
+	ori		r3, r3, yoshiEggRewards@l
+	b		returnFromEggAddNewPowerups
+
+
+.data
+.align 4
+yoshiEggRewards:
+	.long 0x00000000 #Mushroom				when small
+	.long 0x00000009 #Fire Flower			when big
+	.long 0x0000000E #Ice Flower			when fire
+	.long 0x00000000 #Mushroom				when mini
+	.long 0x00000007 #1-UP Mushroom			when propeller
+	.long 0x00000007 #1-UP Mushroom			when penguin
+	.long 0x00000015 #Propeller Mushroom	when ice
+	.long 0x00000007 #1-UP Mushroom			when hammer

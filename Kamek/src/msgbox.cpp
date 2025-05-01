@@ -4,12 +4,9 @@
 #include "msgbox.h"
 #include <profile.h>
 
-// Replaces: EN_LIFT_ROTATION_HALF (Sprite 107; Profile ID 481 @ 80AF96F8)
-
-const char *MSGBoxManagerFileList[] = {0};
-const SpriteData MsgBoxManagerSpriteData = {ProfileId::MSGBoxManager, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+const SpriteData MsgBoxManagerSpriteData = {ProfileId::AC_MSG_WINDOW, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MsgBoxManagerProfile(&dMsgBoxManager_c::build, SpriteId::MSGBoxManager, &MsgBoxManagerSpriteData, ProfileId::EN_LIFT_ROTATION_HALF, ProfileId::MSGBoxManager, "MessageBoxManager", MSGBoxManagerFileList);
+Profile MsgBoxManagerProfile(&dMsgBoxManager_c::build, SpriteId::AC_MSG_WINDOW, &MsgBoxManagerSpriteData, ProfileId::EN_LIFT_ROTATION_HALF, ProfileId::AC_MSG_WINDOW, "AC_MSG_WINDOW", NULL, 0x2);
 
 dMsgBoxManager_c *dMsgBoxManager_c::instance = 0;
 dActor_c *dMsgBoxManager_c::build() {
@@ -94,7 +91,7 @@ int dMsgBoxManager_c::onDelete() {
 CREATE_STATE_E(dMsgBoxManager_c, LoadRes);
 
 void dMsgBoxManager_c::executeState_LoadRes() {
-	if (msgDataLoader.load("/NewerRes/Messages.bin")) {
+	if (msgDataLoader.load("/Messages.bin")) {
 		state.setState(&StateID_Wait);
 	} else {
 	}
@@ -136,6 +133,7 @@ void dMsgBoxManager_c::showMessage(int id, bool canCancel, int delay) {
 
 	layout.findTextBoxByName("T_title")->SetString(title);
 	layout.findTextBoxByName("T_msg")->SetString(msg);
+	layout.findTextBoxByName("T_msgS")->SetString(msg);
 
 	this->canCancel = canCancel;
 	this->delay = delay;
@@ -174,7 +172,7 @@ void dMsgBoxManager_c::executeState_ShownWait() {
 	if (canCancel) {
 		int nowPressed = Remocon_GetPressed(GetActiveRemocon());
 
-		if (nowPressed & WPAD_TWO)
+		if (nowPressed & WPAD_TWO || nowPressed & WPAD_A)
 			state.setState(&StateID_BoxDisappearWait);
 	}
 
@@ -219,7 +217,6 @@ void dMsgBoxManager_c::endState_BoxDisappearWait() {
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
-// Replaces: EN_BLUR (Sprite 152; Profile ID 603 @ 80ADD890)
 
 
 class daEnMsgBlock_c : public daEnBlockMain_c {
@@ -304,10 +301,9 @@ int daEnMsgBlock_c::onExecute() {
 	return true;
 }
 
-const char *MSGBoxFileList[] = {0};
-const SpriteData MsgBoxSpriteData = {ProfileId::MSGBox, 16, -16 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+const SpriteData MsgBoxSpriteData = {ProfileId::EN_MSG_BLOCK, 16, -16 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile MsgBoxProfile(&daEnMsgBlock_c::build, SpriteId::MSGBox, &MsgBoxSpriteData, ProfileId::EN_BLUR, ProfileId::MSGBox, "MessageBox", MSGBoxFileList);
+Profile MsgBoxProfile(&daEnMsgBlock_c::build, SpriteId::EN_MSG_BLOCK, &MsgBoxSpriteData, ProfileId::EN_BLUR, ProfileId::EN_MSG_BLOCK, "EN_MSG_BLOCK", NULL, 0x2);
 
 dActor_c *daEnMsgBlock_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daEnMsgBlock_c));

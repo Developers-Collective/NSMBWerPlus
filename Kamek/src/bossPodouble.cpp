@@ -79,9 +79,9 @@ class daPodouble : public daBoss {
 };
 
 const char* PodoubleNameList [] = {"bubble", NULL};
-const SpriteData PodoubleSpriteData = {ProfileId::BossPodouble, 8, 0xFFFFFFF8, 0, 0, 0x20, 0x20, 0, 0, 0, 0, 8};
+const SpriteData PodoubleSpriteData = {ProfileId::EN_BOSS_BUBBLE, 8, 0xFFFFFFF8, 0, 0, 0x20, 0x20, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile PodoubleProfile(&daPodouble::build, SpriteId::BossPodouble, &PodoubleSpriteData, ProfileId::SHIP_WINDOW, ProfileId::BossPodouble, "Podouble", PodoubleNameList);
+Profile PodoubleProfile(&daPodouble::build, SpriteId::EN_BOSS_BUBBLE, &PodoubleSpriteData, ProfileId::SHIP_WINDOW, ProfileId::EN_BOSS_BUBBLE, "EN_BOSS_BUBBLE", PodoubleNameList, 0x8);
 
 dActor_c *daPodouble::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daPodouble));
@@ -615,9 +615,9 @@ int daPodouble::onDraw() {
 ///////////////
 	void daPodouble::beginState_Outro() {
 
-		daPodouble *other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::BossPodouble, 0);
+		daPodouble *other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_BUBBLE, 0);
 			if (other->id == this->id) {
-				other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::BossPodouble, this);
+				other = (daPodouble*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_BUBBLE, this);
 			}
 		other->doStateChange(&StateID_SyncDie);
 

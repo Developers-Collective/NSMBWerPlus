@@ -38,9 +38,8 @@ public:
 
 CREATE_STATE(daEnEventBlock_c, Wait);
 
-const char *EventBlockFileList[] = {0};
-const SpriteData eventBlockSpriteData = { ProfileId::EventBlock, 0, 0 , 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0 };
-Profile eventBlockProfile(&daEnEventBlock_c::build, SpriteId::EventBlock, &eventBlockSpriteData, ProfileId::MIST_INTERMITTENT, ProfileId::EventBlock, "EventBlock", EventBlockFileList);
+const SpriteData eventBlockSpriteData = { ProfileId::EN_EVENT_BLOCK, 0, 0 , 0 , 0, 0x40, 0x10, 0, 0, 0, 0, 0 };
+Profile eventBlockProfile(&daEnEventBlock_c::build, SpriteId::EN_EVENT_BLOCK, &eventBlockSpriteData, ProfileId::MIST_INTERMITTENT, ProfileId::EN_EVENT_BLOCK, "EN_EVENT_BLOCK", NULL, 0x2);
 
 int daEnEventBlock_c::onCreate() {
 	blockInit(pos.y);

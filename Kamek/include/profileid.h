@@ -500,57 +500,58 @@ enum
     AC_BOSS_KOOPA_BG_EFFECT = 482,
 
     // Start of custom entries
-    FlipBlock = 483, 
-    BonePiece = 484, 
-    FakeStarCoin = 485, 
-    ShyGuy = 486, 
-    ShyGuyGiant = 487, 
-    ChallengeStar = 488,
-    PumpkinGoomba = 489,
-    EventBlock = 490, 
-    SpriteSpawner = 491,
-    SpriteSwapper = 492,
-    CustomClownCar = 493,
-	ThunderCloud = 494,
-	MSGBoxManager = 495,
-	MSGBox = 496,
-	MagicPlatform = 497,
-	Meteor = 498,
-	Topman = 499,
-	ElectricLine = 500,
-	MrSun = 501,
-	Chestnut = 502,
-	RYOM = 503,
-	EffectSpawner = 504,
-	FireLaser = 505,
-	BossMegaGoomba = 506,
-	RYOMRes1 = 507,
-	RYOMRes2 = 508,
-	RYOMRes3 = 509,
-	RYOMRes4 = 510,
-	RYOMRes5 = 511,
-	RYOMRes6 = 512,
-	RYOMRes7 = 513,
-	SpecialExit = 514,
-	BossFuzzyBear = 515,
-  	BossThwompaDomp = 516,
-	BossRamboo = 517,
-	BossBalboaWrench = 518,
-	BossWrenchThrow = 519,
-	BossSamurshai = 520,
-	BossPodouble = 521,
-	BossTopman = 522,
-	BossCaptainBowser = 523,
-	KoopaThrow = 524,
-	KFlameThrower = 525,
-	BossBombDrop = 526,
-	EndingMgr = 527,
-	SingAlong = 528,
-	SongBlock = 529,
-	EventLooper = 530,
-	LevelSpecial = 531,
-	Waterlift = 532,
-	LineGod = 533,
+    EN_FLIP_BLOCK = 483, 
+    AC_BONE_PIECE = 484, 
+    EN_FAKE_STARCOIN = 485, 
+    EN_SHYGUY = 486, 
+    EN_SHYGUY_GIANT = 487, 
+    EN_SILVERSTAR = 488,
+    EN_PUMPKIN_GOOMBA = 489,
+    EN_EVENT_BLOCK = 490, 
+    AC_SPAWNER = 491,
+    AC_SPAWNER_TIMED = 492,
+    JR_CLOWN_FOR_PLAYER = 493,
+	EN_THUNDERCLOUD = 494,
+	AC_MSG_WINDOW = 495,
+	EN_MSG_BLOCK = 496,
+	EN_MAGICPLATFORM = 497,
+	EN_METEOR = 498,
+	EN_TOPMAN = 499,
+	EN_ELECTRIC_LINE = 500,
+	EN_ANGRYSUN = 501,
+	EN_CHESTNUT = 502,
+	EN_RYOM = 503,
+	EN_FX_SPAWNER = 504,
+	EN_FIRELASER = 505,
+	EN_GIGA_GOOMBA = 506,
+	EN_RYOM_RES_1 = 507,
+	EN_RYOM_RES_2 = 508,
+	EN_RYOM_RES_3 = 509,
+	EN_RYOM_RES_4 = 510,
+	EN_RYOM_RES_5 = 511,
+	EN_RYOM_RES_6 = 512,
+	EN_RYOM_RES_7 = 513,
+	AC_SWITCH_SET = 514,
+	EN_BOSS_FUZZY = 515,
+  	EN_BOSS_THWOMP = 516,
+	EN_BOSS_BOO = 517,
+	EN_BOSS_ROCKY = 518,
+	EN_BOSS_WRENCH = 519,
+	EN_BOSS_SHYGUY = 520,
+	EN_BOSS_BUBBLE = 521,
+	EN_BOSS_TOPMAN = 522,
+	EN_BOSS_CAPTAIN_BOWSER = 523,
+	EN_BOSS_KOOPA_THROW = 524,
+	EN_BOSS_KOOPA_FLAME = 525,
+	EN_BOSS_BOMB = 526,
+	AC_ENDING_MGR = 527,
+	AC_SINGALONG = 528,
+	EN_SONG_BLOCK = 529,
+	AC_EVENT_LOOPER = 530,
+	AC_SPECIAL_EVENT = 531,
+	WATER_LIFT = 532,
+	AC_LINEGOD = 533,
+	AC_NEWER_ENDING_MAIN = 534,
 
     Num
 };
@@ -1264,7 +1265,7 @@ enum
 	EVENT_OPENING_TITLE = 699,
 	SELECT_PLAYER = 700,
 	MULTI_COURSE_SELECT = 701,
-	#if defined(REGION_K) || defined(REGION_W) // The Korean and Taiwanese versions have two extra profiles here. Who thought this was a good idea?
+	#if defined(REGION_KW) // The Korean and Taiwanese versions have two extra profiles here. Who thought this was a good idea?
 	MULTI_COURSE_SELECT_TOURNAMENT = 702,
 	MULTI_COURSE_SELECT_TOURNAMENT_BUTTON = 703,
 	#endif
@@ -1318,60 +1319,61 @@ enum
 	LASTACTOR, //749
 
     // Start of custom entries
-    FlipBlock, //750
-    BonePiece, //751
-    FakeStarCoin, //752
-    ShyGuy, //753
-    ShyGuyGiant, //754
-    ChallengeStar, //755
-    PumpkinGoomba, //756
-    EventBlock, //757
-    SpriteSpawner, //758
-    SpriteSwapper, //759
-    CustomClownShot, //760
-	ThunderCloud, //761
-	MSGBoxManager, //762
-	MSGBox, //763
-	MagicPlatform, //764
-	Meteor, //765
-	Topman, //766
-	ElectricLine, //767
-	MrSun, //768
-	Chestnut, //769
-	RYOM, //770
-	EffectSpawner, //771
-	FireLaser, //772
-	BossMegaGoomba, //773
-	RYOMRes1, //774
-	RYOMRes2, //775
-	RYOMRes3, //776
-	RYOMRes4, //777
-	RYOMRes5, //778
-	RYOMRes6, //779
-	RYOMRes7, //780
-	SpecialExit, //781
-	BossFuzzyBear, //782
-  	BossThwompaDomp, //783
-	BossRamboo, //784
-	BossBalboaWrench, //785
-	BossWrenchThrow, //786
-	BossSamurshai, //787
-	BossPodouble, //788
-	BossTopman, //789
-	BossCaptainBowser, //790
-	KoopaThrow, //791
-	KFlameThrower, //792
-	BossBombDrop, //793
-	BossBombDropped, //794
-	EndingMgr, //795
-	SingAlong, //796
-	SongBlock, //797
-	SongPrize, //798
-	EventLooper, //799
-	LevelSpecial, //800
-	Linegod, //801
-	Pengi, //802
+    EN_FLIP_BLOCK, //750
+    AC_BONE_PIECE, //751
+    EN_FAKE_STARCOIN, //752
+    EN_SHYGUY, //753
+    EN_SHYGUY_GIANT, //754
+    EN_SILVERSTAR, //755
+    EN_PUMPKIN_GOOMBA, //756
+    EN_EVENT_BLOCK, //757
+    AC_SPAWNER, //758
+    AC_SPAWNER_TIMED, //759
+    JR_CLOWN_PLAYER_CANNONSHOT, //760
+	EN_THUNDERCLOUD, //761
+	AC_MSG_WINDOW, //762
+	EN_MSG_BLOCK, //763
+	EN_MAGICPLATFORM, //764
+	EN_METEOR, //765
+	EN_TOPMAN, //766
+	EN_ELECTRIC_LINE, //767
+	EN_ANGRYSUN, //768
+	EN_CHESTNUT, //769
+	EN_RYOM, //770
+	EN_FX_SPAWNER, //771
+	EN_FIRELASER, //772
+	EN_GIGA_GOOMBA, //773
+	EN_RYOM_RES_1, //774
+	EN_RYOM_RES_2, //775
+	EN_RYOM_RES_3, //776
+	EN_RYOM_RES_4, //777
+	EN_RYOM_RES_5, //778
+	EN_RYOM_RES_6, //779
+	EN_RYOM_RES_7, //780
+	AC_SWITCH_SET, //781
+	EN_BOSS_FUZZY, //782
+  	EN_BOSS_THWOMP, //783
+	EN_BOSS_BOO, //784
+	EN_BOSS_ROCKY, //785
+	EN_BOSS_WRENCH, //786
+	EN_BOSS_SHYGUY, //787
+	EN_BOSS_BUBBLE, //788
+	EN_BOSS_TOPMAN, //789
+	EN_BOSS_CAPTAIN_BOWSER, //790
+	EN_BOSS_KOOPA_THROW, //791
+	EN_BOSS_KOOPA_FLAME, //792
+	EN_BOSS_BOMB, //793
+	EN_BOSS_BOMB_DROPPED, //794
+	AC_ENDING_MGR, //795
+	AC_SINGALONG, //796
+	EN_SONG_BLOCK, //797
+	EN_SONGPRIZE, //798
+	AC_EVENT_LOOPER, //799
+	AC_SPECIAL_EVENT, //800
+	AC_LINEGOD, //801
+	EN_PENGI, //802
 	WM_MANAGER, //803
+	AC_NEWER_ENDING_MAIN, //804
 
     Num
 };

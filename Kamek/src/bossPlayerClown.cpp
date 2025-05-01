@@ -25,7 +25,7 @@ extern "C" void PClownCarMove(dEn_c *clown);
 const char* PCCarcNameList [] = {"koopaJr_clown_ply", NULL};
 extern "C" dActor_c *dClownCarPlayerBuild();
 const SpriteData ClownCarSpawnerSpriteData = { ProfileId::JR_CLOWN_FOR_PLAYER, 0, 0 , 0 , 0, 0x10, 0x10, 0, 0, 0, 0, 0 };
-Profile ClownCarSpawnerProfile(&dClownCarPlayerBuild, SpriteId::CustomClownCar, &ClownCarSpawnerSpriteData, ProfileId::JR_CLOWN_FOR_PLAYER, ProfileId::JR_CLOWN_FOR_PLAYER, "JR_CLOWN_FOR_PLAYER", PCCarcNameList);
+Profile ClownCarSpawnerProfile(&dClownCarPlayerBuild, SpriteId::JR_CLOWN_FOR_PLAYER, &ClownCarSpawnerSpriteData, ProfileId::JR_CLOWN_FOR_PLAYER, ProfileId::JR_CLOWN_FOR_PLAYER, "JR_CLOWN_FOR_PLAYER", PCCarcNameList);
 
 int CConDraw(dEn_c *clown) {
 	// setup cannon model
@@ -79,7 +79,7 @@ int CConExecute(dEn_c *clown) {
 
 void CCafterCreate(dEn_c *clown, u32 param) {
 
-	if(clown->settings >> 8 & 1) {
+	if(clown->settings >> 4 & 1) {
 		clown->scale.x *= 1.25;
 		clown->scale.y *= 1.25;
 		clown->scale.z *= 1.25;
@@ -129,12 +129,12 @@ void CConExecuteMove(dEn_c *clown) {
 		if (cTimer > 90) {
 			if (clown->direction == 0) { // Going right
 				tempPos = (Vec){clown->pos.x + 32.0, clown->pos.y + 32.0, 3564.0};
-				dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+				dStageActor_c *spawned = CreateActor(ProfileId::JR_CLOWN_PLAYER_CANNONSHOT, 0, tempPos, 0, 0);
 				spawned->speed.x = 5.0;
 			}
 			else {
 				tempPos = (Vec){clown->pos.x - 32.0, clown->pos.y + 32.0, 3564.0};
-				dStageActor_c *spawned = CreateActor(ProfileId::CustomClownShot, 0, tempPos, 0, 0);
+				dStageActor_c *spawned = CreateActor(ProfileId::JR_CLOWN_PLAYER_CANNONSHOT, 0, tempPos, 0, 0);
 				spawned->speed.x = -5.0;
 			}
 
@@ -221,8 +221,7 @@ dActor_c *daClownShot::build() {
 	return new(buffer) daClownShot;
 }
 
-const char* EmptyClownShotFileList[] = {NULL};
-Profile CustomClownShotProfile(&daClownShot::build, ProfileId::CustomClownShot, NULL, ProfileId::WM_PAKKUN, ProfileId::CustomClownShot, "Custom Clown Shot", EmptyClownShotFileList);
+Profile CustomClownShotProfile(&daClownShot::build, ProfileId::JR_CLOWN_PLAYER_CANNONSHOT, NULL, ProfileId::WM_PAKKUN, ProfileId::JR_CLOWN_PLAYER_CANNONSHOT, "JR_CLOWN_PLAYER_CANNONSHOT", NULL, 0x12);
 
 
 int daClownShot::onCreate() {
@@ -325,7 +324,7 @@ extern "C" bool Amp_NewPreSpriteCollision(ActivePhysics *apThis, ActivePhysics *
 	if (apOther->info.category2 == 9) {
 		if (amp->collisionCat9_RollingObject(apThis, apOther))
 			return true;
-	} else if (apOther->owner->profileId == ProfileId::CustomClownShot) {
+	} else if (apOther->owner->profileId == ProfileId::JR_CLOWN_PLAYER_CANNONSHOT) {
 		amp->killByDieFall(apOther->owner);
 		return true;
 	}
@@ -336,7 +335,7 @@ extern "C" bool Amp_NewPreSpriteCollision(ActivePhysics *apThis, ActivePhysics *
 extern "C" void KazanRock_Explode(void *kazanRock);
 extern "C" void KazanRock_OriginalCollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther);
 extern "C" void KazanRock_CollisionCallback(ActivePhysics *apThis, ActivePhysics *apOther) {
-	if (apOther->owner->profileId == ProfileId::CustomClownShot) {
+	if (apOther->owner->profileId == ProfileId::JR_CLOWN_PLAYER_CANNONSHOT) {
 		apThis->someFlagByte |= 2;
 		KazanRock_Explode(apThis->owner);
 	} else {

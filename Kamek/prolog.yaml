@@ -4,6 +4,6 @@ hooks:
   - name: Prolog
     type: branch_insn
     branch_type: b
-    src_addr_pal: 0x8015BC70
+    src_addr_pal: 0x8015bd74
     target_func: 'Prolog'
 

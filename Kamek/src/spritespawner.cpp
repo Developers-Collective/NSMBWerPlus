@@ -19,9 +19,9 @@ class dSpriteSpawner_c : public dStageActor_c {
 // Glue Code
 
 const char *SpriteSpawnerFileList[] = {0};
-const SpriteData SpriteSpawnerSpriteData = { ProfileId::SpriteSpawner, 0x10, 0xFFFFFFF0, 0 , 0, 0x18, 0x18, 0, 0, 0, 0, 0 };
+const SpriteData SpriteSpawnerSpriteData = { ProfileId::AC_SPAWNER, 0x10, 0xFFFFFFF0, 0 , 0, 0x18, 0x18, 0, 0, 0, 0, 0 };
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile SpriteSpawnerProfile(&dSpriteSpawner_c::build, SpriteId::SpriteSpawner, &SpriteSpawnerSpriteData, ProfileId::EN_BOYON, ProfileId::SpriteSpawner, "SpriteSpawner", SpriteSpawnerFileList);
+Profile SpriteSpawnerProfile(&dSpriteSpawner_c::build, SpriteId::AC_SPAWNER, &SpriteSpawnerSpriteData, ProfileId::EN_BOYON, ProfileId::AC_SPAWNER, "AC_SPAWNER", SpriteSpawnerFileList);
 
 dActor_c *dSpriteSpawner_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(dSpriteSpawner_c));
@@ -43,7 +43,7 @@ int dSpriteSpawner_c::onCreate() {
 		((tempSet & 0x30) << 4) | ((tempSet & 0xC0) << 6) |
 		((tempSet & 0x300) << 8) | ((tempSet & 0xC00) << 10) |
 		((tempSet & 0x3000) << 12) | ((tempSet & 0xC000) << 14);
-	#if defined(REGION_K) || defined(REGION_W) //adjust actor id!
+	#if defined(REGION_KW) //adjust actor id!
 		if (profileID > 701) {
 			profileID = profileID + 2;
 		}

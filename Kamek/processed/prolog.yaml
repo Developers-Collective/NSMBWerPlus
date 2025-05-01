@@ -1,14 +1,14 @@
 hooks:
 - branch_type: b
   name: Prolog
-  src_addr_jpn: 2148907328
-  src_addr_jpn2: 2148907328
-  src_addr_kor: 2148909168
-  src_addr_ntsc: 2148907824
-  src_addr_ntsc2: 2148907824
-  src_addr_pal: 2148908144
-  src_addr_pal2: 2148908144
-  src_addr_twn: 2148909168
+  src_addr_jpn: 2148907588
+  src_addr_jpn2: 2148907588
+  src_addr_kor: 2148909428
+  src_addr_ntsc: 2148908084
+  src_addr_ntsc2: 2148908084
+  src_addr_pal: 2148908404
+  src_addr_pal2: 2148908404
+  src_addr_twn: 2148909428
   target_func: Prolog
   type: branch_insn
 source_files:

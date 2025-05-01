@@ -66,7 +66,7 @@
     <checkbox nybble="8.4" title="Place Behind Other Sprites" comment="When enabled, this changes the relative Z-Order of the Paragoomba placing it further behind other sprites."/>
   </sprite> <!-- #21: Paragoomba -->
 
-  <sprite id="22" name="Baby Goomba" sizehacks="True" notes="A Tiny Goomba that will walk forward and die upon contact with the player.">
+  <sprite id="22" name="Mini Goomba" sizehacks="True" notes="A Tiny Goomba that will walk forward and die upon contact with the player.">
      <list nybble="6" title="Color" comment="This determines the color and style of the Goomba.">
       <entry value="0">Normal</entry>
       <entry value="1">Gloomba</entry>
@@ -220,7 +220,36 @@
     <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." advanced="True" advancedcomment="Using a Triggering ID with Multi-Use functionality is somewhat glitchy and not recommended." requirednybble="10.4" idtype="Triggering Event"/> <!-- Appears if Multi-Use is set, but only if Advanced fields are enabled -->
   </sprite> <!-- #40: ?-Switch -->
   
-  <sprite id="42" name="!-Switch" sizehacks="True" notes="This switch is similar to the ?-Switch, but it has the additional effect of changing all outlined Red Blocks (Pa1_ Object 57) into solid Red Blocks. This also applies to any outlined Red Blocks spawned by a Tile God. This additional functionality only occurs when using the Timed Event mode, but a Target Event is not required to make use of this functionality.">
+  <sprite id="41" name="P-Switch" notes="This switch is similar to the ? Switch, but it has the additional effect of causing all Blue Coins (tileset-based and sprite-based) to appear, turning empty Brick Blocks into Coins, and turning Coins into empty Brick Blocks. This additional functionality only occurs when using the Timed Event mode, but a Target Event is not required to make use of this functionality.&lt;br&gt;&lt;br&gt;Do not use this switch around Dancing Controlled Brick Blocks, as the collision data for the transformed coins remains as if it were a block.">
+    <dependency notes="Activates 'Pow Block Coin' tileset tiles."/>
+	<list nybble="8" title="Style" comment="This determines which style is seen on the switch. While the P-Switch supports SpriteTex, there aren't any custom textures for it." comment2="[Bug] All color values other than the original will spawn one block further upwards than it should. This is accounted for in the sprite image.">
+      <entry value="0">Standard P Icon (Original)</entry>
+      <entry value="1">SpriteTex Slot 01</entry>
+      <entry value="2">SpriteTex Slot 02</entry>
+      <entry value="3">SpriteTex Slot 03</entry>
+      <entry value="4">SpriteTex Slot 04</entry>
+    </list>
+    <checkbox nybble="12.4" title="Upside-Down" comment="When enabled, the switch will be facing down. Upside-Down switches cannot be set to fall."/>
+    <checkbox nybble="5.4" title="Falls" comment="When enabled, the switch will be movable by environmental factors, such as dropping down when bricks below it are destroyed, or moving along platforms. It does not work with conveyor belts."/>
+    <value nybble="3-4" title="Target Event ID" comment="This event will be modified when the switch is pressed. An event is not required if simply using the switch to activate Blue Coins, or transform blocks and coins." idtype="Target Event"/> <!-- This value needs expanded to support 256 Event IDs -->
+    <dualbox nybble="9.4" title1="Activates Target Event" title2="Deactivates Target Event" comment="This determines how the Target Event is modified." comment2="The Target Event will be modified to the opposite state when the Timed effect expires." requirednybble="7.4" requiredval="0"/> <!-- Appears if Timed Event is set -->
+    <dualbox nybble="9.4" title1="Activates Target Event" title2="Deactivates Target Event" comment="This determines how the Target Event is modified." requirednybble="7.4"/> <!-- Appears if Permanent Event is set -->
+    <dualbox nybble="7.4" title1="Timed Event" title2="Permanent Event [Buggy]" comment="This determines if the Target Event is modified temporarily or permanently." comment2="Permanent Event cannot be used with Multi-Use. Additionally, Permanent Event will also permanently deactivate the background music for the zone, and Blue Coins will not become visible."/>
+    <checkbox nybble="5.1" title="Disable Music Interruption" comment="When enabled, the switch will not interrupt the normal level music with Timed music. This setting is only applicable if Timed Event is set." requirednybble="7.4" requiredval="0"/> <!-- Appears only if Timed Event is set -->
+    <checkbox nybble="5.1" title="Disable Permanent Music Interruption" comment="When enabled, the switch will not disable the background music. This setting is highly recommended if Permanent Event is set." requirednybble="7.4"/> <!-- Appears if Permanent Event is set -->
+    <dualbox nybble="10.4" title1="Single Use" title2="Multi-Use" comment="This will determine if the switch will pop back up when the Timed effect expires." comment2="Single Use: The switch will vanish entirely after pressed.&lt;br&gt;&lt;br&gt;Multi-Use: The switch will enter a flat state. When the Timed effect expires, the switch will pop back up following the Delay setting." advancedcomment="If the Target Event is deactivated/activated by another method, Multi-Use switches will flatten or pop-up on their own.&lt;br&gt;&lt;br&gt;The pop up effect can be used to launch the player much higher than they could normally jump." requirednybble="7.4" requiredval="0"/>  <!-- Appears only if Timed Event is set -->
+    <list nybble="6.3-6.4" title="Delay on Multi-Use" comment="This will set how long the switch takes to pop up after the timer expires on a Timed Multi-Use switch." requirednybble="7.4,10.4" requiredval="0, 1">
+      <entry value="0">Instantly</entry>
+      <entry value="2">Short Delay</entry>
+      <entry value="3">Long Delay</entry>
+      <entry value="1">Very Long Delay</entry>
+    </list> <!-- Appears only if Timed Event AND Multi-Use are set -->
+    <checkbox nybble="5.2" title="Loads at Midway" comment="When enabled, the switch will only appear if the level has been loaded from a Midway point."/>
+    <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." requirednybble="10.4" requiredval="0" idtype="Triggering Event"/> <!-- This value needs expanded to support 256 Event IDs --> <!-- Disappears if Multi-Use is set -->
+    <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." advanced="True" advancedcomment="Using a Triggering ID with Multi-Use functionality is somewhat glitchy and not recommended." requirednybble="10.4" idtype="Triggering Event"/> <!-- This value needs expanded to support 256 Event IDs --> <!-- Appears if Multi-Use is set, but only if Advanced fields are enabled -->
+  </sprite> <!-- #41: P-Switch -->
+  
+  <sprite id="42" name="!-Switch" sizehacks="True" notes="This switch is similar to the ?-Switch, but it has the additional effect of changing all outlined Red Blocks (Pa0 Object 57) into solid Red Blocks. This also applies to any outlined Red Blocks spawned by a Tile God. This additional functionality only occurs when using the Timed Event mode, but a Target Event is not required to make use of this functionality.">
     <dependency notes="Activates 'Red Block Outline A/B' tiles."/>
     <list nybble="8" title="Color" comment="This determines what color the switch is. Different colored switches do not activate different colors of blocks." comment2="[Bug] All color values other than the original will spawn one block further upwards than it should. This is accounted for in the sprite image.">
       <entry value="0">Red (Original)</entry>
@@ -275,7 +304,7 @@
     <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." advanced="True" advancedcomment="Using a Triggering ID with Multi-Use functionality is somewhat glitchy and not recommended." requirednybble="10.4" idtype="Triggering Event"/> <!-- Appears if Multi-Use is set, but only if Advanced fields are enabled -->
   </sprite> <!-- #43: Brick Block ?-Switch -->
 
-  <sprite id="45" name="Brick Block !-Switch" sizehacks="True" notes="This switch, stored inside a Brick Block, is similar to the ? Switch, but it has the additional effect of causing all outlined Red Blocks (Pa1_ Object 57) into solid Red Blocks. This also applies to any outlined Red Blocks spawned by a Tile God. This additional functionality only occurs when using the Timed Event mode, but a Target Event is not required to make use of this functionality." advancednotes="A brick block containing or supporting a switch cannot be destroyed by sprites that destroy normal brick and solid blocks as long as the switch exists.">
+  <sprite id="45" name="Brick Block !-Switch" sizehacks="True" notes="This switch, stored inside a Brick Block, is similar to the ? Switch, but it has the additional effect of causing all outlined Red Blocks (Pa0 Object 57) into solid Red Blocks. This also applies to any outlined Red Blocks spawned by a Tile God. This additional functionality only occurs when using the Timed Event mode, but a Target Event is not required to make use of this functionality." advancednotes="A brick block containing or supporting a switch cannot be destroyed by sprites that destroy normal brick and solid blocks as long as the switch exists.">
     <dependency notes="Add Tileset / Puzzle dependency information relating to custom tileset settings."/>
     <list nybble="8" title="Color" comment="This determines what color the switch is. Different colored switches do not activate different colors of blocks.">
       <entry value="0">Red (Original)</entry>
@@ -611,26 +640,6 @@
     <value nybble="1-2" title="Triggering Event ID" comment="This switch will not be visible if a Triggering Event is defined unless that event is activated." advanced="True" advancedcomment="Using a Triggering ID with Multi-Use functionality is somewhat glitchy and not recommended." requirednybble="10.4" idtype="Triggering Event"/> <!-- Appears if Multi-Use is set, but only if Advanced fields are enabled -->
   </sprite> <!-- #153: (Unused) ?-Switch -->
 
-  <sprite id="156" name="Red Coin Ring" notes="A glowing red ring that is intended to be used to spawn sets of 8 red coins, and to control the item that the player will receive after collection them.">
-    <dependency notes="The suggested use is to have 8 [144] Red Coins placed with the same Red Coin ID and Event ID as a matching Red Coin Ring. It is not recommended to use more than 1 Red Coin Ring within a single Zone, nor is it recommended to use either object for a purpose outside of the default, within a normal style level.">
-      <suggested sprite="144"/> <!-- Obviously it's suggested to utilize Red Coins -->
-    </dependency>
-    <value nybble="3.2-4.4" title="Target Event ID" comment="When the Red Coin Ring is touched, the Target Event will be activated." idtype="Target Event"/>
-    <dualbox nybble="5.4" title1="Timed Event" title2="Permanent Event" comment="This determines if the Target Event is activated temporarily or permanently." comment2="Timed events will pause the music and replace it with ticking. It is recommended for normal Red Coin Ring use that the event be timed."/>
-    <value nybble="12" title="Red Coin ID" comment="When set, the corresponding Red Coin set will have an Item Reward. Value 0 is also a valid ID." idtype="Red Coin"/>
-    <list nybble="11" title="Item Reward" comment="This determines which power-up will appear after collecting 8 coins from the Red Coin ID set above. If a player already has a power-up, it will drop a 1-Up.">
-      <entry value="0">Fire Flower</entry>
-      <entry value="1">Propeller Shroom</entry>
-      <entry value="2">Penguin Suit</entry>
-      <entry value="3">Ice Flower</entry>
-	  <entry value="4">Mini Mushroom</entry>
-      <entry value="5">Power Star</entry>
-      <entry value="6">1UP Mushroom</entry>
-    </list>
-    <checkbox nybble="12.4" title="Shift Horizontally" comment="When this checkbox is ticked, the ring is moved half a block to the right. Note that this setting overlaps with the Red Coin ID." />
-    <checkbox nybble="10.4" title="Unknown Flag 10 (1)" advanced="True" advancedcomment="ASM shows Nybble 10 might affect something. No visible or functional change. Likely Z-Order related, or at least intended to be."/>
-  </sprite> <!-- #156: Red Coin Ring -->
-
   <sprite id="179" name="Special Exit Controller" notes="A special controller that will activate Entrance transitions when a player enters a specific area.">
     <list nybble="10" title="Width" comment="This determines the width of the area that the Special Exit Controller will check for the player inside of.">
       <entry value="0">1 Block</entry>
@@ -906,7 +915,7 @@
   </sprite> <!-- #224: Jumbo Ray -->
   
   <sprite id="230" name="Bramball" noyoshi="True" notes="A long-legged enemy with a ball for a body that will flip itself around as it traverses terrain with proper spacing. Rumor has it that if it is struck from below with a Pipe Cannon, a large amount of coins will appear. Kaching!">
-    <dependency notes="For a Bramball to want to move, he must have solid terrain exactly 4 blocks from his legs."/>
+    <dependency notes="A Bramball must have solid terrain exactly 4 tiles and no more than a 1 tile change in elevation to move."/>
     <list nybble="6" title="Style" comment="This determines the color and style of the Bramball.">
       <entry value="0">Original</entry>
       <entry value="1">Pumpkin</entry>
@@ -915,7 +924,7 @@
       <entry value="4">Lava</entry>
     </list>
     <dualbox nybble="11.4" title1="Slow Movement" title2="Fast Movement" comment="This determines how quickly the Bramball will traverse platforms."/>
-    <list nybble="12.3-12.4" title="Initial Movement" comment="This determines which direction the Bramball will attempt to move first.">
+    <list nybble="12.3-12.4" title="Initial Direction" comment="This determines which direction the Bramball will attempt to move first.">
       <entry value="0">Towards Player</entry>
       <entry value="1">Moves Right</entry>
       <entry value="2">Moves Left</entry>
@@ -969,7 +978,7 @@
     </list>
     <dualbox nybble="8.2" title1="Short Stem" title2="Long Stem" comment="This determines the length of the stem when the platform is contracted." requirednybble="7.3"/>
   </sprite> <!-- 231: Wiggling Mushroom Platform -->
-  
+
   <sprite id="269" name="Parachute Bob-Omb" sizehacks="True" notes="A parachuting Bob-Omb enemy that will turn into a standard Bob-Omb after it lands.">
     <dependency notes="The Y-position of the Bob-Omb has no effect. It will always appear directly above the top edge of the screen."/>
     <list nybble="6" title="Color" comment="This determines the color of the Bob-Omb.">
@@ -1124,7 +1133,7 @@
     <value nybble="5" title="Coaster ID" comment="This will pair multiple Spine Coasters together so that when one of them starts, they all start at the same time." comment2="Do not pair more than one Spine Coaster with [Touch Activated] enabled!" idtype="Coaster"/>
   </sprite> <!-- #297: Spine Coaster -->
   
-  <sprite id="302" name="Cliff Koopa" notes="Koopas that hang from cliff edges and shimmy across them." advancednotes="This sprite's constructor (and the sprite settings) was removed from the vanilla game and has been restored. There may have been more settings for this sprite at one point.">
+  <sprite id="302" name="Climbing Koopa - Cliffs" notes="Koopas that hang from cliff edges and shimmy across them." advancednotes="This sprite's constructor (and the sprite settings) was removed from the vanilla game and has been restored. There may have been more settings for this sprite at one point.">
 	<dualbox nybble="10" title1="Walks Off Ledges" title2="Turns Around At Ledges" comment="This determines if the Cliff Koopa will mindlessly walk off of ledges or if it will turn around when it reaches a ledge." comment2="This also changes the color of the Cliff Koopa."/>
 	<dualbox nybble="11" title1="Spawns Moving Left" title2= "Spawns Moving Right" comment="This determines what direction the Cliff Koopa will spawn."/>
 	<checkbox nybble="12" title="Spawn Locaton Fix" comment="by default, this sprite is placed too low to be useful. This setting will spawn them properly."/>
@@ -1212,18 +1221,8 @@
     <checkbox nybble="12.4" title="Remove Grass/Rocks" comment="When enabled, this will remove the decoration from the bottom of the Shell Cave."/>
   </sprite> <!-- #341: Giant Turtle Shell Cave -->
   
-  <sprite id="357" name="Yoshi Fruit" sizehacks="True" notes="An edible fruit that Yoshi can grab. Collecting five will cause Yoshi to lay an egg. What's inside the egg will change depending on the player's current power-up. Normal -&gt; Fire -&gt; Ice -&gt; Propeller -&gt; 1-Up.">
-    <list nybble="12" title="Type" comment="This determines if the fruit is a standard berry, or a cherry. They share no functional difference.">
-      <entry value="0">Berry</entry>
-      <entry value="1">Cherry</entry>
-    </list>
-  </sprite> <!-- #357: Yoshi Fruit -->
-  
-  <!-- Test is 90 continues to function (at all? / correctly?) if Falling Objects is set to something other than Snow. -->
-  <!-- Test if 374 is required for 90 to generate pushback (90 Only). Test if 90 is required for 374 to generate sandstorm graphics (374 Only). -->
-  <!-- Clean up 90 after finishing research on these questions -->
   <sprite id="374" name="Effect - Falling Objects and Wind" notes="This effect controller will either create a falling particle effect, or it will create a Sandstorm.">
-    <dependency notes="If this sprite is placed more than once in the same Zone, the game will crash. If Sandstorm is selected, you must include [90] Wind Physics and Sound.">
+    <dependency notes="Placing this sprite more than once in the same zone will overlay the effect. If Sandstorm is selected, you must include [90] Wind Physics and Sound for the graphics to appear.">
       <suggested sprite="90"/>
     </dependency>
     <dualbox nybble="12.4" title1="Falling Objects" title2="Sandstorm" comment="This determines the functionality of the sprite."/>
@@ -1313,15 +1312,20 @@
     <value nybble="5" title="Throwing Delay" comment="The amount of delay is inconsistent between increases in value."/>
   </sprite> <!-- #414: Spike/Stone Spike -->
 
-  <sprite id="422" name="Toad Needs Help - ? Block" notes="A feature used in Retail's Single Player where a Toad bubble will appear on the world map and signal that it needs rescued. Playing and completing that level by finding this Toad will award Mario three 1-Ups if he is carried to the goal flag in Super Form, and one 1-Up in Small Form. Also, when Toad is saved, a Toad House will open at the starting point of the world. The type of house that appears depends on the last digit in the time limit when Toad and/or Mario touches the flagpole.">
-    <dependency notes="&lt;font color=&quot;red&quot;&gt;Usable in classic NSMBW only.&lt;/font&gt; All normal levels can have a Toad Needs Help block and end up needing rescued, but they will not appear for Ghost House, Tower, Castle, or Airship levels."/>
-    <checkbox nybble="12.4" title="Unknown Flag 12 (1)" advanced="True" advancedcomment="ASM shows Nybble 12 might affect something."/>
-  </sprite> <!-- #422: Toad Needs Help - ? Block -->
-
-  <sprite id="423" name="Toad Needs Help - Brick Block" notes="A feature used in Retail's Single Player where a Toad bubble will appear on the world map and signal that it needs rescued. Playing and completing that level by finding this Toad will award Mario three 1-Ups if he is carried to the goal flag in Super Form, and one 1-Up in Small Form. Also, when Toad is saved, a Toad House will open at the starting point of the world. The type of house that appears depends on the last digit in the time limit when Toad and/or Mario touches the flagpole.">
-    <dependency notes="&lt;font color=&quot;red&quot;&gt;Usable in classic NSMBW only.&lt;/font&gt; All normal levels can have a Toad Needs Help block and end up needing rescued, but they will not appear for Ghost House, Tower, Castle, or Airship levels."/>
-    <checkbox nybble="12.4" title="Unknown Flag 12 (1)" advanced="True" advancedcomment="ASM shows Nybble 12 might affect something."/>
-  </sprite> <!-- #423: Toad Needs Help - Brick Block -->
+  <sprite id="431" name="Boss Controller - Bowser" noyoshi="True" notes="The main boss controller for the Retail Bowser battle. It will override the Zone's camera settings.">
+	<dualbox nybble="12.4" title1="Vanilla Fight" title2="Newer Fight" comment="The fight used by the controller."/>
+    <dependency notes="Most of the final Bowser fight involves hardcoded elements, so directly copying from the fight you're using is strongly recommended.">
+      <required sprite="122"/> <!-- Basic Platform - One-Way -->
+      <required sprite="419"/> <!-- Bowser -->
+      <required sprite="439"/> <!-- Peach in Cage - Fake -->
+      <required sprite="445"/> <!-- Peach in Cage - Real -->
+      <suggested sprite="449"/> <!-- Bowser Fireball Spawn Area -->
+      <required sprite="456"/> <!-- Final Boss - Bridge Pieces -->
+      <required sprite="478"/> <!-- Bowser Switch (Small) -->
+      <required sprite="479"/> <!-- Bowser Switch (Large) -->
+      <suggested sprite="482"/> <!-- Final Boss - Pre-Boss Camera Effects -->
+    </dependency>
+  </sprite> <!-- #431: Boss Controller - Bowser -->
 
   <sprite id="441" name="Mushroom Platform" notes="A mushroom platform with a solid-on-top collision representing the top segment of a large mushroom. The stem portion must be painted with tileset objects.">
     <dualbox nybble="11.4" title1="Skinny" title2="Thick" comment="This determines the thickness (style) of the mushroom platform."/>
@@ -1540,7 +1544,6 @@
     <value nybble="12" title="Minimum Number of Players" comment="This determines the number of players required for the Clowncar to load. A value of 4 will only load if there are 4 players." advanced="True"/>
 	<checkbox nybble="8.3" title="Unrestricted Movement" comment="When enabled, the clown car will have free movement across the entire level instead of the original airship room's boundaries."/>
 	<checkbox nybble="11.4" title="Use Cannon" comment="When enabled, the clown car will have the cannon seen in the NewerSMBW Final Boss Fight."/>
-	<dualbox nybble="10" title1="Original Size" title2="Larger Size" comment="This changes the size of the clowncar from the one used in the World 6 airship to the size used by NewerSMBW's final boss."/>
   </sprite> <!-- #493: Rideable Clowncar with Cannon -->
   
   <sprite id="494" name="Thundercloud" notes="This creates an unhappy Thundercloud that is similar to a Lakitu's cloud. It will slingshot around the top of the stage and occasionally shoot down Thunder. This Thunder will turn non-tiny Marios into Mini-Mario, and kill Mini-Marios outright. The Thunder will not reach beneath solid terrain.">
@@ -1609,6 +1612,7 @@
   </sprite> <!-- #497: Magic Platform -->
 
   <sprite id="498" name="Meteor" notes="A floating, spinning, usually safe to stand on Meteor.">
+	<checkbox nybble="5.1" title="Generates Lightmaps" comment="If enabled, the meteor will generate it's lightmap textures." comment2="Once any Meteor generates lightmaps, the rest of the lightmaps in the zone will generate their lightmaps."/>
     <value nybble="9-10" title="Size" comment="This determines how large the Meteor is." comment2="A setting of 0 is the same as a setting of 5. 1-255 provide general scaling from 20% to 5100% scaling."/>
     <checkbox nybble="11.4" title="Electrified" comment="When enabled, the Meteor will be electrified, and will hurt any player that touches it."/>
     <value nybble="7-8" title="Rotation Speed" comment="This determines how fast the Meteor will rotate, if at all."/>
@@ -1780,7 +1784,7 @@
 		<required sprite="495"/> <!-- Message Block Manager -->
 	</dependency>
     <value nybble="3-4" title="Triggering Event ID" comment="The Level Exit Controller will begin to eject the player from the level when the Triggering Event is activated." idtype="Triggering Event"/>
-    <checkbox nybble="6.4" title="Level Intro" comment="When enabled, the Level Exit Controller will show a message box for 1020 time units. It will then eject you from the level and set a hardcoded flag in the world settings that Newer uses when starting the game for the first time. The game will also be saved." comment2="It's not recommended to use this unless directly editing the NewerSMBW pack."/>
+    <checkbox nybble="6.4" title="Level Intro" comment="When enabled, the Level Exit Controller will show a message box for 17 seconds. It will then eject you from the level and set a hardcoded flag in the save file used when starting the game for the first time. The game will also be saved."/>
     <list nybble="5" title="Palace Activation" comment="This determines which colored blocks will be enabled after the player exits. If not using the Level Exit Controller as a Switch Palace, set it to value 8. Additionally, the message will be displayed for 270 time units and cannot be skipped, and the level will be completed." requirednybble="6.4" requiredval="0">
       <entry value="8">Nothing</entry>
       <entry value="0">Red Blocks</entry>
@@ -1891,13 +1895,13 @@
       <entry value="0">Bowser</entry>
       <entry value="1">Mario (P1)</entry>
       <entry value="2">Luigi (P2)</entry>
-      <entry value="3">ToadA (P3)</entry>
-      <entry value="4">ToadB (P4)</entry>
+      <entry value="3">Blue Toad (P3)</entry>
+      <entry value="4">Yellow Toad (P4)</entry>
     </list>
   </sprite> <!-- #526: Bomb Drop Controller -->
 
-  <sprite id="527" name="Newer Cutscene Controller: Credits" notes="&lt;font color=&quot;red&quot;&gt;This sprite is predominately hardcoded in how it functions. Custom usage is not recommended.&lt;/font&gt;" advancednotes="It needs a very specific level set-up to function. Shows the Bowser cutscene that runs in a separate level.">
-  </sprite> <!-- #527: Newer Cutscene Controller: Credits -->
+  <sprite id="527" name="Newer Cutscene Controller: Ending" notes="&lt;font color=&quot;red&quot;&gt;This sprite is predominately hardcoded in how it functions. Custom usage is not recommended.&lt;/font&gt;" advancednotes="It needs a very specific level set-up to function. Shows the Bowser cutscene that runs in a separate level.">
+  </sprite> <!-- #527: Newer Cutscene Controller: Ending -->
 
   <sprite id="528" name="Toad House Minigame - Music House" noyoshi="True" notes="This sprite is used to generate the Music House bonus game from NewerSMBW. The blocks will spawn centered on the sprite's placement. Playing the mini-game to completion will cause the level to end in completion." advancednotes="Additional songs can be added with a little adjustment to the sprite's code. Simple edits can allow for new songs in your hack.">
     <list nybble="5" title="1st Chord Prize" comment="This determines the prize awarded for passing the first Chord of the song.">
@@ -2143,5 +2147,11 @@
     <value nybble="10" title="Height" comment="Height of the area affected by the Line God."/>
     <dualbox nybble="12.4" title1="Hides when Active" title2="Shows when Active" comment="This determines how the Line God will act when the Triggering Event is activated." comment2="When the event is not active, the Line Guides will exist in the opposite state from what's listed."/>
   </sprite> <!-- #533: Line God Event -->
+
+  <sprite id="534" name="Newer Cutscene Controller: Credits" notes="This controller manages NewerSMBW's credits and staffroll after the final Bowser fight.">
+    <dependency notes="There are several hardcoded dependencies involved in this, so it is not usable outside of the established level and arrangement. The Staffroll credits themselves however have an editor available for them."/>
+	<checkbox nybble="12.4" title="Plays cutscene when finished" comment="If enabled, the post-credits cutscene will play when the credits end."/>
+	<checkbox nybble="12.3" title="Show credits highscore" comment="Shows the most coins collected during the credits, if enabled."/>
+  </sprite> <!-- #534: Cutscene Controller - Newer Credits -->
 </sprites>
 <!-- Thank you so much for a-playing my game! -->

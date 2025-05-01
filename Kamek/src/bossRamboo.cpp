@@ -60,9 +60,9 @@ class daRamboo_c : public daBoss {
 };
 
 const char* RambooNameList[] = {"teresa", NULL};
-const SpriteData RambooSpriteData = {ProfileId::BossRamboo, 8, 0xFFFFFFF0, 0, 0x10, 0x10, 0x10, 0x10, 0, 0x10, 0, 0};
+const SpriteData RambooSpriteData = {ProfileId::EN_BOSS_BOO, 8, 0xFFFFFFF0, 0, 0x10, 0x10, 0x10, 0x10, 0, 0x10, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile RambooProfile(&daRamboo_c::build, SpriteId::BossRamboo, &RambooSpriteData, ProfileId::EN_IWAO, ProfileId::BossRamboo, "BossRamboo", RambooNameList);
+Profile RambooProfile(&daRamboo_c::build, SpriteId::EN_BOSS_BOO, &RambooSpriteData, ProfileId::EN_IWAO, ProfileId::EN_BOSS_BOO, "EN_BOSS_BOO", RambooNameList, 0x8);
 
 dActor_c *daRamboo_c::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daRamboo_c));

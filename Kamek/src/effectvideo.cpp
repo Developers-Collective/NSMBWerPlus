@@ -25,9 +25,9 @@ class EffectVideo : public dEn_c {
 };
 
 const char *EffectSpawnerArcNameList[] = {0};
-const SpriteData EffectSpawnerSpriteData = {ProfileId::EffectSpawner, 8, 0xfffffff8, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 8};
+const SpriteData EffectSpawnerSpriteData = {ProfileId::EN_FX_SPAWNER, 8, 0xfffffff8, 0, 0, 0x100, 0x100, 0, 0, 0, 0, 8};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile EffectSpawnerProfile(&EffectVideo::build, SpriteId::EffectSpawner, &EffectSpawnerSpriteData, ProfileId::LIFT_TORIDE_ROLL, ProfileId::EffectSpawner, "Effect Spawner", EffectSpawnerArcNameList);
+Profile EffectSpawnerProfile(&EffectVideo::build, SpriteId::EN_FX_SPAWNER, &EffectSpawnerSpriteData, ProfileId::LIFT_TORIDE_ROLL, ProfileId::EN_FX_SPAWNER, "EN_FX_SPAWNER", EffectSpawnerArcNameList, 0x2);
 
 dActor_c *EffectVideo::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(EffectVideo));

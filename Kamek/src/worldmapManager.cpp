@@ -16,11 +16,6 @@ class dWMManager_c : public dActor_c {
 public:
 	static dActor_c* build();
 	static dWMManager_c *instance;
-
-	int onCreate();
-	int onDelete();
-	int onExecute();
-
 };
 
 dWMManager_c *dWMManager_c::instance = 0;
@@ -34,18 +29,4 @@ dActor_c* dWMManager_c::build() {
 
 	instance = c;
 	return c;
-}
-
-int dWMManager_c::onCreate() {
-	return true;
-}
-
-
-int dWMManager_c::onDelete() {
-	return true;
-}
-
-
-int dWMManager_c::onExecute() {
-	return true;
 }

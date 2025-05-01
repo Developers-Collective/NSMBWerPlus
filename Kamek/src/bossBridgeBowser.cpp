@@ -5,6 +5,7 @@
 #include <sfx.h>
 #include <stage.h>
 #include "boss.h"
+#include <profile.h>
 
 extern "C" void *BowserExitDemoState(void *, unsigned int);
 extern "C" void *ForceMarioExitDemoMode(void *, unsigned int);
@@ -15,7 +16,7 @@ extern "C" void *BowserDamageNormal(dEn_c *);
 extern "C" void *BowserDamageKill(dEn_c *);
 extern "C" void *BowserDamageEnd(dEn_c *);
 
-extern int BridgeBowserHP;
+int BridgeBowserHP = 2;
 int lastBomb = 0;
 
 extern bool HackyBombDropVariable;
@@ -23,7 +24,7 @@ extern bool HackyBombDropVariable;
 void BowserDoomSpriteCollision(dEn_c *bowser, ActivePhysics *apThis, ActivePhysics *apOther) {
 	// If you collide with something or other, call the fireball collision
 
-	if (apOther->owner->profileId == ProfileId::BossBombDropped) {
+	if (apOther->owner->profileId == ProfileId::EN_BOSS_BOMB_DROPPED) {
 
 		if (lastBomb == apOther->owner->id) { return; }
 		if (!HackyBombDropVariable) return;
@@ -77,24 +78,56 @@ void BowserDoomSpriteCollision(dEn_c *bowser, ActivePhysics *apThis, ActivePhysi
 	return;
 }
 
+extern "C" void initializeMagic(dStageActor_c *); 
 void BowserDoomStart(dStageActor_c *Controller) {
-	OSReport("Here we go!");
+	if (Controller->settings & 1) {
+		OSReport("Here we go!");
 
-	dEn_c *Bowser = (dEn_c*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_KOOPA, 0);
-	Bowser->Delete(1);
-	lastBomb = 0;
+		dEn_c *Bowser = (dEn_c*)fBase_c::searchByProfileId(ProfileId::EN_BOSS_KOOPA, 0);
+		Bowser->Delete(1);
+		lastBomb = 0;
+	} else {
+		initializeMagic(Controller);
+	}
 }
 
+extern "C" void executeMagic(dStageActor_c *); 
 void BowserDoomExecute(dStageActor_c *Controller) {
-	dFlagMgr_c::instance->set(2, 0, true, false, false);
-	Controller->Delete(1);
+	if (Controller->settings & 1) {
+		dFlagMgr_c::instance->set(2, 0, true, false, false);
+		Controller->Delete(1);
+	} else {
+		executeMagic(Controller);
+	}
 }
 
 void BowserDoomEnd(dStageActor_c *Controller) {
-	OSReport("Bai bai everybody");
-	Controller->Delete(1);
+	if (Controller->settings & 1) {
+		OSReport("Bai bai everybody");
+		Controller->Delete(1);
+	}
 }
 
 void BowserStartEnd(dStageActor_c *Controller) {
-	dFlagMgr_c::instance->set(1, 0, true, false, false);
+	if (Controller->settings & 1) {
+		dFlagMgr_c::instance->set(1, 0, true, false, false);
+	}
 }
+
+u32 isBowserImmuneToFireBalls() {
+	fBase_c *controller = fBase_c::searchByProfileId(ProfileId::BOSS_KOOPA_DEMO);
+	if (controller != NULL && controller->settings & 1) {
+		return 1;
+	}
+	return 0;
+}
+
+extern "C" void setDeathInfo_Quake_Boss(dEn_c *, int);
+void BowserPowBlock(dEn_c *bowser, int isMPGP) {
+	fBase_c *controller = fBase_c::searchByProfileId(ProfileId::BOSS_KOOPA_DEMO);
+	if (controller != NULL && controller->settings & 1) {
+		return;
+	} else {
+		setDeathInfo_Quake_Boss(bowser, isMPGP);
+	}
+} 

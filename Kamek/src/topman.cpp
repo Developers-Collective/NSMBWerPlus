@@ -68,9 +68,9 @@ class daTopman : public dEn_c {
 };
 
 
-const SpriteData TopmanSpriteData = {ProfileId::Topman, 8, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0};
+const SpriteData TopmanSpriteData = {ProfileId::EN_TOPMAN, 8, -8 , 0 , 0, 0x100, 0x100, 0, 0, 0, 0, 0};
 // #      -ID- ----  -X Offs- -Y Offs-  -RectX1- -RectY1- -RectX2- -RectY2-  -1C- -1E- -20- -22-  Flag ----
-Profile TopmanProfile(&daTopman::build, SpriteId::Topman, &TopmanSpriteData, ProfileId::TARZAN_ROPE, ProfileId::Topman, "Topman", TMarcNameList);
+Profile TopmanProfile(&daTopman::build, SpriteId::EN_TOPMAN, &TopmanSpriteData, ProfileId::TARZAN_ROPE, ProfileId::EN_TOPMAN, "EN_TOPMAN", TMarcNameList, 0x12);
 
 dActor_c *daTopman::build() {
 	void *buffer = AllocFromGameHeap1(sizeof(daTopman));
