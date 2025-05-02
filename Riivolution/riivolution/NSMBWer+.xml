@@ -29,7 +29,7 @@
 		<folder external="Replay/title" disc="/Replay/title" create="true" />
 		<folder external="Sound" disc="/Sound" create="true" />
 		<folder external="Sound/stream" disc="/Sound/stream" create="true" />
-		<folder external="Sound/sfx" disc="/Sound/new/sfx" create="true" />
+		<folder external="Sound/stream/sfx" disc="/Sound/stream/sfx" create="true" />
 		<folder external="Stage" disc="/Stage" create="true" />
 		<folder external="Stage/Texture" disc="/Stage/Texture" create="true" />
 		<folder external="WorldMap" disc="/WorldMap" create="true" />
