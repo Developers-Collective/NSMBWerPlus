@@ -34,7 +34,7 @@ class SpriteImage_NewerSwitch(common.SpriteImage_Switch):
 
         if 'PSwitch2' not in ImageCache:
             for i in range(2, 5):
-                p = SLib.GetImg('P_switch%d.png' % i, True)
+                p = SLib.GetImg('p_switch%d.png' % i, True)
                 ImageCache['PSwitch%d' % i] = QtGui.QPixmap.fromImage(p)
                 ImageCache['PSwitchU%d' % i] = QtGui.QPixmap.fromImage(p.mirrored(True, True))
         
