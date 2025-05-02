@@ -1,4 +1,4 @@
-#if (!defined(REGION_K) || !defined(REGION_W))
+#if (!defined(REGION_KW))
 	#define PROFILEID_ADJUST_KW 0
 #else
 	#define PROFILEID_ADJUST_KW 2
