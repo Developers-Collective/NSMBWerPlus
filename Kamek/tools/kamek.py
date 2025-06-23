@@ -399,6 +399,13 @@ class KamekBuilder(object):
                     cc_command.append(d)
                     as_command.append('-d')
                     as_command.append(d)
+            
+            for d in self.project.data.get('defines', []):
+                cc_command.append('-d')
+                cc_command.append(d)
+                as_command.append('-d')
+                as_command.append(d)
+                print(f'defined: {d}')
 
             for i in self._config['include_dirs']:
                 cc_command.append('-I%s' % i)
@@ -726,5 +733,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
