@@ -2,7 +2,7 @@
 # Custom Reggie! Next sprites.py Module
 
 
-from PyQt5 import QtCore, QtGui
+from PyQt6 import QtCore, QtGui
 Qt = QtCore.Qt
 
 import spritelib as SLib
@@ -125,7 +125,7 @@ class SpriteImage_Block(SLib.SpriteImage):  # 207, 208, 209, 221, 255, 256, 402,
     def paint(self, painter):
         super().paint(painter)
 
-        painter.setRenderHint(QtGui.QPainter.Antialiasing)
+        painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing)
         if self.tilenum < len(SLib.Tiles):
             painter.drawPixmap(0, 0, SLib.GetTile(self.tilenum))
         painter.drawPixmap(0, 0, self.image)
@@ -1055,7 +1055,7 @@ class SpriteImage_NewerPokey(SLib.SpriteImage_StaticMultiple):  # 105
         color = ("", "pumpkin", "", "jungle", "lava")[style]
 
         pix = QtGui.QPixmap(100, 252)
-        pix.fill(Qt.transparent)
+        pix.fill(Qt.GlobalColor.transparent)
         paint = QtGui.QPainter(pix)
 
         if style == 2:
@@ -1152,7 +1152,7 @@ class SpriteImage_BigPumpkin(SLib.SpriteImage_StaticMultiple):  # 157
 
         if 'YoshiFire' not in ImageCache:
             pix = QtGui.QPixmap(48, 24)
-            pix.fill(Qt.transparent)
+            pix.fill(Qt.GlobalColor.transparent)
             paint = QtGui.QPainter(pix)
             paint.drawPixmap(0, 0, ImageCache['BlockContents'][9])
             paint.drawPixmap(24, 0, ImageCache['BlockContents'][3])
@@ -1400,7 +1400,7 @@ class SpriteImage_NewerGiantGoomba(SLib.SpriteImage_StaticMultiple):  # 198
         super().dataChanged()
 
 
-class SpriteImage_NewerMegaGoomba(SLib.SpriteImage_StaticMultiple):  # 198
+class SpriteImage_NewerMegaGoomba(SLib.SpriteImage_StaticMultiple):  # 199
     @staticmethod
     def loadImages():
         SLib.loadIfNotInImageCache('MegaGoomba', 'mega_goomba.png')
@@ -1744,6 +1744,7 @@ class SpriteImage_NewerParabeetle(SLib.SpriteImage_StaticMultiple):  # 291
 
     def dataChanged(self):
         
+        self.yOffset = -6
         direction = self.parent.spritedata[5] & 3
         colour = self.parent.spritedata[2] & 15
         if colour > 10:
@@ -1783,6 +1784,7 @@ class SpriteImage_NewerHeavyParabeetle(SLib.SpriteImage_StaticMultiple):  # 292
 
     def dataChanged(self):
 
+        self.yOffset = -60
         direction = self.parent.spritedata[5] & 3
         colour = self.parent.spritedata[2] & 15
         if colour > 10:
@@ -2093,6 +2095,25 @@ class SpriteImage_ShyGuy(SLib.SpriteImage_StaticMultiple):  # 351
         super().dataChanged()
 
 
+class SpriteImage_NewerFruit(SLib.SpriteImage_StaticMultiple):  # 357
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('Fruit', 'fruit.png')
+        SLib.loadIfNotInImageCache('FruitCherry', 'fruit_cherry.png')
+
+    def dataChanged(self):
+
+        style = self.parent.spritedata[5] & 1
+        if style == 0:
+            self.image = ImageCache['Fruit']
+            self.offset = (0, 0)
+        else:
+            self.image = ImageCache['FruitCherry']
+            self.offset = (-2, -11) #-3, -16
+
+        super().dataChanged()
+        
+
 class SpriteImage_NewerBush(SLib.SpriteImage_StaticMultiple):  # 387
     def __init__(self, parent):
         super().__init__(parent, 1.5)
@@ -2134,10 +2155,10 @@ class SpriteImage_NewerBush(SLib.SpriteImage_StaticMultiple):  # 387
             )[size]
         else:
             self.offset = (
-                (-22, -26),
-                (-28, -46),
-                (-41, -62),
-                (-52, -80),
+                (-22, -25),
+                (-30, -44),
+                (-40, -60),
+                (-53, -78),
             )[size]
 
         super().dataChanged()
@@ -2301,15 +2322,10 @@ ImageClasses = {
     195: SpriteImage_NewerHuckitCrab,
     198: SpriteImage_NewerGiantGoomba,
     199: SpriteImage_NewerMegaGoomba,
-    207: SpriteImage_QBlock,
-    208: SpriteImage_QBlockUnused,
-    209: SpriteImage_BrickBlock,
     219: SpriteImage_NewerLineBlock,
     223: SpriteImage_NewerSpringBlock,
     230: SpriteImage_NewerBramball,
     231: SpriteImage_NewerWiggleShroom,
-    255: SpriteImage_RotatingQBlock,
-    256: SpriteImage_RotatingBrickBlock,
     269: SpriteImage_NewerParabomb,
     286: SpriteImage_NewerWoodCircle,
     291: SpriteImage_NewerParabeetle,
@@ -2320,8 +2336,6 @@ ImageClasses = {
     341: SpriteImage_NewerBigShell,
     387: SpriteImage_NewerBush,
     391: SpriteImage_NewerGlowBlock,
-    402: SpriteImage_LineQBlock,
-    403: SpriteImage_LineBrickBlock,
     414: SpriteImage_NewerGabon,
     478: SpriteImage_NewerBowserSwitchSm,
     479: SpriteImage_NewerBowserSwitchLg,
